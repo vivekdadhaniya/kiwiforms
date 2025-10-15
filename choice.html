@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Multiple Choice with Delete + Selection Limit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-2xl">
+        <h2 class="text-xl font-semibold mb-4">Multiple Choice Field</h2>
+
+        <!-- Choices container -->
+        <div id="choices-container" class=" space-y-2"></div>
+
+        <!-- Add choice button -->
+        <button id="add-choice-btn"
+            class="w-full mt-3 py-2 text-gray-600 bg-gray-100 rounded-md hover:bg-gray-200 transition flex items-center justify-center space-x-2">
+            <span class="text-lg">＋</span>
+            <span>Add Choice</span>
+        </button>
+
+        <!-- Toggle Other option -->
+        <div class="mt-4 flex items-center space-x-2">
+            <input type="checkbox" id="toggle-other" class="h-4 w-4 text-blue-600 border-gray-300 rounded">
+            <label for="toggle-other" class="text-sm text-gray-700">Add "Other" option</label>
+        </div>
+
+        <!-- ✅ Orientation toggle -->
+        <div class="mt-2 flex items-center gap-2">
+            <input type="checkbox" id="toggleOrientation" class="w-4 h-4">
+            <label for="toggleOrientation" class="text-gray-700 text-sm">Horizontal Selection</label>
+        </div>
+
+        <!-- ✅ Number of Selection section -->
+        <div class="mt-6">
+            <div class="flex items-center justify-between mb-2">
+                <label class="text-gray-800 font-medium">No. of Selection</label>
+                <label class="inline-flex items-center cursor-pointer">
+                    <input type="checkbox" id="toggleSelection" class="sr-only peer">
+                    <div
+                        class="w-10 h-5 bg-gray-300 rounded-full peer-checked:bg-green-500 relative after:content-[''] after:w-4 after:h-4 after:bg-white after:rounded-full after:absolute after:top-0.5 after:left-0.5 peer-checked:after:translate-x-5 after:transition">
+                    </div>
+                </label>
+            </div>
+
+            <div id="selectionOptions" class="hidden">
+                <div class="flex gap-2 mb-3">
+                    <button data-type="unlimited"
+                        class="selection-btn px-3 py-1 rounded-md border border-gray-300 text-gray-700 text-sm">Unlimited</button>
+                    <button data-type="limit"
+                        class="selection-btn px-3 py-1 rounded-md border border-gray-300 text-gray-700 text-sm">Set
+                        Limit</button>
+                    <button data-type="range"
+                        class="selection-btn px-3 py-1 rounded-md border border-gray-300 text-gray-700 text-sm">Range</button>
+                </div>
+
+                <!-- Set Limit input -->
+                <input type="number" id="limitInput" placeholder="e.g. 3"
+                    class="hidden w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-green-300">
+
+                <!-- Range inputs -->
+                <div id="rangeInputs" class="hidden flex gap-2">
+                    <input type="number" id="rangeMin" placeholder="Min"
+                        class="w-1/2 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-green-300">
+                    <input type="number" id="rangeMax" placeholder="Max"
+                        class="w-1/2 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-green-300">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let choices = [
+            { id: 1, label: '' },
+            { id: 2, label: '' },
+        ];
+        let nextId = 3;
+        let otherEnabled = false;
+        let otherValue = "";
+
+        const container = document.getElementById('choices-container');
+        const addBtn = document.getElementById('add-choice-btn');
+        const toggleOther = document.getElementById('toggle-other');
+        const toggleOrientation = document.getElementById("toggleOrientation");
+
+        // ✅ Update orientation dynamically
+        function updateOrientation() {
+            if (toggleOrientation.checked) {
+                container.classList.remove('flex', 'flex-col', 'gap-2');
+                container.classList.add('grid','grid-cold-2', 'gap-2');
+            } else {
+                container.classList.remove('grid','grid-cold-2', 'gap-2');
+                container.classList.add('flex', 'flex-col', 'gap-2');
+            }
+        }
+
+        function getLetter(index) {
+            return String.fromCharCode(65 + index);
+        }
+
+        function renderChoices() {
+            container.innerHTML = '';
+
+            // Normal choices
+            choices.forEach((choice, idx) => {
+                const div = document.createElement('div');
+                div.className = 'group w-full flex items-center bg-[#EBFEF6] rounded-[10px] p-2.5 relative border border-transparent hover:border-[#9ACEB8] transition';
+
+                const badge = document.createElement('div');
+                badge.textContent = getLetter(idx);
+                badge.className = 'w-[38px] h-[38px] flex items-center justify-center rounded-[5px] bg-white text-[#007D47] text-xl font-medium mr-2.5';
+
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = choice.label;
+                input.placeholder = "Choice";
+                input.className = "flex-1 bg-transparent border-none focus:outline-none italic text-green-700";
+                input.addEventListener('input', (e) => {
+                    choice.label = e.target.value;
+                });
+
+                // Delete button (hidden by default, visible on hover)
+                const deleteBtn = document.createElement('button');
+                deleteBtn.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M4 14L14 4" stroke="#000A06" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 14L4 4" stroke="#000A06" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>`;
+                deleteBtn.className = "absolute right-3 hidden group-hover:block";
+                deleteBtn.addEventListener('click', () => deleteChoice(choice.id));
+
+                div.appendChild(badge);
+                div.appendChild(input);
+                div.appendChild(deleteBtn);
+                container.appendChild(div);
+            });
+
+            // Append "Other" if enabled, always last
+            if (otherEnabled) {
+                const div = document.createElement('div');
+                div.className = 'flex items-center bg-[#EBFEF6] rounded-[10px] p-2.5 relative border border-transparent hover:border-[#9ACEB8] transition';
+
+                const badge = document.createElement('div');
+                badge.textContent = getLetter(choices.length);
+                badge.className = 'w-[38px] h-[38px] flex items-center justify-center rounded-[5px] bg-white text-[#007D47] text-xl font-medium mr-2.5';
+
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = otherValue;
+                input.placeholder = "Other (type your answer)";
+                input.className = "flex-1 bg-transparent border-none focus:outline-none italic text-green-700";
+                input.addEventListener('input', (e) => {
+                    otherValue = e.target.value;
+                });
+
+                div.appendChild(badge);
+                div.appendChild(input);
+                container.appendChild(div);
+            }
+
+            // ✅ Re-apply orientation after rendering
+            updateOrientation();
+        }
+
+        function deleteChoice(id) {
+            choices = choices.filter(c => c.id !== id);
+            renderChoices();
+        }
+
+        function addChoice() {
+            choices.push({ id: nextId++, label: '' });
+            renderChoices();
+        }
+
+        addBtn.addEventListener('click', addChoice);
+
+        toggleOther.addEventListener('change', (e) => {
+            otherEnabled = e.target.checked;
+            renderChoices();
+        });
+
+        // ✅ Apply orientation on toggle
+        toggleOrientation.addEventListener("change", updateOrientation);
+
+        renderChoices();
+
+        // ✅ Number of Selection functionality
+        const toggleSelection = document.getElementById("toggleSelection");
+        const selectionOptions = document.getElementById("selectionOptions");
+        const selectionBtns = document.querySelectorAll(".selection-btn");
+        const limitInput = document.getElementById("limitInput");
+        const rangeInputs = document.getElementById("rangeInputs");
+
+        let selectionType = "unlimited";
+
+        toggleSelection.addEventListener("change", () => {
+            selectionOptions.classList.toggle("hidden", !toggleSelection.checked);
+        });
+
+        selectionBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                selectionType = btn.dataset.type;
+
+                // Reset button styles
+                selectionBtns.forEach(b => b.classList.remove("bg-green-600", "text-white"));
+                btn.classList.add("bg-green-600", "text-white");
+
+                // Show/Hide inputs
+                limitInput.classList.add("hidden");
+                rangeInputs.classList.add("hidden");
+
+                if (selectionType === "limit") {
+                    limitInput.classList.remove("hidden");
+                } else if (selectionType === "range") {
+                    rangeInputs.classList.remove("hidden");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

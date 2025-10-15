@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Date Input Preview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-6">
+
+  <!-- Date Inputs -->
+  <div class="flex items-center gap-4 w-full max-w-xl mx-auto" id="dateContainer">
+    <div class="flex flex-col items-center flex-1" data-field="month">
+      <label class="text-sm font-medium text-gray-600">Month</label>
+      <input id="month" type="number" min="1" max="12" placeholder="MM"
+        class="w-full text-center border-b border-green-400 bg-transparent text-green-500 placeholder-green-400 text-xl font-medium focus:outline-none focus:border-green-700" />
+    </div>
+    <span class="divider text-green-500 text-xl mt-6">/</span>
+    <div class="flex flex-col items-center flex-1" data-field="day">
+      <label class="text-sm font-medium text-gray-600">Day</label>
+      <input id="day" type="number" min="1" max="31" placeholder="DD"
+        class="w-full text-center border-b border-green-400 bg-transparent text-green-500 placeholder-green-400 text-xl font-medium focus:outline-none focus:border-green-700" />
+    </div>
+    <span class="divider text-green-500 text-xl mt-6">/</span>
+    <div class="flex flex-col items-center flex-1" data-field="year">
+      <label class="text-sm font-medium text-gray-600">Year</label>
+      <input id="year" type="number" placeholder="YYYY"
+        class="w-full text-center border-b border-green-400 bg-transparent text-green-500 placeholder-green-400 text-xl font-medium focus:outline-none focus:border-green-700" />
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("dateContainer");
+      const formatValue = localStorage.getItem("dateFormat") || "MDY";
+      const dividerValue = localStorage.getItem("divider") || "/";
+
+      function renderDateInputs() {
+        const monthField = container.querySelector('[data-field="month"]');
+        const dayField = container.querySelector('[data-field="day"]');
+        const yearField = container.querySelector('[data-field="year"]');
+        container.innerHTML = "";
+        if (formatValue === "MDY") {
+          container.appendChild(monthField);
+          container.appendChild(makeDivider(dividerValue));
+          container.appendChild(dayField);
+          container.appendChild(makeDivider(dividerValue));
+          container.appendChild(yearField);
+        } else if (formatValue === "DMY") {
+          container.appendChild(dayField);
+          container.appendChild(makeDivider(dividerValue));
+          container.appendChild(monthField);
+          container.appendChild(makeDivider(dividerValue));
+          container.appendChild(yearField);
+        } else {
+          container.appendChild(yearField);
+          container.appendChild(makeDivider(dividerValue));
+          container.appendChild(monthField);
+          container.appendChild(makeDivider(dividerValue));
+          container.appendChild(dayField);
+        }
+      }
+
+      function makeDivider(symbol) {
+        const span = document.createElement("span");
+        span.className = "divider text-green-500 text-xl mt-6";
+        span.textContent = symbol;
+        return span;
+      }
+
+      renderDateInputs();
+    });
+  </script>
+</body>
+</html>

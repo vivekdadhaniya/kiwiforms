@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- REQUIRED META TAGS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kiwiform
+    </title>
+    <!--- MAIN CSS ---->
+    <link rel="stylesheet" href="assets/css/input.css">
+    <link rel="stylesheet" href="assets/css/output.css">
+    <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
+</head>
+
+<body class="md:overflow-hidden bg-Theme-bg font-Inter">
+    <div class="flex flex-col max-md:gap-8 md:flex-row bg-black-0a0a0a">
+        <!--Header--->
+        <header class="p-2.5 rounded-b-2xl fixed top-0 z-[1000] w-full bg-Theme-Forground">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2.5  w-full max-w-[340px]">
+                    <a href="#" class="p-2 bg-white rounded-10px shadow-Logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z"
+                                fill="#183C1A" />
+                            <path
+                                d="M12 1.2002C12.7732 1.2002 13.5273 1.28167 14.2544 1.43629C15.2288 1.64349 15.84 2.56199 15.84 3.55816V6.96019C15.84 7.62294 16.3772 8.1602 17.04 8.1602H20.442C21.4382 8.1602 22.3567 8.77135 22.5639 9.74573C22.7185 10.4728 22.8 11.227 22.8 12.0002C22.8 17.9649 17.9646 22.8002 12 22.8002C6.03528 22.8002 1.19995 17.9649 1.19995 12.0002C1.19995 6.03552 6.03528 1.2002 12 1.2002Z"
+                                fill="#B8DD2F" />
+                            <rect x="8.92041" y="8.81445" width="6.15932" height="6.15932" rx="3.07966"
+                                fill="#F2F3B5" />
+                            <ellipse cx="12.1062" cy="17.5222" rx="0.637171" ry="0.955756" fill="#183C1A" />
+                            <ellipse cx="12.1062" cy="6.37177" rx="0.637171" ry="0.955756" fill="#183C1A" />
+                            <ellipse cx="14.8939" cy="16.7747" rx="0.637171" ry="0.955756"
+                                transform="rotate(-30 14.8939 16.7747)" fill="#183C1A" />
+                            <ellipse cx="9.3185" cy="7.1185" rx="0.637171" ry="0.955756"
+                                transform="rotate(-30 9.3185 7.1185)" fill="#183C1A" />
+                            <ellipse cx="16.9339" cy="14.7347" rx="0.637171" ry="0.955756"
+                                transform="rotate(-60 16.9339 14.7347)" fill="#183C1A" />
+                            <ellipse cx="7.27764" cy="9.15947" rx="0.637171" ry="0.955756"
+                                transform="rotate(-60 7.27764 9.15947)" fill="#183C1A" />
+                            <ellipse cx="17.6811" cy="11.9478" rx="0.637171" ry="0.955756"
+                                transform="rotate(-90 17.6811 11.9478)" fill="#183C1A" />
+                            <ellipse cx="6.53046" cy="11.9478" rx="0.637171" ry="0.955756"
+                                transform="rotate(-90 6.53046 11.9478)" fill="#183C1A" />
+                            <ellipse cx="7.27743" cy="14.735" rx="0.637171" ry="0.955756"
+                                transform="rotate(-120 7.27743 14.735)" fill="#183C1A" />
+                            <ellipse cx="9.31816" cy="16.7756" rx="0.637171" ry="0.955756"
+                                transform="rotate(-150 9.31816 16.7756)" fill="#183C1A" />
+                            <path
+                                d="M16.1831 7.7998L22.7999 8.1598L23.0023 10.9554C23.0353 11.4106 23.0237 11.8679 22.9677 12.3209L22.879 13.0388C22.8264 13.4652 22.7346 13.8859 22.6049 14.2955L22.3439 15.1198L19.4399 11.5198L16.1831 7.7998Z"
+                                fill="url(#paint0_linear_149_8)" />
+                            <defs>
+                                <linearGradient id="paint0_linear_149_8" x1="19.7999" y1="8.1598" x2="22.7999"
+                                    y2="15.1198" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#183C1A" stop-opacity="0.25" />
+                                    <stop offset="1" stop-color="#183C1A" stop-opacity="0" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </a>
+                    <div class="px-[15px] py-[5px] rounded-10px bg-[#EDE9E9] min-h-10 flex items-center">
+                        <ol class="inline-flex items-center gap-1 md:gap-3.5">
+                            <li class="inline-flex items-center">
+                                <a href="javascript:;"
+                                    class="inline-flex items-center text-sm leading-[140%] font-normal text-Theme-Black hover:text-Theme-Green">
+                                    My Forms </a>
+                            </li>
+                            <li>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10"
+                                        fill="none">
+                                        <path d="M1 1L5 5L1 9" stroke="#000A06" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <a href="javascript:;"
+                                        class="ml-1 text-sm leading-[140%] font-normal text-Theme-Black hover:text-Theme-Green md:ml-3.5">
+                                        New Form</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10"
+                                        fill="none">
+                                        <path d="M1 1L5 5L1 9" stroke="#000A06" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <a href="javascript:;"
+                                        class="ml-1 text-sm leading-[140%] font-normal text-Theme-Green hover:text-Theme-Green md:ml-3.5">
+                                        Preview</a>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="hidden items-center gap-2.5 p-[5px] rounded-10px bg-[#EDE9E9]">
+                    <a href="#" class="py-[5px] px-[15px] header-links active">Form</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Logic Flow</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Connect</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Share</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Results</a>
+
+
+                </div>
+                <div class="flex items-center justify-end gap-2.5 w-full max-w-[340px]">
+
+                    <button class="w-full max-w-[112px] p-[15px] py-2.5 rounded-[10px] bg-Theme-Black flex items-center justify-between text-sm font-medium leading-[140%] text-white
+                                   transition-all duration-500 hover:bg-gray-800 relative overflow-hidden group">
+                        Publish
+                        <svg class="relative z-10 transition-transform duration-500 group-hover:translate-x-1"
+                            xmlns="http://www.w3.org/2000/svg" width="5" height="10" viewBox="0 0 5 10" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M0.308661 9.9577C0.12182 9.8717 0 9.66913 0 9.44443L0 0.555583C0 0.330843 0.12182 0.128326 0.308661 0.042326C0.495495 -0.0436738 0.710556 0.00380744 0.853556 0.162696L4.85355 4.60713C5.04882 4.82409 5.04882 5.17587 4.85355 5.39283L0.853556 9.83727C0.710556 9.99616 0.495495 10.0437 0.308661 9.9577Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+                    <button class="btn-white-square">
+                        BD
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!--SideBar-->
+        <div class="relative flex md:h-full gap-5 md:overflow-hidden">
+
+        </div>
+        <div class=" w-full mx-auto relative h-screen md:overflow-y-hidden pt-[61px] ">
+            <!--Main Content Page-->
+            <div class="w-full h-full relative bg-[#F6F6F6] rounded-10px px-5 py-0 ">
+                <!-- header for main content  -->
+                <div class="flex items-center justify-center pt-2.5 pb-2.5">
+                    <div class="flex items-center justify-between w-full max-w-[440px] mx-auto">
+                        <label class=" flex items-center justify-between  cursor-pointer">
+                            <div class="relative">
+                                <input id="toggleView" type="checkbox" value="Original_UV" class="sr-only peer">
+                                <div class="w-20 h-10 bg-[#EDE9E9] peer-focus:outline-none rounded-md peer 
+                                peer-checked:after:translate-x-[40px] peer-checked:after:bg-white after:content-[''] after:absolute 
+                                after:top-[5px] after:right-[45px] after:bg-white  after:rounded-[5px] after:h-[30px] after:w-[30px] after:transition-all
+                              peer-checked:bg-[#EDE9E9] hover:peer-checked:bg-[#ece6e6]">
+
+                                    <svg class="absolute z-10 left-[11px] top-[11px]" width="18" height="18"
+                                        viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_365_244)">
+                                            <rect x="1" y="1" width="16" height="12" rx="2" stroke="#000A06"
+                                                stroke-width="1.2" />
+                                            <path d="M9 15V17M9 17H4M9 17H14" stroke="#000A06" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_365_244">
+                                                <rect width="18" height="18" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg class="absolute z-10 right-[11px] top-[11px]" width="18" height="18"
+                                        viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="3" y="1" width="12" height="16" rx="2" stroke="#000A06"
+                                            stroke-width="1.2" />
+                                        <path d="M7 15H11" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M7 3L6 1H12L11 3H7Z" stroke="#000A06" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+
+                                </div>
+                            </div>
+                        </label>
+                        <div class="flex items-center justify-end gap-2.5">
+                            <button class="btn-white-square">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4745_1544)">
+                                        <path
+                                            d="M16.3328 5.8C15.0951 2.97455 12.2689 1 8.98019 1C4.82166 1 1.40237 4.15734 1 8.2"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M12.9883 5.80078H16.517C16.7828 5.80078 16.9982 5.58588 16.9982 5.32078V1.80078"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M1.66797 12.2008C2.90552 15.0262 5.73184 17.0008 9.0205 17.0008C13.179 17.0008 16.5983 13.8434 17.0007 9.80078"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M5.00991 12.1992H1.48119C1.21544 12.1992 1 12.4141 1 12.6792V16.1992"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4745_1544">
+                                            <rect width="18" height="18" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </button>
+                            <a href="Email-add_1.html" class="btn-white-square">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                                    fill="none">
+                                    <path d="M4 14L14 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M14 14L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="view-port relative mx-auto origin-center h-[calc(100%-120px)] flex flex-col items-center justify-center bg-white rounded-10px border border-[#E2DCDC] max-w-[1196px]">
+                    <!-- progress bar  -->
+                    <p
+                        class="h-2.5 w-full max-w-[400px] rounded-[30px] pt-0.5 pl-0.5 bg-[#DAEFE6] ml-5 mr-3 absolute top-5 ">
+                        <span class="h-1.5 w-[50%] rounded-[30px] bg-[#007D47] flex"></span>
+                    </p>
+
+                    <!-- content preview  -->
+                    <div class="input w-full max-w-[400px]">
+                        <div
+                            class="text-sm font-semibold leading-[140%] text-white p-[5px] rounded-full bg-[#007D47] aspect-square w-[30px] flex items-center justify-center mb-5">
+                            1</div>
+                        <h4 class="text-2xl leading-[160%] font-semibold text-[#000A06] mb-2.5">
+                            Email Address
+                        </h4>
+                        <p class="text-[15px] font-normal leading-[120%] text-[#000A06] mb-[30px]">
+                            Enter your email address
+                        </p>
+                        <input type="email" placeholder="name@email.com"
+                            class="w-full pb-[15px] border-b border-[#DAEFE6] !bg-white placeholder:text-[#9ACEB8] text-xl font-medium leading-[140%] text-[#007D47] transition-all duration-500 focus:outline-0 focus:border-[#007D47]" />
+                    </div>
+                    <div class="absolute bottom-5 flex flex-col items-center gap-5 w-full max-w-[400px]">
+                        <button
+                            class="btn-kiwi-green">
+                            Continue
+                        </button>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="44" viewBox="0 0 200 44"
+                                fill="none">
+                                <rect width="200" height="44" fill="url(#paint0_linear_4745_1562)" />
+                                <path
+                                    d="M81.2846 25.1978C81.0053 24.7026 80.6186 24.6595 80.2319 25.0471L78.5993 26.7483V29.6554H76V14.5814H78.5993V23.6043L83.132 18.7806H86.3113L83.2609 22.0108C82.8957 22.3984 82.8527 22.7645 83.0891 23.1952L86.6336 29.6554H83.6476L81.2846 25.1978Z"
+                                    fill="#183C1A" />
+                                <path
+                                    d="M87.727 29.6554V18.7591H90.4767V29.6554H87.727ZM89.1018 17.1655C88.1351 17.1655 87.4262 16.498 87.4262 15.5935C87.4262 14.7106 88.1351 14 89.1018 14C90.0685 14 90.7774 14.7106 90.7774 15.5935C90.7774 16.498 90.0685 17.1655 89.1018 17.1655Z"
+                                    fill="#183C1A" />
+                                <path
+                                    d="M94.8726 29.6554L91.6503 18.7591H94.4859L96.2904 25.9085H96.4622L98.3097 18.7591H100.995L102.842 25.9085H102.993L104.797 18.7591H107.654L104.432 29.6554H101.489L99.6845 22.7429H99.5986L97.8156 29.6554H94.8726Z"
+                                    fill="#183C1A" />
+                                <path
+                                    d="M108.831 29.6554V18.7591H111.581V29.6554H108.831ZM110.206 17.1655C109.239 17.1655 108.531 16.498 108.531 15.5935C108.531 14.7106 109.239 14 110.206 14C111.173 14 111.882 14.7106 111.882 15.5935C111.882 16.498 111.173 17.1655 110.206 17.1655Z"
+                                    fill="#183C1A" />
+                                <path
+                                    d="M114.732 29.6554V21.0417H112.734L112.713 18.7591H114.088C114.496 18.7591 114.689 18.5437 114.732 18.1561V17.79C114.904 16.1319 115.978 14.5814 118.577 14.5814H119.759V16.8641H118.019C117.546 16.8641 117.353 17.0579 117.353 17.5101V18.7591H119.565V21.0417H117.396V29.6554H114.732Z"
+                                    fill="#183C1A" />
+                                <path
+                                    d="M125.714 30C122.234 30 120.022 27.6958 120.022 24.2073C120.022 20.7187 122.234 18.4145 125.714 18.4145C129.152 18.4145 131.364 20.7187 131.364 24.2073C131.364 27.6958 129.152 30 125.714 30ZM125.714 27.6528C127.433 27.6528 128.572 26.2961 128.572 24.2073C128.572 22.1184 127.433 20.7402 125.714 20.7402C123.974 20.7402 122.836 22.1184 122.836 24.2073C122.836 26.2961 123.974 27.6528 125.714 27.6528Z"
+                                    fill="#183C1A" />
+                                <path
+                                    d="M132.745 21.5155C132.745 19.7281 133.712 18.7591 135.559 18.7591H139.082V21.0848H135.495V29.6554H132.745V21.5155Z"
+                                    fill="#183C1A" />
+                                <path
+                                    d="M140.152 29.6554V18.7591H142.644V20.3311C143.31 19.0606 144.449 18.4145 145.931 18.4145C147.563 18.4145 148.724 19.1898 149.304 20.5464C149.927 19.1682 151.13 18.4145 152.719 18.4145C155.061 18.4145 156.5 20.0296 156.5 22.6783V29.6554H153.75V23.1306C153.75 21.5585 153.17 20.8048 152.032 20.8048C150.786 20.8048 149.712 21.7954 149.712 24.0996V29.6554H146.962V23.1306C146.962 21.5585 146.382 20.8048 145.243 20.8048C143.933 20.8048 142.902 21.86 142.902 24.0996V29.6554H140.152Z"
+                                    fill="#183C1A" />
+                                <path
+                                    d="M47 22C47 15.3726 52.3726 10 59 10C65.6274 10 71 15.3726 71 22C71 28.6274 65.6274 34 59 34C52.3726 34 47 28.6274 47 22Z"
+                                    fill="#183C1A" />
+                                <path
+                                    d="M58.9992 11.1992C59.7724 11.1992 60.5266 11.2807 61.2537 11.4353C62.2281 11.6425 62.8392 12.561 62.8392 13.5572V16.9592C62.8392 17.622 63.3765 18.1592 64.0392 18.1592H67.4413C68.4374 18.1592 69.3559 18.7704 69.5631 19.7448C69.7177 20.4719 69.7992 21.226 69.7992 21.9992C69.7992 27.9639 64.9639 32.7992 58.9992 32.7992C53.0345 32.7992 48.1992 27.9639 48.1992 21.9992C48.1992 16.0345 53.0345 11.1992 58.9992 11.1992Z"
+                                    fill="#B8DD2F" />
+                                <rect x="55.918" y="18.8125" width="6.15932" height="6.15932" rx="3.07966"
+                                    fill="#F2F3B5" />
+                                <ellipse cx="59.1059" cy="27.5222" rx="0.637171" ry="0.955756" fill="#183C1A" />
+                                <ellipse cx="59.1059" cy="16.3698" rx="0.637171" ry="0.955756" fill="#183C1A" />
+                                <ellipse cx="61.893" cy="26.7747" rx="0.637171" ry="0.955756"
+                                    transform="rotate(-30 61.893 26.7747)" fill="#183C1A" />
+                                <ellipse cx="56.3187" cy="17.1185" rx="0.637171" ry="0.955756"
+                                    transform="rotate(-30 56.3187 17.1185)" fill="#183C1A" />
+                                <ellipse cx="63.9314" cy="24.7308" rx="0.637171" ry="0.955756"
+                                    transform="rotate(-60 63.9314 24.7308)" fill="#183C1A" />
+                                <ellipse cx="54.2752" cy="19.1565" rx="0.637171" ry="0.955756"
+                                    transform="rotate(-60 54.2752 19.1565)" fill="#183C1A" />
+                                <ellipse cx="64.6823" cy="21.9449" rx="0.637171" ry="0.955756"
+                                    transform="rotate(-90 64.6823 21.9449)" fill="#183C1A" />
+                                <ellipse cx="53.53" cy="21.9449" rx="0.637171" ry="0.955756"
+                                    transform="rotate(-90 53.53 21.9449)" fill="#183C1A" />
+                                <ellipse cx="54.2787" cy="24.732" rx="0.637171" ry="0.955756"
+                                    transform="rotate(-120 54.2787 24.732)" fill="#183C1A" />
+                                <ellipse cx="56.3167" cy="26.7756" rx="0.637171" ry="0.955756"
+                                    transform="rotate(-150 56.3167 26.7756)" fill="#183C1A" />
+                                <path
+                                    d="M63.1836 17.8008L69.8004 18.1608L70.0028 20.9563C70.0358 21.4115 70.0242 21.8689 69.9682 22.3218L69.8795 23.0398C69.8269 23.4662 69.7351 23.8869 69.6054 24.2965L69.3444 25.1208L66.4404 21.5208L63.1836 17.8008Z"
+                                    fill="url(#paint1_linear_4745_1562)" />
+                                <defs>
+                                    <linearGradient id="paint0_linear_4745_1562" x1="0" y1="22" x2="200" y2="22"
+                                        gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#F2F3B5" stop-opacity="0" />
+                                        <stop offset="0.3" stop-color="#B8DD2F" stop-opacity="0.1" />
+                                        <stop offset="0.5" stop-color="#B8DD2F" stop-opacity="0.25" />
+                                        <stop offset="0.7" stop-color="#B8DD2F" stop-opacity="0.1" />
+                                        <stop offset="1" stop-color="#F2F3B5" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint1_linear_4745_1562" x1="66.8004" y1="18.1608" x2="69.8004"
+                                        y2="25.1208" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#183C1A" stop-opacity="0.25" />
+                                        <stop offset="1" stop-color="#183C1A" stop-opacity="0" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- footer for main content-->
+
+            </div>
+        </div>
+
+    </div>
+    <!-- MAIN JS-->
+    <!-- MAIN JS-->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.6/Sortable.min.js"
+        integrity="sha512-csIng5zcB+XpulRUa+ev1zKo7zRNGpEaVfNB9On1no9KYTEY/rLGAEEpvgdw6nim1WdTuihZY1eqZ31K7/fZjw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- resize js  -->
+    <script>
+        const resizer = document.getElementById('resizer-y');
+        const div1 = document.getElementById('div1');
+        const div2 = document.getElementById('div2');
+
+        resizer.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            document.addEventListener('mousemove', resize);
+            document.addEventListener('mouseup', stopResize);
+        });
+
+        function resize(e) {
+            const container = div1.parentElement;
+            const containerTop = container.getBoundingClientRect().top;
+            const totalHeight = container.offsetHeight;
+            const resizerHeight = resizer.offsetHeight;
+
+            let newHeight1 = e.clientY - containerTop;
+            newHeight1 = Math.max(100, Math.min(newHeight1, totalHeight - 100 - resizerHeight));
+
+            const newHeight2 = totalHeight - newHeight1 - resizerHeight;
+
+            div1.style.height = `${newHeight1}px`;
+            div1.style.flex = 'none';
+
+            div2.style.height = `${newHeight2}px`;
+            div2.style.flex = 'none';
+        }
+
+        function stopResize() {
+            document.removeEventListener('mousemove', resize);
+            document.removeEventListener('mouseup', stopResize);
+        }
+    </script>
+
+    <!-- alpinejs  -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('dropdown', {
+                openId: null,
+            });
+        });
+    </script>
+
+    <script>
+        function dropdownComponent(id) {
+            return {
+                id,
+                height: 'auto',
+                opacity: 0,
+
+                visible: false,
+                get isOpen() {
+                    return Alpine.store('dropdown').openId === this.id;
+                },
+                toggle() {
+                    if (this.isOpen) {
+                        this.close();
+                    } else {
+                        Alpine.store('dropdown').openId = this.id;
+                        this.$nextTick(() => {
+                            this.visible = true;
+                            // const scrollHeight = this.$refs.menu.scrollHeight;
+                            // this.height = scrollHeight + 'px';
+                            this.opacity = 1;
+                        });
+                    }
+                },
+                close() {
+                    if (this.isOpen) {
+                        this.opacity = 0;
+                        // this.height = '0px';
+
+                        setTimeout(() => {
+                            this.visible = false;
+                            Alpine.store('dropdown').openId = null;
+                        }, 100); // match with transition duration
+                    }
+                }
+            };
+        }
+    </script>
+
+    <script>
+        // Initialize Sortable on the UL
+        const sortable = new Sortable(document.getElementById('Trigger-sortable'), {
+            animation: 150,
+            handle: '.Trigger', // Make only the number bubble draggable
+            onEnd: function () {
+                updateListNumbers();
+            }
+        });
+
+        // Function to update numbers based on current order
+        function updateListNumbers() {
+            const listItems = document.querySelectorAll('#Trigger-sortable > li');
+            listItems.forEach((item, index) => {
+                const numberDiv = item.querySelector('.Trigger');
+                if (numberDiv) {
+                    numberDiv.textContent = index + 1;
+                }
+            });
+        }
+    </script>
+
+    <script>
+        const toggle = document.getElementById('toggleView');
+        const viewport = document.querySelector('.view-port');
+
+        toggle.addEventListener('change', function () {
+            if (this.checked) {
+                // Switch to mobile view
+                viewport.classList.remove('desktop-view');
+                viewport.classList.add('mobile-view');
+            } else {
+                // Switch to desktop view
+                viewport.classList.remove('mobile-view');
+                viewport.classList.add('desktop-view');
+            }
+        });
+    </script>
+</body>
+
+</html>

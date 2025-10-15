@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Country Dropdown</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+
+  <div class="relative w-full">
+    <!-- Dropdown Toggler -->
+    <button id="dropdownToggle"
+      class="flex items-center justify-between w-full p-[5px] pr-2.5 bg-[#EDE9E9] border border-[#E2DCDC] rounded-10px">
+      <div class="flex items-center gap-2">
+        <img id="selectedFlag" src="assets/images/us.svg" class="w-6 h-6" alt="Flag">
+        <span id="selectedCountry" class="text-sm leading-[140%] text-Theme-Black ">United
+          States</span>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M5 12.5L10 7.5L15 12.5" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <!-- Dropdown List -->
+    <div id="dropdownMenu"
+      class="absolute left-0 z-10 w-full p-[5px] mt-1.5 bg-white border border-[#E9E1E1] rounded-10px shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] hidden">
+      <!-- Search Box -->
+      <div class="p-0 relative mb-2.5">
+        <svg class="absolute top-2.5 left-2.5" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+          viewBox="0 0 20 20" fill="none">
+          <path
+            d="M9.34375 15.6875C12.8473 15.6875 15.6875 12.8473 15.6875 9.34375C15.6875 5.84019 12.8473 3 9.34375 3C5.84019 3 3 5.84019 3 9.34375C3 12.8473 5.84019 15.6875 9.34375 15.6875Z"
+            stroke="#8C8484" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M17 17L15.25 15.25" stroke="#8C8484" stroke-width="1.2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search countries..."
+          class="w-full p-2.5 pl-10 rounded-[5px] bg-[#EDE9E9] placeholder:text-[#8C8484] text-Theme-Black text-sm leading-[140%] focus:outline-0">
+      </div>
+
+      <!-- Country List -->
+      <ul id="countryList"
+        class="max-h-48 overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-[#C4C4C4] [&::-webkit-scrollbar-thumb]:rounded-10px [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#EDE9E9]">
+        <!-- Example Items -->
+        <li
+          class="flex items-center p-[5px] gap-2.5 bg-white cursor-pointer text-sm leading-[140%] text-Theme-Black rounded-10px hover:bg-[#EDE9E9]"
+          data-flag="assets/images/uk.svg" data-name="United Kingdom">
+          <img src="assets/images/uk.svg" class="w-[30px] aspect-square"> United
+          Kingdom
+        </li>
+        <li
+          class="flex items-center p-[5px] gap-2.5 bg-white cursor-pointer text-sm leading-[140%] text-Theme-Black rounded-10px hover:bg-[#EDE9E9]"
+          data-flag="assets/images/us.svg" data-name="United States">
+          <img src="assets/images/us.svg" class="w-[30px] aspect-square"> United States
+        </li>
+        <li
+          class="flex items-center p-[5px] gap-2.5 bg-white cursor-pointer text-sm leading-[140%] text-Theme-Black rounded-10px hover:bg-[#EDE9E9]"
+          data-flag="assets/images/urn.svg" data-name="Uruguay">
+          <img src="assets/images/urn.svg" class="w-[30px] aspect-square"> Uruguay
+        </li>
+        <li
+          class="flex items-center p-[5px] gap-2.5 bg-white cursor-pointer text-sm leading-[140%] text-Theme-Black rounded-10px hover:bg-[#EDE9E9]"
+          data-flag="assets/images/uz.svg" data-name="Uzbekistan">
+          <img src="assets/images/uz.svg" class="w-[30px] aspect-square">Uzbekistan
+        </li>
+        <li
+          class="flex items-center p-[5px] gap-2.5 bg-white cursor-pointer text-sm leading-[140%] text-Theme-Black rounded-10px hover:bg-[#EDE9E9]"
+          data-flag="assets/images/vene.svg" data-name="Venezuela">
+          <img src="assets/images/vene.svg" class="w-[30px] aspect-square"> Venezuela
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const dropdownToggle = document.getElementById('dropdownToggle');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const selectedFlag = document.getElementById('selectedFlag');
+    const selectedCountry = document.getElementById('selectedCountry');
+    const countryList = document.getElementById('countryList');
+    const searchInput = document.getElementById('searchInput');
+
+    // Toggle dropdown
+    dropdownToggle.addEventListener('click', () => {
+      dropdownMenu.classList.toggle('hidden');
+    });
+
+    // Update selected country and add active class
+    countryList.addEventListener('click', (e) => {
+      const item = e.target.closest('li');
+      if (item) {
+        // Update flag and text
+        selectedFlag.src = item.getAttribute('data-flag');
+        selectedCountry.textContent = item.getAttribute('data-name');
+
+        // Remove 'active' from all li
+        countryList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+
+        // Add 'active' to the selected li
+        item.classList.add('active');
+
+        // Close dropdown
+        dropdownMenu.classList.add('hidden');
+      }
+    });
+
+    // Search functionality
+    searchInput.addEventListener('input', () => {
+      const filter = searchInput.value.toLowerCase();
+      const items = countryList.querySelectorAll('li');
+      items.forEach(item => {
+        const text = item.getAttribute('data-name').toLowerCase();
+        item.style.display = text.includes(filter) ? '' : 'none';
+      });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.classList.add('hidden');
+      }
+    });
+  </script>
+
+  <style>
+   .countryList li.active {
+  background-color: #f3f4f6 !important; /* Tailwind gray-100 */
+  /* font-weight: 600 !important; bold text */
+}
+
+  </style>
+
+</body>
+
+</html>
