@@ -85,7 +85,7 @@
 
                 <div class="min-[1080px]:flex hidden items-center gap-2.5 p-[5px] rounded-10px bg-[#EDE9E9]">
                     <a href="#" class="py-[5px] px-[15px] header-links active">Form</a>
-                    <a href="#" class="py-[5px] px-[15px] header-links">Logic Flow</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links whitespace-nowrap">Logic Flow</a>
                     <a href="#" class="py-[5px] px-[15px] header-links">Connect</a>
                     <a href="#" class="py-[5px] px-[15px] header-links">Share</a>
                     <a href="#" class="py-[5px] px-[15px] header-links">Results</a>
@@ -107,7 +107,7 @@
                                    transition-all duration-500 hover:bg-gray-800 relative overflow-hidden group">
                         Publish
                         <svg class="relative z-10 transition-transform duration-500 group-hover:translate-x-1"
-                         xmlns="http://www.w3.org/2000/svg" width="5" height="10" viewBox="0 0 5 10" fill="none">
+                            xmlns="http://www.w3.org/2000/svg" width="5" height="10" viewBox="0 0 5 10" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M0.308661 9.9577C0.12182 9.8717 0 9.66913 0 9.44443L0 0.555583C0 0.330843 0.12182 0.128326 0.308661 0.042326C0.495495 -0.0436738 0.710556 0.00380744 0.853556 0.162696L4.85355 4.60713C5.04882 4.82409 5.04882 5.17587 4.85355 5.39283L0.853556 9.83727C0.710556 9.99616 0.495495 10.0437 0.308661 9.9577Z"
                                 fill="white" />
@@ -126,130 +126,510 @@
         <!--SideBar-->
         <div class="relative flex md:h-full gap-5 md:overflow-hidden">
             <!-- left side bar -->
-            <aside
-                class="md:fixed relative bg-transparent top-[61px] xl:w-[360px] lg:w-[280px] w-full md:w-[260px] md:h-[calc(100vh-61px)] pl-px overflow-hidden scrollbar-hide z-50 flex flex-col bg-black-1B1B1B nav-list rounded-xl  ">
+            <aside class="md:fixed relative bg-transparent top-[61px] xl:w-[360px] lg:w-[280px] w-full md:w-[280px] md:h-[calc(100vh-61px)] pl-px overflow-visible scrollbar-hide z-50 flex flex-col bg-black-1B1B1B nav-list rounded-xl  ">
                 <div id="div1"
-                    class="flex flex-col w-full h-full min-h-[150px] overflow-auto bg-[#F6F6F6] flex-1 rounded-10px">
+                    class="flex flex-col w-full h-full min-h-[150px] overflow-visible bg-[#F6F6F6] flex-1 rounded-10px">
                     <div class=" w-full px-[5px] pb-2.5 h-auto rounded-b-[10px]">
                         <h4
                             class="py-5 px-[15px] border-b border-[#E2DCDC] text-base leading-[140%] font-medium text-Theme-Black">
                             Form Fields</h4>
 
-                        <ul id="Trigger-sortable" class="w-full h-auto flex flex-col">
-                            <li class="inline-flex cursor-pointer rounded-10px items-center gap-5 p-[15px] bg-Theme-Forground transition-all duration-500 ease-out hover:bg-[#F2F0F0]"
+                        <ul id="Trigger-sortable" class="w-full h-auto flex flex-col overflow-visible">
+                            <li class="inline-flex cursor-pointer rounded-10px items-center overflow-visible group justify-between gap-5 p-[15px] bg-Theme-Forground transition-all duration-500 ease-out hover:bg-white"
                                 draggable="false" style="">
-                                <div
-                                    class="Trigger cursor-grab w-6 h-6 aspect-square flex items-center justify-center rounded-full bg-[#EDE9E9] text-xs font-semibold leading-[120%] text-[#8C8484]">
-                                    1</div>
-                                <div
-                                    class="flex items-center gap-[15px] text-base leading-[100%] font-normal text-Theme-Black">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
-                                        fill="none">
-                                        <ellipse cx="9.99896" cy="4.78947" rx="3.73333" ry="3.78947" stroke="#000A06"
-                                            stroke-width="1.5" />
-                                        <path
-                                            d="M10 11C7.16745 11 4.70165 12.6749 3.4256 15.147C2.76004 16.4363 2.42726 17.081 3.01177 18.0405C3.59628 19 4.56419 19 6.5 19H13.5C15.4358 19 16.4037 19 16.9882 18.0405C17.5727 17.081 17.24 16.4363 16.5744 15.147C15.2984 12.6749 12.8326 11 10 11Z"
-                                            fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                    Full Name
+                                <div class="flex items-center gap-5">
+                                    <div
+                                        class="Trigger cursor-grab w-6 h-6 aspect-square flex items-center justify-center rounded-full bg-[#EDE9E9] text-xs font-semibold leading-[120%] text-[#8C8484]">
+                                        1</div>
+                                    <div
+                                        class="flex items-center gap-[15px] text-base leading-[100%] font-normal text-Theme-Black">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 20 20" fill="none">
+                                            <ellipse cx="9.99896" cy="4.78947" rx="3.73333" ry="3.78947"
+                                                stroke="#000A06" stroke-width="1.5" />
+                                            <path
+                                                d="M10 11C7.16745 11 4.70165 12.6749 3.4256 15.147C2.76004 16.4363 2.42726 17.081 3.01177 18.0405C3.59628 19 4.56419 19 6.5 19H13.5C15.4358 19 16.4037 19 16.9882 18.0405C17.5727 17.081 17.24 16.4363 16.5744 15.147C15.2984 12.6749 12.8326 11 10 11Z"
+                                                fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                        Full Name
+                                    </div>
+                                </div>
+                                <div x-data="dropdownComponent('field1')"
+                                    class="relative w-max opacity-0 transition-all duration-300 group-hover:opacity-100"
+                                    :class="{'opacity-100': isOpen, 'opacity-0': !isOpen}">
+                                    <button @click="toggle" :class="{'bg-[#EDE9E9]': isOpen, 'bg-transparent': !isOpen}"
+                                        class="w-[24px] h-[24px] aspect-square rounded-[5px] flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:bg-[#EDE9E9] bg-[#F2EFEF]">
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.5951 8.99964H14.6077" stroke="#000A06" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M8.99371 8.99964H9.00628" stroke="#000A06" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M3.39239 8.99964H3.40496" stroke="#000A06" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </button>
+
+                                    <div x-ref="field1" x-show="isOpen" x-transition=""
+                                        x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                                        @click.outside="close"
+                                        class="absolute right-0 z-10 p-2 mt-2 w-[120px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft"
+                                        style="overflow: hidden; transition: height 300ms; height: auto; display: none;">
+                                        <ul class="">
+                                            <li>
+                                                <a href="#"
+                                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect x="4.25" y="4.25" width="9.75" height="9.75" rx="2"
+                                                            stroke="#000A06" stroke-linejoin="round" />
+                                                        <path
+                                                            d="M9.75 2H8.75C6.1787 2 4.89305 2 3.94359 2.56909C3.37937 2.90726 2.90726 3.37937 2.56909 3.94359C2 4.89305 2 6.1787 2 8.75"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.12109 7.25V11" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M11 9.12109L7.25 9.12109" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+
+                                                    Duplicate
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M13.5 4.38789C11.465 4.18989 9.41778 4.08789 7.37667 4.08789C6.16667 4.08789 4.95667 4.14789 3.74667 4.26789L2.5 4.38789"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M5.86084 3.78199L5.99528 2.99599C6.09306 2.426 6.1664 2 7.19917 2H8.80028C9.83306 2 9.91251 2.45 10.0042 3.00199L10.1386 3.78199"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M12.1867 6.28418L11.7895 12.3261C11.7222 13.2681 11.6672 14.0001 9.96223 14.0001H6.0389C4.3339 14.0001 4.2789 13.2681 4.21168 12.3261L3.81445 6.28418"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M6.97949 10.6997H9.01449" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M6.47217 8.2998H9.52772" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    Delete
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
                                 </div>
                             </li>
-                            <li class="inline-flex cursor-pointer rounded-10px items-center gap-5 p-[15px] bg-Theme-Forground transition-all duration-500 ease-out hover:bg-[#F2F0F0] active"
-                                draggable="false" style="">
-                                <div
-                                    class="Trigger cursor-grab w-6 h-6 aspect-square flex items-center justify-center rounded-full bg-[#EDE9E9] text-xs font-semibold leading-[120%] text-[#8C8484]">
-                                    2
+                            <li class="inline-flex cursor-pointer rounded-10px items-center overflow-visible group justify-between gap-5 p-[15px] bg-Theme-Forground transition-all duration-500 ease-out hover:bg-white active"
+                                draggable="false">
+                                <div class="flex items-center gap-5">
+                                    <!-- Trigger / Number -->
+                                    <div
+                                        class="Trigger cursor-grab w-6 h-6 aspect-square flex items-center justify-center rounded-full bg-[#EDE9E9] text-xs font-semibold leading-[120%] text-[#8C8484]">
+                                        2
+                                    </div>
+
+                                    <!-- Info Section -->
+                                    <div
+                                        class="flex items-center gap-[15px] text-base leading-[100%] font-normal text-Theme-Black">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 20 20" fill="none">
+                                            <rect x="1" y="2.5" width="18" height="15" rx="2" fill="#D4CFCF"
+                                                stroke="#726B6B" stroke-width="1.5" />
+                                            <path
+                                                d="M4.375 6.78516L8.875 10.2137C9.53955 10.72 10.4605 10.72 11.125 10.2137V10.2137L15.625 6.78516"
+                                                stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                        Email Address
+                                    </div>
                                 </div>
-                                <div
-                                    class="flex items-center gap-[15px] text-base leading-[100%] font-normal text-Theme-Black">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
-                                        fill="none">
-                                        <rect x="1" y="2.5" width="18" height="15" rx="2" fill="#D4CFCF"
-                                            stroke="#726B6B" stroke-width="1.5" />
-                                        <path
-                                            d="M4.375 6.78516L8.875 10.2137C9.53955 10.72 10.4605 10.72 11.125 10.2137V10.2137L15.625 6.78516"
-                                            stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                    Email Address
+                                <!-- Dropdown Component -->
+                                <div x-data="dropdownComponent('field2')"
+                                    class="relative w-max opacity-0 transition-all duration-300 group-hover:opacity-100"
+                                    :class="{'opacity-100': isOpen, 'opacity-0': !isOpen}">
+
+                                    <!-- Dropdown Toggle Button -->
+                                    <button @click="toggle" :class="{'bg-[#EDE9E9]': isOpen, 'bg-transparent': !isOpen}"
+                                        class="w-[24px] h-[24px] aspect-square rounded-[5px] flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:bg-[#EDE9E9] bg-[#F2EFEF]">
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.5951 8.99964H14.6077" stroke="#000A06" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M8.99371 8.99964H9.00628" stroke="#000A06" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M3.39239 8.99964H3.40496" stroke="#000A06" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </button>
+
+                                    <!-- Dropdown Menu -->
+                                    <div x-ref="field2" x-show="isOpen" x-transition
+                                        x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                                        @click.outside="close"
+                                        class="absolute right-0 z-10 p-2 mt-2 w-[120px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft">
+                                        <ul>
+                                            <li>
+                                                <a href="#"
+                                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                    <!-- SVG Icon -->
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect x="4.25" y="4.25" width="9.75" height="9.75" rx="2"
+                                                            stroke="#000A06" stroke-linejoin="round" />
+                                                        <path
+                                                            d="M9.75 2H8.75C6.1787 2 4.89305 2 3.94359 2.56909C3.37937 2.90726 2.90726 3.37937 2.56909 3.94359C2 4.89305 2 6.1787 2 8.75"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.12109 7.25V11" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M11 9.12109L7.25 9.12109" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    Duplicate
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                    <!-- SVG Icon -->
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M13.5 4.38789C11.465 4.18989 9.41778 4.08789 7.37667 4.08789C6.16667 4.08789 4.95667 4.14789 3.74667 4.26789L2.5 4.38789"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M5.86084 3.78199L5.99528 2.99599C6.09306 2.426 6.1664 2 7.19917 2H8.80028C9.83306 2 9.91251 2.45 10.0042 3.00199L10.1386 3.78199"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M12.1867 6.28418L11.7895 12.3261C11.7222 13.2681 11.6672 14.0001 9.96223 14.0001H6.0389C4.3339 14.0001 4.2789 13.2681 4.21168 12.3261L3.81445 6.28418"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M6.97949 10.6997H9.01449" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M6.47217 8.2998H9.52772" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
                                 </div>
                             </li>
-                            <li class="inline-flex cursor-pointer rounded-10px items-center gap-5 p-[15px] bg-Theme-Forground transition-all duration-500 ease-out hover:bg-[#F2F0F0]"
-                                draggable="false" style="">
-                                <div
-                                    class="Trigger cursor-grab w-6 h-6 aspect-square flex items-center justify-center rounded-full bg-[#EDE9E9] text-xs font-semibold leading-[120%] text-[#8C8484]">
-                                    3
+
+
+                            <li class="inline-flex cursor-pointer rounded-10px items-center overflow-visible group justify-between gap-5 p-[15px] bg-Theme-Forground transition-all duration-500 ease-out hover:bg-white"
+                                draggable="false">
+                                <div class="flex items-center gap-5">
+                                    <!-- Trigger -->
+                                    <div
+                                        class="Trigger cursor-grab w-6 h-6 aspect-square flex items-center justify-center rounded-full bg-[#EDE9E9] text-xs font-semibold leading-[120%] text-[#8C8484]">
+                                        3
+                                    </div>
+
+                                    <!-- Info Section -->
+                                    <div
+                                        class="flex items-center gap-[15px] text-base leading-[100%] font-normal text-Theme-Black">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 20 20" fill="none">
+                                            <path
+                                                d="M18.973 15.697C18.973 16.021 18.901 16.354 18.748 16.678C18.595 17.002 18.397 17.308 18.136 17.596C17.695 18.082 17.209 18.433 16.66 18.658C16.12 18.883 15.535 19 14.905 19C13.987 19 13.006 18.784 11.971 18.343C10.936 17.902 9.901 17.308 8.875 16.561C7.84 15.805 6.859 14.968 5.923 14.041C4.996 13.105 4.159 12.124 3.412 11.098C2.674 10.072 2.08 9.046 1.648 8.029C1.216 7.003 1 6.022 1 5.086C1 4.474 1.108 3.889 1.324 3.349C1.54 2.8 1.882 2.296 2.359 1.846C2.935 1.279 3.565 1 4.231 1C4.483 1 4.735 1.054 4.96 1.162C5.194 1.27 5.401 1.432 5.563 1.666L7.651 4.609C7.813 4.834 7.93 5.041 8.011 5.239C8.092 5.428 8.137 5.617 8.137 5.788C8.137 6.004 8.074 6.22 7.948 6.427C7.831 6.634 7.66 6.85 7.444 7.066L6.76 7.777C6.661 7.876 6.616 7.993 6.616 8.137C6.616 8.209 6.625 8.272 6.643 8.344C6.67 8.416 6.697 8.47 6.715 8.524C6.877 8.821 7.156 9.208 7.552 9.676C7.957 10.144 8.389 10.621 8.857 11.098C9.343 11.575 9.811 12.016 10.288 12.421C10.756 12.817 11.143 13.087 11.449 13.249C11.494 13.267 11.548 13.294 11.611 13.321C11.683 13.348 11.755 13.357 11.836 13.357C11.989 13.357 12.106 13.303 12.205 13.204L12.889 12.529C13.114 12.304 13.33 12.133 13.537 12.025C13.744 11.899 13.951 11.836 14.176 11.836C14.347 11.836 14.527 11.872 14.725 11.953C14.923 12.034 15.13 12.151 15.355 12.304L18.334 14.419C18.568 14.581 18.73 14.77 18.829 14.995C18.919 15.22 18.973 15.445 18.973 15.697Z"
+                                                fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
+                                                stroke-miterlimit="10" />
+                                            <path
+                                                d="M15.8531 7.30039C15.8531 6.76039 15.4301 5.93239 14.8001 5.25739C14.2241 4.63639 13.4591 4.15039 12.7031 4.15039"
+                                                stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M19.0031 7.3C19.0031 3.817 16.1861 1 12.7031 1" stroke="#000A06"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        Phone Number
+                                    </div>
                                 </div>
-                                <div
-                                    class="flex items-center gap-[15px] text-base leading-[100%] font-normal text-Theme-Black">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
-                                        fill="none">
-                                        <path
-                                            d="M18.973 15.697C18.973 16.021 18.901 16.354 18.748 16.678C18.595 17.002 18.397 17.308 18.136 17.596C17.695 18.082 17.209 18.433 16.66 18.658C16.12 18.883 15.535 19 14.905 19C13.987 19 13.006 18.784 11.971 18.343C10.936 17.902 9.901 17.308 8.875 16.561C7.84 15.805 6.859 14.968 5.923 14.041C4.996 13.105 4.159 12.124 3.412 11.098C2.674 10.072 2.08 9.046 1.648 8.029C1.216 7.003 1 6.022 1 5.086C1 4.474 1.108 3.889 1.324 3.349C1.54 2.8 1.882 2.296 2.359 1.846C2.935 1.279 3.565 1 4.231 1C4.483 1 4.735 1.054 4.96 1.162C5.194 1.27 5.401 1.432 5.563 1.666L7.651 4.609C7.813 4.834 7.93 5.041 8.011 5.239C8.092 5.428 8.137 5.617 8.137 5.788C8.137 6.004 8.074 6.22 7.948 6.427C7.831 6.634 7.66 6.85 7.444 7.066L6.76 7.777C6.661 7.876 6.616 7.993 6.616 8.137C6.616 8.209 6.625 8.272 6.643 8.344C6.67 8.416 6.697 8.47 6.715 8.524C6.877 8.821 7.156 9.208 7.552 9.676C7.957 10.144 8.389 10.621 8.857 11.098C9.343 11.575 9.811 12.016 10.288 12.421C10.756 12.817 11.143 13.087 11.449 13.249C11.494 13.267 11.548 13.294 11.611 13.321C11.683 13.348 11.755 13.357 11.836 13.357C11.989 13.357 12.106 13.303 12.205 13.204L12.889 12.529C13.114 12.304 13.33 12.133 13.537 12.025C13.744 11.899 13.951 11.836 14.176 11.836C14.347 11.836 14.527 11.872 14.725 11.953C14.923 12.034 15.13 12.151 15.355 12.304L18.334 14.419C18.568 14.581 18.73 14.77 18.829 14.995C18.919 15.22 18.973 15.445 18.973 15.697Z"
-                                            fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5" stroke-miterlimit="10" />
-                                        <path
-                                            d="M15.8531 7.30039C15.8531 6.76039 15.4301 5.93239 14.8001 5.25739C14.2241 4.63639 13.4591 4.15039 12.7031 4.15039"
-                                            stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M19.0031 7.3C19.0031 3.817 16.1861 1 12.7031 1" stroke="#000A06"
-                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                    Phone Number
+                                <!-- Dropdown -->
+                                <div x-data="dropdownComponent('field3')"
+                                    class="relative w-max opacity-0 transition-all duration-300 group-hover:opacity-100"
+                                    :class="{'opacity-100': isOpen, 'opacity-0': !isOpen}">
+                                    <button @click="toggle" :class="{'bg-[#EDE9E9]': isOpen, 'bg-transparent': !isOpen}"
+                                        class="w-[24px] h-[24px] aspect-square rounded-[5px] flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:bg-[#EDE9E9] bg-[#F2EFEF]">
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.5951 8.99964H14.6077" stroke="#000A06" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M8.99371 8.99964H9.00628" stroke="#000A06" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M3.39239 8.99964H3.40496" stroke="#000A06" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </button>
+                                    <div x-ref="field3" x-show="isOpen" x-transition
+                                        x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                                        @click.outside="close"
+                                        class="absolute right-0 z-10 p-2 mt-2 w-[120px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft">
+                                        <ul>
+                                            <li>
+                                                <a href="#"
+                                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect x="4.25" y="4.25" width="9.75" height="9.75" rx="2"
+                                                            stroke="#000A06" stroke-linejoin="round" />
+                                                        <path
+                                                            d="M9.75 2H8.75C6.1787 2 4.89305 2 3.94359 2.56909C3.37937 2.90726 2.90726 3.37937 2.56909 3.94359C2 4.89305 2 6.1787 2 8.75"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.12109 7.25V11" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M11 9.12109L7.25 9.12109" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+
+                                                    Duplicate
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M13.5 4.38789C11.465 4.18989 9.41778 4.08789 7.37667 4.08789C6.16667 4.08789 4.95667 4.14789 3.74667 4.26789L2.5 4.38789"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M5.86084 3.78199L5.99528 2.99599C6.09306 2.426 6.1664 2 7.19917 2H8.80028C9.83306 2 9.91251 2.45 10.0042 3.00199L10.1386 3.78199"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M12.1867 6.28418L11.7895 12.3261C11.7222 13.2681 11.6672 14.0001 9.96223 14.0001H6.0389C4.3339 14.0001 4.2789 13.2681 4.21168 12.3261L3.81445 6.28418"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M6.97949 10.6997H9.01449" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M6.47217 8.2998H9.52772" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </li>
-                            <li class="inline-flex cursor-pointer rounded-10px items-center gap-5 p-[15px] bg-Theme-Forground transition-all duration-500 ease-out hover:bg-[#F2F0F0]"
-                                draggable="false" style="">
-                                <div
-                                    class="Trigger cursor-grab w-6 h-6 aspect-square flex items-center justify-center rounded-full bg-[#EDE9E9] text-xs font-semibold leading-[120%] text-[#8C8484]">
-                                    4
+
+                            <li class="inline-flex cursor-pointer rounded-10px items-center overflow-visible group justify-between gap-5 p-[15px] bg-Theme-Forground transition-all duration-500 ease-out hover:bg-[#F2F0F0]"
+                                draggable="false">
+                                <div class="flex items-center gap-5">
+                                    <!-- Trigger -->
+                                    <div
+                                        class="Trigger cursor-grab w-6 h-6 aspect-square flex items-center justify-center rounded-full bg-[#EDE9E9] text-xs font-semibold leading-[120%] text-[#8C8484]">
+                                        4
+                                    </div>
+
+                                    <!-- Info Section -->
+                                    <div
+                                        class="flex items-center gap-[15px] text-base leading-[100%] font-normal text-Theme-Black">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 20 20" fill="none">
+                                            <path
+                                                d="M9.24219 3.25V4H10.7422V3.25H9.24219ZM10.7422 1C10.7422 0.585786 10.4064 0.25 9.99219 0.25C9.57797 0.25 9.24219 0.585786 9.24219 1H10.7422ZM9.99219 3.25H10.7422V1H9.99219H9.24219V3.25H9.99219Z"
+                                                fill="#726B6B" />
+                                            <path
+                                                d="M9.24219 19C9.24219 19.4142 9.57797 19.75 9.99219 19.75C10.4064 19.75 10.7422 19.4142 10.7422 19H9.24219ZM10.7422 16.75V16H9.24219V16.75H10.7422ZM9.99219 19H10.7422V16.75H9.99219H9.24219V19H9.99219Z"
+                                                fill="#726B6B" />
+                                            <path
+                                                d="M16.75 9.24414L16 9.24414L16 10.7441L16.75 10.7441L16.75 9.24414ZM19 10.7441C19.4142 10.7441 19.75 10.4084 19.75 9.99414C19.75 9.57993 19.4142 9.24414 19 9.24414L19 10.7441ZM16.75 9.99414L16.75 10.7441L19 10.7441L19 9.99414L19 9.24414L16.75 9.24414L16.75 9.99414Z"
+                                                fill="#726B6B" />
+                                            <path
+                                                d="M1 9.24414C0.585786 9.24414 0.25 9.57993 0.25 9.99414C0.25 10.4084 0.585786 10.7441 1 10.7441L1 9.24414ZM3.25 10.7441L4 10.7441L4 9.24414L3.25 9.24414L3.25 10.7441ZM1 9.99414L1 10.7441L3.25 10.7441L3.25 9.99414L3.25 9.24414L1 9.24414L1 9.99414Z"
+                                                fill="#726B6B" />
+                                            <circle cx="9.99219" cy="10" r="6.75" fill="#D4CFCF" stroke="#726B6B"
+                                                stroke-width="1.5" stroke-linejoin="round" />
+                                            <circle cx="9.99219" cy="10" r="2.25" stroke="#000A06" stroke-width="1.5"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                        Address
+                                    </div>
                                 </div>
-                                <div
-                                    class="flex items-center gap-[15px] text-base leading-[100%] font-normal text-Theme-Black">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
-                                        fill="none">
-                                        <path
-                                            d="M9.24219 3.25V4H10.7422V3.25H9.24219ZM10.7422 1C10.7422 0.585786 10.4064 0.25 9.99219 0.25C9.57797 0.25 9.24219 0.585786 9.24219 1H10.7422ZM9.99219 3.25H10.7422V1H9.99219H9.24219V3.25H9.99219Z"
-                                            fill="#726B6B" />
-                                        <path
-                                            d="M9.24219 19C9.24219 19.4142 9.57797 19.75 9.99219 19.75C10.4064 19.75 10.7422 19.4142 10.7422 19H9.24219ZM10.7422 16.75V16H9.24219V16.75H10.7422ZM9.99219 19H10.7422V16.75H9.99219H9.24219V19H9.99219Z"
-                                            fill="#726B6B" />
-                                        <path
-                                            d="M16.75 9.24414L16 9.24414L16 10.7441L16.75 10.7441L16.75 9.24414ZM19 10.7441C19.4142 10.7441 19.75 10.4084 19.75 9.99414C19.75 9.57993 19.4142 9.24414 19 9.24414L19 10.7441ZM16.75 9.99414L16.75 10.7441L19 10.7441L19 9.99414L19 9.24414L16.75 9.24414L16.75 9.99414Z"
-                                            fill="#726B6B" />
-                                        <path
-                                            d="M1 9.24414C0.585786 9.24414 0.25 9.57993 0.25 9.99414C0.25 10.4084 0.585786 10.7441 1 10.7441L1 9.24414ZM3.25 10.7441L4 10.7441L4 9.24414L3.25 9.24414L3.25 10.7441ZM1 9.99414L1 10.7441L3.25 10.7441L3.25 9.99414L3.25 9.24414L1 9.24414L1 9.99414Z"
-                                            fill="#726B6B" />
-                                        <circle cx="9.99219" cy="10" r="6.75" fill="#D4CFCF" stroke="#726B6B"
-                                            stroke-width="1.5" stroke-linejoin="round" />
-                                        <circle cx="9.99219" cy="10" r="2.25" stroke="#000A06" stroke-width="1.5"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                    Address
+                                <!-- Dropdown -->
+                                <div x-data="dropdownComponent('field4')"
+                                    class="relative w-max opacity-0 transition-all duration-300 group-hover:opacity-100"
+                                    :class="{'opacity-100': isOpen, 'opacity-0': !isOpen}">
+                                    <button @click="toggle" :class="{'bg-[#EDE9E9]': isOpen, 'bg-transparent': !isOpen}"
+                                        class="w-[24px] h-[24px] aspect-square rounded-[5px] flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:bg-[#EDE9E9] bg-[#F2EFEF]">
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.5951 8.99964H14.6077" stroke="#000A06" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M8.99371 8.99964H9.00628" stroke="#000A06" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M3.39239 8.99964H3.40496" stroke="#000A06" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </button>
+                                    <div x-ref="field4" x-show="isOpen" x-transition
+                                        x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                                        @click.outside="close"
+                                        class="absolute right-0 z-10 p-2 mt-2 w-[120px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft">
+                                        <ul>
+                                            <li>
+                                                <a href="#"
+                                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect x="4.25" y="4.25" width="9.75" height="9.75" rx="2"
+                                                            stroke="#000A06" stroke-linejoin="round" />
+                                                        <path
+                                                            d="M9.75 2H8.75C6.1787 2 4.89305 2 3.94359 2.56909C3.37937 2.90726 2.90726 3.37937 2.56909 3.94359C2 4.89305 2 6.1787 2 8.75"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.12109 7.25V11" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M11 9.12109L7.25 9.12109" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+
+                                                    Duplicate
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M13.5 4.38789C11.465 4.18989 9.41778 4.08789 7.37667 4.08789C6.16667 4.08789 4.95667 4.14789 3.74667 4.26789L2.5 4.38789"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M5.86084 3.78199L5.99528 2.99599C6.09306 2.426 6.1664 2 7.19917 2H8.80028C9.83306 2 9.91251 2.45 10.0042 3.00199L10.1386 3.78199"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M12.1867 6.28418L11.7895 12.3261C11.7222 13.2681 11.6672 14.0001 9.96223 14.0001H6.0389C4.3339 14.0001 4.2789 13.2681 4.21168 12.3261L3.81445 6.28418"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M6.97949 10.6997H9.01449" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M6.47217 8.2998H9.52772" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </li>
-                            <li class="inline-flex cursor-pointer items-center gap-5 p-[15px] bg-Theme-Forground transition-all duration-500 ease-out hover:bg-[#F2F0F0]"
-                                draggable="false" style="">
-                                <div
-                                    class="Trigger cursor-grab w-6 h-6 aspect-square flex items-center justify-center rounded-full bg-[#EDE9E9] text-xs font-semibold leading-[120%] text-[#8C8484]">
-                                    5
+
+                            <li class="inline-flex cursor-pointer rounded-10px items-center overflow-visible group justify-between gap-5 p-[15px] bg-Theme-Forground transition-all duration-500 ease-out hover:bg-[#F2F0F0]"
+                                draggable="false">
+                                <div class="flex items-center gap-5">
+                                    <!-- Trigger -->
+                                    <div
+                                        class="Trigger cursor-grab w-6 h-6 aspect-square flex items-center justify-center rounded-full bg-[#EDE9E9] text-xs font-semibold leading-[120%] text-[#8C8484]">
+                                        5
+                                    </div>
+
+                                    <!-- Info Section -->
+                                    <div
+                                        class="flex items-center gap-[15px] text-base leading-[100%] font-normal text-Theme-Black">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 20 20" fill="none">
+                                            <path
+                                                d="M6.85 16.2542H6.4C1 16.2542 1 16.2542 1 10.8704V6.38385C1 1 1 1 6.4 1H13.6C19 1 19 1 19 6.38385V10.8704C19 16.2542 19 16.2542 13.6 16.2542H13.15C12.871 16.2542 12.601 16.3888 12.43 16.6132L11.08 18.4078C10.486 19.1974 9.514 19.1974 8.92 18.4078L7.57 16.6132C7.426 16.4158 7.093 16.2542 6.85 16.2542Z"
+                                                fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
+                                                stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M5.90625 6.72754H14.0881" stroke="#000A06" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M7.54688 10.8184H12.456" stroke="#000A06" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        Write Message
+                                    </div>
                                 </div>
-                                <div
-                                    class="flex items-center gap-[15px] text-base leading-[100%] font-normal text-Theme-Black">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
-                                        fill="none">
-                                        <path
-                                            d="M6.85 16.2542H6.4C1 16.2542 1 16.2542 1 10.8704V6.38385C1 1 1 1 6.4 1H13.6C19 1 19 1 19 6.38385V10.8704C19 16.2542 19 16.2542 13.6 16.2542H13.15C12.871 16.2542 12.601 16.3888 12.43 16.6132L11.08 18.4078C10.486 19.1974 9.514 19.1974 8.92 18.4078L7.57 16.6132C7.426 16.4158 7.093 16.2542 6.85 16.2542Z"
-                                            fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5" stroke-miterlimit="10"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M5.90625 6.72754H14.0881" stroke="#000A06" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M7.54688 10.8184H12.456" stroke="#000A06" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                    Write Message
+                                <!-- Dropdown -->
+                                <div x-data="dropdownComponent('field5')"
+                                    class="relative w-max opacity-0 transition-all duration-300 group-hover:opacity-100"
+                                    :class="{'opacity-100': isOpen, 'opacity-0': !isOpen}">
+                                    <button @click="toggle" :class="{'bg-[#EDE9E9]': isOpen, 'bg-transparent': !isOpen}"
+                                        class="w-[24px] h-[24px] aspect-square rounded-[5px] flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:bg-[#EDE9E9] bg-[#F2EFEF]">
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.5951 8.99964H14.6077" stroke="#000A06" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M8.99371 8.99964H9.00628" stroke="#000A06" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M3.39239 8.99964H3.40496" stroke="#000A06" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </button>
+                                    <div x-ref="field5" x-show="isOpen" x-transition
+                                        x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                                        @click.outside="close"
+                                        class="absolute right-0 z-10 p-2 mt-2 w-[120px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft">
+                                        <ul>
+                                            <li>
+                                                <a href="#"
+                                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect x="4.25" y="4.25" width="9.75" height="9.75" rx="2"
+                                                            stroke="#000A06" stroke-linejoin="round" />
+                                                        <path
+                                                            d="M9.75 2H8.75C6.1787 2 4.89305 2 3.94359 2.56909C3.37937 2.90726 2.90726 3.37937 2.56909 3.94359C2 4.89305 2 6.1787 2 8.75"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.12109 7.25V11" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M11 9.12109L7.25 9.12109" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+
+                                                    Duplicate
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M13.5 4.38789C11.465 4.18989 9.41778 4.08789 7.37667 4.08789C6.16667 4.08789 4.95667 4.14789 3.74667 4.26789L2.5 4.38789"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M5.86084 3.78199L5.99528 2.99599C6.09306 2.426 6.1664 2 7.19917 2H8.80028C9.83306 2 9.91251 2.45 10.0042 3.00199L10.1386 3.78199"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M12.1867 6.28418L11.7895 12.3261C11.7222 13.2681 11.6672 14.0001 9.96223 14.0001H6.0389C4.3339 14.0001 4.2789 13.2681 4.21168 12.3261L3.81445 6.28418"
+                                                            stroke="#000A06" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M6.97949 10.6997H9.01449" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M6.47217 8.2998H9.52772" stroke="#000A06"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </li>
+
                         </ul>
 
                     </div>
@@ -305,8 +685,7 @@
                 </div>
             </aside>
             <!-- Right side bar -->
-            <aside
-                class="md:fixed relative bg-transparent right-0 top-[61px] xl:w-[360px] lg:w-[280px] w-full md:w-[260px] md:h-[calc(100vh-61px)] pl-px overflow-y-auto scrollbar-hide z-50 flex  flex-col bg-black-1B1B1B nav-list rounded-xl  ">
+            <aside class="md:fixed relative bg-transparent right-0 top-[61px] xl:w-[360px] lg:w-[280px] w-full md:w-[280px] md:h-[calc(100vh-61px)] pl-px overflow-y-auto scrollbar-hide z-50 flex  flex-col bg-black-1B1B1B nav-list rounded-xl  ">
 
                 <div class="bg-[#F6F6F6] w-full px-[5px] pb-2.5 h-max rounded-b-[10px]">
                     <h4
@@ -420,7 +799,7 @@
             </aside>
         </div>
         <div
-            class="xl:w-[calc(100%-721px)] lg:w-[calc(100%-562px)] md:w-[calc(100%-522px)] w-full mx-auto relative md:h-screen md:overflow-y-hidden pt-[61px] ">
+            class="xl:w-[calc(100%-721px)] lg:w-[calc(100%-562px)] md:w-[calc(100%-562px)] w-full mx-auto relative md:h-screen md:overflow-y-hidden pt-[61px] ">
             <!--Main Content Page-->
             <div class="w-full h-full relative bg-[#F6F6F6] rounded-10px px-2 lg:px-2.5 py-0">
                 <!-- header for main content  -->
@@ -429,7 +808,7 @@
                         <label class=" flex items-center justify-between  cursor-pointer">
                             <div class="relative">
                                 <input id="toggleView" type="checkbox" value="Original_UV" class="sr-only peer">
-                                <div class="w-20 h-10 bg-[#EDE9E9] peer-focus:outline-none rounded-md peer 
+                                <div class="w-20 h-10 bg-[#EDE9E9] peer-focus:outline-none rounded-10px peer 
                                 peer-checked:after:translate-x-[40px] peer-checked:after:bg-white after:content-[''] after:absolute 
                                 after:top-[5px] after:right-[45px] after:bg-white  after:rounded-[5px] after:h-[30px] after:w-[30px] after:transition-all
                               peer-checked:bg-[#EDE9E9] hover:peer-checked:bg-[#ece6e6]">
@@ -546,7 +925,7 @@
                     </div>
                 </div>
                 <div
-                    class="view-port mx-auto origin-center h-[calc(100%-120px)] flex flex-col items-center justify-center bg-white rounded-10px border border-[#E2DCDC]">
+                    class="view-port mx-auto origin-center h-[calc(100%-120px)] px-2.5 flex flex-col items-center justify-center bg-white rounded-10px border border-[#E2DCDC]">
                     <div class="input w-full max-w-[400px]">
                         <div
                             class="text-sm font-semibold leading-[140%] text-white p-[5px] rounded-full bg-[#007D47] aspect-square w-[30px] flex items-center justify-center mb-5">
@@ -764,7 +1143,7 @@
                     </div>
                 </div>
                 <!-- footer for main content-->
-                <div class="flex items-center justify-center gap-2.5 pt-2.5 pb-2.5">
+                <div class="flex items-center justify-center gap-2.5 pt-2.5 pb-2.5 w-full max-w-[440px] mx-auto">
                     <button class="btn-white-icon-text w-max px-3 min-w-[100px]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
                             <g clip-path="url(#clip0_4738_1675)">
@@ -787,7 +1166,7 @@
                         </svg>
                         Design
                     </button>
-                    <button class="btn-kiwi-green-icon-text">
+                    <button class="btn-kiwi-green-icon-text w-full justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 13 12" fill="none">
                             <path d="M1.5 6H6.5M6.5 6H11.5M6.5 6V1M6.5 6V11" stroke="white" stroke-width="1.2"
                                 stroke-linecap="round" stroke-linejoin="round" />
@@ -845,14 +1224,14 @@
                             <li class="w-full">
                                 <div
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
-                                    <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                         fill="none">
                                         <ellipse cx="9.99896" cy="4.78947" rx="3.73333" ry="3.78947" stroke="#000A06"
                                             stroke-width="1.5" />
-                                        <path class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                        <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M10 11C7.16745 11 4.70165 12.6749 3.4256 15.147C2.76004 16.4363 2.42726 17.081 3.01177 18.0405C3.59628 19 4.56419 19 6.5 19H13.5C15.4358 19 16.4037 19 16.9882 18.0405C17.5727 17.081 17.24 16.4363 16.5744 15.147C15.2984 12.6749 12.8326 11 10 11Z"
-                                            fill="" stroke="" stroke-width="1.5"
-                                            stroke-linejoin="round" />
+                                            fill="" stroke="" stroke-width="1.5" stroke-linejoin="round" />
                                     </svg>
                                     Contact Details
                                 </div>
@@ -862,9 +1241,10 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                         fill="none">
-                                        <rect class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         x="1" y="2.5" width="18" height="15" rx="2" fill=""
-                                            stroke="" stroke-width="1.5" />
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="2.5" width="18" height="15" rx="2" fill="" stroke=""
+                                            stroke-width="1.5" />
                                         <path
                                             d="M4.375 6.78516L8.875 10.2137C9.53955 10.72 10.4605 10.72 11.125 10.2137V10.2137L15.625 6.78516"
                                             stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
@@ -878,7 +1258,8 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                         fill="none">
-                                        <path class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                        <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M18.973 15.697C18.973 16.021 18.901 16.354 18.748 16.678C18.595 17.002 18.397 17.308 18.136 17.596C17.695 18.082 17.209 18.433 16.66 18.658C16.12 18.883 15.535 19 14.905 19C13.987 19 13.006 18.784 11.971 18.343C10.936 17.902 9.901 17.308 8.875 16.561C7.84 15.805 6.859 14.968 5.923 14.041C4.996 13.105 4.159 12.124 3.412 11.098C2.674 10.072 2.08 9.046 1.648 8.029C1.216 7.003 1 6.022 1 5.086C1 4.474 1.108 3.889 1.324 3.349C1.54 2.8 1.882 2.296 2.359 1.846C2.935 1.279 3.565 1 4.231 1C4.483 1 4.735 1.054 4.96 1.162C5.194 1.27 5.401 1.432 5.563 1.666L7.651 4.609C7.813 4.834 7.93 5.041 8.011 5.239C8.092 5.428 8.137 5.617 8.137 5.788C8.137 6.004 8.074 6.22 7.948 6.427C7.831 6.634 7.66 6.85 7.444 7.066L6.76 7.777C6.661 7.876 6.616 7.993 6.616 8.137C6.616 8.209 6.625 8.272 6.643 8.344C6.67 8.416 6.697 8.47 6.715 8.524C6.877 8.821 7.156 9.208 7.552 9.676C7.957 10.144 8.389 10.621 8.857 11.098C9.343 11.575 9.811 12.016 10.288 12.421C10.756 12.817 11.143 13.087 11.449 13.249C11.494 13.267 11.548 13.294 11.611 13.321C11.683 13.348 11.755 13.357 11.836 13.357C11.989 13.357 12.106 13.303 12.205 13.204L12.889 12.529C13.114 12.304 13.33 12.133 13.537 12.025C13.744 11.899 13.951 11.836 14.176 11.836C14.347 11.836 14.527 11.872 14.725 11.953C14.923 12.034 15.13 12.151 15.355 12.304L18.334 14.419C18.568 14.581 18.73 14.77 18.829 14.995C18.919 15.22 18.973 15.445 18.973 15.697Z"
                                             fill="" stroke="" stroke-width="1.5" stroke-miterlimit="10" />
                                         <path
@@ -896,21 +1277,22 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                         fill="none">
-                                        <path 
+                                        <path
                                             d="M9.24609 3.25V4H10.7461V3.25H9.99609H9.24609ZM10.7461 1C10.7461 0.585786 10.4103 0.25 9.99609 0.25C9.58188 0.25 9.24609 0.585786 9.24609 1H9.99609H10.7461ZM9.99609 3.25H10.7461V1H9.99609H9.24609V3.25H9.99609Z"
                                             fill="#726B6B" />
-                                        <path 
+                                        <path
                                             d="M9.24609 19C9.24609 19.4142 9.58188 19.75 9.99609 19.75C10.4103 19.75 10.7461 19.4142 10.7461 19H9.99609H9.24609ZM10.7461 16.75V16H9.24609V16.75H9.99609H10.7461ZM9.99609 19H10.7461V16.75H9.99609H9.24609V19H9.99609Z"
                                             fill="#726B6B" />
-                                        <path 
+                                        <path
                                             d="M16.75 9.24609L16 9.24609L16 10.7461L16.75 10.7461L16.75 9.99609L16.75 9.24609ZM19 10.7461C19.4142 10.7461 19.75 10.4103 19.75 9.99609C19.75 9.58188 19.4142 9.24609 19 9.24609L19 9.99609L19 10.7461ZM16.75 9.99609L16.75 10.7461L19 10.7461L19 9.99609L19 9.24609L16.75 9.24609L16.75 9.99609Z"
                                             fill="#726B6B" />
-                                        <path 
+                                        <path
                                             d="M1 9.24609C0.585786 9.24609 0.25 9.58188 0.25 9.99609C0.25 10.4103 0.585786 10.7461 1 10.7461L1 9.99609L1 9.24609ZM3.25 10.7461L4 10.7461L4 9.24609L3.25 9.24609L3.25 9.99609L3.25 10.7461ZM1 9.99609L1 10.7461L3.25 10.7461L3.25 9.99609L3.25 9.24609L1 9.24609L1 9.99609Z"
                                             fill="#726B6B" />
-                                        <circle class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         cx="9.99609" cy="10" r="6.75" fill="" stroke=""
-                                            stroke-width="1.5" stroke-linejoin="round" />
+                                        <circle
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            cx="9.99609" cy="10" r="6.75" fill="" stroke="" stroke-width="1.5"
+                                            stroke-linejoin="round" />
                                         <circle cx="9.99609" cy="10" r="2.25" stroke="#000A06" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                     </svg>
@@ -922,14 +1304,17 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px]  rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path class="fill-[#D4CFCF] transition-all duration-500 group-hover:fill-[#CAEADC]"
+                                        <path
+                                            class="fill-[#D4CFCF] transition-all duration-500 group-hover:fill-[#CAEADC]"
                                             d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z"
                                             fill="#D4CFCF" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
                                             d="M10 19C12.2091 19 14 14.9706 14 10C14 5.02944 12.2091 1 10 1C7.79086 1 6 5.02944 6 10C6 14.9706 7.79086 19 10 19Z"
                                             stroke="#726B6B" stroke-width="1.5" stroke-miterlimit="10"
                                             stroke-linecap="round" stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
                                             d="M1 10C1 12.2091 5.02944 14 10 14C14.9706 14 19 12.2091 19 10C19 7.79086 14.9706 6 10 6C5.02944 6 1 7.79086 1 10Z"
                                             stroke="#726B6B" stroke-width="1.5" stroke-miterlimit="10"
                                             stroke-linecap="round" stroke-linejoin="round" />
@@ -953,19 +1338,22 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                        <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M4.03763 1.53846C4.46535 0.820513 5.53465 0.820512 5.96237 1.53846L8.84946 6.38461C9.27718 7.10256 8.74254 8 7.8871 8H2.1129C1.25747 8 0.722818 7.10256 1.15054 6.38462L4.03763 1.53846Z"
                                             fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                         <circle cx="5" cy="15" r="4" stroke="black" stroke-width="1.5"
                                             stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
-                                         d="M12 3L19 3" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M12 3L19 3" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                         <path d="M12 13L19 13" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
-                                         d="M12 6L15 6" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M12 6L15 6" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                         <path d="M12 16L15 16" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -978,8 +1366,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <circle class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         cx="10" cy="10" r="9" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
+                                        <circle
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            cx="10" cy="10" r="9" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                         <path d="M14 8L10 12L6 8" stroke="#000A06" stroke-width="1.5"
                                             stroke-linecap="round" stroke-linejoin="round" />
@@ -992,15 +1381,19 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect  class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]" x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" />
                                         <circle cx="11" cy="6" r="2" stroke="#000A06" stroke-width="1.5"
                                             stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
-                                         d="M10 15L14.8777 10L19.0001 14" stroke="#726B6B" stroke-width="1.5"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M10 15L14.8777 10L19.0001 14" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linecap="round" stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
-                                         d="M1 18L8 11L11 14" stroke="#726B6B" stroke-width="1.5"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M1 18L8 11L11 14" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                     </svg>
                                     Picture Selection
@@ -1011,13 +1404,15 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <circle class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         cx="10" cy="10" r="9" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
+                                        <circle
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            cx="10" cy="10" r="9" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                         <path d="M6 10.7535L8.17936 13L14 7" stroke="#292D32" stroke-width="1.5"
                                             stroke-linecap="round" stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B]/50 transition-all duration-500 group-hover:stroke-Theme-Green/50"
-                                         opacity="1" d="M8 7L14 13" stroke="black" stroke-width="1.5"
+                                        <path
+                                            class="stroke-[#726B6B]/50 transition-all duration-500 group-hover:stroke-Theme-Green/50"
+                                            opacity="1" d="M8 7L14 13" stroke="black" stroke-width="1.5"
                                             stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                     Yes / No
@@ -1028,19 +1423,23 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                        <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M10.7071 12.121L12.1213 10.7068L17.6307 15.1143C18.4638 15.7808 18.5326 17.0235 17.7782 17.7779V17.7779C17.0238 18.5323 15.7811 18.4635 15.1146 17.6303L10.7071 12.121Z"
                                             stroke="#726B6B" stroke-width="1.5" stroke-linejoin="round" />
-                                        <rect class="fill-[#D4CFCF] transition-all duration-500 group-hover:fill-[#CAEADC]"
-                                         x="3.63574" y="10.707" width="10" height="6"
+                                        <rect
+                                            class="fill-[#D4CFCF] transition-all duration-500 group-hover:fill-[#CAEADC]"
+                                            x="3.63574" y="10.707" width="10" height="6"
                                             transform="rotate(-45 3.63574 10.707)" fill="#D4CFCF" stroke="black"
                                             stroke-width="1.5" stroke-linejoin="round" />
-                                        <rect class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         x="10" y="2.92871" width="3" height="8" rx="1.5"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="10" y="2.92871" width="3" height="8" rx="1.5"
                                             transform="rotate(-45 10 2.92871)" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
-                                        <rect class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         x="0.807617" y="12.1211" width="3" height="8" rx="1.5"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="0.807617" y="12.1211" width="3" height="8" rx="1.5"
                                             transform="rotate(-45 0.807617 12.1211)" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                     </svg>
@@ -1052,8 +1451,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" />
                                         <path d="M6 10.7535L8.17936 13L14 7" stroke="#000A06" stroke-width="1.5"
                                             stroke-linecap="round" stroke-linejoin="round" />
@@ -1073,14 +1473,17 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         x="1" y="5" width="4" height="11" rx="1" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="5" width="4" height="11" rx="1" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" stroke-linejoin="round" />
-                                        <rect class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         x="8" y="3" width="4" height="13" rx="1" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="8" y="3" width="4" height="13" rx="1" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" stroke-linejoin="round" />
-                                        <rect class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         x="15" y="1" width="4" height="15" rx="1" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="15" y="1" width="4" height="15" rx="1" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" stroke-linejoin="round" />
                                         <path d="M1 19H19" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1093,22 +1496,26 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                        <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M18.8271 13.2011C18.4798 15.0192 17.6226 16.6892 16.364 18H3.63604C2.37737 16.6892 1.5202 15.0192 1.17294 13.2011C0.82567 11.383 1.0039 9.49847 1.68509 7.78585C2.36628 6.07324 3.51983 4.60944 4.99987 3.57957C6.47991 2.54969 8.21997 2 10 2C11.78 2 13.5201 2.54969 15.0001 3.57956C16.4802 4.60944 17.6337 6.07324 18.3149 7.78585C18.9961 9.49847 19.1743 11.383 18.8271 13.2011Z"
                                             fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                         <circle cx="10" cy="12" r="1" stroke="black" stroke-width="1.5" />
                                         <path d="M13 8L10 12" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
-                                         d="M10 2V5" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M10 2V5" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
-                                         d="M1 11L4 11" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M1 11L4 11" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
-                                         d="M16 11L19 11" stroke="#726B6B" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M16 11L19 11" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
                                     </svg>
                                     Feedback Score
                                 </div>
@@ -1118,8 +1525,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" stroke-linejoin="round" />
                                         <path
                                             d="M9.04894 6.92705C9.4408 5.72104 9.63673 5.11803 10 5.11803C10.3633 5.11803 10.5592 5.72104 10.9511 6.92705L11.1226 7.45491C11.2309 7.78825 11.285 7.95491 11.4165 8.05041C11.5479 8.1459 11.7231 8.1459 12.0736 8.1459H12.6287C13.8967 8.1459 14.5308 8.1459 14.643 8.49139C14.7553 8.83688 14.2423 9.20956 13.2164 9.95491L12.7674 10.2812C12.4839 10.4872 12.3421 10.5902 12.2919 10.7447C12.2417 10.8992 12.2958 11.0659 12.4041 11.3992L12.5757 11.927C12.9675 13.1331 13.1634 13.7361 12.8695 13.9496C12.5757 14.1631 12.0627 13.7904 11.0368 13.0451L10.5878 12.7188C10.3042 12.5128 10.1625 12.4098 10 12.4098C9.83754 12.4098 9.69576 12.5128 9.41221 12.7188L8.96319 13.0451C7.93729 13.7904 7.42435 14.1631 7.13045 13.9496C6.83656 13.7361 7.03249 13.1331 7.42435 11.9271L7.59586 11.3992C7.70416 11.0659 7.75832 10.8992 7.70812 10.7447C7.65791 10.5902 7.51614 10.4872 7.23259 10.2812L6.78356 9.95492C5.75766 9.20956 5.24472 8.83688 5.35697 8.49139C5.46923 8.1459 6.10327 8.1459 7.37135 8.1459H7.92637C8.27686 8.1459 8.4521 8.1459 8.58354 8.05041C8.71497 7.95491 8.76912 7.78825 8.87743 7.45491L9.04894 6.92705Z"
@@ -1137,8 +1545,9 @@
                                             stroke-linejoin="round" />
                                         <rect x="13" y="12" width="6" height="7" stroke="black" stroke-width="1.5"
                                             stroke-linejoin="round" />
-                                        <rect class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         x="7" y="7" width="6" height="12" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="7" y="7" width="6" height="12" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" stroke-linejoin="round" />
                                         <path
                                             d="M10 2L10.2245 2.69098H10.9511L10.3633 3.11803L10.5878 3.80902L10 3.38197L9.41221 3.80902L9.63673 3.11803L9.04894 2.69098H9.77549L10 2Z"
@@ -1152,12 +1561,14 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px]  rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
-                                         d="M6 1H3C1.89543 1 1 1.89543 1 3V17C1 18.1046 1.89543 19 3 19H6"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M6 1H3C1.89543 1 1 1.89543 1 3V17C1 18.1046 1.89543 19 3 19H6"
                                             stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
-                                         d="M14 1H17C18.1046 1 19 1.89543 19 3V17C19 18.1046 18.1046 19 17 19H14"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M14 1H17C18.1046 1 19 1.89543 19 3V17C19 18.1046 18.1046 19 17 19H14"
                                             stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                         <rect x="4.5" y="4.5" width="1" height="1" stroke="black"
@@ -1194,8 +1605,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" />
                                         <path d="M6 6L14 6" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1212,8 +1624,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" />
                                         <path d="M6 6L14 6" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1232,7 +1645,8 @@
                                             d="M16 3.29199C17.8412 4.93995 19 7.33481 19 10.0003C19 12.6658 17.8412 15.0607 16 16.7086M4 3.29199C2.15875 4.93995 1 7.33481 1 10.0003C1 12.6658 2.15875 15.0607 4 16.7086"
                                             stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                        <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M6.52637 9.99188V8.109C6.52637 5.78787 8.09862 4.8302 10.01 5.99888L11.5514 6.94032L13.0928 7.88176C15.0042 9.05045 15.0042 10.9496 13.0928 12.1182L11.5514 13.0597L10.01 14.0011C8.09862 15.1698 6.52637 14.2121 6.52637 11.891V9.99188Z"
                                             fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5" stroke-miterlimit="10"
                                             stroke-linecap="round" stroke-linejoin="round" />
@@ -1245,8 +1659,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         x="1" y="3" width="18" height="16" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="3" width="18" height="16" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" stroke-linejoin="round" />
                                         <path d="M6 1V5" stroke="#000A06" stroke-width="1.5" stroke-linecap="round" />
                                         <path d="M6 14H4" stroke="#000A06" stroke-width="1.5" stroke-linecap="round" />
@@ -1254,9 +1669,9 @@
                                         <path d="M16 14H14" stroke="#000A06" stroke-width="1.5"
                                             stroke-linecap="round" />
                                         <path d="M14 1V5" stroke="#000A06" stroke-width="1.5" stroke-linecap="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
-                                         d="M1 8L19 8" stroke="#726B6B" stroke-width="1.5"
-                                            stroke-linejoin="round" />
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M1 8L19 8" stroke="#726B6B" stroke-width="1.5" stroke-linejoin="round" />
                                     </svg>
                                     Date Picker
                                 </div>
@@ -1266,8 +1681,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px]  rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <circle class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         cx="10" cy="10" r="9" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
+                                        <circle
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            cx="10" cy="10" r="9" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                         <path
                                             d="M10.0002 11.7435V11.442C10.0002 10.4657 10.6032 9.94874 11.2063 9.53234C11.795 9.13031 12.3836 8.61342 12.3836 7.66577C12.3836 6.3448 11.3211 5.28223 10.0002 5.28223C8.67918 5.28223 7.6167 6.3448 7.6167 7.66577"
@@ -1291,15 +1707,17 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         x="1" y="3" width="18" height="14" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="3" width="18" height="14" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" stroke-linejoin="round" />
                                         <path d="M4.00049 14H6.00049" stroke="#292D32" stroke-width="1.5"
                                             stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                                         <path d="M8.50049 14H12.5005" stroke="#292D32" stroke-width="1.5"
                                             stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
-                                         d="M1 8H19" stroke="#726B6B" stroke-width="1.5" stroke-linejoin="round" />
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M1 8H19" stroke="#726B6B" stroke-width="1.5" stroke-linejoin="round" />
                                     </svg>
                                     Payment
                                 </div>
@@ -1309,7 +1727,8 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                        <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M19 9.1V14.5C19 18.1 18.1 19 14.5 19H5.5C1.9 19 1 18.1 1 14.5V5.5C1 1.9 1.9 1 5.5 1H6.85C8.2 1 8.497 1.396 9.01 2.08L10.36 3.88C10.702 4.33 10.9 4.6 11.8 4.6H14.5C18.1 4.6 19 5.5 19 9.1Z"
                                             fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5" stroke-miterlimit="10"
                                             stroke-linejoin="round" />
@@ -1326,8 +1745,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <circle class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         cx="10" cy="10" r="9" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
+                                        <circle
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            cx="10" cy="10" r="9" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                         <path d="M5 8H15" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1346,12 +1766,14 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path class="fill-[#D4CFCF] transition-all duration-500 group-hover:fill-[#CAEADC]"
+                                        <path
+                                            class="fill-[#D4CFCF] transition-all duration-500 group-hover:fill-[#CAEADC]"
                                             d="M5.33904 4.24525L13.9411 1.37789C17.8014 0.0911245 19.8987 2.19858 18.6221 6.05888L15.7548 14.661C13.8297 20.4463 10.6685 20.4463 8.74339 14.661L7.8923 12.1077L5.33904 11.2566C-0.446345 9.33152 -0.446345 6.18047 5.33904 4.24525Z"
                                             fill="#D4CFCF" />
                                         <path d="M8 12L12 8" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
                                             d="M5.33904 4.24525L13.9411 1.37789C17.8014 0.0911245 19.8987 2.19858 18.6221 6.05888L15.7547 14.661C13.8297 20.4463 10.6685 20.4463 8.74339 14.661L7.8923 12.1077L5.33904 11.2566C-0.446345 9.33152 -0.446345 6.18047 5.33904 4.24525Z"
                                             stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1364,7 +1786,8 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px]  rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
                                             d="M10 1H5C3.11438 1 2.17157 1 1.58579 1.58579C1 2.17157 1 3.11438 1 5V15C1 16.8856 1 17.8284 1.58579 18.4142C2.17157 19 3.11438 19 5 19H15C16.8856 19 17.8284 19 18.4142 18.4142C19 17.8284 19 16.8856 19 15V10"
                                             stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1388,14 +1811,17 @@
                                         xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="4.5" cy="15.5" r="3.5" stroke="black" stroke-width="1.5"
                                             stroke-linejoin="round" />
-                                        <circle class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
-                                         cx="4.5" cy="4.5" r="3.5" fill="#D4CFCF" stroke="#726B6B"
-                                            stroke-width="1.5" stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
-                                         d="M11 10L19 10" stroke="#726B6B" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
-                                         d="M11 3L19 3" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                        <circle
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            cx="4.5" cy="4.5" r="3.5" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M11 10L19 10" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M11 3L19 3" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                         <path d="M11 17L19 17" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1410,18 +1836,21 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]" 
-                                         x="1" y="1" width="18" height="8" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="1" width="18" height="8" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" />
                                         <rect x="1" y="11" width="18" height="8" rx="2" stroke="black"
                                             stroke-width="1.5" />
                                         <path d="M9 5L16 5" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
-                                         d="M9 15L16 15" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M9 15L16 15" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
-                                         d="M4 15L5 16L7 14" stroke="#726B6B" stroke-width="1.5"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M4 15L5 16L7 14" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linecap="round" stroke-linejoin="round" />
                                         <path d="M6 4L4 6" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1440,7 +1869,8 @@
                                             stroke-linejoin="round" />
                                         <path d="M19 5L19 15" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                        <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M1 6.27922C1 4.70946 1 3.92459 1.45332 3.37163C1.90663 2.81867 2.67627 2.66475 4.21554 2.35689L6.21553 1.95689C8.42915 1.51417 9.53596 1.29281 10.268 1.89292C11 2.49304 11 3.62176 11 5.87922V14.1208C11 16.3782 11 17.507 10.268 18.1071C9.53596 18.7072 8.42915 18.4858 6.21554 18.0431L4.21554 17.6431C2.67627 17.3353 1.90663 17.1813 1.45332 16.6284C1 16.0754 1 15.2905 1 13.7208V6.27922Z"
                                             fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
@@ -1455,7 +1885,8 @@
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5 3L5 17" stroke="black" stroke-width="1.5" stroke-linecap="round" />
                                         <path d="M1 5L1 15" stroke="black" stroke-width="1.5" stroke-linecap="round" />
-                                        <path class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                        <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M19 6.27922C19 4.70946 19 3.92459 18.5467 3.37163C18.0934 2.81867 17.3237 2.66475 15.7845 2.35689L13.7845 1.95689C11.5709 1.51417 10.464 1.29281 9.73202 1.89292C9 2.49304 9 3.62176 9 5.87922V14.1208C9 16.3782 9 17.507 9.73202 18.1071C10.464 18.7072 11.5709 18.4858 13.7845 18.0431L15.7845 17.6431C17.3237 17.3353 18.0934 17.1813 18.5467 16.6284C19 16.0754 19 15.2905 19 13.7208V6.27922Z"
                                             fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
