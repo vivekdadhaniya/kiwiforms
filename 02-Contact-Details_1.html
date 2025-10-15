@@ -18,7 +18,7 @@
         <!--Header--->
         <header class="p-2.5 rounded-b-2xl fixed top-0 z-[900] w-full bg-Theme-Forground">
             <div class="flex justify-between items-center">
-                <div class="flex items-center gap-2.5">
+                <div class="flex items-center gap-2.5 w-full max-w-[350px]">
                     <a href="#" class="p-2 bg-white rounded-10px shadow-Logo">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -82,18 +82,18 @@
                         </ol>
                     </div>
                 </div>
-                <div class="w-full max-w-[530px] items-center justify-end flex">
-                    <div class="min-[1080px]:flex hidden items-center gap-2.5 p-[5px] rounded-10px bg-[#EDE9E9]">
-                        <a href="#" class="py-[5px] px-[15px] header-links active">Form</a>
-                        <a href="#" class="py-[5px] px-[15px] header-links">Logic Flow</a>
-                        <a href="#" class="py-[5px] px-[15px] header-links">Connect</a>
-                        <a href="#" class="py-[5px] px-[15px] header-links">Share</a>
-                        <a href="#" class="py-[5px] px-[15px] header-links">Results</a>
-                    </div>
+
+                <div class="min-[1080px]:flex hidden items-center gap-2.5 p-[5px] rounded-10px bg-[#EDE9E9]">
+                    <a href="#" class="py-[5px] px-[15px] header-links active">Form</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Logic Flow</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Connect</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Share</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Results</a>
+
+
                 </div>
-                <div class="flex items-center justify-end gap-2.5 w-max max-w-[390px]">
-                    <button
-                        class="border border-[#E2DCDC] cursor-pointer rounded-10px bg-white w-10 h-10 aspect-square flex items-center justify-center text-sm font-medium leading-[140%] text-Theme-Black">
+                <div class="flex items-center justify-end gap-2.5 w-full max-w-[350px]">
+                    <button class="btn-white-square">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M7.5 14L6 14C3.79086 14 2 12.2091 2 10V10C2 7.79086 3.79086 6 6 6L7.5 6"
                                 stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
@@ -103,21 +103,21 @@
                                 stroke-linejoin="round" />
                         </svg>
                     </button>
-                    <button
-                        class="py-2.5 px-[15px] rounded-10px bg-Theme-Black flex items-center gap-7 text-sm leading-[140%] font-medium text-white">
+                    <button class="w-full max-w-[112px] p-[15px] py-2.5 rounded-[10px] bg-Theme-Black flex items-center justify-between text-sm font-medium leading-[140%] text-white
+                                   transition-all duration-500 hover:bg-gray-800 relative overflow-hidden group">
                         Publish
-                        <svg xmlns="http://www.w3.org/2000/svg" width="5" height="10" viewBox="0 0 5 10" fill="none">
+                        <svg class="relative z-10 transition-transform duration-500 group-hover:translate-x-1"
+                            xmlns="http://www.w3.org/2000/svg" width="5" height="10" viewBox="0 0 5 10" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M0.308661 9.9577C0.12182 9.8717 0 9.66913 0 9.44443L0 0.555583C0 0.330843 0.12182 0.128326 0.308661 0.042326C0.495495 -0.0436738 0.710556 0.00380744 0.853556 0.162696L4.85355 4.60713C5.04882 4.82409 5.04882 5.17587 4.85355 5.39283L0.853556 9.83727C0.710556 9.99616 0.495495 10.0437 0.308661 9.9577Z"
                                 fill="white" />
                         </svg>
                     </button>
                     <button
-                        class="bg-white rounded-10px border border-[#E2DCDC] py-[9px] px-[15px] text-sm leading-[140%] font-medium text-Theme-Green">
+                        class="bg-white rounded-10px border border-[#E2DCDC] py-[9px] px-[15px] text-sm leading-[140%] font-medium text-Theme-Green whitespace-nowrap transition-all duration-500 hover:border-[#ccc6c6]">
                         Go Premium
                     </button>
-                    <button
-                        class="border border-[#E2DCDC] cursor-pointer rounded-10px bg-white w-10 h-10 aspect-square flex items-center justify-center text-sm font-medium leading-[140%] text-Theme-Black">
+                    <button class="btn-white-square">
                         BD
                     </button>
                 </div>
@@ -127,8 +127,9 @@
         <div class="relative flex md:h-full gap-5 md:overflow-hidden">
             <!-- left side bar -->
             <aside
-                class="md:fixed relative bg-transparent top-[61px] xl:w-[320px] lg:w-[280px] w-full md:w-[260px] md:h-[calc(100vh-61px)] pl-px overflow-hidden scrollbar-hide z-50 flex flex-col bg-black-1B1B1B nav-list rounded-xl">
-                <div id="div1" class="flex flex-col w-full h-full min-h-[150px] overflow-auto bg-[#F6F6F6] flex-1">
+                class="md:fixed relative bg-transparent top-[61px] xl:w-[360px] lg:w-[280px] w-full md:w-[260px] md:h-[calc(100vh-61px)] pl-px overflow-hidden scrollbar-hide z-50 flex flex-col bg-black-1B1B1B nav-list rounded-xl  ">
+                <div id="div1"
+                    class="flex flex-col w-full h-full min-h-[150px] overflow-auto bg-[#F6F6F6] flex-1 rounded-10px">
                     <div class=" w-full px-[5px] pb-2.5 h-auto rounded-b-[10px]">
                         <h4
                             class="py-5 px-[15px] border-b border-[#E2DCDC] text-base leading-[140%] font-medium text-Theme-Black">
@@ -269,8 +270,8 @@
                     <h4
                         class="py-5 px-[15px] border-b border-[#E2DCDC] text-base leading-[140%] font-medium text-Theme-Black w-full">
                         Endings</h4>
-                    <ul class="w-full h-full py-5 px-[15px] flex flex-col">
-                        <li>
+                    <ul class="w-full h-full pt-5 px-[15px] flex flex-col">
+                        <li class="h-full">
                             <div
                                 class="flex items-center w-full gap-[15px] text-base leading-[120%] text-[#D9D2D2] font-Inter_tight_italic font-medium">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -289,20 +290,23 @@
                                 Set up an ending!
                             </div>
                         </li>
+                        <li class="">
+                            <button class="btn-white-icon-text">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 6H6M6 6H11M6 6V1M6 6V11" stroke="#000A06" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                Add Ending
+                            </button>
+                        </li>
                     </ul>
-                    <button
-                        class="w-full rounded-10px cursor-pointer flex items-center justify-center gap-2.5 py-2.5 border  border-[#E2DCDC] bg-white text-sm font-medium leading-[140%] text-Theme-Black">
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 6H6M6 6H11M6 6V1M6 6V11" stroke="#000A06" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        Add Ending
-                    </button>
+
                 </div>
             </aside>
             <!-- Right side bar -->
             <aside
-                class="md:fixed relative bg-transparent right-0 top-[61px] xl:w-[321px] lg:w-[280px] w-full md:w-[260px] md:h-[calc(100vh-61px)] pl-px overflow-y-auto scrollbar-hide z-50 flex  flex-col bg-black-1B1B1B nav-list rounded-xl">
+                class="md:fixed relative bg-transparent right-0 top-[61px] xl:w-[360px] lg:w-[280px] w-full md:w-[260px] md:h-[calc(100vh-61px)] pl-px overflow-y-auto scrollbar-hide z-50 flex  flex-col bg-black-1B1B1B nav-list rounded-xl">
 
                 <div class="bg-[#F6F6F6] w-full px-[5px] pb-2.5 h-max rounded-b-[10px]">
                     <h4
@@ -327,14 +331,16 @@
                             </div>
                         </li>
                     </ul>
-                    <button
-                        class="w-full rounded-10px cursor-pointer flex items-center justify-center gap-2.5 py-2.5 border  border-[#E2DCDC] bg-white text-sm font-medium leading-[140%] text-Theme-Black">
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 6H6M6 6H11M6 6V1M6 6V11" stroke="#000A06" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        Add Media
-                    </button>
+                    <div class="w-full px-[15px] pb-2.5">
+                        <button class="btn-white-icon-text">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 6H6M6 6H11M6 6V1M6 6V11" stroke="#000A06" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            Add Media
+                        </button>
+                    </div>
                 </div>
 
                 <ul class="bg-[#F6F6F6] w-full h-full px-[5px] h-auto rounded-10px mt-px flex flex-col">
@@ -353,17 +359,17 @@
                                             class="w-10 aspect-square rounded-[10px] bg-white flex items-center justify-center">
                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <ellipse cx="10" cy="4.78947" rx="3.73333" ry="3.78947" stroke="#000A06"
+                                                    stroke-width="1.5" />
                                                 <path
-                                                    d="M14.5 17.5H5.5C2.8 17.5 1 16.1765 1 13.0882V6.91176C1 3.82353 2.8 2.5 5.5 2.5H14.5C17.2 2.5 19 3.82353 19 6.91176V13.0882C19 16.1765 17.2 17.5 14.5 17.5Z"
-                                                    stroke="#007D47" stroke-width="1.5" stroke-miterlimit="10"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                <path
-                                                    d="M14.5002 7.08301L11.6832 9.37467C10.7562 10.1263 9.23518 10.1263 8.30818 9.37467L5.50018 7.08301"
-                                                    stroke="#007D47" stroke-width="1.5" stroke-miterlimit="10"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                    d="M10 11C7.16745 11 4.70165 12.6749 3.4256 15.147C2.76004 16.4363 2.42726 17.081 3.01177 18.0405C3.59628 19 4.56419 19 6.5 19H13.5C15.4358 19 16.4037 19 16.9882 18.0405C17.5727 17.081 17.24 16.4363 16.5744 15.147C15.2984 12.6749 12.8326 11 10 11Z"
+                                                    fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
+                                                    stroke-linejoin="round" />
                                             </svg>
+
                                         </div>
-                                        <p class="text-base leading-[140%] font-medium text-Theme-Green">Email</p>
+                                        <p class="text-base leading-[140%] font-medium text-Theme-Green">Contact Details
+                                        </p>
                                     </div>
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -383,8 +389,8 @@
                                     <p class="text-base font-medium leading-[140%] text-Theme-Black">First name</p>
                                     <div class="flex items-center gap-[15px]">
                                         <button class="btn-visible">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                viewBox="0 0 20 20" fill="none">
+                                            <svg class="visible-icon" xmlns="http://www.w3.org/2000/svg" width="20"
+                                                height="20" viewBox="0 0 20 20" fill="none">
                                                 <path
                                                     d="M10 3.5C6.21053 3.5 3.36842 6.28571 1 10C3.36842 13.7143 6.21053 16.5 10 16.5C13.7895 16.5 16.6316 13.7143 19 10C16.6316 6.28571 13.7895 3.5 10 3.5Z"
                                                     stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
@@ -392,15 +398,29 @@
                                                 <ellipse cx="9.99835" cy="10.0006" rx="2.84211" ry="2.78571"
                                                     stroke="#000A06" stroke-width="1.2" />
                                             </svg>
+                                            <svg class="unvisible-icon hidden" width="20" height="20"
+                                                viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M17 7.26743C17.7061 8.08923 18.3698 9.01175 19 10C16.6316 13.7143 13.7895 16.5 10 16.5C9.3022 16.5 8.63651 16.4055 8 16.2282M15 5.33145C13.5281 4.18616 11.8807 3.5 10 3.5C6.21053 3.5 3.36842 6.28571 1 10C2.19297 11.8709 3.50613 13.5062 5 14.6686"
+                                                    stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M12.8421 10.0006C12.8421 11.5391 11.5697 12.7863 10 12.7863M8.02104 12C7.4887 11.4937 7.1579 10.785 7.1579 10.0006C7.1579 8.46205 8.43035 7.21484 10 7.21484C10.7799 7.21484 11.4865 7.52276 12 8.02132"
+                                                    stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                                                <line x1="0.7" y1="-0.7" x2="18.2658" y2="-0.7"
+                                                    transform="matrix(-0.73006 0.683384 -0.73006 -0.683384 16.6923 3)"
+                                                    stroke="#000A06" stroke-width="1.4" stroke-linecap="round" />
+                                            </svg>
                                         </button>
-                                        <button class="btn-required">
+                                        <button
+                                            class="btn-required text-[#8C8484] transition-all duration-300 hover:text-Theme-Black">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 20 20" fill="none">
-                                                <path d="M10 16V4" stroke="#8C8484" stroke-width="1.2"
+                                                <path d="M10 16V4" stroke="currentcolor" stroke-width="1.2"
                                                     stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M15.2499 13.3289L4.75 7.14844" stroke="#8C8484"
+                                                <path d="M15.2499 13.3289L4.75 7.14844" stroke="currentcolor"
                                                     stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M4.75 13.3289L15.25 7.14844" stroke="#8C8484"
+                                                <path d="M4.75 13.3289L15.25 7.14844" stroke="currentcolor"
                                                     stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
                                         </button>
@@ -412,8 +432,8 @@
                                     <p class="text-base font-medium leading-[140%] text-Theme-Black">Last name</p>
                                     <div class="flex items-center gap-[15px]">
                                         <button class="btn-visible">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                viewBox="0 0 20 20" fill="none">
+                                            <svg class="visible-icon" xmlns="http://www.w3.org/2000/svg" width="20"
+                                                height="20" viewBox="0 0 20 20" fill="none">
                                                 <path
                                                     d="M10 3.5C6.21053 3.5 3.36842 6.28571 1 10C3.36842 13.7143 6.21053 16.5 10 16.5C13.7895 16.5 16.6316 13.7143 19 10C16.6316 6.28571 13.7895 3.5 10 3.5Z"
                                                     stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
@@ -421,15 +441,29 @@
                                                 <ellipse cx="9.99835" cy="10.0006" rx="2.84211" ry="2.78571"
                                                     stroke="#000A06" stroke-width="1.2" />
                                             </svg>
+                                            <svg class="unvisible-icon hidden" width="20" height="20"
+                                                viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M17 7.26743C17.7061 8.08923 18.3698 9.01175 19 10C16.6316 13.7143 13.7895 16.5 10 16.5C9.3022 16.5 8.63651 16.4055 8 16.2282M15 5.33145C13.5281 4.18616 11.8807 3.5 10 3.5C6.21053 3.5 3.36842 6.28571 1 10C2.19297 11.8709 3.50613 13.5062 5 14.6686"
+                                                    stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M12.8421 10.0006C12.8421 11.5391 11.5697 12.7863 10 12.7863M8.02104 12C7.4887 11.4937 7.1579 10.785 7.1579 10.0006C7.1579 8.46205 8.43035 7.21484 10 7.21484C10.7799 7.21484 11.4865 7.52276 12 8.02132"
+                                                    stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                                                <line x1="0.7" y1="-0.7" x2="18.2658" y2="-0.7"
+                                                    transform="matrix(-0.73006 0.683384 -0.73006 -0.683384 16.6923 3)"
+                                                    stroke="#000A06" stroke-width="1.4" stroke-linecap="round" />
+                                            </svg>
                                         </button>
-                                        <button class="btn-required">
+                                        <button
+                                            class="btn-required text-[#8C8484] transition-all duration-300 hover:text-Theme-Black">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 20 20" fill="none">
-                                                <path d="M10 16V4" stroke="#8C8484" stroke-width="1.2"
+                                                <path d="M10 16V4" stroke="currentcolor" stroke-width="1.2"
                                                     stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M15.2499 13.3289L4.75 7.14844" stroke="#8C8484"
+                                                <path d="M15.2499 13.3289L4.75 7.14844" stroke="currentcolor"
                                                     stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M4.75 13.3289L15.25 7.14844" stroke="#8C8484"
+                                                <path d="M4.75 13.3289L15.25 7.14844" stroke="currentcolor"
                                                     stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
                                         </button>
@@ -443,8 +477,8 @@
                                         </p>
                                         <div class="flex items-center gap-[15px]">
                                             <button class="btn-visible">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                    viewBox="0 0 20 20" fill="none">
+                                                <svg class="visible-icon" xmlns="http://www.w3.org/2000/svg" width="20"
+                                                    height="20" viewBox="0 0 20 20" fill="none">
                                                     <path
                                                         d="M10 3.5C6.21053 3.5 3.36842 6.28571 1 10C3.36842 13.7143 6.21053 16.5 10 16.5C13.7895 16.5 16.6316 13.7143 19 10C16.6316 6.28571 13.7895 3.5 10 3.5Z"
                                                         stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
@@ -452,16 +486,30 @@
                                                     <ellipse cx="9.99835" cy="10.0006" rx="2.84211" ry="2.78571"
                                                         stroke="#000A06" stroke-width="1.2" />
                                                 </svg>
+                                                <svg class="unvisible-icon hidden" width="20" height="20"
+                                                    viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M17 7.26743C17.7061 8.08923 18.3698 9.01175 19 10C16.6316 13.7143 13.7895 16.5 10 16.5C9.3022 16.5 8.63651 16.4055 8 16.2282M15 5.33145C13.5281 4.18616 11.8807 3.5 10 3.5C6.21053 3.5 3.36842 6.28571 1 10C2.19297 11.8709 3.50613 13.5062 5 14.6686"
+                                                        stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M12.8421 10.0006C12.8421 11.5391 11.5697 12.7863 10 12.7863M8.02104 12C7.4887 11.4937 7.1579 10.785 7.1579 10.0006C7.1579 8.46205 8.43035 7.21484 10 7.21484C10.7799 7.21484 11.4865 7.52276 12 8.02132"
+                                                        stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                                                    <line x1="0.7" y1="-0.7" x2="18.2658" y2="-0.7"
+                                                        transform="matrix(-0.73006 0.683384 -0.73006 -0.683384 16.6923 3)"
+                                                        stroke="#000A06" stroke-width="1.4" stroke-linecap="round" />
+                                                </svg>
                                             </button>
-                                            <button class="btn-required">
+                                            <button
+                                                class="btn-required text-[#8C8484] transition-all duration-300 hover:text-Theme-Black">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 20 20" fill="none">
-                                                    <path d="M10 16V4" stroke="#8C8484" stroke-width="1.2"
+                                                    <path d="M10 16V4" stroke="currentcolor" stroke-width="1.2"
                                                         stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path d="M15.2499 13.3289L4.75 7.14844" stroke="#8C8484"
+                                                    <path d="M15.2499 13.3289L4.75 7.14844" stroke="currentcolor"
                                                         stroke-width="1.2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
-                                                    <path d="M4.75 13.3289L15.25 7.14844" stroke="#8C8484"
+                                                    <path d="M4.75 13.3289L15.25 7.14844" stroke="currentcolor"
                                                         stroke-width="1.2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
@@ -506,7 +554,7 @@
 
                                             <!-- Country List -->
                                             <ul id="countryList"
-                                                class="max-h-48 overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-[#C4C4C4] [&::-webkit-scrollbar-thumb]:rounded-10px [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#EDE9E9]">
+                                                class="max-h-[105px] overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-[#C4C4C4] [&::-webkit-scrollbar-thumb]:rounded-10px [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#EDE9E9]">
                                                 <!-- Example Items -->
                                                 <li class="flex items-center p-[5px] gap-2.5 bg-white cursor-pointer text-sm leading-[140%] text-Theme-Black rounded-10px hover:bg-[#EDE9E9]"
                                                     data-flag="assets/images/uk.svg" data-name="United Kingdom">
@@ -544,8 +592,8 @@
                                     <p class="text-base font-medium leading-[140%] text-Theme-Black">Email address</p>
                                     <div class="flex items-center gap-[15px]">
                                         <button class="btn-visible">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                viewBox="0 0 20 20" fill="none">
+                                            <svg class="visible-icon" xmlns="http://www.w3.org/2000/svg" width="20"
+                                                height="20" viewBox="0 0 20 20" fill="none">
                                                 <path
                                                     d="M10 3.5C6.21053 3.5 3.36842 6.28571 1 10C3.36842 13.7143 6.21053 16.5 10 16.5C13.7895 16.5 16.6316 13.7143 19 10C16.6316 6.28571 13.7895 3.5 10 3.5Z"
                                                     stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
@@ -553,28 +601,42 @@
                                                 <ellipse cx="9.99835" cy="10.0006" rx="2.84211" ry="2.78571"
                                                     stroke="#000A06" stroke-width="1.2" />
                                             </svg>
+                                            <svg class="unvisible-icon hidden" width="20" height="20"
+                                                viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M17 7.26743C17.7061 8.08923 18.3698 9.01175 19 10C16.6316 13.7143 13.7895 16.5 10 16.5C9.3022 16.5 8.63651 16.4055 8 16.2282M15 5.33145C13.5281 4.18616 11.8807 3.5 10 3.5C6.21053 3.5 3.36842 6.28571 1 10C2.19297 11.8709 3.50613 13.5062 5 14.6686"
+                                                    stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M12.8421 10.0006C12.8421 11.5391 11.5697 12.7863 10 12.7863M8.02104 12C7.4887 11.4937 7.1579 10.785 7.1579 10.0006C7.1579 8.46205 8.43035 7.21484 10 7.21484C10.7799 7.21484 11.4865 7.52276 12 8.02132"
+                                                    stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                                                <line x1="0.7" y1="-0.7" x2="18.2658" y2="-0.7"
+                                                    transform="matrix(-0.73006 0.683384 -0.73006 -0.683384 16.6923 3)"
+                                                    stroke="#000A06" stroke-width="1.4" stroke-linecap="round" />
+                                            </svg>
                                         </button>
-                                        <button class="btn-required">
+                                        <button
+                                            class="btn-required text-[#8C8484] transition-all duration-300 hover:text-Theme-Black">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 20 20" fill="none">
-                                                <path d="M10 16V4" stroke="#8C8484" stroke-width="1.2"
+                                                <path d="M10 16V4" stroke="currentcolor" stroke-width="1.2"
                                                     stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M15.2499 13.3289L4.75 7.14844" stroke="#8C8484"
+                                                <path d="M15.2499 13.3289L4.75 7.14844" stroke="currentcolor"
                                                     stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M4.75 13.3289L15.25 7.14844" stroke="#8C8484"
+                                                <path d="M4.75 13.3289L15.25 7.14844" stroke="currentcolor"
                                                     stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
                                         </button>
                                     </div>
                                 </div>
                             </li>
-                            <li class=" py-5 border-b border-[#E2DCDC]">
+                            <li class=" py-5 ">
                                 <div class="flex items-center justify-between">
                                     <p class="text-base font-medium leading-[140%] text-Theme-Black">Company</p>
                                     <div class="flex items-center gap-[15px]">
                                         <button class="btn-visible">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                viewBox="0 0 20 20" fill="none">
+                                            <svg class="visible-icon" xmlns="http://www.w3.org/2000/svg" width="20"
+                                                height="20" viewBox="0 0 20 20" fill="none">
                                                 <path
                                                     d="M10 3.5C6.21053 3.5 3.36842 6.28571 1 10C3.36842 13.7143 6.21053 16.5 10 16.5C13.7895 16.5 16.6316 13.7143 19 10C16.6316 6.28571 13.7895 3.5 10 3.5Z"
                                                     stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
@@ -582,15 +644,29 @@
                                                 <ellipse cx="9.99835" cy="10.0006" rx="2.84211" ry="2.78571"
                                                     stroke="#000A06" stroke-width="1.2" />
                                             </svg>
+                                            <svg class="unvisible-icon hidden" width="20" height="20"
+                                                viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M17 7.26743C17.7061 8.08923 18.3698 9.01175 19 10C16.6316 13.7143 13.7895 16.5 10 16.5C9.3022 16.5 8.63651 16.4055 8 16.2282M15 5.33145C13.5281 4.18616 11.8807 3.5 10 3.5C6.21053 3.5 3.36842 6.28571 1 10C2.19297 11.8709 3.50613 13.5062 5 14.6686"
+                                                    stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M12.8421 10.0006C12.8421 11.5391 11.5697 12.7863 10 12.7863M8.02104 12C7.4887 11.4937 7.1579 10.785 7.1579 10.0006C7.1579 8.46205 8.43035 7.21484 10 7.21484C10.7799 7.21484 11.4865 7.52276 12 8.02132"
+                                                    stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                                                <line x1="0.7" y1="-0.7" x2="18.2658" y2="-0.7"
+                                                    transform="matrix(-0.73006 0.683384 -0.73006 -0.683384 16.6923 3)"
+                                                    stroke="#000A06" stroke-width="1.4" stroke-linecap="round" />
+                                            </svg>
                                         </button>
-                                        <button class="btn-required">
+                                        <button
+                                            class="btn-required text-[#8C8484] transition-all duration-300 hover:text-Theme-Black">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 20 20" fill="none">
-                                                <path d="M10 16V4" stroke="#8C8484" stroke-width="1.2"
+                                                <path d="M10 16V4" stroke="currentcolor" stroke-width="1.2"
                                                     stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M15.2499 13.3289L4.75 7.14844" stroke="#8C8484"
+                                                <path d="M15.2499 13.3289L4.75 7.14844" stroke="currentcolor"
                                                     stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M4.75 13.3289L15.25 7.14844" stroke="#8C8484"
+                                                <path d="M4.75 13.3289L15.25 7.14844" stroke="currentcolor"
                                                     stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
                                         </button>
@@ -607,11 +683,11 @@
             </aside>
         </div>
         <div
-            class="xl:w-[calc(100%-642px)] lg:w-[calc(100%-562px)] md:w-[calc(100%-522px)] w-full mx-auto relative md:h-screen md:overflow-y-hidden pt-[61px]">
+            class="xl:w-[calc(100%-721px)] lg:w-[calc(100%-562px)] md:w-[calc(100%-522px)] w-full mx-auto relative md:h-screen md:overflow-y-hidden pt-[61px]">
             <!--Main Content Page-->
             <div class="w-full h-full relative bg-[#F6F6F6] rounded-10px px-5 py-0">
                 <!-- header for main content  -->
-                <div class="flex items-center justify-center pt-5 pb-2.5">
+                <div class="flex items-center justify-center pt-2.5 pb-2.5">
                     <div class="flex items-center justify-between w-full max-w-[440px] mx-auto">
                         <label class=" flex items-center justify-between  cursor-pointer">
                             <div class="relative">
@@ -649,7 +725,7 @@
                             </div>
                         </label>
                         <div class="flex items-center justify-end gap-2.5">
-                            <button class="button-icon ">
+                            <button class="btn-white-square">
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_4738_1721)">
@@ -672,7 +748,7 @@
                                 </svg>
 
                             </button>
-                            <button class="button-icon ">
+                            <button class="btn-white-square">
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_4738_1713)">
@@ -697,7 +773,7 @@
                                 </svg>
 
                             </button>
-                            <button class="button-icon ">
+                            <button class="btn-white-square">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                                     fill="none">
                                     <g clip-path="url(#clip0_4738_1707)">
@@ -719,7 +795,7 @@
                                     </defs>
                                 </svg>
                             </button>
-                            <button class="button-icon ">
+                            <button class="btn-white-square">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                                     fill="none">
                                     <path
@@ -1154,9 +1230,8 @@
                     </div>
                 </div>
                 <!-- footer for main content-->
-                <div class="flex items-center justify-center gap-2.5 pt-2.5 pb-5">
-                    <button
-                        class="border border-[#E2DCDC] text-sm font-medium leading-[140%] bg-white rounded-10px flex items-center gap-2.5 py-[9px] px-4 transition-all duration-500 hover:bg-[#F2F0F0]">
+                <div class="flex items-center justify-center gap-2.5 pt-2.5 pb-2.5">
+                    <button class="btn-white-icon-text w-max px-3 min-w-[100px]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
                             <g clip-path="url(#clip0_4738_1675)">
                                 <path
@@ -1178,16 +1253,14 @@
                         </svg>
                         Design
                     </button>
-                    <button
-                        class="w-full max-w-[220px] py-2.5 text-white flex items-center justify-center gap-2.5 rounded-10px bg-[#007D47] text-sm font-medium leading-[140%]">
+                    <button class="btn-kiwi-green-icon-text">
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 13 12" fill="none">
                             <path d="M1.5 6H6.5M6.5 6H11.5M6.5 6V1M6.5 6V11" stroke="white" stroke-width="1.2"
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         Add Content
                     </button>
-                    <a href="Contact-Details_preview.html"
-                        class="border border-[#E2DCDC] text-sm font-medium leading-[140%] bg-white rounded-10px flex items-center gap-2.5 py-[9px] px-4 transition-all duration-500 hover:bg-[#F2F0F0]">
+                    <a href="02-Contact-Details_preview.html" class="btn-white-icon-text w-max px-3 min-w-[100px]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
                             <path
                                 d="M7.57612 4.17847L13.7526 7.67702C14.7491 8.24149 14.7491 9.75851 13.7526 10.323L7.57612 13.8215C6.63574 14.3542 5.5 13.6305 5.5 12.4986V5.50145C5.5 4.36954 6.63574 3.6458 7.57612 4.17847Z"
@@ -1200,15 +1273,15 @@
         </div>
 
     </div>
-    <!--Sign In Modal-->
+    <!--Add field Modal-->
     <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] p-[5px] w-full h-auto max-w-[956px]"
         id="Field-choose-modal">
         <span
-            class="close-btn cursor-pointer p-0 rounded-full transition-all duration-300 hover:text-limegreen absolute top-5 right-5 ">
+            class="close-btn cursor-pointer p-1.5 rounded-10px transition-all duration-300 hover:text-limegreen absolute top-5 right-5 text-[#000A06] hover:text-red-600 hover:bg-red-50">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                <path d="M4 16L16 4" stroke="currentcolor" stroke-width="1.2" stroke-linecap="round"
                     stroke-linejoin="round" />
-                <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                <path d="M16 16L4 4" stroke="currentcolor" stroke-width="1.2" stroke-linecap="round"
                     stroke-linejoin="round" />
             </svg>
 
@@ -1243,9 +1316,9 @@
                                         <ellipse cx="9.99896" cy="4.78947" rx="3.73333" ry="3.78947" stroke="#000A06"
                                             stroke-width="1.5" />
                                         <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M10 11C7.16745 11 4.70165 12.6749 3.4256 15.147C2.76004 16.4363 2.42726 17.081 3.01177 18.0405C3.59628 19 4.56419 19 6.5 19H13.5C15.4358 19 16.4037 19 16.9882 18.0405C17.5727 17.081 17.24 16.4363 16.5744 15.147C15.2984 12.6749 12.8326 11 10 11Z"
-                                            fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
-                                            stroke-linejoin="round" />
+                                            fill="" stroke="" stroke-width="1.5" stroke-linejoin="round" />
                                     </svg>
                                     Contact Details
                                 </div>
@@ -1255,8 +1328,10 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                         fill="none">
-                                        <rect x="1" y="2.5" width="18" height="15" rx="2" fill="#D4CFCF"
-                                            stroke="#726B6B" stroke-width="1.5" />
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="2.5" width="18" height="15" rx="2" fill="" stroke=""
+                                            stroke-width="1.5" />
                                         <path
                                             d="M4.375 6.78516L8.875 10.2137C9.53955 10.72 10.4605 10.72 11.125 10.2137V10.2137L15.625 6.78516"
                                             stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
@@ -1271,8 +1346,9 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                         fill="none">
                                         <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M18.973 15.697C18.973 16.021 18.901 16.354 18.748 16.678C18.595 17.002 18.397 17.308 18.136 17.596C17.695 18.082 17.209 18.433 16.66 18.658C16.12 18.883 15.535 19 14.905 19C13.987 19 13.006 18.784 11.971 18.343C10.936 17.902 9.901 17.308 8.875 16.561C7.84 15.805 6.859 14.968 5.923 14.041C4.996 13.105 4.159 12.124 3.412 11.098C2.674 10.072 2.08 9.046 1.648 8.029C1.216 7.003 1 6.022 1 5.086C1 4.474 1.108 3.889 1.324 3.349C1.54 2.8 1.882 2.296 2.359 1.846C2.935 1.279 3.565 1 4.231 1C4.483 1 4.735 1.054 4.96 1.162C5.194 1.27 5.401 1.432 5.563 1.666L7.651 4.609C7.813 4.834 7.93 5.041 8.011 5.239C8.092 5.428 8.137 5.617 8.137 5.788C8.137 6.004 8.074 6.22 7.948 6.427C7.831 6.634 7.66 6.85 7.444 7.066L6.76 7.777C6.661 7.876 6.616 7.993 6.616 8.137C6.616 8.209 6.625 8.272 6.643 8.344C6.67 8.416 6.697 8.47 6.715 8.524C6.877 8.821 7.156 9.208 7.552 9.676C7.957 10.144 8.389 10.621 8.857 11.098C9.343 11.575 9.811 12.016 10.288 12.421C10.756 12.817 11.143 13.087 11.449 13.249C11.494 13.267 11.548 13.294 11.611 13.321C11.683 13.348 11.755 13.357 11.836 13.357C11.989 13.357 12.106 13.303 12.205 13.204L12.889 12.529C13.114 12.304 13.33 12.133 13.537 12.025C13.744 11.899 13.951 11.836 14.176 11.836C14.347 11.836 14.527 11.872 14.725 11.953C14.923 12.034 15.13 12.151 15.355 12.304L18.334 14.419C18.568 14.581 18.73 14.77 18.829 14.995C18.919 15.22 18.973 15.445 18.973 15.697Z"
-                                            fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5" stroke-miterlimit="10" />
+                                            fill="" stroke="" stroke-width="1.5" stroke-miterlimit="10" />
                                         <path
                                             d="M15.8492 7.30234C15.8492 6.76234 15.4262 5.93434 14.7962 5.25934C14.2202 4.63834 13.4552 4.15234 12.6992 4.15234"
                                             stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
@@ -1300,8 +1376,10 @@
                                         <path
                                             d="M1 9.24609C0.585786 9.24609 0.25 9.58188 0.25 9.99609C0.25 10.4103 0.585786 10.7461 1 10.7461L1 9.99609L1 9.24609ZM3.25 10.7461L4 10.7461L4 9.24609L3.25 9.24609L3.25 9.99609L3.25 10.7461ZM1 9.99609L1 10.7461L3.25 10.7461L3.25 9.99609L3.25 9.24609L1 9.24609L1 9.99609Z"
                                             fill="#726B6B" />
-                                        <circle cx="9.99609" cy="10" r="6.75" fill="#D4CFCF" stroke="#726B6B"
-                                            stroke-width="1.5" stroke-linejoin="round" />
+                                        <circle
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            cx="9.99609" cy="10" r="6.75" fill="" stroke="" stroke-width="1.5"
+                                            stroke-linejoin="round" />
                                         <circle cx="9.99609" cy="10" r="2.25" stroke="#000A06" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                     </svg>
@@ -1314,13 +1392,16 @@
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
+                                            class="fill-[#D4CFCF] transition-all duration-500 group-hover:fill-[#CAEADC]"
                                             d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z"
                                             fill="#D4CFCF" />
                                         <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
                                             d="M10 19C12.2091 19 14 14.9706 14 10C14 5.02944 12.2091 1 10 1C7.79086 1 6 5.02944 6 10C6 14.9706 7.79086 19 10 19Z"
                                             stroke="#726B6B" stroke-width="1.5" stroke-miterlimit="10"
                                             stroke-linecap="round" stroke-linejoin="round" />
                                         <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
                                             d="M1 10C1 12.2091 5.02944 14 10 14C14.9706 14 19 12.2091 19 10C19 7.79086 14.9706 6 10 6C5.02944 6 1 7.79086 1 10Z"
                                             stroke="#726B6B" stroke-width="1.5" stroke-miterlimit="10"
                                             stroke-linecap="round" stroke-linejoin="round" />
@@ -1345,16 +1426,21 @@
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M4.03763 1.53846C4.46535 0.820513 5.53465 0.820512 5.96237 1.53846L8.84946 6.38461C9.27718 7.10256 8.74254 8 7.8871 8H2.1129C1.25747 8 0.722818 7.10256 1.15054 6.38462L4.03763 1.53846Z"
                                             fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                         <circle cx="5" cy="15" r="4" stroke="black" stroke-width="1.5"
                                             stroke-linejoin="round" />
-                                        <path d="M12 3L19 3" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M12 3L19 3" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                         <path d="M12 13L19 13" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path d="M12 6L15 6" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M12 6L15 6" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                         <path d="M12 16L15 16" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1367,7 +1453,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="10" cy="10" r="9" fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
+                                        <circle
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            cx="10" cy="10" r="9" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                         <path d="M14 8L10 12L6 8" stroke="#000A06" stroke-width="1.5"
                                             stroke-linecap="round" stroke-linejoin="round" />
@@ -1380,13 +1468,19 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" />
                                         <circle cx="11" cy="6" r="2" stroke="#000A06" stroke-width="1.5"
                                             stroke-linejoin="round" />
-                                        <path d="M10 15L14.8777 10L19.0001 14" stroke="#726B6B" stroke-width="1.5"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M10 15L14.8777 10L19.0001 14" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M1 18L8 11L11 14" stroke="#726B6B" stroke-width="1.5"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M1 18L8 11L11 14" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                     </svg>
                                     Picture Selection
@@ -1397,11 +1491,15 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="10" cy="10" r="9" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
+                                        <circle
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            cx="10" cy="10" r="9" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                         <path d="M6 10.7535L8.17936 13L14 7" stroke="#292D32" stroke-width="1.5"
                                             stroke-linecap="round" stroke-linejoin="round" />
-                                        <path opacity="0.3" d="M8 7L14 13" stroke="black" stroke-width="1.5"
+                                        <path
+                                            class="stroke-[#726B6B]/50 transition-all duration-500 group-hover:stroke-Theme-Green/50"
+                                            opacity="1" d="M8 7L14 13" stroke="black" stroke-width="1.5"
                                             stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                     Yes / No
@@ -1413,15 +1511,22 @@
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M10.7071 12.121L12.1213 10.7068L17.6307 15.1143C18.4638 15.7808 18.5326 17.0235 17.7782 17.7779V17.7779C17.0238 18.5323 15.7811 18.4635 15.1146 17.6303L10.7071 12.121Z"
                                             stroke="#726B6B" stroke-width="1.5" stroke-linejoin="round" />
-                                        <rect x="3.63574" y="10.707" width="10" height="6"
+                                        <rect
+                                            class="fill-[#D4CFCF] transition-all duration-500 group-hover:fill-[#CAEADC]"
+                                            x="3.63574" y="10.707" width="10" height="6"
                                             transform="rotate(-45 3.63574 10.707)" fill="#D4CFCF" stroke="black"
                                             stroke-width="1.5" stroke-linejoin="round" />
-                                        <rect x="10" y="2.92871" width="3" height="8" rx="1.5"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="10" y="2.92871" width="3" height="8" rx="1.5"
                                             transform="rotate(-45 10 2.92871)" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
-                                        <rect x="0.807617" y="12.1211" width="3" height="8" rx="1.5"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="0.807617" y="12.1211" width="3" height="8" rx="1.5"
                                             transform="rotate(-45 0.807617 12.1211)" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                     </svg>
@@ -1433,7 +1538,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" />
                                         <path d="M6 10.7535L8.17936 13L14 7" stroke="#000A06" stroke-width="1.5"
                                             stroke-linecap="round" stroke-linejoin="round" />
@@ -1453,11 +1560,17 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="1" y="5" width="4" height="11" rx="1" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="5" width="4" height="11" rx="1" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" stroke-linejoin="round" />
-                                        <rect x="8" y="3" width="4" height="13" rx="1" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="8" y="3" width="4" height="13" rx="1" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" stroke-linejoin="round" />
-                                        <rect x="15" y="1" width="4" height="15" rx="1" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="15" y="1" width="4" height="15" rx="1" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" stroke-linejoin="round" />
                                         <path d="M1 19H19" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1471,18 +1584,25 @@
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M18.8271 13.2011C18.4798 15.0192 17.6226 16.6892 16.364 18H3.63604C2.37737 16.6892 1.5202 15.0192 1.17294 13.2011C0.82567 11.383 1.0039 9.49847 1.68509 7.78585C2.36628 6.07324 3.51983 4.60944 4.99987 3.57957C6.47991 2.54969 8.21997 2 10 2C11.78 2 13.5201 2.54969 15.0001 3.57956C16.4802 4.60944 17.6337 6.07324 18.3149 7.78585C18.9961 9.49847 19.1743 11.383 18.8271 13.2011Z"
                                             fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                         <circle cx="10" cy="12" r="1" stroke="black" stroke-width="1.5" />
                                         <path d="M13 8L10 12" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path d="M10 2V5" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M10 2V5" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path d="M1 11L4 11" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M1 11L4 11" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path d="M16 11L19 11" stroke="#726B6B" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M16 11L19 11" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
                                     </svg>
                                     Feedback Score
                                 </div>
@@ -1492,7 +1612,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" stroke-linejoin="round" />
                                         <path
                                             d="M9.04894 6.92705C9.4408 5.72104 9.63673 5.11803 10 5.11803C10.3633 5.11803 10.5592 5.72104 10.9511 6.92705L11.1226 7.45491C11.2309 7.78825 11.285 7.95491 11.4165 8.05041C11.5479 8.1459 11.7231 8.1459 12.0736 8.1459H12.6287C13.8967 8.1459 14.5308 8.1459 14.643 8.49139C14.7553 8.83688 14.2423 9.20956 13.2164 9.95491L12.7674 10.2812C12.4839 10.4872 12.3421 10.5902 12.2919 10.7447C12.2417 10.8992 12.2958 11.0659 12.4041 11.3992L12.5757 11.927C12.9675 13.1331 13.1634 13.7361 12.8695 13.9496C12.5757 14.1631 12.0627 13.7904 11.0368 13.0451L10.5878 12.7188C10.3042 12.5128 10.1625 12.4098 10 12.4098C9.83754 12.4098 9.69576 12.5128 9.41221 12.7188L8.96319 13.0451C7.93729 13.7904 7.42435 14.1631 7.13045 13.9496C6.83656 13.7361 7.03249 13.1331 7.42435 11.9271L7.59586 11.3992C7.70416 11.0659 7.75832 10.8992 7.70812 10.7447C7.65791 10.5902 7.51614 10.4872 7.23259 10.2812L6.78356 9.95492C5.75766 9.20956 5.24472 8.83688 5.35697 8.49139C5.46923 8.1459 6.10327 8.1459 7.37135 8.1459H7.92637C8.27686 8.1459 8.4521 8.1459 8.58354 8.05041C8.71497 7.95491 8.76912 7.78825 8.87743 7.45491L9.04894 6.92705Z"
@@ -1510,7 +1632,9 @@
                                             stroke-linejoin="round" />
                                         <rect x="13" y="12" width="6" height="7" stroke="black" stroke-width="1.5"
                                             stroke-linejoin="round" />
-                                        <rect x="7" y="7" width="6" height="12" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="7" y="7" width="6" height="12" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" stroke-linejoin="round" />
                                         <path
                                             d="M10 2L10.2245 2.69098H10.9511L10.3633 3.11803L10.5878 3.80902L10 3.38197L9.41221 3.80902L9.63673 3.11803L9.04894 2.69098H9.77549L10 2Z"
@@ -1524,10 +1648,14 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px]  rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6 1H3C1.89543 1 1 1.89543 1 3V17C1 18.1046 1.89543 19 3 19H6"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M6 1H3C1.89543 1 1 1.89543 1 3V17C1 18.1046 1.89543 19 3 19H6"
                                             stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path d="M14 1H17C18.1046 1 19 1.89543 19 3V17C19 18.1046 18.1046 19 17 19H14"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M14 1H17C18.1046 1 19 1.89543 19 3V17C19 18.1046 18.1046 19 17 19H14"
                                             stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                         <rect x="4.5" y="4.5" width="1" height="1" stroke="black"
@@ -1564,7 +1692,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" />
                                         <path d="M6 6L14 6" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1581,7 +1711,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="1" width="18" height="18" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" />
                                         <path d="M6 6L14 6" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1601,6 +1733,7 @@
                                             stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                         <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M6.52637 9.99188V8.109C6.52637 5.78787 8.09862 4.8302 10.01 5.99888L11.5514 6.94032L13.0928 7.88176C15.0042 9.05045 15.0042 10.9496 13.0928 12.1182L11.5514 13.0597L10.01 14.0011C8.09862 15.1698 6.52637 14.2121 6.52637 11.891V9.99188Z"
                                             fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5" stroke-miterlimit="10"
                                             stroke-linecap="round" stroke-linejoin="round" />
@@ -1613,7 +1746,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="1" y="3" width="18" height="16" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="3" width="18" height="16" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" stroke-linejoin="round" />
                                         <path d="M6 1V5" stroke="#000A06" stroke-width="1.5" stroke-linecap="round" />
                                         <path d="M6 14H4" stroke="#000A06" stroke-width="1.5" stroke-linecap="round" />
@@ -1621,8 +1756,9 @@
                                         <path d="M16 14H14" stroke="#000A06" stroke-width="1.5"
                                             stroke-linecap="round" />
                                         <path d="M14 1V5" stroke="#000A06" stroke-width="1.5" stroke-linecap="round" />
-                                        <path d="M1 8L19 8" stroke="#726B6B" stroke-width="1.5"
-                                            stroke-linejoin="round" />
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M1 8L19 8" stroke="#726B6B" stroke-width="1.5" stroke-linejoin="round" />
                                     </svg>
                                     Date Picker
                                 </div>
@@ -1632,7 +1768,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px]  rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="10" cy="10" r="9" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
+                                        <circle
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            cx="10" cy="10" r="9" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                         <path
                                             d="M10.0002 11.7435V11.442C10.0002 10.4657 10.6032 9.94874 11.2063 9.53234C11.795 9.13031 12.3836 8.61342 12.3836 7.66577C12.3836 6.3448 11.3211 5.28223 10.0002 5.28223C8.67918 5.28223 7.6167 6.3448 7.6167 7.66577"
@@ -1656,13 +1794,17 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="1" y="3" width="18" height="14" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="3" width="18" height="14" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" stroke-linejoin="round" />
                                         <path d="M4.00049 14H6.00049" stroke="#292D32" stroke-width="1.5"
                                             stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                                         <path d="M8.50049 14H12.5005" stroke="#292D32" stroke-width="1.5"
                                             stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M1 8H19" stroke="#726B6B" stroke-width="1.5" stroke-linejoin="round" />
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M1 8H19" stroke="#726B6B" stroke-width="1.5" stroke-linejoin="round" />
                                     </svg>
                                     Payment
                                 </div>
@@ -1673,6 +1815,7 @@
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M19 9.1V14.5C19 18.1 18.1 19 14.5 19H5.5C1.9 19 1 18.1 1 14.5V5.5C1 1.9 1.9 1 5.5 1H6.85C8.2 1 8.497 1.396 9.01 2.08L10.36 3.88C10.702 4.33 10.9 4.6 11.8 4.6H14.5C18.1 4.6 19 5.5 19 9.1Z"
                                             fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5" stroke-miterlimit="10"
                                             stroke-linejoin="round" />
@@ -1689,7 +1832,9 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="10" cy="10" r="9" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
+                                        <circle
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            cx="10" cy="10" r="9" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
                                         <path d="M5 8H15" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1709,11 +1854,13 @@
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
+                                            class="fill-[#D4CFCF] transition-all duration-500 group-hover:fill-[#CAEADC]"
                                             d="M5.33904 4.24525L13.9411 1.37789C17.8014 0.0911245 19.8987 2.19858 18.6221 6.05888L15.7548 14.661C13.8297 20.4463 10.6685 20.4463 8.74339 14.661L7.8923 12.1077L5.33904 11.2566C-0.446345 9.33152 -0.446345 6.18047 5.33904 4.24525Z"
                                             fill="#D4CFCF" />
                                         <path d="M8 12L12 8" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                         <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
                                             d="M5.33904 4.24525L13.9411 1.37789C17.8014 0.0911245 19.8987 2.19858 18.6221 6.05888L15.7547 14.661C13.8297 20.4463 10.6685 20.4463 8.74339 14.661L7.8923 12.1077L5.33904 11.2566C-0.446345 9.33152 -0.446345 6.18047 5.33904 4.24525Z"
                                             stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1727,6 +1874,7 @@
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
                                             d="M10 1H5C3.11438 1 2.17157 1 1.58579 1.58579C1 2.17157 1 3.11438 1 5V15C1 16.8856 1 17.8284 1.58579 18.4142C2.17157 19 3.11438 19 5 19H15C16.8856 19 17.8284 19 18.4142 18.4142C19 17.8284 19 16.8856 19 15V10"
                                             stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1750,11 +1898,17 @@
                                         xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="4.5" cy="15.5" r="3.5" stroke="black" stroke-width="1.5"
                                             stroke-linejoin="round" />
-                                        <circle cx="4.5" cy="4.5" r="3.5" fill="#D4CFCF" stroke="#726B6B"
-                                            stroke-width="1.5" stroke-linejoin="round" />
-                                        <path d="M11 10L19 10" stroke="#726B6B" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M11 3L19 3" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                        <circle
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            cx="4.5" cy="4.5" r="3.5" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M11 10L19 10" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M11 3L19 3" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                         <path d="M11 17L19 17" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1769,15 +1923,21 @@
                                     class="group flex items-center gap-[15px] py-2.5 px-[15px] border-b border-[#F2EFEF] rounded-none text-sm leading-[140%] text-[#000A06] transition-all duration-500 hover:bg-[#F2EFEF] hover:rounded-10px">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="1" y="1" width="18" height="8" rx="2" fill="#D4CFCF" stroke="#726B6B"
+                                        <rect
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
+                                            x="1" y="1" width="18" height="8" rx="2" fill="#D4CFCF" stroke="#726B6B"
                                             stroke-width="1.5" />
                                         <rect x="1" y="11" width="18" height="8" rx="2" stroke="black"
                                             stroke-width="1.5" />
                                         <path d="M9 5L16 5" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path d="M9 15L16 15" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M9 15L16 15" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path d="M4 15L5 16L7 14" stroke="#726B6B" stroke-width="1.5"
+                                        <path
+                                            class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                            d="M4 15L5 16L7 14" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linecap="round" stroke-linejoin="round" />
                                         <path d="M6 4L4 6" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -1797,6 +1957,7 @@
                                         <path d="M19 5L19 15" stroke="black" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                         <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M1 6.27922C1 4.70946 1 3.92459 1.45332 3.37163C1.90663 2.81867 2.67627 2.66475 4.21554 2.35689L6.21553 1.95689C8.42915 1.51417 9.53596 1.29281 10.268 1.89292C11 2.49304 11 3.62176 11 5.87922V14.1208C11 16.3782 11 17.507 10.268 18.1071C9.53596 18.7072 8.42915 18.4858 6.21554 18.0431L4.21554 17.6431C2.67627 17.3353 1.90663 17.1813 1.45332 16.6284C1 16.0754 1 15.2905 1 13.7208V6.27922Z"
                                             fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
@@ -1812,6 +1973,7 @@
                                         <path d="M5 3L5 17" stroke="black" stroke-width="1.5" stroke-linecap="round" />
                                         <path d="M1 5L1 15" stroke="black" stroke-width="1.5" stroke-linecap="round" />
                                         <path
+                                            class="stroke-[#726B6B] fill-[#D4CFCF] transition-all duration-500 group-hover:stroke-Theme-Green group-hover:fill-[#CAEADC]"
                                             d="M19 6.27922C19 4.70946 19 3.92459 18.5467 3.37163C18.0934 2.81867 17.3237 2.66475 15.7845 2.35689L13.7845 1.95689C11.5709 1.51417 10.464 1.29281 9.73202 1.89292C9 2.49304 9 3.62176 9 5.87922V14.1208C9 16.3782 9 17.507 9.73202 18.1071C10.464 18.7072 11.5709 18.4858 13.7845 18.0431L15.7845 17.6431C17.3237 17.3353 18.0934 17.1813 18.5467 16.6284C19 16.0754 19 15.2905 19 13.7208V6.27922Z"
                                             fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
                                             stroke-linejoin="round" />
@@ -1840,7 +2002,25 @@
         integrity="sha512-csIng5zcB+XpulRUa+ev1zKo7zRNGpEaVfNB9On1no9KYTEY/rLGAEEpvgdw6nim1WdTuihZY1eqZ31K7/fZjw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        document.querySelectorAll('.btn-required').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('text-Theme-Black');
+                btn.classList.toggle('text-[#8C8484]');
+            });
+        });
+    </script>
+    <script>
+        document.querySelectorAll('.btn-visible').forEach(btn => {
+            const visibleIcon = btn.querySelector('.visible-icon');
+            const unvisibleIcon = btn.querySelector('.unvisible-icon');
 
+            btn.addEventListener('click', () => {
+                visibleIcon.classList.toggle('hidden');
+                unvisibleIcon.classList.toggle('hidden');
+            });
+        });
+    </script>
     <!-- resize js  -->
     <script>
         const resizer = document.getElementById('resizer-y');

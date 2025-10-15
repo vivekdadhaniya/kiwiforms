@@ -1,3 +1,31 @@
+// navbar search box functionality
+const searchInput = document.querySelector('.search-input');
+const searchIcon = document.querySelector('.search-icon');
+const clearBtn = document.querySelector('.clear-btn');
+
+// When input is focused
+searchInput.addEventListener('focus', () => {
+    searchIcon.querySelectorAll('path').forEach(p => p.setAttribute('stroke', '#007D47')); // Theme Green
+});
+
+// When input loses focus
+searchInput.addEventListener('blur', () => {
+    searchIcon.querySelectorAll('path').forEach(p => p.setAttribute('stroke', '#8C8484'));
+});
+
+// Show or hide clear button depending on input value
+searchInput.addEventListener('input', () => {
+    clearBtn.classList.toggle('hidden', searchInput.value === '');
+});
+
+// Clear input when clear button is clicked
+clearBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    clearBtn.classList.add('hidden');
+    searchInput.focus();
+});
+
+
 
 //==================Modal=====================//
 const modalTriggerButtons = document.querySelectorAll("[data-modal-target]");
