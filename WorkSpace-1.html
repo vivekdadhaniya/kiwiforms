@@ -20,7 +20,8 @@
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-2.5 w-full max-w-[390px]">
                     <a href="#" class="flex items-center gap-[7px]">
-                        <svg class="shadow-[0_0_10px_0_rgba(0,0,0,0.05)]" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="shadow-[0_0_10px_0_rgba(0,0,0,0.05)]" width="40" height="40" viewBox="0 0 40 40"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="40" height="40" rx="10" fill="white" />
                             <path
                                 d="M8 20C8 13.3726 13.3726 8 20 8C26.6274 8 32 13.3726 32 20C32 26.6274 26.6274 32 20 32C13.3726 32 8 26.6274 8 20Z"
@@ -553,7 +554,34 @@
             };
         }
     </script>
+    <script>
+        // navbar search box functionality
+        const searchInput = document.querySelector('.search-input');
+        const searchIcon = document.querySelector('.search-icon');
+        const clearBtn = document.querySelector('.clear-btn');
 
+        // When input is focused
+        searchInput.addEventListener('focus', () => {
+            searchIcon.querySelectorAll('path').forEach(p => p.setAttribute('stroke', '#007D47')); // Theme Green
+        });
+
+        // When input loses focus
+        searchInput.addEventListener('blur', () => {
+            searchIcon.querySelectorAll('path').forEach(p => p.setAttribute('stroke', '#8C8484'));
+        });
+
+        // Show or hide clear button depending on input value
+        searchInput.addEventListener('input', () => {
+            clearBtn.classList.toggle('hidden', searchInput.value === '');
+        });
+
+        // Clear input when clear button is clicked
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            clearBtn.classList.add('hidden');
+            searchInput.focus();
+        });
+    </script>
 </body>
 
 </html>
