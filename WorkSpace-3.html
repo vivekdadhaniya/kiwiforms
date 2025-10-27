@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="assets/css/output.css">
 </head>
 
-<body class="md:overflow-hidden bg-Theme-bg font-Inter">
+<body x-data="setup()" class="md:overflow-hidden bg-Theme-bg font-Inter">
     <div class="flex flex-col max-md:gap-8 md:flex-row bg-black-0a0a0a">
         <!--Header--->
         <header class="p-2.5 rounded-b-2xl fixed top-0 z-[1000] w-full bg-Theme-Forground">
             <div class="flex justify-between items-center">
-                <div class="flex items-center gap-2.5 w-full max-w-[390px]">
+                <div class="flex items-center gap-2.5 w-max lg:w-full lg:max-w-[390px]">
                     <a href="#" class="">
                         <svg width="127" height="40" viewBox="0 0 127 40" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -102,15 +102,54 @@
                     </button>
                 </div>
 
-                <div class="lg:flex hidden items-center gap-2.5 p-[5px] rounded-10px bg-[#EDE9E9]">
+                <div class="min-[1200px]:flex hidden items-center gap-2.5 p-[5px] rounded-10px bg-[#EDE9E9]">
                     <a href="#" class="py-[5px] px-[15px] header-links active">My Forms</a>
                     <a href="#" class="py-[5px] px-[15px] header-links">Integrations</a>
                     <a href="#" class="py-[5px] px-[15px] header-links">Brand Guide</a>
-
-
                 </div>
-                <div class="flex items-center gap-2.5 w-full max-w-[390px]">
-                    <div class="relative w-full max-w-[340px]">
+                <div x-data="dropdownComponent('menu-nav')" class="relative w-max hidden max-[1200px]:flex">
+                    <button @click="toggle"
+                        class="p-[5px] cursor-pointer rounded-10px bg-[#EDE9E9] flex items-center gap-2.5 text-sm font-medium leading-[140%] text-Theme-Black">
+                        <span class="bg-white py-[5px] px-[15px] text-center rounded-[5px]">
+                            My Forms</span>
+
+                        <svg class="transition-all duration-300 ease-in-out" :class="{'-rotate-180': isOpen}" width="20"
+                            height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 8L10 12L6 8" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+
+                    <div x-ref="menu-nav" x-show="isOpen" x-transition=""
+                        x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                        @click.outside="close"
+                        class="absolute sm:-right-[185%] sm:right-0 z-10 p-2 mt-11 w-[136px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft "
+                        style="overflow: hidden; transition: height 300ms; height: auto; display: none;">
+                        <ul class="flex flex-col gap-0.5">
+                            <li>
+                                <a href="#"
+                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                    My Forms
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                    Integrations
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                    Brand Guide
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex items-center max-sm:justify-end gap-2.5 w-max lg:w-full lg:max-w-[390px]">
+                    <div class="relative w-full max-w-[40px] md:max-w-[340px] hidden md:block">
                         <!-- Search Icon -->
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                             <svg class="search-icon transition-colors duration-300" width="20" height="20"
@@ -126,7 +165,7 @@
 
                         <!-- Search Input -->
                         <input type="search" id="default-search"
-                            class="search-input block w-full pr-8 pl-12 py-[9px] text-sm leading-5 font-normal shadow-xs border border-transparent text-gray-900 bg-[#EDE9E9] rounded-10px placeholder-gray-400 focus:outline-none transition-all duration-500 hover:bg-[#f1efef] hover:border-[#E2DCDC] focus:bg-white focus:border-Theme-Green"
+                            class="search-input block w-full px-3 md:pr-8 md:pl-12 max-md:placeholder:hidden py-[9px] text-sm leading-5 font-normal shadow-xs border border-transparent text-gray-900 bg-[#EDE9E9] rounded-10px placeholder-gray-400 focus:outline-none transition-all duration-500 hover:bg-[#f1efef] hover:border-[#E2DCDC] focus:bg-white focus:border-Theme-Green"
                             placeholder="Search here . . ." />
 
                         <!-- Clear Button -->
@@ -147,14 +186,34 @@
         <!--SideBar-->
         <div class="relative flex md:h-full gap-5 md:overflow-hidden">
             <aside
-                class="md:fixed relative bg-transparent top-[61px] xl:w-[320px] lg:w-[280px] w-full md:w-[280px] md:h-[calc(100vh-61px)] pl-px overflow-y-auto scrollbar-hide z-50 flex justify-between flex-col bg-black-1B1B1B nav-list rounded-xl  ">
+                class="fixed bg-transparent top-[61px] xl:w-[320px] lg:w-[300px]  h-[calc(100vh-61px)] pl-px overflow-y-auto scrollbar-hide z-50 flex justify-between flex-col bg-black-1B1B1B nav-list rounded-xl  "
+                :class="isSidebarOpen ? 'w-[300px]' : 'w-[80px]'">
                 <div class="flex flex-col w-full h-full">
                     <div class="bg-[#F6F6F6] w-full px-[5px] pb-2.5 h-full rounded-b-[10px]">
-                        <h4
-                            class="py-5 px-[15px] border-b border-[#E2DCDC] text-base leading-[140%] font-medium text-Theme-Black">
-                            Workspaces</h4>
+                        <div :class="isSidebarOpen ? 'justify-between' : 'justify-center'"
+                            class="py-5 flex items-center justify-between w-full px-[15px] border-b border-[#E2DCDC] text-base leading-[140%] font-medium text-Theme-Black">
+                            <span :class="{'hidden':!isSidebarOpen, 'block':isSidebarOpen}">Workspaces</span>
+                            <button @click="toggleSidbarMenu()"
+                                class="block md:hidden text-[#000A06] transition-all duration-500 hover:text-[#007D47] py-px">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M15.7143 8.30715H4.28573C2.47108 8.30715 1 6.92077 1 5.21057V5.19655C1 3.48639 2.47108 2.10001 4.28573 2.10001H15.7143C17.5289 2.10001 19 3.48639 19 5.19655V5.21057C19 6.92077 17.529 8.30715 15.7143 8.30715Z"
+                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M4.09375 5.20358H6.34375" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path
+                                        d="M15.7143 17.9H4.28573C2.47108 17.9 1 16.5136 1 14.8034V14.7894C1 13.0793 2.47108 11.6929 4.28573 11.6929H15.7143C17.5289 11.6929 19 13.0793 19 14.7894V14.8034C19 16.5136 17.529 17.9 15.7143 17.9Z"
+                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M4.09375 14.7965H6.34375" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
                         <ul class="pt-2.5 px-[5px] flex flex-col gap-0.5 h-[calc(100%-115px)] overflow-y-auto">
-                            <li>
+                            <li :class="isSidebarOpen ? 'flex' : 'hidden'">
                                 <a href="#"
                                     class="Workspace p-[15px] rounded-10px w-full flex items-center justify-between gap-2.5 text-base leading-[140%] text-[#8C8484] transition-all duration-500 hover:bg-white hover:text-Theme-Black">
                                     General Forms
@@ -162,7 +221,7 @@
                                         class="bg-[#EDE9E9] w-6 h-6 aspect-square rounded-md flex items-center justify-center text-sm leading-[140%] text-[#8C8484]">1</span>
                                 </a>
                             </li>
-                            <li>
+                            <li :class="isSidebarOpen ? 'flex' : 'hidden'">
                                 <a href="#"
                                     class="Workspace p-[15px] rounded-10px w-full flex items-center justify-between gap-2.5 text-base leading-[140%] text-[#8C8484] transition-all duration-500 hover:bg-white hover:text-Theme-Black active">
                                     Survey Forms
@@ -170,7 +229,7 @@
                                         class="bg-[#EDE9E9] h-6 py-0.5 px-2.5 rounded-md flex items-center justify-center text-sm leading-[140%] text-Theme-Green">New</span>
                                 </a>
                             </li>
-                            <li>
+                            <li :class="isSidebarOpen ? 'flex' : 'hidden'">
                                 <a href="#"
                                     class="Workspace p-[15px] rounded-10px w-full flex items-center justify-between gap-2.5 text-base leading-[140%] text-[#8C8484] transition-all duration-500 hover:bg-white hover:text-Theme-Black">
                                     Management Forms
@@ -180,13 +239,14 @@
                             </li>
                         </ul>
                         <div class="px-[15px] pb-5">
-                            <button class="btn-white-icon-text">
+                            <button class="btn-white-icon-text" :class="isSidebarOpen ? 'py-2.5' : 'py-[13px]'">
                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1 6H6M6 6H11M6 6V1M6 6V11" stroke="#000A06" stroke-width="1.5"
                                         stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                Create Workspace
+                                <span :class="isSidebarOpen ? 'flex' : 'hidden'">Create Workspace</span>
+
                             </button>
                         </div>
                     </div>
@@ -196,7 +256,8 @@
                 <ul class="bg-[#F6F6F6] w-full px-[10px] py-2.5 h-auto rounded-10px mt-px flex flex-col">
                     <li>
                         <a href="#"
-                            class="flex items-center gap-[15px] p-[15px] font-Inter font-medium text-sm leading-[140%] text-Theme-Black border-b border-white transition-all duration-500 hover:rounded-lg hover:bg-white">
+                            class="flex items-center gap-[15px] p-[15px] font-Inter font-medium text-sm leading-[140%] text-Theme-Black border-b border-white transition-all duration-500 hover:rounded-lg hover:bg-white"
+                            :class="isSidebarOpen ? 'justify-start' : 'justify-center'">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_337_749)">
@@ -219,12 +280,13 @@
                                     </clipPath>
                                 </defs>
                             </svg>
-                            What’s New
+                            <span :class="isSidebarOpen ? 'flex' : 'hidden'"> What’s New</span>
                         </a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center gap-[15px] p-[15px] font-Inter font-medium text-sm leading-[140%] text-Theme-Black transition-all duration-500 hover:rounded-lg hover:bg-white">
+                            class="flex items-center gap-[15px] p-[15px] font-Inter font-medium text-sm leading-[140%] text-Theme-Black transition-all duration-500 hover:rounded-lg hover:bg-white"
+                            :class="isSidebarOpen ? 'justify-start' : 'justify-center'">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_337_756)">
@@ -245,13 +307,13 @@
                                     </clipPath>
                                 </defs>
                             </svg>
-                            Help & Support
+                            <span :class="isSidebarOpen ? 'flex' : 'hidden'">Help & Support</span>
                         </a>
                     </li>
                 </ul>
                 <!-- The button should have position absolute, bottom 0 to stick to the bottom -->
                 <div
-                    class="bg-gradient-to-b from-white to-[#F6F6F6] mt-px w-full rounded-10px p-5 flex items-center justify-center flex-col gap-3.5">
+                    class="bg-gradient-to-b from-white to-[#F6F6F6] mt-px w-full rounded-10px p-5 flex items-center justify-start flex-col gap-2.5 h-auto min-h-[248px]">
                     <div class="flex items-center justify-center flex-col w-full gap-1.5">
                         <svg width="66" height="66" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 33C0 14.7746 14.7746 0 33 0V0C51.2254 0 66 14.7746 66 33V66H0V33Z"
@@ -287,44 +349,102 @@
                                 </linearGradient>
                             </defs>
                         </svg>
-                        <p class="text-center text-base font-medium leading-[140%] text-Theme-Black">Received Responses
+                        <p :class="isSidebarOpen ? 'flex' : 'hidden'"
+                            class="text-center text-base font-medium leading-[140%] text-Theme-Black whitespace-nowrap  ">
+                            Refer & Earn Rewards
                         </p>
                     </div>
-                    <div class="flex flex-col gap-[11px] w-full">
-                        <div class="flex items-center justify-between py-3.5 px-[15px] rounded-10px bg-[#EDE9E9]">
-                            <span class="text-sm font-medium leading-[140%] text-Theme-Black">0 / 10</span>
-                            <span class="text-sm font-medium leading-[140%] text-[#8C8484]">18 Jul, 2025</span>
-                        </div>
-                        <button class="btn-kiwi-green">Increase
-                            Response Limit</button>
+                    <div class="flex flex-col gap-[15px] w-full">
+                        <p class="text-sm leading-6 text-[#8C8484] text-center"
+                            :class="isSidebarOpen ? 'block' : 'hidden'">
+                            Share Kiwiform with friends and colleagues to earn exclusive rewards!
+                        </p>
+                        <button class="btn-kiwi-green text-center justify-center"
+                            :class="isSidebarOpen ? 'flex' : 'hidden'">
+                            Claim Your Rewards
+                        </button>
                     </div>
                 </div>
             </aside>
         </div>
-        <div
-            class="xl:w-[calc(100%-321px)] lg:w-[calc(100%-290px)] md:w-[calc(100%-290px)] w-full ml-auto relative md:h-screen md:overflow-y-hidden pt-[61px] ">
+        <div class="xl:w-[calc(100%-321px)] lg:w-[calc(100%-301px)] md:w-[calc(100%-301px)] ml-auto relative md:h-screen md:overflow-y-hidden pt-[29px] md:pt-[61px]"
+            :class="isSidebarOpen ? 'w-[calc(100%-301px)]' : 'w-[calc(100%-81px)]'">
             <!--Main Content Page-->
             <div class="w-full h-full relative bg-[#F6F6F6] rounded-10px px-[5px] py-2.5">
                 <!-- header for main content  -->
-                <div class="flex items-center justify-between px-[15px] pb-3 border-b border-[#E2DCDC]">
+                <div
+                    class="flex flex-col sm:flex-row max-sm:gap-[15px] sm:items-center justify-between px-[15px] pb-3 border-b border-[#E2DCDC]">
                     <div class="flex items-center gap-2.5 ">
                         <h5 class="font-Inter_tight font-normal text-2xl leading-[140%] text-Theme-Black">Survey Forms
                         </h5>
-                        <button
-                            class="w-6 h-6 aspect-square rounded-[5px] bg-[#EDE9E9] flex items-center justify-center cursor-pointer">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14.5951 8.99964H14.6077" stroke="#000A06" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M8.99371 8.99964H9.00628" stroke="#000A06" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M3.39239 8.99964H3.40496" stroke="#000A06" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
+                        <div x-data="dropdownComponent('main-dp')" class="relative w-max">
+                            <button @click="toggle" :class="{'bg-white': isOpen}"
+                                class="w-[30px] h-[30px] aspect-square rounded-[5px] bg-[#F2EFEF] flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:bg-white">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14.5951 8.99964H14.6077" stroke="#000A06" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M8.99371 8.99964H9.00628" stroke="#000A06" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M3.39239 8.99964H3.40496" stroke="#000A06" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </button>
+
+                            <div x-ref="main-dp" x-show="isOpen" x-transition=""
+                                x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                                @click.outside="close"
+                                class="absolute right-0 z-10 p-2 mt-2 w-[120px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft"
+                                style="overflow: hidden; transition: height 300ms; height: auto; display: none;">
+                                <ul class="">
+
+                                    <li>
+                                        <a href="#"
+                                            class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                viewBox="0 0 16 16" fill="none">
+                                                <path d="M10 14L12 14L14 14" stroke="#000A06" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M8.94934 3.04032L2.79017 9.32234C2.5576 9.5609 2.33254 10.0308 2.28753 10.3561L2.00995 12.6983C1.91243 13.5441 2.5426 14.1224 3.41284 13.9778L5.82849 13.5802C6.16609 13.5224 6.63872 13.2838 6.87128 13.0381L13.0305 6.75604C14.0957 5.67168 14.5759 4.43552 12.9179 2.92465C11.2675 1.42824 10.0146 1.95596 8.94934 3.04032Z"
+                                                    stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M8.46094 3.8457C8.75226 5.82449 10.2698 7.33726 12.1532 7.53801"
+                                                    stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                            </svg>
+                                            Rename
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#"
+                                            class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                viewBox="0 0 16 16" fill="none">
+                                                <path
+                                                    d="M3.5 4.25H12.5V10C12.5 11.8856 12.5 12.8284 11.9142 13.4142C11.3284 14 10.3856 14 8.5 14H7.5C5.61438 14 4.67157 14 4.08579 13.4142C3.5 12.8284 3.5 11.8856 3.5 10V4.25Z"
+                                                    stroke="#000A06"></path>
+                                                <path d="M2 4.25H14" stroke="#000A06" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M5 4C5 3.05719 5 2.58579 5.29289 2.29289C5.58579 2 6.05719 2 7 2H9C9.94281 2 10.4142 2 10.7071 2.29289C11 2.58579 11 3.05719 11 4V4.25H5V4Z"
+                                                    stroke="#000A06"></path>
+                                                <path d="M6.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                                <path d="M9.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                            </svg>
+                                            Delete
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flex items-center gap-2.5 ">
+                    <div class="flex max-sm:justify-between items-center gap-2.5 ">
 
                         <div x-data="dropdownComponent('menu-date')" class="relative w-max">
                             <button @click="toggle" :class="{'bg-white': isOpen, 'bg-[#F2EFEF]': !isOpen}"
@@ -343,7 +463,8 @@
                                     <path d="M14 2V5" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
                                     <path d="M2 9H18" stroke="#000A06" stroke-width="1.2" />
                                 </svg>
-                                Date Created
+                                <span class="min-[1080px]:block hidden">Date Created</span>
+
                                 <svg class="transition-all duration-300 ease-in-out" :class="{'-rotate-180': isOpen}"
                                     width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -355,7 +476,7 @@
                             <div x-ref="menu" x-show="isOpen" x-transition
                                 x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
                                 @click.outside="close"
-                                class="absolute right-0 z-10 p-2 mt-2 w-[200px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft ">
+                                class="absolute -right-[185%] sm:right-0 z-10 p-2 mt-2 w-[200px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft ">
                                 <ul class="flex flex-col gap-0.5">
                                     <li>
                                         <a href="#"
@@ -422,7 +543,7 @@
                         </div>
 
 
-                        <label class=" flex items-center justify-between  cursor-pointer">
+                        <label class="hidden min-[1080px]:flex items-center justify-between  cursor-pointer">
                             <div class="relative">
                                 <input type="checkbox" value="Original_UV" class="sr-only peer" checked>
                                 <div class="w-20 h-10 bg-[#EDE9E9] peer-focus:outline-none rounded-md peer 
@@ -465,19 +586,21 @@
                                 </div>
                             </div>
                         </label>
-                        <button class="btn-kiwi-green-icon-text">
+                        <button class="btn-kiwi-green-icon-text max-[1080px]:py-3.5 px-3.5 min-[1080px]:px-8">
                             <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1.5 6H6.5M6.5 6H11.5M6.5 6V1M6.5 6V11" stroke="white" stroke-width="1.2"
                                     stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                            Create New Form
+                            <span class="min-[1080px]:block hidden">Create New Form</span>
+
                         </button>
                     </div>
                 </div>
-                <div class="w-full h-full ">
+                <!-- list view  -->
+                <div class="w-full h-full max-[1080px]:hidden">
                     <div
-                        class="px-[0px] py-[15px] border-b border-[#E2DCDC] w-full list-card-title grid-cols-[minmax(0,1fr)_90px_50px_105px_110px_230px] min-[1400px]:grid-cols-[minmax(0,1fr)_90px_50px_105px_110px_230px] ">
+                        class="px-[0px] py-[15px] border-b border-[#E2DCDC] w-full list-card-title grid-cols-[minmax(0,1fr)_90px_50px_105px_110px_120px] min-[1400px]:grid-cols-[minmax(0,1fr)_90px_50px_105px_110px_230px] ">
                         <div class="text-sm leading-[140%] text-[#8C8484] text-center"></div>
                         <div class="text-sm leading-[140%] text-[#8C8484] text-center">Updated</div>
                         <div class="text-sm leading-[140%] text-[#8C8484] text-center">Views</div>
@@ -528,7 +651,8 @@
                                             </defs>
                                         </svg>
                                     </div>
-                                    <p class="text-base font-medium leading-[140%] text-Theme-Black">Audience Survey 25
+                                    <p class="text-base font-medium leading-[140%] text-Theme-Black whitespace-nowrap ">
+                                        Audience Survey 25
                                     </p>
                                 </div>
                             </div>
@@ -808,7 +932,8 @@
                                         </svg>
 
                                     </div>
-                                    <p class="text-base font-medium leading-[140%] text-Theme-Black">Audience Survey 25
+                                    <p class="text-base font-medium leading-[140%] text-Theme-Black whitespace-nowrap ">
+                                        Audience Survey 25
                                     </p>
                                 </div>
                             </div>
@@ -832,8 +957,8 @@
                             </div>
                             <div class="flex items-center justify-end gap-5 pr-5">
                                 <div class="flex items-center gap-2.5 p-[5px] rounded-[5px] bg-white">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="max-[1400px]:hidden" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M3.31056 15.2388C2.51115 15.2388 1.77656 14.8283 1.38765 14.1369C0.998751 13.4671 1.02036 12.6461 1.45247 11.9979L5.42794 5.92662C5.83843 5.25684 6.59463 4.86793 7.39405 4.88953C8.19346 4.91115 8.92806 5.34326 9.29537 6.03466C9.66266 6.72604 9.61944 7.54707 9.18732 8.17364L5.19027 14.2449C4.77976 14.8499 4.06676 15.2388 3.31056 15.2388Z"
                                             fill="#FB275D" />
@@ -844,8 +969,8 @@
                                             d="M16.6852 15.2387C17.8951 15.2387 18.889 14.2448 18.889 13.0349C18.889 11.8249 17.8951 10.8311 16.6852 10.8311C15.4753 10.8311 14.4814 11.8249 14.4814 13.0349C14.4814 14.2664 15.4537 15.2387 16.6852 15.2387Z"
                                             fill="#00CA72" />
                                     </svg>
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="max-[1400px]:hidden" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M17.1113 1.11133H2.88911C1.90727 1.11133 1.11133 1.90727 1.11133 2.88911V17.1113C1.11133 18.0932 1.90727 18.8891 2.88911 18.8891H17.1113C18.0932 18.8891 18.8891 18.0932 18.8891 17.1113V2.88911C18.8891 1.90727 18.0932 1.11133 17.1113 1.11133Z"
                                             fill="#FF4F00" />
@@ -869,8 +994,8 @@
                                             d="M10.1989 8.64355C9.91441 8.64355 9.68584 8.73289 9.51308 8.91151C9.38526 9.04391 9.29139 9.24147 9.23157 9.50422H9.2049L9.09566 8.724H8.38232V12.4427H9.21761V10.911H9.24806C9.27357 11.0132 9.3093 11.1124 9.35477 11.2074C9.42544 11.362 9.5413 11.4916 9.68708 11.5791C9.83828 11.6616 10.0085 11.7026 10.1807 11.698C10.5304 11.698 10.7967 11.5618 10.9796 11.2895C11.1625 11.0172 11.2539 10.6371 11.2539 10.1494C11.2539 9.67835 11.1654 9.3096 10.9885 9.0432C10.8115 8.77675 10.5483 8.64355 10.1989 8.64355ZM10.2836 10.7374C10.1862 10.8785 10.0338 10.9491 9.82637 10.9491C9.74086 10.9531 9.65561 10.9366 9.5777 10.901C9.49984 10.8655 9.43152 10.8119 9.37846 10.7446C9.27037 10.6089 9.21646 10.423 9.21677 10.1871V10.132C9.21677 9.89244 9.27064 9.70898 9.37846 9.58169C9.48628 9.4544 9.63557 9.39147 9.82637 9.39289C10.0375 9.39289 10.1909 9.45991 10.2865 9.59396C10.3822 9.72804 10.4301 9.91502 10.4301 10.1549C10.4306 10.403 10.3821 10.5972 10.2845 10.7374H10.2836Z"
                                             fill="#FFFDF9" />
                                     </svg>
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="max-[1400px]:hidden" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M2.62766 1.87791L12.4866 1.15187C13.6972 1.04803 14.0087 1.11759 14.7696 1.67037L17.9167 3.88235C18.436 4.26273 18.609 4.36628 18.609 4.78093V16.9129C18.609 17.6732 18.3321 18.1228 17.3637 18.1916L5.91471 18.883C5.18782 18.9177 4.84184 18.8141 4.46117 18.3299L2.14363 15.3229C1.72836 14.7694 1.55566 14.3553 1.55566 13.8708V3.08717C1.55566 2.4654 1.8327 1.94676 2.62766 1.87791Z"
                                             fill="white" />
@@ -878,8 +1003,8 @@
                                             d="M12.4866 1.15187L2.62766 1.87791C1.8327 1.94676 1.55566 2.4654 1.55566 3.08717V13.8708C1.55566 14.3553 1.72836 14.7694 2.14363 15.3229L4.46117 18.3299C4.84184 18.8141 5.18782 18.9177 5.91471 18.883L17.3637 18.1916C18.3321 18.1228 18.609 17.6732 18.609 16.9129V4.78093C18.609 4.38791 18.4535 4.27437 17.9951 3.93968C17.9699 3.92126 17.9438 3.90217 17.9167 3.88235L14.7696 1.67037C14.0087 1.11759 13.6972 1.04803 12.4866 1.15187ZM6.17431 4.58193C5.23955 4.64506 5.02715 4.65939 4.49633 4.22815L3.14644 3.15673C3.00877 3.01817 3.07782 2.84535 3.42349 2.81106L12.9017 2.11974C13.697 2.05046 14.1121 2.32742 14.4236 2.56924L16.0492 3.74451C16.1184 3.77893 16.2911 3.98604 16.0834 3.98604L6.29495 4.57382C6.25377 4.57657 6.21384 4.57926 6.17515 4.58188L6.17431 4.58193ZM5.08402 16.8089V6.50944C5.08402 6.06019 5.2224 5.85266 5.63726 5.81779L16.879 5.16131C17.2603 5.12675 17.4329 5.36886 17.4329 5.81779V16.0482C17.4329 16.4979 17.3636 16.8786 16.7407 16.9129L5.9832 17.5353C5.36064 17.5695 5.08402 17.3625 5.08402 16.8089ZM15.7038 7.06191C15.7728 7.37328 15.7038 7.68437 15.3919 7.71939L14.8736 7.82266V15.4264C14.4236 15.6683 14.0086 15.8066 13.6628 15.8066C13.1091 15.8066 12.9704 15.6336 12.5557 15.1155L9.16533 9.7928V14.9427L10.2382 15.1848C10.2382 15.1848 10.2382 15.8066 9.3726 15.8066L6.98644 15.945C6.91711 15.8066 6.98644 15.4612 7.22849 15.392L7.85117 15.2195V8.41044L6.98657 8.34115C6.91724 8.02975 7.08993 7.58084 7.57455 7.54595L10.1344 7.37344L13.6628 12.7654V7.99546L12.7632 7.89224C12.6941 7.51157 12.9704 7.23515 13.3164 7.20091L15.7038 7.06191Z"
                                             fill="#000008" />
                                     </svg>
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="max-[1400px]:hidden" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M4.84622 12.3451C4.84622 13.3729 4.00659 14.2126 2.97877 14.2126C1.95095 14.2126 1.11133 13.3729 1.11133 12.3451C1.11133 11.3172 1.95095 10.4775 2.97877 10.4775H4.84622V12.3451Z"
                                             fill="#E01E5A" />
@@ -906,7 +1031,10 @@
                                             fill="#ECB22E" />
                                     </svg>
                                     <button
-                                        class="py-0.5 px-[5px] bg-[#EDE9E9] rounded-[5px] text-xs leading-[130%] font-medium text-Theme-Black">+3</button>
+                                        class="py-0.5 px-[5px] bg-[#EDE9E9] rounded-[5px] text-xs leading-[130%] font-medium text-Theme-Black">
+                                        <span class="max-[1400px]:hidden">+3</span>
+                                        <span class="min-[1400px]:hidden">+7</span>
+                                    </button>
                                 </div>
 
                                 <div x-data="dropdownComponent('menu2')" class="relative w-max">
@@ -1160,7 +1288,8 @@
                                             </defs>
                                         </svg>
                                     </div>
-                                    <p class="text-base font-medium leading-[140%] text-Theme-Black">Audience Survey 25
+                                    <p class="text-base font-medium leading-[140%] text-Theme-Black whitespace-nowrap ">
+                                        Audience Survey 25
                                     </p>
                                 </div>
                             </div>
@@ -1440,7 +1569,8 @@
                                         </svg>
 
                                     </div>
-                                    <p class="text-base font-medium leading-[140%] text-Theme-Black">Audience Survey 25
+                                    <p class="text-base font-medium leading-[140%] text-Theme-Black whitespace-nowrap ">
+                                        Audience Survey 25
                                     </p>
                                 </div>
                             </div>
@@ -1731,7 +1861,8 @@
                                             </defs>
                                         </svg>
                                     </div>
-                                    <p class="text-base font-medium leading-[140%] text-Theme-Black">Audience Survey 25
+                                    <p class="text-base font-medium leading-[140%] text-Theme-Black whitespace-nowrap ">
+                                        Audience Survey 25
                                     </p>
                                 </div>
                             </div>
@@ -1755,8 +1886,8 @@
                             </div>
                             <div class="flex items-center justify-end gap-5 pr-5">
                                 <div class="flex items-center gap-2.5 p-[5px] rounded-[5px] bg-white">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="max-[1400px]:hidden" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M13.2954 12.6565C12.7313 13.1572 12.0275 13.7804 10.7476 13.7804H9.98436C9.05921 13.7804 8.21801 13.4446 7.61605 12.835C7.02803 12.2397 6.70416 11.4247 6.70416 10.54V9.49435C6.70416 8.60966 7.02803 7.79466 7.61605 7.19933C8.21801 6.58975 9.05921 6.25393 9.98436 6.25393H10.7476C12.0275 6.25393 12.7306 6.87713 13.2954 7.37786C13.8811 7.89719 14.3872 8.34553 15.7351 8.34553C15.9407 8.34557 16.146 8.32915 16.349 8.29642C16.349 8.29242 16.3463 8.28877 16.3446 8.28479C16.2638 8.08426 16.169 7.88966 16.0609 7.70242L15.1597 6.14108C14.7533 5.43733 14.1689 4.85291 13.4651 4.44655C12.7614 4.04019 11.9631 3.82624 11.1504 3.82617H9.34756C8.53492 3.82624 7.73661 4.04019 7.03285 4.44655C6.32909 4.85291 5.74467 5.43733 5.33834 6.14108L4.43707 7.70242C4.03078 8.40619 3.81689 9.20453 3.81689 10.0172C3.81689 10.8298 4.03078 11.6281 4.43707 12.332L5.33834 13.8933C5.74469 14.597 6.32914 15.1813 7.03289 15.5877C7.73665 15.9939 8.53496 16.2078 9.34756 16.2079H11.1504C11.963 16.2078 12.7614 15.9939 13.4651 15.5877C14.1689 15.1813 14.7533 14.597 15.1597 13.8933L16.0609 12.332C16.169 12.1447 16.2638 11.9501 16.3446 11.7495C16.3446 11.7456 16.3476 11.7419 16.349 11.7379C16.146 11.7052 15.9407 11.6888 15.7351 11.6888C14.3872 11.6888 13.8811 12.1371 13.2954 12.6565Z"
                                             fill="#006BFF" />
@@ -1773,14 +1904,14 @@
                                             d="M16.346 8.2964C16.143 8.32913 15.9377 8.34555 15.7321 8.34551C14.3842 8.34551 13.8781 7.89717 13.2924 7.37786C12.7283 6.87711 12.0245 6.25391 10.7446 6.25391H9.98137C9.05622 6.25391 8.21502 6.58973 7.61306 7.19933C7.02506 7.79464 6.70117 8.60964 6.70117 9.49435V10.54C6.70117 11.4247 7.02506 12.2397 7.61306 12.835C8.21502 13.4446 9.05622 13.7804 9.98137 13.7804H10.7446C12.0245 13.7804 12.7276 13.1572 13.2924 12.6565C13.8781 12.1371 14.3842 11.6888 15.7321 11.6888C15.9377 11.6888 16.143 11.7052 16.346 11.7379C16.4627 11.4471 16.5493 11.1451 16.6045 10.8366C16.6045 10.8317 16.6065 10.8264 16.6072 10.821C16.3185 10.7676 16.0256 10.7408 15.7321 10.7411C12.6351 10.7411 12.796 12.8317 10.7446 12.8317H9.98137C8.57373 12.8317 7.64857 11.8262 7.64857 10.539V9.49466C7.64857 8.20746 8.57373 7.20197 9.98137 7.20197H10.7446C12.796 7.20197 12.6361 9.29257 15.7321 9.29257C16.0256 9.29288 16.3186 9.266 16.6072 9.21228C16.6072 9.20762 16.6072 9.20264 16.6048 9.19768C16.5493 8.88926 16.4626 8.58726 16.346 8.2964Z"
                                             fill="#0AE8F0" />
                                     </svg>
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="max-[1400px]:hidden" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M13.866 5.64388C13.866 7.77839 12.1354 9.51045 10.0009 9.51045C7.86502 9.51045 6.13433 7.77972 6.13433 5.64388C6.13433 3.50803 7.86502 1.77734 10.0009 1.77734C12.1354 1.77734 13.866 3.50803 13.866 5.64388ZM4.97786 10.4763C2.84335 10.4763 1.11133 12.207 1.11133 14.3416C1.11133 16.4761 2.84202 18.2081 4.97786 18.2081C7.11371 18.2081 8.8444 16.4774 8.8444 14.3416C8.8444 12.207 7.11371 10.4763 4.97786 10.4763ZM15.0225 10.4763C12.8867 10.4763 11.156 12.207 11.156 14.3429C11.156 16.4787 12.8867 18.2095 15.0225 18.2095C17.1571 18.2095 18.8891 16.4787 18.8891 14.3429C18.8891 12.207 17.1584 10.4763 15.0225 10.4763Z"
                                             fill="#F06A6A" />
                                     </svg>
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="max-[1400px]:hidden" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M4.76778 1.11133C4.09833 1.11133 3.55566 1.65401 3.55566 2.32344V17.677C3.55566 18.3464 4.09833 18.8891 4.76778 18.8891H15.2727C15.9421 18.8891 16.4848 18.3464 16.4848 17.677V5.95982L11.6364 1.11133H4.76778Z"
                                             fill="#20A464" />
@@ -1801,6 +1932,11 @@
                                             </linearGradient>
                                         </defs>
                                     </svg>
+                                    <button
+                                        class="py-0.5 px-[5px] bg-[#EDE9E9] rounded-[5px] text-xs leading-[130%] font-medium text-Theme-Black min-[1400px]:hidden">
+
+                                        <span class="">3</span>
+                                    </button>
                                 </div>
 
                                 <div x-data="dropdownComponent('menu5')" class="relative w-max">
@@ -2013,6 +2149,1221 @@
                         </div>
                     </div>
                 </div>
+                <!-- grid-view  -->
+                <div
+                    class="w-full hidden max-[1080px]:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-[15px] py-5 px-[15px]">
+                    <div class="p-[3px] rounded-10px bg-[#F2EFEF] transition-all duration-500 hover:bg-[#EDE9E9]">
+                        <div
+                            class="w-full rounded-[7px] bg-white min-h-[160px] flex items-center justify-center relative">
+                            <svg width="175" height="36" viewBox="0 0 175 36" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="59.6591" width="55.6818" height="36" rx="4" fill="#E8F5B7" />
+                                <rect x="77.5565" y="10.4512" width="20.8807" height="2.32258" rx="1" fill="white" />
+                                <rect x="77.5565" y="16.2578" width="11.9318" height="2.32258" rx="1" fill="white" />
+                                <rect x="77.5565" y="22.0645" width="11.9318" height="2.32258" rx="1" fill="white" />
+                                <rect x="55.6816" y="36" width="55.6818" height="36" rx="4"
+                                    transform="rotate(-180 55.6816 36)" fill="url(#paint0_linear_312_64)" />
+                                <rect x="17.8979" y="19.7422" width="20.8807" height="2.32258" rx="1" fill="#DEDADA" />
+                                <rect x="21.875" y="13.9355" width="11.9318" height="2.32258" rx="1" fill="#DEDADA" />
+                                <rect x="119.318" width="55.6818" height="36" rx="4"
+                                    fill="url(#paint1_linear_312_64)" />
+                                <rect x="137.216" y="19.7422" width="20.8807" height="2.32258" rx="1" fill="#DEDADA" />
+                                <rect x="141.193" y="13.9355" width="11.9318" height="2.32258" rx="1" fill="#DEDADA" />
+                                <defs>
+                                    <linearGradient id="paint0_linear_312_64" x1="55.6816" y1="54" x2="111.363" y2="54"
+                                        gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#EDE9E9" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint1_linear_312_64" x1="119.318" y1="18" x2="175" y2="18"
+                                        gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#EDE9E9" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <span
+                                class="py-[5px] px-2.5 rounded-[5px] bg-[#E8F5B7] text-xs leading-[130%] text-[#6A8700] absolute bottom-[5px] right-[5px]">5
+                                Responses</span>
+                        </div>
+                        <div class="py-[15px] px-3 flex items-center justify-between">
+                            <div class="block">
+                                <h5 class="text-sm leading-[120%] font-medium text-Theme-Black mb-[11px]">Audience
+                                    Survey 25</h5>
+                                <p class="text-xs leading-[120%] text-[#8C8484]">15 July 2025</p>
+                            </div>
+                            <div x-data="dropdownComponent('menu1')" class="relative w-max">
+                                <button @click="toggle" :class="{'bg-white': isOpen, 'bg-[#F2EFEF]': !isOpen}"
+                                    class="w-[30px] h-[30px] aspect-square rounded-[5px] bg-[#F2EFEF] flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:bg-white">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.5951 8.99964H14.6077" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M8.99371 8.99964H9.00628" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M3.39239 8.99964H3.40496" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+
+                                <div x-ref="menu" x-show="isOpen" x-transition
+                                    x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                                    @click.outside="close"
+                                    class="absolute right-0 z-10 p-2 mt-2 w-[200px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft ">
+                                    <ul class="flex flex-col gap-0.5">
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <rect x="5.75" y="5.75" width="8.25" height="8.25" rx="2"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M5.75 11V11C4.10626 11 3.28439 11 2.73121 10.546C2.62995 10.4629 2.53709 10.3701 2.45398 10.2688C2 9.71561 2 8.89374 2 7.25V6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2H7.25C8.89374 2 9.71561 2 10.2688 2.45398C10.3701 2.53709 10.4629 2.62995 10.546 2.73121C11 3.28439 11 4.10626 11 5.75V5.75"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                </svg>
+                                                Copy link
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M13.25 1C14.2165 1 15 1.7835 15 2.75C15 3.7165 14.2165 4.5 13.25 4.5C12.2835 4.5 11.5 3.7165 11.5 2.75C11.5 1.7835 12.2835 1 13.25 1Z"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M2.75 11.5C3.7165 11.5 4.5 12.2835 4.5 13.25C4.5 14.2165 3.7165 15 2.75 15C1.7835 15 1 14.2165 1 13.25C1 12.2835 1.7835 11.5 2.75 11.5Z"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M7.47855 0.646447C7.28329 0.451184 6.96671 0.451184 6.77145 0.646447C6.57618 0.841709 6.57618 1.15829 6.77145 1.35355L7.47855 0.646447ZM8.875 2.75L9.22855 3.10355C9.42382 2.90829 9.42382 2.59171 9.22855 2.39645L8.875 2.75ZM6.77145 4.14645C6.57618 4.34171 6.57618 4.65829 6.77145 4.85355C6.96671 5.04882 7.28329 5.04882 7.47855 4.85355L6.77145 4.14645ZM7.125 1L6.77145 1.35355L8.52145 3.10355L8.875 2.75L9.22855 2.39645L7.47855 0.646447L7.125 1ZM8.875 2.75L8.52145 2.39645L6.77145 4.14645L7.125 4.5L7.47855 4.85355L9.22855 3.10355L8.875 2.75ZM8.875 2.75V2.25H4.75V2.75V3.25H8.875V2.75ZM2.75 4.75H2.25V11.5H2.75H3.25V4.75H2.75ZM4.75 2.75V2.25C3.36929 2.25 2.25 3.36929 2.25 4.75H2.75H3.25C3.25 3.92157 3.92157 3.25 4.75 3.25V2.75Z"
+                                                        fill="#000A06" />
+                                                    <path
+                                                        d="M8.52145 15.3536C8.71671 15.5488 9.03329 15.5488 9.22855 15.3536C9.42382 15.1583 9.42382 14.8417 9.22855 14.6464L8.52145 15.3536ZM7.125 13.25L6.77145 12.8964C6.57618 13.0917 6.57618 13.4083 6.77145 13.6036L7.125 13.25ZM9.22855 11.8536C9.42382 11.6583 9.42382 11.3417 9.22855 11.1464C9.03329 10.9512 8.71671 10.9512 8.52145 11.1464L9.22855 11.8536ZM8.875 15L9.22855 14.6464L7.47855 12.8964L7.125 13.25L6.77145 13.6036L8.52145 15.3536L8.875 15ZM7.125 13.25L7.47855 13.6036L9.22855 11.8536L8.875 11.5L8.52145 11.1464L6.77145 12.8964L7.125 13.25ZM7.125 13.25V13.75H11.25V13.25V12.75H7.125V13.25ZM13.25 11.25H13.75V4.5H13.25H12.75V11.25H13.25ZM11.25 13.25V13.75C12.6307 13.75 13.75 12.6307 13.75 11.25H13.25H12.75C12.75 12.0784 12.0784 12.75 11.25 12.75V13.25Z"
+                                                        fill="#000A06" />
+                                                </svg>
+                                                Logic Flow
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M12.375 6.6875V5C12.375 3.11438 12.375 2.17157 11.7892 1.58579C11.2034 1 10.2606 1 8.375 1H5C3.11438 1 2.17157 1 1.58579 1.58579C1 2.17157 1 3.11438 1 5V8.375C1 10.2606 1 11.2034 1.58579 11.7892C2.17157 12.375 3.11438 12.375 5 12.375H6.6875"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <rect x="7.125" y="3.625" width="3.5" height="3.5" rx="0.5"
+                                                        transform="rotate(90 7.125 3.625)" stroke="#000A06" />
+                                                    <path d="M12.3672 9.75V15" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M15 12.3701L9.75 12.3701" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Connect
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M4.37553 3.52463L11.0675 1.29398C14.0706 0.292944 15.7022 1.93243 14.709 4.93553L12.4784 11.6275C10.9808 16.1282 8.52155 16.1282 7.02394 11.6275L6.36184 9.64118L4.37553 8.97908C-0.125178 7.48147 -0.125178 5.03012 4.37553 3.52463Z"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M6.50781 9.30235L9.32962 6.47266" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Share
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <rect x="1" y="1" width="14" height="14" rx="2" stroke="black" />
+                                                    <path d="M3.625 4.5L4.5 5.375L6.25 3.625" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.625 8L4.5 8.875L6.25 7.125" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.625 11.5L4.5 12.375L6.25 10.625" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M8.875 4.5L12.375 4.5" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M8.875 8L12.375 8" stroke="black" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8.875 11.5H12.375" stroke="black" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Results
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path d="M10 14L12 14L14 14" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8.94934 3.04032L2.79017 9.32234C2.5576 9.5609 2.33254 10.0308 2.28753 10.3561L2.00995 12.6983C1.91243 13.5441 2.5426 14.1224 3.41284 13.9778L5.82849 13.5802C6.16609 13.5224 6.63872 13.2838 6.87128 13.0381L13.0305 6.75604C14.0957 5.67168 14.5759 4.43552 12.9179 2.92465C11.2675 1.42824 10.0146 1.95596 8.94934 3.04032Z"
+                                                        stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8.46094 3.8457C8.75226 5.82449 10.2698 7.33726 12.1532 7.53801"
+                                                        stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Rename
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <rect x="4.25" y="4.25" width="9.75" height="9.75" rx="2"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M9.75 2H8.75C6.1787 2 4.89305 2 3.94359 2.56909C3.37937 2.90726 2.90726 3.37937 2.56909 3.94359C2 4.89305 2 6.1787 2 8.75V8.75"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M9.125 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M11 9.12109L7.25 9.12109" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Duplicate
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M9.75373 4.59V2.88628C9.75373 2.10064 10.6132 1.70341 11.1145 2.25954L14.7672 6.31132C15.0776 6.65559 15.0776 7.21172 14.7672 7.55599L11.1145 11.6078C10.6132 12.1639 9.75373 11.7755 9.75373 10.9899V9.2C5.77476 9.2 2.98948 10.9104 1 14C1.79579 9.58629 4.18318 5.47274 9.75373 4.59Z"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                </svg>
+                                                Copy to
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M7.73323 5.38038V4.07086C7.73323 3.467 8.39383 3.16168 8.77918 3.58913L11.5867 6.70342C11.8253 6.96804 11.8253 7.39549 11.5867 7.6601L8.77918 10.7744C8.39383 11.2018 7.73323 10.9033 7.73323 10.2994V8.92372C4.67491 8.92372 2.53408 10.2384 1.00492 12.6131C1.61659 9.22064 3.45158 6.05887 7.73323 5.38038Z"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M7.73323 5.38038V4.07086C7.73323 3.467 8.39383 3.16168 8.77918 3.58913L11.5867 6.70342C11.8253 6.96804 11.8253 7.39549 11.5867 7.6601L8.77918 10.7744C8.39383 11.2018 7.73323 10.9033 7.73323 10.2994V8.92372C4.67491 8.92372 2.53408 10.2384 1.00492 12.6131C1.61659 9.22064 3.45158 6.05887 7.73323 5.38038Z"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M12.0135 3.58887L14.8211 6.70316C15.0596 6.96777 15.0596 7.39522 14.8211 7.65983L12.0135 10.7741"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Move to
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M3.5 4.25H12.5V10C12.5 11.8856 12.5 12.8284 11.9142 13.4142C11.3284 14 10.3856 14 8.5 14H7.5C5.61438 14 4.67157 14 4.08579 13.4142C3.5 12.8284 3.5 11.8856 3.5 10V4.25Z"
+                                                        stroke="#000A06" />
+                                                    <path d="M2 4.25H14" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M5 4C5 3.05719 5 2.58579 5.29289 2.29289C5.58579 2 6.05719 2 7 2H9C9.94281 2 10.4142 2 10.7071 2.29289C11 2.58579 11 3.05719 11 4V4.25H5V4Z"
+                                                        stroke="#000A06" />
+                                                    <path d="M6.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M9.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-[3px] rounded-10px bg-[#F2EFEF] transition-all duration-500 hover:bg-[#EDE9E9]">
+                        <div
+                            class="w-full rounded-[7px] bg-white min-h-[160px] flex items-center justify-center relative">
+                            <svg width="57" height="92" viewBox="0 0 57 92" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="57" height="79" rx="4" fill="#E8F5B7" />
+                                <rect x="18.3215" y="13" width="21.375" height="2" rx="1" fill="white" />
+                                <rect x="18.3215" y="18" width="12.2143" height="2" rx="1" fill="white" />
+                                <rect x="18.3215" y="23" width="12.2143" height="2" rx="1" fill="white" />
+                                <rect x="18.3215" y="31" width="21.375" height="2" rx="1" fill="white" />
+                                <rect x="18.3215" y="56" width="21.375" height="2" rx="1" fill="white" />
+                                <rect x="18.3215" y="60" width="21.375" height="2" rx="1" fill="white" />
+                                <rect x="18.3215" y="36" width="12.2143" height="2" rx="1" fill="white" />
+                                <rect x="18.3215" y="41" width="12.2143" height="2" rx="1" fill="white" />
+                                <rect y="84" width="57" height="8" rx="4" fill="#F6F6F6" />
+                                <rect x="18.3215" y="87" width="21.375" height="2" rx="1" fill="#B8DD2F" />
+                            </svg>
+
+                            <span
+                                class="py-[5px] px-2.5 rounded-[5px] bg-[#E8F5B7] text-xs leading-[130%] text-[#6A8700] absolute bottom-[5px] right-[5px]">5
+                                Responses</span>
+                        </div>
+                        <div class="py-[15px] px-3 flex items-center justify-between">
+                            <div class="block">
+                                <h5 class="text-sm leading-[120%] font-medium text-Theme-Black mb-[11px]">Audience
+                                    Survey 25</h5>
+                                <p class="text-xs leading-[120%] text-[#8C8484]">15 July 2025</p>
+                            </div>
+                            <div x-data="dropdownComponent('menu2')" class="relative w-max">
+                                <button @click="toggle" :class="{'bg-white': isOpen}"
+                                    class="w-[30px] h-[30px] aspect-square rounded-[5px] bg-[#F2EFEF] flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:bg-white">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.5951 8.99964H14.6077" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M8.99371 8.99964H9.00628" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M3.39239 8.99964H3.40496" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+
+                                <div x-ref="menu" x-show="isOpen" x-transition
+                                    x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                                    @click.outside="close"
+                                    class="absolute right-0 z-10 p-2 mt-2 w-[200px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft">
+                                    <ul class="">
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <rect x="5.75" y="5.75" width="8.25" height="8.25" rx="2"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M5.75 11V11C4.10626 11 3.28439 11 2.73121 10.546C2.62995 10.4629 2.53709 10.3701 2.45398 10.2688C2 9.71561 2 8.89374 2 7.25V6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2H7.25C8.89374 2 9.71561 2 10.2688 2.45398C10.3701 2.53709 10.4629 2.62995 10.546 2.73121C11 3.28439 11 4.10626 11 5.75V5.75"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                </svg>
+                                                Copy link
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M13.25 1C14.2165 1 15 1.7835 15 2.75C15 3.7165 14.2165 4.5 13.25 4.5C12.2835 4.5 11.5 3.7165 11.5 2.75C11.5 1.7835 12.2835 1 13.25 1Z"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M2.75 11.5C3.7165 11.5 4.5 12.2835 4.5 13.25C4.5 14.2165 3.7165 15 2.75 15C1.7835 15 1 14.2165 1 13.25C1 12.2835 1.7835 11.5 2.75 11.5Z"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M7.47855 0.646447C7.28329 0.451184 6.96671 0.451184 6.77145 0.646447C6.57618 0.841709 6.57618 1.15829 6.77145 1.35355L7.47855 0.646447ZM8.875 2.75L9.22855 3.10355C9.42382 2.90829 9.42382 2.59171 9.22855 2.39645L8.875 2.75ZM6.77145 4.14645C6.57618 4.34171 6.57618 4.65829 6.77145 4.85355C6.96671 5.04882 7.28329 5.04882 7.47855 4.85355L6.77145 4.14645ZM7.125 1L6.77145 1.35355L8.52145 3.10355L8.875 2.75L9.22855 2.39645L7.47855 0.646447L7.125 1ZM8.875 2.75L8.52145 2.39645L6.77145 4.14645L7.125 4.5L7.47855 4.85355L9.22855 3.10355L8.875 2.75ZM8.875 2.75V2.25H4.75V2.75V3.25H8.875V2.75ZM2.75 4.75H2.25V11.5H2.75H3.25V4.75H2.75ZM4.75 2.75V2.25C3.36929 2.25 2.25 3.36929 2.25 4.75H2.75H3.25C3.25 3.92157 3.92157 3.25 4.75 3.25V2.75Z"
+                                                        fill="#000A06" />
+                                                    <path
+                                                        d="M8.52145 15.3536C8.71671 15.5488 9.03329 15.5488 9.22855 15.3536C9.42382 15.1583 9.42382 14.8417 9.22855 14.6464L8.52145 15.3536ZM7.125 13.25L6.77145 12.8964C6.57618 13.0917 6.57618 13.4083 6.77145 13.6036L7.125 13.25ZM9.22855 11.8536C9.42382 11.6583 9.42382 11.3417 9.22855 11.1464C9.03329 10.9512 8.71671 10.9512 8.52145 11.1464L9.22855 11.8536ZM8.875 15L9.22855 14.6464L7.47855 12.8964L7.125 13.25L6.77145 13.6036L8.52145 15.3536L8.875 15ZM7.125 13.25L7.47855 13.6036L9.22855 11.8536L8.875 11.5L8.52145 11.1464L6.77145 12.8964L7.125 13.25ZM7.125 13.25V13.75H11.25V13.25V12.75H7.125V13.25ZM13.25 11.25H13.75V4.5H13.25H12.75V11.25H13.25ZM11.25 13.25V13.75C12.6307 13.75 13.75 12.6307 13.75 11.25H13.25H12.75C12.75 12.0784 12.0784 12.75 11.25 12.75V13.25Z"
+                                                        fill="#000A06" />
+                                                </svg>
+                                                Logic Flow
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M12.375 6.6875V5C12.375 3.11438 12.375 2.17157 11.7892 1.58579C11.2034 1 10.2606 1 8.375 1H5C3.11438 1 2.17157 1 1.58579 1.58579C1 2.17157 1 3.11438 1 5V8.375C1 10.2606 1 11.2034 1.58579 11.7892C2.17157 12.375 3.11438 12.375 5 12.375H6.6875"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <rect x="7.125" y="3.625" width="3.5" height="3.5" rx="0.5"
+                                                        transform="rotate(90 7.125 3.625)" stroke="#000A06" />
+                                                    <path d="M12.3672 9.75V15" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M15 12.3701L9.75 12.3701" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Connect
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M4.37553 3.52463L11.0675 1.29398C14.0706 0.292944 15.7022 1.93243 14.709 4.93553L12.4784 11.6275C10.9808 16.1282 8.52155 16.1282 7.02394 11.6275L6.36184 9.64118L4.37553 8.97908C-0.125178 7.48147 -0.125178 5.03012 4.37553 3.52463Z"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M6.50781 9.30235L9.32962 6.47266" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Share
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <rect x="1" y="1" width="14" height="14" rx="2" stroke="black" />
+                                                    <path d="M3.625 4.5L4.5 5.375L6.25 3.625" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.625 8L4.5 8.875L6.25 7.125" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.625 11.5L4.5 12.375L6.25 10.625" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M8.875 4.5L12.375 4.5" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M8.875 8L12.375 8" stroke="black" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8.875 11.5H12.375" stroke="black" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Results
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path d="M10 14L12 14L14 14" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8.94934 3.04032L2.79017 9.32234C2.5576 9.5609 2.33254 10.0308 2.28753 10.3561L2.00995 12.6983C1.91243 13.5441 2.5426 14.1224 3.41284 13.9778L5.82849 13.5802C6.16609 13.5224 6.63872 13.2838 6.87128 13.0381L13.0305 6.75604C14.0957 5.67168 14.5759 4.43552 12.9179 2.92465C11.2675 1.42824 10.0146 1.95596 8.94934 3.04032Z"
+                                                        stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8.46094 3.8457C8.75226 5.82449 10.2698 7.33726 12.1532 7.53801"
+                                                        stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Rename
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <rect x="4.25" y="4.25" width="9.75" height="9.75" rx="2"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M9.75 2H8.75C6.1787 2 4.89305 2 3.94359 2.56909C3.37937 2.90726 2.90726 3.37937 2.56909 3.94359C2 4.89305 2 6.1787 2 8.75V8.75"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M9.125 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M11 9.12109L7.25 9.12109" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Duplicate
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M9.75373 4.59V2.88628C9.75373 2.10064 10.6132 1.70341 11.1145 2.25954L14.7672 6.31132C15.0776 6.65559 15.0776 7.21172 14.7672 7.55599L11.1145 11.6078C10.6132 12.1639 9.75373 11.7755 9.75373 10.9899V9.2C5.77476 9.2 2.98948 10.9104 1 14C1.79579 9.58629 4.18318 5.47274 9.75373 4.59Z"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                </svg>
+                                                Copy to
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M7.73323 5.38038V4.07086C7.73323 3.467 8.39383 3.16168 8.77918 3.58913L11.5867 6.70342C11.8253 6.96804 11.8253 7.39549 11.5867 7.6601L8.77918 10.7744C8.39383 11.2018 7.73323 10.9033 7.73323 10.2994V8.92372C4.67491 8.92372 2.53408 10.2384 1.00492 12.6131C1.61659 9.22064 3.45158 6.05887 7.73323 5.38038Z"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M7.73323 5.38038V4.07086C7.73323 3.467 8.39383 3.16168 8.77918 3.58913L11.5867 6.70342C11.8253 6.96804 11.8253 7.39549 11.5867 7.6601L8.77918 10.7744C8.39383 11.2018 7.73323 10.9033 7.73323 10.2994V8.92372C4.67491 8.92372 2.53408 10.2384 1.00492 12.6131C1.61659 9.22064 3.45158 6.05887 7.73323 5.38038Z"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M12.0135 3.58887L14.8211 6.70316C15.0596 6.96777 15.0596 7.39522 14.8211 7.65983L12.0135 10.7741"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Move to
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M3.5 4.25H12.5V10C12.5 11.8856 12.5 12.8284 11.9142 13.4142C11.3284 14 10.3856 14 8.5 14H7.5C5.61438 14 4.67157 14 4.08579 13.4142C3.5 12.8284 3.5 11.8856 3.5 10V4.25Z"
+                                                        stroke="#000A06" />
+                                                    <path d="M2 4.25H14" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M5 4C5 3.05719 5 2.58579 5.29289 2.29289C5.58579 2 6.05719 2 7 2H9C9.94281 2 10.4142 2 10.7071 2.29289C11 2.58579 11 3.05719 11 4V4.25H5V4Z"
+                                                        stroke="#000A06" />
+                                                    <path d="M6.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M9.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-[3px] rounded-10px bg-[#F2EFEF] transition-all duration-500 hover:bg-[#EDE9E9]">
+                        <div
+                            class="w-full rounded-[7px] bg-white min-h-[160px] flex items-center justify-center relative">
+                            <svg width="175" height="36" viewBox="0 0 175 36" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="59.6591" width="55.6818" height="36" rx="4" fill="#E8F5B7" />
+                                <rect x="77.5565" y="10.4512" width="20.8807" height="2.32258" rx="1" fill="white" />
+                                <rect x="77.5565" y="16.2578" width="11.9318" height="2.32258" rx="1" fill="white" />
+                                <rect x="77.5565" y="22.0645" width="11.9318" height="2.32258" rx="1" fill="white" />
+                                <rect x="55.6816" y="36" width="55.6818" height="36" rx="4"
+                                    transform="rotate(-180 55.6816 36)" fill="url(#paint0_linear_312_64)" />
+                                <rect x="17.8979" y="19.7422" width="20.8807" height="2.32258" rx="1" fill="#DEDADA" />
+                                <rect x="21.875" y="13.9355" width="11.9318" height="2.32258" rx="1" fill="#DEDADA" />
+                                <rect x="119.318" width="55.6818" height="36" rx="4"
+                                    fill="url(#paint1_linear_312_64)" />
+                                <rect x="137.216" y="19.7422" width="20.8807" height="2.32258" rx="1" fill="#DEDADA" />
+                                <rect x="141.193" y="13.9355" width="11.9318" height="2.32258" rx="1" fill="#DEDADA" />
+                                <defs>
+                                    <linearGradient id="paint0_linear_312_64" x1="55.6816" y1="54" x2="111.363" y2="54"
+                                        gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#EDE9E9" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint1_linear_312_64" x1="119.318" y1="18" x2="175" y2="18"
+                                        gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#EDE9E9" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <span
+                                class="py-[5px] px-2.5 rounded-[5px] bg-[#E8F5B7] text-xs leading-[130%] text-[#6A8700] absolute bottom-[5px] right-[5px]">5
+                                Responses</span>
+                        </div>
+                        <div class="py-[15px] px-3 flex items-center justify-between">
+                            <div class="block">
+                                <h5 class="text-sm leading-[120%] font-medium text-Theme-Black mb-[11px]">Audience
+                                    Survey 25</h5>
+                                <p class="text-xs leading-[120%] text-[#8C8484]">15 July 2025</p>
+                            </div>
+                            <div x-data="dropdownComponent('menu3')" class="relative w-max">
+                                <button @click="toggle" :class="isOpen ? 'bg-white' : ''"
+                                    class="w-[30px] h-[30px] aspect-square rounded-[5px] bg-[#F2EFEF] flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:bg-white">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.5951 8.99964H14.6077" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M8.99371 8.99964H9.00628" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M3.39239 8.99964H3.40496" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+
+                                <div x-ref="menu" x-show="isOpen" x-transition
+                                    x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                                    @click.outside="close"
+                                    class="absolute right-0 z-10 p-2 mt-2 w-[200px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft">
+                                    <ul class="">
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <rect x="5.75" y="5.75" width="8.25" height="8.25" rx="2"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M5.75 11V11C4.10626 11 3.28439 11 2.73121 10.546C2.62995 10.4629 2.53709 10.3701 2.45398 10.2688C2 9.71561 2 8.89374 2 7.25V6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2H7.25C8.89374 2 9.71561 2 10.2688 2.45398C10.3701 2.53709 10.4629 2.62995 10.546 2.73121C11 3.28439 11 4.10626 11 5.75V5.75"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                </svg>
+                                                Copy link
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M13.25 1C14.2165 1 15 1.7835 15 2.75C15 3.7165 14.2165 4.5 13.25 4.5C12.2835 4.5 11.5 3.7165 11.5 2.75C11.5 1.7835 12.2835 1 13.25 1Z"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M2.75 11.5C3.7165 11.5 4.5 12.2835 4.5 13.25C4.5 14.2165 3.7165 15 2.75 15C1.7835 15 1 14.2165 1 13.25C1 12.2835 1.7835 11.5 2.75 11.5Z"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M7.47855 0.646447C7.28329 0.451184 6.96671 0.451184 6.77145 0.646447C6.57618 0.841709 6.57618 1.15829 6.77145 1.35355L7.47855 0.646447ZM8.875 2.75L9.22855 3.10355C9.42382 2.90829 9.42382 2.59171 9.22855 2.39645L8.875 2.75ZM6.77145 4.14645C6.57618 4.34171 6.57618 4.65829 6.77145 4.85355C6.96671 5.04882 7.28329 5.04882 7.47855 4.85355L6.77145 4.14645ZM7.125 1L6.77145 1.35355L8.52145 3.10355L8.875 2.75L9.22855 2.39645L7.47855 0.646447L7.125 1ZM8.875 2.75L8.52145 2.39645L6.77145 4.14645L7.125 4.5L7.47855 4.85355L9.22855 3.10355L8.875 2.75ZM8.875 2.75V2.25H4.75V2.75V3.25H8.875V2.75ZM2.75 4.75H2.25V11.5H2.75H3.25V4.75H2.75ZM4.75 2.75V2.25C3.36929 2.25 2.25 3.36929 2.25 4.75H2.75H3.25C3.25 3.92157 3.92157 3.25 4.75 3.25V2.75Z"
+                                                        fill="#000A06" />
+                                                    <path
+                                                        d="M8.52145 15.3536C8.71671 15.5488 9.03329 15.5488 9.22855 15.3536C9.42382 15.1583 9.42382 14.8417 9.22855 14.6464L8.52145 15.3536ZM7.125 13.25L6.77145 12.8964C6.57618 13.0917 6.57618 13.4083 6.77145 13.6036L7.125 13.25ZM9.22855 11.8536C9.42382 11.6583 9.42382 11.3417 9.22855 11.1464C9.03329 10.9512 8.71671 10.9512 8.52145 11.1464L9.22855 11.8536ZM8.875 15L9.22855 14.6464L7.47855 12.8964L7.125 13.25L6.77145 13.6036L8.52145 15.3536L8.875 15ZM7.125 13.25L7.47855 13.6036L9.22855 11.8536L8.875 11.5L8.52145 11.1464L6.77145 12.8964L7.125 13.25ZM7.125 13.25V13.75H11.25V13.25V12.75H7.125V13.25ZM13.25 11.25H13.75V4.5H13.25H12.75V11.25H13.25ZM11.25 13.25V13.75C12.6307 13.75 13.75 12.6307 13.75 11.25H13.25H12.75C12.75 12.0784 12.0784 12.75 11.25 12.75V13.25Z"
+                                                        fill="#000A06" />
+                                                </svg>
+                                                Logic Flow
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M12.375 6.6875V5C12.375 3.11438 12.375 2.17157 11.7892 1.58579C11.2034 1 10.2606 1 8.375 1H5C3.11438 1 2.17157 1 1.58579 1.58579C1 2.17157 1 3.11438 1 5V8.375C1 10.2606 1 11.2034 1.58579 11.7892C2.17157 12.375 3.11438 12.375 5 12.375H6.6875"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <rect x="7.125" y="3.625" width="3.5" height="3.5" rx="0.5"
+                                                        transform="rotate(90 7.125 3.625)" stroke="#000A06" />
+                                                    <path d="M12.3672 9.75V15" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M15 12.3701L9.75 12.3701" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Connect
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M4.37553 3.52463L11.0675 1.29398C14.0706 0.292944 15.7022 1.93243 14.709 4.93553L12.4784 11.6275C10.9808 16.1282 8.52155 16.1282 7.02394 11.6275L6.36184 9.64118L4.37553 8.97908C-0.125178 7.48147 -0.125178 5.03012 4.37553 3.52463Z"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M6.50781 9.30235L9.32962 6.47266" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Share
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <rect x="1" y="1" width="14" height="14" rx="2" stroke="black" />
+                                                    <path d="M3.625 4.5L4.5 5.375L6.25 3.625" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.625 8L4.5 8.875L6.25 7.125" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.625 11.5L4.5 12.375L6.25 10.625" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M8.875 4.5L12.375 4.5" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M8.875 8L12.375 8" stroke="black" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8.875 11.5H12.375" stroke="black" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Results
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path d="M10 14L12 14L14 14" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8.94934 3.04032L2.79017 9.32234C2.5576 9.5609 2.33254 10.0308 2.28753 10.3561L2.00995 12.6983C1.91243 13.5441 2.5426 14.1224 3.41284 13.9778L5.82849 13.5802C6.16609 13.5224 6.63872 13.2838 6.87128 13.0381L13.0305 6.75604C14.0957 5.67168 14.5759 4.43552 12.9179 2.92465C11.2675 1.42824 10.0146 1.95596 8.94934 3.04032Z"
+                                                        stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8.46094 3.8457C8.75226 5.82449 10.2698 7.33726 12.1532 7.53801"
+                                                        stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Rename
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <rect x="4.25" y="4.25" width="9.75" height="9.75" rx="2"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M9.75 2H8.75C6.1787 2 4.89305 2 3.94359 2.56909C3.37937 2.90726 2.90726 3.37937 2.56909 3.94359C2 4.89305 2 6.1787 2 8.75V8.75"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M9.125 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M11 9.12109L7.25 9.12109" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Duplicate
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M9.75373 4.59V2.88628C9.75373 2.10064 10.6132 1.70341 11.1145 2.25954L14.7672 6.31132C15.0776 6.65559 15.0776 7.21172 14.7672 7.55599L11.1145 11.6078C10.6132 12.1639 9.75373 11.7755 9.75373 10.9899V9.2C5.77476 9.2 2.98948 10.9104 1 14C1.79579 9.58629 4.18318 5.47274 9.75373 4.59Z"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                </svg>
+                                                Copy to
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M7.73323 5.38038V4.07086C7.73323 3.467 8.39383 3.16168 8.77918 3.58913L11.5867 6.70342C11.8253 6.96804 11.8253 7.39549 11.5867 7.6601L8.77918 10.7744C8.39383 11.2018 7.73323 10.9033 7.73323 10.2994V8.92372C4.67491 8.92372 2.53408 10.2384 1.00492 12.6131C1.61659 9.22064 3.45158 6.05887 7.73323 5.38038Z"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M7.73323 5.38038V4.07086C7.73323 3.467 8.39383 3.16168 8.77918 3.58913L11.5867 6.70342C11.8253 6.96804 11.8253 7.39549 11.5867 7.6601L8.77918 10.7744C8.39383 11.2018 7.73323 10.9033 7.73323 10.2994V8.92372C4.67491 8.92372 2.53408 10.2384 1.00492 12.6131C1.61659 9.22064 3.45158 6.05887 7.73323 5.38038Z"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M12.0135 3.58887L14.8211 6.70316C15.0596 6.96777 15.0596 7.39522 14.8211 7.65983L12.0135 10.7741"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Move to
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M3.5 4.25H12.5V10C12.5 11.8856 12.5 12.8284 11.9142 13.4142C11.3284 14 10.3856 14 8.5 14H7.5C5.61438 14 4.67157 14 4.08579 13.4142C3.5 12.8284 3.5 11.8856 3.5 10V4.25Z"
+                                                        stroke="#000A06" />
+                                                    <path d="M2 4.25H14" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M5 4C5 3.05719 5 2.58579 5.29289 2.29289C5.58579 2 6.05719 2 7 2H9C9.94281 2 10.4142 2 10.7071 2.29289C11 2.58579 11 3.05719 11 4V4.25H5V4Z"
+                                                        stroke="#000A06" />
+                                                    <path d="M6.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M9.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-[3px] rounded-10px bg-[#F2EFEF] transition-all duration-500 hover:bg-[#EDE9E9]">
+                        <div
+                            class="w-full rounded-[7px] bg-white min-h-[160px] flex items-center justify-center relative">
+                            <svg width="57" height="92" viewBox="0 0 57 92" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="57" height="79" rx="4" fill="#E8F5B7" />
+                                <rect x="18.3215" y="13" width="21.375" height="2" rx="1" fill="white" />
+                                <rect x="18.3215" y="18" width="12.2143" height="2" rx="1" fill="white" />
+                                <rect x="18.3215" y="23" width="12.2143" height="2" rx="1" fill="white" />
+                                <rect x="18.3215" y="31" width="21.375" height="2" rx="1" fill="white" />
+                                <rect x="18.3215" y="56" width="21.375" height="2" rx="1" fill="white" />
+                                <rect x="18.3215" y="60" width="21.375" height="2" rx="1" fill="white" />
+                                <rect x="18.3215" y="36" width="12.2143" height="2" rx="1" fill="white" />
+                                <rect x="18.3215" y="41" width="12.2143" height="2" rx="1" fill="white" />
+                                <rect y="84" width="57" height="8" rx="4" fill="#F6F6F6" />
+                                <rect x="18.3215" y="87" width="21.375" height="2" rx="1" fill="#B8DD2F" />
+                            </svg>
+
+                            <span
+                                class="py-[5px] px-2.5 rounded-[5px] bg-[#E8F5B7] text-xs leading-[130%] text-[#6A8700] absolute bottom-[5px] right-[5px]">5
+                                Responses</span>
+                        </div>
+                        <div class="py-[15px] px-3 flex items-center justify-between">
+                            <div class="block">
+                                <h5 class="text-sm leading-[120%] font-medium text-Theme-Black mb-[11px]">Audience
+                                    Survey 25</h5>
+                                <p class="text-xs leading-[120%] text-[#8C8484]">15 July 2025</p>
+                            </div>
+                            <div x-data="dropdownComponent('menu4')" class="relative w-max">
+                                <button @click="toggle" :class="{'bg-white': isOpen}"
+                                    class="w-[30px] h-[30px] aspect-square rounded-[5px] bg-[#F2EFEF] flex items-center justify-center cursor-pointer  transition-all duration-500 ease-out hover:bg-white">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.5951 8.99964H14.6077" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M8.99371 8.99964H9.00628" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M3.39239 8.99964H3.40496" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+
+                                <div x-ref="menu" x-show="isOpen" x-transition
+                                    x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                                    @click.outside="close"
+                                    class="absolute right-0 z-10 p-2 mt-2 w-[200px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft">
+                                    <ul class="">
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <rect x="5.75" y="5.75" width="8.25" height="8.25" rx="2"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M5.75 11V11C4.10626 11 3.28439 11 2.73121 10.546C2.62995 10.4629 2.53709 10.3701 2.45398 10.2688C2 9.71561 2 8.89374 2 7.25V6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2H7.25C8.89374 2 9.71561 2 10.2688 2.45398C10.3701 2.53709 10.4629 2.62995 10.546 2.73121C11 3.28439 11 4.10626 11 5.75V5.75"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                </svg>
+                                                Copy link
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M13.25 1C14.2165 1 15 1.7835 15 2.75C15 3.7165 14.2165 4.5 13.25 4.5C12.2835 4.5 11.5 3.7165 11.5 2.75C11.5 1.7835 12.2835 1 13.25 1Z"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M2.75 11.5C3.7165 11.5 4.5 12.2835 4.5 13.25C4.5 14.2165 3.7165 15 2.75 15C1.7835 15 1 14.2165 1 13.25C1 12.2835 1.7835 11.5 2.75 11.5Z"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M7.47855 0.646447C7.28329 0.451184 6.96671 0.451184 6.77145 0.646447C6.57618 0.841709 6.57618 1.15829 6.77145 1.35355L7.47855 0.646447ZM8.875 2.75L9.22855 3.10355C9.42382 2.90829 9.42382 2.59171 9.22855 2.39645L8.875 2.75ZM6.77145 4.14645C6.57618 4.34171 6.57618 4.65829 6.77145 4.85355C6.96671 5.04882 7.28329 5.04882 7.47855 4.85355L6.77145 4.14645ZM7.125 1L6.77145 1.35355L8.52145 3.10355L8.875 2.75L9.22855 2.39645L7.47855 0.646447L7.125 1ZM8.875 2.75L8.52145 2.39645L6.77145 4.14645L7.125 4.5L7.47855 4.85355L9.22855 3.10355L8.875 2.75ZM8.875 2.75V2.25H4.75V2.75V3.25H8.875V2.75ZM2.75 4.75H2.25V11.5H2.75H3.25V4.75H2.75ZM4.75 2.75V2.25C3.36929 2.25 2.25 3.36929 2.25 4.75H2.75H3.25C3.25 3.92157 3.92157 3.25 4.75 3.25V2.75Z"
+                                                        fill="#000A06" />
+                                                    <path
+                                                        d="M8.52145 15.3536C8.71671 15.5488 9.03329 15.5488 9.22855 15.3536C9.42382 15.1583 9.42382 14.8417 9.22855 14.6464L8.52145 15.3536ZM7.125 13.25L6.77145 12.8964C6.57618 13.0917 6.57618 13.4083 6.77145 13.6036L7.125 13.25ZM9.22855 11.8536C9.42382 11.6583 9.42382 11.3417 9.22855 11.1464C9.03329 10.9512 8.71671 10.9512 8.52145 11.1464L9.22855 11.8536ZM8.875 15L9.22855 14.6464L7.47855 12.8964L7.125 13.25L6.77145 13.6036L8.52145 15.3536L8.875 15ZM7.125 13.25L7.47855 13.6036L9.22855 11.8536L8.875 11.5L8.52145 11.1464L6.77145 12.8964L7.125 13.25ZM7.125 13.25V13.75H11.25V13.25V12.75H7.125V13.25ZM13.25 11.25H13.75V4.5H13.25H12.75V11.25H13.25ZM11.25 13.25V13.75C12.6307 13.75 13.75 12.6307 13.75 11.25H13.25H12.75C12.75 12.0784 12.0784 12.75 11.25 12.75V13.25Z"
+                                                        fill="#000A06" />
+                                                </svg>
+                                                Logic Flow
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M12.375 6.6875V5C12.375 3.11438 12.375 2.17157 11.7892 1.58579C11.2034 1 10.2606 1 8.375 1H5C3.11438 1 2.17157 1 1.58579 1.58579C1 2.17157 1 3.11438 1 5V8.375C1 10.2606 1 11.2034 1.58579 11.7892C2.17157 12.375 3.11438 12.375 5 12.375H6.6875"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <rect x="7.125" y="3.625" width="3.5" height="3.5" rx="0.5"
+                                                        transform="rotate(90 7.125 3.625)" stroke="#000A06" />
+                                                    <path d="M12.3672 9.75V15" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M15 12.3701L9.75 12.3701" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Connect
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M4.37553 3.52463L11.0675 1.29398C14.0706 0.292944 15.7022 1.93243 14.709 4.93553L12.4784 11.6275C10.9808 16.1282 8.52155 16.1282 7.02394 11.6275L6.36184 9.64118L4.37553 8.97908C-0.125178 7.48147 -0.125178 5.03012 4.37553 3.52463Z"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M6.50781 9.30235L9.32962 6.47266" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Share
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <rect x="1" y="1" width="14" height="14" rx="2" stroke="black" />
+                                                    <path d="M3.625 4.5L4.5 5.375L6.25 3.625" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.625 8L4.5 8.875L6.25 7.125" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.625 11.5L4.5 12.375L6.25 10.625" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M8.875 4.5L12.375 4.5" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M8.875 8L12.375 8" stroke="black" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8.875 11.5H12.375" stroke="black" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Results
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path d="M10 14L12 14L14 14" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8.94934 3.04032L2.79017 9.32234C2.5576 9.5609 2.33254 10.0308 2.28753 10.3561L2.00995 12.6983C1.91243 13.5441 2.5426 14.1224 3.41284 13.9778L5.82849 13.5802C6.16609 13.5224 6.63872 13.2838 6.87128 13.0381L13.0305 6.75604C14.0957 5.67168 14.5759 4.43552 12.9179 2.92465C11.2675 1.42824 10.0146 1.95596 8.94934 3.04032Z"
+                                                        stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8.46094 3.8457C8.75226 5.82449 10.2698 7.33726 12.1532 7.53801"
+                                                        stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Rename
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <rect x="4.25" y="4.25" width="9.75" height="9.75" rx="2"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M9.75 2H8.75C6.1787 2 4.89305 2 3.94359 2.56909C3.37937 2.90726 2.90726 3.37937 2.56909 3.94359C2 4.89305 2 6.1787 2 8.75V8.75"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M9.125 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M11 9.12109L7.25 9.12109" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Duplicate
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M9.75373 4.59V2.88628C9.75373 2.10064 10.6132 1.70341 11.1145 2.25954L14.7672 6.31132C15.0776 6.65559 15.0776 7.21172 14.7672 7.55599L11.1145 11.6078C10.6132 12.1639 9.75373 11.7755 9.75373 10.9899V9.2C5.77476 9.2 2.98948 10.9104 1 14C1.79579 9.58629 4.18318 5.47274 9.75373 4.59Z"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                </svg>
+                                                Copy to
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M7.73323 5.38038V4.07086C7.73323 3.467 8.39383 3.16168 8.77918 3.58913L11.5867 6.70342C11.8253 6.96804 11.8253 7.39549 11.5867 7.6601L8.77918 10.7744C8.39383 11.2018 7.73323 10.9033 7.73323 10.2994V8.92372C4.67491 8.92372 2.53408 10.2384 1.00492 12.6131C1.61659 9.22064 3.45158 6.05887 7.73323 5.38038Z"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M7.73323 5.38038V4.07086C7.73323 3.467 8.39383 3.16168 8.77918 3.58913L11.5867 6.70342C11.8253 6.96804 11.8253 7.39549 11.5867 7.6601L8.77918 10.7744C8.39383 11.2018 7.73323 10.9033 7.73323 10.2994V8.92372C4.67491 8.92372 2.53408 10.2384 1.00492 12.6131C1.61659 9.22064 3.45158 6.05887 7.73323 5.38038Z"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M12.0135 3.58887L14.8211 6.70316C15.0596 6.96777 15.0596 7.39522 14.8211 7.65983L12.0135 10.7741"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Move to
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M3.5 4.25H12.5V10C12.5 11.8856 12.5 12.8284 11.9142 13.4142C11.3284 14 10.3856 14 8.5 14H7.5C5.61438 14 4.67157 14 4.08579 13.4142C3.5 12.8284 3.5 11.8856 3.5 10V4.25Z"
+                                                        stroke="#000A06" />
+                                                    <path d="M2 4.25H14" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M5 4C5 3.05719 5 2.58579 5.29289 2.29289C5.58579 2 6.05719 2 7 2H9C9.94281 2 10.4142 2 10.7071 2.29289C11 2.58579 11 3.05719 11 4V4.25H5V4Z"
+                                                        stroke="#000A06" />
+                                                    <path d="M6.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M9.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-[3px] rounded-10px bg-[#F2EFEF] transition-all duration-500 hover:bg-[#EDE9E9]">
+                        <div
+                            class="w-full rounded-[7px] bg-white min-h-[160px] flex items-center justify-center relative">
+                            <svg width="175" height="36" viewBox="0 0 175 36" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="59.6591" width="55.6818" height="36" rx="4" fill="#E8F5B7" />
+                                <rect x="77.5565" y="10.4512" width="20.8807" height="2.32258" rx="1" fill="white" />
+                                <rect x="77.5565" y="16.2578" width="11.9318" height="2.32258" rx="1" fill="white" />
+                                <rect x="77.5565" y="22.0645" width="11.9318" height="2.32258" rx="1" fill="white" />
+                                <rect x="55.6816" y="36" width="55.6818" height="36" rx="4"
+                                    transform="rotate(-180 55.6816 36)" fill="url(#paint0_linear_312_64)" />
+                                <rect x="17.8979" y="19.7422" width="20.8807" height="2.32258" rx="1" fill="#DEDADA" />
+                                <rect x="21.875" y="13.9355" width="11.9318" height="2.32258" rx="1" fill="#DEDADA" />
+                                <rect x="119.318" width="55.6818" height="36" rx="4"
+                                    fill="url(#paint1_linear_312_64)" />
+                                <rect x="137.216" y="19.7422" width="20.8807" height="2.32258" rx="1" fill="#DEDADA" />
+                                <rect x="141.193" y="13.9355" width="11.9318" height="2.32258" rx="1" fill="#DEDADA" />
+                                <defs>
+                                    <linearGradient id="paint0_linear_312_64" x1="55.6816" y1="54" x2="111.363" y2="54"
+                                        gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#EDE9E9" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint1_linear_312_64" x1="119.318" y1="18" x2="175" y2="18"
+                                        gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#EDE9E9" />
+                                        <stop offset="1" stop-color="white" stop-opacity="0" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <span
+                                class="py-[5px] px-2.5 rounded-[5px] bg-[#E8F5B7] text-xs leading-[130%] text-[#6A8700] absolute bottom-[5px] right-[5px]">5
+                                Responses</span>
+                        </div>
+                        <div class="py-[15px] px-3 flex items-center justify-between">
+                            <div class="block">
+                                <h5 class="text-sm leading-[120%] font-medium text-Theme-Black mb-[11px]">Audience
+                                    Survey 25</h5>
+                                <p class="text-xs leading-[120%] text-[#8C8484]">15 July 2025</p>
+                            </div>
+                            <div x-data="dropdownComponent('menu5')" class="relative w-max">
+                                <button @click="toggle" :class="{'bg-white': isOpen}"
+                                    class="w-[30px] h-[30px] aspect-square rounded-[5px] bg-[#F2EFEF] flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:bg-white">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.5951 8.99964H14.6077" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M8.99371 8.99964H9.00628" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M3.39239 8.99964H3.40496" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+
+                                <div x-ref="menu" x-show="isOpen" x-transition
+                                    x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                                    @click.outside="close"
+                                    class="absolute right-0 z-10 p-2 mt-2 w-[200px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft">
+                                    <ul class="">
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <rect x="5.75" y="5.75" width="8.25" height="8.25" rx="2"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M5.75 11V11C4.10626 11 3.28439 11 2.73121 10.546C2.62995 10.4629 2.53709 10.3701 2.45398 10.2688C2 9.71561 2 8.89374 2 7.25V6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2H7.25C8.89374 2 9.71561 2 10.2688 2.45398C10.3701 2.53709 10.4629 2.62995 10.546 2.73121C11 3.28439 11 4.10626 11 5.75V5.75"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                </svg>
+                                                Copy link
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M13.25 1C14.2165 1 15 1.7835 15 2.75C15 3.7165 14.2165 4.5 13.25 4.5C12.2835 4.5 11.5 3.7165 11.5 2.75C11.5 1.7835 12.2835 1 13.25 1Z"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M2.75 11.5C3.7165 11.5 4.5 12.2835 4.5 13.25C4.5 14.2165 3.7165 15 2.75 15C1.7835 15 1 14.2165 1 13.25C1 12.2835 1.7835 11.5 2.75 11.5Z"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M7.47855 0.646447C7.28329 0.451184 6.96671 0.451184 6.77145 0.646447C6.57618 0.841709 6.57618 1.15829 6.77145 1.35355L7.47855 0.646447ZM8.875 2.75L9.22855 3.10355C9.42382 2.90829 9.42382 2.59171 9.22855 2.39645L8.875 2.75ZM6.77145 4.14645C6.57618 4.34171 6.57618 4.65829 6.77145 4.85355C6.96671 5.04882 7.28329 5.04882 7.47855 4.85355L6.77145 4.14645ZM7.125 1L6.77145 1.35355L8.52145 3.10355L8.875 2.75L9.22855 2.39645L7.47855 0.646447L7.125 1ZM8.875 2.75L8.52145 2.39645L6.77145 4.14645L7.125 4.5L7.47855 4.85355L9.22855 3.10355L8.875 2.75ZM8.875 2.75V2.25H4.75V2.75V3.25H8.875V2.75ZM2.75 4.75H2.25V11.5H2.75H3.25V4.75H2.75ZM4.75 2.75V2.25C3.36929 2.25 2.25 3.36929 2.25 4.75H2.75H3.25C3.25 3.92157 3.92157 3.25 4.75 3.25V2.75Z"
+                                                        fill="#000A06" />
+                                                    <path
+                                                        d="M8.52145 15.3536C8.71671 15.5488 9.03329 15.5488 9.22855 15.3536C9.42382 15.1583 9.42382 14.8417 9.22855 14.6464L8.52145 15.3536ZM7.125 13.25L6.77145 12.8964C6.57618 13.0917 6.57618 13.4083 6.77145 13.6036L7.125 13.25ZM9.22855 11.8536C9.42382 11.6583 9.42382 11.3417 9.22855 11.1464C9.03329 10.9512 8.71671 10.9512 8.52145 11.1464L9.22855 11.8536ZM8.875 15L9.22855 14.6464L7.47855 12.8964L7.125 13.25L6.77145 13.6036L8.52145 15.3536L8.875 15ZM7.125 13.25L7.47855 13.6036L9.22855 11.8536L8.875 11.5L8.52145 11.1464L6.77145 12.8964L7.125 13.25ZM7.125 13.25V13.75H11.25V13.25V12.75H7.125V13.25ZM13.25 11.25H13.75V4.5H13.25H12.75V11.25H13.25ZM11.25 13.25V13.75C12.6307 13.75 13.75 12.6307 13.75 11.25H13.25H12.75C12.75 12.0784 12.0784 12.75 11.25 12.75V13.25Z"
+                                                        fill="#000A06" />
+                                                </svg>
+                                                Logic Flow
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M12.375 6.6875V5C12.375 3.11438 12.375 2.17157 11.7892 1.58579C11.2034 1 10.2606 1 8.375 1H5C3.11438 1 2.17157 1 1.58579 1.58579C1 2.17157 1 3.11438 1 5V8.375C1 10.2606 1 11.2034 1.58579 11.7892C2.17157 12.375 3.11438 12.375 5 12.375H6.6875"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <rect x="7.125" y="3.625" width="3.5" height="3.5" rx="0.5"
+                                                        transform="rotate(90 7.125 3.625)" stroke="#000A06" />
+                                                    <path d="M12.3672 9.75V15" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M15 12.3701L9.75 12.3701" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Connect
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M4.37553 3.52463L11.0675 1.29398C14.0706 0.292944 15.7022 1.93243 14.709 4.93553L12.4784 11.6275C10.9808 16.1282 8.52155 16.1282 7.02394 11.6275L6.36184 9.64118L4.37553 8.97908C-0.125178 7.48147 -0.125178 5.03012 4.37553 3.52463Z"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M6.50781 9.30235L9.32962 6.47266" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Share
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <rect x="1" y="1" width="14" height="14" rx="2" stroke="black" />
+                                                    <path d="M3.625 4.5L4.5 5.375L6.25 3.625" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.625 8L4.5 8.875L6.25 7.125" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.625 11.5L4.5 12.375L6.25 10.625" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M8.875 4.5L12.375 4.5" stroke="black"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M8.875 8L12.375 8" stroke="black" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8.875 11.5H12.375" stroke="black" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Results
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path d="M10 14L12 14L14 14" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8.94934 3.04032L2.79017 9.32234C2.5576 9.5609 2.33254 10.0308 2.28753 10.3561L2.00995 12.6983C1.91243 13.5441 2.5426 14.1224 3.41284 13.9778L5.82849 13.5802C6.16609 13.5224 6.63872 13.2838 6.87128 13.0381L13.0305 6.75604C14.0957 5.67168 14.5759 4.43552 12.9179 2.92465C11.2675 1.42824 10.0146 1.95596 8.94934 3.04032Z"
+                                                        stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8.46094 3.8457C8.75226 5.82449 10.2698 7.33726 12.1532 7.53801"
+                                                        stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Rename
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <rect x="4.25" y="4.25" width="9.75" height="9.75" rx="2"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M9.75 2H8.75C6.1787 2 4.89305 2 3.94359 2.56909C3.37937 2.90726 2.90726 3.37937 2.56909 3.94359C2 4.89305 2 6.1787 2 8.75V8.75"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M9.125 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M11 9.12109L7.25 9.12109" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Duplicate
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M9.75373 4.59V2.88628C9.75373 2.10064 10.6132 1.70341 11.1145 2.25954L14.7672 6.31132C15.0776 6.65559 15.0776 7.21172 14.7672 7.55599L11.1145 11.6078C10.6132 12.1639 9.75373 11.7755 9.75373 10.9899V9.2C5.77476 9.2 2.98948 10.9104 1 14C1.79579 9.58629 4.18318 5.47274 9.75373 4.59Z"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                </svg>
+                                                Copy to
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M7.73323 5.38038V4.07086C7.73323 3.467 8.39383 3.16168 8.77918 3.58913L11.5867 6.70342C11.8253 6.96804 11.8253 7.39549 11.5867 7.6601L8.77918 10.7744C8.39383 11.2018 7.73323 10.9033 7.73323 10.2994V8.92372C4.67491 8.92372 2.53408 10.2384 1.00492 12.6131C1.61659 9.22064 3.45158 6.05887 7.73323 5.38038Z"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M7.73323 5.38038V4.07086C7.73323 3.467 8.39383 3.16168 8.77918 3.58913L11.5867 6.70342C11.8253 6.96804 11.8253 7.39549 11.5867 7.6601L8.77918 10.7744C8.39383 11.2018 7.73323 10.9033 7.73323 10.2994V8.92372C4.67491 8.92372 2.53408 10.2384 1.00492 12.6131C1.61659 9.22064 3.45158 6.05887 7.73323 5.38038Z"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M12.0135 3.58887L14.8211 6.70316C15.0596 6.96777 15.0596 7.39522 14.8211 7.65983L12.0135 10.7741"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Move to
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M3.5 4.25H12.5V10C12.5 11.8856 12.5 12.8284 11.9142 13.4142C11.3284 14 10.3856 14 8.5 14H7.5C5.61438 14 4.67157 14 4.08579 13.4142C3.5 12.8284 3.5 11.8856 3.5 10V4.25Z"
+                                                        stroke="#000A06" />
+                                                    <path d="M2 4.25H14" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M5 4C5 3.05719 5 2.58579 5.29289 2.29289C5.58579 2 6.05719 2 7 2H9C9.94281 2 10.4142 2 10.7071 2.29289C11 2.58579 11 3.05719 11 4V4.25H5V4Z"
+                                                        stroke="#000A06" />
+                                                    <path d="M6.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M9.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -2027,7 +3378,47 @@
             });
         });
     </script>
+    <script>
+        function setup() {
+            function getSidebarStateFromLocalStorage() {
+                const savedState = window.localStorage.getItem("isSidebarOpen");
 
+                // If user has already toggled before → use saved state
+                if (savedState !== null) {
+                    return JSON.parse(savedState);
+                }
+
+                // Default behavior: open on desktop, closed on mobile
+                return window.innerWidth >= 768;
+            }
+
+            function setSidebarStateToLocalStorage(value) {
+                window.localStorage.setItem("isSidebarOpen", value);
+            }
+
+            return {
+                isSidebarOpen: getSidebarStateFromLocalStorage(),
+
+                toggleSidbarMenu() {
+                    this.isSidebarOpen = !this.isSidebarOpen;
+                    setSidebarStateToLocalStorage(this.isSidebarOpen);
+                },
+
+                // Optional: dynamically adjust on resize
+                handleResize() {
+                    if (window.innerWidth >= 768 && this.isSidebarOpen === false) {
+                        this.isSidebarOpen = true;
+                    } else if (window.innerWidth < 768 && this.isSidebarOpen === true) {
+                        this.isSidebarOpen = false;
+                    }
+                },
+
+                init() {
+                    window.addEventListener('resize', () => this.handleResize());
+                }
+            };
+        }
+    </script>
     <script>
         function dropdownComponent(id) {
             return {

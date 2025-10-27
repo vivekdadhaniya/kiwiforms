@@ -160,19 +160,7 @@
     width: 100%;
     display: grid;
     position: relative;
-    @apply gap-8 min-[1400px]:gap-[50px]
-  }
-
-  .list-card-list {
-    grid-auto-columns: 1fr;
-    grid-template-rows: repeat(1, auto);
-    /* padding: 12px; */
-    grid-template-columns: calc(100% - 815px) repeat(1, 90px)50px 105px 110px 210px;
-
-    width: 100%;
-    display: grid;
-    position: relative;
-    @apply gap-8 min-[1400px]:gap-[50px]
+    @apply gap-4 min-[1400px]:gap-[50px]
   }
 
   #Trigger-sortable li.active {
@@ -294,5 +282,36 @@
   /* Animate stroke on checkbox checked */
   input:checked~.checkmark svg path {
     stroke-dashoffset: 0;
+  }
+
+  .dropdown-item.active+.abs-bg {
+    opacity: 1 !important;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .list-card-list {
+    grid-auto-columns: 1fr;
+    grid-template-rows: repeat(1, auto);
+    /* padding: 12px; */
+    grid-template-columns: calc(100% - 535px) repeat(1, 90px)50px 105px 110px 100px;
+
+    width: 100%;
+    display: grid;
+    position: relative;
+    @apply gap-4
+  }
+
+  @media (min-width: 1400px) {
+    .list-card-list {
+      grid-auto-columns: 1fr;
+      grid-template-rows: repeat(1, auto);
+      /* padding: 12px; */
+      grid-template-columns: calc(100% - 815px) repeat(1, 90px)50px 105px 110px 210px;
+
+      width: 100%;
+      display: grid;
+      position: relative;
+      @apply gap-[50px]
+    }
   }
 }
