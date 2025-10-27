@@ -2693,9 +2693,19 @@
       justify-content: space-between;
     }
   }
+  .max-sm\:justify-center {
+    @media (width < 40rem) {
+      justify-content: center;
+    }
+  }
   .max-sm\:justify-end {
     @media (width < 40rem) {
       justify-content: flex-end;
+    }
+  }
+  .max-sm\:gap-6 {
+    @media (width < 40rem) {
+      gap: calc(var(--spacing) * 6);
     }
   }
   .max-sm\:gap-\[15px\] {
@@ -2796,6 +2806,11 @@
   .sm\:items-center {
     @media (width >= 40rem) {
       align-items: center;
+    }
+  }
+  .sm\:justify-between {
+    @media (width >= 40rem) {
+      justify-content: space-between;
     }
   }
   .sm\:pr-8 {

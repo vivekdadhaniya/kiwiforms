@@ -121,7 +121,7 @@
         </header>
 
         <div
-            class="rounded-t-10px bg-transparent p-[1px] pt-[61px] w-full h-auto md:min-h-screen flex items-center gap-px">
+            class="rounded-t-10px bg-transparent p-[1px] pt-[61px] w-full h-auto min-h-screen flex items-center gap-px">
             <div
                 class="w-full px-4 lg:px-8 h-full  rounded-10px flex items-center justify-center  bg-linear-to-b from-white via-[#F6F6F6] to-[#F6F6F6]">
                 <form action="#" class="w-full max-w-[982px] mx-auto h-full py-24 flex justify-between flex-col">
@@ -501,44 +501,45 @@
                     <div class="flex flex-col w-full gap-5">
                         <p class="text-[15px] leading-[200%] text-[#8C8484] text-center">
                             Enter your details to personalize your Kiwiform experience,<br>
-                           <span class="text-Theme-Black">Or press Skip to continue.</span> 
+                            <span class="text-Theme-Black">Or press Skip to continue.</span>
                         </p>
-                    </div>
-                    <div class="flex items-center justify-between w-full ">
-                        <div class="flex items-center gap-5 w-full">
-                            <a href="#" class="flex items-center justify-between w-full max-w-[98px] p-[15px] rounded-10px border border-[#E2DCDC] bg-white text-sm leading-140 font-medium text-Theme-Black
-                             transition-all duration-500 hover:border-[#EDE9E9] hover:shadow-soft">
-                                <svg width="5" height="10" viewBox="0 0 5 10" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M4.69134 0.0423035C4.87818 0.128296 5 0.330873 5 0.555569L5 9.44442C5 9.66916 4.87818 9.87167 4.69134 9.95767C4.5045 10.0437 4.28944 9.99619 4.14644 9.8373L0.14645 5.39287C-0.0488169 5.17591 -0.0488169 4.82413 0.14645 4.60717L4.14644 0.162733C4.28944 0.00384441 4.50451 -0.0436814 4.69134 0.0423035Z"
-                                        fill="#000A06" />
-                                </svg>
-                                Back
-                            </a>
-                            <a href="#" class="flex items-center justify-between w-full max-w-[98px] p-[15px] rounded-10px border border-[#E2DCDC] bg-white text-sm leading-140 font-medium text-Theme-Black
-                             transition-all duration-500 hover:border-[#EDE9E9] hover:shadow-soft">
-                                Skip
-                                <svg width="5" height="10" viewBox="0 0 5 10" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M0.308661 9.9577C0.12182 9.8717 0 9.66913 0 9.44443L0 0.555583C0 0.330843 0.12182 0.128325 0.308661 0.042326C0.495495 -0.0436735 0.710555 0.00380704 0.853556 0.162696L4.85355 4.60713C5.04882 4.82409 5.04882 5.17587 4.85355 5.39283L0.853556 9.83727C0.710555 9.99616 0.495495 10.0437 0.308661 9.9577Z"
-                                        fill="#000A06" />
-                                </svg>
-                            </a>
-                        </div>
-                        <button class="w-full max-w-[218px] mx-auto mt-6 p-[15px] rounded-[10px] bg-Theme-Green flex items-center justify-between text-sm font-medium leading-[140%] text-white
-  transition-all duration-500 hover:bg-[#026D3F] relative overflow-hidden group">
-                            <span class="relative z-10">Create An Account</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="5" height="10" viewBox="0 0 5 10" fill="none"
-                                class="relative z-10 transition-transform duration-500 group-hover:translate-x-1">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M0.308661 9.9577C0.12182 9.8717 0 9.66913 0 9.44443L0 0.555583C0 0.330843 0.12182 0.128326 0.308661 0.042326C0.495495 -0.0436738 0.710556 0.00380744 0.853556 0.162696L4.85355 4.60713C5.04882 4.82409 5.04882 5.17587 4.85355 5.39283L0.853556 9.83727C0.710556 9.99616 0.495495 10.0437 0.308661 9.9577Z"
-                                    fill="white" />
-                            </svg>
-                        </button>
-                    </div>
 
+                        <div class="flex flex-col sm:flex-row max-sm:gap-6 sm:items-center sm:justify-between w-full ">
+                            <div class="flex items-center max-sm:justify-center gap-5 w-full">
+                                <a href="#" class="flex items-center justify-between w-full max-w-[98px] p-[15px] rounded-10px border border-[#E2DCDC] bg-white text-sm leading-140 font-medium text-Theme-Black
+                             transition-all duration-500 hover:border-[#EDE9E9] hover:shadow-soft">
+                                    <svg width="5" height="10" viewBox="0 0 5 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M4.69134 0.0423035C4.87818 0.128296 5 0.330873 5 0.555569L5 9.44442C5 9.66916 4.87818 9.87167 4.69134 9.95767C4.5045 10.0437 4.28944 9.99619 4.14644 9.8373L0.14645 5.39287C-0.0488169 5.17591 -0.0488169 4.82413 0.14645 4.60717L4.14644 0.162733C4.28944 0.00384441 4.50451 -0.0436814 4.69134 0.0423035Z"
+                                            fill="#000A06" />
+                                    </svg>
+                                    Back
+                                </a>
+                                <a href="#" class="flex items-center justify-between w-full max-w-[98px] p-[15px] rounded-10px border border-[#E2DCDC] bg-white text-sm leading-140 font-medium text-Theme-Black
+                             transition-all duration-500 hover:border-[#EDE9E9] hover:shadow-soft">
+                                    Skip
+                                    <svg width="5" height="10" viewBox="0 0 5 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M0.308661 9.9577C0.12182 9.8717 0 9.66913 0 9.44443L0 0.555583C0 0.330843 0.12182 0.128325 0.308661 0.042326C0.495495 -0.0436735 0.710555 0.00380704 0.853556 0.162696L4.85355 4.60713C5.04882 4.82409 5.04882 5.17587 4.85355 5.39283L0.853556 9.83727C0.710555 9.99616 0.495495 10.0437 0.308661 9.9577Z"
+                                            fill="#000A06" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <button class="w-full max-w-[218px] mx-auto p-[15px] rounded-[10px] bg-Theme-Green flex items-center justify-between text-sm font-medium leading-[140%] text-white
+  transition-all duration-500 hover:bg-[#026D3F] relative overflow-hidden group">
+                                <span class="relative z-10">Create An Account</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="5" height="10" viewBox="0 0 5 10"
+                                    fill="none"
+                                    class="relative z-10 transition-transform duration-500 group-hover:translate-x-1">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M0.308661 9.9577C0.12182 9.8717 0 9.66913 0 9.44443L0 0.555583C0 0.330843 0.12182 0.128326 0.308661 0.042326C0.495495 -0.0436738 0.710556 0.00380744 0.853556 0.162696L4.85355 4.60713C5.04882 4.82409 5.04882 5.17587 4.85355 5.39283L0.853556 9.83727C0.710556 9.99616 0.495495 10.0437 0.308661 9.9577Z"
+                                        fill="white" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </form>
             </div>
 
