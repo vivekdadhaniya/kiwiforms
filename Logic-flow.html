@@ -154,7 +154,8 @@
                             class="py-[5px] px-[15px] header-links ">Branching</button>
                         <button data-modal-target="Scoring" class="py-[5px] px-[15px] header-links ">Scoring</button>
                         <a href="#" class="py-[5px] px-[15px] header-links">Tagging</a>
-                        <a href="#" class="py-[5px] px-[15px] header-links">Quiz Result</a>
+                        <button data-modal-target="Quiz-Result" class="py-[5px] px-[15px] header-links ">Quiz
+                            Result</button>
                     </div>
 
                     <div class="flex items-center justify-end gap-2.5">
@@ -487,9 +488,9 @@
     <!-- Pull data in modal -->
     <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[956px] "
         id="Pull-data">
-        <div class="flex items-center justify-between p-[15px] w-full">
-            <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">Pull data in through URL parameters</h2>
-            <span class="close-btn cursor-pointer bg-transparent transition-all duration-300 hover:text-limegreen ">
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">Collect data using URL parameters</h2>
+            <span class="close-btn cursor-pointer ">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -1176,8 +1177,8 @@
         <!-- modal header  -->
         <div class="flex items-center justify-between py-2.5 px-[5px] w-full">
             <div class="flex items-center gap-[15px] ">
-                <p
-                    class="flex items-center gap-3 p-[11px] rounded-l-10px rounded-r-full bg-white border border-[#E2DCDC]">
+                <div
+                    class="flex items-center gap-3 p-[11px] bg-white border border-[#E2DCDC] !rounded-l-10px rounded-r-full overflow-hidden">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M4.03763 1.53846C4.46535 0.820513 5.53465 0.820512 5.96237 1.53846L8.84946 6.38461C9.27718 7.10256 8.74254 8 7.8871 8H2.1129C1.25747 8 0.722818 7.10256 1.15054 6.38462L4.03763 1.53846Z"
@@ -1194,13 +1195,13 @@
                     </svg>
                     <span
                         class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#EDE9E9] text-xs leading-[100%] font-semibold text-[#8C8484]">1</span>
-                </p>
+                </div>
                 <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">Edit logic for <span
                         class="text-Theme-Green">Multiple Selection</span> </h2>
             </div>
 
             <span
-                class="close-btn cursor-pointer mr-3.5 bg-transparent transition-all duration-300 hover:text-limegreen ">
+                class="close-btn cursor-pointer">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -1209,7 +1210,12 @@
                 </svg>
             </span>
         </div>
-        <div class="w-full bg-white rounded-10px h-[539px] overflow-auto [&::-webkit-scrollbar]:hidden ">
+        <div class="w-full bg-white rounded-[10px] h-[539px] overflow-x-hidden overflow-y-auto 
+  [&::-webkit-scrollbar]:w-[5px]
+  [&::-webkit-scrollbar]:hidden
+  [&::-webkit-scrollbar-track]:bg-[#F8F6F6]
+  [&::-webkit-scrollbar-thumb]:bg-[#E2DCDC]
+  [&::-webkit-scrollbar-thumb]:rounded-full">
             <div class="flex items-center justify-between p-5 border-b border-[#E2DCDC]">
                 <div class="flex items-center gap-[15px]">
                     <span class="w-10 aspect-square rounded-10px bg-[#F2EFEF] flex items-center justify-center">
@@ -2097,7 +2103,7 @@
                                 <div class="flex items-center gap-2.5 w-full p-[5px] pr-2.5">
                                     <div class="custom-dropdown relative w-full max-w-[150px]" data-style="design1">
                                         <div class="relative ">
-                                            <button type="button"
+                                            <button type="button" id="then-condition"
                                                 class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] border border-[#E2DCDC] text-[#8C8484] p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
                                                 <span class="selected-option">Go to</span>
                                                 <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200"
@@ -2206,114 +2212,270 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="custom-dropdown relative w-full" data-style="design2"
-                                        data-copy-html="true">
-                                        <div class="relative w-full ">
+                                    <!-- then condition pre-code  -->
+                                    <div class="flex items-center gap-2.5 w-full">
+                                        <div id="default" class="custom-dropdown relative w-full" data-style="design2"
+                                            data-copy-html="true">
+                                            <div class="relative w-full ">
 
-                                            <button id="dropdownButton" type="button"
-                                                class="dropdown-button w-full flex justify-between items-center border border-[#E2DCDC] bg-[#F8F6F6] rounded-[10px] px-[15px] py-[9px] transition-all duration-500 hover:bg-white focus:outline-none focus:border-Theme-Green">
-                                                <div id="selectedOption"
-                                                    class="selected-option flex items-center gap-[15px] text-[15px] leading-120 font-medium text-[#8C8484]">
-                                                    <span
-                                                        class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">A</span>
-                                                    <p
-                                                        class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
-                                                        Choice 1
-                                                    </p>
-                                                </div>
-                                                <svg class="dropdown-arrow w-4 h-4 text-gray-500" fill="none"
-                                                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M19 9l-7 7-7-7" />
-                                                </svg>
-                                            </button>
-
-                                            <div id="dropdownMenu"
-                                                class="dropdown-menu hidden absolute p-[5px] z-10 mt-[5px] w-full bg-white border border-gray-200 rounded-[10px] shadow-soft">
-                                                <!-- Search -->
-                                                <div class="relative mb-2">
-                                                    <svg class="absolute top-2.5 left-2.5" width="20" height="20"
-                                                        viewBox="0 0 20 20" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M9.34375 15.6875C12.8473 15.6875 15.6875 12.8473 15.6875 9.34375C15.6875 5.84019 12.8473 3 9.34375 3C5.84019 3 3 5.84019 3 9.34375C3 12.8473 5.84019 15.6875 9.34375 15.6875Z"
-                                                            stroke="#8C8484" stroke-width="1.2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path d="M17 17L15.25 15.25" stroke="#8C8484" stroke-width="1.2"
-                                                            stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                    <input type="text" placeholder="Search..."
-                                                        class="dropdown-search w-full p-2.5 pl-10 rounded-[10px] focus:outline-none bg-[#EDE9E9] placeholder:text-[#8C8484] text-sm leading-140 text-Theme-Black">
-                                                </div>
-
-                                                <ul class="dropdown-list text-sm flex flex-col gap-px bg-[#F8F6F6]">
-
-                                                    <li
-                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white ">
+                                                <button id="dropdownButton" type="button"
+                                                    class="dropdown-button w-full flex justify-between items-center border border-[#E2DCDC] bg-[#F8F6F6] rounded-[10px] px-[15px] py-[9px] transition-all duration-500 hover:bg-white focus:outline-none focus:border-Theme-Green">
+                                                    <div id="selectedOption"
+                                                        class="selected-option flex items-center gap-[15px] text-[15px] leading-120 font-medium text-[#8C8484]">
                                                         <span
                                                             class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">A</span>
                                                         <p
                                                             class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
-
                                                             Choice 1
                                                         </p>
-                                                        <div
-                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
-                                                        </div>
-                                                    </li>
+                                                    </div>
+                                                    <svg class="dropdown-arrow w-4 h-4 text-gray-500" fill="none"
+                                                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </button>
 
-                                                    <li
-                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white ">
+                                                <div id="dropdownMenu"
+                                                    class="dropdown-menu hidden absolute p-[5px] z-10 mt-[5px] w-full bg-white border border-gray-200 rounded-[10px] shadow-soft">
+                                                    <!-- Search -->
+                                                    <div class="relative mb-2">
+                                                        <svg class="absolute top-2.5 left-2.5" width="20" height="20"
+                                                            viewBox="0 0 20 20" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M9.34375 15.6875C12.8473 15.6875 15.6875 12.8473 15.6875 9.34375C15.6875 5.84019 12.8473 3 9.34375 3C5.84019 3 3 5.84019 3 9.34375C3 12.8473 5.84019 15.6875 9.34375 15.6875Z"
+                                                                stroke="#8C8484" stroke-width="1.2"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M17 17L15.25 15.25" stroke="#8C8484"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                        </svg>
+                                                        <input type="text" placeholder="Search..."
+                                                            class="dropdown-search w-full p-2.5 pl-10 rounded-[10px] focus:outline-none bg-[#EDE9E9] placeholder:text-[#8C8484] text-sm leading-140 text-Theme-Black">
+                                                    </div>
+
+                                                    <ul class="dropdown-list text-sm flex flex-col gap-px bg-[#F8F6F6]">
+
+                                                        <li
+                                                            class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white ">
+                                                            <span
+                                                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">A</span>
+                                                            <p
+                                                                class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+
+                                                                Choice 1
+                                                            </p>
+                                                            <div
+                                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                            </div>
+                                                        </li>
+
+                                                        <li
+                                                            class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white ">
+                                                            <span
+                                                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">B</span>
+                                                            <p
+                                                                class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                                Choice 2
+                                                            </p>
+                                                            <div
+                                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                            </div>
+                                                        </li>
+
+                                                        <li
+                                                            class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                            <span
+                                                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">C</span>
+                                                            <p
+                                                                class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                                Choice 3
+                                                            </p>
+                                                            <div
+                                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                            </div>
+                                                        </li>
+
+                                                        <li
+                                                            class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                            <span
+                                                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">D</span>
+                                                            <p
+                                                                class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                                Choice 4
+                                                            </p>
+                                                            <div
+                                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                            </div>
+                                                        </li>
+
+                                                        <li
+                                                            class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                            <span
+                                                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">E</span>
+                                                            <p
+                                                                class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                                Choice 5
+                                                            </p>
+                                                            <div
+                                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none ">
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="first" class="hidden custom-dropdown relative w-full"
+                                            data-style="design2" data-copy-html="true">
+                                            <div class="relative w-full ">
+
+                                                <button id="dropdownButton" type="button"
+                                                    class="dropdown-button w-full flex justify-between items-center border border-[#E2DCDC] bg-[#F8F6F6] rounded-[10px] px-[15px] py-[9px] transition-all duration-500 hover:bg-white focus:outline-none focus:border-Theme-Green">
+                                                    <div id="selectedOption"
+                                                        class="selected-option flex items-center gap-[15px] text-[15px] leading-120 font-medium text-[#8C8484]">
                                                         <span
-                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">B</span>
+                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">A</span>
                                                         <p
                                                             class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
-                                                            Choice 2
+                                                            Choice 1
                                                         </p>
-                                                        <div
-                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
-                                                        </div>
-                                                    </li>
+                                                    </div>
+                                                    <svg class="dropdown-arrow w-4 h-4 text-gray-500" fill="none"
+                                                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </button>
 
-                                                    <li
-                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                <div id="dropdownMenu"
+                                                    class="dropdown-menu hidden absolute p-[5px] z-10 mt-[5px] w-full bg-white border border-gray-200 rounded-[10px] shadow-soft">
+                                                    <!-- Search -->
+                                                    <div class="relative mb-2">
+                                                        <svg class="absolute top-2.5 left-2.5" width="20" height="20"
+                                                            viewBox="0 0 20 20" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M9.34375 15.6875C12.8473 15.6875 15.6875 12.8473 15.6875 9.34375C15.6875 5.84019 12.8473 3 9.34375 3C5.84019 3 3 5.84019 3 9.34375C3 12.8473 5.84019 15.6875 9.34375 15.6875Z"
+                                                                stroke="#8C8484" stroke-width="1.2"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M17 17L15.25 15.25" stroke="#8C8484"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                        </svg>
+                                                        <input type="text" placeholder="Search..."
+                                                            class="dropdown-search w-full p-2.5 pl-10 rounded-[10px] focus:outline-none bg-[#EDE9E9] placeholder:text-[#8C8484] text-sm leading-140 text-Theme-Black">
+                                                    </div>
+
+                                                    <ul class="dropdown-list text-sm flex flex-col gap-px bg-[#F8F6F6]">
+
+                                                        <li
+                                                            class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white ">
+                                                            <span
+                                                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">A</span>
+                                                            <p
+                                                                class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+
+                                                                Choice 1
+                                                            </p>
+                                                            <div
+                                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                            </div>
+                                                        </li>
+
+                                                        <li
+                                                            class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white ">
+                                                            <span
+                                                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">B</span>
+                                                            <p
+                                                                class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                                Choice 2
+                                                            </p>
+                                                            <div
+                                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span id="to"
+                                            class="hidden text-xs font-medium text-Theme-Black leadingg-120">to</span>
+                                        <span id="by"
+                                            class="hidden text-xs font-medium text-Theme-Black leadingg-120">by</span>
+                                        <span id="from"
+                                            class="hidden text-xs font-medium text-Theme-Black leadingg-120">from</span>
+                                        <div id="second" class="hidden custom-dropdown relative w-full"
+                                            data-style="design2" data-copy-html="true">
+                                            <div class="relative w-full ">
+
+                                                <button id="dropdownButton" type="button"
+                                                    class="dropdown-button w-full flex justify-between items-center border border-[#E2DCDC] bg-[#F8F6F6] rounded-[10px] px-[15px] py-[9px] transition-all duration-500 hover:bg-white focus:outline-none focus:border-Theme-Green">
+                                                    <div id="selectedOption"
+                                                        class="selected-option flex items-center gap-[15px] text-[15px] leading-120 font-medium text-[#8C8484]">
                                                         <span
-                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">C</span>
+                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">A</span>
                                                         <p
                                                             class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
-                                                            Choice 3
+                                                            Choice 1
                                                         </p>
-                                                        <div
-                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
-                                                        </div>
-                                                    </li>
+                                                    </div>
+                                                    <svg class="dropdown-arrow w-4 h-4 text-gray-500" fill="none"
+                                                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </button>
 
-                                                    <li
-                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
-                                                        <span
-                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">D</span>
-                                                        <p
-                                                            class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
-                                                            Choice 4
-                                                        </p>
-                                                        <div
-                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
-                                                        </div>
-                                                    </li>
+                                                <div id="dropdownMenu"
+                                                    class="dropdown-menu hidden absolute p-[5px] z-10 mt-[5px] w-full bg-white border border-gray-200 rounded-[10px] shadow-soft">
+                                                    <!-- Search -->
+                                                    <div class="relative mb-2">
+                                                        <svg class="absolute top-2.5 left-2.5" width="20" height="20"
+                                                            viewBox="0 0 20 20" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M9.34375 15.6875C12.8473 15.6875 15.6875 12.8473 15.6875 9.34375C15.6875 5.84019 12.8473 3 9.34375 3C5.84019 3 3 5.84019 3 9.34375C3 12.8473 5.84019 15.6875 9.34375 15.6875Z"
+                                                                stroke="#8C8484" stroke-width="1.2"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M17 17L15.25 15.25" stroke="#8C8484"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                        </svg>
+                                                        <input type="text" placeholder="Search..."
+                                                            class="dropdown-search w-full p-2.5 pl-10 rounded-[10px] focus:outline-none bg-[#EDE9E9] placeholder:text-[#8C8484] text-sm leading-140 text-Theme-Black">
+                                                    </div>
 
-                                                    <li
-                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
-                                                        <span
-                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">E</span>
-                                                        <p
-                                                            class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
-                                                            Choice 5
-                                                        </p>
-                                                        <div
-                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none ">
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                                    <ul class="dropdown-list text-sm flex flex-col gap-px bg-[#F8F6F6]">
+
+                                                        <li
+                                                            class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white ">
+                                                            <span
+                                                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">A</span>
+                                                            <p
+                                                                class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+
+                                                                Choice 1
+                                                            </p>
+                                                            <div
+                                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                            </div>
+                                                        </li>
+
+                                                        <li
+                                                            class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white ">
+                                                            <span
+                                                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">B</span>
+                                                            <p
+                                                                class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                                Choice 2
+                                                            </p>
+                                                            <div
+                                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -2598,7 +2760,7 @@
     <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[956px] "
         id="Branching">
         <!-- modal header  -->
-        <div class="flex items-center justify-between py-3.5 px-[15px] w-full">
+         <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
             <div class="flex items-center gap-[15px] ">
 
                 <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
@@ -2607,7 +2769,7 @@
             </div>
 
             <span
-                class="close-btn cursor-pointer mr-3.5 bg-transparent transition-all duration-300 hover:text-limegreen ">
+                class="close-btn cursor-pointer  ">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -4289,7 +4451,7 @@
     <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[956px] "
         id="Scoring">
         <!-- modal header  -->
-        <div class="flex items-center justify-between py-3.5 px-[15px] w-full">
+         <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
             <div class="flex items-center gap-[15px] ">
 
                 <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
@@ -4298,7 +4460,7 @@
             </div>
 
             <span
-                class="close-btn cursor-pointer mr-3.5 bg-transparent transition-all duration-300 hover:text-limegreen ">
+                class="close-btn cursor-pointer">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -4311,12 +4473,15 @@
             class="w-full bg-white rounded-10px flex flex-col gap-5 h-[539px] overflow-auto [&::-webkit-scrollbar]:hidden p-2.5">
             <h4 class="px-2.5 pt-2.5 text-base leading-140 text-Theme-Black">Assign points to answers</h4>
             <!-- error msg for fogic  -->
-             <div class="w-full rounded-10px border border-[#DC3027] bg-linear-to-b from-[#F6E6E5] to-[#FFFFFF] p-[15px]">
-                <h5 class="text-base font-medium leading-140 text-[#DC3027] mb-2.5 ">Quiz Result is already configured.</h5>
+            <div
+                class="w-full rounded-10px border border-[#DC3027] bg-linear-to-b from-[#F6E6E5] to-[#FFFFFF] p-[15px]">
+                <h5 class="text-base font-medium leading-140 text-[#DC3027] mb-2.5 ">Quiz Result is already configured.
+                </h5>
                 <p class="text-[15px] leading-[200%] text-Theme-Black">
-                    To shift to Scoring, first remove all Quiz Result logic. Or combine different ending logic using Branching and calculations.
+                    To shift to Scoring, first remove all Quiz Result logic. Or combine different ending logic using
+                    Branching and calculations.
                 </p>
-             </div>
+            </div>
             <!-- Select multiple options -->
             <div class="p-[15px] rounded-10px border border-[#E9E1E1] w-full flex flex-col gap-[15px]">
                 <div class="flex items-center justify-between">
@@ -4783,6 +4948,511 @@
         </div>
     </div>
 
+    <!-- Quiz Result modal -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[956px] "
+        id="Quiz-Result">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Quiz-Result
+                </h2>
+            </div>
+
+            <span
+                class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div
+            class="w-full bg-white rounded-10px flex flex-col gap-5 h-[539px] overflow-auto [&::-webkit-scrollbar]:hidden p-[5px]">
+
+            <!-- info msg for Quiz  -->
+            <div
+                class="relative w-full rounded-10px border border-[#E9F9F3] bg-linear-to-b from-[#FFFFFF] to-[#E9F9F3] p-[15px]">
+                <h5 class="text-base font-medium leading-140 text-[#007D47] mb-2.5 ">
+                    Display different quiz results based on respondents answer.
+                </h5>
+                <p class="text-[15px] leading-[200%] text-Theme-Black mb-[15px]">
+                    Respondents receive the quiz ending that best reflects their choices. Each answer contributes one
+                    point toward a related ending, and the ending with the highest score is revealed once the quiz is
+                    finished.
+                </p>
+                <a href="#" class="rounded-10px bg-white border border-[#E2DCDC] py-2.5 px-5 text-sm leading-140 text-theme-Black trans">
+                    What’s Response matching?
+                </a>
+            </div>
+            <!-- Select multiple options -->
+            <div class="p-[15px] rounded-10px border border-[#E9E1E1] w-full flex flex-col gap-[15px]">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[15px]">
+                        <span class="w-10 aspect-square rounded-10px flex items-center justify-center bg-[#F2EFEF]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                fill="none">
+                                <path
+                                    d="M4.03763 1.53846C4.46535 0.820513 5.53465 0.820512 5.96237 1.53846L8.84946 6.38461C9.27718 7.10256 8.74254 8 7.8871 8H2.1129C1.25747 8 0.722818 7.10256 1.15054 6.38462L4.03763 1.53846Z"
+                                    fill="#CAEADC" stroke="#007D47" stroke-width="1.5" stroke-linejoin="round" />
+                                <circle cx="5" cy="15" r="4" stroke="#000A06" stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                                <path d="M12 3L19 3" stroke="#007D47" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M12 13L19 13" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M12 6L15 6" stroke="#007D47" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M12 16L15 16" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <p class="text-base font-medium leading-140 text-Theme-Black">Select multiple options</p>
+                    </div>
+                    <span
+                        class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#CAEADC] text-[15px] font-semibold leading-[160%] text-[#007D47]">1</span>
+                </div>
+                <div class="flex flex-col gap-2.5 w-full">
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">A</span>
+                            Choice 1
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">B</span>
+                            Choice 2
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">C</span>
+                            Choice 3
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">D</span>
+                            Choice 4
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                </div>
+            </div>
+            <!-- Drop Down -->
+            <div class="p-[15px] rounded-10px border border-[#E9E1E1] w-full flex flex-col gap-[15px]">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[15px]">
+                        <span class="w-10 aspect-square rounded-10px flex items-center justify-center bg-[#F2EFEF]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                fill="none">
+                                <circle cx="10" cy="10" r="9" fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                                <path d="M14 8L10 12L6 8" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <p class="text-base font-medium leading-140 text-Theme-Black">Drop Down</p>
+                    </div>
+                    <span
+                        class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#CAEADC] text-[15px] font-semibold leading-[160%] text-[#007D47]">2</span>
+                </div>
+                <div class="flex flex-col gap-2.5 w-full">
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">A</span>
+                            Choice 1
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">B</span>
+                            Choice 2
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">C</span>
+                            Choice 3
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">D</span>
+                            Choice 4
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                </div>
+            </div>
+            <!-- Picture Selection -->
+            <div class="p-[15px] rounded-10px border border-[#E9E1E1] w-full flex flex-col gap-[15px]">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[15px]">
+                        <span class="w-10 aspect-square rounded-10px flex items-center justify-center bg-[#F2EFEF]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                fill="none">
+                                <rect x="1" y="1" width="18" height="18" rx="2" fill="#CAEADC" stroke="#007D47"
+                                    stroke-width="1.5" />
+                                <circle cx="11" cy="6" r="2" stroke="#000A06" stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                                <path d="M10 15L14.8777 10L19.0001 14" stroke="#007D47" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M1 18L8 11L11 14" stroke="#007D47" stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <p class="text-base font-medium leading-140 text-Theme-Black">Picture Selection</p>
+                    </div>
+                    <span
+                        class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#CAEADC] text-[15px] font-semibold leading-[160%] text-[#007D47]">3</span>
+                </div>
+                <div class="flex flex-col gap-2.5 w-full">
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">A</span>
+                            Choice 1
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">B</span>
+                            Choice 2
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">C</span>
+                            Choice 3
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">D</span>
+                            Choice 4
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                </div>
+            </div>
+            <!-- Yes / No -->
+            <div class="p-[15px] rounded-10px border border-[#E9E1E1] w-full flex flex-col gap-[15px]">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[15px]">
+                        <span class="w-10 aspect-square rounded-10px flex items-center justify-center bg-[#F2EFEF]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                fill="none">
+                                <circle cx="10" cy="10" r="9" fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                                <path d="M6 10.7535L8.17936 13L14 7" stroke="#007D47" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path opacity="0.3" d="M8 7L14 13" stroke="#007D47" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <p class="text-base font-medium leading-140 text-Theme-Black">Yes / No</p>
+                    </div>
+                    <span
+                        class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#CAEADC] text-[15px] font-semibold leading-[160%] text-[#007D47]">4</span>
+                </div>
+                <div class="flex flex-col gap-2.5 w-full">
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">Y</span>
+                            Yes
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">N</span>
+                            No
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+
+                </div>
+            </div>
+            <!-- Legal Text -->
+            <div class="p-[15px] rounded-10px border border-[#E9E1E1] w-full flex flex-col gap-[15px]">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[15px]">
+                        <span class="w-10 aspect-square rounded-10px flex items-center justify-center bg-[#F2EFEF]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                fill="none">
+                                <path
+                                    d="M10.7071 12.121L12.1213 10.7068L17.6307 15.1143C18.4638 15.7808 18.5326 17.0235 17.7782 17.7779C17.0238 18.5323 15.7811 18.4635 15.1146 17.6303L10.7071 12.121Z"
+                                    stroke="#007D47" stroke-width="1.5" stroke-linejoin="round" />
+                                <rect x="3.64062" y="10.7109" width="10" height="6"
+                                    transform="rotate(-45 3.64062 10.7109)" fill="#CAEADC" stroke="#000A06"
+                                    stroke-width="1.5" stroke-linejoin="round" />
+                                <rect x="10" y="2.92969" width="3" height="8" rx="1.5"
+                                    transform="rotate(-45 10 2.92969)" stroke="#007D47" stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                                <rect x="0.8125" y="12.125" width="3" height="8" rx="1.5"
+                                    transform="rotate(-45 0.8125 12.125)" stroke="#007D47" stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <p class="text-base font-medium leading-140 text-Theme-Black">Legal Text</p>
+                    </div>
+                    <span
+                        class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#CAEADC] text-[15px] font-semibold leading-[160%] text-[#007D47]">5</span>
+                </div>
+                <div class="flex flex-col gap-2.5 w-full">
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">A</span>
+                            I accept
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">B</span>
+                            I don’t accept
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+
+                </div>
+            </div>
+            <!-- Opinion Poll -->
+            <div class="p-[15px] rounded-10px border border-[#E9E1E1] w-full flex flex-col gap-[15px]">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[15px]">
+                        <span class="w-10 aspect-square rounded-10px flex items-center justify-center bg-[#F2EFEF]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                fill="none">
+                                <rect x="1" y="5" width="4" height="11" rx="1" fill="#CAEADC" stroke="#007D47"
+                                    stroke-width="1.5" stroke-linejoin="round" />
+                                <rect x="8" y="3" width="4" height="13" rx="1" fill="#CAEADC" stroke="#007D47"
+                                    stroke-width="1.5" stroke-linejoin="round" />
+                                <rect x="15" y="1" width="4" height="15" rx="1" fill="#CAEADC" stroke="#007D47"
+                                    stroke-width="1.5" stroke-linejoin="round" />
+                                <path d="M1 19H19" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <p class="text-base font-medium leading-140 text-Theme-Black">Opinion Poll</p>
+                    </div>
+                    <span
+                        class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#CAEADC] text-[15px] font-semibold leading-[160%] text-[#007D47]">6</span>
+                </div>
+                <div class="flex flex-col gap-2.5 w-full">
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">A</span>
+                            1
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">B</span>
+                            2
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">C</span>
+                            3
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">D</span>
+                            4
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                </div>
+            </div>
+            <!-- Rating -->
+            <div class="p-[15px] rounded-10px border border-[#E9E1E1] w-full flex flex-col gap-[15px]">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[15px]">
+                        <span class="w-10 aspect-square rounded-10px flex items-center justify-center bg-[#F2EFEF]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                fill="none">
+                                <rect x="1" y="1" width="18" height="18" rx="2" fill="#CAEADC" stroke="#007D47"
+                                    stroke-width="1.5" stroke-linejoin="round" />
+                                <path
+                                    d="M9.04894 6.92705C9.4408 5.72104 9.63673 5.11803 10 5.11803C10.3633 5.11803 10.5592 5.72104 10.9511 6.92705L11.1226 7.45491C11.2309 7.78825 11.285 7.95491 11.4165 8.05041C11.5479 8.1459 11.7231 8.1459 12.0736 8.1459H12.6287C13.8967 8.1459 14.5308 8.1459 14.643 8.49139C14.7553 8.83688 14.2423 9.20956 13.2164 9.95491L12.7674 10.2812C12.4839 10.4872 12.3421 10.5902 12.2919 10.7447C12.2417 10.8992 12.2958 11.0659 12.4041 11.3992L12.5757 11.927C12.9675 13.1331 13.1634 13.7361 12.8695 13.9496C12.5757 14.1631 12.0627 13.7904 11.0368 13.0451L10.5878 12.7188C10.3042 12.5128 10.1625 12.4098 10 12.4098C9.83754 12.4098 9.69576 12.5128 9.41221 12.7188L8.96319 13.0451C7.93729 13.7904 7.42435 14.1631 7.13045 13.9496C6.83656 13.7361 7.03249 13.1331 7.42435 11.9271L7.59586 11.3992C7.70416 11.0659 7.75832 10.8992 7.70812 10.7447C7.65791 10.5902 7.51614 10.4872 7.23259 10.2812L6.78356 9.95492C5.75766 9.20956 5.24472 8.83688 5.35697 8.49139C5.46923 8.1459 6.10327 8.1459 7.37135 8.1459H7.92637C8.27686 8.1459 8.4521 8.1459 8.58354 8.05041C8.71497 7.95491 8.76912 7.78825 8.87743 7.45491L9.04894 6.92705Z"
+                                    stroke="#000A06" stroke-width="1.5" />
+                            </svg>
+                        </span>
+                        <p class="text-base font-medium leading-140 text-Theme-Black">Rating</p>
+                    </div>
+                    <span
+                        class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#CAEADC] text-[15px] font-semibold leading-[160%] text-[#007D47]">7</span>
+                </div>
+                <div class="flex flex-col gap-2.5 w-full">
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">A</span>
+                            1
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">B</span>
+                            2
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">C</span>
+                            3
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <div
+                            class="py-2.5 px-[15px] rounded-10px bg-[#F8F6F6] w-full flex items-center gap-[15px] text-[15px] leading-120 text-Theme-Black">
+                            <span
+                                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold leading-[100%] text-Theme-Black">D</span>
+                            4
+                        </div>
+                        <input type="number"
+                            class="w-full max-w-[100px] py-2.5 px-3.5 rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] text-[15px] leading-[18px] text-Theme-Black focus:outline-none focus:border-Theme-Green"
+                            placeholder="Score" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-between w-full py-2.5 px-[5px]">
+            <button
+                class="flex items-center gap-2.5 py-2.5 px-5 rounded-10px text-sm leading-140 font-medium text-[#DC3027] bg-[#F0DFDF] transition-all duration-500 hover:text-white hover:bg-[#DC3027]">
+                <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M3.5 4H15.5V13C15.5 14.8856 15.5 15.8284 14.9142 16.4142C14.3284 17 13.3856 17 11.5 17H7.5C5.61438 17 4.67157 17 4.08579 16.4142C3.5 15.8284 3.5 14.8856 3.5 13V4Z"
+                        stroke="currentColor" stroke-width="1.2" />
+                    <path d="M1.5 4H17.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M5.5 3C5.5 2.05719 5.5 1.58579 5.79289 1.29289C6.08579 1 6.55719 1 7.5 1H11.5C12.4428 1 12.9142 1 13.2071 1.29289C13.5 1.58579 13.5 2.05719 13.5 3V4H5.5V3Z"
+                        stroke="currentColor" stroke-width="1.2" />
+                    <path d="M7.5 8V13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M11.5 8V13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                Delete All Rules
+            </button>
+            <button class="btn-kiwi-green w-full max-w-[150px]">Save</button>
+        </div>
+    </div>
     <!-- modal overlay  -->
     <div
         class="overlay-modal w-full h-screen z-[500] bg-[#012819]/30 backdrop-blur-[7.5px] fixed top-0 left-0 opacity-0 invisible">

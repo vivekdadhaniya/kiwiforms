@@ -2,121 +2,175 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVG Animation on Page Load</title>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-       /* svg path {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-} */
-
-/* Remove the old keyframe definitions that start instantly */
-@keyframes dotPulse {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 1; }
-}
-
-/* We'll activate this class later using JS */
-.animate-dots .line1,
-.animate-dots .dot1,
-.animate-dots .line2,
-.animate-dots .dot2,
-.animate-dots .line3,
-.animate-dots .dot3 {
-  animation: dotPulse 1.2s ease-in-out infinite;
-}
-
-/* Stagger delay between each group (1 → 2 → 3) */
-.animate-dots .line2,
-.animate-dots .dot2 {
-  animation-delay: 0.4s;
-}
-.animate-dots .line3,
-.animate-dots .dot3 {
-  animation-delay: 0.8s;
-}
-
-/* Optional rotation for your circle */
-.circle {
-  transform-box: fill-box;
-  transform-origin: center center;
-  animation: circle-rotate 5s linear infinite;
-}
-@keyframes circle-rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Then Condition</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="flex items-center justify-center h-screen bg-gray-50">
-<svg width="101" height="102" viewBox="0 0 101 102" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path class="cloud-fill" d="M49.7173 24.9466C49.2372 18.1443 55.4267 12.9008 61.9242 14.4968C63.2415 8.49117 68.5357 4 74.8674 4C82.3713 4 88.4222 10.3095 88.1142 17.9711C88.1183 17.9711 88.1222 17.9709 88.1263 17.9709C94.6841 17.9709 100 23.35 100 29.9854C100 36.4648 94.9309 41.7453 88.5868 41.9901V42H50.4433C45.7802 42 42 38.1749 42 33.4564C42 28.9858 45.3944 25.3193 49.7173 24.9466Z" fill="#FEFFA4"/>
-<path class="cloud-outline" d="M97 26.9854C97 20.35 91.6841 14.9709 85.1263 14.9709C85.1222 14.9709 85.1183 14.9711 85.1142 14.9711C85.4222 7.30949 79.3713 1 71.8674 1C65.5357 1 60.2415 5.49117 58.9242 11.4968C52.4267 9.90085 46.2372 15.1443 46.7173 21.9466C42.3944 22.3193 39 25.9858 39 30.4564C39 35.1749 42.7802 39 47.4433 39H66.5151" stroke="#000A06" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path class="green-circle" fill-rule="evenodd" clip-rule="evenodd" d="M17.5 101C27.1386 101 35 93.1451 35 83.5042C35 73.8633 27.1386 66 17.5 66C7.86137 66 0 73.8632 0 83.5041C0 93.145 7.86137 101 17.5 101Z" fill="#007D47"/>
-<g class="circle">
-<path d="M24.8662 77.3916C24.4986 76.9431 23.834 76.8779 23.3867 77.2461C22.9387 77.6152 22.8758 78.2828 23.2422 78.7314C23.4435 78.9789 23.6313 79.2413 23.8037 79.5195C24.1094 80.0134 24.7609 80.1624 25.252 79.8555C25.743 79.548 25.8945 78.8971 25.5879 78.4033C25.3667 78.0458 25.1245 77.7072 24.8662 77.3916Z" fill="white"/>
-<path d="M14.4873 72.126C13.9771 71.8502 13.3372 72.0433 13.0625 72.5547C12.7883 73.0665 12.9809 73.7079 13.4902 73.9834L14.3486 74.4473C10.6512 75.7559 8 79.293 8 83.4521C8.00037 88.7245 12.2589 92.9997 17.5127 93C21.8314 93 25.4778 90.1124 26.6396 86.1572C26.8036 85.5996 26.4839 85.0112 25.9287 84.8467C25.3739 84.6824 24.7859 85.0003 24.623 85.5576C23.7187 88.6394 20.8778 90.8896 17.5127 90.8896C13.4206 90.8894 10.1029 87.5599 10.1025 83.4521C10.1026 79.3441 13.4204 76.0149 17.5127 76.0146C17.9992 76.0146 18.4139 75.6903 18.5322 75.2168L18.5508 75.1289C18.6244 74.685 18.4132 74.2478 18.0127 74.0303L18.0117 74.0293L14.4873 72.126Z" fill="white"/>
-<path d="M26.8213 81.4785C26.7014 80.9091 26.1423 80.5441 25.5752 80.6641C25.0089 80.7845 24.6452 81.3451 24.7646 81.9141L24.8086 82.1494C24.8499 82.3862 24.8819 82.6285 24.9014 82.873L24.9141 82.9795C25.0085 83.5053 25.4895 83.8856 26.0303 83.8428C26.6077 83.7969 27.0407 83.2876 26.9971 82.708C26.972 82.3944 26.9323 82.0844 26.8789 81.7803L26.8213 81.4785Z" fill="white"/>
-<path d="M21.2588 74.6738C20.7263 74.4456 20.1067 74.6942 19.8789 75.2285C19.6517 75.7626 19.8998 76.3844 20.4316 76.6133C20.7226 76.7389 21.011 76.8863 21.292 77.0527C21.7902 77.3497 22.4379 77.1817 22.7324 76.6826L22.7822 76.5869C23.0059 76.1024 22.8289 75.5144 22.3633 75.2363C22.0033 75.0227 21.6326 74.8357 21.2588 74.6738Z" fill="white"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M17.5 71C24.4036 71 30 76.5964 30 83.5C30 90.4036 24.4036 96 17.5 96C10.5964 96 5 90.4036 5 83.5C5 76.5964 10.5964 71 17.5 71ZM13.0625 72.5547C13.3372 72.0433 13.9771 71.8502 14.4873 72.126L18.0117 74.0293L18.0127 74.0303C18.4132 74.2478 18.6244 74.685 18.5508 75.1289L18.5322 75.2168C18.4139 75.6903 17.9992 76.0146 17.5127 76.0146C13.4204 76.0149 10.1026 79.3441 10.1025 83.4521C10.1029 87.5599 13.4206 90.8894 17.5127 90.8896C20.8778 90.8896 23.7187 88.6394 24.623 85.5576C24.7859 85.0003 25.3739 84.6824 25.9287 84.8467C26.4839 85.0112 26.8036 85.5996 26.6396 86.1572C25.4778 90.1124 21.8314 93 17.5127 93C12.2589 92.9997 8.00037 88.7245 8 83.4521C8 79.293 10.6512 75.7559 14.3486 74.4473L13.4902 73.9834C12.9809 73.7079 12.7883 73.0665 13.0625 72.5547ZM25.5752 80.6641C26.1423 80.5441 26.7014 80.9091 26.8213 81.4785L26.8789 81.7803C26.9323 82.0844 26.972 82.3944 26.9971 82.708C27.0407 83.2876 26.6077 83.7969 26.0303 83.8428C25.4895 83.8856 25.0085 83.5053 24.9141 82.9795L24.9014 82.873C24.8819 82.6285 24.8499 82.3862 24.8086 82.1494L24.7646 81.9141C24.6452 81.3451 25.0089 80.7845 25.5752 80.6641ZM23.3867 77.2461C23.834 76.8779 24.4986 76.9431 24.8662 77.3916C25.1245 77.7072 25.3667 78.0458 25.5879 78.4033C25.8945 78.8971 25.743 79.548 25.252 79.8555C24.7609 80.1624 24.1094 80.0134 23.8037 79.5195C23.6313 79.2413 23.4435 78.9789 23.2422 78.7314C22.8758 78.2828 22.9387 77.6152 23.3867 77.2461ZM19.8789 75.2285C20.1067 74.6942 20.7263 74.4456 21.2588 74.6738C21.6326 74.8357 22.0033 75.0227 22.3633 75.2363C22.8289 75.5144 23.0059 76.1024 22.7822 76.5869L22.7324 76.6826C22.4379 77.1817 21.7902 77.3497 21.292 77.0527C21.011 76.8863 20.7226 76.7389 20.4316 76.6133C19.8998 76.3844 19.6517 75.7626 19.8789 75.2285Z" fill="#007D47"/>
-</g>
-<path class="leaf-fill" d="M100.004 66.0339C85.4924 65.3066 84.9498 76.5104 85.0074 78.9998H85.0035V79.9998H85.0074C84.9498 82.4897 85.4928 93.6927 100.004 92.9662C100.004 92.9349 100.227 80.1 87.2818 79.4993C100.215 78.8992 100.005 66.0887 100.004 66.0339Z" fill="#B8DD2F"/>
-<path class="leaf-outline" d="M85.252 76C86.0086 71.833 88.9636 65.4806 100.004 66.0339C100.005 66.0887 100.215 78.8992 87.2818 79.4993C100.227 80.1 100.004 92.9349 100.004 92.9662C88.9635 93.5189 86.0086 87.1663 85.252 82.9993" stroke="#000A06" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path class="browse" d="M52.9322 86.1271L48.9955 90.3206C45.9009 93.4492 45.9009 93.4492 48.9955 96.8065L52.9322 101M47 93.4492H65.6441C69.1543 93.4492 72 90.3758 72 86.5847V78.0042V51.5763C72 49.0489 70.1029 47 67.7627 47H26.2373C23.8971 47 22 49.0489 22 51.5763V56.2881V61M72 57H47.1059H22M43.2963 93.4492H36.8148" stroke="#000A06" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path class="box1" d="M59 64C59 63.4477 59.4477 63 60 63H66V79C66 79.5523 65.5523 80 65 80H60C59.4477 80 59 79.5523 59 79V64Z" fill="#B8DD2F" stroke="#000A06" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
-<path class="box2" d="M46 64C46 63.4477 46.4477 63 47 63H53V73C53 73.5523 52.5523 74 52 74H47C46.4477 74 46 73.5523 46 73V64Z" fill="#B8DD2F" stroke="#000A06" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
-</svg>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.0/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.0/gsap.min.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
-  // 1️⃣ Cloud fill
-  tl.from(".cloud-fill", { fillOpacity: 0, duration: 1.5 });
-  // 2️⃣ Green circle fill
-  tl.from(".green-circle", { scale: 0, transformOrigin: "50% 50%", duration: 1.2 }, "-=0.5");
-  // 3️⃣ Cloud outline
-  document.querySelectorAll(".cloud-outline").forEach(path => {
-    const length = path.getTotalLength();
-    path.style.strokeDasharray = length;
-    path.style.strokeDashoffset = length;
-  });
-  tl.to(".cloud-outline", { strokeDashoffset: 0, duration: 1.5 });
-  // 4️⃣ Browser outline
-  document.querySelectorAll(".browse").forEach(path => {
-    const length = path.getTotalLength();
-    path.style.strokeDasharray = length;
-    path.style.strokeDashoffset = length;
-  });
-  tl.to(".browse", { strokeDashoffset: 0, duration: 1.5 });
-  // 5️⃣ Elements inside green circle (.circle) appear & rotate
-  tl.fromTo(".circle",
-    { autoAlpha: 0,  },
-    { autoAlpha: 1,}
-  );
- // 6️⃣ Boxes inside browser
-  tl.from(".box1", { scale: 0, transformOrigin: "center center", duration: 0.5 });
-  tl.from(".box2", { scale: 0, transformOrigin: "center center", duration: 0.5 }, "-=0.3");
-  // 7️⃣ Leaf fill
-  tl.from(".leaf-fill", { fillOpacity: 0, duration: 1 });
-  // 8️⃣ Leaf outline
-  document.querySelectorAll(".leaf-outline").forEach(path => {
-    const length = path.getTotalLength();
-    path.style.strokeDasharray = length;
-    path.style.strokeDashoffset = length;
-  });
-  tl.to(".leaf-outline", { strokeDashoffset: 0, duration: 1 });
-});
-</script>
 
+<body class="flex flex-col items-center justify-center h-screen bg-gray-50 p-4">
 
+  <!-- Dropdown -->
+  <div class="custom-dropdown relative w-full max-w-[150px]" id="actionDropdown">
+    <div class="relative">
+      <button type="button"
+        class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] border border-[#E2DCDC] text-[#8C8484] p-2.5 pl-[15px] rounded-[10px] text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
+        <span class="selected-option">Go to</span>
+        <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
 
+      <div
+        class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-[10px] shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-10">
+        <ul class="dropdown-list flex flex-col w-full bg-[#F8F6F6]">
+          <li class="dropdown-item p-2.5 hover:bg-[#F8F6F6] rounded-[5px] cursor-pointer" data-value="Go to">Go to</li>
+          <li class="dropdown-item p-2.5 hover:bg-[#F8F6F6] rounded-[5px] cursor-pointer" data-value="Add">Add</li>
+          <li class="dropdown-item p-2.5 hover:bg-[#F8F6F6] rounded-[5px] cursor-pointer" data-value="Subtract">Subtract
+          </li>
+          <li class="dropdown-item p-2.5 hover:bg-[#F8F6F6] rounded-[5px] cursor-pointer" data-value="Multiply">Multiply
+          </li>
+          <li class="dropdown-item p-2.5 hover:bg-[#F8F6F6] rounded-[5px] cursor-pointer" data-value="Divide">Divide
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
+  <!-- Rule Section -->
+  <div id="ruleSection" class="hidden mt-5 w-full max-w-2xl">
+    <div class="border border-[#E2DCDC] rounded-[10px] bg-white shadow-sm p-4">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="text-gray-600 font-medium">If</span>
+        <select
+          class="border border-gray-300 rounded-[8px] px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+          <option>Select condition</option>
+          <option>A = 4</option>
+          <option>B = 2</option>
+          <option>C = 8</option>
+        </select>
+        <span class="text-gray-600 font-medium">is</span>
+        <input type="text"
+          class="border border-gray-300 rounded-[8px] px-2.5 py-1.5 text-sm focus:outline-none w-32 focus:ring-2 focus:ring-green-500"
+          placeholder="Enter value" />
+      </div>
 
+      <div class="flex items-center gap-3">
+        <span class="text-gray-600 font-medium">Then</span>
+
+        <!-- First Select (Main Action) -->
+        <select id="thenAction"
+          class="border border-gray-300 rounded-[8px] px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+          <option value="">Select action</option>
+          <option value="Add">Add</option>
+          <option value="Subtract">Subtract</option>
+          <option value="Multiply">Multiply</option>
+          <option value="Divide">Divide</option>
+        </select>
+
+        <!-- Second Select -->
+        <select id="thenSecond"
+          class="border border-gray-300 rounded-[8px] px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+          <option value="">Select value</option>
+        </select>
+
+        <!-- Third Select (Dynamic) -->
+        <select id="thenThird"
+          class="border border-gray-300 rounded-[8px] px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 hidden">
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const dropdownBtn = document.querySelector('.dropdown-button');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    const selectedOption = document.querySelector('.selected-option');
+    const ruleSection = document.getElementById('ruleSection');
+
+    const thenAction = document.getElementById('thenAction');
+    const thenSecond = document.getElementById('thenSecond');
+    const thenThird = document.getElementById('thenThird');
+
+    // Show/hide main rule section
+    dropdownBtn.addEventListener('click', () => {
+      dropdownMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const value = item.dataset.value;
+        selectedOption.textContent = value;
+        dropdownMenu.classList.add('hidden');
+
+        if (['Add', 'Subtract', 'Multiply', 'Divide'].includes(value)) {
+          ruleSection.classList.remove('hidden');
+          gsap.fromTo(ruleSection, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3 });
+        } else {
+          gsap.to(ruleSection, { opacity: 0, y: -10, duration: 0.2, onComplete: () => ruleSection.classList.add('hidden') });
+        }
+      });
+    });
+
+    // Dynamic logic for THEN selects
+    const optionsMap = {
+      Add: ['2', '4', '8'],
+      Subtract: ['1', '3', '6'],
+      Multiply: ['2x', '3x', '4x'],
+      Divide: ['2', '4', '8']
+    };
+
+    const thirdOptionsMap = {
+      Add: ['To A', 'To B', 'To C'],
+      Subtract: ['From A', 'From B', 'From C'],
+      Multiply: ['By A', 'By B', 'By C'],
+      Divide: ['By A', 'By B', 'By C']
+    };
+
+    thenAction.addEventListener('change', () => {
+      const selected = thenAction.value;
+
+      // Update second select
+      thenSecond.innerHTML = '<option value="">Select value</option>';
+      if (optionsMap[selected]) {
+        optionsMap[selected].forEach(v => {
+          const opt = document.createElement('option');
+          opt.textContent = v;
+          thenSecond.appendChild(opt);
+        });
+      }
+
+      // Hide third until second is chosen
+      thenThird.classList.add('hidden');
+    });
+
+    thenSecond.addEventListener('change', () => {
+      const action = thenAction.value;
+      const value = thenSecond.value;
+
+      if (action && value) {
+        // Show third select
+        thenThird.classList.remove('hidden');
+        thenThird.innerHTML = '<option value="">Select target</option>';
+
+        if (thirdOptionsMap[action]) {
+          thirdOptionsMap[action].forEach(v => {
+            const opt = document.createElement('option');
+            opt.textContent = v;
+            thenThird.appendChild(opt);
+          });
+        }
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.classList.add('hidden');
+      }
+    });
+  </script>
 
 </body>
 

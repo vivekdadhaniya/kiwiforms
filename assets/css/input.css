@@ -110,6 +110,9 @@
 }
 
 @layer components {
+  .close-btn {
+    @apply w-10 aspect-square flex items-center justify-center bg-transparent transition-all duration-500 hover:bg-[#E2DCDC] rounded-10px
+  }
   .btn-white-square {
     @apply border border-[#E2DCDC] cursor-pointer rounded-10px bg-white w-10 h-10 aspect-square flex items-center justify-center text-sm font-medium leading-[140%] text-Theme-Black transition-all duration-500 hover:border-[#ccc6c6]
   }
