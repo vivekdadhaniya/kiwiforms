@@ -10,13 +10,7 @@
     <!--- MAIN CSS ---->
     <link rel="stylesheet" href="assets/css/input.css">
     <link rel="stylesheet" href="assets/css/output.css">
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <style>
-        svg path {
-            stroke-dasharray: 150;
-            stroke-dashoffset: 150;
-        }
-    </style>
+   
 </head>
 
 <body class="md:overflow-hidden bg-Theme-bg font-Inter">
@@ -354,60 +348,9 @@
             });
         });
     </script>
-    <script>
-        window.addEventListener("load", () => {
-            const tl = gsap.timeline({ defaults: { duration: 2.2, ease: "power2.out" } });
 
-            // Draw stroke lines
-            tl.to(".svg path[stroke]", {
-                strokeDashoffset: 0,
-                stagger: 0.05,
-            });
 
-            // Fade in fill shapes
-            tl.fromTo(
-                "svg path[fill]",
-                { opacity: 0, scale: 0.8, transformOrigin: "center" },
-                { opacity: 1, scale: 1, stagger: 0.05 },
-                "-=0.6"
-            );
-        });
-    </script>
-
-    <!-- <script>
-        document.querySelectorAll(".create-card").forEach(card => {
-            const svgPaths = card.querySelectorAll("svg path");
-
-            // Reset the stroke for all paths
-            svgPaths.forEach(path => {
-                path.style.strokeDasharray = path.getTotalLength();
-                path.style.strokeDashoffset = path.getTotalLength();
-            });
-
-            card.addEventListener("mouseenter", () => {
-                svgPaths.forEach((path, i) => {
-                    gsap.to(path, {
-                        strokeDashoffset: 1,
-                        duration: 1.2,
-                        delay: i * 0.1,
-                        ease: "power2.out"
-                    });
-                });
-            });
-
-            card.addEventListener("mouseleave", () => {
-                svgPaths.forEach((path, i) => {
-                    gsap.to(path, {
-                        strokeDashoffset: path.getTotalLength(),
-                        duration: 1,
-                        delay: i * 0.05,
-                        ease: "power2.in"
-                    });
-                });
-            });
-        });
-    </script> -->
-
+    
 </body>
 
 </html>
