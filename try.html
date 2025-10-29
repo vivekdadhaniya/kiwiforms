@@ -11,10 +11,10 @@
 <body class="flex flex-col items-center justify-center min-h-screen gap-20 bg-gray-50 py-10">
 
     <!-- ================= DESIGN 1 ================= -->
-    <div class="custom-dropdown relative w-full max-w-[150px] ml-2.5 pt-[5px]" data-style="design1">
+    <div class="custom-dropdown relative w-full max-w-[700px] ml-2.5 pt-[5px]" data-style="design1">
         <div class="relative ">
             <button type="button"
-                class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] border border-[#E2DCDC] text-[#8C8484] p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
+                class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] border border-[#E2DCDC] text-Theme-Black p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
                 <span class="selected-option">If</span>
                 <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200" fill="none"
                     stroke="currentColor" viewBox="0 0 24 24">
@@ -49,17 +49,17 @@
     </div>
 
     <!-- ================= DESIGN 2 ================= -->
-    <div class="custom-dropdown relative w-full" data-style="design2" data-copy-html="true">
+    <div class="custom-dropdown relative w-full max-w-[700px]" data-style="design2" data-copy-html="true">
         <div class="relative w-full">
 
             <!-- Button -->
             <button id="dropdownButton" type="button"
-                class="dropdown-button w-full flex justify-between items-center border border-[#E2DCDC] bg-[#F8F6F6] rounded-[10px] px-[15px] py-[9px] transition-all duration-500 hover:bg-white focus:outline-none focus:border-Theme-Green">
+                class="dropdown-button w-full flex justify-between items-center border border-[#E2DCDC] bg-[#F8F6F6] rounded-[10px] px-[15px] py-[8px] transition-all duration-500 hover:bg-white focus:outline-none focus:border-Theme-Green">
                 <div id="selectedOption"
                     class="selected-option flex items-center gap-[15px] text-[15px] leading-120 font-medium text-[#8C8484]">
                     <span
                         class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">1</span>
-                    <p class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                    <p class="flex items-center gap-2.5 text-[15px] leading-[22px] font-medium text-Theme-Black">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <ellipse cx="10.0009" cy="4.78947" rx="3.73333" ry="3.78947" stroke="#000A06"
                                 stroke-width="1.5" />
@@ -98,7 +98,8 @@
                 <ul class="dropdown-list text-sm flex flex-col gap-px bg-[#F8F6F6]">
 
                     <!-- Example items (keep your SVGs and text same as before) -->
-                    <li class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                    <li
+                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
                         <span
                             class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">1</span>
                         <p class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
@@ -114,7 +115,8 @@
                         </p>
                     </li>
 
-                    <li class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                    <li
+                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
                         <span
                             class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">2</span>
                         <p class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
@@ -143,7 +145,7 @@
         <div class="relative">
             <!-- Button -->
             <button type="button"
-                class="dropdown-button w-full flex justify-between items-center border border-[#E2DCDC] bg-[#F8F6F6] rounded-[10px] px-[15px] py-[9px] focus:outline-none transition-all">
+                class="dropdown-button w-full flex justify-between items-center border border-[#E2DCDC] bg-[#F8F6F6] rounded-[10px] px-[15px] py-[7px] focus:outline-none transition-all">
                 <div class="selected-option flex flex-wrap gap-2 items-center text-[#8C8484]">
                     <span class="placeholder">Select Answers</span>
                 </div>
@@ -402,53 +404,44 @@
             const arrow = dropdown.querySelector('.dropdown-arrow');
             const selectedOption = dropdown.querySelector('#selectedOption');
             const items = dropdown.querySelectorAll('.dropdown-item');
+            const searchInput = dropdown.querySelector('.dropdown-search'); // 👈 search input
 
-            button.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
-                arrow.classList.toggle('rotate-180');
-            });
-
-            items.forEach(item => {
-                item.addEventListener('click', () => {
-                    // remove old highlight
-                    items.forEach(i => i.classList.remove('bg-[#EAF7F0]', 'opacity-70'));
-                    // highlight selected
-                    item.classList.add('bg-[#EAF7F0]', 'opacity-70');
-
-                    // copy HTML (number + svg + text)
-                    selectedOption.innerHTML = item.innerHTML;
-
-                    // close menu
-                    menu.classList.add('hidden');
-                    arrow.classList.remove('rotate-180');
-                });
-            });
-
-            // Close dropdown if clicked outside
-            document.addEventListener('click', e => {
-                if (!dropdown.contains(e.target)) {
-                    menu.classList.add('hidden');
-                    arrow.classList.remove('rotate-180');
-                }
-            });
-        });
-    </script>
-    <!-- ================= DESIGN-3 ================= -->
-    <script>
-        document.querySelectorAll('.custom-dropdown[data-style="design3"]').forEach(dropdown => {
-            const button = dropdown.querySelector('.dropdown-button');
-            const menu = dropdown.querySelector('.dropdown-menu');
-            const arrow = dropdown.querySelector('.dropdown-arrow');
-            const selectedContainer = dropdown.querySelector('.selected-option');
-            const placeholder = selectedContainer.querySelector('.placeholder');
-            const items = dropdown.querySelectorAll('.dropdown-item');
-            const selectedItems = new Map(); // key = group|label, value = { group, index, label }
-
-            // --- Toggle dropdown open/close
+            // --- Toggle dropdown
             button.addEventListener('click', (e) => {
                 e.stopPropagation();
                 menu.classList.toggle('hidden');
                 arrow.classList.toggle('rotate-180');
+                if (!menu.classList.contains('hidden') && searchInput) {
+                    searchInput.focus();
+                }
+            });
+
+            // --- Filter items on search
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase();
+                    items.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        item.style.display = text.includes(query) ? 'flex' : 'none';
+                    });
+                });
+            }
+
+            // --- Handle item click
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Remove previous highlight
+                    items.forEach(i => i.classList.remove('!bg-[#F8F6F6]', 'opacity-100'));
+                    // Highlight selected
+                    item.classList.add('!bg-[#F8F6F6]', 'opacity-100');
+
+                    // Copy HTML content (number + svg + text)
+                    selectedOption.innerHTML = item.innerHTML;
+
+                    // Close menu
+                    menu.classList.add('hidden');
+                    arrow.classList.remove('rotate-180');
+                });
             });
 
             // --- Close when clicking outside
@@ -458,6 +451,50 @@
                     arrow.classList.remove('rotate-180');
                 }
             });
+        });
+    </script>
+
+
+    <!-- ================= DESIGN-3 ================= -->
+    <script>
+        document.querySelectorAll('.custom-dropdown[data-style="design3"]').forEach(dropdown => {
+            const button = dropdown.querySelector('.dropdown-button');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            const arrow = dropdown.querySelector('.dropdown-arrow');
+            const selectedContainer = dropdown.querySelector('.selected-option');
+            const placeholder = selectedContainer.querySelector('.placeholder');
+            const items = dropdown.querySelectorAll('.dropdown-item');
+            const searchInput = dropdown.querySelector('.dropdown-search'); // 👈 Search box
+            const selectedItems = new Map(); // key = group|label, value = { group, index, label }
+
+            // --- Toggle dropdown open/close
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                menu.classList.toggle('hidden');
+                arrow.classList.toggle('rotate-180');
+                if (!menu.classList.contains('hidden') && searchInput) {
+                    searchInput.focus();
+                }
+            });
+
+            // --- Close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    menu.classList.add('hidden');
+                    arrow.classList.remove('rotate-180');
+                }
+            });
+
+            // --- Handle search filter
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase();
+                    items.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        item.style.display = text.includes(query) ? 'flex' : 'none';
+                    });
+                });
+            }
 
             // --- Handle item selection
             items.forEach(item => {
@@ -473,12 +510,10 @@
 
                     if (isSelected) {
                         selectedItems.delete(key);
-
                         svg.classList.remove('opacity-100');
                         svg.classList.add('opacity-0');
                     } else {
                         selectedItems.set(key, { group, index, label });
-
                         svg.classList.add('opacity-100');
                         svg.classList.remove('opacity-0');
                     }
@@ -501,22 +536,27 @@
 
                 placeholder.style.display = 'none';
 
-                // Show first 2 chips, then "+N" summary if more
-                const visibleCount = 3;
+                const visibleCount = 6;
                 const visibleItems = selectedArray.slice(0, visibleCount);
                 const remainingCount = totalSelected - visibleCount;
 
                 visibleItems.forEach((data) => {
                     const chip = document.createElement('div');
-                    chip.className =
-                        'chip flex items-center gap-1 bg-white rounded-[20px] border border-[#E2DCDC] px-2 py-1';
+                    chip.className = 'chip flex items-center gap-2.5 bg-white rounded-[30px] p-[3px] pr-2.5';
                     chip.innerHTML = `
-          <span class="w-[20px] h-[20px] flex items-center justify-center rounded-full bg-[#007D47] text-white text-xs font-semibold">${data.index}</span>
-          <span class="text-[#000A06] text-[14px] font-medium">${data.label}</span>
-          <button class="remove-chip text-[#000A06] text-sm leading-none">×</button>
-        `;
+                <span class="w-[20px] h-[20px] flex items-center justify-center rounded-full bg-[#007D47] text-white text-xs font-semibold">${data.index}</span>
+                <span class="text-[#007D47] text-[16px] font-medium">${data.label}</span>
+                <button class="remove-chip text-[#000A06] text-xl leading-[100%]">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_1415_2279)">
+                            <path d="M1 9L9 1" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 9L1 1" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        <defs><clipPath id="clip0_1415_2279"><rect width="10" height="10" fill="white"/></clipPath></defs>
+                    </svg>
+                </button>
+            `;
 
-                    // Remove on click
                     chip.querySelector('.remove-chip').addEventListener('click', (ev) => {
                         ev.stopPropagation();
                         const key = `${data.group}|${data.label}`;
@@ -524,7 +564,6 @@
 
                         const item = dropdown.querySelector(`.dropdown-list[data-group="${data.group}"] .dropdown-item[data-label="${data.label}"]`);
                         if (item) {
-
                             const svg = item.querySelector('svg');
                             if (svg) {
                                 svg.classList.remove('opacity-100');
@@ -538,18 +577,15 @@
                     selectedContainer.appendChild(chip);
                 });
 
-                // Add "+N" capsule if there are more
                 if (remainingCount > 0) {
                     const moreChip = document.createElement('div');
-                    moreChip.className =
-                        'chip flex items-center justify-center bg-[#F8F6F6] rounded-[20px] border border-[#E2DCDC] px-2 py-1 text-[#8C8484] text-[14px] font-medium';
+                    moreChip.className = 'chip flex items-center justify-center bg-[#F8F6F6] rounded-[20px] border border-[#E2DCDC] px-2 py-1 text-[#8C8484] text-[14px] font-medium';
                     moreChip.textContent = `+${remainingCount}`;
                     selectedContainer.appendChild(moreChip);
                 }
             }
         });
     </script>
-
 
 
 </body>

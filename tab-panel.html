@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design 3 – Multi List Multi Select</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="p-6">
+    <!-- Tabs -->
+    <div id="tabs" class="flex space-x-2 border-b border-gray-300">
+      <button
+        class="tab-btn py-2 px-4 text-gray-600 border-b-2 border-transparent active:text-blue-600 active:border-blue-600"
+        data-tab="tab-1">Tab 1</button>
+      <button id="add-tab-btn" class="py-2 px-4 text-gray-500 hover:text-blue-600">+</button>
+    </div>
+
+    <!-- Tab Panels -->
+    <div id="tab-panels" class="mt-4">
+      <div class="tab-panel" id="tab-1">Content for Tab 1</div>
+    </div>
+  </div>
+
+  <script>
+    let tabCounter = 1; // To generate unique IDs
+
+    const tabsContainer = document.getElementById('tabs');
+    const panelsContainer = document.getElementById('tab-panels');
+    const addTabBtn = document.getElementById('add-tab-btn');
+
+    function setActiveTab(tabId) {
+      // Activate the tab button
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('border-blue-600', 'text-blue-600');
+        btn.classList.add('text-gray-600', 'border-transparent');
+      });
+
+      const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+      if (activeBtn) {
+        activeBtn.classList.add('border-blue-600', 'text-blue-600');
+        activeBtn.classList.remove('text-gray-600', 'border-transparent');
+      }
+
+      // Show active panel and hide others
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.add('hidden');
+      });
+
+      const activePanel = document.getElementById(tabId);
+      if (activePanel) {
+        activePanel.classList.remove('hidden');
+      }
+    }
+
+    // Handle tab clicks
+    tabsContainer.addEventListener('click', e => {
+      const btn = e.target.closest('.tab-btn');
+      if (btn && btn.dataset.tab) {
+        setActiveTab(btn.dataset.tab);
+      }
+    });
+
+    // Handle add new tab
+    addTabBtn.addEventListener('click', () => {
+      tabCounter++;
+      const tabId = `tab-${tabCounter}`;
+
+      // Create new tab button
+      const newTabBtn = document.createElement('button');
+      newTabBtn.className = 'tab-btn py-2 px-4 text-gray-600 border-b-2 border-transparent hover:text-blue-600';
+      newTabBtn.textContent = `Tab ${tabCounter}`;
+      newTabBtn.dataset.tab = tabId;
+      tabsContainer.insertBefore(newTabBtn, addTabBtn);
+
+      // Create new tab panel
+      const newPanel = document.createElement('div');
+      newPanel.className = 'tab-panel hidden';
+      newPanel.id = tabId;
+      newPanel.textContent = `Content for Tab ${tabCounter}`;
+      panelsContainer.appendChild(newPanel);
+
+      // Activate new tab
+      setActiveTab(tabId);
+    });
+
+    // Initialize first tab as active
+    setActiveTab('tab-1');
+  </script>
+
+
+</body>
+
+</html>

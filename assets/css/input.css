@@ -113,6 +113,7 @@
   .close-btn {
     @apply w-10 aspect-square flex items-center justify-center bg-transparent transition-all duration-500 hover:bg-[#E2DCDC] rounded-10px
   }
+
   .btn-white-square {
     @apply border border-[#E2DCDC] cursor-pointer rounded-10px bg-white w-10 h-10 aspect-square flex items-center justify-center text-sm font-medium leading-[140%] text-Theme-Black transition-all duration-500 hover:border-[#ccc6c6]
   }
@@ -265,6 +266,44 @@
   #editableDiv.empty::before {
     content: attr(data-placeholder);
     color: #8C8484;
+    pointer-events: none;
+  }
+
+  .editableDiv {
+    position: relative;
+    min-height: 24px;
+  }
+
+  .editableDiv.empty::before {
+    content: attr(data-placeholder);
+    color: #007D47;
+    /* your placeholder color */
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    background: #E0F2F1;
+    color: #007D47;
+    border-radius: 4px;
+    padding: 0 6px;
+    margin: 0 2px;
+    font-size: 14px;
+  }
+
+  .badge .remove {
+    margin-left: 4px;
+    cursor: pointer;
+  }
+
+
+  .ending #editableDiv.empty::before {
+    content: attr(data-placeholder);
+    color: #007D47 !important;
     pointer-events: none;
   }
 
