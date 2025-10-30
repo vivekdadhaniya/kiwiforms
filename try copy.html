@@ -1,138 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- REQUIRED META TAGS -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Kiwiform</title>
-    <!--- MAIN CSS ---->
-    <link rel="stylesheet" href="assets/css/input.css">
-    <link rel="stylesheet" href="assets/css/output.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tag Input</title>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.3/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body x-data="setup()" class="md:overflow-hidden bg-Theme-bg font-Inter">
-    <div class="flex flex-col max-md:gap-8 md:flex-row bg-black-0a0a0a">
-        <!--Header--->
+<body class="p-10 bg-gray-50">
 
-        <!--SideBar-->
-        <div class="relative flex md:h-full gap-5 md:overflow-hidden">
-            <aside
-                class="fixed top-[61px] h-[calc(100vh-61px)] pl-px overflow-y-auto scrollbar-hide z-50 flex flex-col bg-black-1B1B1B nav-list rounded-xl transition-all duration-300"
-                :class="isSidebarOpen ? 'w-[280px]' : 'w-[80px]'">
+  <div class="w-full max-w-lg" x-data="tagInput()" @click.outside="convertInputToTag">
+    <label class="block text-sm font-medium text-gray-700 mb-1">Tag As</label>
 
-                <div class="flex flex-col w-full h-full">
-                    <div class="bg-[#F6F6F6] w-full px-[5px] pb-2.5 h-full rounded-b-[10px]">
-                        <div
-                            class="py-5 flex items-center justify-between w-full px-[15px] border-b border-[#E2DCDC] text-base leading-[140%] font-medium text-Theme-Black">
-                            <span :class="{'hidden':!isSidebarOpen, 'block':isSidebarOpen}">Workspaces</span>
-                            <button @click="toggleSidbarMenu()" class="block md:hidden">
-                                <svg width="24" height="24" fill="none" stroke="#007D47" stroke-width="2"
-                                    viewBox="0 0 24 24">
-                                    <path d="M3 6h18M3 12h18M3 18h18" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
+    <div class="flex flex-wrap items-center gap-2 bg-gray-50 border border-gray-200 rounded-md px-3 py-2 min-h-[42px]"
+      @click="$refs.input.focus()">
 
-                    <!-- Sidebar content here -->
-                    <div class="flex-1 p-2">
-                        <p :class="isSidebarOpen ? 'opacity-100' : 'opacity-0 transition-opacity duration-300'">
-                            Sidebar content
-                        </p>
-                    </div>
-                </div>
-            </aside>
-
-        </div>
+      <!-- Tags -->
+      <template x-for="(tag, index) in tags" :key="index">
         <div
-            class="xl:w-[calc(100%-321px)] lg:w-[calc(100%-281px)] w-[calc(100%-281px)] ml-auto relative md:h-screen md:overflow-y-hidden pt-[29px] md:pt-[61px]">
-            <!--Main Content Page-->
-            <div class="w-full h-full relative bg-[#F6F6F6] rounded-10px px-[5px] py-2.5">
-
-            </div>
+          class="flex items-center gap-1 bg-white border border-gray-300 rounded-full px-3 py-1 text-sm text-green-700">
+          <span x-text="tag"></span>
+          <button type="button" @click="removeTag(index)" class="text-gray-500 hover:text-black">
+            &times;
+          </button>
         </div>
+      </template>
+
+      <!-- Input -->
+      <input x-ref="input" type="text" x-model="newTag"
+        @keydown.enter.prevent="addTag"
+        class="flex-1 bg-transparent focus:outline-none min-w-[80px] text-sm text-gray-700"
+        placeholder="Type and press Enter" />
     </div>
-    <!-- MAIN JS-->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script src="assets/js/main.js"></script>
-    <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.store('dropdown', {
-                openId: null,
-            });
-        });
-    </script>
-    <script>
-        function setup() {
-            function getSidebarStateFromLocalStorage() {
-                const savedState = window.localStorage.getItem("isSidebarOpen");
+  </div>
 
-                // If user has already toggled before → use saved state
-                if (savedState !== null) {
-                    return JSON.parse(savedState);
-                }
-
-                // Default behavior: open on desktop, closed on mobile
-                return window.innerWidth >= 768;
-            }
-
-            function setSidebarStateToLocalStorage(value) {
-                window.localStorage.setItem("isSidebarOpen", value);
-            }
-
-            return {
-                isSidebarOpen: getSidebarStateFromLocalStorage(),
-
-                toggleSidbarMenu() {
-                    this.isSidebarOpen = !this.isSidebarOpen;
-                    setSidebarStateToLocalStorage(this.isSidebarOpen);
-                },
-
-                // Optional: dynamically adjust on resize
-                handleResize() {
-                    if (window.innerWidth >= 768 && this.isSidebarOpen === false) {
-                        this.isSidebarOpen = true;
-                    } else if (window.innerWidth < 768 && this.isSidebarOpen === true) {
-                        this.isSidebarOpen = false;
-                    }
-                },
-
-                init() {
-                    window.addEventListener('resize', () => this.handleResize());
-                }
-            };
+  <script>
+    function tagInput() {
+      return {
+        tags: ['High'], // default tag
+        newTag: '',
+        addTag() {
+          const value = this.newTag.trim();
+          if (value && !this.tags.includes(value)) {
+            this.tags.push(value);
+          }
+          this.newTag = '';
+        },
+        removeTag(index) {
+          this.tags.splice(index, 1);
+        },
+        convertInputToTag() {
+          if (this.newTag.trim()) {
+            this.addTag();
+          }
         }
-    </script>
+      };
+    }
+  </script>
 
-    <script>
-        // navbar search box functionality
-        const searchInput = document.querySelector('.search-input');
-        const searchIcon = document.querySelector('.search-icon');
-        const clearBtn = document.querySelector('.clear-btn');
-
-        // When input is focused
-        searchInput.addEventListener('focus', () => {
-            searchIcon.querySelectorAll('path').forEach(p => p.setAttribute('stroke', '#007D47')); // Theme Green
-        });
-
-        // When input loses focus
-        searchInput.addEventListener('blur', () => {
-            searchIcon.querySelectorAll('path').forEach(p => p.setAttribute('stroke', '#8C8484'));
-        });
-
-        // Show or hide clear button depending on input value
-        searchInput.addEventListener('input', () => {
-            clearBtn.classList.toggle('hidden', searchInput.value === '');
-        });
-
-        // Clear input when clear button is clicked
-        clearBtn.addEventListener('click', () => {
-            searchInput.value = '';
-            clearBtn.classList.add('hidden');
-            searchInput.focus();
-        });
-    </script>
 </body>
-
 </html>

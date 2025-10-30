@@ -10,6 +10,15 @@
     <!--- MAIN CSS ---->
     <link rel="stylesheet" href="assets/css/input.css">
     <link rel="stylesheet" href="assets/css/output.css">
+    <style>
+        .inner-dp {
+            opacity: 0;
+        }
+
+        .tab-btn.active .inner-dp {
+            opacity: 1 !important;
+        }
+    </style>
 </head>
 
 <body class=" bg-Theme-bg font-Inter">
@@ -515,12 +524,98 @@
             <div class="flex items-start gap-0 w-full h-full">
                 <!-- Tabs -->
                 <div class="bg-[#F8F3F3] w-full max-w-[226px] h-[466px]  border border-[#E2DCDC] rounded-10px">
-                    <h5 class="text-base font-medium leading-[21px] text-Theme-Black p-5 border-b border-[#E2DCDC]">Tag Groups</h5>
+                    <h5 class="text-base font-medium leading-[21px] text-Theme-Black p-5 border-b border-[#E2DCDC]">Tag
+                        Groups</h5>
                     <div id="tabs" class="flex flex-col gap-0 h-[calc(100%-63px)] p-2.5  overflow-y-auto">
 
-                        <button
-                            class="tab-btn p-[15px] flex items-center justify-between text-gray-600 rounded-[5px] border-b-2 bg-transparent border-transparent active:bg-white hover:bg-white "
-                            data-tab="tab-1">New Leads</button>
+                        <div class="tab-btn px-[15px] py-3.5 flex items-center justify-between text-Theme-Black text-sm leading-5 font-medium rounded-[5px] border-b-2 bg-transparent border-transparent active:bg-white hover:bg-white active"
+                            data-tab="tab-New-Leads">New Leads
+                            <div x-data="dropdownComponent('tab-1')" class="inner-dp relative w-max ">
+                                <button @click="toggle" :class="{'bg-[#F2EFEF]': isOpen, 'bg-white': !isOpen}"
+                                    class="w-[20px] h-[20px] aspect-square rounded-[5px]  flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.5951 8.99964H14.6077" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M8.99371 8.99964H9.00628" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M3.39239 8.99964H3.40496" stroke="#000A06" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </button>
+
+                                <div x-ref="tab-1" x-show="isOpen" x-transition=""
+                                    x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                                    @click.outside="close"
+                                    class="absolute right-[-15px] z-10 p-2 mt-2 w-[120px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft"
+                                    style="overflow: hidden; transition: height 300ms; height: auto; display: none;">
+                                    <ul class="">
+
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path d="M10 14L12 14L14 14" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                    <path
+                                                        d="M8.94934 3.04032L2.79017 9.32234C2.5576 9.5609 2.33254 10.0308 2.28753 10.3561L2.00995 12.6983C1.91243 13.5441 2.5426 14.1224 3.41284 13.9778L5.82849 13.5802C6.16609 13.5224 6.63872 13.2838 6.87128 13.0381L13.0305 6.75604C14.0957 5.67168 14.5759 4.43552 12.9179 2.92465C11.2675 1.42824 10.0146 1.95596 8.94934 3.04032Z"
+                                                        stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                    <path
+                                                        d="M8.46094 3.8457C8.75226 5.82449 10.2698 7.33726 12.1532 7.53801"
+                                                        stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                </svg>
+                                                Rename
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect x="4.25" y="4.25" width="9.75" height="9.75" rx="2"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M9.75 2H8.75C6.1787 2 4.89305 2 3.94359 2.56909C3.37937 2.90726 2.90726 3.37937 2.56909 3.94359C2 4.89305 2 6.1787 2 8.75"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M9.12109 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M11 9.12109L7.25 9.12109" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Duplicate
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M3.5 4.25H12.5V10C12.5 11.8856 12.5 12.8284 11.9142 13.4142C11.3284 14 10.3856 14 8.5 14H7.5C5.61438 14 4.67157 14 4.08579 13.4142C3.5 12.8284 3.5 11.8856 3.5 10V4.25Z"
+                                                        stroke="#000A06"></path>
+                                                    <path d="M2 4.25H14" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                    <path
+                                                        d="M5 4C5 3.05719 5 2.58579 5.29289 2.29289C5.58579 2 6.05719 2 7 2H9C9.94281 2 10.4142 2 10.7071 2.29289C11 2.58579 11 3.05719 11 4V4.25H5V4Z"
+                                                        stroke="#000A06"></path>
+                                                    <path d="M6.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                    <path d="M9.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                </svg>
+                                                Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                         <button id="add-tab-btn" class="btn-white-icon-text mt-auto">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -535,8 +630,10 @@
                 </div>
 
                 <!-- Tab Panels -->
-                <div id="tab-panels" class="mt-4">
-                    <div class="tab-panel" id="tab-1">Content for Tab 1</div>
+                <div id="tab-panels" class="w-full">
+                    <div class="tab-panel active w-full" id="tab-New-Leads">
+                        <h5 class="p-5 border-b border-[#E2DCDC] text-base leading-[22px] font-medium text-Theme-Black">New Leads</h5>
+                    </div>
                 </div>
             </div>
         </div>
@@ -562,38 +659,88 @@
             });
         });
     </script>
+    <!-- drop down  -->
     <script>
-        let tabCounter = 1; // To generate unique IDs
+        function dropdownComponent(id) {
+            return {
+                id,
+                height: 'auto',
+                opacity: 0,
 
+                visible: false,
+                get isOpen() {
+                    return Alpine.store('dropdown').openId === this.id;
+                },
+                toggle() {
+                    if (this.isOpen) {
+                        this.close();
+                    } else {
+                        Alpine.store('dropdown').openId = this.id;
+                        this.$nextTick(() => {
+                            this.visible = true;
+                            // const scrollHeight = this.$refs.menu.scrollHeight;
+                            // this.height = scrollHeight + 'px';
+                            this.opacity = 1;
+                        });
+                    }
+                },
+                close() {
+                    if (this.isOpen) {
+                        this.opacity = 0;
+                        // this.height = '0px';
+
+                        setTimeout(() => {
+                            this.visible = false;
+                            Alpine.store('dropdown').openId = null;
+                        }, 100); // match with transition duration
+                    }
+                }
+            };
+        }
+    </script>
+
+    <!-- drop component  -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('dropdownComponent', (id) => ({
+                isOpen: false,
+                height: '0px',
+                toggle() {
+                    this.isOpen = !this.isOpen;
+                    this.$nextTick(() => {
+                        const content = this.$refs[id];
+                        this.height = this.isOpen ? content.scrollHeight + 'px' : '0px';
+                    });
+                },
+                close() {
+                    this.isOpen = false;
+                    this.height = '0px';
+                }
+            }));
+        });
+    </script>
+
+    <!-- tab  -->
+    <script>
+        let tabCounter = 1;
         const tabsContainer = document.getElementById('tabs');
         const panelsContainer = document.getElementById('tab-panels');
         const addTabBtn = document.getElementById('add-tab-btn');
 
         function setActiveTab(tabId) {
-            // Activate the tab button
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('bg-white');
-                btn.classList.add('text-gray-600');
+                btn.classList.remove('active', 'bg-white', 'border-theme-Black');
             });
-
             const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
             if (activeBtn) {
-                activeBtn.classList.add('bg-white');
-                activeBtn.classList.remove('text-gray-600');
+                activeBtn.classList.add('active', 'bg-white', 'border-theme-Black');
             }
 
-            // Show active panel and hide others
-            document.querySelectorAll('.tab-panel').forEach(panel => {
-                panel.classList.add('hidden');
-            });
-
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.add('hidden'));
             const activePanel = document.getElementById(tabId);
-            if (activePanel) {
-                activePanel.classList.remove('hidden');
-            }
+            if (activePanel) activePanel.classList.remove('hidden');
         }
 
-        // Handle tab clicks
         tabsContainer.addEventListener('click', e => {
             const btn = e.target.closest('.tab-btn');
             if (btn && btn.dataset.tab) {
@@ -601,32 +748,127 @@
             }
         });
 
-        // Handle add new tab
         addTabBtn.addEventListener('click', () => {
             tabCounter++;
             const tabId = `tab-${tabCounter}`;
 
-            // Create new tab button
-            const newTabBtn = document.createElement('button');
-            newTabBtn.className = 'tab-btn p-[15px] text-gray-600 border-b-2 border-transparent hover:bg-white';
-            newTabBtn.textContent = `Tab ${tabCounter}`;
+            // Create tab button with dropdown inside
+            const newTabBtn = document.createElement('div');
+            newTabBtn.className =
+                'tab-btn px-[15px] py-3.5 flex items-center justify-between text-Theme-Black text-sm leading-5 font-medium rounded-[5px] border-b-2 bg-transparent border-transparent active:bg-white hover:bg-white';
             newTabBtn.dataset.tab = tabId;
+            newTabBtn.innerHTML = `
+      <span>Tag Group ${tabCounter}</span>
+      <div x-data="dropdownComponent('${tabId}')" class="inner-dp  relative">
+        <button @click="toggle"
+          :class="{'bg-[#F2EFEF]': isOpen, 'bg-white': !isOpen}"
+          class="w-[20px] h-[20px] rounded-[5px] flex items-center justify-center transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.5951 8.99964H14.6077" stroke="#000A06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M8.99371 8.99964H9.00628" stroke="#000A06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M3.39239 8.99964H3.40496" stroke="#000A06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+        <div x-ref="${tabId}" x-show="isOpen" x-transition
+          x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+          @click.outside="close"
+          class="absolute right-[-15px] z-10 p-2 mt-2 w-[120px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft"
+                                    style="overflow: hidden; transition: height 300ms; height: auto; display: none;">
+          <ul>
+             <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path d="M10 14L12 14L14 14" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                    <path
+                                                        d="M8.94934 3.04032L2.79017 9.32234C2.5576 9.5609 2.33254 10.0308 2.28753 10.3561L2.00995 12.6983C1.91243 13.5441 2.5426 14.1224 3.41284 13.9778L5.82849 13.5802C6.16609 13.5224 6.63872 13.2838 6.87128 13.0381L13.0305 6.75604C14.0957 5.67168 14.5759 4.43552 12.9179 2.92465C11.2675 1.42824 10.0146 1.95596 8.94934 3.04032Z"
+                                                        stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                    <path
+                                                        d="M8.46094 3.8457C8.75226 5.82449 10.2698 7.33726 12.1532 7.53801"
+                                                        stroke="#000A06" stroke-miterlimit="10" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                </svg>
+                                                Rename
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect x="4.25" y="4.25" width="9.75" height="9.75" rx="2"
+                                                        stroke="#000A06" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M9.75 2H8.75C6.1787 2 4.89305 2 3.94359 2.56909C3.37937 2.90726 2.90726 3.37937 2.56909 3.94359C2 4.89305 2 6.1787 2 8.75"
+                                                        stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M9.12109 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M11 9.12109L7.25 9.12109" stroke="#000A06"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                Duplicate
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#"
+                                                class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16" fill="none">
+                                                    <path
+                                                        d="M3.5 4.25H12.5V10C12.5 11.8856 12.5 12.8284 11.9142 13.4142C11.3284 14 10.3856 14 8.5 14H7.5C5.61438 14 4.67157 14 4.08579 13.4142C3.5 12.8284 3.5 11.8856 3.5 10V4.25Z"
+                                                        stroke="#000A06"></path>
+                                                    <path d="M2 4.25H14" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                    <path
+                                                        d="M5 4C5 3.05719 5 2.58579 5.29289 2.29289C5.58579 2 6.05719 2 7 2H9C9.94281 2 10.4142 2 10.7071 2.29289C11 2.58579 11 3.05719 11 4V4.25H5V4Z"
+                                                        stroke="#000A06"></path>
+                                                    <path d="M6.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                    <path d="M9.5 7.25V11" stroke="#000A06" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                </svg>
+                                                Delete
+                                            </a>
+                                        </li>
+          </ul>
+        </div>
+      </div>
+    `;
+
+            // Insert before add-tab button
             tabsContainer.insertBefore(newTabBtn, addTabBtn);
 
-            // Create new tab panel
+            // Add corresponding panel
             const newPanel = document.createElement('div');
             newPanel.className = 'tab-panel hidden';
             newPanel.id = tabId;
-            newPanel.textContent = `Content for Tab ${tabCounter}`;
+            newPanel.textContent = `Content for ${tabId}`;
             panelsContainer.appendChild(newPanel);
 
-            // Activate new tab
+            // Re-scan Alpine
+            Alpine.initTree(newTabBtn);
+
+            // Activate this tab immediately
             setActiveTab(tabId);
         });
 
-        // Initialize first tab as active
-        setActiveTab('tab-1');
+        // Activate first tab on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const firstTab = document.querySelector('.tab-btn');
+            if (firstTab) setActiveTab(firstTab.dataset.tab);
+        });
     </script>
+
+
+
+
 </body>
 
 </html>
