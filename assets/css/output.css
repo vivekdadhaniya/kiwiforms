@@ -3039,13 +3039,6 @@
   }
 }
 @font-face {
-  font-family: inter;
-  font-style: normal;
-  font-weight: 200 700;
-  font-display: swap;
-  src: url("../font/inter-display/InterVariable.ttf") format("woff2");
-}
-@font-face {
   font-family: inter-disp;
   font-style: normal;
   font-weight: 200 700;

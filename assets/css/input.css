@@ -31,13 +31,13 @@
   --shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
 }
 
-@font-face {
+/* @font-face {
   font-family: inter;
   font-style: normal;
   font-weight: 200 700;
   font-display: swap;
   src: url("../font/inter-display/InterVariable.ttf") format("woff2");
-}
+} */
 
 @font-face {
   font-family: inter-disp;
