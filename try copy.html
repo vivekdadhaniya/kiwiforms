@@ -1,63 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tag Input</title>
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.3/dist/tailwind.min.css" rel="stylesheet">
+  <title>Single Tag Input</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body class="p-10 bg-gray-50">
 
-  <div class="w-full max-w-lg" x-data="tagInput()" @click.outside="convertInputToTag">
+  <div class="max-w-md">
     <label class="block text-sm font-medium text-gray-700 mb-1">Tag As</label>
-
-    <div class="flex flex-wrap items-center gap-2 bg-gray-50 border border-gray-200 rounded-md px-3 py-2 min-h-[42px]"
-      @click="$refs.input.focus()">
-
-      <!-- Tags -->
-      <template x-for="(tag, index) in tags" :key="index">
-        <div
-          class="flex items-center gap-1 bg-white border border-gray-300 rounded-full px-3 py-1 text-sm text-green-700">
-          <span x-text="tag"></span>
-          <button type="button" @click="removeTag(index)" class="text-gray-500 hover:text-black">
-            &times;
-          </button>
-        </div>
-      </template>
-
-      <!-- Input -->
-      <input x-ref="input" type="text" x-model="newTag"
-        @keydown.enter.prevent="addTag"
-        class="flex-1 bg-transparent focus:outline-none min-w-[80px] text-sm text-gray-700"
-        placeholder="Type and press Enter" />
+    <div id="tagInputWrapper"
+      class="flex flex-wrap items-center gap-2 p-2 border border-gray-200 rounded-md bg-gray-50 focus-within:border-gray-400 transition-all">
+      <input id="tagInput" type="text" placeholder="Add tag"
+        class="flex-1 bg-transparent border-none focus:ring-0 outline-none text-sm text-gray-700 min-w-[80px]" />
     </div>
   </div>
 
   <script>
-    function tagInput() {
-      return {
-        tags: ['High'], // default tag
-        newTag: '',
-        addTag() {
-          const value = this.newTag.trim();
-          if (value && !this.tags.includes(value)) {
-            this.tags.push(value);
-          }
-          this.newTag = '';
-        },
-        removeTag(index) {
-          this.tags.splice(index, 1);
-        },
-        convertInputToTag() {
-          if (this.newTag.trim()) {
-            this.addTag();
-          }
-        }
-      };
+    const wrapper = document.getElementById('tagInputWrapper');
+    const input = document.getElementById('tagInput');
+
+    // Store single tag
+    let tags = ['High']; // default tag
+
+    function renderTags() {
+      wrapper.querySelectorAll('.tag').forEach(tag => tag.remove());
+
+      tags.forEach(tagText => {
+        const tagEl = document.createElement('div');
+        tagEl.className =
+          'tag flex items-center gap-1 px-2 py-1 bg-white border border-gray-200 rounded-full text-sm text-green-700 font-medium';
+        tagEl.innerHTML = `
+          <span>${tagText}</span>
+          <button type="button" class="text-gray-500 hover:text-gray-700 focus:outline-none" data-tag="${tagText}">
+            &times;
+          </button>
+        `;
+        wrapper.insertBefore(tagEl, input);
+      });
+
+      // Hide input if max tag (1) reached
+      input.style.display = tags.length >= 1 ? 'none' : 'block';
     }
+
+    function addTag(value) {
+      const trimmed = value.trim();
+      if (trimmed) {
+        tags = [trimmed]; // replace existing tag
+        renderTags();
+      }
+      input.value = '';
+    }
+
+    function removeTag(tagText) {
+      tags = tags.filter(t => t !== tagText);
+      renderTags();
+    }
+
+    // Add tag on Enter
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        addTag(input.value);
+      }
+    });
+
+    // Add tag on blur
+    input.addEventListener('blur', () => {
+      addTag(input.value);
+    });
+
+    // Remove tag on click
+    wrapper.addEventListener('click', e => {
+      if (e.target.matches('button[data-tag]')) {
+        removeTag(e.target.dataset.tag);
+      }
+    });
+
+    // Initialize default tag
+    renderTags();
   </script>
 
 </body>
