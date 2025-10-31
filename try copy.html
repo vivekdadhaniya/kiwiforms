@@ -1,86 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Single Tag Input</title>
+  <title>Custom Input with Dropdown</title>
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="p-10 bg-gray-50">
 
-  <div class="max-w-md">
-    <label class="block text-sm font-medium text-gray-700 mb-1">Tag As</label>
-    <div id="tagInputWrapper"
-      class="flex flex-wrap items-center gap-2 p-2 border border-gray-200 rounded-md bg-gray-50 focus-within:border-gray-400 transition-all">
-      <input id="tagInput" type="text" placeholder="Add tag"
-        class="flex-1 bg-transparent border-none focus:ring-0 outline-none text-sm text-gray-700 min-w-[80px]" />
+  <style>
+    /* Hide native number arrows */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center bg-gray-50 gap-6">
+
+  <!-- ===== FIELD GROUP 1 ===== -->
+  <div class="field-group flex items-center gap-2 w-full max-w-xl">
+    <!-- Dropdown -->
+    <div class="custom-dropdown relative" data-style="design1">
+      <button
+        class="dropdown-button flex items-center justify-between w-28 bg-gray-100 text-gray-700 font-medium py-2 px-3 rounded-lg border border-gray-300 focus:outline-none">
+        <span class="selected-option placeholder">Number</span>
+        <svg class="dropdown-arrow w-4 h-4 text-gray-600 ml-1" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      <div
+        class="dropdown-menu hidden absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-md z-10">
+        <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer"><span>Text</span></div>
+        <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer"><span>Number</span></div>
+      </div>
+    </div>
+
+    <!-- Input with Custom Arrows -->
+    <div class="relative w-full">
+      <input type="number" value="0"
+        class="custom-input w-full bg-[#F8F6F6] border border-[#E2DCDC] text-gray-800 rounded-xl py-2.5 pl-4 pr-10 focus:outline-none"
+        placeholder="Enter number" />
+
+      <!-- Custom increment/decrement -->
+      <div
+        class="number-controls absolute right-2 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-1.5">
+        <button type="button"
+          class="increment-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+          <svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M13.9408 6.56787C13.8204 6.82945 13.5368 7 13.2222 7L0.777818 7C0.463181 7 0.179657 6.82945 0.0592575 6.56788C-0.0611421 6.30631 0.00533186 6.00522 0.227775 5.80502L6.44998 0.20503C6.75372 -0.0683444 7.24621 -0.0683445 7.54996 0.20503L13.7722 5.80502C13.9946 6.00522 14.0612 6.30631 13.9408 6.56787Z"
+              fill="currentColor" />
+          </svg>
+        </button>
+        <button type="button"
+          class="decrement-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+          <svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M0.0592249 0.432125C0.179614 0.170548 0.463223 8.09924e-08 0.777796 1.35994e-07L13.2222 2.31184e-06C13.5368 2.36685e-06 13.8203 0.170551 13.9407 0.432128C14.0611 0.693695 13.9947 0.99478 13.7722 1.19498L7.55002 6.79497C7.24627 7.06834 6.75379 7.06834 6.45004 6.79497L0.227826 1.19498C0.00538204 0.994777 -0.0611541 0.693693 0.0592249 0.432125Z"
+              fill="currentColor" />
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 
+  <!-- ===== FIELD GROUP 2 (Duplicate Example) ===== -->
+  <div class="field-group flex items-center gap-2 w-full max-w-xl">
+    <div class="custom-dropdown relative" data-style="design1">
+      <button
+        class="dropdown-button flex items-center justify-between w-28 bg-gray-100 text-gray-700 font-medium py-2 px-3 rounded-lg border border-gray-300 focus:outline-none">
+        <span class="selected-option placeholder">Text</span>
+        <svg class="dropdown-arrow w-4 h-4 text-gray-600 ml-1" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div
+        class="dropdown-menu hidden absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-md z-10">
+        <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer"><span>Text</span></div>
+        <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer"><span>Number</span></div>
+      </div>
+    </div>
+
+    <div class="relative w-full">
+      <input type="text" placeholder="Enter text"
+        class="custom-input w-full bg-[#F8F6F6] border border-[#E2DCDC] text-gray-800 rounded-xl py-2.5 pl-4 pr-10 focus:outline-none" />
+      <div
+        class="number-controls absolute right-2 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-1.5 hidden">
+        <button type="button"
+          class="increment-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+          <svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M13.9408 6.56787C13.8204 6.82945 13.5368 7 13.2222 7L0.777818 7C0.463181 7 0.179657 6.82945 0.0592575 6.56788C-0.0611421 6.30631 0.00533186 6.00522 0.227775 5.80502L6.44998 0.20503C6.75372 -0.0683444 7.24621 -0.0683445 7.54996 0.20503L13.7722 5.80502C13.9946 6.00522 14.0612 6.30631 13.9408 6.56787Z"
+              fill="currentColor" />
+          </svg>
+        </button>
+        <button type="button"
+          class="decrement-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+          <svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M0.0592249 0.432125C0.179614 0.170548 0.463223 8.09924e-08 0.777796 1.35994e-07L13.2222 2.31184e-06C13.5368 2.36685e-06 13.8203 0.170551 13.9407 0.432128C14.0611 0.693695 13.9947 0.99478 13.7722 1.19498L7.55002 6.79497C7.24627 7.06834 6.75379 7.06834 6.45004 6.79497L0.227826 1.19498C0.00538204 0.994777 -0.0611541 0.693693 0.0592249 0.432125Z"
+              fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-center text-sm text-gray-400 mt-2">Each dropdown + input works independently.</p>
+
+  <!-- SCRIPT 1: Custom Dropdown (Design-1) -->
   <script>
-    const wrapper = document.getElementById('tagInputWrapper');
-    const input = document.getElementById('tagInput');
+    document.querySelectorAll('.custom-dropdown[data-style="design1"]').forEach(dropdown => {
+      const button = dropdown.querySelector('.dropdown-button');
+      const menu = dropdown.querySelector('.dropdown-menu');
+      const arrow = dropdown.querySelector('.dropdown-arrow');
+      const selectedOption = dropdown.querySelector('.selected-option');
+      const items = dropdown.querySelectorAll('.dropdown-item');
 
-    // Store single tag
-    let tags = ['High']; // default tag
-
-    function renderTags() {
-      wrapper.querySelectorAll('.tag').forEach(tag => tag.remove());
-
-      tags.forEach(tagText => {
-        const tagEl = document.createElement('div');
-        tagEl.className =
-          'tag flex items-center gap-1 px-2 py-1 bg-white border border-gray-200 rounded-full text-sm text-green-700 font-medium';
-        tagEl.innerHTML = `
-          <span>${tagText}</span>
-          <button type="button" class="text-gray-500 hover:text-gray-700 focus:outline-none" data-tag="${tagText}">
-            &times;
-          </button>
-        `;
-        wrapper.insertBefore(tagEl, input);
+      // Toggle menu
+      button.addEventListener('click', e => {
+        e.stopPropagation();
+        menu.classList.toggle('hidden');
+        arrow.classList.toggle('rotate-180');
       });
 
-      // Hide input if max tag (1) reached
-      input.style.display = tags.length >= 1 ? 'none' : 'block';
-    }
+      // Select option
+      items.forEach(item => {
+        item.addEventListener('click', () => {
+          const value = item.textContent.trim();
+          selectedOption.textContent = value;
+          menu.classList.add('hidden');
+          arrow.classList.remove('rotate-180');
+          button.dispatchEvent(new CustomEvent('optionSelected', { detail: value }));
+        });
+      });
 
-    function addTag(value) {
-      const trimmed = value.trim();
-      if (trimmed) {
-        tags = [trimmed]; // replace existing tag
-        renderTags();
-      }
-      input.value = '';
-    }
-
-    function removeTag(tagText) {
-      tags = tags.filter(t => t !== tagText);
-      renderTags();
-    }
-
-    // Add tag on Enter
-    input.addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        addTag(input.value);
-      }
+      // Close dropdown if clicked outside
+      window.addEventListener('click', e => {
+        if (!dropdown.contains(e.target)) {
+          menu.classList.add('hidden');
+          arrow.classList.remove('rotate-180');
+        }
+      });
     });
-
-    // Add tag on blur
-    input.addEventListener('blur', () => {
-      addTag(input.value);
-    });
-
-    // Remove tag on click
-    wrapper.addEventListener('click', e => {
-      if (e.target.matches('button[data-tag]')) {
-        removeTag(e.target.dataset.tag);
-      }
-    });
-
-    // Initialize default tag
-    renderTags();
   </script>
 
+  <!-- SCRIPT 2: Input + Increment/Decrement Logic (Multi-instance safe) -->
+  <script>
+    document.querySelectorAll('.field-group').forEach(group => {
+      const input = group.querySelector('.custom-input');
+      const incrementBtn = group.querySelector('.increment-btn');
+      const decrementBtn = group.querySelector('.decrement-btn');
+      const numberControls = group.querySelector('.number-controls');
+      const dropdown = group.querySelector('.custom-dropdown[data-style="design1"]');
+      const dropdownButton = dropdown.querySelector('.dropdown-button');
+
+      // Toggle arrow visibility
+      function toggleNumberControls(type) {
+        if (type === 'number') {
+          numberControls.classList.remove('hidden');
+        } else {
+          numberControls.classList.add('hidden');
+        }
+      }
+
+      toggleNumberControls(input.type);
+
+      incrementBtn.addEventListener('click', () => input.stepUp());
+      decrementBtn.addEventListener('click', () => input.stepDown());
+
+      dropdownButton.addEventListener('optionSelected', e => {
+        const selectedText = e.detail.toLowerCase();
+        if (selectedText === 'number') {
+          input.type = 'number';
+          input.placeholder = 'Enter a number';
+        } else if (selectedText === 'text') {
+          input.type = 'text';
+          input.placeholder = 'Enter text';
+        }
+        toggleNumberControls(input.type);
+      });
+    });
+  </script>
 </body>
+
 </html>
