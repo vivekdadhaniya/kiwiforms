@@ -82,9 +82,10 @@
                                 </linearGradient>
                             </defs>
                         </svg>
-                        
 
-                        <svg class="md:hidden block" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                        <svg class="md:hidden block" width="40" height="40" viewBox="0 0 40 40" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M30 0H10C4.47715 0 0 4.47715 0 10V30C0 35.5228 4.47715 40 10 40H30C35.5228 40 40 35.5228 40 30V10C40 4.47715 35.5228 0 30 0Z"
                                 fill="white" />
@@ -297,7 +298,8 @@
                             </li>
                         </ul>
                         <div class="px-[15px] pb-5">
-                            <button class="btn-white-icon-text" :class="isSidebarOpen ? 'py-2.5' : 'py-[13px]'">
+                            <button data-modal-target="new-workspace" class="btn-white-icon-text"
+                                :class="isSidebarOpen ? 'py-2.5' : 'py-[13px]'">
                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1 6H6M6 6H11M6 6V1M6 6V11" stroke="#000A06" stroke-width="1.5"
@@ -457,7 +459,7 @@
                                 <ul class="">
 
                                     <li>
-                                        <a href="#"
+                                        <button data-modal-target="Rename-workspace"
                                             class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 viewBox="0 0 16 16" fill="none">
@@ -473,11 +475,11 @@
                                                     stroke-linejoin="round"></path>
                                             </svg>
                                             Rename
-                                        </a>
+                                        </button>
                                     </li>
 
                                     <li>
-                                        <a href="#"
+                                        <button data-modal-target="Delete-workspace"
                                             class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 viewBox="0 0 16 16" fill="none">
@@ -495,7 +497,7 @@
                                                     stroke-linejoin="round"></path>
                                             </svg>
                                             Delete
-                                        </a>
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
@@ -2206,6 +2208,10 @@
                             </div>
                         </div>
                     </div>
+                    <button data-modal-target="Warning" class="btn-kiwi-green">warning</button>
+                    <button data-modal-target="Warning-responsive"
+                        class="btn-kiwi-green mt-5">Warning-responsive</button>
+
                 </div>
                 <!-- grid-view  -->
                 <div
@@ -3422,9 +3428,216 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+
         </div>
 
+    </div>
+    <!-- Create new workspace -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[420px]"
+        id="new-workspace">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Create New Workspace
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col py-[30px] px-[15px] border border-[#E9E1E1]">
+            <label for="workspace" class="text-xs leading-[14px] text-[#8C8484]">Workspace Name</label>
+            <input type="text" id="workspace" class="text-base leading-[22px] border border-transparent text-Theme-Black placeholder:text-[#8C8484] w-full py-3.5 px-[15px] bg-[#F8F6F6] mt-[5px] rounded-10px
+            transition-all duration-500 hover:border-[#E9E1E1] hover:bg-white focus:outline-0 focus:border-Theme-Green"
+                placeholder="Enter Workspace Name">
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
+
+            <button class="btn-kiwi-green-icon-text w-full justify-center">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.75 5.75H5.75M5.75 5.75H10.75M5.75 5.75V0.75M5.75 5.75V10.75" stroke="currentColor"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Create Workspace
+            </button>
+        </div>
+    </div>
+    <!-- Rename workspace -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[420px]"
+        id="Rename-workspace">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Rename Workspace
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col py-[30px] px-[15px] border border-[#E9E1E1]">
+            <label for="workspace" class="text-xs leading-[14px] text-[#8C8484]">Workspace Name</label>
+            <input type="text" id="workspace" class="text-base leading-[22px] border border-transparent text-Theme-Black placeholder:text-[#8C8484] w-full py-3.5 px-[15px] bg-[#F8F6F6] mt-[5px] rounded-10px
+            transition-all duration-500 hover:border-[#E9E1E1] hover:bg-white focus:outline-0 focus:border-Theme-Green"
+                placeholder="Enter Workspace Name">
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
+            <button class="btn-kiwi-green w-full text-center">Save</button>
+        </div>
+    </div>
+    <!-- Delete workspace -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[420px]"
+        id="Delete-workspace">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-xl leading-140 text-Theme-Black">
+                    Sure about deleting this Workspace?
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col p-[15px] border border-[#E9E1E1]">
+            <p class="text-base leading-8 font-normal text-Theme-Black mb-2.5">
+                You’re about to delete <span class="font-semibold"> Marketing Team!</span>
+            </p>
+            <p class="text-base leading-8 font-normal text-Theme-Black mb-2.5">
+                All Kiwiforms and collected responses in this workspace will be permanently deleted.
+            </p>
+            <p class="text-base leading-8 font-normal text-Theme-Black mb-6">
+                This action cannot be undone.
+            </p>
+            <label for="workspace" class="text-xs leading-[14px] text-Theme-Black">Type the Workspace Name to
+                confirm</label>
+            <input type="text" id="workspace" class="text-base leading-[22px] border border-transparent text-Theme-Black placeholder:text-[#8C8484] w-full py-3.5 px-[15px] bg-[#F8F6F6] mt-[5px] rounded-10px
+            transition-all duration-500 hover:border-[#E9E1E1] hover:bg-white focus:outline-0 focus:border-Theme-Green"
+                placeholder="Enter Workspace Name">
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end flex-col w-full py-2.5 px-[5px]">
+            <button
+                class="py-2.5 w-full text-center rounded-10px bg-[#E2DCDC] text-theme-Black text-sm font-medium leading-5">
+                Delete Workspace
+            </button>
+            <button
+                class="py-2.5 w-full text-center rounded-10px bg-[#DC3027] text-white text-sm font-medium leading-5 transition-all duration-500 hover:bg-[#cc261d]">
+                Delete Workspace
+            </button>
+        </div>
+    </div>
+
+    <!-- Warning -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[420px]"
+        id="Warning">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-xl leading-140 text-Theme-Black">
+                    Sure you want to do this?
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col p-[15px] border border-[#E9E1E1]">
+            <p class="text-base leading-8 font-normal text-Theme-Black mb-2.5">
+                The data from this Form Field is used in a later field through pulling the data of it.
+                If you move or delete this, that Form Field won’t be able to fetch its data.
+            </p>
+            <p class="text-base leading-8 font-normal text-Theme-Black">
+                Are you sure about moving this Form Field?
+            </p>
+
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end flex-col w-full py-2.5 px-[5px]">
+
+            <button
+                class="py-2.5 w-full text-center rounded-10px bg-[#DC3027] text-white text-sm font-medium leading-5 transition-all duration-500 hover:bg-[#cc261d]">
+                Yes
+            </button>
+        </div>
+    </div>
+
+    <!-- Warning -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[420px]"
+        id="Warning-responsive">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-xl leading-140 text-Theme-Black">
+                    Get the full Kiwiform experience!
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col p-[15px] border border-[#E9E1E1]">
+           
+            <p class="text-base leading-8 font-normal text-Theme-Black">
+                You’re currently using Kiwiform on a smaller device. Some features may be limited, and navigating forms
+                might be less convenient.
+                For the best experience, we recommend using Kiwiform on a laptop or desktop computer.
+            </p>
+
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end flex-col w-full py-2.5 px-[5px]">
+
+            <button
+                class="btn-kiwi-green w-full text-center">
+                Got It, Thanks
+            </button>
+        </div>
+    </div>
+    <!-- modal overlay  -->
+    <div
+        class="overlay-modal w-full h-screen z-[500] bg-[#012819]/30 backdrop-blur-[7.5px] fixed top-0 left-0 opacity-0 invisible">
     </div>
     <!-- MAIN JS-->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
