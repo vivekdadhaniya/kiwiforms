@@ -356,4 +356,25 @@
       @apply gap-[50px]
     }
   }
+
+
+  .inner-dp {
+    opacity: 0;
+  }
+
+  .tab-btn.active .inner-dp {
+    opacity: 1 !important;
+  }
+
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
 }

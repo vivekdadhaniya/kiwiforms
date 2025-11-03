@@ -19,6 +19,18 @@
             opacity: 1 !important;
         }
     </style>
+    <style>
+        /* Hide native number arrows */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
 </head>
 
 <body class=" bg-Theme-bg font-Inter">
@@ -178,7 +190,7 @@
                                     stroke-linejoin="round" />
                             </svg>
                         </button>
-                        <button class="button-icon group">
+                        <button class="button-icon group" data-modal-target="Variables">
                             <svg class="transition-all duration-500 " width="18" height="18" viewBox="0 0 18 18"
                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3 3C1.49075 5 -0.622193 10.2 3 15" stroke="#000A06" stroke-width="1.2"
@@ -495,7 +507,7 @@
 
     </div>
 
-    <!-- Quiz Result modal -->
+    <!--Tagging modal -->
     <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[956px] "
         id="Tagging">
         <!-- modal header  -->
@@ -2046,6 +2058,598 @@
             <button class="btn-kiwi-green w-full max-w-[150px]">Save</button>
         </div>
     </div>
+
+    <!--Variables modal -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[956px] "
+        id="Variables">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Variables
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div
+            class="w-full bg-white rounded-10px flex flex-col p-2.5 h-[539px] overflow-auto [&::-webkit-scrollbar]:hidden">
+            <h5 class="p-2.5 pb-5 text-base leading-140 text-Theme-Black">
+                Activate more complex calculation logic.
+            </h5>
+            <div
+                class="w-full rounded-10px border border-[#E2DCDC] bg-[#F8F3F3] p-[15px] pr-5 flex items-center justify-between">
+                <div class="block">
+                    <h5 class="text-base font-medium leading-[22px] text-Theme-Black mb-2.5">Custom Variables</h5>
+                    <p class="text-[15px] leading-[18px] text-Theme-Black">Create custom variables for dynamic data,
+                        personalization, and calculations..</p>
+                </div>
+                <button class="btn-white-icon-text px-5 w-max">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0.599609 5.60156H5.59961M5.59961 5.60156H10.5996M5.59961 5.60156V0.601562M5.59961 5.60156V10.6016"
+                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Add Custom Variable
+                </button>
+            </div>
+            <div class="mt-5 border border-[#E9E1E1] rounded-10px ">
+                <h5 class="p-[15px] border-b border-[#E9E1E1] text-base leading-[22px] font-medium text-Theme-Black">
+                    Custom Variables</h5>
+                <div class="p-[15px] flex flex-col gap-[15px]">
+                    <div class="w-full variable-box ">
+                        <div
+                            class="pt-1 pb-1.5 px-3 rounded-full w-max border border-[#9ACEB8] bg-[#CAEADC] text-[15px] leading-6 font-medium text-Theme-Green">
+                            @custom_variable
+                        </div>
+                        <div class="field-group flex items-center gap-2.5 mt-2.5">
+                            <!-- Dropdown -->
+                            <div class="custom-dropdown relative" data-style="design1">
+                                <button
+                                    class="dropdown-button flex items-center justify-between gap-2.5 w-28 bg-[#F8F6F6] text-[#8C8484] font-normal py-2.5 pl-[15px] pr-2.5 rounded-lg text-[15px] leading-[18px] focus:outline-none">
+                                    <span class="selected-option placeholder">Number</span>
+
+                                    <svg class="dropdown-arrow rotate-180" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.5">
+                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="#8C8484" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </g>
+                                    </svg>
+
+                                </button>
+
+                                <div
+                                    class="dropdown-menu hidden absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-md z-10">
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Text</span>
+                                    </div>
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Number</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Input with Custom Arrows -->
+                            <div class="relative w-full">
+                                <input type="number" value="0"
+                                    class="custom-input w-full bg-[#F8F6F6] text-[15px] font-medium leading-[18px] border border-[#E2DCDC] text-gray-800 rounded-10px py-2.5 px-[15px] transition-all duration-500 hover:bg-white focus:border-Theme-Green focus:bg-white focus:outline-none"
+                                    placeholder="Enter number" />
+                                <!-- Custom increment/decrement -->
+                                <div
+                                    class="number-controls absolute right-2 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-1.5">
+                                    <button type="button"
+                                        class="increment-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M13.9408 6.56787C13.8204 6.82945 13.5368 7 13.2222 7L0.777818 7C0.463181 7 0.179657 6.82945 0.0592575 6.56788C-0.0611421 6.30631 0.00533186 6.00522 0.227775 5.80502L6.44998 0.20503C6.75372 -0.0683444 7.24621 -0.0683445 7.54996 0.20503L13.7722 5.80502C13.9946 6.00522 14.0612 6.30631 13.9408 6.56787Z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </button>
+                                    <button type="button"
+                                        class="decrement-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M0.0592249 0.432125C0.179614 0.170548 0.463223 8.09924e-08 0.777796 1.35994e-07L13.2222 2.31184e-06C13.5368 2.36685e-06 13.8203 0.170551 13.9407 0.432128C14.0611 0.693695 13.9947 0.99478 13.7722 1.19498L7.55002 6.79497C7.24627 7.06834 6.75379 7.06834 6.45004 6.79497L0.227826 1.19498C0.00538204 0.994777 -0.0611541 0.693693 0.0592249 0.432125Z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-white-icon-text px-5 w-max mx-auto mt-5">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M0.599609 5.60156H5.59961M5.59961 5.60156H10.5996M5.59961 5.60156V0.601562M5.59961 5.60156V10.6016"
+                        stroke="#000A06" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    </path>
+                </svg>
+                Add Custom Variable
+            </button>
+
+            <div class="mt-5 border border-[#E9E1E1] rounded-10px ">
+                <h5 class="p-[15px] border-b border-[#E9E1E1] text-base leading-[22px] font-medium text-Theme-Black">
+                    Default Variables</h5>
+                <div class="p-[15px] flex flex-col gap-[15px]">
+                    <div class="w-full variable-box pb-[15px] border-b border-[#E2DCDC]">
+                        <div
+                            class="pt-1 pb-1.5 px-3 rounded-full w-max border border-[#9ACEB8] bg-[#CAEADC] text-[15px] leading-6 font-medium text-Theme-Green">
+                            @score
+                        </div>
+                        <div class="field-group flex items-center gap-2.5 my-2.5">
+                            <!-- Dropdown -->
+                            <div class="custom-dropdown relative" data-style="design1">
+                                <button
+                                    class="dropdown-button flex items-center justify-between gap-2.5 w-28 bg-[#F8F6F6] text-[#8C8484] font-normal py-2.5 pl-[15px] pr-2.5 rounded-lg text-[15px] leading-[18px] focus:outline-none">
+                                    <span class="selected-option placeholder">Number</span>
+
+                                    <svg class="dropdown-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.5">
+                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="#8C8484" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </g>
+                                    </svg>
+
+                                </button>
+
+                                <div
+                                    class="dropdown-menu hidden absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-md z-10">
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Text</span>
+                                    </div>
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Number</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Input with Custom Arrows -->
+                            <div class="relative w-full">
+                                <input type="number" value="0"
+                                    class="custom-input w-full bg-[#F8F6F6] text-[15px] font-medium leading-[18px] border border-[#E2DCDC] text-gray-800 rounded-10px py-2.5 px-[15px] transition-all duration-500 hover:bg-white focus:border-Theme-Green focus:bg-white focus:outline-none"
+                                    placeholder="Enter number">
+                                <!-- Custom increment/decrement -->
+                                <div
+                                    class="number-controls absolute right-2 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-1.5">
+                                    <button type="button"
+                                        class="increment-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M13.9408 6.56787C13.8204 6.82945 13.5368 7 13.2222 7L0.777818 7C0.463181 7 0.179657 6.82945 0.0592575 6.56788C-0.0611421 6.30631 0.00533186 6.00522 0.227775 5.80502L6.44998 0.20503C6.75372 -0.0683444 7.24621 -0.0683445 7.54996 0.20503L13.7722 5.80502C13.9946 6.00522 14.0612 6.30631 13.9408 6.56787Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </button>
+                                    <button type="button"
+                                        class="decrement-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M0.0592249 0.432125C0.179614 0.170548 0.463223 8.09924e-08 0.777796 1.35994e-07L13.2222 2.31184e-06C13.5368 2.36685e-06 13.8203 0.170551 13.9407 0.432128C14.0611 0.693695 13.9947 0.99478 13.7722 1.19498L7.55002 6.79497C7.24627 7.06834 6.75379 7.06834 6.45004 6.79497L0.227826 1.19498C0.00538204 0.994777 -0.0611541 0.693693 0.0592249 0.432125Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs leading-[17px] text-[#8C8484] text-center">Use it for scoring, quiz results,
+                            or custom score tracking.</p>
+                    </div>
+                    <div class="w-full variable-box pb-[15px] border-b border-[#E2DCDC]">
+                        <div
+                            class="pt-1 pb-1.5 px-3 rounded-full w-max border border-[#9ACEB8] bg-[#CAEADC] text-[15px] leading-6 font-medium text-Theme-Green">
+                            @price
+                        </div>
+                        <div class="field-group flex items-center gap-2.5 my-2.5">
+                            <!-- Dropdown -->
+                            <div class="custom-dropdown relative" data-style="design1">
+                                <button
+                                    class="dropdown-button flex items-center justify-between gap-2.5 w-28 bg-[#F8F6F6] text-[#8C8484] font-normal py-2.5 pl-[15px] pr-2.5 rounded-lg text-[15px] leading-[18px] focus:outline-none">
+                                    <span class="selected-option placeholder">Number</span>
+
+                                    <svg class="dropdown-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.5">
+                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="#8C8484" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </g>
+                                    </svg>
+
+                                </button>
+
+                                <div
+                                    class="dropdown-menu hidden absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-md z-10">
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Text</span>
+                                    </div>
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Number</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Input with Custom Arrows -->
+                            <div class="relative w-full">
+                                <input type="number" value="0"
+                                    class="custom-input w-full bg-[#F8F6F6] text-[15px] font-medium leading-[18px] border border-[#E2DCDC] text-gray-800 rounded-10px py-2.5 px-[15px] transition-all duration-500 hover:bg-white focus:border-Theme-Green focus:bg-white focus:outline-none"
+                                    placeholder="Enter number">
+                                <!-- Custom increment/decrement -->
+                                <div
+                                    class="number-controls absolute right-2 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-1.5">
+                                    <button type="button"
+                                        class="increment-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M13.9408 6.56787C13.8204 6.82945 13.5368 7 13.2222 7L0.777818 7C0.463181 7 0.179657 6.82945 0.0592575 6.56788C-0.0611421 6.30631 0.00533186 6.00522 0.227775 5.80502L6.44998 0.20503C6.75372 -0.0683444 7.24621 -0.0683445 7.54996 0.20503L13.7722 5.80502C13.9946 6.00522 14.0612 6.30631 13.9408 6.56787Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </button>
+                                    <button type="button"
+                                        class="decrement-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M0.0592249 0.432125C0.179614 0.170548 0.463223 8.09924e-08 0.777796 1.35994e-07L13.2222 2.31184e-06C13.5368 2.36685e-06 13.8203 0.170551 13.9407 0.432128C14.0611 0.693695 13.9947 0.99478 13.7722 1.19498L7.55002 6.79497C7.24627 7.06834 6.75379 7.06834 6.45004 6.79497L0.227826 1.19498C0.00538204 0.994777 -0.0611541 0.693693 0.0592249 0.432125Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs leading-[17px] text-[#8C8484] text-center">
+                            This variable requires a Payment Field
+                        </p>
+                    </div>
+                    <div class="w-full variable-box">
+                        <div
+                            class="pt-1 pb-1.5 px-3 rounded-full w-max border border-[#9ACEB8] bg-[#CAEADC] text-[15px] leading-6 font-medium text-Theme-Green">
+                            @segment
+                        </div>
+                        <div class="field-group flex items-center gap-2.5 mt-2.5">
+                            <!-- Dropdown -->
+                            <div class="custom-dropdown relative" data-style="design1">
+                                <button
+                                    class="dropdown-button flex items-center justify-between gap-2.5 w-28 bg-[#F8F6F6] text-[#8C8484] font-normal py-2.5 pl-[15px] pr-2.5 rounded-lg text-[15px] leading-[18px] focus:outline-none">
+                                    <span class="selected-option placeholder">Number</span>
+
+                                    <svg class="dropdown-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.5">
+                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="#8C8484" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </g>
+                                    </svg>
+
+                                </button>
+
+                                <div
+                                    class="dropdown-menu hidden absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-md z-10">
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Text</span>
+                                    </div>
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Number</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Input with Custom Arrows -->
+                            <div class="relative w-full">
+                                <input type="number" value="0"
+                                    class="custom-input w-full bg-[#F8F6F6] text-[15px] font-medium leading-[18px] border border-[#E2DCDC] text-gray-800 rounded-10px py-2.5 px-[15px] transition-all duration-500 hover:bg-white focus:border-Theme-Green focus:bg-white focus:outline-none"
+                                    placeholder="Enter number">
+                                <!-- Custom increment/decrement -->
+                                <div
+                                    class="number-controls absolute right-2 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-1.5">
+                                    <button type="button"
+                                        class="increment-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M13.9408 6.56787C13.8204 6.82945 13.5368 7 13.2222 7L0.777818 7C0.463181 7 0.179657 6.82945 0.0592575 6.56788C-0.0611421 6.30631 0.00533186 6.00522 0.227775 5.80502L6.44998 0.20503C6.75372 -0.0683444 7.24621 -0.0683445 7.54996 0.20503L13.7722 5.80502C13.9946 6.00522 14.0612 6.30631 13.9408 6.56787Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </button>
+                                    <button type="button"
+                                        class="decrement-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M0.0592249 0.432125C0.179614 0.170548 0.463223 8.09924e-08 0.777796 1.35994e-07L13.2222 2.31184e-06C13.5368 2.36685e-06 13.8203 0.170551 13.9407 0.432128C14.0611 0.693695 13.9947 0.99478 13.7722 1.19498L7.55002 6.79497C7.24627 7.06834 6.75379 7.06834 6.45004 6.79497L0.227826 1.19498C0.00538204 0.994777 -0.0611541 0.693693 0.0592249 0.432125Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-5 border border-[#E9E1E1] rounded-10px ">
+                <h5 class="p-[15px] border-b border-[#E9E1E1] text-base leading-[22px] font-medium text-Theme-Black">
+                   Quiz Variables</h5>
+                <div class="p-[15px] flex flex-col gap-[15px]">
+                    <div class="w-full variable-box pb-[15px] border-b border-[#E2DCDC]">
+                        <div
+                            class="pt-1 pb-1.5 px-3 rounded-full w-max border border-[#9ACEB8] bg-[#CAEADC] text-[15px] leading-6 font-medium text-Theme-Green">
+                           @correct_answers
+                        </div>
+                        <div class="field-group flex items-center gap-2.5 my-2.5">
+                            <!-- Dropdown -->
+                            <div class="custom-dropdown relative" data-style="design1">
+                                <button
+                                    class="dropdown-button flex items-center justify-between gap-2.5 w-28 bg-[#F8F6F6] text-[#8C8484] font-normal py-2.5 pl-[15px] pr-2.5 rounded-lg text-[15px] leading-[18px] focus:outline-none">
+                                    <span class="selected-option placeholder">Number</span>
+
+                                    <svg class="dropdown-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.5">
+                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="#8C8484" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </g>
+                                    </svg>
+
+                                </button>
+
+                                <div
+                                    class="dropdown-menu hidden absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-md z-10">
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Text</span>
+                                    </div>
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Number</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Input with Custom Arrows -->
+                            <div class="relative w-full">
+                                <input type="number" value="0"
+                                    class="custom-input w-full bg-[#F8F6F6] text-[15px] font-medium leading-[18px] border border-[#E2DCDC] text-gray-800 rounded-10px py-2.5 px-[15px] transition-all duration-500 hover:bg-white focus:border-Theme-Green focus:bg-white focus:outline-none"
+                                    placeholder="Enter number">
+                                <!-- Custom increment/decrement -->
+                                <div
+                                    class="number-controls absolute right-2 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-1.5">
+                                    <button type="button"
+                                        class="increment-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M13.9408 6.56787C13.8204 6.82945 13.5368 7 13.2222 7L0.777818 7C0.463181 7 0.179657 6.82945 0.0592575 6.56788C-0.0611421 6.30631 0.00533186 6.00522 0.227775 5.80502L6.44998 0.20503C6.75372 -0.0683444 7.24621 -0.0683445 7.54996 0.20503L13.7722 5.80502C13.9946 6.00522 14.0612 6.30631 13.9408 6.56787Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </button>
+                                    <button type="button"
+                                        class="decrement-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M0.0592249 0.432125C0.179614 0.170548 0.463223 8.09924e-08 0.777796 1.35994e-07L13.2222 2.31184e-06C13.5368 2.36685e-06 13.8203 0.170551 13.9407 0.432128C14.0611 0.693695 13.9947 0.99478 13.7722 1.19498L7.55002 6.79497C7.24627 7.06834 6.75379 7.06834 6.45004 6.79497L0.227826 1.19498C0.00538204 0.994777 -0.0611541 0.693693 0.0592249 0.432125Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs leading-[17px] text-[#8C8484] text-center">
+                            Count of correct answers from each respondent.
+                        </p>
+                    </div>
+                    <div class="w-full variable-box pb-[15px] border-b border-[#E2DCDC]">
+                        <div
+                            class="pt-1 pb-1.5 px-3 rounded-full w-max border border-[#9ACEB8] bg-[#CAEADC] text-[15px] leading-6 font-medium text-Theme-Green">
+                            @max_score
+                        </div>
+                        <div class="field-group flex items-center gap-2.5 my-2.5">
+                            <!-- Dropdown -->
+                            <div class="custom-dropdown relative" data-style="design1">
+                                <button
+                                    class="dropdown-button flex items-center justify-between gap-2.5 w-28 bg-[#F8F6F6] text-[#8C8484] font-normal py-2.5 pl-[15px] pr-2.5 rounded-lg text-[15px] leading-[18px] focus:outline-none">
+                                    <span class="selected-option placeholder">Number</span>
+
+                                    <svg class="dropdown-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.5">
+                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="#8C8484" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </g>
+                                    </svg>
+
+                                </button>
+
+                                <div
+                                    class="dropdown-menu hidden absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-md z-10">
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Text</span>
+                                    </div>
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Number</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Input with Custom Arrows -->
+                            <div class="relative w-full">
+                                <input type="number" value="0"
+                                    class="custom-input w-full bg-[#F8F6F6] text-[15px] font-medium leading-[18px] border border-[#E2DCDC] text-gray-800 rounded-10px py-2.5 px-[15px] transition-all duration-500 hover:bg-white focus:border-Theme-Green focus:bg-white focus:outline-none"
+                                    placeholder="Enter number">
+                                <!-- Custom increment/decrement -->
+                                <div
+                                    class="number-controls absolute right-2 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-1.5">
+                                    <button type="button"
+                                        class="increment-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M13.9408 6.56787C13.8204 6.82945 13.5368 7 13.2222 7L0.777818 7C0.463181 7 0.179657 6.82945 0.0592575 6.56788C-0.0611421 6.30631 0.00533186 6.00522 0.227775 5.80502L6.44998 0.20503C6.75372 -0.0683444 7.24621 -0.0683445 7.54996 0.20503L13.7722 5.80502C13.9946 6.00522 14.0612 6.30631 13.9408 6.56787Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </button>
+                                    <button type="button"
+                                        class="decrement-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M0.0592249 0.432125C0.179614 0.170548 0.463223 8.09924e-08 0.777796 1.35994e-07L13.2222 2.31184e-06C13.5368 2.36685e-06 13.8203 0.170551 13.9407 0.432128C14.0611 0.693695 13.9947 0.99478 13.7722 1.19498L7.55002 6.79497C7.24627 7.06834 6.75379 7.06834 6.45004 6.79497L0.227826 1.19498C0.00538204 0.994777 -0.0611541 0.693693 0.0592249 0.432125Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs leading-[17px] text-[#8C8484] text-center">
+                            Maximum score for questions with predefined answers.
+                        </p>
+                    </div>
+                    <div class="w-full variable-box pb-[15px] border-b border-[#E2DCDC]">
+                        <div
+                            class="pt-1 pb-1.5 px-3 rounded-full w-max border border-[#9ACEB8] bg-[#CAEADC] text-[15px] leading-6 font-medium text-Theme-Green">
+                           @quiz_score
+                        </div>
+                        <div class="field-group flex items-center gap-2.5 my-2.5">
+                            <!-- Dropdown -->
+                            <div class="custom-dropdown relative" data-style="design1">
+                                <button
+                                    class="dropdown-button flex items-center justify-between gap-2.5 w-28 bg-[#F8F6F6] text-[#8C8484] font-normal py-2.5 pl-[15px] pr-2.5 rounded-lg text-[15px] leading-[18px] focus:outline-none">
+                                    <span class="selected-option placeholder">Number</span>
+
+                                    <svg class="dropdown-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.5">
+                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="#8C8484" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </g>
+                                    </svg>
+
+                                </button>
+
+                                <div
+                                    class="dropdown-menu hidden absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-md z-10">
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Text</span>
+                                    </div>
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Number</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Input with Custom Arrows -->
+                            <div class="relative w-full">
+                                <input type="number" value="0"
+                                    class="custom-input w-full bg-[#F8F6F6] text-[15px] font-medium leading-[18px] border border-[#E2DCDC] text-gray-800 rounded-10px py-2.5 px-[15px] transition-all duration-500 hover:bg-white focus:border-Theme-Green focus:bg-white focus:outline-none"
+                                    placeholder="Enter number">
+                                <!-- Custom increment/decrement -->
+                                <div
+                                    class="number-controls absolute right-2 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-1.5">
+                                    <button type="button"
+                                        class="increment-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M13.9408 6.56787C13.8204 6.82945 13.5368 7 13.2222 7L0.777818 7C0.463181 7 0.179657 6.82945 0.0592575 6.56788C-0.0611421 6.30631 0.00533186 6.00522 0.227775 5.80502L6.44998 0.20503C6.75372 -0.0683444 7.24621 -0.0683445 7.54996 0.20503L13.7722 5.80502C13.9946 6.00522 14.0612 6.30631 13.9408 6.56787Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </button>
+                                    <button type="button"
+                                        class="decrement-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M0.0592249 0.432125C0.179614 0.170548 0.463223 8.09924e-08 0.777796 1.35994e-07L13.2222 2.31184e-06C13.5368 2.36685e-06 13.8203 0.170551 13.9407 0.432128C14.0611 0.693695 13.9947 0.99478 13.7722 1.19498L7.55002 6.79497C7.24627 7.06834 6.75379 7.06834 6.45004 6.79497L0.227826 1.19498C0.00538204 0.994777 -0.0611541 0.693693 0.0592249 0.432125Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs leading-[17px] text-[#8C8484] text-center">
+                            Final quiz score for each respondent.
+                        </p>
+                    </div>
+                    <div class="w-full variable-box">
+                        <div
+                            class="pt-1 pb-1.5 px-3 rounded-full w-max border border-[#9ACEB8] bg-[#CAEADC] text-[15px] leading-6 font-medium text-Theme-Green">
+                            @total_scorable_questions
+                        </div>
+                        <div class="field-group flex items-center gap-2.5 my-2.5">
+                            <!-- Dropdown -->
+                            <div class="custom-dropdown relative" data-style="design1">
+                                <button
+                                    class="dropdown-button flex items-center justify-between gap-2.5 w-28 bg-[#F8F6F6] text-[#8C8484] font-normal py-2.5 pl-[15px] pr-2.5 rounded-lg text-[15px] leading-[18px] focus:outline-none">
+                                    <span class="selected-option placeholder">Number</span>
+
+                                    <svg class="dropdown-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.5">
+                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="#8C8484" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </g>
+                                    </svg>
+
+                                </button>
+
+                                <div
+                                    class="dropdown-menu hidden absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-md z-10">
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Text</span>
+                                    </div>
+                                    <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                        <span>Number</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Input with Custom Arrows -->
+                            <div class="relative w-full">
+                                <input type="number" value="0"
+                                    class="custom-input w-full bg-[#F8F6F6] text-[15px] font-medium leading-[18px] border border-[#E2DCDC] text-gray-800 rounded-10px py-2.5 px-[15px] transition-all duration-500 hover:bg-white focus:border-Theme-Green focus:bg-white focus:outline-none"
+                                    placeholder="Enter number">
+                                <!-- Custom increment/decrement -->
+                                <div
+                                    class="number-controls absolute right-2 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-1.5">
+                                    <button type="button"
+                                        class="increment-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M13.9408 6.56787C13.8204 6.82945 13.5368 7 13.2222 7L0.777818 7C0.463181 7 0.179657 6.82945 0.0592575 6.56788C-0.0611421 6.30631 0.00533186 6.00522 0.227775 5.80502L6.44998 0.20503C6.75372 -0.0683444 7.24621 -0.0683445 7.54996 0.20503L13.7722 5.80502C13.9946 6.00522 14.0612 6.30631 13.9408 6.56787Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </button>
+                                    <button type="button"
+                                        class="decrement-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M0.0592249 0.432125C0.179614 0.170548 0.463223 8.09924e-08 0.777796 1.35994e-07L13.2222 2.31184e-06C13.5368 2.36685e-06 13.8203 0.170551 13.9407 0.432128C14.0611 0.693695 13.9947 0.99478 13.7722 1.19498L7.55002 6.79497C7.24627 7.06834 6.75379 7.06834 6.45004 6.79497L0.227826 1.19498C0.00538204 0.994777 -0.0611541 0.693693 0.0592249 0.432125Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                         <p class="text-xs leading-[17px] text-[#8C8484] text-center">
+                            Count of questions with predefined answers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
+            <button class="btn-kiwi-green w-full max-w-[150px]">Save</button>
+        </div>
+    </div>
     <!-- modal overlay  -->
     <div
         class="overlay-modal w-full h-screen z-[500] bg-[#012819]/30 backdrop-blur-[7.5px] fixed top-0 left-0 opacity-0 invisible">
@@ -2735,7 +3339,43 @@
         });
     </script>
 
+    <!-- SCRIPT 2: Input + Increment/Decrement Logic (Multi-instance safe) -->
+    <script>
+        document.querySelectorAll('.field-group').forEach(group => {
+            const input = group.querySelector('.custom-input');
+            const incrementBtn = group.querySelector('.increment-btn');
+            const decrementBtn = group.querySelector('.decrement-btn');
+            const numberControls = group.querySelector('.number-controls');
+            const dropdown = group.querySelector('.custom-dropdown[data-style="design1"]');
+            const dropdownButton = dropdown.querySelector('.dropdown-button');
 
+            // Toggle arrow visibility
+            function toggleNumberControls(type) {
+                if (type === 'number') {
+                    numberControls.classList.remove('hidden');
+                } else {
+                    numberControls.classList.add('hidden');
+                }
+            }
+
+            toggleNumberControls(input.type);
+
+            incrementBtn.addEventListener('click', () => input.stepUp());
+            decrementBtn.addEventListener('click', () => input.stepDown());
+
+            dropdownButton.addEventListener('optionSelected', e => {
+                const selectedText = e.detail.toLowerCase();
+                if (selectedText === 'number') {
+                    input.type = 'number';
+                    input.placeholder = 'Enter a number';
+                } else if (selectedText === 'text') {
+                    input.type = 'text';
+                    input.placeholder = 'Enter text';
+                }
+                toggleNumberControls(input.type);
+            });
+        });
+    </script>
 
 </body>
 

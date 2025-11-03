@@ -126,18 +126,31 @@ document.querySelectorAll('.custom-dropdown[data-style="design1"]').forEach(drop
     const menu = dropdown.querySelector('.dropdown-menu');
     const selectedOption = dropdown.querySelector('.selected-option');
     const items = dropdown.querySelectorAll('.dropdown-item');
-
+    const arrow = dropdown.querySelector('.dropdown-arrow');
     // Toggle dropdown visibility
     button.addEventListener('click', (e) => {
         e.stopPropagation();
         menu.classList.toggle('hidden');
+        arrow.classList.toggle('rotate-180');
     });
 
     // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
         if (!dropdown.contains(e.target)) {
             menu.classList.add('hidden');
+            arrow.classList.toggle('rotate-180');
         }
+    });
+
+    // Select option
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            const value = item.textContent.trim();
+            selectedOption.textContent = value;
+            menu.classList.add('hidden');
+            arrow.classList.remove('rotate-180');
+            button.dispatchEvent(new CustomEvent('optionSelected', { detail: value }));
+        });
     });
 
     // Handle item click (single-select)
