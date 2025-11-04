@@ -377,4 +377,8 @@
     -moz-appearance: textfield;
   }
 
+  .share-link.active {
+    @apply !bg-white
+  }
+
 }
