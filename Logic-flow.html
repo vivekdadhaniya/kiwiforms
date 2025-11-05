@@ -9140,7 +9140,159 @@
         });
     </script>
 
+    <!-- data pull modal editiable div  -->
+    <script>
+        document.querySelectorAll(".editableDiv").forEach((editableDiv) => {
+            const popup = editableDiv.parentElement.querySelector(".popup");
+            let slashRange = null;
 
+            // ===== Show popup on "/" =====
+            editableDiv.addEventListener("keyup", (e) => {
+                if (e.key === "/") {
+                    const rect = getCaretCoordinates();
+                    const parentRect = editableDiv.getBoundingClientRect();
+                    popup.style.left = rect.left - parentRect.left + "px";
+                    popup.style.top = rect.top - parentRect.top + 20 + "px";
+                    popup.classList.remove("hidden");
+                    saveCaret();
+                } else if (e.key === "Escape") {
+                    popup.classList.add("hidden");
+                }
+            });
+
+            // ===== Hide popup when clicking outside =====
+            document.addEventListener("click", (e) => {
+                if (!popup.contains(e.target) && e.target !== editableDiv) {
+                    popup.classList.add("hidden");
+                }
+            });
+
+            // ===== Handle popup item clicks =====
+            popup.addEventListener("click", (e) => {
+                const popupItem = e.target.closest("[data-value]");
+                if (popupItem && popupItem.dataset.value) {
+                    restoreCaret();
+                    insertBadge(popupItem.dataset.value);
+                    popup.classList.add("hidden");
+                }
+            });
+
+            // ===== Save caret =====
+            function saveCaret() {
+                const sel = window.getSelection();
+                if (sel.rangeCount > 0) slashRange = sel.getRangeAt(0);
+            }
+
+            // ===== Restore caret =====
+            function restoreCaret() {
+                if (slashRange) {
+                    const sel = window.getSelection();
+                    sel.removeAllRanges();
+                    sel.addRange(slashRange);
+                }
+            }
+
+            // ===== Insert badge =====
+            function insertBadge(text) {
+                const sel = window.getSelection();
+                if (!sel.rangeCount) return;
+                let range = sel.getRangeAt(0);
+
+                try {
+                    range.setStart(range.startContainer, range.startOffset - 1);
+                    range.deleteContents();
+                } catch { }
+
+                const badge = document.createElement("span");
+                badge.className = "badge";
+                badge.contentEditable = "false";
+
+                const textNode = document.createElement("span");
+                textNode.textContent = text;
+
+                const crossBtn = document.createElement("span");
+                crossBtn.className = "remove";
+                crossBtn.innerHTML = "×";
+
+                badge.appendChild(textNode);
+                badge.appendChild(crossBtn);
+
+                const space = document.createTextNode("\u200B");
+                range.insertNode(space);
+                range.insertNode(badge);
+
+                range.setStartAfter(space);
+                range.setEndAfter(space);
+                sel.removeAllRanges();
+                sel.addRange(range);
+
+                updatePlaceholder();
+            }
+
+            // ===== Remove badge on × click =====
+            editableDiv.addEventListener("click", (e) => {
+                if (e.target.classList.contains("remove")) {
+                    e.preventDefault();
+                    e.target.parentElement.remove();
+                    cleanEmptyNodes(editableDiv); // <-- remove invisible chars
+                    placeCaretAtEnd(editableDiv);
+                    updatePlaceholder(); // re-check placeholder state
+                }
+            });
+
+            // ===== Placeholder logic =====
+            function updatePlaceholder() {
+                const text = editableDiv.textContent.replace(/\u200B/g, "").trim();
+                if (text === "") {
+                    editableDiv.classList.add("empty");
+                } else {
+                    editableDiv.classList.remove("empty");
+                }
+            }
+
+            editableDiv.addEventListener("input", () => {
+                cleanEmptyNodes(editableDiv);
+                updatePlaceholder();
+            });
+
+            // Initial state check
+            cleanEmptyNodes(editableDiv);
+            updatePlaceholder();
+        });
+
+        // ===== Shared helpers =====
+        function getCaretCoordinates() {
+            const sel = window.getSelection();
+            if (sel.rangeCount === 0) return { left: 0, top: 0 };
+            const range = sel.getRangeAt(0).cloneRange();
+            range.collapse(true);
+            const rect = range.getBoundingClientRect();
+            return { left: rect.left, top: rect.top };
+        }
+
+        function placeCaretAtEnd(el) {
+            el.focus();
+            const range = document.createRange();
+            range.selectNodeContents(el);
+            range.collapse(false);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+
+        // 🧹 Clean hidden zero-width spaces or empty nodes
+        function cleanEmptyNodes(el) {
+            el.childNodes.forEach((node) => {
+                if (
+                    (node.nodeType === Node.TEXT_NODE &&
+                        node.textContent.replace(/\u200B/g, "").trim() === "") ||
+                    (node.nodeType === Node.ELEMENT_NODE && node.innerHTML.trim() === "")
+                ) {
+                    node.remove();
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

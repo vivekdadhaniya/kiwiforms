@@ -2,195 +2,89 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom Input with Dropdown</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Single Open Accordion Example</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    /* Hide native number arrows */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    input[type="number"] {
-      -moz-appearance: textfield;
-    }
-  </style>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 
-<body class="min-h-screen flex flex-col items-center justify-center bg-gray-50 gap-6">
+<body class="flex items-center justify-center min-h-screen bg-gray-50">
 
-  <!-- ===== FIELD GROUP 1 ===== -->
-  <div class="field-group flex items-center gap-2 w-full max-w-xl">
-    <!-- Dropdown -->
-    <div class="custom-dropdown relative" data-style="design1">
-      <button
-        class="dropdown-button flex items-center justify-between w-28 bg-gray-100 text-gray-700 font-medium py-2 px-3 rounded-lg border border-gray-300 focus:outline-none">
-        <span class="selected-option placeholder">Number</span>
-        <svg class="dropdown-arrow w-4 h-4 text-gray-600 ml-1" fill="none" stroke="currentColor" stroke-width="2"
-          viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+  <div x-data="{ activeAccordion: 1 }" class="w-full max-w-[340px] flex flex-col gap-3">
+
+    <!-- Accordion 1 -->
+    <div class="bg-[#EDE9E9] rounded-[10px] overflow-hidden">
+      <button @click="activeAccordion = activeAccordion === 1 ? null : 1"
+        class="flex items-center justify-between w-full p-[15px] border-b border-[#E2DCDC] text-base leading-[22px] font-medium text-Theme-Black">
+        <span>Sharing & Visibility Settings</span>
+        <svg :class="{'rotate-180': activeAccordion === 1}" class="w-4 h-4 transition-transform duration-300"
+          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
         </svg>
       </button>
 
-      <div
-        class="dropdown-menu hidden absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-md z-10">
-        <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer"><span>Text</span></div>
-        <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer"><span>Number</span></div>
+      <div x-show="activeAccordion === 1" x-collapse class="p-[15px] pt-5">
+        <h6 class="text-xs leading-[14px] font-medium text-[#8C8484] tracking-[1.2px] mb-2.5">PREVIEW THUMBNAIL</h6>
+        <img src="assets/images/share-thumb-image.png" alt="THUMBNAIL" class="w-full rounded-[10px]">
+        <button
+          class="mt-2.5 mb-5 flex items-center gap-2 text-sm font-medium text-[#000A06] bg-white px-3 py-2 rounded-md border border-[#E2DCDC] hover:bg-gray-100 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M0.6 5.6H10.6M5.6 0.6V10.6" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+          Upload Thumbnail
+        </button>
+
+        <div class="input py-5 border-y border-[#E2DCDC]">
+          <label for="Form-title" class="text-xs font-medium uppercase text-[#8C8484] tracking-[1.2px]">TITLE</label>
+          <input type="text" id="Form-title" class="mt-[5px] mb-5 w-full bg-[#F9F9F9] rounded-[10px] border border-[#E2DCDC] px-[15px] py-[9px] text-sm leading-5 text-Theme-Black placeholder:text-Theme-Black outline-0 transition-all duration-300
+            focus:border-green-500 hover:bg-white focus:bg-white" placeholder="Survey Form" required>
+
+          <label for="Form-desc"
+            class="text-xs font-medium uppercase text-[#8C8484] tracking-[1.2px]">DESCRIPTION</label>
+          <textarea id="Form-desc" rows="3" class="mt-[5px] w-full bg-[#F9F9F9] rounded-[10px] border border-[#E2DCDC] px-[15px] py-[9px] text-xs leading-[22px] text-Theme-Black placeholder:text-Theme-Black outline-0 transition-all duration-300
+            focus:border-green-500 hover:bg-white focus:bg-white resize-none"
+            placeholder="Redefine how you collect feedback. Kiwiform helps you create elegant, user-friendly forms and surveys. Start for free!"></textarea>
+        </div>
       </div>
     </div>
 
-    <!-- Input with Custom Arrows -->
-    <div class="relative w-full">
-      <input type="number" value="0"
-        class="custom-input w-full bg-[#F8F6F6] border border-[#E2DCDC] text-gray-800 rounded-xl py-2.5 pl-4 pr-10 focus:outline-none"
-        placeholder="Enter number" />
-
-      <!-- Custom increment/decrement -->
-      <div
-        class="number-controls absolute right-2 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-1.5">
-        <button type="button"
-          class="increment-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
-          <svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M13.9408 6.56787C13.8204 6.82945 13.5368 7 13.2222 7L0.777818 7C0.463181 7 0.179657 6.82945 0.0592575 6.56788C-0.0611421 6.30631 0.00533186 6.00522 0.227775 5.80502L6.44998 0.20503C6.75372 -0.0683444 7.24621 -0.0683445 7.54996 0.20503L13.7722 5.80502C13.9946 6.00522 14.0612 6.30631 13.9408 6.56787Z"
-              fill="currentColor" />
-          </svg>
-        </button>
-        <button type="button"
-          class="decrement-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
-          <svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M0.0592249 0.432125C0.179614 0.170548 0.463223 8.09924e-08 0.777796 1.35994e-07L13.2222 2.31184e-06C13.5368 2.36685e-06 13.8203 0.170551 13.9407 0.432128C14.0611 0.693695 13.9947 0.99478 13.7722 1.19498L7.55002 6.79497C7.24627 7.06834 6.75379 7.06834 6.45004 6.79497L0.227826 1.19498C0.00538204 0.994777 -0.0611541 0.693693 0.0592249 0.432125Z"
-              fill="currentColor" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== FIELD GROUP 2 (Duplicate Example) ===== -->
-  <div class="field-group flex items-center gap-2 w-full max-w-xl">
-    <div class="custom-dropdown relative" data-style="design1">
-      <button
-        class="dropdown-button flex items-center justify-between w-28 bg-gray-100 text-gray-700 font-medium py-2 px-3 rounded-lg border border-gray-300 focus:outline-none">
-        <span class="selected-option placeholder">Text</span>
-        <svg class="dropdown-arrow w-4 h-4 text-gray-600 ml-1" fill="none" stroke="currentColor" stroke-width="2"
-          viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    <!-- Accordion 2 -->
+    <div class="bg-[#EDE9E9] rounded-[10px] overflow-hidden">
+      <button @click="activeAccordion = activeAccordion === 2 ? null : 2"
+        class="flex items-center justify-between w-full p-[15px] border-b border-[#E2DCDC] text-base leading-[22px] font-medium text-Theme-Black">
+        <span>Form Access Settings</span>
+        <svg :class="{'rotate-180': activeAccordion === 2}" class="w-4 h-4 transition-transform duration-300"
+          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
         </svg>
       </button>
-      <div
-        class="dropdown-menu hidden absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-md z-10">
-        <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer"><span>Text</span></div>
-        <div class="dropdown-item px-3 py-2 hover:bg-gray-100 cursor-pointer"><span>Number</span></div>
+
+      <div x-show="activeAccordion === 2" x-collapse class="p-[15px] pt-5">
+        <h6 class="text-xs leading-[14px] font-medium text-[#8C8484] tracking-[1.2px] mb-2.5">ACCESS CONTROL</h6>
+        <p class="text-sm text-[#4B4B4B] mb-3">
+          Manage who can view or submit your form. Choose between public, private, or invite-only access.
+        </p>
+        <div class="space-y-2">
+          <label class="flex items-center gap-2 text-sm">
+            <input type="radio" name="access" class="accent-green-500" checked>
+            Public (anyone can access)
+          </label>
+          <label class="flex items-center gap-2 text-sm">
+            <input type="radio" name="access" class="accent-green-500">
+            Private (only invited users)
+          </label>
+          <label class="flex items-center gap-2 text-sm">
+            <input type="radio" name="access" class="accent-green-500">
+            Password protected
+          </label>
+        </div>
       </div>
     </div>
 
-    <div class="relative w-full">
-      <input type="text" placeholder="Enter text"
-        class="custom-input w-full bg-[#F8F6F6] border border-[#E2DCDC] text-gray-800 rounded-xl py-2.5 pl-4 pr-10 focus:outline-none" />
-      <div
-        class="number-controls absolute right-2 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-1.5 hidden">
-        <button type="button"
-          class="increment-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
-          <svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M13.9408 6.56787C13.8204 6.82945 13.5368 7 13.2222 7L0.777818 7C0.463181 7 0.179657 6.82945 0.0592575 6.56788C-0.0611421 6.30631 0.00533186 6.00522 0.227775 5.80502L6.44998 0.20503C6.75372 -0.0683444 7.24621 -0.0683445 7.54996 0.20503L13.7722 5.80502C13.9946 6.00522 14.0612 6.30631 13.9408 6.56787Z"
-              fill="currentColor" />
-          </svg>
-        </button>
-        <button type="button"
-          class="decrement-btn w-3.5 h-[7px] flex items-center justify-center text-[#E2DCDC] hover:text-[#ccc5c5] transition">
-          <svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M0.0592249 0.432125C0.179614 0.170548 0.463223 8.09924e-08 0.777796 1.35994e-07L13.2222 2.31184e-06C13.5368 2.36685e-06 13.8203 0.170551 13.9407 0.432128C14.0611 0.693695 13.9947 0.99478 13.7722 1.19498L7.55002 6.79497C7.24627 7.06834 6.75379 7.06834 6.45004 6.79497L0.227826 1.19498C0.00538204 0.994777 -0.0611541 0.693693 0.0592249 0.432125Z"
-              fill="currentColor" />
-          </svg>
-        </button>
-      </div>
-    </div>
   </div>
 
-  <p class="text-center text-sm text-gray-400 mt-2">Each dropdown + input works independently.</p>
-
-  <!-- SCRIPT 1: Custom Dropdown (Design-1) -->
-  <script>
-    document.querySelectorAll('.custom-dropdown[data-style="design1"]').forEach(dropdown => {
-      const button = dropdown.querySelector('.dropdown-button');
-      const menu = dropdown.querySelector('.dropdown-menu');
-      const arrow = dropdown.querySelector('.dropdown-arrow');
-      const selectedOption = dropdown.querySelector('.selected-option');
-      const items = dropdown.querySelectorAll('.dropdown-item');
-
-      // Toggle menu
-      button.addEventListener('click', e => {
-        e.stopPropagation();
-        menu.classList.toggle('hidden');
-        arrow.classList.toggle('rotate-180');
-      });
-
-      // Select option
-      items.forEach(item => {
-        item.addEventListener('click', () => {
-          const value = item.textContent.trim();
-          selectedOption.textContent = value;
-          menu.classList.add('hidden');
-          arrow.classList.remove('rotate-180');
-          button.dispatchEvent(new CustomEvent('optionSelected', { detail: value }));
-        });
-      });
-
-      // Close dropdown if clicked outside
-      window.addEventListener('click', e => {
-        if (!dropdown.contains(e.target)) {
-          menu.classList.add('hidden');
-          arrow.classList.remove('rotate-180');
-        }
-      });
-    });
-  </script>
-
-  <!-- SCRIPT 2: Input + Increment/Decrement Logic (Multi-instance safe) -->
-  <script>
-    document.querySelectorAll('.field-group').forEach(group => {
-      const input = group.querySelector('.custom-input');
-      const incrementBtn = group.querySelector('.increment-btn');
-      const decrementBtn = group.querySelector('.decrement-btn');
-      const numberControls = group.querySelector('.number-controls');
-      const dropdown = group.querySelector('.custom-dropdown[data-style="design1"]');
-      const dropdownButton = dropdown.querySelector('.dropdown-button');
-
-      // Toggle arrow visibility
-      function toggleNumberControls(type) {
-        if (type === 'number') {
-          numberControls.classList.remove('hidden');
-        } else {
-          numberControls.classList.add('hidden');
-        }
-      }
-
-      toggleNumberControls(input.type);
-
-      incrementBtn.addEventListener('click', () => input.stepUp());
-      decrementBtn.addEventListener('click', () => input.stepDown());
-
-      dropdownButton.addEventListener('optionSelected', e => {
-        const selectedText = e.detail.toLowerCase();
-        if (selectedText === 'number') {
-          input.type = 'number';
-          input.placeholder = 'Enter a number';
-        } else if (selectedText === 'text') {
-          input.type = 'text';
-          input.placeholder = 'Enter text';
-        }
-        toggleNumberControls(input.type);
-      });
-    });
-  </script>
 </body>
 
 </html>
