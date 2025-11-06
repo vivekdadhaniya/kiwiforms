@@ -83,14 +83,64 @@
                     </div>
                 </div>
 
-                <div class="min-[1080px]:flex hidden items-center gap-2.5 p-[5px] rounded-10px bg-[#EDE9E9]">
+                <div class="min-[1120px]:flex hidden items-center gap-2.5 p-[5px] rounded-10px bg-[#EDE9E9]">
                     <a href="#" class="py-[5px] px-[15px] header-links active">Form</a>
                     <a href="#" class="py-[5px] px-[15px] header-links whitespace-nowrap">Logic Flow</a>
                     <a href="#" class="py-[5px] px-[15px] header-links">Connect</a>
                     <a href="#" class="py-[5px] px-[15px] header-links">Share</a>
                     <a href="#" class="py-[5px] px-[15px] header-links">Results</a>
+                </div>
+                <div x-data="dropdownComponent('menu-nav')" class="relative w-max hidden max-[1120px]:flex">
+                    <button @click="toggle"
+                        class="p-[5px] cursor-pointer rounded-10px bg-[#EDE9E9] flex items-center gap-2.5 text-sm font-medium leading-[140%] text-Theme-Black">
+                        <span class="bg-white py-[5px] px-[15px] text-center rounded-[5px]">
+                            Forms</span>
 
+                        <svg class="transition-all duration-300 ease-in-out" :class="{'-rotate-180': isOpen}" width="20"
+                            height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 8L10 12L6 8" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
 
+                    <div x-ref="menu-nav" x-show="isOpen" x-transition=""
+                        x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                        @click.outside="close"
+                        class="absolute sm:-right-0 z-10 p-2 mt-11 w-[124px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft "
+                        style="overflow: hidden; transition: height 300ms; height: auto; display: none;">
+                        <ul class="flex flex-col gap-0.5">
+                            <li>
+                                <a href="#"
+                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                    Forms
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                    Logic Flow
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                    Connect
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                    Share
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                    Results
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="flex items-center justify-end gap-2.5 w-full max-w-[350px]">
                     <button class="btn-white-square">
@@ -126,7 +176,8 @@
         <!--SideBar-->
         <div class="relative flex md:h-full gap-5 md:overflow-hidden">
             <!-- left side bar -->
-            <aside class="md:fixed relative bg-transparent top-[61px] xl:w-[360px] lg:w-[280px] w-full md:w-[280px] md:h-[calc(100vh-61px)] pl-px overflow-hidden scrollbar-hide z-50 flex flex-col bg-black-1B1B1B nav-list rounded-xl  ">
+            <aside
+                class="md:fixed relative bg-transparent top-[61px] xl:w-[360px] lg:w-[280px] w-full md:w-[280px] md:h-[calc(100vh-61px)] pl-px overflow-hidden scrollbar-hide z-50 flex flex-col bg-black-1B1B1B nav-list rounded-xl  ">
                 <div id="div1"
                     class="flex flex-col w-full h-full min-h-[150px] overflow-auto bg-[#F6F6F6] flex-1 rounded-10px">
                     <div class=" w-full px-[5px] pb-2.5 h-auto rounded-b-[10px]">
@@ -630,7 +681,8 @@
                     </div>
                 </div>
                 <!-- resize bar  -->
-                <div id="resizer-y" class="relative flex items-center justify-center cursor-row-resize shrink-0 h-4 z-50">
+                <div id="resizer-y"
+                    class="relative flex items-center justify-center cursor-row-resize shrink-0 h-4 z-50">
                     <div class="resizer-bar">
                         <svg width="32" height="6" viewBox="0 0 32 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1 1H31" stroke="white" stroke-width="1.5" stroke-linecap="round" />
@@ -680,7 +732,8 @@
                 </div>
             </aside>
             <!-- Right side bar -->
-            <aside class="md:fixed relative bg-transparent right-0 top-[61px] xl:w-[360px] lg:w-[280px] w-full md:w-[280px] md:h-[calc(100vh-61px)] pl-px overflow-y-auto scrollbar-hide z-50 flex  flex-col bg-black-1B1B1B nav-list rounded-xl  ">
+            <aside
+                class="md:fixed relative bg-transparent right-0 top-[61px] xl:w-[360px] lg:w-[280px] w-full md:w-[280px] md:h-[calc(100vh-61px)] pl-px overflow-y-auto scrollbar-hide z-50 flex  flex-col bg-black-1B1B1B nav-list rounded-xl  ">
 
                 <div class="bg-[#F6F6F6] w-full px-[5px] pb-2.5 h-max rounded-b-[10px]">
                     <h4
@@ -1161,12 +1214,13 @@
                         </svg>
                         Design
                     </button>
-                    <button class="btn-kiwi-green-icon-text w-full justify-center">
+                    <button class="btn-kiwi-green-icon-text w-full justify-center min-h-10">
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 13 12" fill="none">
                             <path d="M1.5 6H6.5M6.5 6H11.5M6.5 6V1M6.5 6V11" stroke="white" stroke-width="1.2"
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        Add Content
+                        <span class="hidden min-[980px]:block">
+                            Add Content</span>
                     </button>
                     <a href="01-Email-add_1_preview.html" class="btn-white-icon-text w-max px-3 min-w-[100px]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">

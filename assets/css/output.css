@@ -712,6 +712,9 @@
   .min-h-screen {
     min-height: 100vh;
   }
+  .\!w-5 {
+    width: calc(var(--spacing) * 5) !important;
+  }
   .\!w-\[38px\] {
     width: 38px !important;
   }
@@ -787,6 +790,9 @@
   .w-\[120px\] {
     width: 120px;
   }
+  .w-\[124px\] {
+    width: 124px;
+  }
   .w-\[136px\] {
     width: 136px;
   }
@@ -814,6 +820,9 @@
   .w-\[clamp\(0px\,calc\(\(100\%_-_1280px\)\/2\)\,9999px\)\] {
     width: clamp(0px, calc((100% - 1280px) / 2), 9999px);
   }
+  .w-auto {
+    width: auto;
+  }
   .w-full {
     width: 100%;
   }
@@ -834,6 +843,9 @@
   }
   .max-w-\[112px\] {
     max-width: 112px;
+  }
+  .max-w-\[124px\] {
+    max-width: 124px;
   }
   .max-w-\[130px\] {
     max-width: 130px;
@@ -2844,6 +2856,16 @@
       display: flex;
     }
   }
+  .max-\[1120px\]\:flex {
+    @media (width < 1120px) {
+      display: flex;
+    }
+  }
+  .max-\[1080px\]\:flex {
+    @media (width < 1080px) {
+      display: flex;
+    }
+  }
   .max-\[1080px\]\:grid {
     @media (width < 1080px) {
       display: grid;
@@ -2906,6 +2928,11 @@
       gap: 15px;
     }
   }
+  .min-\[980px\]\:block {
+    @media (width >= 980px) {
+      display: block;
+    }
+  }
   .min-\[1080px\]\:block {
     @media (width >= 1080px) {
       display: block;
@@ -2921,6 +2948,11 @@
       padding-inline: calc(var(--spacing) * 8);
     }
   }
+  .min-\[1120px\]\:flex {
+    @media (width >= 1120px) {
+      display: flex;
+    }
+  }
   .min-\[1200px\]\:flex {
     @media (width >= 1200px) {
       display: flex;
@@ -2934,6 +2966,26 @@
   .min-\[1400px\]\:grid-cols-\[minmax\(0\,1fr\)_90px_50px_105px_110px_230px\] {
     @media (width >= 1400px) {
       grid-template-columns: minmax(0,1fr) 90px 50px 105px 110px 230px;
+    }
+  }
+  .sm\:-right-0 {
+    @media (width >= 40rem) {
+      right: calc(var(--spacing) * -0);
+    }
+  }
+  .sm\:-right-1 {
+    @media (width >= 40rem) {
+      right: calc(var(--spacing) * -1);
+    }
+  }
+  .sm\:-right-2 {
+    @media (width >= 40rem) {
+      right: calc(var(--spacing) * -2);
+    }
+  }
+  .sm\:-right-4 {
+    @media (width >= 40rem) {
+      right: calc(var(--spacing) * -4);
     }
   }
   .sm\:-right-\[185\%\] {
