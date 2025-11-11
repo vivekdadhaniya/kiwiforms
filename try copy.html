@@ -1,90 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Single Open Accordion Example</title>
+  <title>Upload UI</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-50 space-y-10">
 
-<body class="flex items-center justify-center min-h-screen bg-gray-50">
-
-  <div x-data="{ activeAccordion: 1 }" class="w-full max-w-[340px] flex flex-col gap-3">
-
-    <!-- Accordion 1 -->
-    <div class="bg-[#EDE9E9] rounded-[10px] overflow-hidden">
-      <button @click="activeAccordion = activeAccordion === 1 ? null : 1"
-        class="flex items-center justify-between w-full p-[15px] border-b border-[#E2DCDC] text-base leading-[22px] font-medium text-Theme-Black">
-        <span>Sharing & Visibility Settings</span>
-        <svg :class="{'rotate-180': activeAccordion === 1}" class="w-4 h-4 transition-transform duration-300"
-          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+  <!-- Image Upload -->
+  <div class="w-[310px] h-[124px] flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-blue-400 transition">
+    <label class="flex flex-col items-center cursor-pointer">
+      <div class="flex flex-col items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7a2 2 0 012-2h3.586a1 1 0 01.707.293l1.414 1.414A1 1 0 0011.414 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
         </svg>
-      </button>
-
-      <div x-show="activeAccordion === 1" x-collapse class="p-[15px] pt-5">
-        <h6 class="text-xs leading-[14px] font-medium text-[#8C8484] tracking-[1.2px] mb-2.5">PREVIEW THUMBNAIL</h6>
-        <img src="assets/images/share-thumb-image.png" alt="THUMBNAIL" class="w-full rounded-[10px]">
-        <button
-          class="mt-2.5 mb-5 flex items-center gap-2 text-sm font-medium text-[#000A06] bg-white px-3 py-2 rounded-md border border-[#E2DCDC] hover:bg-gray-100 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M0.6 5.6H10.6M5.6 0.6V10.6" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
-              stroke-linejoin="round"></path>
-          </svg>
-          Upload Thumbnail
-        </button>
-
-        <div class="input py-5 border-y border-[#E2DCDC]">
-          <label for="Form-title" class="text-xs font-medium uppercase text-[#8C8484] tracking-[1.2px]">TITLE</label>
-          <input type="text" id="Form-title" class="mt-[5px] mb-5 w-full bg-[#F9F9F9] rounded-[10px] border border-[#E2DCDC] px-[15px] py-[9px] text-sm leading-5 text-Theme-Black placeholder:text-Theme-Black outline-0 transition-all duration-300
-            focus:border-green-500 hover:bg-white focus:bg-white" placeholder="Survey Form" required>
-
-          <label for="Form-desc"
-            class="text-xs font-medium uppercase text-[#8C8484] tracking-[1.2px]">DESCRIPTION</label>
-          <textarea id="Form-desc" rows="3" class="mt-[5px] w-full bg-[#F9F9F9] rounded-[10px] border border-[#E2DCDC] px-[15px] py-[9px] text-xs leading-[22px] text-Theme-Black placeholder:text-Theme-Black outline-0 transition-all duration-300
-            focus:border-green-500 hover:bg-white focus:bg-white resize-none"
-            placeholder="Redefine how you collect feedback. Kiwiform helps you create elegant, user-friendly forms and surveys. Start for free!"></textarea>
-        </div>
+        <span class="font-medium text-gray-700">Upload Image</span>
       </div>
-    </div>
-
-    <!-- Accordion 2 -->
-    <div class="bg-[#EDE9E9] rounded-[10px] overflow-hidden">
-      <button @click="activeAccordion = activeAccordion === 2 ? null : 2"
-        class="flex items-center justify-between w-full p-[15px] border-b border-[#E2DCDC] text-base leading-[22px] font-medium text-Theme-Black">
-        <span>Form Access Settings</span>
-        <svg :class="{'rotate-180': activeAccordion === 2}" class="w-4 h-4 transition-transform duration-300"
-          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
-
-      <div x-show="activeAccordion === 2" x-collapse class="p-[15px] pt-5">
-        <h6 class="text-xs leading-[14px] font-medium text-[#8C8484] tracking-[1.2px] mb-2.5">ACCESS CONTROL</h6>
-        <p class="text-sm text-[#4B4B4B] mb-3">
-          Manage who can view or submit your form. Choose between public, private, or invite-only access.
-        </p>
-        <div class="space-y-2">
-          <label class="flex items-center gap-2 text-sm">
-            <input type="radio" name="access" class="accent-green-500" checked>
-            Public (anyone can access)
-          </label>
-          <label class="flex items-center gap-2 text-sm">
-            <input type="radio" name="access" class="accent-green-500">
-            Private (only invited users)
-          </label>
-          <label class="flex items-center gap-2 text-sm">
-            <input type="radio" name="access" class="accent-green-500">
-            Password protected
-          </label>
-        </div>
-      </div>
-    </div>
-
+      <input type="file" accept="image/*" class="hidden" />
+    </label>
   </div>
+  <p class="text-gray-500 text-sm text-center">Upload an image here<br>JPG, PNG or GIF • 5MB Max</p>
+
+  <!-- Video Upload -->
+  <div class="w-[310px] h-[124px] flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-blue-400 transition">
+    <label class="flex flex-col items-center cursor-pointer">
+      <div class="flex flex-col items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553 2.276A1 1 0 0120 13.118V18a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h12a2 2 0 012 2v4.882a1 1 0 01-.447.842L15 14v-4z" />
+        </svg>
+        <span class="font-medium text-gray-700">Upload Video</span>
+      </div>
+      <input type="file" accept="video/*" class="hidden" />
+    </label>
+  </div>
+  <p class="text-gray-500 text-sm text-center">Upload a video here<br>Max 5 mins • 500MB Max</p>
 
 </body>
-
 </html>
