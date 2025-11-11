@@ -159,10 +159,10 @@ document.querySelectorAll('.custom-dropdown[data-style="design1"]').forEach(drop
             e.stopPropagation();
 
             // Remove active styling from all items
-            items.forEach(i => i.classList.remove('bg-[#F8F6F6]', 'opacity-70'));
+            items.forEach(i => i.classList.remove('active'));
 
             // Add active styling to selected item
-            item.classList.add('bg-[#F8F6F6]', 'opacity-70');
+            item.classList.add('active');
 
             // Update button text
             const text = item.querySelector('span') ? item.querySelector('span').textContent.trim() : item.textContent.trim();

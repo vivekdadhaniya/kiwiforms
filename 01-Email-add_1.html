@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="assets/css/input.css">
     <link rel="stylesheet" href="assets/css/output.css">
     <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
+    <style>
+        .dropdown-item.active {
+            background-color: #F8F6F6;
+        }
+    </style>
 </head>
 
 <body class="md:overflow-hidden bg-Theme-bg font-Inter">
@@ -1239,7 +1244,7 @@
     <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] p-[5px] w-full h-auto max-w-[956px]"
         id="Field-choose-modal">
         <span
-            class="close-btn cursor-pointer p-1.5 rounded-10px transition-all duration-300 hover:text-limegreen absolute top-3 right-5 text-[#000A06] hover:text-red-600 hover:bg-red-50">
+            class="close-btn cursor-pointer p-1.5 rounded-10px transition-all duration-300 hover:text-limegreen absolute top-3 right-2.5 text-[#000A06] hover:text-Theme-Black hover:bg-[#E2DCDC]">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M4 16L16 4" stroke="currentcolor" stroke-width="1.2" stroke-linecap="round"
                     stroke-linejoin="round" />
@@ -1968,7 +1973,7 @@
     <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] p-[5px] w-full h-auto max-w-[520px]"
         id="media-modal">
         <span
-            class="close-btn cursor-pointer p-1.5 rounded-10px transition-all duration-300 hover:text-limegreen absolute top-3 right-5 text-[#000A06] hover:text-red-600 hover:bg-red-50">
+            class="close-btn cursor-pointer p-1.5 rounded-10px transition-all duration-300 hover:text-limegreen absolute top-3 right-2.5 text-[#000A06] hover:text-Theme-Black hover:bg-[#E2DCDC]">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M4 16L16 4" stroke="currentcolor" stroke-width="1.2" stroke-linecap="round"
                     stroke-linejoin="round" />
@@ -2054,8 +2059,8 @@
                     <p class="text-xs leading-[14px] text-[#8C8484] text-center">Max 5 mins • 500MB Max</p>
                 </div>
             </div>
-            <div class="tab-content hidden p-2.5 bg-white border border-[#E9E1E1] rounded-10px" id="tab2">
-                <div class="flex items-center gap-2.5">
+            <div class="tab-content hidden p-2.5 pb-5 pr-[5px] bg-white border border-[#E9E1E1] rounded-10px" id="tab2">
+                <div class="flex items-center gap-2.5 mb-5 p-2.5 pb-0 pr-[15px]">
                     <div class="relative w-full">
                         <input type="search" name="SearchMedia" id="SearchMedia"
                             class="w-full py-2.5 pl-10 pr-4 rounded-[5px] bg-[#EDE9E9] border border-transparent text-sm leading-[140%] text-Theme-Black placeholder:text-[#8C8484] focus:outline-none focus:border-Theme-Green"
@@ -2098,7 +2103,17 @@
                                     <li class="bg-white w-full relative">
                                         <div
                                             class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
-                                            <span>All-1</span>
+                                            <span>Images</span>
+
+                                        </div>
+                                        <div
+                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                        </div>
+                                    </li>
+                                    <li class="bg-white w-full relative">
+                                        <div
+                                            class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                            <span>Videos</span>
 
                                         </div>
                                         <div
@@ -2110,10 +2125,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-2.5 pt-5 grid grid-cols-2 gap-5">
+                <div class="px-2.5  grid grid-cols-2 gap-5 h-auto max-h-[443px] overflow-y-auto 
+  [&::-webkit-scrollbar]:w-[5px]
+  [&::-webkit-scrollbar]:h-[calc(100%-50px)]
+  [&::-webkit-scrollbar-track]:bg-[#E2DCDC]
+  [&::-webkit-scrollbar-track]:rounded-full
+  [&::-webkit-scrollbar-thumb]:rounded-full
+  [&::-webkit-scrollbar-thumb]:border-[1px]
+  [&::-webkit-scrollbar-thumb]:border-[#E2DCDC]
+  [&::-webkit-scrollbar-thumb]:bg-white">
                     <div class="relative rounded-[5px] group">
                         <img src="assets/images/media-1.png" alt="">
-                        <div class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
+                        <div
+                            class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
                             <div class="flex items-center justify-between w-full">
                                 <p class="text-sm leading-5 text-white">gift.jpg</p>
                                 <button
@@ -2123,8 +2147,8 @@
                                         <path
                                             d="M3.75 4.625H14.25V12.5C14.25 14.1499 14.25 14.9749 13.7374 15.4874C13.2249 16 12.3999 16 10.75 16H7.25C5.60008 16 4.77513 16 4.26256 15.4874C3.75 14.9749 3.75 14.1499 3.75 12.5V4.625Z"
                                             stroke="currentcolor" stroke-width="1.2" />
-                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
+                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
                                         <path
                                             d="M5.5 3.75C5.5 2.92504 5.5 2.51256 5.75628 2.25628C6.01256 2 6.42504 2 7.25 2H10.75C11.575 2 11.9874 2 12.2437 2.25628C12.5 2.51256 12.5 2.92504 12.5 3.75V4.625H5.5V3.75Z"
                                             stroke="currentcolor" stroke-width="1.2" />
@@ -2139,7 +2163,8 @@
                     </div>
                     <div class="relative rounded-[5px] group">
                         <img src="assets/images/media-2.png" alt="">
-                        <div class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
+                        <div
+                            class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
                             <div class="flex items-center justify-between w-full">
                                 <p class="text-sm leading-5 text-white">gift.jpg</p>
                                 <button
@@ -2149,8 +2174,8 @@
                                         <path
                                             d="M3.75 4.625H14.25V12.5C14.25 14.1499 14.25 14.9749 13.7374 15.4874C13.2249 16 12.3999 16 10.75 16H7.25C5.60008 16 4.77513 16 4.26256 15.4874C3.75 14.9749 3.75 14.1499 3.75 12.5V4.625Z"
                                             stroke="currentcolor" stroke-width="1.2" />
-                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
+                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
                                         <path
                                             d="M5.5 3.75C5.5 2.92504 5.5 2.51256 5.75628 2.25628C6.01256 2 6.42504 2 7.25 2H10.75C11.575 2 11.9874 2 12.2437 2.25628C12.5 2.51256 12.5 2.92504 12.5 3.75V4.625H5.5V3.75Z"
                                             stroke="currentcolor" stroke-width="1.2" />
@@ -2165,7 +2190,8 @@
                     </div>
                     <div class="relative rounded-[5px] group">
                         <img src="assets/images/media-3.png" alt="">
-                        <div class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
+                        <div
+                            class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
                             <div class="flex items-center justify-between w-full">
                                 <p class="text-sm leading-5 text-white">gift.jpg</p>
                                 <button
@@ -2175,8 +2201,8 @@
                                         <path
                                             d="M3.75 4.625H14.25V12.5C14.25 14.1499 14.25 14.9749 13.7374 15.4874C13.2249 16 12.3999 16 10.75 16H7.25C5.60008 16 4.77513 16 4.26256 15.4874C3.75 14.9749 3.75 14.1499 3.75 12.5V4.625Z"
                                             stroke="currentcolor" stroke-width="1.2" />
-                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
+                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
                                         <path
                                             d="M5.5 3.75C5.5 2.92504 5.5 2.51256 5.75628 2.25628C6.01256 2 6.42504 2 7.25 2H10.75C11.575 2 11.9874 2 12.2437 2.25628C12.5 2.51256 12.5 2.92504 12.5 3.75V4.625H5.5V3.75Z"
                                             stroke="currentcolor" stroke-width="1.2" />
@@ -2191,7 +2217,8 @@
                     </div>
                     <div class="relative rounded-[5px] group">
                         <img src="assets/images/media-4.png" alt="">
-                        <div class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
+                        <div
+                            class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
                             <div class="flex items-center justify-between w-full">
                                 <p class="text-sm leading-5 text-white">gift.jpg</p>
                                 <button
@@ -2201,8 +2228,8 @@
                                         <path
                                             d="M3.75 4.625H14.25V12.5C14.25 14.1499 14.25 14.9749 13.7374 15.4874C13.2249 16 12.3999 16 10.75 16H7.25C5.60008 16 4.77513 16 4.26256 15.4874C3.75 14.9749 3.75 14.1499 3.75 12.5V4.625Z"
                                             stroke="currentcolor" stroke-width="1.2" />
-                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
+                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
                                         <path
                                             d="M5.5 3.75C5.5 2.92504 5.5 2.51256 5.75628 2.25628C6.01256 2 6.42504 2 7.25 2H10.75C11.575 2 11.9874 2 12.2437 2.25628C12.5 2.51256 12.5 2.92504 12.5 3.75V4.625H5.5V3.75Z"
                                             stroke="currentcolor" stroke-width="1.2" />
@@ -2217,7 +2244,8 @@
                     </div>
                     <div class="relative rounded-[5px] group">
                         <img src="assets/images/media-5.png" alt="">
-                        <div class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
+                        <div
+                            class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
                             <div class="flex items-center justify-between w-full">
                                 <p class="text-sm leading-5 text-white">gift.jpg</p>
                                 <button
@@ -2227,8 +2255,8 @@
                                         <path
                                             d="M3.75 4.625H14.25V12.5C14.25 14.1499 14.25 14.9749 13.7374 15.4874C13.2249 16 12.3999 16 10.75 16H7.25C5.60008 16 4.77513 16 4.26256 15.4874C3.75 14.9749 3.75 14.1499 3.75 12.5V4.625Z"
                                             stroke="currentcolor" stroke-width="1.2" />
-                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
+                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
                                         <path
                                             d="M5.5 3.75C5.5 2.92504 5.5 2.51256 5.75628 2.25628C6.01256 2 6.42504 2 7.25 2H10.75C11.575 2 11.9874 2 12.2437 2.25628C12.5 2.51256 12.5 2.92504 12.5 3.75V4.625H5.5V3.75Z"
                                             stroke="currentcolor" stroke-width="1.2" />
@@ -2243,7 +2271,8 @@
                     </div>
                     <div class="relative rounded-[5px] group">
                         <img src="assets/images/media-6.png" alt="">
-                        <div class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
+                        <div
+                            class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
                             <div class="flex items-center justify-between w-full">
                                 <p class="text-sm leading-5 text-white">gift.jpg</p>
                                 <button
@@ -2253,8 +2282,116 @@
                                         <path
                                             d="M3.75 4.625H14.25V12.5C14.25 14.1499 14.25 14.9749 13.7374 15.4874C13.2249 16 12.3999 16 10.75 16H7.25C5.60008 16 4.77513 16 4.26256 15.4874C3.75 14.9749 3.75 14.1499 3.75 12.5V4.625Z"
                                             stroke="currentcolor" stroke-width="1.2" />
-                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
+                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M5.5 3.75C5.5 2.92504 5.5 2.51256 5.75628 2.25628C6.01256 2 6.42504 2 7.25 2H10.75C11.575 2 11.9874 2 12.2437 2.25628C12.5 2.51256 12.5 2.92504 12.5 3.75V4.625H5.5V3.75Z"
+                                            stroke="currentcolor" stroke-width="1.2" />
+                                        <path d="M7.25 8.125V12.5" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M10.75 8.125V12.5" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative rounded-[5px] group">
+                        <img src="assets/images/media-1.png" alt="">
+                        <div
+                            class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
+                            <div class="flex items-center justify-between w-full">
+                                <p class="text-sm leading-5 text-white">gift.jpg</p>
+                                <button
+                                    class="w-[30px] aspect-square rounded-[5px] bg-transparent flex items-center justify-center text-white transition-all duration-500 hover:bg-white hover:text-Theme-Black">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M3.75 4.625H14.25V12.5C14.25 14.1499 14.25 14.9749 13.7374 15.4874C13.2249 16 12.3999 16 10.75 16H7.25C5.60008 16 4.77513 16 4.26256 15.4874C3.75 14.9749 3.75 14.1499 3.75 12.5V4.625Z"
+                                            stroke="currentcolor" stroke-width="1.2" />
+                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M5.5 3.75C5.5 2.92504 5.5 2.51256 5.75628 2.25628C6.01256 2 6.42504 2 7.25 2H10.75C11.575 2 11.9874 2 12.2437 2.25628C12.5 2.51256 12.5 2.92504 12.5 3.75V4.625H5.5V3.75Z"
+                                            stroke="currentcolor" stroke-width="1.2" />
+                                        <path d="M7.25 8.125V12.5" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M10.75 8.125V12.5" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative rounded-[5px] group">
+                        <img src="assets/images/media-2.png" alt="">
+                        <div
+                            class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
+                            <div class="flex items-center justify-between w-full">
+                                <p class="text-sm leading-5 text-white">gift.jpg</p>
+                                <button
+                                    class="w-[30px] aspect-square rounded-[5px] bg-transparent flex items-center justify-center text-white transition-all duration-500 hover:bg-white hover:text-Theme-Black">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M3.75 4.625H14.25V12.5C14.25 14.1499 14.25 14.9749 13.7374 15.4874C13.2249 16 12.3999 16 10.75 16H7.25C5.60008 16 4.77513 16 4.26256 15.4874C3.75 14.9749 3.75 14.1499 3.75 12.5V4.625Z"
+                                            stroke="currentcolor" stroke-width="1.2" />
+                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M5.5 3.75C5.5 2.92504 5.5 2.51256 5.75628 2.25628C6.01256 2 6.42504 2 7.25 2H10.75C11.575 2 11.9874 2 12.2437 2.25628C12.5 2.51256 12.5 2.92504 12.5 3.75V4.625H5.5V3.75Z"
+                                            stroke="currentcolor" stroke-width="1.2" />
+                                        <path d="M7.25 8.125V12.5" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M10.75 8.125V12.5" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative rounded-[5px] group">
+                        <img src="assets/images/media-3.png" alt="">
+                        <div
+                            class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
+                            <div class="flex items-center justify-between w-full">
+                                <p class="text-sm leading-5 text-white">gift.jpg</p>
+                                <button
+                                    class="w-[30px] aspect-square rounded-[5px] bg-transparent flex items-center justify-center text-white transition-all duration-500 hover:bg-white hover:text-Theme-Black">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M3.75 4.625H14.25V12.5C14.25 14.1499 14.25 14.9749 13.7374 15.4874C13.2249 16 12.3999 16 10.75 16H7.25C5.60008 16 4.77513 16 4.26256 15.4874C3.75 14.9749 3.75 14.1499 3.75 12.5V4.625Z"
+                                            stroke="currentcolor" stroke-width="1.2" />
+                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M5.5 3.75C5.5 2.92504 5.5 2.51256 5.75628 2.25628C6.01256 2 6.42504 2 7.25 2H10.75C11.575 2 11.9874 2 12.2437 2.25628C12.5 2.51256 12.5 2.92504 12.5 3.75V4.625H5.5V3.75Z"
+                                            stroke="currentcolor" stroke-width="1.2" />
+                                        <path d="M7.25 8.125V12.5" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M10.75 8.125V12.5" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative rounded-[5px] group">
+                        <img src="assets/images/media-4.png" alt="">
+                        <div
+                            class="absolute w-full h-full  opacity-0 top-0 left-0 z-10 rounded-[5px] flex items-end justify-between p-2.5 bg-gradient-to-b from-Theme-Black/0 via-Theme-Black/50 to-Theme-Black/75 border border-transparent transition-all duration-500 group-hover:opacity-100 hover:border-Theme-Green focus:border-Theme-Green">
+                            <div class="flex items-center justify-between w-full">
+                                <p class="text-sm leading-5 text-white">gift.jpg</p>
+                                <button
+                                    class="w-[30px] aspect-square rounded-[5px] bg-transparent flex items-center justify-center text-white transition-all duration-500 hover:bg-white hover:text-Theme-Black">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M3.75 4.625H14.25V12.5C14.25 14.1499 14.25 14.9749 13.7374 15.4874C13.2249 16 12.3999 16 10.75 16H7.25C5.60008 16 4.77513 16 4.26256 15.4874C3.75 14.9749 3.75 14.1499 3.75 12.5V4.625Z"
+                                            stroke="currentcolor" stroke-width="1.2" />
+                                        <path d="M2 4.625H16" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
                                         <path
                                             d="M5.5 3.75C5.5 2.92504 5.5 2.51256 5.75628 2.25628C6.01256 2 6.42504 2 7.25 2H10.75C11.575 2 11.9874 2 12.2437 2.25628C12.5 2.51256 12.5 2.92504 12.5 3.75V4.625H5.5V3.75Z"
                                             stroke="currentcolor" stroke-width="1.2" />
