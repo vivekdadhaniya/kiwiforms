@@ -1,40 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Upload UI</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Char limit toggle</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen bg-gray-50 space-y-10">
 
-  <!-- Image Upload -->
-  <div class="w-[310px] h-[124px] flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-blue-400 transition">
-    <label class="flex flex-col items-center cursor-pointer">
-      <div class="flex flex-col items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7a2 2 0 012-2h3.586a1 1 0 01.707.293l1.414 1.414A1 1 0 0011.414 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
-        </svg>
-        <span class="font-medium text-gray-700">Upload Image</span>
+<body class="p-6 bg-gray-50">
+  <div x-data="charLimitToggle()" class="w-full max-w-md">
+    <label class="flex items-center justify-between cursor-pointer w-full">
+      <span class="text-base font-medium">Button</span>
+
+      <div class="relative flex items-center">
+        <input id="toggle" type="checkbox" class="sr-only" x-model="enabled" />
+        <!-- custom switch -->
+        <div @click="enabled = !enabled" :class="enabled ? 'bg-green-500' : 'bg-[#EDE9E9]'"
+          class="w-11 h-6 rounded-full relative transition-colors cursor-pointer" role="switch"
+          :aria-checked="enabled.toString()" tabindex="0" @keydown.enter.prevent="enabled = !enabled"
+          @keydown.space.prevent="enabled = !enabled">
+          <span :class="enabled ? 'translate-x-[20px]' : 'translate-x-0'"
+            class="absolute top-[2px] left-[2px] w-5 h-5 bg-white rounded-full shadow transform transition-transform"></span>
+
+          <!-- small static dot when off -->
+          <svg x-show="!enabled" class="absolute top-[6px] left-[6px] w-1 h-1 text-[#E2DCDC]" viewBox="0 0 4 4"
+            fill="none">
+            <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
+          </svg>
+
+          <!-- small vertical bar when on -->
+          <svg x-show="enabled" class="absolute top-[9px] right-[8px] w-[2px] h-[6px] text-[#E2DCDC]" viewBox="0 0 2 6"
+            fill="none">
+            <rect width="2" height="6" rx="1" fill="currentColor"></rect>
+          </svg>
+        </div>
       </div>
-      <input type="file" accept="image/*" class="hidden" />
     </label>
-  </div>
-  <p class="text-gray-500 text-sm text-center">Upload an image here<br>JPG, PNG or GIF • 5MB Max</p>
 
-  <!-- Video Upload -->
-  <div class="w-[310px] h-[124px] flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-blue-400 transition">
-    <label class="flex flex-col items-center cursor-pointer">
-      <div class="flex flex-col items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553 2.276A1 1 0 0120 13.118V18a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h12a2 2 0 012 2v4.882a1 1 0 01-.447.842L15 14v-4z" />
-        </svg>
-        <span class="font-medium text-gray-700">Upload Video</span>
+    <div class="relative mt-4">
+      <input type="text" placeholder="Build a Kiwiform" :disabled="!enabled" x-model="value" @input="onInput"
+        :maxlength="maxChars"
+        class="w-full bg-[#EDE9E9] py-[13px] px-[15px] rounded-2xl text-sm leading-[100%] placeholder:text-[#8C8484] text-Theme-Black outline-0 focus:outline-0 disabled:opacity-50 disabled:cursor-not-allowed"
+        aria-label="Build a Kiwiform">
+
+      <!-- character counter pill -->
+      <div class="absolute right-3 bottom-[-28px]">
+        <div
+          class="px-3 py-1 rounded-full bg-white/60 text-sm leading-5 text-[#8C8484] border border-transparent shadow-sm"
+          :class="enabled ? 'bg-white' : 'bg-white/60'">
+          <span x-text="currentLength"></span><span class="text-[#8C8484]">/</span><span x-text="maxChars"></span>
+        </div>
       </div>
-      <input type="file" accept="video/*" class="hidden" />
-    </label>
+    </div>
   </div>
-  <p class="text-gray-500 text-sm text-center">Upload a video here<br>Max 5 mins • 500MB Max</p>
 
+  <script>
+    function charLimitToggle() {
+      const STORAGE_KEY = 'charLimit';
+      const ENABLED_KEY = 'charLimitEnabled';
+      const MAX = 24;
+
+      return {
+        enabled: localStorage.getItem(ENABLED_KEY) === 'true',
+        value: localStorage.getItem(STORAGE_KEY) ?? '',
+        maxChars: MAX,
+
+        get currentLength() {
+          return (this.value ?? '').length;
+        },
+
+        init() {
+          // ensure value respects maxlength after load
+          if (this.value.length > MAX) {
+            this.value = this.value.slice(0, MAX);
+            localStorage.setItem(STORAGE_KEY, this.value);
+          }
+          // If the toggle is disabled but char exists, we still show (but input disabled)
+          // save initial enabled state
+          localStorage.setItem(ENABLED_KEY, this.enabled);
+        },
+
+        onInput(e) {
+          // guard: enforce maxlength (in case mobile or older browsers)
+          if (this.value.length > MAX) {
+            this.value = this.value.slice(0, MAX);
+          }
+          localStorage.setItem(STORAGE_KEY, this.value);
+          localStorage.setItem(ENABLED_KEY, this.enabled);
+        }
+      };
+    }
+  </script>
 </body>
+
 </html>
