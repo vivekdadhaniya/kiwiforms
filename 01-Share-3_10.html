@@ -1,0 +1,1409 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- REQUIRED META TAGS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kiwiform/share
+    </title>
+    <!--- MAIN CSS ---->
+    <link rel="stylesheet" href="assets/css/input.css">
+    <link rel="stylesheet" href="assets/css/output.css">
+    <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
+    <style>
+        .h-with-toast {
+            height: calc(100% - 112px) !important;
+            /* adjust value as needed */
+        }
+
+        /* =======Range Slider CSS =======*/
+        .range-wrap {
+            width: 100%;
+            height: 8px;
+            background: #EDE9E9;
+            border-radius: 10px;
+            padding: 2px;
+            /* creates 4px inner track */
+            position: relative;
+        }
+
+        /* Real input covers the inner area */
+        .range {
+            position: absolute;
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            /* inner track height */
+            background: #FFF;
+            border-radius: 10px;
+            outline: none;
+
+            /* inner filled part fully rounded */
+            background-image: linear-gradient(#8C8484, #8C8484);
+            background-size: var(--val, 0%) 100%;
+            background-repeat: no-repeat;
+            background-position: left center;
+            width: calc(100% - 4px);
+        }
+
+        /* hollow thumb */
+        .range::-webkit-slider-thumb {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border: 4px solid #8C8484;
+            border-radius: 50%;
+            cursor: pointer;
+
+            /* align thumb */
+            margin-top: -2px;
+        }
+
+        /* input type number arrow */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: auto;
+            margin: 0;
+        }
+
+        /* input type number arrow */
+        input[type=number] {
+            -moz-appearance: number-input;
+        }
+
+        /* Hide number arrows */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .dropdown-item.active {
+            background-color: #F8F6F6;
+        }
+    </style>
+</head>
+
+<body class=" bg-Theme-bg font-Inter">
+    <div class="flex flex-col max-md:gap-8 md:flex-row">
+        <!--Header--->
+        <header class="p-2.5 rounded-b-10px fixed top-0 z-[900] w-full bg-Theme-Forground">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2.5 w-full max-w-[350px]">
+                    <a href="#" class="p-2 bg-white rounded-10px shadow-Logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z"
+                                fill="#183C1A" />
+                            <path
+                                d="M12 1.2002C12.7732 1.2002 13.5273 1.28167 14.2544 1.43629C15.2288 1.64349 15.84 2.56199 15.84 3.55816V6.96019C15.84 7.62294 16.3772 8.1602 17.04 8.1602H20.442C21.4382 8.1602 22.3567 8.77135 22.5639 9.74573C22.7185 10.4728 22.8 11.227 22.8 12.0002C22.8 17.9649 17.9646 22.8002 12 22.8002C6.03528 22.8002 1.19995 17.9649 1.19995 12.0002C1.19995 6.03552 6.03528 1.2002 12 1.2002Z"
+                                fill="#B8DD2F" />
+                            <rect x="8.92041" y="8.81445" width="6.15932" height="6.15932" rx="3.07966"
+                                fill="#F2F3B5" />
+                            <ellipse cx="12.1062" cy="17.5222" rx="0.637171" ry="0.955756" fill="#183C1A" />
+                            <ellipse cx="12.1062" cy="6.37177" rx="0.637171" ry="0.955756" fill="#183C1A" />
+                            <ellipse cx="14.8939" cy="16.7747" rx="0.637171" ry="0.955756"
+                                transform="rotate(-30 14.8939 16.7747)" fill="#183C1A" />
+                            <ellipse cx="9.3185" cy="7.1185" rx="0.637171" ry="0.955756"
+                                transform="rotate(-30 9.3185 7.1185)" fill="#183C1A" />
+                            <ellipse cx="16.9339" cy="14.7347" rx="0.637171" ry="0.955756"
+                                transform="rotate(-60 16.9339 14.7347)" fill="#183C1A" />
+                            <ellipse cx="7.27764" cy="9.15947" rx="0.637171" ry="0.955756"
+                                transform="rotate(-60 7.27764 9.15947)" fill="#183C1A" />
+                            <ellipse cx="17.6811" cy="11.9478" rx="0.637171" ry="0.955756"
+                                transform="rotate(-90 17.6811 11.9478)" fill="#183C1A" />
+                            <ellipse cx="6.53046" cy="11.9478" rx="0.637171" ry="0.955756"
+                                transform="rotate(-90 6.53046 11.9478)" fill="#183C1A" />
+                            <ellipse cx="7.27743" cy="14.735" rx="0.637171" ry="0.955756"
+                                transform="rotate(-120 7.27743 14.735)" fill="#183C1A" />
+                            <ellipse cx="9.31816" cy="16.7756" rx="0.637171" ry="0.955756"
+                                transform="rotate(-150 9.31816 16.7756)" fill="#183C1A" />
+                            <path
+                                d="M16.1831 7.7998L22.7999 8.1598L23.0023 10.9554C23.0353 11.4106 23.0237 11.8679 22.9677 12.3209L22.879 13.0388C22.8264 13.4652 22.7346 13.8859 22.6049 14.2955L22.3439 15.1198L19.4399 11.5198L16.1831 7.7998Z"
+                                fill="url(#paint0_linear_149_8)" />
+                            <defs>
+                                <linearGradient id="paint0_linear_149_8" x1="19.7999" y1="8.1598" x2="22.7999"
+                                    y2="15.1198" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#183C1A" stop-opacity="0.25" />
+                                    <stop offset="1" stop-color="#183C1A" stop-opacity="0" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </a>
+                    <div class="px-[15px] py-[5px] rounded-10px bg-[#EDE9E9] min-h-10 flex items-center">
+                        <ol class="inline-flex items-center gap-1 md:gap-3.5">
+                            <li class="inline-flex items-center">
+                                <a href="javascript:;"
+                                    class="inline-flex items-center text-sm leading-[140%] font-normal text-Theme-Black hover:text-Theme-Green">
+                                    My Forms </a>
+                            </li>
+                            <li>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10"
+                                        fill="none">
+                                        <path d="M1 1L5 5L1 9" stroke="#000A06" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <a href="javascript:;"
+                                        class="ml-1 text-sm leading-[140%] font-normal text-Theme-Black hover:text-Theme-Green md:ml-3.5">
+                                        New Form</a>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="min-[1080px]:flex hidden items-center gap-2.5 p-[5px] rounded-10px bg-[#EDE9E9]">
+                    <a href="#" class="py-[5px] px-[15px] header-links ">Form</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links whitespace-nowrap">Logic Flow</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Connect</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links active">Share</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Results</a>
+                </div>
+                <div class="flex items-center justify-end gap-2.5 w-full max-w-[350px]">
+                    <button class="btn-white-square">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 14L6 14C3.79086 14 2 12.2091 2 10V10C2 7.79086 3.79086 6 6 6L7.5 6"
+                                stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                            <path d="M12.5 6L14 6C16.2091 6 18 7.79086 18 10V10C18 12.2091 16.2091 14 14 14L12.5 14"
+                                stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                            <path d="M7 10L13 10" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button class="w-full max-w-[112px] p-[15px] py-2.5 rounded-[10px] bg-Theme-Black flex items-center justify-between text-sm font-medium leading-[140%] text-white
+                                   transition-all duration-500 hover:bg-gray-800 relative overflow-hidden group">
+                        Publish
+                        <svg class="relative z-10 transition-transform duration-500 group-hover:translate-x-1"
+                            xmlns="http://www.w3.org/2000/svg" width="5" height="10" viewBox="0 0 5 10" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M0.308661 9.9577C0.12182 9.8717 0 9.66913 0 9.44443L0 0.555583C0 0.330843 0.12182 0.128326 0.308661 0.042326C0.495495 -0.0436738 0.710556 0.00380744 0.853556 0.162696L4.85355 4.60713C5.04882 4.82409 5.04882 5.17587 4.85355 5.39283L0.853556 9.83727C0.710556 9.99616 0.495495 10.0437 0.308661 9.9577Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+                    <button
+                        class="bg-white rounded-10px border border-[#E2DCDC] py-[9px] px-[15px] text-sm leading-[140%] font-medium text-Theme-Green whitespace-nowrap transition-all duration-500 hover:border-[#ccc6c6]">
+                        Go Premium
+                    </button>
+                    <button class="btn-white-square">
+                        BD
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="w-full h-screen pt-[61px] ">
+            <div class="flex items-start gap-3 xl:gap-5 bg-Theme-Forground rounded-10px h-full p-3 xl:p-5">
+                <!-- left  -->
+                <div class="w-full xl:max-w-[340px] lg:max-w-[260px] flex flex-col gap-2.5 ">
+                    <div class="flex flex-col gap-2.5 p-2.5 rounded-10px bg-[#EDE9E9]">
+                        <a href="#" class="share-link py-2.5 px-[15px] rounded-[5px] bg-transparent flex items-center gap-2.5 w-full text-sm font-medium leading-5 text-Theme-Black
+                     transition-all duration-300 hover:bg-white ">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.5 14L6 14C3.79086 14 2 12.2091 2 10C2 7.79086 3.79086 6 6 6L7.5 6"
+                                    stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                                <path d="M12.5 6L14 6C16.2091 6 18 7.79086 18 10C18 12.2091 16.2091 14 14 14L12.5 14"
+                                    stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                                <path d="M7 10L13 10" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            Share this link
+                        </a>
+                        <a href="#" class="share-link py-2.5 px-[15px] rounded-[5px] bg-transparent flex items-center gap-2.5 w-full text-sm font-medium leading-5 text-Theme-Black
+                     transition-all duration-300 hover:bg-white">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14 16C15.0932 16 15.9793 15.3186 15.9793 14.477C15.9793 13.2953 15.9793 12.8842 15.9793 11.86C15.9793 11.6091 16.1985 11.3217 16.4925 11.0491C17.0898 10.4952 17.3884 10.2182 17.3884 10C17.3884 9.78177 17.0898 9.50483 16.4925 8.95094C16.1985 8.67832 15.9793 8.39093 15.9793 8.14C15.9793 7.24629 15.9793 6.75967 15.9793 5.52315C15.9793 4.68158 15.0932 4 14 4"
+                                    stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M6 16C4.90681 16 4.02066 15.3186 4.02066 14.477C4.02066 13.2953 4.02066 12.8842 4.02066 11.86C4.02066 11.6091 3.80148 11.3217 3.5075 11.0491C2.91022 10.4952 2.61158 10.2182 2.61158 10C2.61158 9.78177 2.91022 9.50483 3.5075 8.95094C3.80148 8.67832 4.02066 8.39093 4.02066 8.14C4.02066 7.24629 4.02066 6.75967 4.02066 5.52315C4.02066 4.68158 4.90681 4 6 4"
+                                    stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M7 7.5L13 7.5" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M8 10L12 10" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M9 12.5L11 12.5" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            Embed Form in Email
+
+                        </a>
+                        <a href="#" class="share-link py-2.5 px-[15px] rounded-[5px] bg-transparent flex items-center gap-2.5 w-full text-sm font-medium leading-5 text-Theme-Black
+                     transition-all duration-300 hover:bg-white active">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.9922 11V17" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M18 13.9941L12 13.9941" stroke="#000A06" stroke-width="1.2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M9.5 14H6C4.11438 14 3.17157 14 2.58579 13.4142C2 12.8284 2 11.8856 2 10V7C2 5.11438 2 4.17157 2.58579 3.58579C3.17157 3 4.11438 3 6 3H11C12.8856 3 13.8284 3 14.4142 3.58579C15 4.17157 15 5.11438 15 7V8.5"
+                                    stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                                <path d="M4.5 6L7.5 8.4C7.93848 8.75078 8.56152 8.75078 9 8.4L12 6" stroke="#000A06"
+                                    stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            Embed Form in Web page
+                        </a>
+                    </div>
+
+                </div>
+                <!-- center  -->
+                <div class="w-full mx-auto relative md:overflow-y-hidden h-full">
+
+                    <div class="w-full h-full relative bg-[#F6F6F6]  py-0">
+                        <!-- header for main content  -->
+                        <div class="flex items-center justify-center pb-2.5">
+                            <div class="flex items-center justify-between w-full ">
+                                <label class=" flex items-center justify-between  cursor-pointer">
+                                    <div class="relative">
+                                        <input id="toggleView" type="checkbox" value="Original_UV" class="sr-only peer">
+                                        <div class="w-20 h-10 bg-[#EDE9E9] peer-focus:outline-none rounded-10px peer 
+                                peer-checked:after:translate-x-[40px] peer-checked:after:bg-white after:content-[''] after:absolute 
+                                after:top-[5px] after:right-[45px] after:bg-white  after:rounded-[5px] after:h-[30px] after:w-[30px] after:transition-all
+                              peer-checked:bg-[#EDE9E9] hover:peer-checked:bg-[#ece6e6]">
+
+                                            <svg class="absolute z-10 left-[11px] top-[11px]" width="18" height="18"
+                                                viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_365_244)">
+                                                    <rect x="1" y="1" width="16" height="12" rx="2" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <path d="M9 15V17M9 17H4M9 17H14" stroke="#000A06"
+                                                        stroke-width="1.2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_365_244">
+                                                        <rect width="18" height="18" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            <svg class="absolute z-10 right-[11px] top-[11px]" width="18" height="18"
+                                                viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="3" y="1" width="12" height="16" rx="2" stroke="#000A06"
+                                                    stroke-width="1.2" />
+                                                <path d="M7 15H11" stroke="#000A06" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M7 3L6 1H12L11 3H7Z" stroke="#000A06" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+
+                                        </div>
+                                    </div>
+                                </label>
+                                <div class="flex items-center xl:flex-row flex-col justify-end gap-2.5 w-full ">
+                                    <input type="text"
+                                        class="bg-[#EDE9E9] lg:w-[280px] xl:w-[300px] rounded-10px py-2.5 px-3.5 text-sm leading-5 placeholder:text-[#8C8484] text-Theme-Black focus:outline-none"
+                                        placeholder="Embed Name">
+                                    <button data-modal-target="Get-QR" class="btn-kiwi-green-icon-text pl-3 pr-4">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M14 16C15.0932 16 15.9793 15.3186 15.9793 14.477C15.9793 13.2953 15.9793 12.8842 15.9793 11.86C15.9793 11.6091 16.1985 11.3217 16.4925 11.0491C17.0898 10.4952 17.3884 10.2182 17.3884 10C17.3884 9.78177 17.0898 9.50483 16.4925 8.95094C16.1985 8.67832 15.9793 8.39093 15.9793 8.14C15.9793 7.24629 15.9793 6.75967 15.9793 5.52315C15.9793 4.68158 15.0932 4 14 4"
+                                                stroke="white" stroke-width="1.2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path
+                                                d="M6 16C4.90681 16 4.02066 15.3186 4.02066 14.477C4.02066 13.2953 4.02066 12.8842 4.02066 11.86C4.02066 11.6091 3.80148 11.3217 3.5075 11.0491C2.91022 10.4952 2.61158 10.2182 2.61158 10C2.61158 9.78177 2.91022 9.50483 3.5075 8.95094C3.80148 8.67832 4.02066 8.39093 4.02066 8.14C4.02066 7.24629 4.02066 6.75967 4.02066 5.52315C4.02066 4.68158 4.90681 4 6 4"
+                                                stroke="white" stroke-width="1.2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M7 7.5L13 7.5" stroke="white" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M8 10L12 10" stroke="white" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M9 12.5L11 12.5" stroke="white" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        Start Embedding
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="viewport"
+                            class="view-port relative mx-auto origin-center overflow-x-hidden h-[calc(100%-50px)] p-2.5 flex items-center justify-between flex-col rounded-10px bg-white border border-[#E2DCDC]">
+                            <div
+                                class="p-5 w-full h-max border border-[#E2DCDC] bg-[#F8F6F6] rounded-[5px] flex flex-col gap-10">
+                                <div class=" flex flex-col gap-[15px] w-full">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-full h-[18px] rounded-full bg-[#EDE9E9]"></div>
+                                    </div>
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-[90%] h-[18px] mx-auto rounded-full bg-[#EDE9E9]"></div>
+                                    </div>
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-[80%] h-[18px] mx-auto rounded-full bg-[#EDE9E9]"></div>
+                                    </div>
+                                </div>
+                                <div class=" flex flex-col gap-[15px] w-full">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-full h-[18px] rounded-full bg-[#EDE9E9]"></div>
+                                    </div>
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-[90%] h-[18px] mx-auto rounded-full bg-[#EDE9E9]"></div>
+                                    </div>
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-[80%] h-[18px] mx-auto rounded-full bg-[#EDE9E9]"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="p-5 w-full h-max border border-[#E2DCDC] bg-[#F8F6F6] rounded-[5px] flex flex-col gap-10">
+                                <div class=" flex flex-col gap-[15px] w-full">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-full h-[18px] rounded-full bg-[#EDE9E9]"></div>
+                                    </div>
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-[90%] h-[18px] mx-auto rounded-full bg-[#EDE9E9]"></div>
+                                    </div>
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-[80%] h-[18px] mx-auto rounded-full bg-[#EDE9E9]"></div>
+                                    </div>
+                                </div>
+                                <div class=" flex flex-col gap-[15px] w-full">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-full h-[18px] rounded-full bg-[#EDE9E9]"></div>
+                                    </div>
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-[90%] h-[18px] mx-auto rounded-full bg-[#EDE9E9]"></div>
+                                    </div>
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-[80%] h-[18px] mx-auto rounded-full bg-[#EDE9E9]"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Alpine wrapper -->
+                            <div x-data="{ open: false }"
+                                class="absolute right-0 top-1/2 flex items-center gap-5 -translate-y-1/2 z-40 ">
+                                <p class="text-[15px] leading-[30px] text-Theme-Black -mr-32" :class="{'mr-5': open}">
+                                    Click the button to preview your form in action.</p>
+                                <!-- Floating Toggle Button (Closed State) -->
+                                <button @click="open = true" x-show="!open" x-transition
+                                    class="flex items-center gap-2.5 -translate-y-[280%] z-40
+           bg-Theme-Green text-white text-sm font-medium px-3 py-2 rounded-t-10px -rotate-90 origin-bottom-right shadow-lg" :class="{'hidden': open}">
+                                    <svg class="rotate-90" width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_1724_3902)">
+                                            <rect x="1" y="1" width="16" height="16" rx="8" stroke="white"
+                                                stroke-width="1.2" />
+                                            <path d="M8.50305 6L5.5 9L8.50305 12" stroke="white" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M12.5 9L9.39902 9L5.5 9" stroke="white" stroke-width="1.2"
+                                                stroke-linecap="round" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_1724_3902">
+                                                <rect width="18" height="18" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                                    Take a quick look
+                                </button>
+
+                                <!-- Floating Form Panel (Open State) -->
+                                <div x-show="open" x-transition:enter="transition transform duration-300"
+                                    x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+                                    x-transition:leave="transition transform duration-300"
+                                    x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
+                                    class="fixed right-0 rounded-l-10px bg-white top-1/2 w-full min-w-[480px] -translate-y-1/2 z-50 shadow-[0_0_20px_0_rgba(0,0,0,0.15)]">
+
+                                    <!-- Card -->
+                                    <div class="w-full min-w-[480px] min-h-[480px]  px-10 pt-[88px] relative">
+
+                                        <!-- Close Button -->
+                                        <button @click="open = false" class="absolute -left-[98px] top-1/2 -translate-y-1/2
+               bg-Theme-Green text-white text-sm px-2 py-2
+               rounded-t-10px -rotate-90 flex items-center gap-2.5">
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4 14L14 4" stroke="white" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M14 14L4 4" stroke="white" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            Take a quick look
+                                        </button>
+
+                                        <div class="input w-full max-w-[400px]">
+                                            <div
+                                                class="text-sm font-semibold leading-[140%] text-white p-[5px] rounded-full bg-[#007D47] aspect-square w-[30px] flex items-center justify-center mb-5">
+                                                1</div>
+                                            <h4 class="text-2xl leading-[160%] font-semibold text-[#000A06] mb-2.5">
+                                                Email Address
+                                            </h4>
+                                            <p class="text-[15px] font-normal leading-[120%] text-[#000A06] mb-[30px]">
+                                                Enter your email address
+                                            </p>
+                                            <input type="email" placeholder="name@email.com"
+                                                class="w-full pb-[15px] border-b border-[#DAEFE6] !bg-white placeholder:text-[#9ACEB8] text-xl font-medium leading-[140%] text-[#007D47] transition-all duration-500 focus:outline-0 focus:border-[#007D47]">
+                                        </div>
+
+                                        <div
+                                            class="absolute bottom-5 flex flex-col items-center gap-5 w-full max-w-[400px]">
+                                            <div class="flex items-center gap-2.5 w-full">
+                                                <button class="btn-kiwi-green w-full">
+                                                    Continue
+                                                </button>
+                                            </div>
+                                            <button>
+                                                <svg width="200" height="44" viewBox="0 0 200 44" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="200" height="44" fill="url(#paint0_linear_1720_3615)">
+                                                    </rect>
+                                                    <path
+                                                        d="M81.2846 25.1978C81.0053 24.7026 80.6186 24.6595 80.2319 25.0471L78.5993 26.7483V29.6554H76V14.5814H78.5993V23.6043L83.132 18.7806H86.3113L83.2609 22.0108C82.8957 22.3984 82.8527 22.7645 83.0891 23.1952L86.6336 29.6554H83.6476L81.2846 25.1978Z"
+                                                        fill="#183C1A"></path>
+                                                    <path
+                                                        d="M87.727 29.6554V18.7591H90.4767V29.6554H87.727ZM89.1018 17.1655C88.1351 17.1655 87.4262 16.498 87.4262 15.5935C87.4262 14.7106 88.1351 14 89.1018 14C90.0685 14 90.7774 14.7106 90.7774 15.5935C90.7774 16.498 90.0685 17.1655 89.1018 17.1655Z"
+                                                        fill="#183C1A"></path>
+                                                    <path
+                                                        d="M94.8726 29.6554L91.6503 18.7591H94.4859L96.2904 25.9085H96.4622L98.3097 18.7591H100.995L102.842 25.9085H102.993L104.797 18.7591H107.654L104.432 29.6554H101.489L99.6845 22.7429H99.5986L97.8156 29.6554H94.8726Z"
+                                                        fill="#183C1A"></path>
+                                                    <path
+                                                        d="M108.831 29.6554V18.7591H111.581V29.6554H108.831ZM110.206 17.1655C109.239 17.1655 108.531 16.498 108.531 15.5935C108.531 14.7106 109.239 14 110.206 14C111.173 14 111.882 14.7106 111.882 15.5935C111.882 16.498 111.173 17.1655 110.206 17.1655Z"
+                                                        fill="#183C1A"></path>
+                                                    <path
+                                                        d="M114.732 29.6554V21.0417H112.734L112.713 18.7591H114.088C114.496 18.7591 114.689 18.5437 114.732 18.1561V17.79C114.904 16.1319 115.978 14.5814 118.577 14.5814H119.759V16.8641H118.019C117.546 16.8641 117.353 17.0579 117.353 17.5101V18.7591H119.565V21.0417H117.396V29.6554H114.732Z"
+                                                        fill="#183C1A"></path>
+                                                    <path
+                                                        d="M125.714 30C122.234 30 120.022 27.6958 120.022 24.2073C120.022 20.7187 122.234 18.4145 125.714 18.4145C129.152 18.4145 131.364 20.7187 131.364 24.2073C131.364 27.6958 129.152 30 125.714 30ZM125.714 27.6528C127.433 27.6528 128.572 26.2961 128.572 24.2073C128.572 22.1184 127.433 20.7402 125.714 20.7402C123.974 20.7402 122.836 22.1184 122.836 24.2073C122.836 26.2961 123.974 27.6528 125.714 27.6528Z"
+                                                        fill="#183C1A"></path>
+                                                    <path
+                                                        d="M132.745 21.5155C132.745 19.7281 133.712 18.7591 135.559 18.7591H139.082V21.0848H135.495V29.6554H132.745V21.5155Z"
+                                                        fill="#183C1A"></path>
+                                                    <path
+                                                        d="M140.152 29.6554V18.7591H142.644V20.3311C143.31 19.0606 144.449 18.4145 145.931 18.4145C147.563 18.4145 148.724 19.1898 149.304 20.5464C149.927 19.1682 151.13 18.4145 152.719 18.4145C155.061 18.4145 156.5 20.0296 156.5 22.6783V29.6554H153.75V23.1306C153.75 21.5585 153.17 20.8048 152.032 20.8048C150.786 20.8048 149.712 21.7954 149.712 24.0996V29.6554H146.962V23.1306C146.962 21.5585 146.382 20.8048 145.243 20.8048C143.933 20.8048 142.902 21.86 142.902 24.0996V29.6554H140.152Z"
+                                                        fill="#183C1A"></path>
+                                                    <path
+                                                        d="M47 22C47 15.3726 52.3726 10 59 10C65.6274 10 71 15.3726 71 22C71 28.6274 65.6274 34 59 34C52.3726 34 47 28.6274 47 22Z"
+                                                        fill="#183C1A"></path>
+                                                    <path
+                                                        d="M58.9992 11.1992C59.7724 11.1992 60.5266 11.2807 61.2537 11.4353C62.2281 11.6425 62.8392 12.561 62.8392 13.5572V16.9592C62.8392 17.622 63.3765 18.1592 64.0392 18.1592H67.4413C68.4374 18.1592 69.3559 18.7704 69.5631 19.7448C69.7177 20.4719 69.7992 21.226 69.7992 21.9992C69.7992 27.9639 64.9639 32.7992 58.9992 32.7992C53.0345 32.7992 48.1992 27.9639 48.1992 21.9992C48.1992 16.0345 53.0345 11.1992 58.9992 11.1992Z"
+                                                        fill="#B8DD2F"></path>
+                                                    <rect x="55.918" y="18.8145" width="6.15932" height="6.15932"
+                                                        rx="3.07966" fill="#F2F3B5"></rect>
+                                                    <ellipse cx="59.1059" cy="27.5222" rx="0.637171" ry="0.955756"
+                                                        fill="#183C1A"></ellipse>
+                                                    <ellipse cx="59.1059" cy="16.3718" rx="0.637171" ry="0.955756"
+                                                        fill="#183C1A"></ellipse>
+                                                    <ellipse cx="61.893" cy="26.7747" rx="0.637171" ry="0.955756"
+                                                        transform="rotate(-30 61.893 26.7747)" fill="#183C1A"></ellipse>
+                                                    <ellipse cx="56.3148" cy="17.1185" rx="0.637171" ry="0.955756"
+                                                        transform="rotate(-30 56.3148 17.1185)" fill="#183C1A">
+                                                    </ellipse>
+                                                    <ellipse cx="63.9314" cy="24.7347" rx="0.637171" ry="0.955756"
+                                                        transform="rotate(-60 63.9314 24.7347)" fill="#183C1A">
+                                                    </ellipse>
+                                                    <ellipse cx="54.2752" cy="19.1604" rx="0.637171" ry="0.955756"
+                                                        transform="rotate(-60 54.2752 19.1604)" fill="#183C1A">
+                                                    </ellipse>
+                                                    <ellipse cx="64.6823" cy="21.9468" rx="0.637171" ry="0.955756"
+                                                        transform="rotate(-90 64.6823 21.9468)" fill="#183C1A">
+                                                    </ellipse>
+                                                    <ellipse cx="53.53" cy="21.9468" rx="0.637171" ry="0.955756"
+                                                        transform="rotate(-90 53.53 21.9468)" fill="#183C1A"></ellipse>
+                                                    <ellipse cx="54.2787" cy="24.7359" rx="0.637171" ry="0.955756"
+                                                        transform="rotate(-120 54.2787 24.7359)" fill="#183C1A">
+                                                    </ellipse>
+                                                    <ellipse cx="56.3167" cy="26.7756" rx="0.637171" ry="0.955756"
+                                                        transform="rotate(-150 56.3167 26.7756)" fill="#183C1A">
+                                                    </ellipse>
+                                                    <path
+                                                        d="M63.1836 17.8008L69.8004 18.1608L70.0028 20.9563C70.0358 21.4115 70.0242 21.8689 69.9682 22.3218L69.8795 23.0398C69.8269 23.4662 69.7351 23.8869 69.6054 24.2965L69.3444 25.1208L66.4404 21.5208L63.1836 17.8008Z"
+                                                        fill="url(#paint1_linear_1720_3615)"></path>
+                                                    <defs>
+                                                        <linearGradient id="paint0_linear_1720_3615" x1="0" y1="22"
+                                                            x2="200" y2="22" gradientUnits="userSpaceOnUse">
+                                                            <stop stop-color="#F2F3B5" stop-opacity="0"></stop>
+                                                            <stop offset="0.3" stop-color="#B8DD2F" stop-opacity="0.1">
+                                                            </stop>
+                                                            <stop offset="0.5" stop-color="#B8DD2F" stop-opacity="0.25">
+                                                            </stop>
+                                                            <stop offset="0.7" stop-color="#B8DD2F" stop-opacity="0.1">
+                                                            </stop>
+                                                            <stop offset="1" stop-color="#F2F3B5" stop-opacity="0">
+                                                            </stop>
+                                                        </linearGradient>
+                                                        <linearGradient id="paint1_linear_1720_3615" x1="66.8004"
+                                                            y1="18.1608" x2="69.8004" y2="25.1208"
+                                                            gradientUnits="userSpaceOnUse">
+                                                            <stop stop-color="#183C1A" stop-opacity="0.25"></stop>
+                                                            <stop offset="1" stop-color="#183C1A" stop-opacity="0">
+                                                            </stop>
+                                                        </linearGradient>
+                                                    </defs>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- right  -->
+
+                <div x-data="{ tab: 'design' }"
+                    class="w-full xl:max-w-[340px] lg:max-w-[280px] rounded-10px bg-[#EDE9E9] text-sm">
+
+                    <!-- Tabs header -->
+                    <div class="flex items-center xl:gap-1 gap-0 p-2.5 mb-5 border-b border-[#E2DCDC]">
+                        <button @click="tab = 'design'"
+                            class="flex-1 rounded-[5px] px-1.5 w-full py-2.5 text-center text-sm leading-5 text-[#000A06] bg-transparent font-medium transition"
+                            :class="tab === 'design'
+                ? 'bg-white'
+                : 'hover:bg-white/50'">
+                            Design
+                        </button>
+
+                        <button @click="tab = 'interactive'"
+                            class="flex-1 rounded-[5px] px-1.5 w-full py-2.5 text-center text-sm leading-5 text-[#000A06] bg-transparent font-medium transition"
+                            :class="tab === 'interactive'
+                ? 'bg-white'
+                : 'hover:bg-white/50'">
+                            Interactive
+                        </button>
+
+                        <button @click="tab = 'embed'"
+                            class="flex-1 rounded-[5px] px-1.5 w-full py-2.5 text-center text-sm leading-5 text-[#000A06] bg-transparent font-medium transition"
+                            :class="tab === 'embed'
+                ? 'bg-white'
+                : 'hover:bg-white/50'">
+                            Embed SDK
+                        </button>
+                    </div>
+
+                    <!-- DESIGN TAB -->
+                    <div x-show="tab === 'design'" x-cloak class="px-3 xl:px-5 pb-5 flex flex-col gap-5">
+                        <!-- Embed mode -->
+                        <div>
+                            <p class="mb-2.5 text-xs leading-[14px] font-medium text-[#8C8484] tracking-[1.2px]">EMBED
+                                MODE</p>
+                            <div class="flex lg:gap-2 xl:gap-3 pb-5 border-b border-[#E2DCDC]">
+                                <button
+                                    class="w-full aspect-square flex items-center justify-center rounded-[5px] text-[#000A06] border border-[#E2DCDC] max-w-[40px] transition-all duration-500  hover:text-white hover:border-Theme-Green hover:bg-Theme-Green">
+                                    <svg width="18" height="16" viewBox="0 0 18 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="16.6016" y="3.59961" width="8" height="16" rx="2"
+                                            transform="rotate(90 16.6016 3.59961)" stroke="currentcolor"
+                                            stroke-width="1.2" />
+                                        <path d="M4.60156 0.599609H12.6016" stroke="currentcolor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M4.60156 14.5996L12.6016 14.5996" stroke="currentcolor"
+                                            stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+
+                                <button
+                                    class="w-full aspect-square flex items-center justify-center rounded-[5px] text-[#000A06] border border-[#E2DCDC] max-w-[40px] transition-all duration-500 hover:text-white hover:border-Theme-Green hover:bg-Theme-Green">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="0.601562" y="0.599609" width="16" height="16" rx="2"
+                                            stroke="currentColor" stroke-width="1.2" />
+                                    </svg>
+                                </button>
+
+                                <button
+                                    class="w-full aspect-square flex items-center justify-center rounded-[5px] text-[#000A06] border border-[#E2DCDC] max-w-[40px] transition-all duration-500 hover:text-white hover:border-Theme-Green hover:bg-Theme-Green">
+                                    <svg width="16" height="12" viewBox="0 0 16 12" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="0.601562" y="0.599609" width="14" height="10" rx="2"
+                                            stroke="currentColor" stroke-width="1.2" />
+                                    </svg>
+                                </button>
+
+                                <button
+                                    class="w-full aspect-square flex items-center justify-center rounded-[5px] text-[#000A06] border border-[#E2DCDC] max-w-[40px] transition-all duration-500 hover:text-white hover:border-Theme-Green hover:bg-Theme-Green">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="10" y="2" width="8" height="16" rx="2" stroke="currentColor"
+                                            stroke-width="1.2" />
+                                    </svg>
+                                </button>
+
+                                <button
+                                    class="w-full aspect-square flex items-center justify-center rounded-[5px] text-[#000A06] border border-[#E2DCDC] max-w-[40px] transition-all duration-500 hover:text-white hover:border-Theme-Green hover:bg-Theme-Green">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10 6C10 4.11438 10 3.17157 10.5858 2.58579C11.1716 2 12.1144 2 14 2V2C15.8856 2 16.8284 2 17.4142 2.58579C18 3.17157 18 4.11438 18 6V12H14C12.1144 12 11.1716 12 10.5858 11.4142C10 10.8284 10 9.88562 10 8V6Z"
+                                            stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" />
+                                        <path
+                                            d="M14 16C14 14.8954 14.8954 14 16 14V14C17.1046 14 18 14.8954 18 16V16C18 17.1046 17.1046 18 16 18V18C14.8954 18 14 17.1046 14 16V16Z"
+                                            stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+
+                                <button
+                                    class="w-full aspect-square flex items-center justify-center rounded-[5px] text-[#000A06] border border-[#E2DCDC] max-w-[40px] transition-all duration-500 text-white border-Theme-Green bg-Theme-Green">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="10" y="2" width="8" height="16" rx="2" stroke="currentColor"
+                                            stroke-width="1.2" />
+                                        <path
+                                            d="M8 7C7.06812 7 6.60218 7 6.23463 7.15224C5.74458 7.35523 5.35523 7.74458 5.15224 8.23463C5 8.60218 5 9.06812 5 10C5 10.9319 5 11.3978 5.15224 11.7654C5.35523 12.2554 5.74458 12.6448 6.23463 12.8478C6.60218 13 7.06812 13 8 13"
+                                            stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Custom Icon -->
+                        <div class="flex items-center justify-between border-b border-[#E2DCDC] pb-5">
+                            <!-- Left text -->
+                            <span class="text-base leading-[22px] font-medium text-gray-900">
+                                Custom Icon
+                            </span>
+
+                            <!-- Upload action -->
+                            <div class="flex items-center gap-3">
+
+                                <!-- Upload button -->
+                                <label for="file-upload"
+                                    class="bg-white border border-gray-200 rounded-lg px-4 py-1.5 text-sm font-medium text-gray-900 cursor-pointer hover:bg-gray-100 transition">
+                                    Upload
+                                </label>
+
+                                <!-- Hidden input -->
+                                <input id="file-upload" type="file" class="hidden" />
+                            </div>
+                        </div>
+
+                        <!-- button text  -->
+                        <div class="block  pb-5 border-b border-[#E2DCDC]">
+                            <p
+                                class="mb-2.5 text-xs leading-[14px] font-medium text-[#8C8484] tracking-[1.2px] uppercase">
+                                Button text
+                            </p>
+                            <div class="relative group">
+                                <input type="text" value="" placeholder="Take a quick look"
+                                    class=" w-full bg-[#F8F6F6] rounded-10px border border-[#E2DCDC] p-[15px] py-2.5 text-sm leading-5 text-Theme-Black placeholder:text-[#8C8484] outline-0 transition-all duration-500
+                                    focus:outline-0 hover:border-[#EDE9E9] focus:border-Theme-Green hover:bg-[#F8F6F6] focus:bg-white">
+                                <span
+                                    class="absolute right-2 top-2 text-xs text-[#8C8484] bg-[#F8F6F6] p-1 group-focus-within:bg-white transition-all duration-500">17/24</span>
+                            </div>
+                        </div>
+
+                        <!-- color picker  -->
+                        <div class="flex items-center justify-between pb-5 border-b border-[#E2DCDC]">
+                            <label class="text-xs font-medium tracking-[1.2px] uppercase text-[#8C8484]">
+                                Button Color
+                            </label>
+                            <div x-data="dropdownComponent('menu2')" class="relative w-max">
+                                <button @click="toggle" :class="{'bg-white': isOpen}"
+                                    class="rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] p-[5px] flex items-center justify-center gap-2.5 transition-all duration-500 hover:bg-white">
+                                    <span class="w-5 h-5 rounded-[5px] bg-[#007D47]"></span>
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7.5 5L12.5 10L7.5 15" stroke="#8C8484" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+
+                                <div x-ref="menu" x-show="isOpen" x-transition=""
+                                    x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                                    @click.outside="close"
+                                    class="absolute right-0 z-10 p-2 mt-2 w-[225px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft"
+                                    style="overflow: hidden; transition: height 300ms; height: auto;">
+
+                                    <div
+                                        class="w-full h-[150px] rounded-[5px] bg-gradient-to-br from-white via-[#007D47]/20 to-[#007D47]">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hide Headers toggle -->
+                        <div class="flex items-center justify-between ">
+                            <label x-data="{ checked: false }"
+                                class="flex items-center justify-between w-full cursor-pointer">
+                                <span class="text-base leading-[140%] font-medium text-Theme-Black">
+                                    Hide Headers
+                                </span>
+                                <div class="relative">
+                                    <input type="checkbox" value="Original_UV" class="sr-only peer" x-model="checked">
+                                    <div class="w-11 h-6 bg-[#E2DCDC] peer-focus:outline-none rounded-full peer 
+                                                peer-checked:after:translate-x-[20px] peer-checked:after:bg-white after:content-[''] after:absolute 
+                                                after:top-[2px] after:right-[22px] after:bg-white after:rounded-full after:h-[20px] after:w-[20px] after:transition-all
+                                                peer-checked:bg-Theme-Green hover:peer-checked:bg-Theme-Green">
+
+                                        <!-- Static gray dot -->
+                                        <svg :class="{'!text-white':checked}"
+                                            class="absolute top-2.5 left-2.5 z-20 text-[#E2DCDC]" width="4" height="4"
+                                            viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="2" cy="2" r="2" fill="currentcolor"></circle>
+                                        </svg>
+
+                                        <!-- Visible only when checked -->
+                                        <svg :class="{'!text-[#E2DCDC]': checked}"
+                                            class="on block absolute top-[9px] right-2.5 z-20 text-white" width="2"
+                                            height="6" viewBox="0 0 2 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="2" height="6" rx="1" fill="currentcolor"></rect>
+                                        </svg>
+
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- INTERACTIVE TAB -->
+                    <div x-show="tab === 'interactive'" x-cloak class="space-y-5 px-3 xl:px-5 pb-5 flex flex-col">
+                        <!-- Custom launch options-->
+                        <div class="flex flex-col items-center justify-between pb-5 border-b border-[#E2DCDC]">
+                            <label x-data="{ checked: true }"
+                                class="flex items-center justify-between w-full cursor-pointer">
+                                <span class="text-base leading-[140%] font-medium text-Theme-Black">
+                                    Custom launch options
+                                </span>
+                                <div class="relative">
+                                    <input type="checkbox" value="read-para" class="sr-only peer" x-model="checked">
+                                    <div class="w-11 h-6 bg-[#E2DCDC] peer-focus:outline-none rounded-full peer 
+                                                peer-checked:after:translate-x-[20px] peer-checked:after:bg-white after:content-[''] after:absolute 
+                                                after:top-[2px] after:right-[22px] after:bg-white after:rounded-full after:h-[20px] after:w-[20px] after:transition-all
+                                                peer-checked:bg-Theme-Green hover:peer-checked:bg-Theme-Green">
+
+                                        <!-- Static gray dot -->
+                                        <svg :class="{'!text-white':checked}"
+                                            class="absolute top-2.5 left-2.5 z-20 text-[#E2DCDC]" width="4" height="4"
+                                            viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="2" cy="2" r="2" fill="currentcolor"></circle>
+                                        </svg>
+
+                                        <!-- Visible only when checked -->
+                                        <svg :class="{'!text-[#E2DCDC]': checked}"
+                                            class="on block absolute top-[9px] right-2.5 z-20 text-white" width="2"
+                                            height="6" viewBox="0 0 2 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="2" height="6" rx="1" fill="currentcolor"></rect>
+                                        </svg>
+
+                                    </div>
+                                </div>
+                            </label>
+                            <div class="flex flex-col gap-2.5 w-full mt-[15px] mb-5">
+                                <!--custom Select Box-->
+                                <div x-data="{ open:false, unit:'Fixed' }" class="relative w-full ">
+                                    <!-- Selected Box -->
+                                    <button @click="open = !open"
+                                        class="flex items-center justify-between rounded-10px border border-[#E2DCDC] bg-[#F8F6F6] px-[15px] py-2.5 text-base leading-5 w-full">
+                                        <span x-text="unit" class="text-sm font-normal text-[#8C8484]">On Page
+                                            Load</span>
+                                        <svg class="transition-all duration-500" :class="{'rotate-180': open}"
+                                            xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7"
+                                            fill="none">
+                                            <path d="M10.75 0.75L5.75 5.75L0.75 0.75" stroke="#8C8484"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                    <!-- Dropdown -->
+                                    <div x-show="open" @click.outside="open = false" x-transition=""
+                                        class="absolute left-0 top-full mt-1 w-full border border-[#E2DCDC] bg-[#F8F6F6] rounded-10px  z-10 overflow-hidden"
+                                        style="display: none;">
+                                        <div class="px-2 py-2 cursor-pointer hover:bg-gray-100"
+                                            @click="unit='On Button click', open=false">On Button click</div>
+
+                                        <div class="px-2 py-2 cursor-pointer hover:bg-gray-100"
+                                            @click="unit='On Page Load', open=false">On Page Load</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <label x-data="{ checked: false}"
+                                class="flex items-center justify-between w-full cursor-pointer mb-5">
+                                <span
+                                    class="text-xs leading-[120%] font-medium text-[#8C8484] uppercase tracking-[1.2px]">
+                                    Show launch button
+                                </span>
+                                <div class="relative">
+                                    <input type="checkbox" value="read-para" class="sr-only peer" x-model="checked">
+                                    <div class="w-11 h-6 bg-[#E2DCDC] peer-focus:outline-none rounded-full peer 
+                                                peer-checked:after:translate-x-[20px] peer-checked:after:bg-white after:content-[''] after:absolute 
+                                                after:top-[2px] after:right-[22px] after:bg-white after:rounded-full after:h-[20px] after:w-[20px] after:transition-all
+                                                peer-checked:bg-Theme-Green hover:peer-checked:bg-Theme-Green">
+
+                                        <!-- Static gray dot -->
+                                        <svg :class="{'!text-white':checked}"
+                                            class="absolute top-2.5 left-2.5 z-20 text-[#E2DCDC]" width="4" height="4"
+                                            viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="2" cy="2" r="2" fill="currentcolor"></circle>
+                                        </svg>
+
+                                        <!-- Visible only when checked -->
+                                        <svg :class="{'!text-[#E2DCDC]': checked}"
+                                            class="on block absolute top-[9px] right-2.5 z-20 text-white" width="2"
+                                            height="6" viewBox="0 0 2 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="2" height="6" rx="1" fill="currentcolor"></rect>
+                                        </svg>
+
+                                    </div>
+                                </div>
+                            </label>
+                            <label x-data="{ checked: false}"
+                                class="flex items-center justify-between w-full cursor-pointer">
+                                <p
+                                    class="text-xs leading-[120%] font-medium text-[#8C8484] uppercase flex items-center tracking-[1.2px]">
+                                    Prevent re-open on close <span class="pl-[5px]"><svg width="14" height="14"
+                                            viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_2489_610)">
+                                                <circle cx="7" cy="7" r="6" stroke="#8C8484" stroke-width="1.2" />
+                                                <path d="M7 6.35938V9.62447" stroke="#8C8484" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M7 4.375L6.994 4.375" stroke="#8C8484" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_2489_610">
+                                                    <rect width="14" height="14" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </span>
+                                </p>
+                                <div class="relative">
+                                    <input type="checkbox" value="read-para" class="sr-only peer" x-model="checked">
+                                    <div class="w-11 h-6 bg-[#E2DCDC] peer-focus:outline-none rounded-full peer 
+                                                peer-checked:after:translate-x-[20px] peer-checked:after:bg-white after:content-[''] after:absolute 
+                                                after:top-[2px] after:right-[22px] after:bg-white after:rounded-full after:h-[20px] after:w-[20px] after:transition-all
+                                                peer-checked:bg-Theme-Green hover:peer-checked:bg-Theme-Green">
+
+                                        <!-- Static gray dot -->
+                                        <svg :class="{'!text-white':checked}"
+                                            class="absolute top-2.5 left-2.5 z-20 text-[#E2DCDC]" width="4" height="4"
+                                            viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="2" cy="2" r="2" fill="currentcolor"></circle>
+                                        </svg>
+
+                                        <!-- Visible only when checked -->
+                                        <svg :class="{'!text-[#E2DCDC]': checked}"
+                                            class="on block absolute top-[9px] right-2.5 z-20 text-white" width="2"
+                                            height="6" viewBox="0 0 2 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="2" height="6" rx="1" fill="currentcolor"></rect>
+                                        </svg>
+
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        <!-- Close on submit -->
+                        <div class="flex flex-col items-center justify-between pb-5 border-b border-[#E2DCDC]">
+                            <label x-data="{ checked: true }"
+                                class="flex items-center justify-between w-full cursor-pointer mb-[15px]">
+                                <p
+                                    class="text-base leading-[140%] font-medium text-Theme-Black flex items-center gap-[5px]">
+                                    Close on submit
+                                    <span><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_5892_2038)">
+                                                <circle cx="7.00244" cy="7" r="6" stroke="#8C8484" stroke-width="1.2" />
+                                                <path d="M7.00122 6.35938V9.72447" stroke="#8C8484" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M7.00122 4.375L6.99522 4.375" stroke="#8C8484"
+                                                    stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_5892_2038">
+                                                    <rect width="14" height="14" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </span>
+                                </p>
+                                <div class="relative">
+                                    <input type="checkbox" value="read-para" class="sr-only peer" x-model="checked">
+                                    <div class="w-11 h-6 bg-[#E2DCDC] peer-focus:outline-none rounded-full peer 
+                                                peer-checked:after:translate-x-[20px] peer-checked:after:bg-white after:content-[''] after:absolute 
+                                                after:top-[2px] after:right-[22px] after:bg-white after:rounded-full after:h-[20px] after:w-[20px] after:transition-all
+                                                peer-checked:bg-Theme-Green hover:peer-checked:bg-Theme-Green">
+
+                                        <!-- Static gray dot -->
+                                        <svg :class="{'!text-white':checked}"
+                                            class="absolute top-2.5 left-2.5 z-20 text-[#E2DCDC]" width="4" height="4"
+                                            viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="2" cy="2" r="2" fill="currentcolor"></circle>
+                                        </svg>
+
+                                        <!-- Visible only when checked -->
+                                        <svg :class="{'!text-[#E2DCDC]': checked}"
+                                            class="on block absolute top-[9px] right-2.5 z-20 text-white" width="2"
+                                            height="6" viewBox="0 0 2 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="2" height="6" rx="1" fill="currentcolor"></rect>
+                                        </svg>
+
+                                    </div>
+                                </div>
+                            </label>
+
+                            <div class="relative w-full">
+                                <label for="wait-for"
+                                    class="w-full text-xs font-medium leading-[14px] text-[#8C8484] uppercase tracking-[1.2px] mb-[5px]">wait
+                                    for</label>
+                                <div class="relative w-full" data-number-input>
+                                    <input type="number" value="10" class="custom-input w-full bg-[#F8F6F6] border border-[#E2DCDC] rounded-10px py-2.5 px-[15px] ] outline-0 transition-all duration-500
+                    focus:outline-0 hover:border-[#222] focus:border-Theme-Green hover:bg-white focus:bg-white"
+                                        placeholder="Enter number" />
+                                    <div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-2.5 ">
+                                        <div class="number-controls   flex flex-col gap-1">
+                                            <button class="increment-btn">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7"
+                                                    viewBox="0 0 14 7" fill="none">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M13.9408 6.56787C13.8204 6.82945 13.5368 7 13.2222 7L0.777818 7C0.463181 7 0.179657 6.82945 0.0592577 6.56788C-0.0611419 6.30631 0.00533176 6.00522 0.227775 5.80502L6.44998 0.20503C6.75372 -0.0683446 7.24621 -0.0683446 7.54996 0.20503L13.7722 5.80502C13.9946 6.00522 14.0612 6.30631 13.9408 6.56787Z"
+                                                        fill="white" />
+                                                </svg>
+                                            </button>
+                                            <button class="decrement-btn">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7"
+                                                    viewBox="0 0 14 7" fill="none">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M0.0592249 0.432125C0.179614 0.170548 0.463223 8.09924e-08 0.777796 1.35994e-07L13.2222 2.31184e-06C13.5368 2.36685e-06 13.8203 0.170551 13.9407 0.432128C14.0611 0.693695 13.9947 0.99478 13.7722 1.19498L7.55002 6.79497C7.24627 7.06834 6.75379 7.06834 6.45004 6.79497L0.227826 1.19498C0.00538204 0.994777 -0.0611541 0.693693 0.0592249 0.432125Z"
+                                                        fill="white" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <p class="text-xs leading-[14px] text-[#8C8484]">Seconds</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Read Url Parameter toggle -->
+                        <div class="flex items-center justify-between ">
+                            <label x-data="{ checked: false }"
+                                class="flex items-center justify-between w-full cursor-pointer">
+                                <span class="text-base leading-[140%] font-medium text-Theme-Black">
+                                    Read URL Parameters
+                                </span>
+                                <div class="relative">
+                                    <input type="checkbox" value="read-para" class="sr-only peer" x-model="checked">
+                                    <div class="w-11 h-6 bg-[#E2DCDC] peer-focus:outline-none rounded-full peer 
+                                                peer-checked:after:translate-x-[20px] peer-checked:after:bg-white after:content-[''] after:absolute 
+                                                after:top-[2px] after:right-[22px] after:bg-white after:rounded-full after:h-[20px] after:w-[20px] after:transition-all
+                                                peer-checked:bg-Theme-Green hover:peer-checked:bg-Theme-Green">
+
+                                        <!-- Static gray dot -->
+                                        <svg :class="{'!text-white':checked}"
+                                            class="absolute top-2.5 left-2.5 z-20 text-[#E2DCDC]" width="4" height="4"
+                                            viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="2" cy="2" r="2" fill="currentcolor"></circle>
+                                        </svg>
+
+                                        <!-- Visible only when checked -->
+                                        <svg :class="{'!text-[#E2DCDC]': checked}"
+                                            class="on block absolute top-[9px] right-2.5 z-20 text-white" width="2"
+                                            height="6" viewBox="0 0 2 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="2" height="6" rx="1" fill="currentcolor"></rect>
+                                        </svg>
+
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- EMBED TAB -->
+                    <div x-show="tab === 'embed'" x-cloak class="space-y-5 px-3 xl:px-5 pb-5 flex flex-col">
+                        <div class="flex flex-col gap-2.5">
+                            <h5 class="text-base font-medium text-Theme-Black">Kiwiform Embed Libraries</h5>
+                            <p class="text-[15px] font-normal text-Theme-Black leading-[30px]">For developers, embed
+                                your Kiwiform directly into your website or app using our API. Compatible with React,
+                                Next.js, and Vanilla JavaScript.</p>
+                            <button
+                                class="w-full rounded-10px cursor-pointer flex items-center justify-center gap-2.5 py-2.5 border  border-[#E2DCDC] bg-white text-sm font-medium leading-[140%] text-Theme-Black">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_5877_5170)">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M9.00514 0.900391C4.52235 0.900391 0.898438 4.61287 0.898438 9.20573C0.898438 12.877 3.22041 15.9847 6.44158 17.0846C6.8443 17.1673 6.99182 16.9059 6.99182 16.686C6.99182 16.4935 6.97854 15.8335 6.97854 15.1459C4.72345 15.641 4.25385 14.1558 4.25385 14.1558C3.89145 13.1933 3.35447 12.9459 3.35447 12.9459C2.61638 12.4371 3.40823 12.4371 3.40823 12.4371C4.22698 12.4921 4.65659 13.2896 4.65659 13.2896C5.38124 14.5546 6.54895 14.1972 7.01871 13.9771C7.08575 13.4408 7.30063 13.0696 7.5288 12.8634C5.7302 12.6708 3.83785 11.9558 3.83785 8.76562C3.83785 7.85809 4.15977 7.11559 4.66987 6.53814C4.58939 6.33192 4.30745 5.47923 4.75051 4.33799C4.75051 4.33799 5.43501 4.11794 6.97838 5.19051C7.63916 5.0087 8.32061 4.91621 9.00514 4.91545C9.68964 4.91545 10.3874 5.0118 11.0317 5.19051C12.5753 4.11794 13.2598 4.33799 13.2598 4.33799C13.7028 5.47923 13.4207 6.33192 13.3402 6.53814C13.8638 7.11559 14.1724 7.85809 14.1724 8.76562C14.1724 11.9558 12.2801 12.657 10.4681 12.8634C10.7634 13.1246 11.0183 13.6195 11.0183 14.4034C11.0183 15.5171 11.005 16.411 11.005 16.6859C11.005 16.9059 11.1527 17.1673 11.5553 17.0848C14.7765 15.9845 17.0984 12.877 17.0984 9.20573C17.1117 4.61287 13.4745 0.900391 9.00514 0.900391Z"
+                                            fill="#000A06" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5877_5170">
+                                            <rect width="18" height="18" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                View On GitHub
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- Start Embedding modal  -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[956px]"
+        id="Get-QR">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Embed your Kiwiform in Website
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div
+            class="w-full bg-white rounded-10px flex flex-col border border-[#E9E1E1] h-auto max-h-[666px] overflow-y-auto">
+
+            <!-- dropdown here  -->
+            <div class="custom-dropdown relative w-full max-w-[246px] mx-auto mt-[20px]" data-style="design1">
+                <div class="relative ">
+                    <button type="button"
+                        class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] border border-[#E2DCDC] text-Theme-Black p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
+                        <span class="selected-option">Universal Embed</span>
+                        <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <div
+                        class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-10">
+                        <ul class="dropdown-list flex items-center flex-col gap-px w-full bg-[#E2DCDC]">
+                            <li class="bg-white w-full relative">
+                                <div
+                                    class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center active">
+                                    <span>Universal Embed</span>
+                                </div>
+                                <div
+                                    class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                </div>
+                            </li>
+
+                            <li class="bg-white w-full relative">
+                                <div
+                                    class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                    <span>Webflow</span>
+
+                                </div>
+                                <div
+                                    class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                </div>
+                            </li>
+                            <li class="bg-white w-full relative">
+                                <div
+                                    class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                    <span>WordPress</span>
+
+                                </div>
+                                <div
+                                    class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                </div>
+                            </li>
+                            <li class="bg-white w-full relative">
+                                <div
+                                    class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                    <span>Shopify</span>
+
+                                </div>
+                                <div
+                                    class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                </div>
+                            </li>
+                            <li class="bg-white w-full relative">
+                                <div
+                                    class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                    <span>Squarespace</span>
+
+                                </div>
+                                <div
+                                    class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="embed-content Universal">
+                <div class="p-5 border-b border-[#E2DCDC]">
+                    <div class="flex items-center gap-2.5 mb-[15px]">
+                        <span
+                            class="w-[22px] aspect-square rounded-full bg-[#EDE9E9] flex items-center justify-center text-xs leading-[14px] font-semibold text-Theme-Black">1</span>
+                        <p class="text-base leading-[22px] font-medium text-Theme-Black">
+                            Copy your embed code
+                        </p>
+                    </div>
+                    <div class="w-full rounded-10px border border-[#E2DCDC] bg-[#F8F3F3] p-2.5 relative">
+                        <pre style="background-color: transparent !important;"><code class="language-html !bg-transparent">&lt;!-- Embed your Kiwiform --&gt;
+&lt;div id="kiwiform-embed"&gt;&lt;/div&gt;
+&lt;script src="https://cdn.kiwiform.com/embed.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  Kiwiform.init({
+    formId: "YOUR_FORM_ID",
+    container: "#kiwiform-embed",
+  });
+&lt;/script&gt;
+</code></pre>
+                        <div
+                            class="absolute bottom-0 left-0 w-full bg-gradient-to-b from-white/0 to-white/50 flex items-center justify-center pb-2.5">
+                            <button class="btn-kiwi-green-icon-text">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="7" y="7" width="11" height="11" rx="2" stroke="white" stroke-width="1.2"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M7 14H6C4.11438 14 3.17157 14 2.58579 13.4142C2 12.8284 2 11.8856 2 10V6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2H10C11.8856 2 12.8284 2 13.4142 2.58579C14 3.17157 14 4.11438 14 6V7"
+                                        stroke="white" stroke-width="1.2" stroke-linejoin="round" />
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-5 border-b border-[#E2DCDC]">
+                    <div class="flex items-center gap-2.5 mb-[15px]">
+                        <span
+                            class="w-[22px] aspect-square rounded-full bg-[#EDE9E9] flex items-center justify-center text-xs leading-[14px] font-semibold text-Theme-Black">2</span>
+                        <p class="text-base leading-[22px] font-medium text-Theme-Black">
+                            Open your website builder
+                        </p>
+                    </div>
+                    <p class="text-[15px] leading-[30px] text-Theme-Black">
+                        Log in to your website builder and open the page or section where you want to add your Kiwiform.
+                        Most builders include a tool or block for embedding custom elements.
+                    </p>
+                </div>
+
+                <div class="p-5 border-b border-[#E2DCDC]">
+                    <div class="flex items-center gap-2.5 mb-[15px]">
+                        <span
+                            class="w-[22px] aspect-square rounded-full bg-[#EDE9E9] flex items-center justify-center text-xs leading-[14px] font-semibold text-Theme-Black">3</span>
+                        <p class="text-base leading-[22px] font-medium text-Theme-Black">
+                            Switch to the code view and paste the code
+                        </p>
+                    </div>
+                    <p class="text-[15px] leading-[30px] text-Theme-Black">
+                        Switch to the code view, usually marked with the </> icon or labeled HTML editor; and paste your
+                        Kiwiform embed code where you’d like it to appear. When you’re done, save and publish your page.
+                    </p>
+                </div>
+
+                <div class="p-5 border-b border-[#E2DCDC]">
+                    <div class="flex items-center gap-2.5 mb-[15px]">
+                        <span
+                            class="w-[22px] aspect-square rounded-full bg-[#EDE9E9] flex items-center justify-center text-xs leading-[14px] font-semibold text-Theme-Black">4</span>
+                        <p class="text-base leading-[22px] font-medium text-Theme-Black">
+                            Platform-specific instructions
+                        </p>
+                    </div>
+                    <p class="text-[15px] leading-[30px] text-Theme-Black">
+                        If you need platform-specific instructions, check your site builder’s Help Center for a detailed
+                        guide on embedding code.
+                    </p>
+                </div>
+
+                <div class="p-5 ">
+                    <div class="flex items-center gap-2.5 mb-[15px]">
+                        <span
+                            class="w-[22px] aspect-square rounded-full bg-[#EDE9E9] flex items-center justify-center text-xs leading-[14px] font-semibold text-Theme-Black">5</span>
+                        <p class="text-base leading-[22px] font-medium text-Theme-Black">
+                            Your form stays updated
+                        </p>
+                    </div>
+                    <p class="text-[15px] leading-[30px] text-Theme-Black">
+                        Once the form is embedded, you’ll see it listed in the Share section’s left panel. <br>
+                        Any design changes you make in Kiwiform will update automatically, there’s no need to replace
+                        the code each time.
+                    </p>
+                </div>
+            </div>
+
+            <div class="embed-content Webflow hidden">
+                <!-- Webflow content -->
+            </div>
+
+            <div class="embed-content WordPress hidden">
+                <!-- WordPress content -->
+            </div>
+
+            <div class="embed-content Shopify hidden">
+                <!-- Shopify content -->
+            </div>
+
+            <div class="embed-content Squarespace hidden">
+                <!-- Squarespace content -->
+            </div>
+
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-center w-full py-2.5 px-[5px]">
+
+            <p class="text-[15px] leading-[30px] text-[#8C8484] text-center">
+                Need help getting it to work? Visit our <a href="#" class="font-medium text-Theme-Black underline"> Help
+                    Center</a> for detailed guide to help you fix it.
+            </p>
+        </div>
+    </div>
+    <div
+        class="overlay-modal w-full h-screen z-[500] bg-[#012819]/30 backdrop-blur-[7.5px] fixed top-0 left-0 opacity-0 invisible">
+    </div>
+    <!-- MAIN JS-->
+    <!-- MAIN JS-->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.6/Sortable.min.js"
+        integrity="sha512-csIng5zcB+XpulRUa+ev1zKo7zRNGpEaVfNB9On1no9KYTEY/rLGAEEpvgdw6nim1WdTuihZY1eqZ31K7/fZjw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="assets/js/custom-select.js"></script>
+    <!-- alpinejs  -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('dropdown', {
+                openId: null,
+            });
+        });
+    </script>
+
+    <!-- info text according to dropdown  -->
+    <script>
+        document.querySelectorAll('.custom-dropdown[data-style="design1"]').forEach(dropdown => {
+            dropdown.querySelector('.dropdown-button')
+                .addEventListener('optionSelected', (e) => {
+                    const selected = e.detail; // e.g. "Universal Embed"
+
+                    // Map dropdown labels → class names
+                    const map = {
+                        "Universal Embed": "Universal",
+                        "Webflow": "Webflow",
+                        "WordPress": "WordPress",
+                        "Shopify": "Shopify",
+                        "Squarespace": "Squarespace",
+                    };
+
+                    // Hide all embed sections
+                    document.querySelectorAll('.embed-content').forEach(section => {
+                        section.classList.add('hidden');
+                    });
+
+                    // Show selected section
+                    const activeClass = map[selected];
+                    if (activeClass) {
+                        document.querySelector(`.${activeClass}`)?.classList.remove('hidden');
+                    }
+                });
+        });
+    </script>
+
+    <!-- textarea character count -->
+    <script>
+        const textarea = document.getElementById('message')
+        const counter = document.getElementById('charCount')
+        const maxLength = 50
+
+        textarea.addEventListener('input', () => {
+            counter.textContent = `${textarea.value.length}/${maxLength}`
+        })
+    </script>
+
+    <!-- Drop down  -->
+    <script>
+        function dropdownComponent(id) {
+            return {
+                id,
+                height: 'auto',
+                opacity: 0,
+
+                visible: false,
+                get isOpen() {
+                    return Alpine.store('dropdown').openId === this.id;
+                },
+                toggle() {
+                    if (this.isOpen) {
+                        this.close();
+                    } else {
+                        Alpine.store('dropdown').openId = this.id;
+                        this.$nextTick(() => {
+                            this.visible = true;
+                            // const scrollHeight = this.$refs.menu.scrollHeight;
+                            // this.height = scrollHeight + 'px';
+                            this.opacity = 1;
+                        });
+                    }
+                },
+                close() {
+                    if (this.isOpen) {
+                        this.opacity = 0;
+                        // this.height = '0px';
+
+                        setTimeout(() => {
+                            this.visible = false;
+                            Alpine.store('dropdown').openId = null;
+                        }, 100); // match with transition duration
+                    }
+                }
+            };
+        }
+    </script>
+    <!-- Toggle view port  -->
+    <script>
+        const toggle = document.getElementById('toggleView');
+        const viewport = document.querySelector('.view-port');
+
+        toggle.addEventListener('change', function () {
+            if (this.checked) {
+                // Switch to mobile view
+                viewport.classList.remove('desktop-view');
+                viewport.classList.add('mobile-view');
+            } else {
+                // Switch to desktop view
+                viewport.classList.remove('mobile-view');
+                viewport.classList.add('desktop-view');
+            }
+        });
+    </script>
+
+    <script>
+        const toast = document.getElementById("notPublishedToast");
+        const closeBtn = toast.querySelector(".close-toast");
+        const viewport1 = document.getElementById("viewport");
+
+        // Apply smaller height when toast is visible
+        function adjustViewport() {
+            viewport1.classList.add("h-with-toast");
+        }
+
+        // Restore original height when toast is hidden
+        function resetViewport() {
+            viewport1.classList.remove("h-with-toast");
+        }
+
+        // On page load -> toast visible -> adjust height
+        adjustViewport();
+
+        // Click close -> hide toast + reset height
+        closeBtn.addEventListener("click", () => {
+            toast.classList.add("hidden");
+            resetViewport();
+        });
+    </script>
+
+
+</body>
+
+</html>
