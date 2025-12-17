@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- REQUIRED META TAGS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kiwiform/share
+    </title>
+    <!--- MAIN CSS ---->
+    <link rel="stylesheet" href="assets/css/input.css">
+    <link rel="stylesheet" href="assets/css/output.css">
+    <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
+   
+</head>
+
+<body class=" bg-Theme-bg font-Inter">
+    <div class="flex flex-col max-md:gap-8 md:flex-row">
+        <!--Header--->
+        <header class="p-2.5 rounded-b-10px fixed top-0 z-[900] w-full bg-Theme-Forground">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2.5 w-full max-w-[350px]">
+                    <a href="#" class="p-2 bg-white rounded-10px shadow-Logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z"
+                                fill="#183C1A" />
+                            <path
+                                d="M12 1.2002C12.7732 1.2002 13.5273 1.28167 14.2544 1.43629C15.2288 1.64349 15.84 2.56199 15.84 3.55816V6.96019C15.84 7.62294 16.3772 8.1602 17.04 8.1602H20.442C21.4382 8.1602 22.3567 8.77135 22.5639 9.74573C22.7185 10.4728 22.8 11.227 22.8 12.0002C22.8 17.9649 17.9646 22.8002 12 22.8002C6.03528 22.8002 1.19995 17.9649 1.19995 12.0002C1.19995 6.03552 6.03528 1.2002 12 1.2002Z"
+                                fill="#B8DD2F" />
+                            <rect x="8.92041" y="8.81445" width="6.15932" height="6.15932" rx="3.07966"
+                                fill="#F2F3B5" />
+                            <ellipse cx="12.1062" cy="17.5222" rx="0.637171" ry="0.955756" fill="#183C1A" />
+                            <ellipse cx="12.1062" cy="6.37177" rx="0.637171" ry="0.955756" fill="#183C1A" />
+                            <ellipse cx="14.8939" cy="16.7747" rx="0.637171" ry="0.955756"
+                                transform="rotate(-30 14.8939 16.7747)" fill="#183C1A" />
+                            <ellipse cx="9.3185" cy="7.1185" rx="0.637171" ry="0.955756"
+                                transform="rotate(-30 9.3185 7.1185)" fill="#183C1A" />
+                            <ellipse cx="16.9339" cy="14.7347" rx="0.637171" ry="0.955756"
+                                transform="rotate(-60 16.9339 14.7347)" fill="#183C1A" />
+                            <ellipse cx="7.27764" cy="9.15947" rx="0.637171" ry="0.955756"
+                                transform="rotate(-60 7.27764 9.15947)" fill="#183C1A" />
+                            <ellipse cx="17.6811" cy="11.9478" rx="0.637171" ry="0.955756"
+                                transform="rotate(-90 17.6811 11.9478)" fill="#183C1A" />
+                            <ellipse cx="6.53046" cy="11.9478" rx="0.637171" ry="0.955756"
+                                transform="rotate(-90 6.53046 11.9478)" fill="#183C1A" />
+                            <ellipse cx="7.27743" cy="14.735" rx="0.637171" ry="0.955756"
+                                transform="rotate(-120 7.27743 14.735)" fill="#183C1A" />
+                            <ellipse cx="9.31816" cy="16.7756" rx="0.637171" ry="0.955756"
+                                transform="rotate(-150 9.31816 16.7756)" fill="#183C1A" />
+                            <path
+                                d="M16.1831 7.7998L22.7999 8.1598L23.0023 10.9554C23.0353 11.4106 23.0237 11.8679 22.9677 12.3209L22.879 13.0388C22.8264 13.4652 22.7346 13.8859 22.6049 14.2955L22.3439 15.1198L19.4399 11.5198L16.1831 7.7998Z"
+                                fill="url(#paint0_linear_149_8)" />
+                            <defs>
+                                <linearGradient id="paint0_linear_149_8" x1="19.7999" y1="8.1598" x2="22.7999"
+                                    y2="15.1198" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#183C1A" stop-opacity="0.25" />
+                                    <stop offset="1" stop-color="#183C1A" stop-opacity="0" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </a>
+                    <div class="px-[15px] py-[5px] rounded-10px bg-[#EDE9E9] min-h-10 flex items-center">
+                        <ol class="inline-flex items-center gap-1 md:gap-3.5">
+                            <li class="inline-flex items-center">
+                                <a href="javascript:;"
+                                    class="inline-flex items-center text-sm leading-[140%] font-normal text-Theme-Black hover:text-Theme-Green">
+                                    My Forms </a>
+                            </li>
+                            <li>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10"
+                                        fill="none">
+                                        <path d="M1 1L5 5L1 9" stroke="#000A06" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <a href="javascript:;"
+                                        class="ml-1 text-sm leading-[140%] font-normal text-Theme-Black hover:text-Theme-Green md:ml-3.5">
+                                        New Form</a>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="min-[1080px]:flex hidden items-center gap-2.5 p-[5px] rounded-10px bg-[#EDE9E9]">
+                    <a href="#" class="py-[5px] px-[15px] header-links ">Form</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links whitespace-nowrap">Logic Flow</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Connect</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links active">Share</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Results</a>
+                </div>
+                <div class="flex items-center justify-end gap-2.5 w-full max-w-[350px]">
+                    <button class="btn-white-square">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 14L6 14C3.79086 14 2 12.2091 2 10V10C2 7.79086 3.79086 6 6 6L7.5 6"
+                                stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                            <path d="M12.5 6L14 6C16.2091 6 18 7.79086 18 10V10C18 12.2091 16.2091 14 14 14L12.5 14"
+                                stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                            <path d="M7 10L13 10" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button class="w-full max-w-[112px] p-[15px] py-2.5 rounded-[10px] bg-Theme-Black flex items-center justify-between text-sm font-medium leading-[140%] text-white
+                                   transition-all duration-500 hover:bg-gray-800 relative overflow-hidden group">
+                        Publish
+                        <svg class="relative z-10 transition-transform duration-500 group-hover:translate-x-1"
+                            xmlns="http://www.w3.org/2000/svg" width="5" height="10" viewBox="0 0 5 10" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M0.308661 9.9577C0.12182 9.8717 0 9.66913 0 9.44443L0 0.555583C0 0.330843 0.12182 0.128326 0.308661 0.042326C0.495495 -0.0436738 0.710556 0.00380744 0.853556 0.162696L4.85355 4.60713C5.04882 4.82409 5.04882 5.17587 4.85355 5.39283L0.853556 9.83727C0.710556 9.99616 0.495495 10.0437 0.308661 9.9577Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+                    <button
+                        class="bg-white rounded-10px border border-[#E2DCDC] py-[9px] px-[15px] text-sm leading-[140%] font-medium text-Theme-Green whitespace-nowrap transition-all duration-500 hover:border-[#ccc6c6]">
+                        Go Premium
+                    </button>
+                    <button class="btn-white-square">
+                        BD
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="w-full h-screen pt-[61px] ">
+            <div class="flex items-start gap-3 xl:gap-5 bg-Theme-Forground rounded-10px h-full p-3 xl:p-5">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-[5px] p-[5px] rounded-10px bg-[#EDE9E9]">
+                    <a href="02-result-flow-1.html" class=""></a>
+                </div>
+              </div>
+
+            </div>
+        </div>
+
+    </div>
+   
+    <!-- MAIN JS-->
+    <!-- MAIN JS-->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.6/Sortable.min.js"
+        integrity="sha512-csIng5zcB+XpulRUa+ev1zKo7zRNGpEaVfNB9On1no9KYTEY/rLGAEEpvgdw6nim1WdTuihZY1eqZ31K7/fZjw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <!-- alpinejs  -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('dropdown', {
+                openId: null,
+            });
+        });
+    </script>
+    <!-- Drop down  -->
+    <script>
+        function dropdownComponent(id) {
+            return {
+                id,
+                height: 'auto',
+                opacity: 0,
+
+                visible: false,
+                get isOpen() {
+                    return Alpine.store('dropdown').openId === this.id;
+                },
+                toggle() {
+                    if (this.isOpen) {
+                        this.close();
+                    } else {
+                        Alpine.store('dropdown').openId = this.id;
+                        this.$nextTick(() => {
+                            this.visible = true;
+                            // const scrollHeight = this.$refs.menu.scrollHeight;
+                            // this.height = scrollHeight + 'px';
+                            this.opacity = 1;
+                        });
+                    }
+                },
+                close() {
+                    if (this.isOpen) {
+                        this.opacity = 0;
+                        // this.height = '0px';
+
+                        setTimeout(() => {
+                            this.visible = false;
+                            Alpine.store('dropdown').openId = null;
+                        }, 100); // match with transition duration
+                    }
+                }
+            };
+        }
+    </script>
+   
+
+
+</body>
+
+</html>
