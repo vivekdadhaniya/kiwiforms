@@ -8,7 +8,7 @@
     <title>Kiwiform/share
     </title>
     <!--- MAIN CSS ---->
-    <link rel="stylesheet" href="assets/css/input.css">
+    <!-- <link rel="stylesheet" href="assets/css/input.css"> -->
     <link rel="stylesheet" href="assets/css/output.css">
     <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
     <style>
@@ -91,8 +91,8 @@
                     <a href="#" class="py-[5px] px-[15px] header-links ">Form</a>
                     <a href="#" class="py-[5px] px-[15px] header-links whitespace-nowrap">Logic Flow</a>
                     <a href="#" class="py-[5px] px-[15px] header-links">Connect</a>
-                    <a href="#" class="py-[5px] px-[15px] header-links active">Share</a>
-                    <a href="#" class="py-[5px] px-[15px] header-links">Results</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links ">Share</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links active">Results</a>
                 </div>
                 <div class="flex items-center justify-end gap-2.5 w-full max-w-[350px]">
                     <button class="btn-white-square">
@@ -132,11 +132,11 @@
                 <div class="flex items-center justify-between w-full mb-[15px]">
                     <div class="flex items-center gap-[5px] p-[5px] rounded-10px bg-[#EDE9E9]">
                         <a href="02-result-flow-1.html"
-                            class="result-link py-[5px] px-[15px] rounded-[5px] bg-[#EDE9E9] text-sm leading-5 font-medium text-Theme-Black transition-all duration-500 hover:bg-white active">
+                            class="result-link py-[5px] px-[15px] rounded-[5px] bg-[#EDE9E9] text-sm leading-5 font-medium text-Theme-Black transition-all duration-500 hover:bg-white ">
                             Overview
                         </a>
                         <a href="02-result-flow-2.html"
-                            class="result-link py-[5px] px-[15px] rounded-[5px] bg-[#EDE9E9] text-sm leading-5 font-medium text-Theme-Black transition-all duration-500 hover:bg-white">
+                            class="result-link py-[5px] px-[15px] rounded-[5px] bg-[#EDE9E9] text-sm leading-5 font-medium text-Theme-Black transition-all duration-500 hover:bg-white active">
                             Responses
                         </a>
                         <a href="02-result-flow-1.html"
@@ -296,14 +296,14 @@
                 </div>
 
                 <div class="w-full">
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between mb-[15px]">
                         <h4 class="font-Inter_tight text-2xl leading-[34px] text-Theme-Black mb-[18px]">Responses</h4>
                         <div class="flex items-center gap-2.5">
+                            <!-- filter dropdown  -->
                             <div x-data="{ open: false }" class="relative inline-block">
-
                                 <!-- Filter Button -->
                                 <button @click="open = !open"
-                                    class="flex items-center gap-2.5 bg-[#EDE9E9] p-2.5 rounded-10px text-sm leading-5 font-medium transition-all duration-500 focus:outline-0 "
+                                    class="flex items-center gap-2.5 bg-[#EDE9E9] p-2.5 rounded-10px text-sm leading-5 font-medium transition-all duration-500 focus:outline-0 hover:bg-white "
                                     :class="{'bg-white ': open}">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -323,7 +323,6 @@
                                             stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                 </button>
-
                                 <!-- Dropdown Panel -->
                                 <div x-show="open" @click.outside="open = false" x-transition
                                     class="absolute right-0 mt-3 w-[520px] bg-white border border-[#E9E1E1] rounded-[15px] z-50 py-2.5 px-[5px] shadow-soft">
@@ -362,7 +361,8 @@
                                                 <p class="text-[15px] leading-6 text-Theme-Black">Submissions</p>
                                             </div>
                                             <div class="relative w-full max-w-[115px]">
-                                                <div x-data="{  open: false, submissionOpen: false, submissionValue: 'All'}" class="relative inline-block w-full">
+                                                <div x-data="{  open: false, submissionOpen: false, submissionValue: 'All'}"
+                                                    class="relative inline-block w-full">
                                                     <!-- Button -->
                                                     <button @click.stop="submissionOpen = !submissionOpen"
                                                         class="w-full flex items-center justify-between gap-2  rounded-[5px] bg-[#EDE9E9] px-2.5 py-[5px] text-sm font-medium leading-5 text-Theme-Black transition-all duration-300 hover:bg-white"
@@ -401,94 +401,1387 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            </div>
-                                            <div class="p-5 w-full min-h-[358px]">
-
-                                            </div>
                                         </div>
+                                        <div class="w-full min-h-[358px] relative pb-14">
+                                            <div class="p-5 w-full">
+                                                <!-- line-1  -->
+                                                <div class="flex items-end gap-2.5 w-full group mb-5">
+                                                    <div class="block w-full">
+                                                        <p class="text-[15px] leading-120 text-[#8C8484] mb-[5px]">
+                                                            Display
+                                                            responses where</p>
+                                                        <div class="custom-dropdown relative w-full max-w-[700px]"
+                                                            data-style="design2" data-copy-html="true">
+                                                            <div class="relative w-full">
+
+                                                                <!-- Button -->
+                                                                <button id="dropdownButton" type="button"
+                                                                    class="dropdown-button w-full flex justify-between items-center border border-[#E2DCDC] bg-white rounded-[10px] px-[15px] py-[8px] transition-all duration-500 hover:bg-white focus:outline-none focus:border-Theme-Green">
+                                                                    <div id="selectedOption"
+                                                                        class="selected-option flex items-center gap-[15px] text-[15px] leading-120 font-medium text-[#8C8484]">
+                                                                        <p
+                                                                            class="flex items-center gap-2.5 text-[15px] leading-[22px] font-medium text-[#8C8484]">
+                                                                            Select a Form Field or Data...
+                                                                        </p>
+                                                                    </div>
+                                                                    <svg class="dropdown-arrow w-4 h-4 text-gray-500"
+                                                                        fill="none" stroke="currentColor"
+                                                                        stroke-width="2" viewBox="0 0 24 24">
+                                                                        <path stroke-linecap="round"
+                                                                            stroke-linejoin="round"
+                                                                            d="M19 9l-7 7-7-7" />
+                                                                    </svg>
+                                                                </button>
+
+                                                                <!-- Dropdown Menu -->
+                                                                <div id="dropdownMenu"
+                                                                    class="dropdown-menu hidden absolute p-[5px] z-10 mt-[5px] w-full bg-white border border-gray-200 rounded-[10px] shadow-soft">
 
 
-                                        <!-- Footer -->
-                                        <div class="flex justify-between items-center pt-2.5 pl-[15px] pr-[5px]">
-                                            <p class="text-[15px] font-normal leading-[30px] text-[#8C8484]">
-                                                Help us make filters better! Share your <a href="#"
-                                                    class="font-medium text-Theme-Black underline underline-offset-2">Feedback</a>
-                                            </p>
-                                            <button
-                                                class="py-2.5 px-[30px] rounded-10px bg-[#E2DCDC] text-sm leading-5 font-medium text-[#8C8484] transition-all duration-500 hover:bg-[#ccc6c6] hover:text-Theme-Black">
-                                                Apply
+                                                                    <!-- Options -->
+                                                                    <ul
+                                                                        class="dropdown-list text-sm flex flex-col gap-px bg-[#F8F6F6]">
+
+                                                                        <!-- Example items (keep your SVGs and text same as before) -->
+                                                                        <li
+                                                                            class="dropdown-item flex items-center gap-[15px] p-[10px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
+                                                                            <p
+                                                                                class="flex items-center gap-2.5 text-[15px] leading-[160%] font-normal text-Theme-Black">
+                                                                                <svg width="20" height="20"
+                                                                                    viewBox="0 0 20 20" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <path
+                                                                                        d="M4.03763 1.53846C4.46535 0.820513 5.53465 0.820512 5.96237 1.53846L8.84946 6.38461C9.27718 7.10256 8.74254 8 7.8871 8H2.1129C1.25747 8 0.722818 7.10256 1.15054 6.38462L4.03763 1.53846Z"
+                                                                                        fill="#CAEADC" stroke="#007D47"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <circle cx="5" cy="15" r="4"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M12 3L19 3"
+                                                                                        stroke="#007D47"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M12 13L19 13"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M12 6L15 6"
+                                                                                        stroke="#007D47"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M12 16L15 16"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                                Multiple Selection
+                                                                            </p>
+                                                                        </li>
+
+                                                                        <li
+                                                                            class="dropdown-item flex items-center gap-[15px] p-[10px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
+                                                                            <p
+                                                                                class="flex items-center gap-2.5 text-[15px] leading-[160%] font-normal text-Theme-Black">
+                                                                                <svg width="20" height="20"
+                                                                                    viewBox="0 0 20 20" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <rect x="1" y="1" width="18"
+                                                                                        height="18" rx="2"
+                                                                                        fill="#CAEADC" stroke="#007D47"
+                                                                                        stroke-width="1.5" />
+                                                                                    <path d="M6 6L14 6" stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M6 10L10 10"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                                Text Box
+                                                                            </p>
+                                                                        </li>
+
+                                                                        <li
+                                                                            class="dropdown-item flex items-center gap-[15px] p-[10px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
+                                                                            <p
+                                                                                class="flex items-center gap-2.5 text-[15px] leading-[160%] font-normal text-Theme-Black">
+                                                                                <svg width="20" height="20"
+                                                                                    viewBox="0 0 20 20" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <rect x="1" y="2.5" width="18"
+                                                                                        height="15" rx="2"
+                                                                                        fill="#CAEADC" stroke="#007D47"
+                                                                                        stroke-width="1.5" />
+                                                                                    <path
+                                                                                        d="M4.375 6.78516L8.875 10.2137C9.53955 10.72 10.4605 10.72 11.125 10.2137L15.625 6.78516"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                                Email Address
+                                                                            </p>
+                                                                        </li>
+
+                                                                        <li
+                                                                            class="dropdown-item flex items-center gap-[15px] p-[10px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
+                                                                            <p
+                                                                                class="flex items-center gap-2.5 text-[15px] leading-[160%] font-normal text-Theme-Black">
+                                                                                <svg width="20" height="20"
+                                                                                    viewBox="0 0 20 20" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <path
+                                                                                        d="M18.973 15.697C18.973 16.021 18.901 16.354 18.748 16.678C18.595 17.002 18.397 17.308 18.136 17.596C17.695 18.082 17.209 18.433 16.66 18.658C16.12 18.883 15.535 19 14.905 19C13.987 19 13.006 18.784 11.971 18.343C10.936 17.902 9.901 17.308 8.875 16.561C7.84 15.805 6.859 14.968 5.923 14.041C4.996 13.105 4.159 12.124 3.412 11.098C2.674 10.072 2.08 9.046 1.648 8.029C1.216 7.003 1 6.022 1 5.086C1 4.474 1.108 3.889 1.324 3.349C1.54 2.8 1.882 2.296 2.359 1.846C2.935 1.279 3.565 1 4.231 1C4.483 1 4.735 1.054 4.96 1.162C5.194 1.27 5.401 1.432 5.563 1.666L7.651 4.609C7.813 4.834 7.93 5.041 8.011 5.239C8.092 5.428 8.137 5.617 8.137 5.788C8.137 6.004 8.074 6.22 7.948 6.427C7.831 6.634 7.66 6.85 7.444 7.066L6.76 7.777C6.661 7.876 6.616 7.993 6.616 8.137C6.616 8.209 6.625 8.272 6.643 8.344C6.67 8.416 6.697 8.47 6.715 8.524C6.877 8.821 7.156 9.208 7.552 9.676C7.957 10.144 8.389 10.621 8.857 11.098C9.343 11.575 9.811 12.016 10.288 12.421C10.756 12.817 11.143 13.087 11.449 13.249C11.494 13.267 11.548 13.294 11.611 13.321C11.683 13.348 11.755 13.357 11.836 13.357C11.989 13.357 12.106 13.303 12.205 13.204L12.889 12.529C13.114 12.304 13.33 12.133 13.537 12.025C13.744 11.899 13.951 11.836 14.176 11.836C14.347 11.836 14.527 11.872 14.725 11.953C14.923 12.034 15.13 12.151 15.355 12.304L18.334 14.419C18.568 14.581 18.73 14.77 18.829 14.995C18.919 15.22 18.973 15.445 18.973 15.697Z"
+                                                                                        fill="#CAEADC" stroke="#007D47"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-miterlimit="10" />
+                                                                                    <path
+                                                                                        d="M15.8492 7.30039C15.8492 6.76039 15.4262 5.93239 14.7962 5.25739C14.2202 4.63639 13.4552 4.15039 12.6992 4.15039"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path
+                                                                                        d="M18.9992 7.3C18.9992 3.817 16.1822 1 12.6992 1"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                                Phone Number
+                                                                            </p>
+                                                                        </li>
+
+                                                                        <li
+                                                                            class="dropdown-item flex items-center gap-[15px] p-[10px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
+                                                                            <p
+                                                                                class="flex items-center gap-2.5 text-[15px] leading-[160%] font-normal text-Theme-Black">
+                                                                                <svg width="20" height="20"
+                                                                                    viewBox="0 0 20 20" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <circle cx="10" cy="10" r="9"
+                                                                                        fill="#CAEADC" stroke="#007D47"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M14 8L10 12L6 8"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                                Drop Down
+                                                                            </p>
+                                                                        </li>
+
+                                                                        <li
+                                                                            class="dropdown-item flex items-center gap-[15px] p-[10px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
+                                                                            <p
+                                                                                class="flex items-center gap-2.5 text-[15px] leading-[160%] font-normal text-Theme-Black">
+                                                                                <svg width="20" height="20"
+                                                                                    viewBox="0 0 20 20" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <rect x="1" y="1" width="18"
+                                                                                        height="18" rx="2"
+                                                                                        fill="#CAEADC" stroke="#007D47"
+                                                                                        stroke-width="1.5" />
+                                                                                    <circle cx="11" cy="6" r="2"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path
+                                                                                        d="M10 15L14.8777 10L19.0001 14"
+                                                                                        stroke="#007D47"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M1 18L8 11L11 14"
+                                                                                        stroke="#007D47"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                                Picture Selection
+                                                                            </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button
+                                                        class="w-[40px] opacity-0 aspect-square rounded-full flex items-center justify-center bg-white text-[#DC3027] transition-all duration-500 hover:text-white hover:bg-[#DC3027] group-hover:opacity-100">
+                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M2.75 3.625H13.25V11.5C13.25 13.1499 13.25 13.9749 12.7374 14.4874C12.2249 15 11.3999 15 9.75 15H6.25C4.60008 15 3.77513 15 3.26256 14.4874C2.75 13.9749 2.75 13.1499 2.75 11.5V3.625Z"
+                                                                stroke="currentColor" stroke-width="1.2"></path>
+                                                            <path d="M1 3.625H15" stroke="currentColor"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                            <path
+                                                                d="M4.49805 2.75C4.49805 1.92504 4.49805 1.51256 4.75433 1.25628C5.01061 1 5.42309 1 6.24805 1H9.74805C10.573 1 10.9855 1 11.2418 1.25628C11.498 1.51256 11.498 1.92504 11.498 2.75V3.625H4.49805V2.75Z"
+                                                                stroke="currentColor" stroke-width="1.2"></path>
+                                                            <path d="M6.24805 7.125V11.5" stroke="currentColor"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                            <path d="M9.75 7.125V11.5" stroke="currentColor"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                        </svg>
+
+                                                    </button>
+                                                </div>
+                                                <!-- line-2 -->
+                                                <div class="flex items-end gap-2.5 w-full group mb-5">
+                                                    <div class="block w-full">
+                                                        <p class="text-[15px] leading-120 text-[#8C8484] mb-[5px]">
+                                                            Includes
+                                                        </p>
+                                                        <div class="custom-dropdown relative w-full max-w-[700px]"
+                                                            data-style="design4">
+                                                            <!-- Button -->
+                                                            <button type="button"
+                                                                class="dropdown-button w-full flex justify-between items-center bg-white border border-[#E2DCDC] rounded-[10px] px-[14px] py-[10px] focus:outline-none transition-all">
+                                                                <div
+                                                                    class="selected-option flex flex-wrap gap-2 items-center text-[#8C8484]">
+                                                                    <span class="placeholder">Select one or more
+                                                                        options…</span>
+                                                                </div>
+                                                                <svg class="dropdown-arrow w-4 h-4 text-[#8C8484] transition-transform duration-200"
+                                                                    fill="none" stroke="currentColor" stroke-width="2"
+                                                                    viewBox="0 0 24 24">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        d="M19 9l-7 7-7-7" />
+                                                                </svg>
+                                                            </button>
+
+                                                            <!-- Menu -->
+                                                            <div
+                                                                class="dropdown-menu hidden absolute left-0 mt-2 w-full bg-white border border-[#E2DCDC] rounded-[12px] shadow-lg p-2 z-10">
+                                                                <ul class="flex flex-col gap-px bg-[#F8F6F6]">
+                                                                    <li
+                                                                        class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green">
+                                                                        Choice 1
+                                                                    </li>
+                                                                    <li
+                                                                        class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green">
+                                                                        Choice 2
+                                                                    </li>
+                                                                    <li
+                                                                        class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green">
+                                                                        Choice 3
+                                                                    </li>
+                                                                    <li
+                                                                        class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green">
+                                                                        Choice 4
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button
+                                                        class="w-[40px] opacity-0 aspect-square rounded-full flex items-center justify-center bg-white text-[#DC3027] transition-all duration-500 hover:text-white hover:bg-[#DC3027] group-hover:opacity-100">
+                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M2.75 3.625H13.25V11.5C13.25 13.1499 13.25 13.9749 12.7374 14.4874C12.2249 15 11.3999 15 9.75 15H6.25C4.60008 15 3.77513 15 3.26256 14.4874C2.75 13.9749 2.75 13.1499 2.75 11.5V3.625Z"
+                                                                stroke="currentColor" stroke-width="1.2"></path>
+                                                            <path d="M1 3.625H15" stroke="currentColor"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                            <path
+                                                                d="M4.49805 2.75C4.49805 1.92504 4.49805 1.51256 4.75433 1.25628C5.01061 1 5.42309 1 6.24805 1H9.74805C10.573 1 10.9855 1 11.2418 1.25628C11.498 1.51256 11.498 1.92504 11.498 2.75V3.625H4.49805V2.75Z"
+                                                                stroke="currentColor" stroke-width="1.2"></path>
+                                                            <path d="M6.24805 7.125V11.5" stroke="currentColor"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                            <path d="M9.75 7.125V11.5" stroke="currentColor"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                        </svg>
+
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- sparator  -->
+                                            <div class="flex items-center gap-2.5">
+                                                <div class="w-full max-w-[25px] h-px bg-[#E9E1E1]"></div>
+                                                <p
+                                                    class="w-max text-[15px] leading-120 tracking-[1.5px] uppercase text-[#8C8484]">
+                                                    and</p>
+                                                <div class="w-full h-px bg-[#E9E1E1]"></div>
+                                            </div>
+
+                                            <!-- and condition  -->
+                                            <div class="p-5 w-full">
+                                                <!-- line-1  -->
+                                                <div class="flex items-end gap-2.5 w-full group mb-5">
+                                                    <div class="block w-full">
+                                                        <p class="text-[15px] leading-120 text-[#8C8484] mb-[5px]">
+                                                            Display
+                                                            responses where</p>
+                                                        <div class="custom-dropdown relative w-full max-w-[700px]"
+                                                            data-style="design2" data-copy-html="true">
+                                                            <div class="relative w-full">
+
+                                                                <!-- Button -->
+                                                                <button id="dropdownButton" type="button"
+                                                                    class="dropdown-button w-full flex justify-between items-center border border-[#E2DCDC] bg-white rounded-[10px] px-[15px] py-[8px] transition-all duration-500 hover:bg-white focus:outline-none focus:border-Theme-Green">
+                                                                    <div id="selectedOption"
+                                                                        class="selected-option flex items-center gap-[15px] text-[15px] leading-120 font-medium text-[#8C8484]">
+                                                                        <p
+                                                                            class="flex items-center gap-2.5 text-[15px] leading-[22px] font-medium text-[#8C8484]">
+                                                                            Select a Form Field or Data...
+                                                                        </p>
+                                                                    </div>
+                                                                    <svg class="dropdown-arrow w-4 h-4 text-gray-500"
+                                                                        fill="none" stroke="currentColor"
+                                                                        stroke-width="2" viewBox="0 0 24 24">
+                                                                        <path stroke-linecap="round"
+                                                                            stroke-linejoin="round"
+                                                                            d="M19 9l-7 7-7-7" />
+                                                                    </svg>
+                                                                </button>
+
+                                                                <!-- Dropdown Menu -->
+                                                                <div id="dropdownMenu"
+                                                                    class="dropdown-menu hidden absolute p-[5px] z-10 mt-[5px] w-full bg-white border border-gray-200 rounded-[10px] shadow-soft">
+
+
+                                                                    <!-- Options -->
+                                                                    <ul
+                                                                        class="dropdown-list text-sm flex flex-col gap-px bg-[#F8F6F6]">
+
+                                                                        <!-- Example items (keep your SVGs and text same as before) -->
+                                                                        <li
+                                                                            class="dropdown-item flex items-center gap-[15px] p-[10px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
+                                                                            <p
+                                                                                class="flex items-center gap-2.5 text-[15px] leading-[160%] font-normal text-Theme-Black">
+                                                                                <svg width="20" height="20"
+                                                                                    viewBox="0 0 20 20" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <path
+                                                                                        d="M4.03763 1.53846C4.46535 0.820513 5.53465 0.820512 5.96237 1.53846L8.84946 6.38461C9.27718 7.10256 8.74254 8 7.8871 8H2.1129C1.25747 8 0.722818 7.10256 1.15054 6.38462L4.03763 1.53846Z"
+                                                                                        fill="#CAEADC" stroke="#007D47"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <circle cx="5" cy="15" r="4"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M12 3L19 3"
+                                                                                        stroke="#007D47"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M12 13L19 13"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M12 6L15 6"
+                                                                                        stroke="#007D47"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M12 16L15 16"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                                Multiple Selection
+                                                                            </p>
+                                                                        </li>
+
+                                                                        <li
+                                                                            class="dropdown-item flex items-center gap-[15px] p-[10px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
+                                                                            <p
+                                                                                class="flex items-center gap-2.5 text-[15px] leading-[160%] font-normal text-Theme-Black">
+                                                                                <svg width="20" height="20"
+                                                                                    viewBox="0 0 20 20" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <rect x="1" y="1" width="18"
+                                                                                        height="18" rx="2"
+                                                                                        fill="#CAEADC" stroke="#007D47"
+                                                                                        stroke-width="1.5" />
+                                                                                    <path d="M6 6L14 6" stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M6 10L10 10"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                                Text Box
+                                                                            </p>
+                                                                        </li>
+
+                                                                        <li
+                                                                            class="dropdown-item flex items-center gap-[15px] p-[10px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
+                                                                            <p
+                                                                                class="flex items-center gap-2.5 text-[15px] leading-[160%] font-normal text-Theme-Black">
+                                                                                <svg width="20" height="20"
+                                                                                    viewBox="0 0 20 20" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <rect x="1" y="2.5" width="18"
+                                                                                        height="15" rx="2"
+                                                                                        fill="#CAEADC" stroke="#007D47"
+                                                                                        stroke-width="1.5" />
+                                                                                    <path
+                                                                                        d="M4.375 6.78516L8.875 10.2137C9.53955 10.72 10.4605 10.72 11.125 10.2137L15.625 6.78516"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                                Email Address
+                                                                            </p>
+                                                                        </li>
+
+                                                                        <li
+                                                                            class="dropdown-item flex items-center gap-[15px] p-[10px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
+                                                                            <p
+                                                                                class="flex items-center gap-2.5 text-[15px] leading-[160%] font-normal text-Theme-Black">
+                                                                                <svg width="20" height="20"
+                                                                                    viewBox="0 0 20 20" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <path
+                                                                                        d="M18.973 15.697C18.973 16.021 18.901 16.354 18.748 16.678C18.595 17.002 18.397 17.308 18.136 17.596C17.695 18.082 17.209 18.433 16.66 18.658C16.12 18.883 15.535 19 14.905 19C13.987 19 13.006 18.784 11.971 18.343C10.936 17.902 9.901 17.308 8.875 16.561C7.84 15.805 6.859 14.968 5.923 14.041C4.996 13.105 4.159 12.124 3.412 11.098C2.674 10.072 2.08 9.046 1.648 8.029C1.216 7.003 1 6.022 1 5.086C1 4.474 1.108 3.889 1.324 3.349C1.54 2.8 1.882 2.296 2.359 1.846C2.935 1.279 3.565 1 4.231 1C4.483 1 4.735 1.054 4.96 1.162C5.194 1.27 5.401 1.432 5.563 1.666L7.651 4.609C7.813 4.834 7.93 5.041 8.011 5.239C8.092 5.428 8.137 5.617 8.137 5.788C8.137 6.004 8.074 6.22 7.948 6.427C7.831 6.634 7.66 6.85 7.444 7.066L6.76 7.777C6.661 7.876 6.616 7.993 6.616 8.137C6.616 8.209 6.625 8.272 6.643 8.344C6.67 8.416 6.697 8.47 6.715 8.524C6.877 8.821 7.156 9.208 7.552 9.676C7.957 10.144 8.389 10.621 8.857 11.098C9.343 11.575 9.811 12.016 10.288 12.421C10.756 12.817 11.143 13.087 11.449 13.249C11.494 13.267 11.548 13.294 11.611 13.321C11.683 13.348 11.755 13.357 11.836 13.357C11.989 13.357 12.106 13.303 12.205 13.204L12.889 12.529C13.114 12.304 13.33 12.133 13.537 12.025C13.744 11.899 13.951 11.836 14.176 11.836C14.347 11.836 14.527 11.872 14.725 11.953C14.923 12.034 15.13 12.151 15.355 12.304L18.334 14.419C18.568 14.581 18.73 14.77 18.829 14.995C18.919 15.22 18.973 15.445 18.973 15.697Z"
+                                                                                        fill="#CAEADC" stroke="#007D47"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-miterlimit="10" />
+                                                                                    <path
+                                                                                        d="M15.8492 7.30039C15.8492 6.76039 15.4262 5.93239 14.7962 5.25739C14.2202 4.63639 13.4552 4.15039 12.6992 4.15039"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path
+                                                                                        d="M18.9992 7.3C18.9992 3.817 16.1822 1 12.6992 1"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                                Phone Number
+                                                                            </p>
+                                                                        </li>
+
+                                                                        <li
+                                                                            class="dropdown-item flex items-center gap-[15px] p-[10px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
+                                                                            <p
+                                                                                class="flex items-center gap-2.5 text-[15px] leading-[160%] font-normal text-Theme-Black">
+                                                                                <svg width="20" height="20"
+                                                                                    viewBox="0 0 20 20" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <circle cx="10" cy="10" r="9"
+                                                                                        fill="#CAEADC" stroke="#007D47"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M14 8L10 12L6 8"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                                Drop Down
+                                                                            </p>
+                                                                        </li>
+
+                                                                        <li
+                                                                            class="dropdown-item flex items-center gap-[15px] p-[10px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
+                                                                            <p
+                                                                                class="flex items-center gap-2.5 text-[15px] leading-[160%] font-normal text-Theme-Black">
+                                                                                <svg width="20" height="20"
+                                                                                    viewBox="0 0 20 20" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <rect x="1" y="1" width="18"
+                                                                                        height="18" rx="2"
+                                                                                        fill="#CAEADC" stroke="#007D47"
+                                                                                        stroke-width="1.5" />
+                                                                                    <circle cx="11" cy="6" r="2"
+                                                                                        stroke="#000A06"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path
+                                                                                        d="M10 15L14.8777 10L19.0001 14"
+                                                                                        stroke="#007D47"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M1 18L8 11L11 14"
+                                                                                        stroke="#007D47"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                                Picture Selection
+                                                                            </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button
+                                                        class="w-[40px] opacity-0 aspect-square rounded-full flex items-center justify-center bg-white text-[#DC3027] transition-all duration-500 hover:text-white hover:bg-[#DC3027] group-hover:opacity-100">
+                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M2.75 3.625H13.25V11.5C13.25 13.1499 13.25 13.9749 12.7374 14.4874C12.2249 15 11.3999 15 9.75 15H6.25C4.60008 15 3.77513 15 3.26256 14.4874C2.75 13.9749 2.75 13.1499 2.75 11.5V3.625Z"
+                                                                stroke="currentColor" stroke-width="1.2"></path>
+                                                            <path d="M1 3.625H15" stroke="currentColor"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                            <path
+                                                                d="M4.49805 2.75C4.49805 1.92504 4.49805 1.51256 4.75433 1.25628C5.01061 1 5.42309 1 6.24805 1H9.74805C10.573 1 10.9855 1 11.2418 1.25628C11.498 1.51256 11.498 1.92504 11.498 2.75V3.625H4.49805V2.75Z"
+                                                                stroke="currentColor" stroke-width="1.2"></path>
+                                                            <path d="M6.24805 7.125V11.5" stroke="currentColor"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                            <path d="M9.75 7.125V11.5" stroke="currentColor"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                        </svg>
+
+                                                    </button>
+                                                </div>
+                                                <!-- line-2 -->
+                                                <div class="flex items-end gap-2.5 w-full group mb-5">
+                                                    <div class="block w-full">
+                                                        <p class="text-[15px] leading-120 text-[#8C8484] mb-[5px]">
+                                                            Includes
+                                                        </p>
+                                                        <div class="custom-dropdown relative w-full max-w-[700px]"
+                                                            data-style="design4">
+                                                            <!-- Button -->
+                                                            <button type="button"
+                                                                class="dropdown-button w-full flex justify-between items-center bg-white border border-[#E2DCDC] rounded-[10px] px-[14px] py-[10px] focus:outline-none transition-all">
+                                                                <div
+                                                                    class="selected-option flex flex-wrap gap-2 items-center text-[#8C8484]">
+                                                                    <span class="placeholder">Select one or more
+                                                                        options…</span>
+                                                                </div>
+                                                                <svg class="dropdown-arrow w-4 h-4 text-[#8C8484] transition-transform duration-200"
+                                                                    fill="none" stroke="currentColor" stroke-width="2"
+                                                                    viewBox="0 0 24 24">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        d="M19 9l-7 7-7-7" />
+                                                                </svg>
+                                                            </button>
+
+                                                            <!-- Menu -->
+                                                            <div
+                                                                class="dropdown-menu hidden absolute left-0 mt-2 w-full bg-white border border-[#E2DCDC] rounded-[12px] shadow-lg p-2 z-10">
+                                                                <ul class="flex flex-col gap-px bg-[#F8F6F6]">
+                                                                    <li
+                                                                        class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green">
+                                                                        Choice 1
+                                                                    </li>
+                                                                    <li
+                                                                        class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green">
+                                                                        Choice 2
+                                                                    </li>
+                                                                    <li
+                                                                        class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green">
+                                                                        Choice 3
+                                                                    </li>
+                                                                    <li
+                                                                        class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green">
+                                                                        Choice 4
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button
+                                                        class="w-[40px] opacity-0 aspect-square rounded-full flex items-center justify-center bg-white text-[#DC3027] transition-all duration-500 hover:text-white hover:bg-[#DC3027] group-hover:opacity-100">
+                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M2.75 3.625H13.25V11.5C13.25 13.1499 13.25 13.9749 12.7374 14.4874C12.2249 15 11.3999 15 9.75 15H6.25C4.60008 15 3.77513 15 3.26256 14.4874C2.75 13.9749 2.75 13.1499 2.75 11.5V3.625Z"
+                                                                stroke="currentColor" stroke-width="1.2"></path>
+                                                            <path d="M1 3.625H15" stroke="currentColor"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                            <path
+                                                                d="M4.49805 2.75C4.49805 1.92504 4.49805 1.51256 4.75433 1.25628C5.01061 1 5.42309 1 6.24805 1H9.74805C10.573 1 10.9855 1 11.2418 1.25628C11.498 1.51256 11.498 1.92504 11.498 2.75V3.625H4.49805V2.75Z"
+                                                                stroke="currentColor" stroke-width="1.2"></path>
+                                                            <path d="M6.24805 7.125V11.5" stroke="currentColor"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                            <path d="M9.75 7.125V11.5" stroke="currentColor"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                        </svg>
+
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- Add Filter button  -->
+                                            <button class="btn-white-icon-text absolute bottom-5 left-5 w-max px-5">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                                    viewBox="0 0 12 12" fill="none">
+                                                    <path
+                                                        d="M0.601562 5.60156H5.60156M5.60156 5.60156H10.6016M5.60156 5.60156V0.601562M5.60156 5.60156V10.6016"
+                                                        stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                Add Filter
                                             </button>
                                         </div>
                                     </div>
-                                </div>
 
+
+                                    <!-- Footer -->
+                                    <div class="flex justify-between items-center pt-2.5 pl-[15px] pr-[5px]">
+                                        <p class="text-[15px] font-normal leading-[30px] text-[#8C8484]">
+                                            Help us make filters better! Share your <a href="#"
+                                                class="font-medium text-Theme-Black underline underline-offset-2">Feedback</a>
+                                        </p>
+                                        <button
+                                            class="py-2.5 px-[30px] rounded-10px bg-[#E2DCDC] text-sm leading-5 font-medium text-[#8C8484] transition-all duration-500 hover:bg-[#ccc6c6] hover:text-Theme-Black">
+                                            Apply
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div x-data="{ open: false }" class="relative inline-block">
+                                <!-- Filter Button -->
+                                <button @click="open = !open"
+                                    class="flex items-center gap-2.5 bg-[#EDE9E9] p-2.5 rounded-10px text-sm leading-5 font-medium transition-all duration-500 focus:outline-0 hover:bg-white"
+                                    :class="{'bg-white ': open}">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M18 17H17.5C16.5572 17 16.0858 17 15.7929 16.7071C15.5 16.4142 15.5 15.9428 15.5 15V5C15.5 4.05719 15.5 3.58579 15.7929 3.29289C16.0858 3 16.5572 3 17.5 3H18"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <rect x="7" y="2" width="6" height="16" rx="2" stroke="#000A06"
+                                            stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M2 17H2.5C3.44281 17 3.91421 17 4.20711 16.7071C4.5 16.4142 4.5 15.9428 4.5 15V5C4.5 4.05719 4.5 3.58579 4.20711 3.29289C3.91421 3 3.44281 3 2.5 3H2"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+
+                                </button>
+                                <!-- Dropdown Panel -->
+                                <div x-show="open" @click.outside="open = false" x-transition
+                                    class="absolute right-0 mt-3 w-[520px] bg-white border border-[#E9E1E1] rounded-[15px] z-50 py-2.5 px-[5px] shadow-soft">
+                                    <!-- Header -->
+                                    <div class="flex items-center justify-between pl-[15px] pr-[5px] pb-2.5">
+                                        <p class="text-2xl leading-[34px] font-Inter_tight text-Theme-Black">
+                                            Column Preferences
+                                        </p>
+                                        <button @click="open = false"
+                                            class="w-10 h-10 flex items-center justify-center rounded-10px transition-all duration-500 hover:bg-[#E2DCDC]">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    <!-- Content -->
+                                    <div class="bg-[#F8F6F6] border border-[#E9E1E1] rounded-10px ">
+                                        <div class="flex items-center justify-between p-5 border-b border-[#E9E1E1]">
+                                            <div class="flex items-center gap-2.5">
+                                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect x="0.5" y="0.5" width="30" height="30" rx="5" fill="#F8F6F6"
+                                                        stroke="#E2DCDC" />
+                                                    <path
+                                                        d="M11.3569 10.3847L19.0032 7.8359C22.4346 6.69211 24.2989 8.56541 23.1641 11.9968L20.6153 19.6431C18.9041 24.7856 16.0942 24.7856 14.383 19.6431L13.6265 17.3735L11.3569 16.617C6.21436 14.9058 6.21436 12.1049 11.3569 10.3847Z"
+                                                        fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M13.7969 16.9852L17.0211 13.752" stroke="#007D47"
+                                                        stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                                <p class="text-[15px] leading-6 text-Theme-Black">Submissions</p>
+                                            </div>
+                                            <div
+                                                class="w-[30px] h-[30px] flex items-center justify-center rounded-10px text-[#8C8484] transition-all duration-500 cursor-pointer hover:text-Theme-Black">
+                                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M15 8.5C11.2105 8.5 8.36842 11.2857 6 15C8.36842 18.7143 11.2105 21.5 15 21.5C18.7895 21.5 21.6316 18.7143 24 15C21.6316 11.2857 18.7895 8.5 15 8.5Z"
+                                                        stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <ellipse cx="14.9984" cy="15.0006" rx="2.84211" ry="2.78571"
+                                                        stroke="currentColor" stroke-width="1.2" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="p-2.5 bg-[#F8F6F6] rounded-10px">
+                                            <div class="flex flex-col gap-px bg-[#E9E1E1]">
+                                                <div
+                                                    class="dropdown-item flex items-center relative overflow-visible justify-between group p-2.5 bg-[#F8F6F6] transition-all duration-300 hover:bg-white cursor-pointer">
+                                                    <div class="flex  relative z-[5] items-center gap-2.5">
+                                                        <span
+                                                            class="w-[30px] aspect-square rounded-[5px] flex items-center justify-center bg-[#F8F6F6] border border-[#E2DCDC]">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M4.03763 1.53846C4.46535 0.820513 5.53465 0.820512 5.96237 1.53846L8.84946 6.38461C9.27718 7.10256 8.74254 8 7.8871 8H2.1129C1.25747 8 0.722818 7.10256 1.15054 6.38462L4.03763 1.53846Z"
+                                                                    fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linejoin="round" />
+                                                                <circle cx="5" cy="15" r="4" stroke="#000A06"
+                                                                    stroke-width="1.5" stroke-linejoin="round" />
+                                                                <path d="M12 3L19 3" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M12 13L19 13" stroke="#000A06"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                                <path d="M12 6L15 6" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M12 16L15 16" stroke="#000A06"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </span>
+                                                        <p
+                                                            class="text-[15px] leading-[160%] text-Theme-Black transition-all duration-300 group-hover:text-Theme-Green">
+                                                            Multiple Selection</p>
+                                                    </div>
+                                                    <button
+                                                        class="w-[30px] relative z-[5]  aspect-square flex items-center justify-center text-[#8C8484] transition-all duration-500 group-hover:text-Theme-Black hover:text-Theme-Black">
+                                                        <svg width="20" height="15" viewBox="0 0 20 15" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M9.60156 0.599609C5.81209 0.599609 2.96998 3.38532 0.601562 7.09961C2.96998 10.8139 5.81209 13.5996 9.60156 13.5996C13.391 13.5996 16.2331 10.8139 18.6016 7.09961C16.2331 3.38532 13.391 0.599609 9.60156 0.599609Z"
+                                                                stroke="currentColor" stroke-width="1.2"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                            <ellipse cx="9.59992" cy="7.10017" rx="2.84211" ry="2.78571"
+                                                                stroke="currentColor" stroke-width="1.2" />
+                                                        </svg>
+                                                    </button>
+                                                    <div
+                                                        class="abs-bg absolute -top-px left-0 w-full h-[calc(100%+2px)] bg-white z-0  pointer-events-none">
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="dropdown-item flex items-center relative justify-between group p-2.5 bg-[#F8F6F6] transition-all duration-300 hover:bg-white cursor-pointer">
+                                                    <div class="flex relative z-[5] items-center gap-2.5  ">
+                                                        <span
+                                                            class="w-[30px] aspect-square rounded-[5px] flex items-center justify-center bg-[#F8F6F6] border border-[#E2DCDC]">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <rect x="1" y="1" width="18" height="18" rx="2"
+                                                                    fill="#CAEADC" stroke="#007D47"
+                                                                    stroke-width="1.5" />
+                                                                <path d="M6 6L14 6" stroke="#000A06" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M6 10L10 10" stroke="#000A06"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </span>
+                                                        <p
+                                                            class="text-[15px] leading-[160%] text-Theme-Black transition-all duration-300 group-hover:text-Theme-Green">
+                                                            Text Box</p>
+                                                    </div>
+                                                    <button
+                                                        class="w-[30px] relative z-[5] aspect-square flex items-center justify-center text-[#8C8484] transition-all duration-500 group-hover:text-Theme-Black hover:text-Theme-Black">
+                                                        <svg width="20" height="15" viewBox="0 0 20 15" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M9.60156 0.599609C5.81209 0.599609 2.96998 3.38532 0.601562 7.09961C2.96998 10.8139 5.81209 13.5996 9.60156 13.5996C13.391 13.5996 16.2331 10.8139 18.6016 7.09961C16.2331 3.38532 13.391 0.599609 9.60156 0.599609Z"
+                                                                stroke="currentColor" stroke-width="1.2"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                            <ellipse cx="9.59992" cy="7.10017" rx="2.84211" ry="2.78571"
+                                                                stroke="currentColor" stroke-width="1.2" />
+                                                        </svg>
+                                                    </button>
+                                                    <div
+                                                        class="abs-bg absolute -top-px left-0 w-full h-[calc(100%+2px)] bg-white z-0  pointer-events-none">
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="dropdown-item flex items-center relative justify-between group p-2.5 bg-[#F8F6F6] transition-all duration-300 hover:bg-white cursor-pointer">
+                                                    <div class="flex relative z-[5] items-center gap-2.5">
+                                                        <span
+                                                            class="w-[30px] aspect-square rounded-[5px] flex items-center justify-center bg-[#F8F6F6] border border-[#E2DCDC]">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <rect x="1" y="2.5" width="18" height="15" rx="2"
+                                                                    fill="#CAEADC" stroke="#007D47"
+                                                                    stroke-width="1.5" />
+                                                                <path
+                                                                    d="M4.375 6.78516L8.875 10.2137C9.53955 10.72 10.4605 10.72 11.125 10.2137L15.625 6.78516"
+                                                                    stroke="#000A06" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                        </span>
+                                                        <p
+                                                            class="text-[15px] leading-[160%] text-Theme-Black transition-all duration-300 group-hover:text-Theme-Green">
+                                                            Email Address</p>
+                                                    </div>
+                                                    <button
+                                                        class="w-[30px] relative z-[5] aspect-square flex items-center justify-center text-[#8C8484] transition-all duration-500 group-hover:text-Theme-Black hover:text-Theme-Black">
+                                                        <svg width="20" height="15" viewBox="0 0 20 15" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M9.60156 0.599609C5.81209 0.599609 2.96998 3.38532 0.601562 7.09961C2.96998 10.8139 5.81209 13.5996 9.60156 13.5996C13.391 13.5996 16.2331 10.8139 18.6016 7.09961C16.2331 3.38532 13.391 0.599609 9.60156 0.599609Z"
+                                                                stroke="currentColor" stroke-width="1.2"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                            <ellipse cx="9.59992" cy="7.10017" rx="2.84211" ry="2.78571"
+                                                                stroke="currentColor" stroke-width="1.2" />
+                                                        </svg>
+                                                    </button>
+                                                    <div
+                                                        class="abs-bg absolute -top-px left-0 w-full h-[calc(100%+2px)] bg-white z-0  pointer-events-none">
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="dropdown-item flex items-center relative justify-between group p-2.5 bg-[#F8F6F6] transition-all duration-300 hover:bg-white cursor-pointer">
+                                                    <div class="flex relative z-[5] items-center gap-2.5">
+                                                        <span
+                                                            class="w-[30px] aspect-square rounded-[5px] flex items-center justify-center bg-[#F8F6F6] border border-[#E2DCDC]">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M18.973 15.697C18.973 16.021 18.901 16.354 18.748 16.678C18.595 17.002 18.397 17.308 18.136 17.596C17.695 18.082 17.209 18.433 16.66 18.658C16.12 18.883 15.535 19 14.905 19C13.987 19 13.006 18.784 11.971 18.343C10.936 17.902 9.901 17.308 8.875 16.561C7.84 15.805 6.859 14.968 5.923 14.041C4.996 13.105 4.159 12.124 3.412 11.098C2.674 10.072 2.08 9.046 1.648 8.029C1.216 7.003 1 6.022 1 5.086C1 4.474 1.108 3.889 1.324 3.349C1.54 2.8 1.882 2.296 2.359 1.846C2.935 1.279 3.565 1 4.231 1C4.483 1 4.735 1.054 4.96 1.162C5.194 1.27 5.401 1.432 5.563 1.666L7.651 4.609C7.813 4.834 7.93 5.041 8.011 5.239C8.092 5.428 8.137 5.617 8.137 5.788C8.137 6.004 8.074 6.22 7.948 6.427C7.831 6.634 7.66 6.85 7.444 7.066L6.76 7.777C6.661 7.876 6.616 7.993 6.616 8.137C6.616 8.209 6.625 8.272 6.643 8.344C6.67 8.416 6.697 8.47 6.715 8.524C6.877 8.821 7.156 9.208 7.552 9.676C7.957 10.144 8.389 10.621 8.857 11.098C9.343 11.575 9.811 12.016 10.288 12.421C10.756 12.817 11.143 13.087 11.449 13.249C11.494 13.267 11.548 13.294 11.611 13.321C11.683 13.348 11.755 13.357 11.836 13.357C11.989 13.357 12.106 13.303 12.205 13.204L12.889 12.529C13.114 12.304 13.33 12.133 13.537 12.025C13.744 11.899 13.951 11.836 14.176 11.836C14.347 11.836 14.527 11.872 14.725 11.953C14.923 12.034 15.13 12.151 15.355 12.304L18.334 14.419C18.568 14.581 18.73 14.77 18.829 14.995C18.919 15.22 18.973 15.445 18.973 15.697Z"
+                                                                    fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-miterlimit="10" />
+                                                                <path
+                                                                    d="M15.8492 7.30039C15.8492 6.76039 15.4262 5.93239 14.7962 5.25739C14.2202 4.63639 13.4552 4.15039 12.6992 4.15039"
+                                                                    stroke="#000A06" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M18.9992 7.3C18.9992 3.817 16.1822 1 12.6992 1"
+                                                                    stroke="#000A06" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                        </span>
+                                                        <p
+                                                            class="text-[15px] leading-[160%] text-Theme-Black transition-all duration-300 group-hover:text-Theme-Green">
+                                                            Phone Number</p>
+                                                    </div>
+                                                    <button
+                                                        class="w-[30px] relative z-[5] aspect-square flex items-center justify-center text-[#8C8484] transition-all duration-500 group-hover:text-Theme-Black hover:text-Theme-Black">
+                                                        <svg width="20" height="15" viewBox="0 0 20 15" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M9.60156 0.599609C5.81209 0.599609 2.96998 3.38532 0.601562 7.09961C2.96998 10.8139 5.81209 13.5996 9.60156 13.5996C13.391 13.5996 16.2331 10.8139 18.6016 7.09961C16.2331 3.38532 13.391 0.599609 9.60156 0.599609Z"
+                                                                stroke="currentColor" stroke-width="1.2"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                            <ellipse cx="9.59992" cy="7.10017" rx="2.84211" ry="2.78571"
+                                                                stroke="currentColor" stroke-width="1.2" />
+                                                        </svg>
+                                                    </button>
+                                                    <div
+                                                        class="abs-bg absolute -top-px left-0 w-full h-[calc(100%+2px)] bg-white z-0  pointer-events-none">
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="dropdown-item flex items-center relative justify-between group p-2.5 bg-[#F8F6F6] transition-all duration-300 hover:bg-white cursor-pointer">
+                                                    <div class="flex relative z-[5] items-center gap-2.5">
+                                                        <span
+                                                            class="w-[30px] aspect-square rounded-[5px] flex items-center justify-center bg-[#F8F6F6] border border-[#E2DCDC]">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <circle cx="10" cy="10" r="9" fill="#CAEADC"
+                                                                    stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linejoin="round" />
+                                                                <path d="M14 8L10 12L6 8" stroke="#000A06"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </span>
+                                                        <p
+                                                            class="text-[15px] leading-[160%] text-Theme-Black transition-all duration-300 group-hover:text-Theme-Green">
+                                                            Drop Down</p>
+                                                    </div>
+                                                    <button
+                                                        class="w-[30px] relative z-[5] aspect-square flex items-center justify-center text-[#8C8484] transition-all duration-500 group-hover:text-Theme-Black hover:text-Theme-Black">
+                                                        <svg width="20" height="15" viewBox="0 0 20 15" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M9.60156 0.599609C5.81209 0.599609 2.96998 3.38532 0.601562 7.09961C2.96998 10.8139 5.81209 13.5996 9.60156 13.5996C13.391 13.5996 16.2331 10.8139 18.6016 7.09961C16.2331 3.38532 13.391 0.599609 9.60156 0.599609Z"
+                                                                stroke="currentColor" stroke-width="1.2"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                            <ellipse cx="9.59992" cy="7.10017" rx="2.84211" ry="2.78571"
+                                                                stroke="currentColor" stroke-width="1.2" />
+                                                        </svg>
+                                                    </button>
+                                                    <div
+                                                        class="abs-bg absolute -top-px left-0 w-full h-[calc(100%+2px)] bg-white z-0  pointer-events-none">
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="dropdown-item flex items-center relative justify-between group p-2.5 bg-[#F8F6F6] transition-all duration-300 hover:bg-white cursor-pointer">
+                                                    <div class="flex relative z-[5] items-center gap-2.5">
+                                                        <span
+                                                            class="w-[30px] aspect-square rounded-[5px] flex items-center justify-center bg-[#F8F6F6] border border-[#E2DCDC]">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <rect x="1" y="1" width="18" height="18" rx="2"
+                                                                    fill="#CAEADC" stroke="#007D47"
+                                                                    stroke-width="1.5" />
+                                                                <circle cx="11" cy="6" r="2" stroke="#000A06"
+                                                                    stroke-width="1.5" stroke-linejoin="round" />
+                                                                <path d="M10 15L14.8777 10L19.0001 14" stroke="#007D47"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                                <path d="M1 18L8 11L11 14" stroke="#007D47"
+                                                                    stroke-width="1.5" stroke-linejoin="round" />
+                                                            </svg>
+                                                        </span>
+                                                        <p
+                                                            class="text-[15px] leading-[160%] text-Theme-Black transition-all duration-300 group-hover:text-Theme-Green">
+                                                            Picture Selection</p>
+                                                    </div>
+                                                    <button
+                                                        class="w-[30px] relative z-[5] aspect-square flex items-center justify-center text-[#8C8484] transition-all duration-500 group-hover:text-Theme-Black hover:text-Theme-Black">
+                                                        <svg width="20" height="15" viewBox="0 0 20 15" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M9.60156 0.599609C5.81209 0.599609 2.96998 3.38532 0.601562 7.09961C2.96998 10.8139 5.81209 13.5996 9.60156 13.5996C13.391 13.5996 16.2331 10.8139 18.6016 7.09961C16.2331 3.38532 13.391 0.599609 9.60156 0.599609Z"
+                                                                stroke="currentColor" stroke-width="1.2"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                            <ellipse cx="9.59992" cy="7.10017" rx="2.84211" ry="2.78571"
+                                                                stroke="currentColor" stroke-width="1.2" />
+                                                        </svg>
+                                                    </button>
+                                                    <div
+                                                        class="abs-bg absolute -top-px left-0 w-full h-[calc(100%+2px)] bg-white z-0  pointer-events-none">
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="dropdown-item flex items-center relative justify-between group p-2.5 bg-[#F8F6F6] transition-all duration-300 hover:bg-white cursor-pointer">
+                                                    <div class="flex relative z-[5] items-center gap-2.5">
+                                                        <span
+                                                            class="w-[30px] aspect-square rounded-[5px] flex items-center justify-center bg-[#F8F6F6] border border-[#E2DCDC]">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <circle cx="10" cy="10" r="9" fill="#CAEADC"
+                                                                    stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linejoin="round" />
+                                                                <path d="M6 10.7535L8.17936 13L14 7" stroke="#000A06"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                                <path opacity="0.3" d="M8 7L14 13" stroke="black"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </span>
+                                                        <p
+                                                            class="text-[15px] leading-[160%] text-Theme-Black transition-all duration-300 group-hover:text-Theme-Green">
+                                                            Yes / No</p>
+                                                    </div>
+                                                    <button
+                                                        class="w-[30px] relative z-[5] aspect-square flex items-center justify-center text-[#8C8484] transition-all duration-500 group-hover:text-Theme-Black hover:text-Theme-Black">
+                                                        <svg width="20" height="15" viewBox="0 0 20 15" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M9.60156 0.599609C5.81209 0.599609 2.96998 3.38532 0.601562 7.09961C2.96998 10.8139 5.81209 13.5996 9.60156 13.5996C13.391 13.5996 16.2331 10.8139 18.6016 7.09961C16.2331 3.38532 13.391 0.599609 9.60156 0.599609Z"
+                                                                stroke="currentColor" stroke-width="1.2"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                            <ellipse cx="9.59992" cy="7.10017" rx="2.84211" ry="2.78571"
+                                                                stroke="currentColor" stroke-width="1.2" />
+                                                        </svg>
+                                                    </button>
+                                                    <div
+                                                        class="abs-bg absolute -top-px left-0 w-full h-[calc(100%+2px)] bg-white z-0  pointer-events-none">
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="dropdown-item flex items-center relative justify-between group p-2.5 bg-[#F8F6F6] transition-all duration-300 hover:bg-white cursor-pointer">
+                                                    <div class="flex relative z-[5] items-center gap-2.5">
+                                                        <span
+                                                            class="w-[30px] aspect-square rounded-[5px] flex items-center justify-center bg-[#F8F6F6] border border-[#E2DCDC]">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M10.7071 12.123L12.1213 10.7088L17.6307 15.1162C18.4638 15.7827 18.5326 17.0254 17.7782 17.7798C17.0238 18.5342 15.7811 18.4654 15.1146 17.6323L10.7071 12.123Z"
+                                                                    stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linejoin="round" />
+                                                                <rect x="3.63672" y="10.709" width="10" height="6"
+                                                                    transform="rotate(-45 3.63672 10.709)"
+                                                                    fill="#CAEADC" stroke="#000A06" stroke-width="1.5"
+                                                                    stroke-linejoin="round" />
+                                                                <rect x="10" y="2.92969" width="3" height="8" rx="1.5"
+                                                                    transform="rotate(-45 10 2.92969)" stroke="#007D47"
+                                                                    stroke-width="1.5" stroke-linejoin="round" />
+                                                                <rect x="0.808594" y="12.123" width="3" height="8"
+                                                                    rx="1.5" transform="rotate(-45 0.808594 12.123)"
+                                                                    stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </span>
+                                                        <p
+                                                            class="text-[15px] leading-[160%] text-Theme-Black transition-all duration-300 group-hover:text-Theme-Green">
+                                                            Legal Text</p>
+                                                    </div>
+                                                    <button
+                                                        class="w-[30px] relative z-[5] aspect-square flex items-center justify-center text-[#8C8484] transition-all duration-500 group-hover:text-Theme-Black hover:text-Theme-Black">
+                                                        <svg width="20" height="15" viewBox="0 0 20 15" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M9.60156 0.599609C5.81209 0.599609 2.96998 3.38532 0.601562 7.09961C2.96998 10.8139 5.81209 13.5996 9.60156 13.5996C13.391 13.5996 16.2331 10.8139 18.6016 7.09961C16.2331 3.38532 13.391 0.599609 9.60156 0.599609Z"
+                                                                stroke="currentColor" stroke-width="1.2"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                            <ellipse cx="9.59992" cy="7.10017" rx="2.84211" ry="2.78571"
+                                                                stroke="currentColor" stroke-width="1.2" />
+                                                        </svg>
+                                                    </button>
+                                                    <div
+                                                        class="abs-bg absolute -top-px left-0 w-full h-[calc(100%+2px)] bg-white z-0  pointer-events-none">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <!-- Footer -->
+                                    <div class="flex justify-center gap-2.5 items-center pt-2.5 pl-[15px] pr-[5px]">
+                                        <button
+                                            class="py-2.5 px-[30px] w-full text-center rounded-10px bg-[#E2DCDC] text-sm leading-5 font-medium text-Theme-Black transition-all duration-500 hover:bg-[#ccc6c6] hover:text-Theme-Black">
+                                            Reset To Default
+                                        </button>
+                                        <button
+                                            class="py-2.5 px-[30px] w-full text-center rounded-10px bg-Theme-Green text-sm leading-5 font-medium text-white transition-all duration-500 hover:bg-theme-Green-hover hover:text-white">
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button
+                                class="w-10 aspect-square flex items-center justify-center rounded-10px bg-[#EDE9E9] transition-all duration-500 hover:bg-white">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="18" y="7.5" width="5" height="16" rx="2" transform="rotate(90 18 7.5)"
+                                        stroke="#000A06" stroke-width="1.2" />
+                                    <path d="M7.5 4.5L10 2L12.5 4.5" stroke="#000A06" stroke-width="1.2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12.5 15.5L10.0008 18L7.5 15.5015" stroke="#000A06" stroke-width="1.2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <!-- download-file button -->
+                            <button
+                                class="w-10 aspect-square flex items-center justify-center rounded-10px bg-[#EDE9E9] transition-all duration-500 hover:bg-white">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M2 11V14C2 15.8856 2 16.8284 2.58579 17.4142C3.17157 18 4.11438 18 6 18H14.5C15.9045 18 16.6067 18 17.1111 17.6629C17.3295 17.517 17.517 17.3295 17.6629 17.1111C18 16.6067 18 15.9045 18 14.5V11"
+                                        stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M5.5 8.85987L10 13L14.5 8.85987" stroke="#000A06" stroke-width="1.2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M10 2L10 6.87297L10 13" stroke="#000A06" stroke-width="1.2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="relative">
+                                <svg class="absolute top-2.5 left-2.5" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.34375 15.6875C12.8473 15.6875 15.6875 12.8473 15.6875 9.34375C15.6875 5.84019 12.8473 3 9.34375 3C5.84019 3 3 5.84019 3 9.34375C3 12.8473 5.84019 15.6875 9.34375 15.6875Z"
+                                        stroke="#8C8484" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                    <path d="M17 17L15.25 15.25" stroke="#8C8484" stroke-width="1.2"
+                                        stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                                <input type="text" placeholder="Search..."
+                                    class="dropdown-search w-full p-2.5 pl-10 rounded-[10px] focus:outline-none bg-[#EDE9E9] placeholder:text-[#8C8484] text-sm leading-140 text-Theme-Black">
                             </div>
                         </div>
                     </div>
+                    <!-- table start  -->
+                    <div class="w-full bg-white rounded-xl border border-gray-200 overflow-hidden ">
+                        <!-- Table wrapper -->
+                        <div class="overflow-x-auto">
+                            <table class="min-w-[1200px] w-full text-sm text-gray-700 table-auto">
+
+                                <!-- Table Head -->
+                                <thead class="border-b border-gray-200">
+                                    <tr class="divide-x divide-[#E2DCDC]">
+                                        <th
+                                            class="px-5 py-[18px] text-left text-[15px] leading-[160%] font-medium text-[#8C8484] flex items-center gap-[15px]">
+                                            <label class="inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" class="sr-only peer">
+
+                                                <!-- Checkbox UI -->
+                                                <span class="w-[20px] h-[20px] rounded-[5px] 
+                                                            bg-[#EDE9E9] 
+                                                            border border-[#E2DCDC]
+                                                            shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)]
+                                                            transition-all duration-200
+                                                            peer-checked:bg-Theme-Green
+                                                            peer-checked:border-Theme-Green
+                                                            peer-checked:shadow-none
+                                                            flex items-center justify-center">
+
+                                                    <!-- Check Icon -->
+
+                                                    <svg class=" text-[#EDE9E9]  peer-checked:text-white transition-transform duration-200"
+                                                        width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M0.601562 3.10001L3.10156 5.60001L8.10156 0.600006"
+                                                            stroke="currentColor" stroke-width="1.2"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+
+                                                </span>
+                                            </label>
+
+                                            <p class="whitespace-nowrap">Date & Time</p>
+                                        </th>
+                                        <th
+                                            class="px-5 py-[18px] text-left text-[15px] leading-[160%] font-medium text-[#8C8484]">
+                                            <div class="relative w-full max-w-[115px]">
+                                                <div x-data="{  open: false, submissiontypeOpen: false, submissionValue: 'Submission'}"
+                                                    class="relative inline-block w-full">
+                                                    <!-- Button -->
+                                                    <button @click.stop="submissiontypeOpen = !submissiontypeOpen"
+                                                        class="w-full flex items-center justify-between gap-2 rounded-[5px] text-[15px] font-medium leading-[160%] text-[#8C8484] transition-all duration-300 hover:bg-white "
+                                                        :class="{'text-Theme-Black': submissiontypeOpen}">
+                                                        <span x-text="submissionValue">Submission</span>
+
+                                                        <svg :class="{'rotate-180': submissiontypeOpen}"
+                                                            class="transition-transform duration-300 rotate-180"
+                                                            width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                                            <path d="M14 8L10 12L6 8" stroke="#000A06"
+                                                                stroke-width="1.2" stroke-linecap="round"
+                                                                stroke-linejoin="round">
+                                                            </path>
+                                                        </svg>
+                                                    </button>
+
+                                                    <!-- Dropdown -->
+                                                    <div x-show="submissiontypeOpen"
+                                                        @click.outside="submissiontypeOpen = false" x-transition=""
+                                                        class="absolute right-0 mt-1 w-full bg-white border border-[#E2DCDC] rounded-[5px] shadow-soft z-50 overflow-hidden">
+                                                        <button
+                                                            @click="submissionValue = 'Submission'; submissiontypeOpen = false"
+                                                            class="w-full text-left px-3 py-2 text-sm hover:bg-[#F8F6F6]">
+                                                            Submission
+                                                        </button>
+
+                                                        <button
+                                                            @click="submissionValue = 'Completed'; submissiontypeOpen = false"
+                                                            class="w-full text-left px-3 py-2 text-sm hover:bg-[#F8F6F6]">
+                                                            Completed
+                                                        </button>
+
+                                                        <button
+                                                            @click="submissionValue = 'Incomplete'; submissiontypeOpen = false"
+                                                            class="w-full text-left px-3 py-2 text-sm hover:bg-[#F8F6F6]">
+                                                            Incomplete
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th
+                                            class="px-5 py-[18px] text-left text-[15px] leading-[160%] font-medium text-[#8C8484]">
+                                            Multiple Selection
+                                        </th>
+                                        <th
+                                            class="px-5 py-[18px] text-left text-[15px] leading-[160%] font-medium text-[#8C8484]">
+                                            Text Box</th>
+                                        <th
+                                            class="px-5 py-[18px] text-left text-[15px] leading-[160%] font-medium text-[#8C8484]">
+                                            Email Address</th>
+                                        <th
+                                            class="px-5 py-[18px] text-left text-[15px] leading-[160%] font-medium text-[#8C8484]">
+                                            Phone Number</th>
+                                        <th
+                                            class="px-5 py-[18px] text-left text-[15px] leading-[160%] font-medium text-[#8C8484]">
+                                            Drop Down</th>
+                                        <th
+                                            class="px-5 py-[18px] text-left text-[15px] leading-[160%] font-medium text-[#8C8484]">
+                                            Picture Selection</th>
+                                        <th
+                                            class="px-5 py-[18px] text-left text-[15px] leading-[160%] font-medium text-[#8C8484]">
+                                            Yes / No</th>
+                                        <th
+                                            class="px-5 py-[18px] text-left text-[15px] leading-[160%] font-medium text-[#8C8484]">
+                                            Legal Text</th>
+                                    </tr>
+                                </thead>
+
+                                <!-- Table Body -->
+                                <tbody class="divide-y divide-[#E2DCDC]">
+
+                                    <!-- Row -->
+                                    <tr class="hover:bg-gray-50 divide-x divide-[#E2DCDC] transition">
+                                        <td class="px-4 py-3">
+                                            <div class="text-sm font-medium">14 Nov 2025</div>
+                                            <div class="text-xs text-gray-400">16:26</div>
+                                        </td>
+
+                                        <td class="px-4 py-3">
+                                            <span
+                                                class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                                                Completed
+                                            </span>
+                                        </td>
+
+                                        <td class="px-4 py-3 text-xs">
+                                            <div>Choice 1</div>
+                                            <div class="text-gray-400">Choice 2, Choice 3</div>
+                                        </td>
+
+                                        <td class="px-4 py-3 text-xs text-gray-500 max-w-[200px] truncate">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                                        </td>
+
+                                        <td class="px-4 py-3 text-xs">name@email.com</td>
+
+                                        <td class="px-4 py-3 text-xs">+12015554236</td>
+
+                                        <td class="px-4 py-3 text-xs">Option B</td>
+
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <img src="https://via.placeholder.com/24"
+                                                    class="w-6 h-6 rounded object-cover" />
+                                                <span class="text-xs">Picture 2</span>
+                                            </div>
+                                        </td>
+
+                                        <td class="px-4 py-3 text-xs">Yes</td>
+
+                                        <td class="px-4 py-3 text-xs">No</td>
+                                    </tr>
+
+                                    <!-- Incomplete Row -->
+                                    <tr class="hover:bg-gray-50  divide-x divide-[#E2DCDC] transition">
+                                        <td class="px-4 py-3">
+                                            <div class="text-sm font-medium">14 Nov 2025</div>
+                                            <div class="text-xs text-gray-400">16:26</div>
+                                        </td>
+
+                                        <td class="px-4 py-3">
+                                            <span
+                                                class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                                                Incomplete
+                                            </span>
+                                        </td>
+
+                                        <td class="px-4 py-3 text-xs">
+                                            <div>Choice 1</div>
+                                            <div class="text-gray-400">Choice 2</div>
+                                        </td>
+
+                                        <td class="px-4 py-3 text-xs text-gray-500 max-w-[200px] truncate">
+                                            Lorem ipsum dolor sit amet...
+                                        </td>
+
+                                        <td class="px-4 py-3 text-xs">name@email.com</td>
+
+                                        <td class="px-4 py-3 text-xs">+12015554236</td>
+
+                                        <td class="px-4 py-3 text-xs">Option B</td>
+
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <img src="https://via.placeholder.com/24"
+                                                    class="w-6 h-6 rounded object-cover" />
+                                                <span class="text-xs">Picture 2</span>
+                                            </div>
+                                        </td>
+
+                                        <td class="px-4 py-3 text-xs">Yes</td>
+
+                                        <td class="px-4 py-3 text-xs">No</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
         </div>
+    </div>
 
-        <!-- MAIN JS-->
-        <!-- MAIN JS-->
-        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.6/Sortable.min.js"
-            integrity="sha512-csIng5zcB+XpulRUa+ev1zKo7zRNGpEaVfNB9On1no9KYTEY/rLGAEEpvgdw6nim1WdTuihZY1eqZ31K7/fZjw=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="assets/js/main.js"></script>
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script>
-        <script src="assets/js/custom-select.js"></script>
-        <!-- alpinejs  -->
-        <script>
-            document.addEventListener('alpine:init', () => {
-                Alpine.store('dropdown', {
-                    openId: null,
-                });
+    </div>
+
+    <!-- MAIN JS-->
+    <!-- MAIN JS-->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.6/Sortable.min.js"
+        integrity="sha512-csIng5zcB+XpulRUa+ev1zKo7zRNGpEaVfNB9On1no9KYTEY/rLGAEEpvgdw6nim1WdTuihZY1eqZ31K7/fZjw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="assets/js/custom-select.js"></script>
+    <!-- alpinejs  -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('dropdown', {
+                openId: null,
             });
-        </script>
-        <!-- Drop down  -->
-        <script>
-            function dropdownComponent(id) {
-                return {
-                    id,
-                    height: 'auto',
-                    opacity: 0,
+        });
+    </script>
+    <!-- Drop down  -->
+    <script>
+        function dropdownComponent(id) {
+            return {
+                id,
+                height: 'auto',
+                opacity: 0,
 
-                    visible: false,
-                    get isOpen() {
-                        return Alpine.store('dropdown').openId === this.id;
-                    },
-                    toggle() {
-                        if (this.isOpen) {
-                            this.close();
-                        } else {
-                            Alpine.store('dropdown').openId = this.id;
-                            this.$nextTick(() => {
-                                this.visible = true;
-                                // const scrollHeight = this.$refs.menu.scrollHeight;
-                                // this.height = scrollHeight + 'px';
-                                this.opacity = 1;
-                            });
-                        }
-                    },
-                    close() {
-                        if (this.isOpen) {
-                            this.opacity = 0;
-                            // this.height = '0px';
-
-                            setTimeout(() => {
-                                this.visible = false;
-                                Alpine.store('dropdown').openId = null;
-                            }, 100); // match with transition duration
-                        }
+                visible: false,
+                get isOpen() {
+                    return Alpine.store('dropdown').openId === this.id;
+                },
+                toggle() {
+                    if (this.isOpen) {
+                        this.close();
+                    } else {
+                        Alpine.store('dropdown').openId = this.id;
+                        this.$nextTick(() => {
+                            this.visible = true;
+                            // const scrollHeight = this.$refs.menu.scrollHeight;
+                            // this.height = scrollHeight + 'px';
+                            this.opacity = 1;
+                        });
                     }
-                };
-            }
-        </script>
+                },
+                close() {
+                    if (this.isOpen) {
+                        this.opacity = 0;
+                        // this.height = '0px';
+
+                        setTimeout(() => {
+                            this.visible = false;
+                            Alpine.store('dropdown').openId = null;
+                        }, 100); // match with transition duration
+                    }
+                }
+            };
+        }
+    </script>
 
 
 

@@ -13,7 +13,7 @@
   --color-Theme-Black: #000A06;
   --color-Theme-Green: #007D47;
   --color-theme-Green-hover: #026D3F;
---color-Theme-Gray: #EDE9E9;
+  --color-Theme-Gray: #EDE9E9;
 
   /* Animation  */
   --animate-Slide: Slide 8s ease-in-out infinite;
@@ -73,13 +73,16 @@
   font-display: swap;
   src: url("../font/Inter_Tight/InterTight-Italic-VariableFont_wght.ttf") format("woff2");
 }
+
 @keyframes spin1 {
   0% {
     transform: rotate(0deg);
   }
+
   50% {
     transform: rotate(180deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -382,10 +385,15 @@
     stroke-dashoffset: 0;
   }
 
-  .dropdown-item.active+.abs-bg {
-    opacity: 1 !important;
-    transition: all 0.3s ease-in-out;
+  .abs-bg {
+    opacity: 0;
   }
+  .dropdown-item.active+.abs-bg,
+  .dropdown-item:hover+.abs-bg {
+    opacity: 1 important;
+    transition: opacity 0.3s ease-in-out;
+  }
+
 
   .list-card-list {
     grid-auto-columns: 1fr;

@@ -362,3 +362,75 @@ document.querySelectorAll('.custom-dropdown[data-style="design3"]').forEach(drop
     }
 });
 
+//  < !-- ================= DESIGN - 4 ================= -->
+document.querySelectorAll('.custom-dropdown[data-style="design4"]').forEach(dropdown => {
+    const button = dropdown.querySelector('.dropdown-button')
+    const menu = dropdown.querySelector('.dropdown-menu')
+    const arrow = dropdown.querySelector('.dropdown-arrow')
+    const selectedContainer = dropdown.querySelector('.selected-option')
+    const placeholder = selectedContainer.querySelector('.placeholder')
+    const items = dropdown.querySelectorAll('.dropdown-item')
+
+    const selectedValues = new Set()
+
+    // Toggle
+    button.addEventListener('click', e => {
+        e.stopPropagation()
+        menu.classList.toggle('hidden')
+        arrow.classList.toggle('rotate-180')
+    })
+
+    // Outside click
+    document.addEventListener('click', e => {
+        if (!dropdown.contains(e.target)) {
+            menu.classList.add('hidden')
+            arrow.classList.remove('rotate-180')
+        }
+    })
+
+    // Select
+    items.forEach(item => {
+        item.addEventListener('click', e => {
+            e.stopPropagation()
+            const value = item.textContent.trim()
+
+            if (selectedValues.has(value)) return
+
+            selectedValues.add(value)
+            renderChips()
+        })
+    })
+
+    function renderChips() {
+        selectedContainer.innerHTML = ''
+        placeholder.style.display = 'none'
+
+        selectedValues.forEach(value => {
+            const chip = document.createElement('div')
+            chip.className =
+                'flex items-center gap-2 bg-white border border-[#E2DCDC] rounded-[6px] px-1.5 py-[3px] text-xs text-[#000A06]'
+            chip.innerHTML = `
+                <span>${value}</span>
+                <button class="remove-chip text-[#8C8484] hover:text-black">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 8L8 2" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 8L2 2" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            `
+
+            chip.querySelector('.remove-chip').addEventListener('click', e => {
+                e.stopPropagation()
+                selectedValues.delete(value)
+                renderChips()
+            })
+
+            selectedContainer.appendChild(chip)
+        })
+
+        if (selectedValues.size === 0) {
+            selectedContainer.appendChild(placeholder)
+            placeholder.style.display = 'block'
+        }
+    }
+})
