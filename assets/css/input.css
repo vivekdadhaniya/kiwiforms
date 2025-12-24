@@ -28,7 +28,7 @@
   --animate-light-sm2: light-sm 0.9s infinite 0.30s ease-in-out;
   --animate-light-sm3: light-sm 0.9s infinite 0.45s ease-in-out;
   --animate-spin1: spin1 3s infinite linear;
-
+  --animate-animation: spin-slow 6s linear infinite;
   /* border radius  */
   --radius-10px: 10px;
   --radius-5px: 5px;
@@ -72,6 +72,18 @@
   font-weight: 200 700;
   font-display: swap;
   src: url("../font/Inter_Tight/InterTight-Italic-VariableFont_wght.ttf") format("woff2");
+}
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes spin1 {
@@ -388,6 +400,7 @@
   .abs-bg {
     opacity: 0;
   }
+
   .dropdown-item.active+.abs-bg,
   .dropdown-item:hover+.abs-bg {
     opacity: 1 important;
