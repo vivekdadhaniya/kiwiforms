@@ -290,7 +290,7 @@
                                     <div class="relative w-full h-10 max-w-[450px]  flex items-center">
                                         <input type="text" placeholder="https://share.kiwiform.com/to/form1" class="p-[5px] py-2.5 pl-[15px] rounded-10px bg-[#EDE9E9] text-sm leading-5 placeholder:text-Theme-Black
                                          text-Theme-Black w-full outline-0 focus:outline-0 " />
-                                        <button class="absolute top-[5px] right-[5px] py-[7px] px-2.5 bg-white rounded-[5px] flex items-center gap-[5px] text-xs leading-4 text-Theme-Black transition-all
+                                        <button data-modal-target="Customize-This-Link" class="absolute top-[5px] right-[5px] py-[7px] px-2.5 bg-white rounded-[5px] flex items-center gap-[5px] text-xs leading-4 text-Theme-Black transition-all
                                          duration-500 hover:bg-Theme-Black hover:text-white whitespace-nowrap">
                                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -611,10 +611,9 @@
 
                             <!-- Social Icons -->
                             <div class="py-5 border-b border-[#E2DCDC] flex items-center justify-center gap-2.5">
-                                
-                                    <button class="btn-white-square"> <svg
-                                        xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
-                                        fill="none">
+
+                                <button class="btn-white-square"> <svg xmlns="http://www.w3.org/2000/svg" width="18"
+                                        height="18" viewBox="0 0 18 18" fill="none">
                                         <path
                                             d="M14.6328 14.6329H12.2621V10.92C12.2621 10.0346 12.2463 8.89479 11.0291 8.89479C9.79431 8.89479 9.60538 9.85947 9.60538 10.8555V14.6327H7.23469V6.9973H9.51056V8.04076H9.54242C9.77018 7.6513 10.0993 7.33091 10.4947 7.11371C10.8902 6.89653 11.3371 6.79066 11.7879 6.8074C14.1907 6.8074 14.6338 8.388 14.6338 10.4443L14.6328 14.6329ZM4.55976 5.9536C4.28765 5.95367 4.02165 5.87301 3.79539 5.72186C3.56911 5.57073 3.39276 5.35587 3.28857 5.10449C3.1844 4.85309 3.15711 4.57647 3.21014 4.30955C3.26319 4.04264 3.39417 3.79747 3.58653 3.60502C3.7789 3.41256 4.02401 3.28147 4.29088 3.22833C4.55772 3.1752 4.83436 3.20241 5.08576 3.30649C5.33715 3.41058 5.55206 3.58689 5.70325 3.81314C5.85447 4.03936 5.9352 4.30536 5.93526 4.57749C5.93528 4.75817 5.89973 4.93708 5.83063 5.10402C5.76152 5.27097 5.66021 5.42266 5.53248 5.55045C5.40475 5.67823 5.25311 5.77961 5.08622 5.84878C4.91931 5.91795 4.74042 5.95358 4.55976 5.9536ZM5.74511 14.6329H3.37193V6.9973H5.74511V14.6329ZM15.8147 1.0001H2.18066C1.8712 0.99661 1.57302 1.11613 1.35164 1.33239C1.13025 1.54866 1.00378 1.84398 1 2.15345V15.8453C1.00365 16.1549 1.13004 16.4505 1.35142 16.6669C1.5728 16.8834 1.87105 17.0032 2.18066 16.9999H15.8147C16.1249 17.0038 16.424 16.8844 16.6462 16.6679C16.8685 16.4514 16.9957 16.1556 17 15.8453V2.15247C16.9956 1.84238 16.8683 1.54672 16.646 1.33046C16.4237 1.1142 16.1247 0.996012 15.8147 1.0001Z"
                                             fill="#000A06"></path>
@@ -832,6 +831,95 @@
             </button>
         </div>
     </div>
+
+    <!-- Customize This Link  -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+        id="Customize-This-Link">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Customize This Link
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col p-5 border border-[#E9E1E1]">
+            <p class="mb-5 text-base leading-[200%] text-Theme-Black ">
+                Describe what your Kiwiform is about. Don’t forget to update previously shared links if you edit this.
+            </p>
+            <div class="relative">
+                <label for="workspace" class="text-xs leading-[14px] text-Theme-Black">
+                    Custom Link
+                </label>
+                <input type="text" id="CustomLink" class="text-base leading-[22px] border border-transparent text-Theme-Black placeholder:text-[#8C8484] w-full py-3.5 px-[15px] bg-[#F8F6F6] mt-[5px] rounded-10px
+            transition-all duration-500 hover:border-[#E9E1E1] hover:bg-white focus:outline-0 focus:border-Theme-Green"
+                    placeholder="https://share.kiwiform.com/to/form1" value="https://share.kiwiform.com/to/form1">
+            </div>
+            <div class="w-full flex items-center justify-center flex-col min-h-[55px]">
+                <div
+                    class="flex items-center gap-1.5 rounded-full py-[5px] pr-2.5 pl-[7px] bg-[#FFECEB] text-[15px] leading-[18px] text-Theme-Black">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path
+                            d="M5.17418 7.24756C7.31622 3.41585 8.38724 1.5 10 1.5C11.6128 1.5 12.6838 3.41585 14.8258 7.24756L16.3644 9.99983C18.4777 13.7801 19.5344 15.6702 18.7311 17.0851C17.9278 18.5 15.7981 18.5 11.5386 18.5H8.46139C4.20192 18.5 2.07218 18.5 1.2689 17.0851C0.465633 15.6702 1.52228 13.7801 3.63557 9.99983L5.17418 7.24756Z"
+                            fill="#DC3027" />
+                        <path d="M10 9L10 15" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M9.99609 6.5L9.98712 6.5" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    Try a different one, This link isn’t available.
+                </div>
+                <div class="flex items-center gap-2.5">
+                    <div
+                        class="flex items-center gap-1.5 rounded-full py-[5px] pr-2.5 pl-[7px] bg-[#ECF9BB] text-[15px] leading-[18px] text-Theme-Black">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <rect width="20" height="20" rx="10" fill="#B8DD2F" />
+                            <path d="M6.25 9.71875L8.75 12.2188L13.75 7.21875" stroke="#000A06" stroke-width="1.2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Nice! Your custom link is all set.
+                    </div>
+                    <a href="#" class="text-[#8C8484] text-[15px] leading-[18px] underline underline-offset-2">Undo</a>
+                </div>
+            </div>
+
+            <div
+                class="border border-[#A3D9C5] bg-gradient-to-b from-[#F5FBF9] to-[#D8F0E7] p-[15px] rounded-10px rounded-b-[5px]">
+                <p class="text-base font-medium leading-[140%] text-Theme-Green mb-2.5">
+                    The default link will continue to work.
+                </p>
+                <p class="text-[15px] leading-[200%] font-normal text-Theme-Black mb-5">
+                    <span class="font-medium">https://share.kiwiform.com/to/form1</span> is the default link for your
+                    Kiwiform. Use this default link
+                    when embedding your form on websites or apps like Medium, Notion, or WordPress with automatic embed.
+                </p>
+                <button class="btn-white-icon-text w-max px-5 rounded-[5px]">
+                    Copy Default Link
+                </button>
+            </div>
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end gap-2.5 w-full py-2.5 px-[5px]">
+            
+            <button class="py-2.5 w-full text-center rounded-10px bg-[#E2DCDC] text-theme-Black text-sm font-medium leading-5">
+                Restore Defaults
+            </button>
+            <button class="btn-kiwi-green-icon-text w-full justify-center leading-5">
+                Save Custom Link
+            </button>
+        </div>
+    </div>
+
     <div
         class="overlay-modal w-full h-screen z-[500] bg-[#012819]/30 backdrop-blur-[7.5px] fixed top-0 left-0 opacity-0 invisible">
     </div>
