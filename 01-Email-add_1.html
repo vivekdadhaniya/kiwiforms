@@ -1200,7 +1200,7 @@
 
                     <!-- design modal alpine  -->
                     <!-- Alpine wrapper -->
-                    <div x-data="{ openDesign: false, tab: 'my' }">
+                    <div x-data="{ openDesign: false, openCreateTheme: false, tab: 'my' }">
 
                         <!-- Design Button -->
                         <button @click="openDesign = true" class="btn-white-icon-text w-max px-3 min-w-[100px]">
@@ -1233,8 +1233,8 @@
                         </div> -->
 
                         <!-- Modal -->
-                        <div x-cloak x-show="openDesign" x-transition @keydown.escape.window="openDesign = false"
-                            class="fixed bottom-14 left-40 z-50 flex w-full max-w-[520px] items-center justify-center">
+                        <div x-show="openDesign" @keydown.escape.window="openDesign = false"
+                            class="fixed bottom-14 left-40 z-[9999] flex w-full max-w-[520px] items-center justify-center">
 
                             <div @click.stop
                                 class="w-full max-w-[520px] p-[5px] bg-white border border-[#E9E1E1] rounded-[15px] shadow-[0_5px_30px_1px_rgba(0,0,0,0.10)] overflow-hidden">
@@ -1254,64 +1254,1310 @@
                                         </svg>
                                     </button>
                                 </div>
-                                <div class="rounded-10px bg-[#F8F6F6] border border-[#E9E1E1]">
-                                    <!-- Tabs -->
-                                    <div class="flex gap-0 items-center p-2.5 border-b border-[#E9E1E1]">
+                                <div x-data="{ tab: 'my', activeCard: 4 }"
+                                    class="rounded-[10px] bg-[#F8F6F6] border border-[#E9E1E1] max-w-[520px] mx-auto">
+
+                                    <div class="flex items-center p-2.5 border-b border-[#E9E1E1]">
+
                                         <button @click="tab = 'my'" :class="tab === 'my'
-                        ? 'bg-white text-Theme-Black font-medium'
-                        : 'text-Theme-Black font-normal'"
-                                            class="w-full text-center px-4 py-2.5 rounded-10px text-sm leading-[140%] font-medium">
+            ? 'bg-white font-medium'
+            : 'font-normal'" class="w-full px-4 py-2.5 rounded-[10px] text-sm text-Theme-Black">
                                             My Themes
                                         </button>
 
                                         <button @click="tab = 'library'" :class="tab === 'library'
-                        ? 'bg-white text-Theme-Black font-medium'
-                        : 'text-Theme-Black font-normal'"
-                                            class="w-full text-center px-4 py-2.5 rounded-10px text-sm leading-[140%] font-medium">
+            ? 'bg-white font-medium'
+            : 'font-normal'" class="w-full px-4 py-2.5 rounded-[10px] text-sm text-Theme-Black">
                                             Theme Library
                                         </button>
+
                                     </div>
 
-                                    <!-- Content -->
-                                    <div class="px-5 py-4 max-h-[520px] overflow-y-auto space-y-3">
+                                    <div x-show="tab === 'my'" class="px-2.5 py-2.5 h-[620px] overflow-y-auto grid grid-cols-2 gap-0
+                                        [&::-webkit-scrollbar]:w-[5px]   
+                                        [&::-webkit-scrollbar]:rounded-full 
+                                      [&::-webkit-scrollbar-track]:bg-[#F8F6F6]
+                                      [&::-webkit-scrollbar-thumb]:bg-[#E2DCDC]
+                                        [&::-webkit-scrollbar-thumb]:rounded-full">
 
-                                        <template x-for="theme in [
-                        { name: 'Kiwi.', color: 'bg-white', active: true },
-                        { name: 'Yellow Theme', color: 'bg-yellow-400' },
-                        { name: 'Blue', color: 'bg-sky-400' },
-                        { name: 'Violet', color: 'bg-violet-500' },
-                        { name: 'Parrot', color: 'bg-lime-400' },
-                    ]" :key="theme.name">
-
-                                            <div class="flex items-center gap-4 p-3 rounded-xl cursor-pointer border transition"
-                                                :class="theme.active
-                            ? 'border-green-500 bg-green-50'
-                            : 'border-gray-200 hover:bg-gray-50'">
-
-                                                <div class="w-16 h-12 rounded-lg" :class="theme.color"></div>
-
-                                                <div class="flex-1">
-                                                    <p class="font-medium text-sm" x-text="theme.name"></p>
-                                                    <p class="text-xs text-gray-500">1 Form</p>
+                                        <div @click="activeCard = 1"
+                                            class="p-2.5 rounded-[10px] cursor-pointer transition"
+                                            :class="activeCard === 1 ? 'bg-[#F3ECEA]' : 'hover:bg-[#F3ECEA]'">
+                                            <div
+                                                class="min-h-[120px] p-[15px] rounded-[5px] border border-Theme-Green bg-white  flex items-start justify-between flex-col">
+                                                <div class="text-2xl font-medium">Kiwi.</div>
+                                                <div class="block">
+                                                    <div class="mt-3 h-[7px] w-[100px] bg-[#9ACEB8] rounded"></div>
+                                                    <div class="mt-2 h-[15px] w-[50px] bg-Theme-Green rounded"></div>
                                                 </div>
-
-                                                <button class="text-gray-400 hover:text-black">⋯</button>
                                             </div>
 
-                                        </template>
+                                            <div class="flex items-center gap-2.5 pt-2.5 px-[5px]">
+                                                <div class="flex-1">
+                                                    <p class="text-[15px] leading-[18px] mb-2.5 font-medium">New Theme
+                                                    </p>
+                                                    <p class="text-xs text-[#8C8484]">2 Forms</p>
+                                                </div>
+                                                <button
+                                                    class="w-[30px] aspect-square rounded hover:bg-white flex items-center justify-center">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M16.2146 10.0005H16.2285" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.9958 10.0005H10.0098" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M3.76924 10.0005H3.78321" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div @click="activeCard = 2"
+                                            class="p-2.5 rounded-[10px] cursor-pointer transition"
+                                            :class="activeCard === 2 ? 'bg-[#F3ECEA]' : 'hover:bg-[#F3ECEA]'">
+                                            <div
+                                                class="min-h-[120px] p-[15px] rounded-[5px] bg-yellow-400 flex items-start justify-between flex-col">
+                                                <div class="text-2xl font-medium text-white">Kiwi.</div>
+                                                <div class="block">
+                                                    <div class=" h-[7px] w-[100px] bg-white rounded"></div>
+                                                    <div class="mt-[7px] h-[15px] w-[50px] bg-red-500 rounded"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex items-center gap-2.5 pt-2.5 px-[5px]">
+                                                <div class="flex-1">
+                                                    <p class="text-[15px] leading-[18px] mb-2.5 font-medium">
+                                                        Yellow Theme
+                                                    </p>
+                                                    <p class="text-xs text-[#8C8484]">1 Form</p>
+                                                </div>
+                                                <button
+                                                    class="w-[30px] aspect-square rounded hover:bg-white flex items-center justify-center">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M16.2146 10.0005H16.2285" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.9958 10.0005H10.0098" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M3.76924 10.0005H3.78321" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div @click="activeCard = 3"
+                                            class="p-2.5 rounded-[10px] cursor-pointer transition hover:bg-[#F3ECEA]"
+                                            :class="activeCard === 3 && 'bg-[#F3ECEA]'">
+
+                                            <div
+                                                class="min-h-[120px] p-[15px] rounded-[5px] bg-sky-400 flex items-start justify-between flex-col">
+                                                <div class="text-2xl font-medium">Kiwi.</div>
+                                                <div class="block">
+                                                    <div class=" h-[7px] w-[100px] bg-Theme-Black rounded"></div>
+                                                    <div class="mt-[7px] h-[15px] w-[50px] bg-[#1729EB] rounded"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex items-center gap-2.5 pt-2.5 px-[5px]">
+                                                <div class="flex-1">
+                                                    <p class="text-[15px] leading-[18px] mb-2.5 font-medium">
+                                                        Blue
+                                                    </p>
+                                                    <p class="text-xs text-[#8C8484]">1 Form</p>
+                                                </div>
+                                                <button
+                                                    class="w-[30px] aspect-square rounded hover:bg-white flex items-center justify-center">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M16.2146 10.0005H16.2285" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.9958 10.0005H10.0098" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M3.76924 10.0005H3.78321" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div @click="activeCard = 4"
+                                            class="p-2.5 rounded-[10px] cursor-pointer transition hover:bg-[#F3ECEA]"
+                                            :class="activeCard === 4 && 'bg-[#F3ECEA]'">
+
+                                            <!-- Preview -->
+                                            <div
+                                                class="min-h-[120px] p-[15px] rounded-[5px] bg-[#4530FF] flex items-start justify-between flex-col">
+                                                <div class="text-2xl font-medium text-white">Kiwi.</div>
+
+                                                <div class="block">
+                                                    <div class="h-[7px] w-[100px] bg-white rounded"></div>
+                                                    <div class="mt-[7px] h-[15px] w-[50px] bg-[#2BEB98] rounded"></div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Footer -->
+                                            <div class="flex items-center gap-2.5 pt-2.5 px-[5px]">
+                                                <div class="flex-1">
+                                                    <p
+                                                        class="text-[15px] leading-[18px] mb-2.5 font-medium text-Theme-Black">
+                                                        Violet
+                                                    </p>
+                                                    <p class="text-xs text-[#8C8484]">3 Forms</p>
+                                                </div>
+
+                                                <button
+                                                    class="w-[30px] aspect-square rounded hover:bg-white flex items-center justify-center">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M16.2146 10.0005H16.2285" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.9958 10.0005H10.0098" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M3.76924 10.0005H3.78321" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div @click="activeCard = 5"
+                                            class="p-2.5 rounded-[10px] cursor-pointer transition hover:bg-[#F3ECEA]"
+                                            :class="activeCard === 5 && 'bg-[#F3ECEA]'">
+
+                                            <!-- Preview -->
+                                            <div
+                                                class="min-h-[120px] p-[15px] rounded-[5px] bg-white border border-[#E9E1E1] flex items-start justify-between flex-col">
+                                                <div class="text-2xl font-medium text-Theme-Black">Kiwi.</div>
+
+                                                <div class="block">
+                                                    <div class="h-[7px] w-[100px] bg-[#E8F5B7] rounded"></div>
+                                                    <div class="mt-[7px] h-[15px] w-[50px] bg-[#B8DD2F] rounded"></div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Footer -->
+                                            <div class="flex items-center gap-2.5 pt-2.5 px-[5px]">
+                                                <div class="flex-1">
+                                                    <p
+                                                        class="text-[15px] leading-[18px] mb-2.5 font-medium text-Theme-Black">
+                                                        Parrot
+                                                    </p>
+                                                    <p class="text-xs text-[#8C8484]">1 Form</p>
+                                                </div>
+
+                                                <button
+                                                    class="w-[30px] aspect-square rounded hover:bg-white flex items-center justify-center">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M16.2146 10.0005H16.2285" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.9958 10.0005H10.0098" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M3.76924 10.0005H3.78321" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class=" px-5 py-4">
-                                        <button
+                                    <div x-show="tab === 'library'" x-cloak class="px-2.5 py-2.5 h-[620px] overflow-y-auto grid grid-cols-2 gap-0
+                                        [&::-webkit-scrollbar]:w-[5px]    
+                                        [&::-webkit-scrollbar]:rounded-full
+                                      [&::-webkit-scrollbar-track]:bg-[#9ACEB8]
+                                      [&::-webkit-scrollbar-thumb]:bg-[#007D47]
+                                        [&::-webkit-scrollbar-thumb]:rounded-full">
+
+                                        <div @click="activeCard = 1"
+                                            class="p-2.5 rounded-[10px] cursor-pointer transition"
+                                            :class="activeCard === 1 ? 'bg-[#F3ECEA]' : 'hover:bg-[#F3ECEA]'">
+                                            <div
+                                                class="min-h-[120px] p-[15px] rounded-[5px] border border-Theme-Green bg-white  flex items-start justify-between flex-col">
+                                                <div class="text-2xl font-medium">Kiwi.</div>
+                                                <div class="block">
+                                                    <div class="mt-3 h-[7px] w-[100px] bg-[#9ACEB8] rounded"></div>
+                                                    <div class="mt-2 h-[15px] w-[50px] bg-Theme-Green rounded"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex items-center gap-2.5 pt-2.5 px-[5px]">
+                                                <div class="flex-1">
+                                                    <p class="text-[15px] leading-[18px] mb-2.5 font-medium">New Theme
+                                                    </p>
+                                                    <p class="text-xs text-[#8C8484]">2 Forms</p>
+                                                </div>
+                                                <button
+                                                    class="w-[30px] aspect-square rounded hover:bg-white flex items-center justify-center">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M16.2146 10.0005H16.2285" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.9958 10.0005H10.0098" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M3.76924 10.0005H3.78321" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div @click="activeCard = 2"
+                                            class="p-2.5 rounded-[10px] cursor-pointer transition"
+                                            :class="activeCard === 2 ? 'bg-[#F3ECEA]' : 'hover:bg-[#F3ECEA]'">
+                                            <div
+                                                class="min-h-[120px] p-[15px] rounded-[5px] bg-yellow-400 flex items-start justify-between flex-col">
+                                                <div class="text-2xl font-medium text-white">Kiwi.</div>
+                                                <div class="block">
+                                                    <div class=" h-[7px] w-[100px] bg-white rounded"></div>
+                                                    <div class="mt-[7px] h-[15px] w-[50px] bg-red-500 rounded"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex items-center gap-2.5 pt-2.5 px-[5px]">
+                                                <div class="flex-1">
+                                                    <p class="text-[15px] leading-[18px] mb-2.5 font-medium">
+                                                        Yellow Theme
+                                                    </p>
+                                                    <p class="text-xs text-[#8C8484]">1 Form</p>
+                                                </div>
+                                                <button
+                                                    class="w-[30px] aspect-square rounded hover:bg-white flex items-center justify-center">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M16.2146 10.0005H16.2285" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.9958 10.0005H10.0098" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M3.76924 10.0005H3.78321" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div @click="activeCard = 3"
+                                            class="p-2.5 rounded-[10px] cursor-pointer transition hover:bg-[#F3ECEA]"
+                                            :class="activeCard === 3 && 'bg-[#F3ECEA]'">
+
+                                            <div
+                                                class="min-h-[120px] p-[15px] rounded-[5px] bg-sky-400 flex items-start justify-between flex-col">
+                                                <div class="text-2xl font-medium">Kiwi.</div>
+                                                <div class="block">
+                                                    <div class=" h-[7px] w-[100px] bg-Theme-Black rounded"></div>
+                                                    <div class="mt-[7px] h-[15px] w-[50px] bg-[#1729EB] rounded"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex items-center gap-2.5 pt-2.5 px-[5px]">
+                                                <div class="flex-1">
+                                                    <p class="text-[15px] leading-[18px] mb-2.5 font-medium">
+                                                        Blue
+                                                    </p>
+                                                    <p class="text-xs text-[#8C8484]">1 Form</p>
+                                                </div>
+                                                <button
+                                                    class="w-[30px] aspect-square rounded hover:bg-white flex items-center justify-center">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M16.2146 10.0005H16.2285" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.9958 10.0005H10.0098" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M3.76924 10.0005H3.78321" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div @click="activeCard = 4"
+                                            class="p-2.5 rounded-[10px] cursor-pointer transition hover:bg-[#F3ECEA]"
+                                            :class="activeCard === 4 && 'bg-[#F3ECEA]'">
+
+                                            <!-- Preview -->
+                                            <div
+                                                class="min-h-[120px] p-[15px] rounded-[5px] bg-[#4530FF] flex items-start justify-between flex-col">
+                                                <div class="text-2xl font-medium text-white">Kiwi.</div>
+
+                                                <div class="block">
+                                                    <div class="h-[7px] w-[100px] bg-white rounded"></div>
+                                                    <div class="mt-[7px] h-[15px] w-[50px] bg-[#2BEB98] rounded"></div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Footer -->
+                                            <div class="flex items-center gap-2.5 pt-2.5 px-[5px]">
+                                                <div class="flex-1">
+                                                    <p
+                                                        class="text-[15px] leading-[18px] mb-2.5 font-medium text-Theme-Black">
+                                                        Violet
+                                                    </p>
+                                                    <p class="text-xs text-[#8C8484]">3 Forms</p>
+                                                </div>
+
+                                                <button
+                                                    class="w-[30px] aspect-square rounded hover:bg-white flex items-center justify-center">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M16.2146 10.0005H16.2285" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.9958 10.0005H10.0098" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M3.76924 10.0005H3.78321" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div @click="activeCard = 5"
+                                            class="p-2.5 rounded-[10px] cursor-pointer transition hover:bg-[#F3ECEA]"
+                                            :class="activeCard === 5 && 'bg-[#F3ECEA]'">
+
+                                            <!-- Preview -->
+                                            <div
+                                                class="min-h-[120px] p-[15px] rounded-[5px] bg-white border border-[#E9E1E1] flex items-start justify-between flex-col">
+                                                <div class="text-2xl font-medium text-Theme-Black">Kiwi.</div>
+
+                                                <div class="block">
+                                                    <div class="h-[7px] w-[100px] bg-[#E8F5B7] rounded"></div>
+                                                    <div class="mt-[7px] h-[15px] w-[50px] bg-[#B8DD2F] rounded"></div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Footer -->
+                                            <div class="flex items-center gap-2.5 pt-2.5 px-[5px]">
+                                                <div class="flex-1">
+                                                    <p
+                                                        class="text-[15px] leading-[18px] mb-2.5 font-medium text-Theme-Black">
+                                                        Parrot
+                                                    </p>
+                                                    <p class="text-xs text-[#8C8484]">1 Form</p>
+                                                </div>
+
+                                                <button
+                                                    class="w-[30px] aspect-square rounded hover:bg-white flex items-center justify-center">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M16.2146 10.0005H16.2285" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.9958 10.0005H10.0098" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M3.76924 10.0005H3.78321" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div @click="activeCard = 6"
+                                            class="p-2.5 rounded-[10px] cursor-pointer transition"
+                                            :class="activeCard === 6 ? 'bg-[#F3ECEA]' : 'hover:bg-[#F3ECEA]'">
+                                            <div
+                                                class="min-h-[120px] p-[15px] rounded-[5px] border border-Theme-Green bg-white  flex items-start justify-between flex-col">
+                                                <div class="text-2xl font-medium">Kiwi.</div>
+                                                <div class="block">
+                                                    <div class="mt-3 h-[7px] w-[100px] bg-[#9ACEB8] rounded"></div>
+                                                    <div class="mt-2 h-[15px] w-[50px] bg-Theme-Green rounded"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex items-center gap-2.5 pt-2.5 px-[5px]">
+                                                <div class="flex-1">
+                                                    <p class="text-[15px] leading-[18px] mb-2.5 font-medium">New Theme
+                                                    </p>
+                                                    <p class="text-xs text-[#8C8484]">2 Forms</p>
+                                                </div>
+                                                <button
+                                                    class="w-[30px] aspect-square rounded hover:bg-white flex items-center justify-center">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M16.2146 10.0005H16.2285" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.9958 10.0005H10.0098" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M3.76924 10.0005H3.78321" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div @click="activeCard = 7"
+                                            class="p-2.5 rounded-[10px] cursor-pointer transition"
+                                            :class="activeCard === 7 ? 'bg-[#F3ECEA]' : 'hover:bg-[#F3ECEA]'">
+                                            <div
+                                                class="min-h-[120px] p-[15px] rounded-[5px] bg-yellow-400 flex items-start justify-between flex-col">
+                                                <div class="text-2xl font-medium text-white">Kiwi.</div>
+                                                <div class="block">
+                                                    <div class=" h-[7px] w-[100px] bg-white rounded"></div>
+                                                    <div class="mt-[7px] h-[15px] w-[50px] bg-red-500 rounded"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex items-center gap-2.5 pt-2.5 px-[5px]">
+                                                <div class="flex-1">
+                                                    <p class="text-[15px] leading-[18px] mb-2.5 font-medium">
+                                                        Yellow Theme
+                                                    </p>
+                                                    <p class="text-xs text-[#8C8484]">1 Form</p>
+                                                </div>
+                                                <button
+                                                    class="w-[30px] aspect-square rounded hover:bg-white flex items-center justify-center">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M16.2146 10.0005H16.2285" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.9958 10.0005H10.0098" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M3.76924 10.0005H3.78321" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div @click="activeCard = 8"
+                                            class="p-2.5 rounded-[10px] cursor-pointer transition hover:bg-[#F3ECEA]"
+                                            :class="activeCard === 8 && 'bg-[#F3ECEA]'">
+
+                                            <div
+                                                class="min-h-[120px] p-[15px] rounded-[5px] bg-sky-400 flex items-start justify-between flex-col">
+                                                <div class="text-2xl font-medium">Kiwi.</div>
+                                                <div class="block">
+                                                    <div class=" h-[7px] w-[100px] bg-Theme-Black rounded"></div>
+                                                    <div class="mt-[7px] h-[15px] w-[50px] bg-[#1729EB] rounded"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex items-center gap-2.5 pt-2.5 px-[5px]">
+                                                <div class="flex-1">
+                                                    <p class="text-[15px] leading-[18px] mb-2.5 font-medium">
+                                                        Blue
+                                                    </p>
+                                                    <p class="text-xs text-[#8C8484]">1 Form</p>
+                                                </div>
+                                                <button
+                                                    class="w-[30px] aspect-square rounded hover:bg-white flex items-center justify-center">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M16.2146 10.0005H16.2285" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.9958 10.0005H10.0098" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M3.76924 10.0005H3.78321" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div @click="activeCard = 9"
+                                            class="p-2.5 rounded-[10px] cursor-pointer transition hover:bg-[#F3ECEA]"
+                                            :class="activeCard === 9 && 'bg-[#F3ECEA]'">
+
+                                            <!-- Preview -->
+                                            <div
+                                                class="min-h-[120px] p-[15px] rounded-[5px] bg-[#4530FF] flex items-start justify-between flex-col">
+                                                <div class="text-2xl font-medium text-white">Kiwi.</div>
+
+                                                <div class="block">
+                                                    <div class="h-[7px] w-[100px] bg-white rounded"></div>
+                                                    <div class="mt-[7px] h-[15px] w-[50px] bg-[#2BEB98] rounded"></div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Footer -->
+                                            <div class="flex items-center gap-2.5 pt-2.5 px-[5px]">
+                                                <div class="flex-1">
+                                                    <p
+                                                        class="text-[15px] leading-[18px] mb-2.5 font-medium text-Theme-Black">
+                                                        Violet
+                                                    </p>
+                                                    <p class="text-xs text-[#8C8484]">3 Forms</p>
+                                                </div>
+
+                                                <button
+                                                    class="w-[30px] aspect-square rounded hover:bg-white flex items-center justify-center">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M16.2146 10.0005H16.2285" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.9958 10.0005H10.0098" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M3.76924 10.0005H3.78321" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div @click="activeCard = 10"
+                                            class="p-2.5 rounded-[10px] cursor-pointer transition hover:bg-[#F3ECEA]"
+                                            :class="activeCard === 10 && 'bg-[#F3ECEA]'">
+
+                                            <!-- Preview -->
+                                            <div
+                                                class="min-h-[120px] p-[15px] rounded-[5px] bg-white border border-[#E9E1E1] flex items-start justify-between flex-col">
+                                                <div class="text-2xl font-medium text-Theme-Black">Kiwi.</div>
+
+                                                <div class="block">
+                                                    <div class="h-[7px] w-[100px] bg-[#E8F5B7] rounded"></div>
+                                                    <div class="mt-[7px] h-[15px] w-[50px] bg-[#B8DD2F] rounded"></div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Footer -->
+                                            <div class="flex items-center gap-2.5 pt-2.5 px-[5px]">
+                                                <div class="flex-1">
+                                                    <p
+                                                        class="text-[15px] leading-[18px] mb-2.5 font-medium text-Theme-Black">
+                                                        Parrot
+                                                    </p>
+                                                    <p class="text-xs text-[#8C8484]">1 Form</p>
+                                                </div>
+
+                                                <button
+                                                    class="w-[30px] aspect-square rounded hover:bg-white flex items-center justify-center">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M16.2146 10.0005H16.2285" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M9.9958 10.0005H10.0098" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M3.76924 10.0005H3.78321" stroke="#000A06"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Footer -->
+                                    <div class="px-5 py-4">
+                                        <button @click="openDesign = false; openCreateTheme = true"
                                             class="w-full py-2 rounded-lg border text-sm font-medium hover:bg-gray-50">
                                             + Create New Theme
                                         </button>
                                     </div>
                                 </div>
-                                <!-- Footer -->
+                            </div>
+                        </div>
 
+                        <!-- Create New Theme Modal -->
+                        <div x-cloak x-show="openCreateTheme" x-transition
+                            class="fixed bottom-14 left-40 z-[9999] w-full max-w-[520px]">
+                            <div @click.stop x-data="{ themeTab: 'general' }" class="w-full max-w-[520px] p-[5px] bg-white border border-[#E9E1E1] rounded-[15px]
+               shadow-[0_5px_30px_1px_rgba(0,0,0,0.10)]
+               overflow-hidden">
+
+                                <!-- HEADER -->
+                                <div class="flex items-center justify-between p-[5px]">
+                                    <div
+                                        class="flex items-center gap-[15px] text-sm py-2.5 px-[15px] rounded-10px bg-[#EDE9E9]">
+                                        <span class="text-sm leading-5 text-Theme-Black ">Design</span>
+                                        <span class="text-[#8C8484]">
+                                            <svg width="6" height="10" viewBox="0 0 6 10" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.601562 0.599609L4.60156 4.59961L0.601562 8.59961"
+                                                    stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                        <span class="text-sm leading-5 text-Theme-Green ">Create New Theme</span>
+                                    </div>
+
+                                    <button @click="openCreateTheme = false; openDesign = true"
+                                        class="close-btn cursor-pointer">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="rounded-[10px] bg-[#F8F6F6] border border-[#E9E1E1] max-w-[520px] mx-auto">
+                                    <!-- TOP TABS -->
+                                    <div class="flex items-center gap-0 p-2.5 border-b border-[#E9E1E1]">
+                                        <button @click="themeTab = 'general'" :class="themeTab === 'general'
+                    ? 'bg-white font-medium'
+                    : 'font-normal'" class="w-full text-center px-3 py-2.5 rounded-[5px] text-sm leading-5 text-Theme-Black">
+                                            General
+                                        </button>
+
+                                        <button @click="themeTab = 'logo'" :class="themeTab === 'logo'
+                    ? 'bg-white font-medium'
+                    : 'font-normal'" class="w-full text-center px-3 py-2.5 rounded-[5px] text-sm leading-5 text-Theme-Black">
+                                            Logo
+                                        </button>
+
+                                        <button @click="themeTab = 'background'" :class="themeTab === 'background'
+                    ? 'bg-white font-medium'
+                    : 'font-normal'" class="w-full text-center px-3 py-2.5 rounded-[5px] text-sm leading-5 text-Theme-Black">
+                                            Background Image
+                                        </button>
+                                    </div>
+
+                                    <!-- CONTENT -->
+                                    <div class=" h-[620px] overflow-y-auto 
+                                    [&::-webkit-scrollbar]:w-[5px]   
+                                    [&::-webkit-scrollbar]:h-[80%]
+                                        [&::-webkit-scrollbar]:rounded-full 
+                                      [&::-webkit-scrollbar-track]:bg-[#F8F6F6]
+                                      [&::-webkit-scrollbar-thumb]:bg-[#E2DCDC]
+                                        [&::-webkit-scrollbar-thumb]:rounded-full">
+
+                                        <!-- ===================== -->
+                                        <!-- GENERAL TAB -->
+                                        <!-- ===================== -->
+                                        <div x-show="themeTab === 'general'" x-transition>
+
+                                            <div class="text-sm p-5">
+                                                <!-- font -->
+                                                <div>
+                                                    <label
+                                                        class="block text-[15px] leading-[18px] text-[#8C8484] ">Font</label>
+                                                    <div class="custom-dropdown relative w-full max-w-[700px] pt-[5px]"
+                                                        data-style="design1">
+
+                                                        <div class="relative">
+
+                                                            <!-- Button -->
+                                                            <button type="button" class="dropdown-button w-full flex justify-between items-center
+                   bg-[#F8F6F6] border border-[#E2DCDC]
+                   text-Theme-Black p-2.5 pl-[15px]
+                   rounded-10px text-[15px] font-normal leading-[18px]
+                   focus:outline-none transition-all">
+                                                                <span class="selected-option">Inter</span>
+
+                                                                <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200"
+                                                                    fill="none" stroke="currentColor"
+                                                                    viewBox="0 0 24 24">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width="2" d="M19 9l-7 7-7-7" />
+                                                                </svg>
+                                                            </button>
+
+                                                            <!-- Dropdown -->
+                                                            <div class="dropdown-menu absolute hidden w-full
+                   bg-white border border-[#E9E1E1]
+                   rounded-10px shadow-strong
+                   p-1.5 mt-2 text-[15px] leading-120
+                   text-gray-700 overflow-hidden z-10">
+
+                                                                <!-- 🔍 SEARCH -->
+                                                                <div class="pb-1 bg-white">
+                                                                    <input type="text" placeholder="Search fonts..."
+                                                                        class="w-full bg-[#F4EBEB] rounded-[6px]
+                           px-3 py-2 text-sm outline-none" oninput="
+                        const val = this.value.toLowerCase();
+                        this.closest('.dropdown-menu')
+                            .querySelectorAll('.dropdown-item')
+                            .forEach(item => {
+                                item.closest('li').style.display =
+                                    item.innerText.toLowerCase().includes(val)
+                                        ? 'block'
+                                        : 'none';
+                            });
+                    ">
+                                                                </div>
+
+                                                                <!-- List -->
+                                                                <ul class="dropdown-list flex items-center flex-col gap-px
+                       w-full bg-[#F8F6F6]
+                       max-h-[240px] overflow-y-auto">
+
+                                                                    <!-- FONT ITEM -->
+                                                                    <li class="bg-white w-full relative">
+                                                                        <div class="dropdown-item relative z-10 p-2.5
+                               hover:bg-[#F8F6F6] rounded-[5px]
+                               transition-all duration-300 cursor-pointer
+                               w-full bg-white flex justify-between items-center active">
+                                                                            <span>Inter</span>
+                                                                        </div>
+                                                                        <div class="absolute -top-px left-0 opacity-0
+                                w-full h-[calc(100%+2px)] bg-white abs-bg"></div>
+                                                                    </li>
+
+                                                                    <li class="bg-white w-full relative">
+                                                                        <div class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6]
+                                rounded-[5px] transition-all duration-300 cursor-pointer
+                                w-full bg-white flex justify-between items-center">
+                                                                            <span>Arial</span>
+                                                                        </div>
+                                                                        <div class="absolute -top-px left-0 opacity-0
+                                w-full h-[calc(100%+2px)] bg-white abs-bg"></div>
+                                                                    </li>
+
+                                                                    <li class="bg-white w-full relative">
+                                                                        <div class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6]
+                                rounded-[5px] transition-all duration-300 cursor-pointer
+                                w-full bg-white flex justify-between items-center">
+                                                                            <span>Georgia</span>
+                                                                        </div>
+                                                                        <div class="absolute -top-px left-0 opacity-0
+                                w-full h-[calc(100%+2px)] bg-white abs-bg"></div>
+                                                                    </li>
+
+                                                                    <li class="bg-white w-full relative">
+                                                                        <div class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6]
+                                rounded-[5px] transition-all duration-300 cursor-pointer
+                                w-full bg-white flex justify-between items-center">
+                                                                            <span>Times New Roman</span>
+                                                                        </div>
+                                                                        <div class="absolute -top-px left-0 opacity-0
+                                w-full h-[calc(100%+2px)] bg-white abs-bg"></div>
+                                                                    </li>
+
+                                                                    <li class="bg-white w-full relative">
+                                                                        <div class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6]
+                                rounded-[5px] transition-all duration-300 cursor-pointer
+                                w-full bg-white flex justify-between items-center">
+                                                                            <span>Calibri</span>
+                                                                        </div>
+                                                                        <div class="absolute -top-px left-0 opacity-0
+                                w-full h-[calc(100%+2px)] bg-white abs-bg"></div>
+                                                                    </li>
+
+                                                                    <li class="bg-white w-full relative">
+                                                                        <div class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6]
+                                rounded-[5px] transition-all duration-300 cursor-pointer
+                                w-full bg-white flex justify-between items-center">
+                                                                            <span>Montserrat</span>
+                                                                        </div>
+                                                                        <div class="absolute -top-px left-0 opacity-0
+                                w-full h-[calc(100%+2px)] bg-white abs-bg"></div>
+                                                                    </li>
+
+                                                                    <li class="bg-white w-full relative">
+                                                                        <div class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6]
+                                rounded-[5px] transition-all duration-300 cursor-pointer
+                                w-full bg-white flex justify-between items-center">
+                                                                            <span>Roboto</span>
+                                                                        </div>
+                                                                        <div class="absolute -top-px left-0 opacity-0
+                                w-full h-[calc(100%+2px)] bg-white abs-bg"></div>
+                                                                    </li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- font size -->
+                                                <div class="mt-5 pb-5 border-b border-[#E9E1E1]">
+                                                    <label class="block text-[15px] leading-[18px] text-[#8C8484] ">Font
+                                                        Size</label>
+                                                    <div class="custom-dropdown relative w-full max-w-[700px] pt-[5px]"
+                                                        data-style="design1">
+                                                        <div class="relative">
+                                                            <!-- Button -->
+                                                            <button type="button"
+                                                                class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] border border-[#E2DCDC]
+                                                                    text-Theme-Black p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
+                                                                <span class="selected-option">Small</span>
+
+                                                                <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200"
+                                                                    fill="none" stroke="currentColor"
+                                                                    viewBox="0 0 24 24">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width="2" d="M19 9l-7 7-7-7" />
+                                                                </svg>
+                                                            </button>
+
+                                                            <!-- Dropdown -->
+                                                            <div
+                                                                class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-10">
+
+                                                                <!-- List -->
+                                                                <ul
+                                                                    class="dropdown-list flex items-center flex-col gap-px w-full bg-[#F8F6F6] ">
+
+                                                                    <!-- FONT ITEM -->
+                                                                    <li class="bg-white w-full relative">
+                                                                        <div
+                                                                            class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center active">
+                                                                            <span>Small</span>
+                                                                        </div>
+                                                                        <div
+                                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                                        </div>
+                                                                    </li>
+
+                                                                    <li class="bg-white w-full relative">
+                                                                        <div
+                                                                            class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                                                            <span>Medium</span>
+                                                                        </div>
+                                                                        <div
+                                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                                        </div>
+                                                                    </li>
+
+                                                                    <li class="bg-white w-full relative">
+                                                                        <div
+                                                                            class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                                                            <span>Large</span>
+                                                                        </div>
+                                                                        <div
+                                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                                        </div>
+                                                                    </li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Colors -->
+                                                <div class="w-full py-5 border-b border-[#E9E1E1]">
+                                                    <p
+                                                        class="text-base font-medium leading-[22px] text-Theme-Black mb-2.5">
+                                                        Colors
+                                                    </p>
+                                                    <div class="grid grid-cols-2 gap-x-5 gap-y-2.5">
+                                                        <button
+                                                            class="border border-[#E2DCDC] group bg-[#F6F6F6] text-[15px] leading-[18px] text-[#8C8484] rounded-10px flex items-center gap-2.5 p-[5px] pr-2.5 transition-all duration-500 hover:text-Theme-Black hover:border-Theme-Green">
+                                                            <div class="flex items-center gap-2.5 w-full">
+                                                                <p
+                                                                    class="!w-[30px] aspect-square rounded-[5px] bg-Theme-Black">
+                                                                </p>
+                                                                <p class=" text-left">Form Fields</p>
+                                                            </div>
+                                                            <svg class="text-[#8C8484] transition-all group-hover:text-Theme-Black"
+                                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </button>
+                                                        <button
+                                                            class="border border-[#E2DCDC] group bg-[#F6F6F6] text-[15px] leading-[18px] text-[#8C8484] rounded-10px flex items-center gap-2.5 p-[5px] pr-2.5 transition-all duration-500 hover:text-Theme-Black hover:border-Theme-Green">
+                                                            <div class="flex items-center gap-2.5 w-full">
+                                                                <p
+                                                                    class="!w-[30px] aspect-square rounded-[5px] bg-white">
+                                                                </p>
+                                                                <p class=" text-left">Background</p>
+                                                            </div>
+                                                            <svg class="text-[#8C8484] transition-all group-hover:text-Theme-Black"
+                                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </button>
+                                                        <button
+                                                            class="border border-[#E2DCDC] group bg-[#F6F6F6] text-[15px] leading-[18px] text-[#8C8484] rounded-10px flex items-center gap-2.5 p-[5px] pr-2.5 transition-all duration-500 hover:text-Theme-Black hover:border-Theme-Green">
+                                                            <div class="flex items-center gap-2.5 w-full">
+                                                                <p
+                                                                    class="!w-[30px] aspect-square rounded-[5px] bg-Theme-Green">
+                                                                </p>
+                                                                <p class=" text-left">Answers</p>
+                                                            </div>
+                                                            <svg class="text-[#8C8484] transition-all group-hover:text-Theme-Black"
+                                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </button>
+                                                        <button
+                                                            class="border border-[#E2DCDC] group bg-[#F6F6F6] text-[15px] leading-[18px] text-[#8C8484] rounded-10px flex items-center gap-2.5 p-[5px] pr-2.5 transition-all duration-500 hover:text-Theme-Black hover:border-Theme-Green">
+                                                            <div class="flex items-center gap-2.5 w-full">
+                                                                <p
+                                                                    class="!w-[30px] aspect-square rounded-[5px] bg-Theme-Black">
+                                                                </p>
+                                                                <p class=" text-left">Answer Line</p>
+                                                            </div>
+                                                            <svg class="text-[#8C8484] transition-all group-hover:text-Theme-Black"
+                                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </button>
+                                                        <button
+                                                            class="border border-[#E2DCDC] group bg-[#F6F6F6] text-[15px] leading-[18px] text-[#8C8484] rounded-10px flex items-center gap-2.5 p-[5px] pr-2.5 transition-all duration-500 hover:text-Theme-Black hover:border-Theme-Green">
+                                                            <div class="flex items-center gap-2.5 w-full">
+                                                                <p
+                                                                    class="!w-[30px] aspect-square rounded-[5px] bg-Theme-Green">
+                                                                </p>
+                                                                <p class=" text-left">Buttons</p>
+                                                            </div>
+                                                            <svg class="text-[#8C8484] transition-all group-hover:text-Theme-Black"
+                                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </button>
+                                                        <button
+                                                            class="border border-[#E2DCDC] group bg-[#F6F6F6] text-[15px] leading-[18px] text-[#8C8484] rounded-10px flex items-center gap-2.5 p-[5px] pr-2.5 transition-all duration-500 hover:text-Theme-Black hover:border-Theme-Green">
+                                                            <div class="flex items-center gap-2.5 w-full">
+                                                                <p
+                                                                    class="!w-[30px] aspect-square rounded-[5px] bg-white">
+                                                                </p>
+                                                                <p class=" text-left">Button Text</p>
+                                                            </div>
+                                                            <svg class="text-[#8C8484] transition-all group-hover:text-Theme-Black"
+                                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- radio wrapper  -->
+                                                <div class="flex flex-col gap-5 w-full py-5">
+                                                    <div class="flex items-center justify-between">
+                                                        <p
+                                                            class="text-base font-medium leading-[22px] text-Theme-Black">
+                                                            Button Corner Radius</p>
+                                                        <div class="flex items-center gap-3">
+                                                            <label class="relative cursor-pointer">
+                                                                <input type="radio" name="Radius" value="sm" checked
+                                                                    class="peer sr-only" />
+
+                                                                <div class="flex h-[40px] w-[40px] items-center justify-center rounded-[6px] border border-[#E2DCDC] bg-white text-Theme-Black
+               transition-all peer-checked:border-Theme-Green peer-checked:bg-Theme-Green peer-checked:text-white">
+                                                                    <div class=" rounded-[2px] ">
+                                                                        <svg width="20" height="20" viewBox="0 0 20 20"
+                                                                            fill="none"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <rect x="2" y="6" width="16" height="8"
+                                                                                stroke="currentColor"
+                                                                                stroke-width="1.2" />
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            </label>
+                                                            <label class="relative cursor-pointer">
+                                                                <input type="radio" name="Radius" value="md"
+                                                                    class="peer sr-only" />
+
+                                                                <div class="flex h-[40px] w-[40px] items-center justify-center rounded-[6px] border border-[#E2DCDC] bg-white text-Theme-Black
+               transition-all peer-checked:border-Theme-Green peer-checked:bg-Theme-Green peer-checked:text-white">
+                                                                    <div class=" rounded-[2px] ">
+                                                                        <svg width="20" height="20" viewBox="0 0 20 20"
+                                                                            fill="none"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <rect x="2" y="6" width="16" height="8"
+                                                                                rx="2" stroke="currentcolor"
+                                                                                stroke-width="1.2" />
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            </label>
+                                                            <label class="relative cursor-pointer">
+                                                                <input type="radio" name="Radius" value="lg"
+                                                                    class="peer sr-only" />
+
+                                                                <div class="flex h-[40px] w-[40px] items-center justify-center rounded-[6px] border border-[#E2DCDC] bg-white text-Theme-Black
+               transition-all peer-checked:border-Theme-Green peer-checked:bg-Theme-Green peer-checked:text-white">
+                                                                    <div class=" rounded-[2px] ">
+                                                                        <svg width="20" height="20" viewBox="0 0 20 20"
+                                                                            fill="none"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <rect x="2" y="6" width="16" height="8"
+                                                                                rx="4" stroke="currentcolor"
+                                                                                stroke-width="1.2" />
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center justify-between">
+                                                        <p
+                                                            class="text-base font-medium leading-[22px] text-Theme-Black">
+                                                            Form Fields Alignment</p>
+                                                        <div class="flex items-center gap-3">
+                                                            <label class="relative cursor-pointer">
+                                                                <input type="radio" name="Alignment" value="left"
+                                                                    checked class="peer sr-only" />
+
+                                                                <div class="flex h-[40px] w-[40px] items-center justify-center rounded-[6px] border border-[#E2DCDC] bg-white text-Theme-Black
+               transition-all peer-checked:border-Theme-Green peer-checked:bg-Theme-Green peer-checked:text-white">
+                                                                    <div class=" rounded-[2px] ">
+                                                                        <svg width="20" height="20" viewBox="0 0 20 20"
+                                                                            fill="none"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M3 15H17" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                            <path d="M3 10H9" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                            <path d="M3 5L17 5" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            </label>
+                                                            <label class="relative cursor-pointer">
+                                                                <input type="radio" name="Alignment" value="center"
+                                                                    class="peer sr-only" />
+
+                                                                <div class="flex h-[40px] w-[40px] items-center justify-center rounded-[6px] border border-[#E2DCDC] bg-white text-Theme-Black
+               transition-all peer-checked:border-Theme-Green peer-checked:bg-Theme-Green peer-checked:text-white">
+                                                                    <div class=" rounded-[2px] ">
+                                                                        <svg width="20" height="20" viewBox="0 0 20 20"
+                                                                            fill="none"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M3 15H17" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                            <path d="M7 10H13" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                            <path d="M3 5L17 5" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                        </svg>
+
+                                                                    </div>
+                                                                </div>
+                                                            </label>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center justify-between">
+                                                        <p
+                                                            class="text-base font-medium leading-[22px] text-Theme-Black">
+                                                            Welcome & Ending Screen Alignment</p>
+                                                        <div class="flex items-center gap-3">
+                                                            <label class="relative cursor-pointer">
+                                                                <input type="radio" name="Ending-Screen" value="left"
+                                                                    checked class="peer sr-only" />
+
+                                                                <div class="flex h-[40px] w-[40px] items-center justify-center rounded-[6px] border border-[#E2DCDC] bg-white text-Theme-Black
+               transition-all peer-checked:border-Theme-Green peer-checked:bg-Theme-Green peer-checked:text-white">
+                                                                    <div class=" rounded-[2px] ">
+                                                                        <svg width="20" height="20" viewBox="0 0 20 20"
+                                                                            fill="none"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M3 15H17" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                            <path d="M3 10H9" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                            <path d="M3 5L17 5" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            </label>
+                                                            <label class="relative cursor-pointer">
+                                                                <input type="radio" name="Ending-Screen" value="center"
+                                                                    class="peer sr-only" />
+
+                                                                <div class="flex h-[40px] w-[40px] items-center justify-center rounded-[6px] border border-[#E2DCDC] bg-white text-Theme-Black
+               transition-all peer-checked:border-Theme-Green peer-checked:bg-Theme-Green peer-checked:text-white">
+                                                                    <div class=" rounded-[2px] ">
+                                                                        <svg width="20" height="20" viewBox="0 0 20 20"
+                                                                            fill="none"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M3 15H17" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                            <path d="M7 10H13" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                            <path d="M3 5L17 5" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                        </svg>
+
+                                                                    </div>
+                                                                </div>
+                                                            </label>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- theme name  -->
+                                            <div class="p-5 border-t border-[#E9E1E1]">
+                                                <label class="block text-[15px] leading-[18px] text-[#8C8484] ">
+                                                    Theme Name
+                                                </label>
+                                                <input type="email" name="email" id="email" class="mt-[5px] w-full bg-white rounded-10px border border-[#E2DCDC] py-[10px] px-[15px]  text-[15px] leading-[18px] text-Theme-Black placeholder:text-[#8C8484] outline-0 transition-all duration-500
+                    focus:outline-0 hover:border-[#EDE9E9] focus:border-Theme-Green hover:bg-[#EDE9E9] focus:bg-white"
+                                                    placeholder="Email Address" required="">
+                                            </div>
+                                        </div>
+
+                                        <!-- ===================== -->
+                                        <!-- LOGO TAB -->
+                                        <!-- ===================== -->
+                                        <div x-show="themeTab === 'logo'" x-transition>
+
+                                            <div class="space-y-4 text-sm">
+
+                                                <!-- Logo Preview -->
+                                                <div
+                                                    class="flex items-center justify-between bg-[#F8F6F6] border rounded-lg p-3">
+                                                    <div class="flex items-center gap-2">
+                                                        <div
+                                                            class="w-8 h-8 bg-Theme-Green rounded-full flex items-center justify-center text-white text-xs">
+                                                            K
+                                                        </div>
+                                                        <span class="font-medium">kiwiform</span>
+                                                    </div>
+
+                                                    <div class="flex gap-2">
+                                                        <button class="text-[#8C8484]">⤢</button>
+                                                        <button class="text-[#8C8484]">🗑</button>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Alt Text -->
+                                                <div>
+                                                    <label class="block text-xs text-[#8C8484] mb-1">Logo Alt
+                                                        Text</label>
+                                                    <input type="text" placeholder="Write Alt Text for logo..."
+                                                        class="w-full bg-[#F8F6F6] border rounded-lg px-3 py-2" />
+                                                </div>
+
+                                                <!-- Logo Size -->
+                                                <div>
+                                                    <label class="block text-xs text-[#8C8484] mb-1">Logo
+                                                        Size</label>
+                                                    <select class="w-full bg-[#F8F6F6] border rounded-lg px-3 py-2">
+                                                        <option>Small</option>
+                                                        <option selected>Medium</option>
+                                                        <option>Large</option>
+                                                    </select>
+                                                </div>
+
+                                                <!-- Alignment -->
+                                                <div>
+                                                    <label class="block text-xs text-[#8C8484] mb-2">Logo
+                                                        Alignment</label>
+                                                    <div class="flex gap-2">
+                                                        <button
+                                                            class="px-3 py-2 border rounded bg-Theme-Green text-white">≡</button>
+                                                        <button class="px-3 py-2 border rounded">≣</button>
+                                                        <button class="px-3 py-2 border rounded">≡</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- ===================== -->
+                                        <!-- BACKGROUND IMAGE TAB -->
+                                        <!-- ===================== -->
+                                        <div x-show="themeTab === 'background'" x-transition>
+
+                                            <div class="space-y-4 text-sm">
+
+                                                <!-- Image Preview -->
+                                                <div class="relative overflow-hidden rounded-lg border">
+                                                    <img src="https://images.unsplash.com/photo-1544776523-e3d22e7e35d3"
+                                                        class="w-full h-[180px] object-cover" />
+
+                                                    <div class="absolute bottom-2 right-2 flex gap-2">
+                                                        <button class="bg-white p-1 rounded">⤢</button>
+                                                        <button class="bg-white p-1 rounded">🗑</button>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Brightness -->
+                                                <div>
+                                                    <label class="block text-xs text-[#8C8484] mb-2">Brightness</label>
+                                                    <input type="range" class="w-full">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- FOOTER -->
+                                <div class="flex items-center justify-between gap-2.5 px-[5px] py-[5px] pt-2.5 ">
+                                    <button
+                                        class="py-2.5 w-full text-center rounded-10px bg-[#E2DCDC] text-theme-Black text-sm font-medium leading-5">
+                                        Restore Previous
+                                    </button>
+                                    <button class="btn-kiwi-green-icon-text w-full justify-center leading-5">
+                                        Save Theme
+                                    </button>
+                                </div>
 
                             </div>
                         </div>
+
                     </div>
 
 
@@ -2125,9 +3371,12 @@
                     <input type="file" accept="image/*" class="hidden" />
                     </label>
 
-                    <h5 class="mt-5 text-sm font-medium leading-5 text-Theme-Black mb-2.5 text-center">Upload an image
+                    <h5 class="mt-5 text-sm font-medium leading-5 text-Theme-Black mb-2.5 text-center">
+                        Upload an
+                        image
                         here</h5>
-                    <p class="text-xs leading-[14px] text-[#8C8484] text-center">JPG, PNG or GIF • 5MB Max</p>
+                    <p class="text-xs leading-[14px] text-[#8C8484] text-center">JPG, PNG or GIF • 5MB Max
+                    </p>
                 </div>
 
                 <div class="pb-[60px] pt-10">
@@ -2154,7 +3403,9 @@
                         <input type="file" accept="video/*" class="hidden" />
                     </label>
 
-                    <h5 class="mt-5 text-sm font-medium leading-5 text-Theme-Black mb-2.5 text-center">Upload a video
+                    <h5 class="mt-5 text-sm font-medium leading-5 text-Theme-Black mb-2.5 text-center">
+                        Upload a
+                        video
                         here</h5>
                     <p class="text-xs leading-[14px] text-[#8C8484] text-center">Max 5 mins • 500MB Max</p>
                 </div>
