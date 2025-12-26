@@ -15,6 +15,50 @@
         .dropdown-item.active {
             background-color: #F8F6F6;
         }
+
+        /* =======Range Slider CSS =======*/
+        .range-wrap {
+            width: 100%;
+            height: 8px;
+            background: #EDE9E9;
+            border-radius: 10px;
+            padding: 2px;
+            /* creates 4px inner track */
+            position: relative;
+        }
+
+        /* Real input covers the inner area */
+        .range {
+            position: absolute;
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            /* inner track height */
+            background: transparent;
+            border-radius: 10px;
+            outline: none;
+
+            /* inner filled part fully rounded */
+            background-image: linear-gradient(#8C8484, #8C8484);
+            background-size: var(--val, 0%) 100%;
+            background-repeat: no-repeat;
+            background-position: left center;
+            width: calc(100% - 4px);
+        }
+
+        /* hollow thumb */
+        .range::-webkit-slider-thumb {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border: 4px solid #8C8484;
+            border-radius: 50%;
+            cursor: pointer;
+
+            /* align thumb */
+            margin-top: -2px;
+        }
     </style>
 </head>
 
@@ -2463,53 +2507,220 @@
                                         <!-- ===================== -->
                                         <div x-show="themeTab === 'logo'" x-transition>
 
-                                            <div class="space-y-4 text-sm">
-
-                                                <!-- Logo Preview -->
+                                            <div class="text-sm p-5">
                                                 <div
-                                                    class="flex items-center justify-between bg-[#F8F6F6] border rounded-lg p-3">
-                                                    <div class="flex items-center gap-2">
-                                                        <div
-                                                            class="w-8 h-8 bg-Theme-Green rounded-full flex items-center justify-center text-white text-xs">
-                                                            K
-                                                        </div>
-                                                        <span class="font-medium">kiwiform</span>
-                                                    </div>
+                                                    class="flex items-center justify-between pb-5 border-b border-[#E9E1E1]">
+                                                    <img src="assets/images/logo-img-popup.png" alt="logo image"
+                                                        class="w-full max-w-[240px] h-auto">
 
-                                                    <div class="flex gap-2">
-                                                        <button class="text-[#8C8484]">⤢</button>
-                                                        <button class="text-[#8C8484]">🗑</button>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Alt Text -->
-                                                <div>
-                                                    <label class="block text-xs text-[#8C8484] mb-1">Logo Alt
-                                                        Text</label>
-                                                    <input type="text" placeholder="Write Alt Text for logo..."
-                                                        class="w-full bg-[#F8F6F6] border rounded-lg px-3 py-2" />
-                                                </div>
-
-                                                <!-- Logo Size -->
-                                                <div>
-                                                    <label class="block text-xs text-[#8C8484] mb-1">Logo
-                                                        Size</label>
-                                                    <select class="w-full bg-[#F8F6F6] border rounded-lg px-3 py-2">
-                                                        <option>Small</option>
-                                                        <option selected>Medium</option>
-                                                        <option>Large</option>
-                                                    </select>
-                                                </div>
-
-                                                <!-- Alignment -->
-                                                <div>
-                                                    <label class="block text-xs text-[#8C8484] mb-2">Logo
-                                                        Alignment</label>
-                                                    <div class="flex gap-2">
+                                                    <div class="flex items-center gap-5">
                                                         <button
-                                                            class="px-3 py-2 border rounded bg-Theme-Green text-white">≡</button>
-                                                        <button class="px-3 py-2 border rounded">≣</button>
-                                                        <button class="px-3 py-2 border rounded">≡</button>
+                                                            class="w-[30px] aspect-square flex items-center justify-center">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M8.39844 13.1875C8.39844 13.8853 8.39844 14.2342 8.48456 14.5181C8.67846 15.1573 9.17867 15.6575 9.81787 15.8514C10.1018 15.9375 10.4507 15.9375 11.1484 15.9375H17.6556"
+                                                                    stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M15.9375 18L17.9946 15.9436L15.9375 13.875"
+                                                                    stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path
+                                                                    d="M18 11.8125C18 11.1147 18 10.7658 17.9139 10.4819C17.72 9.84273 17.2198 9.34252 16.5806 9.14862C16.2967 9.0625 15.9478 9.0625 15.25 9.0625L8.74286 9.0625"
+                                                                    stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M10.4609 7L8.4038 9.05641L10.4609 11.125"
+                                                                    stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path
+                                                                    d="M18 2L6 2C4.11438 2 3.17157 2 2.58579 2.58579C2 3.17157 2 4.11438 2 6L2 18"
+                                                                    stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" />
+                                                            </svg>
+                                                        </button>
+                                                        <button
+                                                            class="w-[30px] aspect-square flex items-center justify-center">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M4 5H16V14.5C16 16.1499 16 16.9749 15.4874 17.4874C14.9749 18 14.1499 18 12.5 18H7.5C5.85008 18 5.02513 18 4.51256 17.4874C4 16.9749 4 16.1499 4 14.5V5Z"
+                                                                    stroke="#000A06" stroke-width="1.2" />
+                                                                <path d="M2 5H18" stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path
+                                                                    d="M6 3.75C6 2.92504 6 2.51256 6.25628 2.25628C6.51256 2 6.92504 2 7.75 2H12.25C13.075 2 13.4874 2 13.7437 2.25628C14 2.51256 14 2.92504 14 3.75V5H6V3.75Z"
+                                                                    stroke="#000A06" stroke-width="1.2" />
+                                                                <path d="M8 9V14" stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M12 9V14" stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="pt-5 flex flex-col gap-5">
+                                                    <div class="block">
+                                                        <label class="block text-[15px] leading-[18px] text-[#8C8484] ">
+                                                            Logo Alt Text
+                                                        </label>
+                                                        <textarea name="Logo-Alt-Text" id="Logo-Alt-Text"
+                                                            placeholder="Write Alt Text for logo..."
+                                                            class="mt-[5px] w-full min-h-[80px] bg-transparent rounded-10px border border-[#E2DCDC] py-[10px] px-[15px]  text-[15px] leading-[18px] text-Theme-Black placeholder:text-[#8C8484] outline-0 transition-all duration-500
+                    focus:outline-0 hover:border-[#EDE9E9] focus:border-Theme-Green hover:bg-[#EDE9E9] focus:bg-white"></textarea>
+                                                    </div>
+                                                    <!-- Logo Size -->
+                                                    <div class="block">
+                                                        <label class="block text-[15px] leading-[18px] text-[#8C8484] ">
+                                                            Logo Size
+                                                        </label>
+                                                        <div class="custom-dropdown relative w-full max-w-[700px] pt-[5px]"
+                                                            data-style="design1">
+                                                            <div class="relative">
+                                                                <!-- Button -->
+                                                                <button type="button"
+                                                                    class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] border border-[#E2DCDC]
+                                                                    text-Theme-Black p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
+                                                                    <span class="selected-option">Medium</span>
+
+                                                                    <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200"
+                                                                        fill="none" stroke="currentColor"
+                                                                        viewBox="0 0 24 24">
+                                                                        <path stroke-linecap="round"
+                                                                            stroke-linejoin="round" stroke-width="2"
+                                                                            d="M19 9l-7 7-7-7" />
+                                                                    </svg>
+                                                                </button>
+
+                                                                <!-- Dropdown -->
+                                                                <div
+                                                                    class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-10">
+
+                                                                    <!-- List -->
+                                                                    <ul
+                                                                        class="dropdown-list flex items-center flex-col gap-px w-full bg-[#F8F6F6] ">
+
+                                                                        <!-- FONT ITEM -->
+                                                                        <li class="bg-white w-full relative">
+                                                                            <div
+                                                                                class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center ">
+                                                                                <span>Small</span>
+                                                                            </div>
+                                                                            <div
+                                                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                                            </div>
+                                                                        </li>
+
+                                                                        <li class="bg-white w-full relative">
+                                                                            <div
+                                                                                class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center active">
+                                                                                <span>Medium</span>
+                                                                            </div>
+                                                                            <div
+                                                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                                            </div>
+                                                                        </li>
+
+                                                                        <li class="bg-white w-full relative">
+                                                                            <div
+                                                                                class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                                                                <span>Large</span>
+                                                                            </div>
+                                                                            <div
+                                                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                                            </div>
+                                                                        </li>
+
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Logo Alignment -->
+                                                    <div class="flex items-center justify-between">
+                                                        <p
+                                                            class="text-base font-medium leading-[22px] text-Theme-Black">
+                                                            Logo Alignment</p>
+                                                        <div class="flex items-center gap-3">
+                                                            <label class="relative cursor-pointer">
+                                                                <input type="radio" name="Logo-Alignment" value="left"
+                                                                    checked class="peer sr-only" />
+
+                                                                <div class="flex h-[40px] w-[40px] items-center justify-center rounded-[6px] border border-[#E2DCDC] bg-white text-Theme-Black
+               transition-all peer-checked:border-Theme-Green peer-checked:bg-Theme-Green peer-checked:text-white">
+                                                                    <div class=" rounded-[2px] ">
+                                                                        <svg width="20" height="20" viewBox="0 0 20 20"
+                                                                            fill="none"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M3 15H17" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                            <path d="M3 10H9" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                            <path d="M3 5L17 5" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            </label>
+                                                            <label class="relative cursor-pointer">
+                                                                <input type="radio" name="Logo-Alignment" value="center"
+                                                                    class="peer sr-only" />
+
+                                                                <div class="flex h-[40px] w-[40px] items-center justify-center rounded-[6px] border border-[#E2DCDC] bg-white text-Theme-Black
+               transition-all peer-checked:border-Theme-Green peer-checked:bg-Theme-Green peer-checked:text-white">
+                                                                    <div class=" rounded-[2px] ">
+                                                                        <svg width="20" height="20" viewBox="0 0 20 20"
+                                                                            fill="none"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M3 15H17" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                            <path d="M7 10H13" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                            <path d="M3 5L17 5" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            </label>
+                                                            <label class="relative cursor-pointer">
+                                                                <input type="radio" name="Logo-Alignment" value="right"
+                                                                    class="peer sr-only" />
+
+                                                                <div class="flex h-[40px] w-[40px] items-center justify-center rounded-[6px] border border-[#E2DCDC] bg-white text-Theme-Black
+               transition-all peer-checked:border-Theme-Green peer-checked:bg-Theme-Green peer-checked:text-white">
+                                                                    <div class=" rounded-[2px] ">
+                                                                        <svg width="20" height="20" viewBox="0 0 20 20"
+                                                                            fill="none"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M3 15H17" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                            <path d="M11 10H17" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                            <path d="M3 5L17 5" stroke="currentcolor"
+                                                                                stroke-width="1.2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -2520,25 +2731,99 @@
                                         <!-- ===================== -->
                                         <div x-show="themeTab === 'background'" x-transition>
 
-                                            <div class="space-y-4 text-sm">
-
-                                                <!-- Image Preview -->
-                                                <div class="relative overflow-hidden rounded-lg border">
-                                                    <img src="https://images.unsplash.com/photo-1544776523-e3d22e7e35d3"
-                                                        class="w-full h-[180px] object-cover" />
-
-                                                    <div class="absolute bottom-2 right-2 flex gap-2">
-                                                        <button class="bg-white p-1 rounded">⤢</button>
-                                                        <button class="bg-white p-1 rounded">🗑</button>
+                                            <div class="text-sm p-5">
+                                                <div class="w-full pb-5 border-b border-[#E9E1E1]">
+                                                    <img src="assets/images/bg-popup-img.png"
+                                                        alt="form background image" class="w-full h-auto">
+                                                    <div class="flex items-center justify-center gap-5 pt-5">
+                                                        <button
+                                                            class="w-[30px] aspect-square flex items-center justify-center">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M8.39844 13.1875C8.39844 13.8853 8.39844 14.2342 8.48456 14.5181C8.67846 15.1573 9.17867 15.6575 9.81787 15.8514C10.1018 15.9375 10.4507 15.9375 11.1484 15.9375H17.6556"
+                                                                    stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M15.9375 18L17.9946 15.9436L15.9375 13.875"
+                                                                    stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path
+                                                                    d="M18 11.8125C18 11.1147 18 10.7658 17.9139 10.4819C17.72 9.84273 17.2198 9.34252 16.5806 9.14862C16.2967 9.0625 15.9478 9.0625 15.25 9.0625L8.74286 9.0625"
+                                                                    stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M10.4609 7L8.4038 9.05641L10.4609 11.125"
+                                                                    stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path
+                                                                    d="M18 2L6 2C4.11438 2 3.17157 2 2.58579 2.58579C2 3.17157 2 4.11438 2 6L2 18"
+                                                                    stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" />
+                                                            </svg>
+                                                        </button>
+                                                        <button
+                                                            class="w-[30px] aspect-square flex items-center justify-center">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M5.20312 2V10.8C5.20312 12.6856 5.20312 13.6284 5.78891 14.2142C6.3747 14.8 7.31751 14.8 9.20313 14.8H18.0031"
+                                                                    stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" />
+                                                                <path
+                                                                    d="M14.2047 18C14.2047 18.3314 14.4733 18.6 14.8047 18.6C15.1361 18.6 15.4047 18.3314 15.4047 18L14.8047 18L14.2047 18ZM2.00469 4.6C1.67332 4.6 1.40469 4.86863 1.40469 5.2C1.40469 5.53137 1.67332 5.8 2.00469 5.8L2.00469 5.2L2.00469 4.6ZM8.40469 4.6C8.07332 4.6 7.80469 4.86863 7.80469 5.2C7.80469 5.53137 8.07332 5.8 8.40469 5.8L8.40469 5.2L8.40469 4.6ZM14.2047 11.6C14.2047 11.9314 14.4733 12.2 14.8047 12.2C15.1361 12.2 15.4047 11.9314 15.4047 11.6L14.8047 11.6L14.2047 11.6ZM13.7127 5.41799L13.4403 5.95259L13.7127 5.41799ZM2.00469 5.2L2.00469 5.8L5.20469 5.8L5.20469 5.2L5.20469 4.6L2.00469 4.6L2.00469 5.2ZM8.40469 5.2L8.40469 5.8L10.0047 5.8L10.0047 5.2L10.0047 4.6L8.40469 4.6L8.40469 5.2ZM10.0047 5.2L10.0047 5.8L11.6047 5.8L11.6047 5.2L11.6047 4.6L10.0047 4.6L10.0047 5.2ZM14.8047 8.4L14.2047 8.4L14.2047 11.6L14.8047 11.6L15.4047 11.6L15.4047 8.4L14.8047 8.4ZM14.8047 14.8L14.2047 14.8L14.2047 18L14.8047 18L15.4047 18L15.4047 14.8L14.8047 14.8ZM11.6047 5.2L11.6047 5.8C12.1746 5.8 12.566 5.80047 12.8694 5.82526C13.1658 5.84947 13.325 5.89388 13.4403 5.95259L13.7127 5.41799L13.9851 4.88338C13.6725 4.72411 13.3378 4.65952 12.9671 4.62924C12.6035 4.59953 12.1548 4.6 11.6047 4.6L11.6047 5.2ZM14.8047 8.4L15.4047 8.4C15.4047 7.84985 15.4052 7.40115 15.3754 7.03754C15.3452 6.66694 15.2806 6.33222 15.1213 6.01963L14.5867 6.29202L14.0521 6.56441C14.1108 6.67964 14.1552 6.83886 14.1794 7.13526C14.2042 7.43867 14.2047 7.83005 14.2047 8.4L14.8047 8.4ZM13.7127 5.41799L13.4403 5.95259C13.7037 6.08681 13.9179 6.30099 14.0521 6.56441L14.5867 6.29202L15.1213 6.01963C14.872 5.5304 14.4743 5.13265 13.9851 4.88338L13.7127 5.41799Z"
+                                                                    fill="#000A06" />
+                                                            </svg>
+                                                        </button>
+                                                        <button
+                                                            class="w-[30px] aspect-square flex items-center justify-center">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M4 5H16V14.5C16 16.1499 16 16.9749 15.4874 17.4874C14.9749 18 14.1499 18 12.5 18H7.5C5.85008 18 5.02513 18 4.51256 17.4874C4 16.9749 4 16.1499 4 14.5V5Z"
+                                                                    stroke="#000A06" stroke-width="1.2" />
+                                                                <path d="M2 5H18" stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path
+                                                                    d="M6 3.75C6 2.92504 6 2.51256 6.25628 2.25628C6.51256 2 6.92504 2 7.75 2H12.25C13.075 2 13.4874 2 13.7437 2.25628C14 2.51256 14 2.92504 14 3.75V5H6V3.75Z"
+                                                                    stroke="#000A06" stroke-width="1.2" />
+                                                                <path d="M8 9V14" stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M12 9V14" stroke="#000A06" stroke-width="1.2"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                        </button>
                                                     </div>
                                                 </div>
+                                                <div x-data="{ 
+                                                val: 0,
+                                                min: -100, 
+                                                max: 100,
+                                                get percent() {
+                                                    return ((this.val - this.min) / (this.max - this.min)) * 100;
+                                                }
+                                            }" class="w-full pt-5">
+                                                    <!-- Label + Value -->
+                                                    <div class="flex items-center justify-between mb-[15px]">
+                                                        <label
+                                                            class="text-xs font-medium tracking-[1.2px] uppercase text-[#8C8484]">
+                                                            BRIGHTNESS
+                                                        </label>
 
-                                                <!-- Brightness -->
-                                                <div>
-                                                    <label class="block text-xs text-[#8C8484] mb-2">Brightness</label>
-                                                    <input type="range" class="w-full">
+                                                        <!-- Value Box -->
+                                                        <span
+                                                            class="range-value w-[45px] h-[30px] bg-Theme-Gray rounded-10px flex items-center justify-center font-medium text-sm text-Theme-Black"
+                                                            x-text="val">0</span>
+                                                    </div>
+
+                                                    <!-- Outer bar (8px height) -->
+                                                    <div
+                                                        class="range-wrap w-full h-2 bg-Theme-Gray rounded-[10px] p-[2px]">
+
+                                                        <!-- Inner range (4px fill) -->
+                                                        <input type="range" x-model="val" :min="min" :max="max"
+                                                            class="range w-full" :style="`--val:${percent}%`" min="-100"
+                                                            max="100" style="--val:50%">
+                                                    </div>
                                                 </div>
-
                                             </div>
                                         </div>
 
