@@ -12,6 +12,19 @@
     <link rel="stylesheet" href="assets/css/output.css">
     <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
     <style>
+        .version-list.active {
+            border-color: #E2DCDC !important;
+            background-color: #f8f6f6;
+        }
+
+        .version-list.active>div {
+            border-color: transparent !important;
+        }
+
+        .version-list.active>div span {
+            opacity: 1 !important;
+        }
+
         .dropdown-item.active {
             background-color: #F8F6F6;
         }
@@ -938,7 +951,7 @@
                             </div>
                         </label>
                         <div class="flex items-center justify-end gap-2.5">
-                            <button class="btn-white-square">
+                            <button class="btn-white-square" data-modal-target="Accessibility">
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_4738_1721)">
@@ -961,7 +974,7 @@
                                 </svg>
 
                             </button>
-                            <button class="btn-white-square">
+                            <button class="btn-white-square" data-modal-target="Language-&-Translations">
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_4738_1713)">
@@ -986,7 +999,7 @@
                                 </svg>
 
                             </button>
-                            <button class="btn-white-square">
+                            <button class="btn-white-square" data-modal-target="version-history">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                                     fill="none">
                                     <g clip-path="url(#clip0_4738_1707)">
@@ -1008,7 +1021,7 @@
                                     </defs>
                                 </svg>
                             </button>
-                            <button class="btn-white-square">
+                            <button class="btn-white-square" data-modal-target="setting">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                                     fill="none">
                                     <path
@@ -4046,6 +4059,677 @@
     </div>
 
     </div>
+
+    <!-- Accessibility -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[956px]"
+        id="Accessibility">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Accessibility Overview
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col p-5 gap-5 border border-[#E9E1E1]">
+            <p class="text-base leading-[200%] text-Theme-Black ">
+                Kiwiform helps you build accessible forms with an Accessibility Checker that flags issues like low
+                contrast, missing alt text, and inaccessible embeds. Fix issues directly as you edit to meet
+                accessibility best practices.
+            </p>
+
+            <div x-data="{ open: 0 }" class="w-full flex flex-col gap-[15px]">
+
+                <!-- ================= Color ================= -->
+                <div class="border border-[#E9E1E1] rounded-xl bg-white overflow-hidden">
+
+                    <button @click="open = open === 1 ? null : 1"
+                        class="w-full flex justify-between items-center p-[15px] text-left">
+
+                        <span class="text-base leading-[140%] font-medium text-Theme-Black">Color</span>
+
+                        <div class="flex items-center gap-[15px]">
+                            <span
+                                class="py-[3px] px-2.5 rounded-full bg-[#E8F5B7] flex items-center gap-1.5 text-xs leading-[130%] text-[#6A8700]">
+                                <svg width="11" height="8" viewBox="0 0 11 8" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.601562 3.59961L3.60156 6.59961L9.60156 0.599609" stroke="#6A8700"
+                                        stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                All Set
+                            </span>
+
+                            <svg :class="open === 1 ? 'rotate-180 text-Theme-Black' : 'text-[#8C8484]'"
+                                class="transition-transform " width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </button>
+
+                    <div x-show="open === 1" x-collapse class="p-[15px] border-t border-[#E9E1E1]">
+                        <p class="text-[15px] font-medium leading-[200%] text-Theme-Black mb-[15px]">
+                            High contrast between the text, buttons, and background is essential for readability.
+                            Aim for a contrast ratio of 3:1 for graphics and large text, and 4.5:1 for standard-sized
+                            text.
+                        </p>
+
+                        <ul class="flex flex-col gap-2.5 w-full">
+                            <li class="flex items-center gap-2.5 ">
+                                <span
+                                    class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#E8F5B7]">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4 8.5L7.5 12L14.5 5" stroke="#6A8700" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                                <p class="text-[15px] leading-[120%] text-Theme-Black">
+                                    <span class="font-medium">Form Fields</span> have good color contrast with the <span
+                                        class="font-medium"> background.</span>
+                                </p>
+                            </li>
+                            <li class="flex items-center gap-2.5 ">
+                                <span
+                                    class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#E8F5B7]">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4 8.5L7.5 12L14.5 5" stroke="#6A8700" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                                <p class="text-[15px] leading-[120%] text-Theme-Black">
+                                    <span class="font-medium">Answers</span> have good color contrast with the <span
+                                        class="font-medium"> background.</span>
+                                </p>
+                            </li>
+                            <li class="flex items-center gap-2.5 ">
+                                <span
+                                    class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#E8F5B7]">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4 8.5L7.5 12L14.5 5" stroke="#6A8700" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                                <p class="text-[15px] leading-[120%] text-Theme-Black">
+                                    <span class="font-medium">Buttons</span> have good color contrast with the <span
+                                        class="font-medium"> background.</span>
+                                </p>
+                            </li>
+                            <li class="flex items-center gap-2.5 ">
+                                <span
+                                    class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#E8F5B7]">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4 8.5L7.5 12L14.5 5" stroke="#6A8700" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                                <p class="text-[15px] leading-[120%] text-Theme-Black">
+                                    <span class="font-medium">Button text</span> have good color contrast with the <span
+                                        class="font-medium"> background.</span>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ================= Alt texts ================= -->
+                <div class="border border-[#E9E1E1] rounded-xl bg-white overflow-hidden">
+
+                    <button @click="open = open === 2 ? null : 2"
+                        class="w-full flex justify-between items-center p-[15px] text-left">
+
+                        <span class="text-base leading-[140%] font-medium text-Theme-Black">Alt texts</span>
+
+                        <div class="flex items-center gap-[15px]">
+                            <span
+                                class="py-[3px] px-2.5 rounded-full bg-[#E8F5B7] flex items-center gap-1.5 text-xs leading-[130%] text-[#6A8700]">
+                                <svg width="11" height="8" viewBox="0 0 11 8" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.601562 3.59961L3.60156 6.59961L9.60156 0.599609" stroke="#6A8700"
+                                        stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                All Set
+                            </span>
+
+                            <svg :class="open === 2 ? 'rotate-180 text-Theme-Black' : 'text-[#8C8484]'"
+                                class="transition-transform " width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
+                        </div>
+                    </button>
+
+                    <div x-show="open === 2" x-collapse class="p-[15px] border-t border-[#E9E1E1]">
+                        <p class="text-[15px] font-medium leading-[200%] text-Theme-Black mb-[15px]">
+                            Alt text explains images and other non-text content for users with visual impairments.
+                        </p>
+
+                        <ul class="flex flex-col gap-2.5 w-full">
+                            <li class="flex items-center gap-2.5 ">
+                                <span
+                                    class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#E8F5B7]">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4 8.5L7.5 12L14.5 5" stroke="#6A8700" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                                <p class="text-[15px] leading-[120%] text-Theme-Black">
+                                    <span class="font-medium text-[#6A8700]">Form Fields 5:</span>Picture Selection
+                                    images include alt text
+                                </p>
+                            </li>
+                            <li class="flex items-center gap-2.5 ">
+                                <span
+                                    class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#E8F5B7]">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4 8.5L7.5 12L14.5 5" stroke="#6A8700" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                                <p class="text-[15px] leading-[120%] text-Theme-Black">
+                                    <span class="font-medium  text-[#6A8700]">Ending:</span> Image include alt text.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="border border-[#E9E1E1] rounded-xl bg-white overflow-hidden">
+
+                    <button @click="open = open === 3 ? null : 3"
+                        class="w-full flex justify-between items-center p-[15px] text-left">
+
+                        <span class="text-base leading-[140%] font-medium text-Theme-Black">Content</span>
+
+                        <div class="flex items-center gap-[15px]">
+                            <div class="flex items-center gap-[5px]">
+                                <span
+                                    class="py-[3px] px-2.5 rounded-full bg-[#FFECEB] flex items-center gap-1.5 text-xs leading-[130%] text-[#DC3027]">2</span>
+                                <span
+                                    class="py-[3px] px-2.5 rounded-full bg-[#FFECEB] flex items-center gap-1.5 text-xs leading-[130%] text-[#DC3027]">
+                                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M2.81899 3.66961C4.00901 1.55654 4.60402 0.5 5.5 0.5C6.39598 0.5 6.99099 1.55654 8.18101 3.66961L9.03579 5.1874C10.2098 7.27212 10.7969 8.31447 10.3506 9.09474C9.90435 9.875 8.72116 9.875 6.35478 9.875H4.64522C2.27884 9.875 1.09565 9.875 0.649392 9.09474C0.20313 8.31447 0.790155 7.27212 1.96421 5.1874L2.81899 3.66961Z"
+                                            stroke="#DC3027" />
+                                        <path d="M5.5 5.6875L5.5 7.6875" stroke="#DC3027" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M5.5 3.9375L5.49495 3.9375" stroke="#DC3027" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    Issues Found
+                                </span>
+                            </div>
+                            <svg :class="open === 3 ? 'rotate-180 text-Theme-Black' : 'text-[#8C8484]'"
+                                class="transition-transform " width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </button>
+
+                    <div x-show="open === 3" x-collapse class="p-[15px] border-t border-[#E9E1E1]">
+                        <p class="font-medium text-[15px] leading-[120%] text-Theme-Black mb-[15px]">
+                            Make your content accessible and understandable to all users.
+                        </p>
+
+                        <div class="flex items-center gap-2.5 mb-2.5">
+                            <span
+                                class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#FFECEB]">
+                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M4.22848 5.48328C6.01352 2.32776 6.90603 0.75 8.25 0.75C9.59396 0.75 10.4865 2.32776 12.2715 5.48328L13.5537 7.74986C15.3148 10.863 16.1953 12.4196 15.5259 13.5848C14.8565 14.75 13.0817 14.75 9.53217 14.75H6.96783C3.41826 14.75 1.64348 14.75 0.974087 13.5848C0.304694 12.4196 1.18523 10.863 2.94631 7.74986L4.22848 5.48328Z"
+                                        stroke="#DC3027" stroke-width="1.5" />
+                                    <path d="M8.25 8.49609L8.25 11.4828" stroke="#DC3027" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8.25 5.88281L8.24192 5.88281" stroke="#DC3027" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <p class="text-[15px] font-medium leading-[120%] text-[#DC3027]">
+                                Form Field 5
+                            </p>
+                        </div>
+                        <p class="text-[15px] leading-[200%] text-Theme-Black">
+                            Always include a clear text label with every picture choice. This ensures your audience can
+                            respond accurately, even if they have difficulty seeing or interpreting the image.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ================= Other ================= -->
+                <div class="border border-[#E9E1E1] rounded-xl bg-white overflow-hidden">
+
+                    <button @click="open = open === 4 ? null : 4"
+                        class="w-full flex justify-between items-center p-[15px] text-left">
+
+                        <span class="text-base leading-[140%] font-medium text-Theme-Black">Color</span>
+
+                        <div class="flex items-center gap-[15px]">
+                            <span
+                                class="py-[3px] px-2.5 rounded-full bg-[#E8F5B7] flex items-center gap-1.5 text-xs leading-[130%] text-[#6A8700]">
+                                <svg width="11" height="8" viewBox="0 0 11 8" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.601562 3.59961L3.60156 6.59961L9.60156 0.599609" stroke="#6A8700"
+                                        stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                Other
+                            </span>
+
+                            <svg :class="open === 4 ? 'rotate-180 text-Theme-Black' : 'text-[#8C8484]'"
+                                class="transition-transform " width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </button>
+
+                    <div x-show="open === 4" x-collapse class="p-[15px] border-t border-[#E9E1E1]">
+
+                        <ul class="flex flex-col gap-2.5 w-full">
+                            <li class="flex items-center gap-2.5 ">
+                                <span
+                                    class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#E8F5B7]">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4 8.5L7.5 12L14.5 5" stroke="#6A8700" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                                <p class="text-[15px] leading-[120%] text-Theme-Black">
+                                    <span class="font-medium">Perfect! No issues found.</span>
+                                </p>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end w-full pt-[5px] px-[5px]">
+        </div>
+    </div>
+
+    <!-- Language & Translations -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[956px]"
+        id="Language-&-Translations">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Accessibility Overview
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col py-5 gap-5 border border-[#E9E1E1] min-h-[650px]">
+            <p class="text-base leading-[200%] text-Theme-Black px-5">
+                Translate your form automatically or upload your own translations. If a respondent’s browser language
+                matches any of the languages you’ve added, they’ll see an option to view the form in that language.
+            </p>
+
+            <div x-data="languageManager()" class="bg-[#F7F4F3] rounded-xl p-6 max-w-5xl relative">
+
+                <!-- Add Languages Button (Design-1 style) -->
+                <div class="flex justify-center mb-6 relative">
+
+                    <button @click="open = !open" :class="open
+                ? 'bg-[#F2EFEF] text-[#1C1C1C] border border-[#E2DCDC]'
+                : 'bg-[#007D47] text-white'"
+                        class="flex items-center gap-2 px-6 py-2 rounded-full text-sm font-medium transition-all">
+                        <span x-text="open ? 'Languages' : '+ Add Languages'"></span>
+
+                        <svg x-show="open" @click.stop="open = false" class="w-4 h-4 text-[#8C8484]" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+
+                    <!-- ================= Dropdown (NOT MODAL) ================= -->
+                    <div x-show="open" x-transition @click.outside="open = false"
+                        class="absolute top-full mt-2 w-full max-w-[646px] bg-white border border-[#E2DCDC] rounded-xl shadow-sm p-[5px] z-50">
+
+                        <!-- Search -->
+                        <div class="relative mb-3">
+                            <svg class="absolute top-2.5 left-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9.34375 15.6875C12.8473 15.6875 15.6875 12.8473 15.6875 9.34375C15.6875 5.84019 12.8473 3 9.34375 3C5.84019 3 3 5.84019 3 9.34375C3 12.8473 5.84019 15.6875 9.34375 15.6875Z"
+                                    stroke="#8C8484" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M17 17L15.25 15.25" stroke="#8C8484" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                            <input type="text" x-model="search" placeholder="Search..."
+                                class="w-full bg-[#F2EFEF] rounded-md p-2.5 pl-10 text-sm leading-[20px] outline-none text-Thme-Black place" />
+                        </div>
+
+                        <!-- Language List -->
+                        <div class="max-h-[260px] overflow-y-auto border border-[#E2DCDC] rounded-lg">
+
+                            <!-- Catalan -->
+                            <div @click="!addedLanguages.includes('Catalan') && toggle('Catalan')"
+                                x-show="'catalan'.includes(search.toLowerCase())" :class="addedLanguages.includes('Catalan')
+                        ? 'opacity-40 cursor-not-allowed'
+                        : 'cursor-pointer hover:bg-[#F8F6F6]'" class="flex items-center gap-3 px-3 py-2">
+                                <div :class="selected.includes('Catalan')
+                            ? 'bg-[#007D47] text-white border-[#007D47]'
+                            : 'bg-white border-[#E2DCDC]'"
+                                    class="w-5 h-5 rounded border flex items-center justify-center text-xs">
+                                    ✓
+                                </div>
+                                Catalan
+                            </div>
+
+                            <!-- Croatian -->
+                            <div @click="!addedLanguages.includes('Croatian') && toggle('Croatian')"
+                                x-show="'croatian'.includes(search.toLowerCase())" :class="addedLanguages.includes('Croatian')
+                        ? 'opacity-40 cursor-not-allowed'
+                        : 'cursor-pointer hover:bg-[#F8F6F6]'" class="flex items-center gap-3 px-3 py-2">
+                                <div :class="selected.includes('Croatian')
+                            ? 'bg-[#007D47] text-white border-[#007D47]'
+                            : 'bg-white border-[#E2DCDC]'"
+                                    class="w-5 h-5 rounded border flex items-center justify-center text-xs">
+                                    ✓
+                                </div>
+                                Croatian
+                            </div>
+
+                            <!-- Czech -->
+                            <div @click="!addedLanguages.includes('Czech') && toggle('Czech')"
+                                x-show="'czech'.includes(search.toLowerCase())" :class="addedLanguages.includes('Czech')
+                        ? 'opacity-40 cursor-not-allowed'
+                        : 'cursor-pointer hover:bg-[#F8F6F6]'" class="flex items-center gap-3 px-3 py-2">
+                                <div :class="selected.includes('Czech')
+                            ? 'bg-[#007D47] text-white border-[#007D47]'
+                            : 'bg-white border-[#E2DCDC]'"
+                                    class="w-5 h-5 rounded border flex items-center justify-center text-xs">
+                                    ✓
+                                </div>
+                                Czech
+                            </div>
+
+                            <!-- Dutch -->
+                            <div @click="!addedLanguages.includes('Dutch') && toggle('Dutch')"
+                                x-show="'dutch'.includes(search.toLowerCase())" :class="addedLanguages.includes('Dutch')
+                        ? 'opacity-40 cursor-not-allowed'
+                        : 'cursor-pointer hover:bg-[#F8F6F6]'" class="flex items-center gap-3 px-3 py-2">
+                                <div :class="selected.includes('Dutch')
+                            ? 'bg-[#007D47] text-white border-[#007D47]'
+                            : 'bg-white border-[#E2DCDC]'"
+                                    class="w-5 h-5 rounded border flex items-center justify-center text-xs">
+                                    ✓
+                                </div>
+                                Dutch
+                            </div>
+
+                        </div>
+
+                        <!-- Add Button -->
+                        <button @click="addLanguages" :disabled="selected.length === 0" :class="selected.length
+                    ? 'bg-[#007D47] text-white'
+                    : 'bg-[#EDE9E9] text-[#8C8484] cursor-not-allowed'"
+                            class="w-full mt-3 py-2 rounded-lg text-sm font-medium transition-all">
+                            + Add (<span x-text="selected.length"></span>)
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- Selected Languages List -->
+                <div class="space-y-3">
+                    <div x-show="addedLanguages.includes('Croatian')"
+                        class="flex justify-between items-center bg-white border border-[#E2DCDC] rounded-xl px-4 py-3">
+                        <span>Croatian</span>
+                        <div class="flex gap-2">
+                            <button class="px-3 py-1 bg-[#F2EFEF] rounded-md text-sm">Auto Translate</button>
+                            <button class="px-3 py-1 bg-[#F2EFEF] rounded-md text-sm">Upload Translation</button>
+                            <button @click="remove('Croatian')" class="text-[#8C8484]">🗑</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end w-full pt-[5px] px-[5px]">
+
+        </div>
+    </div>
+
+    <!-- version-history -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[420px]"
+        id="version-history">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Form Version History
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col p-5 gap-2.5 border border-[#E9E1E1]">
+            <p class="text-base font-medium leading-[140%] text-Theme-Black">Latest Versions</p>
+            <ul class="flex flex-col gap-0 w-full">
+                <li class="w-full">
+                    <a href="#"
+                        class="version-list w-full border border-transparent rounded-10px px-[15px] inline-flex group transition-all duration-500 hover:bg-[#F8F6F6]">
+                        <div
+                            class="w-full flex items-center justify-between py-3.5 text-base leading-[140%] text-Theme-Black">
+                            15 November • 01 : 10 PM
+                            <span
+                                class="py-[3px] px-2 rounded-full bg-[#CAEADC] text-xs font-medium leading-[130%] text-Theme-Green">Active</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a href="#"
+                        class="version-list w-full border border-transparent rounded-10px px-[15px] inline-flex group transition-all duration-500 hover:bg-[#F8F6F6] active">
+                        <div
+                            class="w-full flex items-center justify-between py-3.5 text-base leading-[140%] text-Theme-Black">
+                            02 November • 10 : 35 AM
+                            <span class="opacity-0 transition-all duration-500">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="20" height="20" rx="10" fill="#007D47" />
+                                    <path d="M5.83594 9.68793L8.61372 12.4657L14.1693 6.91016" stroke="white"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a href="#"
+                        class="version-list w-full border border-transparent rounded-10px px-[15px] inline-flex group transition-all duration-500 hover:bg-[#F8F6F6]">
+                        <div
+                            class="w-full flex items-center justify-between py-3.5 text-base leading-[140%] text-Theme-Black">
+                            25 October • 12 : 20 PM
+                            <span class="opacity-0 transition-all duration-500">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="20" height="20" rx="10" fill="#007D47" />
+                                    <path d="M5.83594 9.68793L8.61372 12.4657L14.1693 6.91016" stroke="white"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a href="#"
+                        class="version-list w-full border border-transparent rounded-10px px-[15px] inline-flex group transition-all duration-500 hover:bg-[#F8F6F6]">
+                        <div
+                            class="w-full flex items-center justify-between py-3.5 text-base leading-[140%] text-Theme-Black">
+                            15 October • 03 : 24 PM
+                            <span class="opacity-0 transition-all duration-500">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="20" height="20" rx="10" fill="#007D47" />
+                                    <path d="M5.83594 9.68793L8.61372 12.4657L14.1693 6.91016" stroke="white"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a href="#"
+                        class="version-list w-full border border-transparent rounded-10px px-[15px] inline-flex group transition-all duration-500 hover:bg-[#F8F6F6]">
+                        <div
+                            class="w-full flex items-center justify-between py-3.5 text-base leading-[140%] text-Theme-Black">
+                            10 October • 11 : 22 AM
+                            <span class="opacity-0 transition-all duration-500">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="20" height="20" rx="10" fill="#007D47" />
+                                    <path d="M5.83594 9.68793L8.61372 12.4657L14.1693 6.91016" stroke="white"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a href="#"
+                        class="version-list w-full border border-transparent rounded-10px px-[15px] inline-flex group transition-all duration-500 hover:bg-[#F8F6F6]">
+                        <div
+                            class="w-full flex items-center justify-between py-3.5 text-base leading-[140%] text-Theme-Black">
+                            22 September • 04 : 35 PM
+                            <span class="opacity-0 transition-all duration-500">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="20" height="20" rx="10" fill="#007D47" />
+                                    <path d="M5.83594 9.68793L8.61372 12.4657L14.1693 6.91016" stroke="white"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a href="#"
+                        class="version-list w-full border border-transparent rounded-10px px-[15px] inline-flex group transition-all duration-500 hover:bg-[#F8F6F6]">
+                        <div
+                            class="w-full flex items-center justify-between py-3.5 text-base leading-[140%] text-Theme-Black">
+                            18 September • 02 : 10 PM
+                            <span class="opacity-0 transition-all duration-500">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="20" height="20" rx="10" fill="#007D47" />
+                                    <path d="M5.83594 9.68793L8.61372 12.4657L14.1693 6.91016" stroke="white"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
+            <button data-modal-target="content-missing" class="btn-kiwi-green w-full text-center">Access This
+                Version</button>
+        </div>
+    </div>
+
+    <!-- version-history content-missing -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[420px]"
+        id="content-missing">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Content Missing in This Version
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col p-[15px] gap-2.5 border border-[#E9E1E1]">
+            <p class="text-base leading-[200%] text-Theme-Black pb-2.5">
+                This version is missing some of your <span class="font-semibold">form’s current content!</span>
+            </p>
+            <p class="text-base leading-[200%] text-Theme-Black pb-1.5">
+                Accessing this version <span class="font-semibold">(15 October • 03:24 PM)</span> will lead to losing:
+            </p>
+            <ul class="ml-5 list-outside list-disc flex flex-col gap-0 mb-2.5">
+                <li class="text-base leading-[200%] text-Theme-Black">Unpublished updates</li>
+                <li class="text-base leading-[200%] text-Theme-Black">Responses collected for Form Fields not available
+                    in this version</li>
+            </ul>
+
+            <p class="text-base leading-[200%] text-Theme-Black pb-1.5">
+                Do you still want to open this version?
+            </p>
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
+            <button
+                class="btn-kiwi-green bg-[#DC3027] w-full text-center transition-all duration-500 hover:bg-Theme-Black">Access
+                This Version</button>
+        </div>
+    </div>
+
     <div
         class="overlay-modal w-full h-screen z-[500] bg-[#012819]/30 backdrop-blur-[7.5px] fixed top-0 left-0 opacity-0 invisible">
     </div>
@@ -4057,6 +4741,39 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/custom-select.js"></script>
+    <!-- language modal js  -->
+    <script>
+        function languageManager() {
+            return {
+                open: false,
+                search: '',
+                selected: [],
+                addedLanguages: [],
+
+                toggle(lang) {
+                    this.selected.includes(lang)
+                        ? this.selected = this.selected.filter(l => l !== lang)
+                        : this.selected.push(lang)
+                },
+
+                addLanguages() {
+                    this.selected.forEach(lang => {
+                        if (!this.addedLanguages.includes(lang)) {
+                            this.addedLanguages.push(lang)
+                        }
+                    })
+                    this.selected = []
+                    this.open = false
+                },
+
+                remove(lang) {
+                    this.addedLanguages = this.addedLanguages.filter(l => l !== lang)
+                }
+            }
+        }
+    </script>
+
+
     <!-- resize js  -->
     <script>
         const resizer = document.getElementById('resizer-y');
@@ -4200,7 +4917,6 @@
             });
         });
     </script>
-
 
     <script>
         const editableDiv = document.getElementById("editableDiv");
