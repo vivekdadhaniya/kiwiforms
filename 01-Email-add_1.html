@@ -4375,18 +4375,12 @@
         </div>
     </div>
 
-    <!-- Language & Translations -->
-    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[956px]"
+    <!-- ================= Language & Translations Modal ================= -->
+    <div class="modalTrigger modal bg-[#F2EFEF] rounded-[15px] shadow px-[5px] w-full max-w-[956px] flex-col"
         id="Language-&-Translations">
-        <!-- modal header  -->
-        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
-            <div class="flex items-center gap-[15px] ">
-
-                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
-                    Accessibility Overview
-                </h2>
-            </div>
-
+        <!-- Header -->
+        <div class="flex items-center justify-between py-2.5 px-4 w-full">
+            <h2 class="text-2xl font-medium">Language & Translations</h2>
             <span class="close-btn cursor-pointer">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
@@ -4396,145 +4390,206 @@
                 </svg>
             </span>
         </div>
-        <div class="w-full bg-white rounded-10px flex flex-col py-5 gap-5 border border-[#E9E1E1] min-h-[650px]">
-            <p class="text-base leading-[200%] text-Theme-Black px-5">
-                Translate your form automatically or upload your own translations. If a respondent’s browser language
-                matches any of the languages you’ve added, they’ll see an option to view the form in that language.
+
+        <div class="bg-white rounded-10px border border-[#E9E1E1] py-5 h-[650px] overflow-auto">
+
+            <p class="px-5 text-base leading-[200%] text-Theme-Black mb-5">
+                Translate your form automatically or upload your own translations. If a respondent’s browser
+                language matches any of the languages you’ve added, they’ll see an option to view the form
+                in that language.
             </p>
 
-            <div x-data="languageManager()" class="bg-[#F7F4F3] rounded-xl p-6 max-w-5xl relative">
+            <div x-data="languageManager()" class="px-5 relative">
 
-                <!-- Add Languages Button (Design-1 style) -->
+                <!-- ================= Add Languages Button ================= -->
                 <div class="flex justify-center mb-6 relative">
-
                     <button @click="open = !open" :class="open
-                ? 'bg-[#F2EFEF] text-[#1C1C1C] border border-[#E2DCDC]'
-                : 'bg-[#007D47] text-white'"
-                        class="flex items-center gap-2 px-6 py-2 rounded-full text-sm font-medium transition-all">
+                        ? 'bg-[#F2EFEF] text-[#1C1C1C] border border-[#E2DCDC] rounded-10px'
+                        : 'bg-[#007D47] text-white rounded-full'"
+                        class="flex items-center gap-2 px-6 py-2 text-sm font-medium transition-all">
                         <span x-text="open ? 'Languages' : '+ Add Languages'"></span>
-
-                        <svg x-show="open" @click.stop="open = false" class="w-4 h-4 text-[#8C8484]" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12" />
-                        </svg>
                     </button>
 
-                    <!-- ================= Dropdown (NOT MODAL) ================= -->
+                    <!-- ================= Language Dropdown ================= -->
                     <div x-show="open" x-transition @click.outside="open = false"
-                        class="absolute top-full mt-2 w-full max-w-[646px] bg-white border border-[#E2DCDC] rounded-xl shadow-sm p-[5px] z-50">
-
-                        <!-- Search -->
-                        <div class="relative mb-3">
-                            <svg class="absolute top-2.5 left-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.34375 15.6875C12.8473 15.6875 15.6875 12.8473 15.6875 9.34375C15.6875 5.84019 12.8473 3 9.34375 3C5.84019 3 3 5.84019 3 9.34375C3 12.8473 5.84019 15.6875 9.34375 15.6875Z"
-                                    stroke="#8C8484" stroke-width="1.2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                <path d="M17 17L15.25 15.25" stroke="#8C8484" stroke-width="1.2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-
+                        class="absolute top-full mt-2 w-full max-w-[646px] bg-white border border-[#E2DCDC] rounded-xl shadow-sm z-50">
+                        <div class="p-2">
                             <input type="text" x-model="search" placeholder="Search..."
-                                class="w-full bg-[#F2EFEF] rounded-md p-2.5 pl-10 text-sm leading-[20px] outline-none text-Thme-Black place" />
+                                class="w-full bg-[#F2EFEF] rounded-md p-2.5 text-sm outline-none">
                         </div>
 
-                        <!-- Language List -->
-                        <div class="max-h-[260px] overflow-y-auto border border-[#E2DCDC] rounded-lg">
-
-                            <!-- Catalan -->
-                            <div @click="!addedLanguages.includes('Catalan') && toggle('Catalan')"
-                                x-show="'catalan'.includes(search.toLowerCase())" :class="addedLanguages.includes('Catalan')
-                        ? 'opacity-40 cursor-not-allowed'
-                        : 'cursor-pointer hover:bg-[#F8F6F6]'" class="flex items-center gap-3 px-3 py-2">
-                                <div :class="selected.includes('Catalan')
-                            ? 'bg-[#007D47] text-white border-[#007D47]'
-                            : 'bg-white border-[#E2DCDC]'"
-                                    class="w-5 h-5 rounded border flex items-center justify-center text-xs">
-                                    ✓
+                        <div class="max-h-[360px] overflow-y-auto px-3 [&::-webkit-scrollbar]:hidden   ">
+                            <template x-for="lang in allLanguages" :key="lang">
+                                <div @click="!addedLanguages.includes(lang) && toggle(lang)"
+                                    x-show="lang.toLowerCase().includes(search.toLowerCase())" :class="addedLanguages.includes(lang)
+                                    ? 'opacity-40 cursor-not-allowed'
+                                    : 'cursor-pointer hover:bg-[#F8F6F6]'"
+                                    class="flex items-center gap-2.5 p-2.5 rounded">
+                                    <div :class="selected.includes(lang)
+                                        ? 'bg-[#007D47] text-white border-[#007D47]'
+                                        : 'bg-white text-transparent border-[#E2DCDC]'"
+                                        class="w-5 h-5 rounded border flex items-center justify-center text-xs">
+                                        ✓
+                                    </div>
+                                    <span x-text="lang"></span>
                                 </div>
-                                Catalan
-                            </div>
-
-                            <!-- Croatian -->
-                            <div @click="!addedLanguages.includes('Croatian') && toggle('Croatian')"
-                                x-show="'croatian'.includes(search.toLowerCase())" :class="addedLanguages.includes('Croatian')
-                        ? 'opacity-40 cursor-not-allowed'
-                        : 'cursor-pointer hover:bg-[#F8F6F6]'" class="flex items-center gap-3 px-3 py-2">
-                                <div :class="selected.includes('Croatian')
-                            ? 'bg-[#007D47] text-white border-[#007D47]'
-                            : 'bg-white border-[#E2DCDC]'"
-                                    class="w-5 h-5 rounded border flex items-center justify-center text-xs">
-                                    ✓
-                                </div>
-                                Croatian
-                            </div>
-
-                            <!-- Czech -->
-                            <div @click="!addedLanguages.includes('Czech') && toggle('Czech')"
-                                x-show="'czech'.includes(search.toLowerCase())" :class="addedLanguages.includes('Czech')
-                        ? 'opacity-40 cursor-not-allowed'
-                        : 'cursor-pointer hover:bg-[#F8F6F6]'" class="flex items-center gap-3 px-3 py-2">
-                                <div :class="selected.includes('Czech')
-                            ? 'bg-[#007D47] text-white border-[#007D47]'
-                            : 'bg-white border-[#E2DCDC]'"
-                                    class="w-5 h-5 rounded border flex items-center justify-center text-xs">
-                                    ✓
-                                </div>
-                                Czech
-                            </div>
-
-                            <!-- Dutch -->
-                            <div @click="!addedLanguages.includes('Dutch') && toggle('Dutch')"
-                                x-show="'dutch'.includes(search.toLowerCase())" :class="addedLanguages.includes('Dutch')
-                        ? 'opacity-40 cursor-not-allowed'
-                        : 'cursor-pointer hover:bg-[#F8F6F6]'" class="flex items-center gap-3 px-3 py-2">
-                                <div :class="selected.includes('Dutch')
-                            ? 'bg-[#007D47] text-white border-[#007D47]'
-                            : 'bg-white border-[#E2DCDC]'"
-                                    class="w-5 h-5 rounded border flex items-center justify-center text-xs">
-                                    ✓
-                                </div>
-                                Dutch
-                            </div>
-
+                            </template>
                         </div>
 
-                        <!-- Add Button -->
-                        <button @click="addLanguages" :disabled="selected.length === 0" :class="selected.length
-                    ? 'bg-[#007D47] text-white'
-                    : 'bg-[#EDE9E9] text-[#8C8484] cursor-not-allowed'"
-                            class="w-full mt-3 py-2 rounded-lg text-sm font-medium transition-all">
-                            + Add (<span x-text="selected.length"></span>)
-                        </button>
-
-                    </div>
-                </div>
-
-                <!-- Selected Languages List -->
-                <div class="space-y-3">
-                    <div x-show="addedLanguages.includes('Croatian')"
-                        class="flex justify-between items-center bg-white border border-[#E2DCDC] rounded-xl px-4 py-3">
-                        <span>Croatian</span>
-                        <div class="flex gap-2">
-                            <button class="px-3 py-1 bg-[#F2EFEF] rounded-md text-sm">Auto Translate</button>
-                            <button class="px-3 py-1 bg-[#F2EFEF] rounded-md text-sm">Upload Translation</button>
-                            <button @click="remove('Croatian')" class="text-[#8C8484]">🗑</button>
+                        <div class="border-t border-[#E9E1E1] py-3 flex justify-center">
+                            <button @click="addLanguages" :disabled="selected.length === 0" :class="selected.length
+                                ? 'bg-[#007D47] text-white'
+                                : 'bg-[#EDE9E9] text-[#8C8484]'"
+                                class="w-[160px] py-2.5 rounded-lg text-sm font-medium">
+                                + Add (<span x-text="selected.length"></span>)
+                            </button>
                         </div>
                     </div>
                 </div>
 
+                <!-- ================= Selected Languages List ================= -->
+                <div class="flex flex-col gap-[15px]">
+
+                    <template x-for="lang in addedLanguages" :key="lang">
+                        <div class="group relative flex justify-between items-center bg-white border border-[#E9E1E1] rounded-10px pl-[15px] pr-2.5 py-[11px] transition-all duration-500
+                            hover:bg-[#F8F6F6] hover:border-[#F8F6F6]">
+
+                            <!-- Language name + badge -->
+                            <span class="flex items-center gap-2 font-medium">
+                                <span x-text="lang"
+                                    class="text-base font-medium leading-[140%] text-Theme-Black"></span>
+                                <span x-show="translatedLanguages.includes(lang)"
+                                    class="px-2.5 py-[3px] text-xs leading-[130%] rounded-full bg-[#E8F5B7] text-[#6A8700]">
+                                    Translated
+                                </span>
+                            </span>
+
+                            <!-- Actions -->
+                            <div class="flex gap-2.5">
+                                <button @click="autoTranslate(lang)"
+                                    class="px-2.5 py-2 bg-[#F8F6F6] text-Theme-Black rounded text-xs leading-[120%] flex items-center gap-[5px]
+                                transition-all duration-500 hover:bg-Theme-Black hover:text-white group-hover:bg-white">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M9.06243 1.5069C9.14106 1.2944 9.18038 1.18815 9.25 1.18815C9.31962 1.18815 9.35894 1.2944 9.43757 1.5069L10.2309 3.65091C10.2466 3.69335 10.2545 3.71456 10.27 3.73004C10.2854 3.74552 10.3067 3.75337 10.3491 3.76907L12.4931 4.56243C12.7056 4.64106 12.8118 4.68038 12.8118 4.75C12.8118 4.81962 12.7056 4.85894 12.4931 4.93757L10.3491 5.73093C10.3067 5.74663 10.2854 5.75448 10.27 5.76996C10.2545 5.78544 10.2466 5.80665 10.2309 5.84909L9.43757 7.9931C9.35894 8.2056 9.31962 8.31185 9.25 8.31185C9.18038 8.31185 9.14106 8.2056 9.06243 7.9931L8.26907 5.84909C8.25337 5.80665 8.24552 5.78544 8.23004 5.76996C8.21456 5.75448 8.19335 5.74663 8.15091 5.73093L6.0069 4.93757C5.7944 4.85894 5.68815 4.81962 5.68815 4.75C5.68815 4.68038 5.7944 4.64106 6.0069 4.56243L8.15091 3.76907C8.19335 3.75337 8.21456 3.74552 8.23004 3.73004C8.24552 3.71456 8.25337 3.69335 8.26907 3.65091L9.06243 1.5069Z"
+                                            stroke="currentColor" />
+                                        <path
+                                            d="M3.81243 7.5069C3.89106 7.2944 3.93038 7.18815 4 7.18815C4.06962 7.18815 4.10894 7.2944 4.18757 7.5069L4.77836 9.10348C4.79406 9.14591 4.80191 9.16713 4.81739 9.18261C4.83287 9.19809 4.85409 9.20594 4.89652 9.22164L6.4931 9.81243C6.7056 9.89106 6.81185 9.93038 6.81185 10C6.81185 10.0696 6.7056 10.1089 6.4931 10.1876L4.89652 10.7784C4.85409 10.7941 4.83287 10.8019 4.81739 10.8174C4.80191 10.8329 4.79406 10.8541 4.77836 10.8965L4.18757 12.4931C4.10894 12.7056 4.06962 12.8118 4 12.8118C3.93038 12.8118 3.89106 12.7056 3.81243 12.4931L3.22164 10.8965C3.20594 10.8541 3.19809 10.8329 3.18261 10.8174C3.16713 10.8019 3.14591 10.7941 3.10348 10.7784L1.5069 10.1876C1.2944 10.1089 1.18815 10.0696 1.18815 10C1.18815 9.93038 1.2944 9.89106 1.5069 9.81243L3.10348 9.22164C3.14591 9.20594 3.16713 9.19809 3.18261 9.18261C3.19809 9.16713 3.20594 9.14591 3.22164 9.10348L3.81243 7.5069Z"
+                                            stroke="currentColor" />
+                                    </svg>
+                                    Auto Translate
+                                </button>
+
+                                <button @click="openUpload(lang)"
+                                    class="px-2.5 py-2 bg-[#F8F6F6] text-Theme-Black rounded text-xs leading-[120%] flex items-center gap-[5px]
+                                transition-all duration-500 hover:bg-Theme-Black hover:text-white group-hover:bg-white">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M2 7.625V8C2 9.88562 2 10.8284 2.58579 11.4142C3.17157 12 4.11438 12 6 12H9.8125C9.98661 12 10.0737 12 10.1471 11.9946C11.1357 11.9217 11.9217 11.1357 11.9946 10.1471C12 10.0737 12 9.98661 12 9.8125V7.625"
+                                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M9.8125 4.58758L7 2L4.1875 4.58758" stroke="currentColor"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M7 8.875L7 5.82939L7 2" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    Upload Translation
+                                </button>
+
+                                <button @click="remove(lang)"
+                                    class="w-[30px] aspect-square flex items-center justify-center bg-transparent text-Theme-Black rounded hover:bg-[#DC3027] hover:text-white">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M4 5H16V14.5C16 16.1499 16 16.9749 15.4874 17.4874C14.9749 18 14.1499 18 12.5 18H7.5C5.85008 18 5.02513 18 4.51256 17.4874C4 16.9749 4 16.1499 4 14.5V5Z"
+                                            stroke="currentColor" stroke-width="1.2" />
+                                        <path d="M2 5H18" stroke="currentColor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M6 3.75C6 2.92504 6 2.51256 6.25628 2.25628C6.51256 2 6.92504 2 7.75 2H12.25C13.075 2 13.4874 2 13.7437 2.25628C14 2.51256 14 2.92504 14 3.75V5H6V3.75Z"
+                                            stroke="currentColor" stroke-width="1.2" />
+                                        <path d="M8 9V14" stroke="currentColor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M12 9V14" stroke="currentColor" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- ================= INLINE Upload Translation Popup ================= -->
+                            <div x-show="uploadPopup && activeUploadLang === lang" x-transition
+                                @click.outside="closeUpload"
+                                class="absolute right-0 top-full mt-2 w-full bg-[#F8F6F6] rounded-10px border border-[#E9E1E1] z-50">
+                                <div
+                                    class="flex justify-between items-center p-2.5 pl-[15px] rounded-t-10px border-b border-[#E9E1E1]">
+                                    <span class="font-medium text-sm">Upload Translation File</span>
+                                    <button @click="closeUpload" class="close-btn cursor-pointer">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M5 15L15 5" stroke="#000A06" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M15 15L5 5" stroke="#000A06" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="p-[15px] border-b border-[#E9E1E1]">
+                                    <p class="text-sm leading-[140%] text-Theme-Black text-center mb-[66px]">
+                                        Upload a completed translation template to update the translations for this
+                                        language.
+                                    </p>
+
+                                    <div class=" rounded-lg text-center">
+                                        <button
+                                            class="px-4 py-5 border rounded-10px mb-5 text-sm border-dashed border-[#DBCECE] bg-white w-full max-w-[306px] mx-auto">
+                                            Upload Translation
+                                        </button>
+                                        <p
+                                            class="text-sm font-medium leading-[140%] text-Theme-Black text-center mb-2.5">
+                                            Upload Translation File
+                                        </p>
+                                        <p class="text-xs leading-[120%] text-[#8C8484] text-center">
+                                            Updated Translation Template • .CSV File
+                                        </p>
+                                    </div>
+
+                                    <p class="text-xs leading-[120%] text-[#8C8484] text-center mt-[72px]">
+                                        Need help? View instructions in
+                                        <span class="text-Theme-Green underline">Translation Guide</span>
+                                    </p>
+                                </div>
+
+                                <div class="flex justify-center gap-[50px] items-center p-[15px]">
+                                    <p class="text-xs leading-[200%] text-Theme-Black">
+                                        Always download a fresh template if you’ve updated your form.
+                                    </p>
+                                    <button
+                                        class="py-2.5 px-[15px] rounded-10px bg-white border border-[#E2DCDC] flex items-center gap-2.5 text-sm font-medium leading-[140%] transition-all duration-500 hover:border-[#CCCCCC]">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M3 10.875V13C3 14.8856 3 15.8284 3.58579 16.4142C4.17157 17 5.11438 17 7 17H13.9375C14.9281 17 15.4234 17 15.8105 16.8284C16.2644 16.6272 16.6272 16.2644 16.8284 15.8105C17 15.4234 17 14.9281 17 13.9375V10.875"
+                                                stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M6.0625 9.00238L10 12.625L13.9375 9.00238" stroke="#000A06"
+                                                stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M10 3L10 7.26385L10 12.625" stroke="#000A06" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        Download Latest Template
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </template>
+
+                </div>
             </div>
-
-
-
-
-
         </div>
-        <!-- modal footer  -->
         <div class="flex items-center justify-end w-full pt-[5px] px-[5px]">
-
         </div>
     </div>
 
@@ -4746,9 +4801,17 @@
         function languageManager() {
             return {
                 open: false,
+                uploadPopup: false,
+                activeUploadLang: '',
                 search: '',
                 selected: [],
                 addedLanguages: [],
+                translatedLanguages: [],
+
+                allLanguages: [
+                    'Arabic', 'English', 'Catalan', 'Chinese (Simplified)',
+                    'Chinese (Traditional)', 'Croatian', 'Czech', 'Danish', 'Dutch'
+                ],
 
                 toggle(lang) {
                     this.selected.includes(lang)
@@ -4766,8 +4829,25 @@
                     this.open = false
                 },
 
+                autoTranslate(lang) {
+                    if (!this.translatedLanguages.includes(lang)) {
+                        this.translatedLanguages.push(lang)
+                    }
+                },
+
+                openUpload(lang) {
+                    this.activeUploadLang = lang
+                    this.uploadPopup = true
+                },
+
+                closeUpload() {
+                    this.uploadPopup = false
+                    this.activeUploadLang = ''
+                },
+
                 remove(lang) {
                     this.addedLanguages = this.addedLanguages.filter(l => l !== lang)
+                    this.translatedLanguages = this.translatedLanguages.filter(l => l !== lang)
                 }
             }
         }
