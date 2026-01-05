@@ -5444,14 +5444,14 @@
                         </div>
                     </div>
 
-                    <!-- Set Submission Deadline -->
+                    <!-- Set Submission Start Date -->
                     <div x-data="{ enabled: false }" class="w-full border-b border-[#E9E1E1]">
 
                         <!-- Toggle row -->
                         <div class="w-full py-[15px]">
                             <label class="flex items-center justify-between cursor-pointer">
                                 <span class="text-base leading-[140%] font-normal text-Theme-Black">
-                                    Set Submission Deadline
+                                    Set Submission Start Date
                                 </span>
 
                                 <div class="relative">
@@ -5488,7 +5488,7 @@
                             <!-- Timezone -->
                             <div>
                                 <p class="text-[15px] leading-[120%] text-[#8C8484] block mb-[5px]">
-                                    Display responses where
+                                    Time Zone
                                 </p>
 
                                 <button type="button" class="w-full flex items-center justify-between bg-white border border-[#E2DCDC]
@@ -5609,6 +5609,281 @@
                         </div>
                     </div>
 
+                    <!-- Set Submission Deadline -->
+                    <div x-data="{ enabled: false }" class="w-full border-b border-[#E9E1E1]">
+
+                        <!-- Toggle row -->
+                        <div class="w-full py-[15px]">
+                            <label class="flex items-center justify-between cursor-pointer">
+                                <span class="text-base leading-[140%] font-normal text-Theme-Black">
+                                    Set Submission Deadline
+                                </span>
+
+                                <div class="relative">
+                                    <input type="checkbox" class="sr-only peer" x-model="enabled">
+
+                                    <div class="w-11 h-6 bg-[#EDE9E9] rounded-full peer
+                    peer-checked:after:translate-x-[20px]
+                    after:content-[''] after:absolute after:top-[2px] after:right-[22px]
+                    after:bg-white after:rounded-full after:h-[20px] after:w-[20px]
+                    after:transition-all peer-checked:bg-Theme-Green">
+
+                                        <!-- Static dot -->
+                                        <svg :class="{'!text-white': enabled}"
+                                            class="absolute top-2.5 left-2.5 z-20 text-[#E2DCDC]" width="4" height="4"
+                                            viewBox="0 0 4 4" fill="none">
+                                            <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
+                                        </svg>
+
+                                        <!-- Active bar -->
+                                        <svg :class="{'!text-[#007D47]': enabled}"
+                                            class="absolute top-[9px] right-2.5 z-20 text-white" width="2" height="6"
+                                            viewBox="0 0 2 6" fill="none">
+                                            <rect width="2" height="6" rx="1" fill="currentColor"></rect>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Deadline fields -->
+                        <div x-show="enabled" x-transition
+                            class="p-5 mb-[15px] rounded-10px border border-[#E9E1E1] bg-[#F8F6F6] flex flex-col gap-5">
+
+                            <!-- Timezone -->
+                            <div>
+                                <p class="text-[15px] leading-[120%] text-[#8C8484] block mb-[5px]">
+                                    Time Zone
+                                </p>
+
+                                <button type="button" class="w-full flex items-center justify-between bg-white border border-[#E2DCDC]
+                rounded-10px px-[15px] py-[9px] text-[15px] leading-[120%] text-Theme-Black">
+                                    <span>(GMT+1) Europe / Amsterdam</span>
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15 7.5L10 12.5L5 7.5" stroke="#8C8484" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+
+                                </button>
+                            </div>
+
+                            <!-- Date & Time -->
+                            <div class="grid grid-cols-2 gap-3">
+                                <!-- Date -->
+                                <div>
+                                    <label class="text-[15px] leading-[120%] text-[#8C8484] block mb-[5px]">Date</label>
+                                    <div class="relative">
+                                        <input type="text" value="30 Dec 2025" readonly class="w-full bg-white border border-[#E2DCDC]
+                        rounded-10px px-[15px] leading-[120%] py-[10px] pl-[50px] text-[15px] text-Theme-Black">
+
+                                        <svg class="absolute left-3 top-1/2 -translate-y-[60%]" width="20" height="20"
+                                            viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="2" y="4" width="16" height="14" rx="2" stroke="#8C8484"
+                                                stroke-width="1.2" />
+                                            <path d="M6 2V5" stroke="#8C8484" stroke-width="1.2"
+                                                stroke-linecap="round" />
+                                            <path d="M7 12H5" stroke="#8C8484" stroke-width="1.2"
+                                                stroke-linecap="round" />
+                                            <path d="M7 15H5" stroke="#8C8484" stroke-width="1.2"
+                                                stroke-linecap="round" />
+                                            <path d="M11 12H9" stroke="#8C8484" stroke-width="1.2"
+                                                stroke-linecap="round" />
+                                            <path d="M11 15H9" stroke="#8C8484" stroke-width="1.2"
+                                                stroke-linecap="round" />
+                                            <path d="M15 12H13" stroke="#8C8484" stroke-width="1.2"
+                                                stroke-linecap="round" />
+                                            <path d="M15 15H13" stroke="#8C8484" stroke-width="1.2"
+                                                stroke-linecap="round" />
+                                            <path d="M14 2V5" stroke="#8C8484" stroke-width="1.2"
+                                                stroke-linecap="round" />
+                                            <path d="M2 9H18" stroke="#8C8484" stroke-width="1.2" />
+                                        </svg>
+
+                                    </div>
+                                </div>
+                                <!-- Time -->
+                                <div x-data="{
+        hour: 12,
+        minute: 0,
+        period: 'AM',
+
+        increment() {
+            this.minute++
+            if (this.minute === 60) {
+                this.minute = 0
+                this.hour++
+                if (this.hour === 12) {
+                    this.period = this.period === 'AM' ? 'PM' : 'AM'
+                }
+                if (this.hour > 12) this.hour = 1
+            }
+        },
+
+        decrement() {
+            this.minute--
+            if (this.minute < 0) {
+                this.minute = 59
+                this.hour--
+                if (this.hour === 11) {
+                    this.period = this.period === 'AM' ? 'PM' : 'AM'
+                }
+                if (this.hour < 1) this.hour = 12
+            }
+        },
+
+        get time() {
+            return `${String(this.hour).padStart(2, '0')}:${String(this.minute).padStart(2, '0')} ${this.period}`
+        }
+    }">
+
+                                    <label class="text-[15px] leading-[120%] text-[#8C8484] block mb-[5px]">Time</label>
+
+                                    <div class="relative w-full">
+                                        <input type="text" x-model="time" readonly class="custom-input w-full bg-white border border-[#E2DCDC]
+            rounded-10px px-[15px] py-[10px]
+            text-[15px] leading-[120%] text-Theme-Black">
+
+                                        <!-- Increment / Decrement buttons -->
+                                        <div class="number-controls absolute right-2 top-1/2 -translate-y-1/2
+            flex flex-col items-center justify-center gap-1.5">
+
+                                            <!-- Increment -->
+                                            <button type="button" @click="increment" class="w-3.5 h-[7px] flex items-center justify-center
+                text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                                <svg width="14" height="7" viewBox="0 0 14 7" fill="none">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M13.9408 6.56787C13.8204 6.82945 13.5368 7 13.2222 7L0.777818 7C0.463181 7 0.179657 6.82945 0.0592575 6.56788C-0.0611421 6.30631 0.00533186 6.00522 0.227775 5.80502L6.44998 0.20503C6.75372 -0.0683444 7.24621 -0.0683445 7.54996 0.20503L13.7722 5.80502C13.9946 6.00522 14.0612 6.30631 13.9408 6.56787Z"
+                                                        fill="currentColor" />
+                                                </svg>
+                                            </button>
+
+                                            <!-- Decrement -->
+                                            <button type="button" @click="decrement" class="w-3.5 h-[7px] flex items-center justify-center
+                text-[#E2DCDC] hover:text-[#ccc5c5] transition">
+                                                <svg width="14" height="7" viewBox="0 0 14 7" fill="none">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M0.0592249 0.432125C0.179614 0.170548 0.463223 8.09924e-08 0.777796 1.35994e-07L13.2222 2.31184e-06C13.5368 2.36685e-06 13.8203 0.170551 13.9407 0.432128C14.0611 0.693695 13.9947 0.99478 13.7722 1.19498L7.55002 6.79497C7.24627 7.06834 6.75379 7.06834 6.45004 6.79497L0.227826 1.19498C0.00538204 0.994777 -0.0611541 0.693693 0.0592249 0.432125Z"
+                                                        fill="currentColor" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Display Form Opening Message -->
+                    <div x-data="{
+        enabled: false,
+        title: 'This form is not open for responses yet.',
+        message: 'The submission period hasn’t started yet! Please check back later.'
+    }" class="w-full border-b border-[#E9E1E1] ">
+
+                        <!-- Toggle row -->
+                        <div class="w-full py-[15px]">
+                            <p class="text-xs leading-[120%] text-[#8C8484] uppercase tracking-[1.2px] mb-5">
+                                Availability
+                            </p>
+                            <label class="flex items-center justify-between cursor-pointer">
+                                <span class="text-base leading-[140%] font-normal text-Theme-Black">
+                                    Display Form Opening Message
+                                </span>
+
+                                <div class="relative">
+                                    <input type="checkbox" class="sr-only peer" x-model="enabled">
+
+                                    <div class="w-11 h-6 bg-[#EDE9E9] rounded-full peer
+                    peer-checked:after:translate-x-[20px]
+                    after:content-[''] after:absolute after:top-[2px] after:right-[22px]
+                    after:bg-white after:rounded-full after:h-[20px] after:w-[20px]
+                    after:transition-all peer-checked:bg-Theme-Green">
+
+                                        <!-- Static dot -->
+                                        <svg :class="{'!text-white': enabled}"
+                                            class="absolute top-2.5 left-2.5 z-20 text-[#E2DCDC]" width="4" height="4"
+                                            viewBox="0 0 4 4" fill="none">
+                                            <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
+                                        </svg>
+
+                                        <!-- Active bar -->
+                                        <svg :class="{'!text-[#007D47]': enabled}"
+                                            class="absolute top-[9px] right-2.5 z-20 text-white" width="2" height="6"
+                                            viewBox="0 0 2 6" fill="none">
+                                            <rect width="2" height="6" rx="1" fill="currentColor"></rect>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Fields -->
+                        <div x-show="enabled" x-transition
+                            class="p-5 rounded-10px border border-[#E9E1E1] bg-[#F8F6F6] flex flex-col gap-5">
+
+                            <!-- Closure Title -->
+                            <div>
+                                <label class="text-[15px] leading-[120%] text-[#8C8484] block mb-[5px]">
+                                    Opening Title
+                                </label>
+
+                                <div class="relative">
+                                    <input type="text" maxlength="1000" x-model="title" class="w-full bg-white border border-[#E2DCDC]
+                    rounded-10px px-[15px] py-[10px]
+                    text-[15px] leading-[120%] text-Theme-Black outline-none
+                    focus:border-Theme-Green transition">
+
+                                    <span class="absolute right-3 bottom-2.5 text-xs text-[#8C8484]"
+                                        x-text="`${title.length}/1000`">
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Closure Message -->
+                            <div>
+                                <label class="text-[15px] leading-[120%] text-[#8C8484] block mb-[5px]">
+                                    Form Opening Message
+                                </label>
+
+                                <div class="relative">
+                                    <textarea rows="2" maxlength="1000" x-model="message" class="w-full bg-white border border-[#E2DCDC]
+                    rounded-10px px-[15px] py-[11px] min-h-[80px]
+                    text-[15px] text-Theme-Black resize-none outline-none
+                    focus:border-Theme-Green transition">
+                </textarea>
+
+                                    <span class="absolute right-3 bottom-2.5 text-xs text-[#8C8484]"
+                                        x-text="`${message.length}/1000`">
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Image Button -->
+                            <button type="button"
+                                class="flex items-center gap-2.5 bg-white border border-[#E2DCDC]
+            rounded-10px px-6 py-2.5 text-sm w-max mx-auto leading-[140%] font-medium text-Theme-Black hover:bg-[#F8F6F6] transition">
+
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M16 8.375V9.25V11V14C16 15.8856 16 16.8284 15.4142 17.4142C14.8284 18 13.8856 18 12 18H6C4.11438 18 3.17157 18 2.58579 17.4142C2 16.8284 2 15.8856 2 14V8C2 6.11438 2 5.17157 2.58579 4.58579C3.17157 4 4.11438 4 6 4H9H10.75H11.625"
+                                        stroke="#8C8484" stroke-width="1.2" stroke-linecap="round" />
+                                    <circle cx="9.4375" cy="7.9375" r="1.3125" stroke="#8C8484" stroke-width="1.2"
+                                        stroke-linejoin="round" />
+                                    <path d="M8.125 15.375L13.2679 10.125L16 12.75" stroke="#8C8484" stroke-width="1.2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M2 16.25L7.25 11L9.875 13.625" stroke="#8C8484" stroke-width="1.2"
+                                        stroke-linejoin="round" />
+                                    <path d="M16 2V6" stroke="#8C8484" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M18 3.99609L14 3.99609" stroke="#8C8484" stroke-width="1.2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                Add Image
+                            </button>
+                        </div>
+                    </div>
 
                     <!-- Display Form Closure Message -->
                     <div x-data="{
@@ -5619,9 +5894,7 @@
 
                         <!-- Toggle row -->
                         <div class="w-full py-[15px]">
-                            <p class="text-xs leading-[120%] text-[#8C8484] uppercase tracking-[1.2px] mb-5">
-                                Availability
-                            </p>
+                           
                             <label class="flex items-center justify-between cursor-pointer">
                                 <span class="text-base leading-[140%] font-normal text-Theme-Black">
                                     Display Form Closure Message
@@ -5775,7 +6048,7 @@
 
                 <div class="p-5 w-full">
                     <!-- Primary Language -->
-                    <div class="w-full pb-[15px] border-b border-[#E9E1E1]">
+                    <div class="w-full pb-[15px] border-b border-[#E9E1E1] hidden">
                         <p class="text-xs leading-[120%] text-[#8C8484] uppercase tracking-[1.2px] mb-5">
                             Form Languages
                         </p>
@@ -5867,7 +6140,7 @@
                     </div>
 
                     <!-- Translate Forms -->
-                    <div class="w-full py-[15px] border-b border-[#E9E1E1]">
+                    <div class="w-full py-[15px] border-b border-[#E9E1E1] hidden">
                         <p class="text-xs leading-[120%] text-[#8C8484] uppercase tracking-[1.2px] mb-5">
                             Translations
                         </p>

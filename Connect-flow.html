@@ -660,24 +660,29 @@
             <input type="text" id="Configure_a_Webhook" class="text-base leading-[22px] border border-transparent text-Theme-Black placeholder:text-[#8C8484] w-full py-3.5 px-[15px] bg-[#F8F6F6] mt-[5px] rounded-10px
             transition-all duration-500 hover:border-[#E9E1E1] hover:bg-white focus:outline-0 focus:border-Theme-Green"
                 placeholder="htttps://webhookurl.com/webhook">
+            <p class="text-[15px] leading-[140%] text-[#8C8484] mt-5">
+                Need help with Webhooks? Visit our <a href="#" class="font-medium text-Theme-Black underline">Help
+                    Center</a> for guidance.
+            </p>
         </div>
         <!-- modal footer  -->
         <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
-            <button class="btn-kiwi-green  w-full text-center transition-all duration-500 hover:bg-theme-Green-hover">
+            <button data-modal-target="test-a-Webhook"
+                class="btn-kiwi-green  w-full text-center transition-all duration-500 hover:bg-theme-Green-hover">
                 Submit
             </button>
         </div>
     </div>
 
-    <!-- delete a webhook  -->
-    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[420px]"
-        id="delete-a-Webhook">
+    <!-- test a Webhook -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+        id="test-a-Webhook">
         <!-- modal header  -->
         <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
             <div class="flex items-center gap-[15px] ">
 
                 <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
-                    Delete this Webhook?
+                    Configure a Webhook
                 </h2>
             </div>
 
@@ -690,22 +695,181 @@
                 </svg>
             </span>
         </div>
-        <div class="w-full bg-white rounded-10px flex flex-col p-[15px] gap-0 border border-[#E9E1E1]">
-
-            <p class="text-base leading-[200%] text-Theme-Black mb-2.5">
-                Are you sure you want to continue?
+        <div class="w-full bg-white rounded-10px flex flex-col p-5 gap-0 border border-[#E9E1E1]">
+            <p class="text-base font-medium leading-[200%] text-Theme-Black mb-2.5">
+                Test your Webhook
             </p>
             <p class="text-base leading-[200%] text-Theme-Black ">
-                You’re about to delete this webhook. Deleting this webhook will stop sending data to the connected
-                service from Kiwiform.
+                Send a test event to your endpoint to make sure it’s receiving data correctly before activating the webhook.
             </p>
+            
         </div>
         <!-- modal footer  -->
         <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
-            <button
-                class="btn-kiwi-green bg-[#DC3027] w-full text-center transition-all duration-500 hover:bg-[#c9251c]">
-                Delete This Webhook
+            <button data-modal-target="Add-a-webhook"
+                class="btn-kiwi-green  w-full text-center transition-all duration-500 hover:bg-theme-Green-hover">
+                Test This Webhook
             </button>
+        </div>
+    </div>
+
+     <!-- add a Webhook -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+        id="Add-a-webhook">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Configure a Webhook
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col p-5 gap-5 border border-[#E9E1E1]">
+
+            <div class="w-full border-b border-[#E2DCDC]">
+                <p class="text-base font-medium leading-[140%] text-Theme-Black mb-5">Webhook URL</p>
+                <label for="url" class="mb-[5px] block text-xs leading-[120%] text-Theme-Black">Endpoint URL</label>
+                <input type="url" value="htttps://webhookurl.com/webhook" class="py-3.5 px-[15px] w-full mb-5 rounded-10px border border-[#F8F6F6] bg-[#F8F6F6] text-base font-medium leading-[140%] text-Theme-Black transition-all duration-500
+                focus:outline-0 focus:border-[#E2DCDC] " disabled>
+            </div>
+
+            <div class="w-full pb-5 border-b border-[#E2DCDC]">
+                <p class="text-base font-medium leading-[140%] text-Theme-Black mb-5">Triggers</p>
+                <label for="url" class="mb-[5px] block text-xs leading-[120%] text-Theme-Black">Delivery
+                    Condition</label>
+                <div class="custom-dropdown relative w-full" data-style="design1">
+                    <div class="relative ">
+                        <button type="button"
+                            class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] border border-[#E2DCDC] text-Theme-Black p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
+                            <span class="selected-option">Completed Submission</span>
+                            <svg class="dropdown-arrow w-4 h-4 ml-2 rotate-180 transition-transform duration-200" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div
+                            class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-10">
+                            <ul class="dropdown-list flex items-center flex-col gap-px w-full bg-[#F8F6F6]">
+                                <li class="bg-white w-full relative">
+                                    <div
+                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center active">
+                                        <span>Completed Submission</span>
+                                    </div>
+                                    <div
+                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                    </div>
+                                </li>
+
+                                <li class="bg-white w-full relative">
+                                    <div
+                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                        <span>Completed and Incomplete Submission</span>
+
+                                    </div>
+                                    <div
+                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full border-b border-[#E2DCDC]">
+                <p class="text-base font-medium leading-[140%] text-Theme-Black mb-2.5">Signature</p>
+                <label for="url" class="mb-5 block text-base leading-[200%] text-Theme-Black">Add a secret key to sign
+                    webhook requests so you can verify they’re sent securely from Kiwiform.</label>
+                <div x-data="{ show: false }" class="relative w-full mb-5">
+
+                    <!-- Password Input -->
+                    <input :type="show ? 'text' : 'password'" placeholder="Signature" class="py-3.5 px-[15px] pr-12 w-full rounded-10px border border-[#F8F6F6] bg-[#F8F6F6]
+               text-base font-medium leading-[140%] text-Theme-Black transition-all duration-500
+               focus:outline-0 focus:border-[#E2DCDC]" />
+
+                    <!-- Toggle Button -->
+                    <button type="button" @click="show = !show"
+                        class="absolute right-4 top-1/2 -translate-y-1/2 text-[#8C8484] hover:text-Theme-Black transition">
+                        <!-- Eye Open -->
+                        <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+
+                        <!-- Eye Closed -->
+                        <svg x-show="show" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20
+                     C5 20 1 12 1 12
+                     a21.77 21.77 0 0 1 5.06-6.94" />
+                            <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4
+                     c7 0 11 8 11 8
+                     a21.77 21.77 0 0 1-2.16 3.19" />
+                            <line x1="1" y1="1" x2="23" y2="23" />
+                        </svg>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="pt-0 w-full">
+                <div class="flex items-center justify-between mb-2.5">
+                    <p class="text-base leading-[200%] font-medium text-Theme-Black">SSL Verification</p>
+                    <label x-data="{ checked: true }" class="flex items-center gap-[10px] cursor-pointer">
+                        <div class="text-[12px] leading-[120%] font-normal text-[#8C8484]">
+                            (Recommended) <span class="text-Theme-Black text-[15px]">ON</span>
+                        </div>
+                        <div class="relative">
+                            <input type="checkbox" value="Original_UV" class="sr-only peer" x-model="checked">
+                            <div class="w-11 h-6 bg-[#EDE9E9] peer-focus:outline-none rounded-full peer 
+                                            peer-checked:after:translate-x-[20px] peer-checked:after:bg-white after:content-[''] after:absolute 
+                                            after:top-[2px] after:right-[22px] after:bg-white after:rounded-full after:h-[20px] after:w-[20px] after:transition-all
+                                            peer-checked:bg-Theme-Green hover:peer-checked:bg-Theme-Green">
+
+                                <!-- Static gray dot -->
+                                <svg :class="{'!text-white':checked}"
+                                    class="absolute top-2.5 left-2.5 z-20 text-[#E2DCDC]" width="4" height="4"
+                                    viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="2" cy="2" r="2" fill="currentcolor" />
+                                </svg>
+
+                                <!-- Visible only when checked -->
+                                <svg :class="{'!text-[#007D47]': checked}"
+                                    class="on block absolute top-[9px] right-[10.75px] z-20 text-white" width="2"
+                                    height="6" viewBox="0 0 2 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="2" height="6" rx="1" fill="currentcolor" />
+                                </svg>
+
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <p class="text-base leading-[200%] text-Theme-Black ">
+                    When enabled, Kiwiform will verify the SSL certificate of the webhook endpoint to keep data secure.
+                </p>
+            </div>
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
+            <a href="Connect-flow-Webhooks.html" class="btn-kiwi-green  w-full text-center transition-all duration-500 hover:bg-theme-Green-hover">
+                Save Webhook
+            </a>
         </div>
     </div>
 
