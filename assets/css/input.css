@@ -78,9 +78,11 @@
   0% {
     transform: rotate(0deg);
   }
+
   50% {
     transform: rotate(180deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -397,16 +399,31 @@
     stroke-dashoffset: 0;
   }
 
-  .abs-bg {
+  .dropdown-item+.abs-bg {
     opacity: 0;
   }
 
-  .dropdown-item.active+.abs-bg,
-  .dropdown-item:hover+.abs-bg {
-    opacity: 1 important;
+  .dropdown-item.active+.abs-bg {
+
     transition: opacity 0.3s ease-in-out;
+    opacity: 1;
   }
 
+  .dropdown-list.real .relative .dropdown-item {
+    border: 1px solid #FFF;
+    background: #FFFFFF;
+    color: #000A06;
+  }
+
+  .dropdown-list.real .relative .dropdown-item:hover {
+    color: #007D47;
+  }
+
+  .dropdown-list.real .relative .dropdown-item.active {
+    background: #EBFEF6;
+    border-color: #007D47;
+    color: #007D47;
+  }
 
   .list-card-list {
     grid-auto-columns: 1fr;

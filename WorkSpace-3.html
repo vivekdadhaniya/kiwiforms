@@ -83,7 +83,6 @@
                             </defs>
                         </svg>
 
-
                         <svg class="md:hidden block" width="40" height="40" viewBox="0 0 40 40" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -139,8 +138,6 @@
                                 </linearGradient>
                             </defs>
                         </svg>
-
-
                     </a>
                     <button
                         class="relative overflow-hidden px-2.5 py-1 rounded-full hidden md:flex items-center gap-[5px] bg-[#007D47] cursor-pointer">
@@ -238,7 +235,67 @@
                         </button>
                     </div>
 
-                    <button class="btn-white-square">BD</button>
+
+                    <div x-data="dropdownComponent('user-dp')" class="relative w-max">
+                        <button @click="toggle" :class="{'bg-white': isOpen}"
+                            class="btn-white-square aspect-square rounded-[5px] bg-[#FFF] flex items-center justify-center cursor-pointer transition-all duration-500 ease-out hover:bg-white">
+                            BD
+                        </button>
+
+                        <div x-ref="user-dp" x-show="isOpen" x-transition=""
+                            x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                            @click.outside="close"
+                            class="absolute right-0 z-10 p-0 mt-2 w-[250px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft"
+                            style="overflow: hidden; transition: height 300ms; height: auto; display: none;">
+                            <div class="p-2.5 border-b border-[#E9E1E1] flex items-center gap-2.5">
+                                <div
+                                    class="w-10 h-10 aspect-square rounded-[5px] border border-[#E2DCDC] bg-white flex items-center justify-center text-sm font-medium leading-[140%] text-Theme-Black">
+                                    BD</div>
+                                <div class="block">
+                                    <p class="text-sm leading-[100%] font-medium text-Theme-Black mb-2.5">John Doe</p>
+                                    <p class="text-xs leading-[100%] font-normal text-[#8C8484]">john.doe@email.com</p>
+                                </div>
+                            </div>
+                            <ul class="py-[5px] px-[15px]">
+                                <li class="py-[15px] border-b border-[#E9E1E1]">
+                                    <a href="#"
+                                        class=" px-[5px] text-sm leading-[100%] font-medium text-Theme-Black transition-all duration-500 hover:text-Theme-Green">Account</a>
+                                </li>
+                                <li class="py-[15px] border-b border-[#E9E1E1]">
+                                    <a href="#"
+                                        class=" px-[5px] text-sm leading-[100%] font-medium text-Theme-Black transition-all duration-500 hover:text-Theme-Green">Help
+                                        Center</a>
+                                </li>
+                                <li class="py-[15px] border-b border-[#E9E1E1]">
+                                    <a href="#"
+                                        class=" px-[5px] text-sm leading-[100%] font-medium text-Theme-Black transition-all duration-500 hover:text-Theme-Green">Community</a>
+                                </li>
+                                <li class="py-[15px] border-b border-transparent">
+                                    <a href="#"
+                                        class=" px-[5px] text-sm leading-[100%] font-medium text-Theme-Black transition-all duration-500 hover:text-Theme-Green">Refer
+                                        & Earn Rewards</a>
+                                </li>
+                            </ul>
+                            <div class="w-full px-2.5 pb-2.5">
+                                <button
+                                    class="w-full flex items-center justify-between rounded-[5px] bg-[#F1EFEF] border border-[#E2DCDC] p-2.5 pl-[15px] text-sm leading-[140%] font-medium text-Theme-Black transition-all duration-500 hover:bg-[#E9E1E1] ">
+                                    Sign Out
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M9.00078 1.7998H5.40078C3.70373 1.7998 2.8552 1.7998 2.32799 2.32701C1.80078 2.85422 1.80078 3.70275 1.80078 5.39981V12.5998C1.80078 14.2969 1.80078 15.1454 2.32799 15.6726C2.8552 16.1998 3.70373 16.1998 5.40078 16.1998H9.00078"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M12.4731 13.05L16.1992 9L12.4731 4.95" stroke="#000A06"
+                                            stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M7.19922 9L9.89336 9L11.6875 9L16.1992 9" stroke="#000A06"
+                                            stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
@@ -3659,7 +3716,8 @@
         </div>
         <div class="w-full bg-white rounded-10px flex flex-col p-5 border border-[#E9E1E1]">
 
-            <div data-modal-target="new-form-name" class="p-2.5 pr-[15px] flex items-center gap-[15px] group bg-transparent transition-all duration-500 hover:bg-[#F8F3F3]">
+            <div data-modal-target="new-form-name"
+                class="p-2.5 pr-[15px] flex items-center gap-[15px] group bg-transparent transition-all duration-500 hover:bg-[#F8F3F3]">
                 <span
                     class="!w-[100px] p-2.5 aspect-square rounded-[5px] bg-[#F8F3F3] flex items-center justify-center transition-all duration-500 group-hover:bg-white">
                     <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3718,7 +3776,8 @@
                 </div>
             </div>
 
-            <div data-modal-target="new-form-name" class="p-2.5 pr-[15px] flex items-center gap-[15px] group bg-transparent transition-all duration-500 hover:bg-[#F8F3F3]">
+            <div data-modal-target="new-form-name"
+                class="p-2.5 pr-[15px] flex items-center gap-[15px] group bg-transparent transition-all duration-500 hover:bg-[#F8F3F3]">
                 <span
                     class="!w-[100px] p-2.5 aspect-square rounded-[5px] bg-[#F8F3F3] flex items-center justify-center transition-all duration-500 group-hover:bg-white">
                     <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3772,7 +3831,8 @@
                 </div>
             </div>
 
-            <div data-modal-target="new-form-name" class="p-2.5 pr-[15px] flex items-center gap-[15px] group bg-transparent transition-all duration-500 hover:bg-[#F8F3F3]">
+            <div data-modal-target="new-form-name"
+                class="p-2.5 pr-[15px] flex items-center gap-[15px] group bg-transparent transition-all duration-500 hover:bg-[#F8F3F3]">
                 <span
                     class="!w-[100px] p-2.5 aspect-square rounded-[5px] bg-[#F8F3F3] flex items-center justify-center transition-all duration-500 group-hover:bg-white">
                     <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
