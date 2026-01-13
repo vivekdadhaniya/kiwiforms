@@ -183,6 +183,27 @@
 }
 
 @layer components {
+
+  .radio-circle {
+    @apply w-5 h-5 rounded-full border-2 border-[#9ACEB8] flex items-center justify-center transition;
+  }
+
+  /* Hover */
+  label:hover .radio-circle {
+    @apply border-[#007D47] bg-white;
+  }
+
+  /* Checked outer */
+  input:checked+.radio-circle {
+    @apply border-[#007D47] bg-white;
+  }
+
+  /* Checked inner dot */
+  input:checked+.radio-circle::after {
+    content: "";
+    @apply w-2.5 h-2.5 rounded-full bg-[#1B8F5A];
+  }
+
   .close-btn {
     @apply w-10 aspect-square flex items-center justify-center bg-transparent transition-all duration-500 hover:bg-[#E2DCDC] rounded-10px
   }
