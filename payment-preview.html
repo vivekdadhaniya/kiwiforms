@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- REQUIRED META TAGS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kiwiform
+    </title>
+    <!--- MAIN CSS ---->
+    <link rel="stylesheet" href="assets/css/input.css">
+    <link rel="stylesheet" href="assets/css/output.css">
+    <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
+</head>
+
+<body class="md:overflow-hidden bg-Theme-bg font-Inter">
+    <div class="flex flex-col max-md:gap-8 md:flex-row bg-black-0a0a0a">
+        <!--Header--->
+        <header class="p-2.5 rounded-b-2xl fixed top-0 z-[1000] w-full bg-Theme-Forground">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2.5  w-full max-w-[340px]">
+                    <a href="#" class="p-2 bg-white rounded-10px shadow-Logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z"
+                                fill="#183C1A" />
+                            <path
+                                d="M12 1.2002C12.7732 1.2002 13.5273 1.28167 14.2544 1.43629C15.2288 1.64349 15.84 2.56199 15.84 3.55816V6.96019C15.84 7.62294 16.3772 8.1602 17.04 8.1602H20.442C21.4382 8.1602 22.3567 8.77135 22.5639 9.74573C22.7185 10.4728 22.8 11.227 22.8 12.0002C22.8 17.9649 17.9646 22.8002 12 22.8002C6.03528 22.8002 1.19995 17.9649 1.19995 12.0002C1.19995 6.03552 6.03528 1.2002 12 1.2002Z"
+                                fill="#B8DD2F" />
+                            <rect x="8.92041" y="8.81445" width="6.15932" height="6.15932" rx="3.07966"
+                                fill="#F2F3B5" />
+                            <ellipse cx="12.1062" cy="17.5222" rx="0.637171" ry="0.955756" fill="#183C1A" />
+                            <ellipse cx="12.1062" cy="6.37177" rx="0.637171" ry="0.955756" fill="#183C1A" />
+                            <ellipse cx="14.8939" cy="16.7747" rx="0.637171" ry="0.955756"
+                                transform="rotate(-30 14.8939 16.7747)" fill="#183C1A" />
+                            <ellipse cx="9.3185" cy="7.1185" rx="0.637171" ry="0.955756"
+                                transform="rotate(-30 9.3185 7.1185)" fill="#183C1A" />
+                            <ellipse cx="16.9339" cy="14.7347" rx="0.637171" ry="0.955756"
+                                transform="rotate(-60 16.9339 14.7347)" fill="#183C1A" />
+                            <ellipse cx="7.27764" cy="9.15947" rx="0.637171" ry="0.955756"
+                                transform="rotate(-60 7.27764 9.15947)" fill="#183C1A" />
+                            <ellipse cx="17.6811" cy="11.9478" rx="0.637171" ry="0.955756"
+                                transform="rotate(-90 17.6811 11.9478)" fill="#183C1A" />
+                            <ellipse cx="6.53046" cy="11.9478" rx="0.637171" ry="0.955756"
+                                transform="rotate(-90 6.53046 11.9478)" fill="#183C1A" />
+                            <ellipse cx="7.27743" cy="14.735" rx="0.637171" ry="0.955756"
+                                transform="rotate(-120 7.27743 14.735)" fill="#183C1A" />
+                            <ellipse cx="9.31816" cy="16.7756" rx="0.637171" ry="0.955756"
+                                transform="rotate(-150 9.31816 16.7756)" fill="#183C1A" />
+                            <path
+                                d="M16.1831 7.7998L22.7999 8.1598L23.0023 10.9554C23.0353 11.4106 23.0237 11.8679 22.9677 12.3209L22.879 13.0388C22.8264 13.4652 22.7346 13.8859 22.6049 14.2955L22.3439 15.1198L19.4399 11.5198L16.1831 7.7998Z"
+                                fill="url(#paint0_linear_149_8)" />
+                            <defs>
+                                <linearGradient id="paint0_linear_149_8" x1="19.7999" y1="8.1598" x2="22.7999"
+                                    y2="15.1198" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#183C1A" stop-opacity="0.25" />
+                                    <stop offset="1" stop-color="#183C1A" stop-opacity="0" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </a>
+                    <div class="px-[15px] py-[5px] rounded-10px bg-[#EDE9E9] min-h-10 flex items-center">
+                        <ol class="inline-flex items-center gap-1 md:gap-3.5">
+                            <li class="inline-flex items-center">
+                                <a href="javascript:;"
+                                    class="inline-flex items-center text-sm leading-[140%] font-normal text-Theme-Black hover:text-Theme-Green">
+                                    My Forms </a>
+                            </li>
+                            <li>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10"
+                                        fill="none">
+                                        <path d="M1 1L5 5L1 9" stroke="#000A06" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <a href="javascript:;"
+                                        class="ml-1 text-sm leading-[140%] font-normal text-Theme-Black hover:text-Theme-Green md:ml-3.5">
+                                        New Form</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10"
+                                        fill="none">
+                                        <path d="M1 1L5 5L1 9" stroke="#000A06" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <a href="javascript:;"
+                                        class="ml-1 text-sm leading-[140%] font-normal text-Theme-Green hover:text-Theme-Green md:ml-3.5">
+                                        Preview</a>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="hidden items-center gap-2.5 p-[5px] rounded-10px bg-[#EDE9E9]">
+                    <a href="#" class="py-[5px] px-[15px] header-links active">Form</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Logic Flow</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Connect</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Share</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Results</a>
+
+
+                </div>
+                <div class="flex items-center justify-end gap-2.5 w-full max-w-[340px]">
+
+                    <button class="w-full max-w-[112px] p-[15px] py-2.5 rounded-[10px] bg-Theme-Black flex items-center justify-between text-sm font-medium leading-[140%] text-white
+                                   transition-all duration-500 hover:bg-gray-800 relative overflow-hidden group">
+                        Publish
+                        <svg class="relative z-10 transition-transform duration-500 group-hover:translate-x-1"
+                            xmlns="http://www.w3.org/2000/svg" width="5" height="10" viewBox="0 0 5 10" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M0.308661 9.9577C0.12182 9.8717 0 9.66913 0 9.44443L0 0.555583C0 0.330843 0.12182 0.128326 0.308661 0.042326C0.495495 -0.0436738 0.710556 0.00380744 0.853556 0.162696L4.85355 4.60713C5.04882 4.82409 5.04882 5.17587 4.85355 5.39283L0.853556 9.83727C0.710556 9.99616 0.495495 10.0437 0.308661 9.9577Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+                    <button class="btn-white-square">
+                        BD
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!--SideBar-->
+        <div class="relative flex md:h-full gap-5 md:overflow-hidden">
+
+        </div>
+        <div class=" w-full mx-auto relative md:h-screen md:overflow-y-hidden pt-[61px] ">
+            <!--Main Content Page-->
+            <div class="w-full h-full relative bg-[#F6F6F6] rounded-10px px-5 py-0 ">
+                <!-- header for main content  -->
+                <div class="flex items-center justify-center pt-2.5 pb-2.5">
+                    <div class="flex items-center justify-between w-full max-w-[440px] mx-auto">
+                        <label class=" flex items-center justify-between  cursor-pointer">
+                            <div class="relative">
+                                <input id="toggleView" type="checkbox" value="Original_UV" class="sr-only peer">
+                                <div class="w-20 h-10 bg-[#EDE9E9] peer-focus:outline-none rounded-md peer 
+                                peer-checked:after:translate-x-[40px] peer-checked:after:bg-white after:content-[''] after:absolute 
+                                after:top-[5px] after:right-[45px] after:bg-white  after:rounded-[5px] after:h-[30px] after:w-[30px] after:transition-all
+                              peer-checked:bg-[#EDE9E9] hover:peer-checked:bg-[#ece6e6]">
+
+                                    <svg class="absolute z-10 left-[11px] top-[11px]" width="18" height="18"
+                                        viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_365_244)">
+                                            <rect x="1" y="1" width="16" height="12" rx="2" stroke="#000A06"
+                                                stroke-width="1.2" />
+                                            <path d="M9 15V17M9 17H4M9 17H14" stroke="#000A06" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_365_244">
+                                                <rect width="18" height="18" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg class="absolute z-10 right-[11px] top-[11px]" width="18" height="18"
+                                        viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="3" y="1" width="12" height="16" rx="2" stroke="#000A06"
+                                            stroke-width="1.2" />
+                                        <path d="M7 15H11" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M7 3L6 1H12L11 3H7Z" stroke="#000A06" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+
+                                </div>
+                            </div>
+                        </label>
+                        <div class="flex items-center justify-end gap-2.5">
+                            <button class="btn-white-square">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4745_1544)">
+                                        <path
+                                            d="M16.3328 5.8C15.0951 2.97455 12.2689 1 8.98019 1C4.82166 1 1.40237 4.15734 1 8.2"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M12.9883 5.80078H16.517C16.7828 5.80078 16.9982 5.58588 16.9982 5.32078V1.80078"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M1.66797 12.2008C2.90552 15.0262 5.73184 17.0008 9.0205 17.0008C13.179 17.0008 16.5983 13.8434 17.0007 9.80078"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M5.00991 12.1992H1.48119C1.21544 12.1992 1 12.4141 1 12.6792V16.1992"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4745_1544">
+                                            <rect width="18" height="18" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </button>
+                            <a href="02-Contact-Details_1.html" class="btn-white-square">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                                    fill="none">
+                                    <path d="M4 14L14 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M14 14L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="view-port relative mx-auto origin-center h-[calc(100%-140px)] overflow-y-auto py-5 flex flex-col items-center justify-center bg-white rounded-10px border border-[#E2DCDC] max-w-[1196px]">
+                    <!-- content preview  -->
+                    <div class="input w-full max-w-[400px]  h-full ">
+                        <!-- progress bar  -->
+                        <p class="h-2.5 w-full max-w-[400px] rounded-[30px] pt-0.5 pl-0.5 bg-[#DAEFE6] mx-auto ">
+                            <span class="h-1.5 w-[50%] rounded-[30px] bg-[#007D47] flex"></span>
+                        </p>
+                        <div
+                            class="text-sm mt-8 font-semibold leading-[140%] text-white p-[5px] rounded-full bg-[#007D47] aspect-square w-[30px] flex items-center justify-center mb-5">
+                            2</div>
+                        <h4 class="text-2xl leading-[160%] font-semibold text-[#000A06] mb-2.5">
+                            Make a Payment
+                        </h4>
+                        <p class="text-[15px] font-normal leading-[120%] text-[#000A06] mb-[30px]">
+                            Billing Details
+                        </p>
+
+                        <!-- payment input field -->
+                        <div class="w-full ">
+                            <!-- Amount -->
+                            <div class="text-[15px] leading-[120%] text-Theme-Black">
+                                Amount to be charged:
+                                <span class="font-semibold">$0.00</span>
+                            </div>
+
+                            <!-- Secured by Stripe -->
+                            <div class="mt-[15px] mb-[5px] flex items-center gap-1.5 ">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M4.4415 4.53624C4.4415 4.07185 4.53355 3.61202 4.71238 3.18298C4.89121 2.75394 5.15332 2.36411 5.48376 2.03574C5.81419 1.70737 6.20647 1.44689 6.63821 1.26918C7.06994 1.09147 7.53267 1 7.99998 1C8.46728 1 8.93001 1.09147 9.36174 1.26918C9.79348 1.44689 10.1858 1.70737 10.5162 2.03574C10.8466 2.36411 11.1087 2.75394 11.2876 3.18298C11.4664 3.61202 11.5584 4.07185 11.5584 4.53624V5.61835H11.8522C12.8446 5.61835 13.65 6.41768 13.65 7.40484V13.2135C13.65 13.6873 13.4606 14.1417 13.1234 14.4767C12.7863 14.8118 12.329 15 11.8522 15H4.1477C3.91162 15 3.67785 14.9538 3.45974 14.864C3.24163 14.7742 3.04345 14.6426 2.87652 14.4767C2.70958 14.3109 2.57716 14.1139 2.48682 13.8972C2.39648 13.6804 2.34998 13.4481 2.34998 13.2135V7.40484C2.34998 6.41768 3.15536 5.61835 4.1477 5.61835H4.4415V4.53624ZM4.1477 7.14963C4.07959 7.14963 4.01427 7.17652 3.9661 7.22438C3.91794 7.27224 3.89088 7.33715 3.89088 7.40484V13.2135C3.89088 13.3544 4.00594 13.4687 4.1477 13.4687H11.8522C11.9204 13.4687 11.9857 13.4418 12.0338 13.394C12.082 13.3461 12.1091 13.2812 12.1091 13.2135V7.40484C12.1091 7.33715 12.082 7.27224 12.0338 7.22438C11.9857 7.17652 11.9204 7.14963 11.8522 7.14963H4.1477ZM10.0175 5.61835H5.98241V4.53624C5.98241 4.00449 6.19498 3.49452 6.57334 3.11852C6.95171 2.74252 7.46488 2.53128 7.99998 2.53128C8.53507 2.53128 9.04824 2.74252 9.42661 3.11852C9.80498 3.49452 10.0175 4.00449 10.0175 4.53624V5.61835ZM7.99998 8.38895C8.20431 8.38895 8.40028 8.46961 8.54477 8.6132C8.68926 8.75678 8.77043 8.95153 8.77043 9.15459V11.4638C8.77043 11.6668 8.68926 11.8616 8.54477 12.0051C8.40028 12.1487 8.20431 12.2294 7.99998 12.2294C7.79564 12.2294 7.59967 12.1487 7.45518 12.0051C7.31069 11.8616 7.22952 11.6668 7.22952 11.4638V9.15459C7.22952 8.95153 7.31069 8.75678 7.45518 8.6132C7.59967 8.46961 7.79564 8.38895 7.99998 8.38895Z"
+                                        fill="#007D47" />
+                                </svg>
+                                <div class="flex items-center gap-1 text-sm leading-[130%] text-Theme-Green">
+                                    Secured by
+                                    <svg width="42" height="18" viewBox="0 0 42 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M28.8281 3.79688C30.8697 3.79688 32.7948 5.69527 32.8066 9.17969C32.8066 12.9888 30.9047 14.7197 28.8164 14.7197C27.7902 14.7197 27.1719 14.2753 26.752 13.9629L26.7402 17.3633L23.8232 18V3.98926H26.3896L26.542 4.73438C26.9503 4.34987 27.685 3.79692 28.8281 3.79688ZM3.94336 3.79688C4.91167 3.79688 5.86861 3.95309 6.83691 4.34961V7.17383C5.95025 6.68116 4.83002 6.4043 3.94336 6.4043C3.32521 6.40436 2.95215 6.58515 2.95215 7.05371C2.95312 8.39891 7.3963 7.76265 7.4082 11.3428C7.4082 13.4937 5.74014 14.7314 3.31348 14.7314C2.31028 14.7314 1.21375 14.5274 0.128906 14.0469V11.1865C1.10884 11.7392 2.34519 12.1484 3.31348 12.1484C3.96681 12.1484 4.43359 11.9678 4.43359 11.415C4.43335 9.98526 0 10.5137 0 7.19727C9.83291e-05 5.0706 1.57527 3.79698 3.94336 3.79688ZM10.8271 3.99805H13.043V6.55762H10.8271V10.8232C10.8271 12.6012 12.669 12.049 13.043 11.8926V14.332C12.6579 14.5482 11.9583 14.7285 11.002 14.7285C9.27534 14.7285 7.98055 13.4189 7.98047 11.6406L7.99219 2.01562L10.8389 1.39062L10.8271 3.99805ZM37.7881 3.79688C40.5531 3.79688 42 6.22463 42 9.30078C42 9.58938 41.9766 10.214 41.9766 10.3701H36.2715C36.3999 11.7877 37.4036 12.1963 38.5352 12.1963C39.6901 12.1963 40.6002 11.9437 41.3936 11.5352V13.9385C40.6003 14.3951 39.5503 14.7197 38.1621 14.7197C35.3155 14.7197 33.3321 12.8932 33.332 9.27637C33.332 6.22437 35.0116 3.79706 37.7881 3.79688ZM22.7383 14.5146H19.8096V4H22.7383V14.5146ZM16.6719 4.88867C17.3602 3.59093 18.7253 3.85483 19.0986 3.99902V6.7627C18.7369 6.63052 17.5702 6.46248 16.8818 7.3877V14.5137H13.9648V3.99902H16.4854L16.6719 4.88867ZM28.1279 6.46094C27.4632 6.46103 27.0435 6.70144 26.7402 7.0498L26.752 11.5078C27.0319 11.8201 27.44 12.0722 28.1279 12.0723C29.2012 12.0723 29.9248 10.8709 29.9248 9.26074C29.9248 7.68662 29.1896 6.46094 28.1279 6.46094ZM37.7764 6.23438C37.0414 6.23452 36.2363 6.79957 36.2363 8.15723H39.2471C39.2471 6.7994 38.488 6.23438 37.7764 6.23438ZM22.7383 2.43945L19.8105 3.08789V0.636719L22.7383 0V2.43945Z"
+                                            fill="#007D47" />
+                                    </svg>
+
+                                </div>
+                            </div>
+
+                            <div class="w-full p-2.5 rounded-[15px] bg-[#DAEFE6]/20 flex flex-col gap-5">
+                                <!-- Payment Methods (Radio Group with Peer) -->
+                                <div class="grid grid-cols-3 gap-2">
+                                    <!-- Card -->
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="payment" class="peer sr-only" checked   />
+                                        <div class="rounded-[5px] py-2.5 px-[15px] border border-[#DAEFE6] bg-[#DAEFE6] text-Theme-Black
+                         peer-checked:border-Theme-Green
+                         peer-checked:bg-white
+                           peer-checked:text-Theme-Green
+                           peer-checked:shadow-sm
+                           transition">
+                                            <p class="text-sm leading-[130%] mb-2.5">Card</p>
+                                            <div class="text-lg ">
+                                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M0 7C0 5.93913 0.395088 4.92172 1.09835 4.17157C1.80161 3.42143 2.75544 3 3.75 3H26.25C27.2446 3 28.1984 3.42143 28.9016 4.17157C29.6049 4.92172 30 5.93913 30 7H0ZM0 11V23C0 24.0609 0.395088 25.0783 1.09835 25.8284C1.80161 26.5786 2.75544 27 3.75 27H26.25C27.2446 27 28.1984 26.5786 28.9016 25.8284C29.6049 25.0783 30 24.0609 30 23V11H0ZM5.625 21C5.625 20.4696 5.82254 19.9609 6.17417 19.5858C6.52581 19.2107 7.00272 19 7.5 19H9.375C9.87228 19 10.3492 19.2107 10.7008 19.5858C11.0525 19.9609 11.25 20.4696 11.25 21C11.25 21.5304 11.0525 22.0391 10.7008 22.4142C10.3492 22.7893 9.87228 23 9.375 23H7.5C7.00272 23 6.52581 22.7893 6.17417 22.4142C5.82254 22.0391 5.625 21.5304 5.625 21Z"
+                                                        fill="currentColor" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                    <!-- Apple Pay -->
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="payment" class="peer sr-only"   />
+                                        <div class="rounded-[5px] py-2.5 px-[15px] border border-[#DAEFE6] bg-[#DAEFE6] text-Theme-Black
+                         peer-checked:border-Theme-Green
+                         peer-checked:bg-white
+                           peer-checked:text-Theme-Green
+                           peer-checked:shadow-sm
+                           transition">
+                                            <p class="text-sm leading-[130%] mb-2.5">Apple Pay</p>
+                                            <div class="text-lg ">
+                                                <svg width="48" height="30" viewBox="0 0 48 30" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_5318_428)">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M8.77047 7.57874C8.20791 8.25435 7.30781 8.78722 6.40771 8.7111C6.29519 7.7976 6.73587 6.827 7.25155 6.22752C7.81412 5.53288 8.7986 5.03806 9.59557 5C9.68933 5.95156 9.32366 6.8841 8.77047 7.57874ZM9.58621 8.89569C8.79324 8.84937 8.06969 9.13772 7.48525 9.37063C7.10915 9.52051 6.79067 9.64743 6.54837 9.64743C6.27646 9.64743 5.94483 9.51372 5.57248 9.3636L5.57248 9.3636C5.08458 9.16689 4.52677 8.94199 3.94182 8.95279C2.60105 8.97182 1.35403 9.74258 0.669577 10.9701C-0.736832 13.4251 0.303911 17.0601 1.66344 19.0584C2.32914 20.048 3.12611 21.1328 4.17622 21.0947C4.63821 21.077 4.97054 20.9339 5.31447 20.7858C5.71042 20.6153 6.12176 20.4381 6.76402 20.4381C7.38402 20.4381 7.77736 20.6107 8.15494 20.7763C8.51396 20.9337 8.85874 21.085 9.37056 21.0757C10.4582 21.0567 11.1426 20.0861 11.8083 19.0964C12.5267 18.0343 12.8424 16.9977 12.8903 16.8404L12.896 16.8222C12.8948 16.821 12.886 16.8169 12.8704 16.8097L12.8703 16.8097L12.8703 16.8096C12.6301 16.6981 10.7946 15.8452 10.777 13.5583C10.7593 11.6388 12.2329 10.6663 12.4649 10.5132C12.479 10.5039 12.4885 10.4976 12.4928 10.4943C11.5552 9.08601 10.0925 8.93376 9.58621 8.89569ZM17.1152 20.9677V6.13281H22.6002C25.4318 6.13281 27.4101 8.11206 27.4101 11.0048C27.4101 13.8976 25.3943 15.8958 22.5252 15.8958H19.3842V20.9677H17.1152ZM19.384 8.07031H21.9999C23.9689 8.07031 25.094 9.13606 25.094 11.0106C25.094 12.8852 23.9689 13.9605 21.9906 13.9605H19.384V8.07031ZM34.9017 19.188C34.3017 20.3489 32.9796 21.0816 31.5545 21.0816C29.4449 21.0816 27.9728 19.8065 27.9728 17.8843C27.9728 15.9812 29.398 14.8869 32.0327 14.7252L34.8642 14.5539V13.7355C34.8642 12.527 34.086 11.8705 32.6984 11.8705C31.5545 11.8705 30.72 12.47 30.5512 13.3834H28.5073C28.5729 11.4613 30.3543 10.0625 32.764 10.0625C35.3612 10.0625 37.0489 11.4423 37.0489 13.5833V20.9674H34.9486V19.188H34.9017ZM32.1638 19.3178C30.9543 19.3178 30.1854 18.7279 30.1854 17.8239C30.1854 16.8914 30.9261 16.349 32.3419 16.2633L34.8641 16.1016V16.9389C34.8641 18.3282 33.7015 19.3178 32.1638 19.3178ZM44.0152 21.5457C43.1057 24.1435 42.065 24.9999 39.8522 24.9999C39.6835 24.9999 39.1209 24.9809 38.9897 24.9428V23.1634C39.1303 23.1824 39.4772 23.2015 39.6553 23.2015C40.6586 23.2015 41.2212 22.7733 41.5681 21.6599L41.7743 21.0034L37.9302 10.2031H40.3023L42.9745 18.967H43.0214L45.6935 10.2031H48.0001L44.0152 21.5457Z"
+                                                            fill="currentColor" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_5318_428">
+                                                            <rect width="48" height="30" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                    <!-- Google Pay -->
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="payment" class="peer sr-only"   />
+                                        <div class="rounded-[5px] py-2.5 px-[15px] border border-[#DAEFE6] bg-[#DAEFE6] text-Theme-Black
+                         peer-checked:border-Theme-Green
+                         peer-checked:bg-white
+                           peer-checked:text-Theme-Green
+                           peer-checked:shadow-sm
+                           transition">
+                                            <p class="text-sm leading-[130%] mb-2.5">Google Pay</p>
+                                            <div class="text-lg ">
+                                                <svg width="48" height="30" viewBox="0 0 48 30" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_5318_435)">
+                                                        <path
+                                                            d="M43.2231 17.8486H43.2563L46.0444 10.7344H48.0034L41.98 24.9971H40.1216L42.3608 20.0078L38.4087 10.7344H40.3677L43.2231 17.8486ZM33.7964 10.4219C35.1285 10.4219 36.1812 10.7911 36.9536 11.5186C37.7261 12.2461 38.1069 13.263 38.1069 14.5449V20.6543H36.3823V19.2793H36.3042C35.5541 20.4111 34.5684 20.9775 33.3257 20.9775C32.2734 20.9775 31.3776 20.6535 30.6724 20.0068C29.9784 19.4063 29.5865 18.5173 29.6089 17.582C29.6089 16.5542 29.9897 15.7459 30.7397 15.1338C31.4899 14.5217 32.4975 14.2217 33.7515 14.2217C34.8262 14.2217 35.6999 14.4296 36.394 14.8223V14.3945C36.394 13.7594 36.1249 13.1589 35.6548 12.7432C35.1734 12.3043 34.5576 12.0616 33.9194 12.0615C32.9119 12.0615 32.1168 12.5004 31.5347 13.3779L29.9448 12.3506C30.7957 11.0687 32.0834 10.4219 33.7964 10.4219ZM25.2534 6.17285C26.4065 6.14976 27.526 6.60025 28.3433 7.43164C29.9778 9.00224 30.0792 11.6471 28.5454 13.3447L28.3433 13.5518C27.5036 14.3717 26.4737 14.7881 25.2534 14.7881H22.2759V20.6543H20.4731V6.17285H25.2534ZM34.0317 15.7188C33.3041 15.7188 32.6884 15.9039 32.1958 16.2617C31.7143 16.6197 31.4673 17.0705 31.4673 17.6133C31.4673 18.0983 31.6916 18.549 32.061 18.8262C32.464 19.1494 32.9568 19.322 33.4604 19.3105C34.2219 19.3105 34.9503 18.9987 35.4878 18.4443C36.0811 17.867 36.3833 17.1856 36.3833 16.4004C35.8234 15.9385 35.0395 15.7072 34.0317 15.7188ZM22.2759 13.0117H25.2993C25.9711 13.0348 26.6205 12.7573 27.0796 12.2607C28.0202 11.2561 27.998 9.63903 27.0239 8.66895C26.5649 8.20704 25.9487 7.95317 25.2993 7.95312H22.2759V13.0117Z"
+                                                            fill="currentColor" />
+                                                        <path
+                                                            d="M16.0623 13.4986C16.0623 12.9327 16.0167 12.3668 15.9257 11.8125H8.19751V15.0114H12.625C12.4429 16.0393 11.851 16.9631 10.986 17.5406V19.6193H13.6266C15.1745 18.1757 16.0623 16.0393 16.0623 13.4986Z"
+                                                            fill="#4285F4" />
+                                                        <path
+                                                            d="M8.19795 21.6353C10.406 21.6353 12.2726 20.8962 13.627 19.6259L10.9865 17.5471C10.2467 18.0553 9.30198 18.344 8.19795 18.344C6.05819 18.344 4.2485 16.8773 3.59974 14.9141H0.879517V17.0621C2.26808 19.8684 5.10213 21.6353 8.19795 21.6353Z"
+                                                            fill="#34A853" />
+                                                        <path
+                                                            d="M3.60004 14.9098C3.25853 13.882 3.25853 12.7618 3.60004 11.7224V9.58594H0.879377C-0.293126 11.9303 -0.293126 14.7019 0.879377 17.0463L3.60004 14.9098Z"
+                                                            fill="#FBBC04" />
+                                                        <path
+                                                            d="M8.19795 8.29184C9.37027 8.26874 10.4971 8.71913 11.3393 9.53908L13.6839 7.16008C12.1929 5.75116 10.2353 4.97741 8.19795 5.0005C5.10213 5.0005 2.26808 6.77898 0.879517 9.58527L3.59974 11.7333C4.2485 9.7585 6.05819 8.29184 8.19795 8.29184Z"
+                                                            fill="#EA4335" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_5318_435">
+                                                            <rect width="48" height="30" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="w-full p-2.5 flex flex-col gap-5">
+                                    <div class="relative w-full">
+                                        <label for="Card_Number"
+                                            class="text-sm leading-[130%] text-[#8C8484] pb-2.5">Card Number</label>
+                                        <input type="text" id="Card_Number" placeholder="Card Number"  
+                                            class="w-full pb-[15px] mt-0.5 border-b border-[#DAEFE6] bg-transparent placeholder:text-[#9ACEB8] text-xl font-medium leading-[140%] text-[#007D47] transition-all duration-500 focus:outline-0 focus:border-[#007D47]" />
+                                    </div>
+
+                                    <div class="flex items-center gap-5">
+                                        <div class="relative w-full">
+                                            <label for="Expiry_Date"
+                                                class="text-sm leading-[130%] text-[#8C8484] pb-2.5">Expiry Date</label>
+                                            <input type="text" id="Expiry_Date" placeholder="MM/YY"  
+                                                class="w-full pb-[15px] mt-0.5 border-b border-[#DAEFE6] bg-transparent placeholder:text-[#9ACEB8] text-xl font-medium leading-[140%] text-[#007D47] transition-all duration-500 focus:outline-0 focus:border-[#007D47]" />
+                                        </div>
+                                        <div class="relative w-full">
+                                            <label for="CVC"
+                                                class="text-sm leading-[130%] text-[#8C8484] pb-2.5">CVC</label>
+                                            <input type="text" id="CVC" placeholder="CVC"  
+                                                class="w-full pb-[15px] mt-0.5 border-b border-[#DAEFE6] bg-transparent placeholder:text-[#9ACEB8] text-xl font-medium leading-[140%] text-[#007D47] transition-all duration-500 focus:outline-0 focus:border-[#007D47]" />
+                                        </div>
+                                    </div>
+
+                                    <div class="relative w-full">
+                                        <label for="Country"
+                                            class="text-sm leading-[130%] text-[#8C8484] block pb-2.5">Country</label>
+                                        <div
+                                            class="flex pb-[15px] mt-0.5 border-b border-[#DAEFE6] items-center justify-center">
+                                            <input type="text" id="CVC" placeholder="CVC"  
+                                                class="w-full  bg-transparent placeholder:text-[#9ACEB8] text-xl font-medium leading-[140%] text-[#007D47] transition-all duration-500 focus:outline-0 focus:border-[#007D47]" />
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M15 7.5L10 12.5L5 7.5" stroke="#007D47" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="relative w-full">
+                                        <label for="Name-on-card"
+                                            class="text-sm leading-[130%] text-[#8C8484] pb-2.5">Name on card</label>
+                                        <input type="text" id="Name-on-card" placeholder="John Markson"  
+                                            class="w-full pb-[15px] mt-0.5 border-b border-[#DAEFE6] bg-transparent placeholder:text-[#9ACEB8] text-xl font-medium leading-[140%] text-[#007D47] transition-all duration-500 focus:outline-0 focus:border-[#007D47]" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Continue Button -->
+                            <button class="w-full max-w-[200px] bg-black text-white py-2.5 rounded-10px
+                   text-sm font-medium leading-[140%] mt-[15px] transition hover:bg-slate-800"  >
+                                Continue
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer for main content-->
+
+            </div>
+        </div>
+
+    </div>
+    <!-- MAIN JS-->
+    <!-- MAIN JS-->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.6/Sortable.min.js"
+        integrity="sha512-csIng5zcB+XpulRUa+ev1zKo7zRNGpEaVfNB9On1no9KYTEY/rLGAEEpvgdw6nim1WdTuihZY1eqZ31K7/fZjw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- resize js  -->
+    <script>
+        const resizer = document.getElementById('resizer-y');
+        const div1 = document.getElementById('div1');
+        const div2 = document.getElementById('div2');
+
+        resizer.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            document.addEventListener('mousemove', resize);
+            document.addEventListener('mouseup', stopResize);
+        });
+
+        function resize(e) {
+            const container = div1.parentElement;
+            const containerTop = container.getBoundingClientRect().top;
+            const totalHeight = container.offsetHeight;
+            const resizerHeight = resizer.offsetHeight;
+
+            let newHeight1 = e.clientY - containerTop;
+            newHeight1 = Math.max(100, Math.min(newHeight1, totalHeight - 100 - resizerHeight));
+
+            const newHeight2 = totalHeight - newHeight1 - resizerHeight;
+
+            div1.style.height = `${newHeight1}px`;
+            div1.style.flex = 'none';
+
+            div2.style.height = `${newHeight2}px`;
+            div2.style.flex = 'none';
+        }
+
+        function stopResize() {
+            document.removeEventListener('mousemove', resize);
+            document.removeEventListener('mouseup', stopResize);
+        }
+    </script>
+
+    <!-- alpinejs  -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('dropdown', {
+                openId: null,
+            });
+        });
+    </script>
+
+    <script>
+        function dropdownComponent(id) {
+            return {
+                id,
+                height: 'auto',
+                opacity: 0,
+
+                visible: false,
+                get isOpen() {
+                    return Alpine.store('dropdown').openId === this.id;
+                },
+                toggle() {
+                    if (this.isOpen) {
+                        this.close();
+                    } else {
+                        Alpine.store('dropdown').openId = this.id;
+                        this.$nextTick(() => {
+                            this.visible = true;
+                            // const scrollHeight = this.$refs.menu.scrollHeight;
+                            // this.height = scrollHeight + 'px';
+                            this.opacity = 1;
+                        });
+                    }
+                },
+                close() {
+                    if (this.isOpen) {
+                        this.opacity = 0;
+                        // this.height = '0px';
+
+                        setTimeout(() => {
+                            this.visible = false;
+                            Alpine.store('dropdown').openId = null;
+                        }, 100); // match with transition duration
+                    }
+                }
+            };
+        }
+    </script>
+
+    <script>
+        // Initialize Sortable on the UL
+        const sortable = new Sortable(document.getElementById('Trigger-sortable'), {
+            animation: 150,
+            handle: '.Trigger', // Make only the number bubble draggable
+            onEnd: function () {
+                updateListNumbers();
+            }
+        });
+
+        // Function to update numbers based on current order
+        function updateListNumbers() {
+            const listItems = document.querySelectorAll('#Trigger-sortable > li');
+            listItems.forEach((item, index) => {
+                const numberDiv = item.querySelector('.Trigger');
+                if (numberDiv) {
+                    numberDiv.textContent = index + 1;
+                }
+            });
+        }
+    </script>
+
+    <script>
+        const toggle = document.getElementById('toggleView');
+        const viewport = document.querySelector('.view-port');
+
+        toggle.addEventListener('change', function () {
+            if (this.checked) {
+                // Switch to mobile view
+                viewport.classList.remove('desktop-view');
+                viewport.classList.add('mobile-view');
+            } else {
+                // Switch to desktop view
+                viewport.classList.remove('mobile-view');
+                viewport.classList.add('desktop-view');
+            }
+        });
+    </script>
+
+    <script>
+        const dropdownToggle = document.getElementById('dropdownToggle');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const selectedFlag = document.getElementById('selectedFlag');
+        const selectedCountry = document.getElementById('selectedCountry');
+        const countryList = document.getElementById('countryList');
+        const searchInput = document.getElementById('searchInput');
+
+        // Toggle dropdown
+        dropdownToggle.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Update selected country and add active class
+        countryList.addEventListener('click', (e) => {
+            const item = e.target.closest('li');
+            if (item) {
+                // Update flag and text
+                selectedFlag.src = item.getAttribute('data-flag');
+                selectedCountry.textContent = item.getAttribute('data-name');
+
+                // Remove 'active' from all li
+                countryList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+
+                // Add 'active' to the selected li
+                item.classList.add('active');
+
+                // Close dropdown
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+
+        // Search functionality
+        searchInput.addEventListener('input', () => {
+            const filter = searchInput.value.toLowerCase();
+            const items = countryList.querySelectorAll('li');
+            items.forEach(item => {
+                const text = item.getAttribute('data-name').toLowerCase();
+                item.style.display = text.includes(filter) ? '' : 'none';
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+
+</html>
