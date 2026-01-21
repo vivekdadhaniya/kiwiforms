@@ -618,7 +618,7 @@
                 </div>
                 <div
                     class="view-port mx-auto origin-center h-[calc(100%-140px)] flex flex-col items-center justify-center bg-white rounded-10px border border-[#E2DCDC]">
-                    <div class="input w-full max-w-[400px]">
+                    <div class="input w-full max-w-[600px]">
                         <div
                             class="text-sm font-semibold leading-[140%] text-white p-[5px] rounded-full bg-[#007D47] aspect-square w-[30px] flex items-center justify-center mb-5">
                             3</div>
@@ -839,15 +839,63 @@
                                     Column</button>
                             </div>
                             <div class="flex w-full items-center justify-end gap-[15px]">
-                                <p class="text-base leading-[140%] font-medium text-[#9ACEB8] w-[90px]">Col 1</p>
-                                <p class="text-base leading-[140%] font-medium text-[#9ACEB8] w-[90px]">Col 2</p>
-                                <p class="text-base leading-[140%] font-medium text-[#9ACEB8] w-[90px]">Col 3</p>
+                                <div class="flex items-center gap-[15px] w-[88px]">
+                                    <p class="text-base leading-[140%] font-medium text-[#9ACEB8] w-max">Col 1</p>
+                                    <button class="">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="20" height="20" rx="10" fill="#9ACEB8" />
+                                            <path d="M7 13L13 7" stroke="white" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M13 13L7 7" stroke="white" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="flex items-center gap-[15px] w-[88px]">
+                                    <p class="text-base leading-[140%] font-medium text-[#9ACEB8] w-max">Col 2</p>
+                                    <button class="">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="20" height="20" rx="10" fill="#9ACEB8" />
+                                            <path d="M7 13L13 7" stroke="white" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M13 13L7 7" stroke="white" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="flex items-center gap-[15px] w-[88px]">
+                                    <p class="text-base leading-[140%] font-medium text-[#9ACEB8] w-max">Col 3</p>
+                                    <button class="">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="20" height="20" rx="10" fill="#9ACEB8" />
+                                            <path d="M7 13L13 7" stroke="white" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M13 13L7 7" stroke="white" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
 
                             <div class="flex flex-col gap-2.5 w-full">
                                 <div
-                                    class="w-full flex items-center justify-between py-4 px-[15px] rounded-10px bg-[#EBFEF6]">
-                                    <p class="text-base font-medium leading-[140%] text-[#9ACEB8]">Row 1</p>
+                                    class="group w-full flex items-center justify-between py-4 px-[15px] rounded-10px bg-[#EBFEF6]">
+                                    <div class="flex items-center gap-[15px] w-[88px]">
+                                        <p class="text-base leading-[140%] font-medium text-[#9ACEB8] w-[50px]">Row 1</p>
+                                        <button class="opacity-0 transition-all duration-300 group-hover:opacity-100">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect width="20" height="20" rx="10" fill="#9ACEB8" />
+                                                <path d="M7 13L13 7" stroke="white" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M13 13L7 7" stroke="white" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                    </div>
                                     <div class="flex items-center gap-[15px]">
                                         <label class="flex justify-start cursor-pointer w-[90px] px-6">
                                             <input type="radio" name="row1" class="peer hidden">
@@ -865,8 +913,20 @@
                                 </div>
 
                                 <div
-                                    class="w-full flex items-center justify-between py-4 px-[15px] rounded-10px bg-[#EBFEF6]">
-                                    <p class="text-base font-medium leading-[140%] text-[#9ACEB8]">Row 2</p>
+                                    class="group w-full flex items-center justify-between py-4 px-[15px] rounded-10px bg-[#EBFEF6]">
+                                    <div class="flex items-center gap-[15px] w-[88px]">
+                                        <p class="text-base leading-[140%] font-medium text-[#9ACEB8] w-[50px]">Row 2</p>
+                                        <button class="opacity-0 transition-all duration-300 group-hover:opacity-100">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect width="20" height="20" rx="10" fill="#9ACEB8" />
+                                                <path d="M7 13L13 7" stroke="white" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M13 13L7 7" stroke="white" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                    </div>
                                     <div class="flex items-center gap-[15px]">
                                         <label class="flex justify-start cursor-pointer w-[90px] px-6">
                                             <input type="radio" name="row2" class="peer hidden">
@@ -884,8 +944,20 @@
                                 </div>
 
                                 <div
-                                    class="w-full flex items-center justify-between py-4 px-[15px] rounded-10px bg-[#EBFEF6]">
-                                    <p class="text-base font-medium leading-[140%] text-[#9ACEB8]">Row 3</p>
+                                    class="group w-full flex items-center justify-between py-4 px-[15px] rounded-10px bg-[#EBFEF6]">
+                                    <div class="flex items-center gap-[15px] w-[88px]">
+                                        <p class="text-base leading-[140%] font-medium text-[#9ACEB8] w-[50px]">Row 3</p>
+                                        <button class="opacity-0 transition-all duration-300 group-hover:opacity-100">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect width="20" height="20" rx="10" fill="#9ACEB8" />
+                                                <path d="M7 13L13 7" stroke="white" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M13 13L7 7" stroke="white" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                    </div>
                                     <div class="flex items-center gap-[15px]">
                                         <label class="flex justify-start cursor-pointer w-[90px] px-6">
                                             <input type="checkbox"

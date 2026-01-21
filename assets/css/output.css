@@ -1092,6 +1092,9 @@
   .w-\[50\%\] {
     width: 50%;
   }
+  .w-\[50\] {
+    width: 50;
+  }
   .w-\[50px\] {
     width: 50px;
   }
@@ -1112,6 +1115,9 @@
   }
   .w-\[80px\] {
     width: 80px;
+  }
+  .w-\[88px\] {
+    width: 88px;
   }
   .w-\[90\%\] {
     width: 90%;
@@ -1196,6 +1202,9 @@
   }
   .w-\[clamp\(0px\,calc\(\(100\%_-_1280px\)\/2\)\,9999px\)\] {
     width: clamp(0px, calc((100% - 1280px) / 2), 9999px);
+  }
+  .w-\[max\] {
+    width: max;
   }
   .w-full {
     width: 100%;
@@ -4340,6 +4349,13 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-white);
+      }
+    }
+  }
+  .hover\:opacity-100 {
+    &:hover {
+      @media (hover: hover) {
+        opacity: 100%;
       }
     }
   }
