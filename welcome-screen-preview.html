@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- REQUIRED META TAGS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kiwiform
+    </title>
+    <!--- MAIN CSS ---->
+    <link rel="stylesheet" href="assets/css/input.css">
+    <link rel="stylesheet" href="assets/css/output.css">
+    <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
+</head>
+
+<body class="md:overflow-hidden bg-Theme-bg font-Inter">
+    <div class="flex flex-col max-md:gap-8 md:flex-row bg-black-0a0a0a">
+        <!--Header--->
+        <header class="p-2.5 rounded-b-2xl fixed top-0 z-[1000] w-full bg-Theme-Forground">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2.5  w-full max-w-[340px]">
+                    <a href="#" class="p-2 bg-white rounded-10px shadow-Logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z"
+                                fill="#183C1A" />
+                            <path
+                                d="M12 1.2002C12.7732 1.2002 13.5273 1.28167 14.2544 1.43629C15.2288 1.64349 15.84 2.56199 15.84 3.55816V6.96019C15.84 7.62294 16.3772 8.1602 17.04 8.1602H20.442C21.4382 8.1602 22.3567 8.77135 22.5639 9.74573C22.7185 10.4728 22.8 11.227 22.8 12.0002C22.8 17.9649 17.9646 22.8002 12 22.8002C6.03528 22.8002 1.19995 17.9649 1.19995 12.0002C1.19995 6.03552 6.03528 1.2002 12 1.2002Z"
+                                fill="#B8DD2F" />
+                            <rect x="8.92041" y="8.81445" width="6.15932" height="6.15932" rx="3.07966"
+                                fill="#F2F3B5" />
+                            <ellipse cx="12.1062" cy="17.5222" rx="0.637171" ry="0.955756" fill="#183C1A" />
+                            <ellipse cx="12.1062" cy="6.37177" rx="0.637171" ry="0.955756" fill="#183C1A" />
+                            <ellipse cx="14.8939" cy="16.7747" rx="0.637171" ry="0.955756"
+                                transform="rotate(-30 14.8939 16.7747)" fill="#183C1A" />
+                            <ellipse cx="9.3185" cy="7.1185" rx="0.637171" ry="0.955756"
+                                transform="rotate(-30 9.3185 7.1185)" fill="#183C1A" />
+                            <ellipse cx="16.9339" cy="14.7347" rx="0.637171" ry="0.955756"
+                                transform="rotate(-60 16.9339 14.7347)" fill="#183C1A" />
+                            <ellipse cx="7.27764" cy="9.15947" rx="0.637171" ry="0.955756"
+                                transform="rotate(-60 7.27764 9.15947)" fill="#183C1A" />
+                            <ellipse cx="17.6811" cy="11.9478" rx="0.637171" ry="0.955756"
+                                transform="rotate(-90 17.6811 11.9478)" fill="#183C1A" />
+                            <ellipse cx="6.53046" cy="11.9478" rx="0.637171" ry="0.955756"
+                                transform="rotate(-90 6.53046 11.9478)" fill="#183C1A" />
+                            <ellipse cx="7.27743" cy="14.735" rx="0.637171" ry="0.955756"
+                                transform="rotate(-120 7.27743 14.735)" fill="#183C1A" />
+                            <ellipse cx="9.31816" cy="16.7756" rx="0.637171" ry="0.955756"
+                                transform="rotate(-150 9.31816 16.7756)" fill="#183C1A" />
+                            <path
+                                d="M16.1831 7.7998L22.7999 8.1598L23.0023 10.9554C23.0353 11.4106 23.0237 11.8679 22.9677 12.3209L22.879 13.0388C22.8264 13.4652 22.7346 13.8859 22.6049 14.2955L22.3439 15.1198L19.4399 11.5198L16.1831 7.7998Z"
+                                fill="url(#paint0_linear_149_8)" />
+                            <defs>
+                                <linearGradient id="paint0_linear_149_8" x1="19.7999" y1="8.1598" x2="22.7999"
+                                    y2="15.1198" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#183C1A" stop-opacity="0.25" />
+                                    <stop offset="1" stop-color="#183C1A" stop-opacity="0" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </a>
+                    <div class="px-[15px] py-[5px] rounded-10px bg-[#EDE9E9] min-h-10 flex items-center">
+                        <ol class="inline-flex items-center gap-1 md:gap-3.5">
+                            <li class="inline-flex items-center">
+                                <a href="javascript:;"
+                                    class="inline-flex items-center text-sm leading-[140%] font-normal text-Theme-Black hover:text-Theme-Green">
+                                    My Forms </a>
+                            </li>
+                            <li>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10"
+                                        fill="none">
+                                        <path d="M1 1L5 5L1 9" stroke="#000A06" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <a href="javascript:;"
+                                        class="ml-1 text-sm leading-[140%] font-normal text-Theme-Black hover:text-Theme-Green md:ml-3.5">
+                                        New Form</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10"
+                                        fill="none">
+                                        <path d="M1 1L5 5L1 9" stroke="#000A06" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <a href="javascript:;"
+                                        class="ml-1 text-sm leading-[140%] font-normal text-Theme-Green hover:text-Theme-Green md:ml-3.5">
+                                        Preview</a>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="hidden items-center gap-2.5 p-[5px] rounded-10px bg-[#EDE9E9]">
+                    <a href="#" class="py-[5px] px-[15px] header-links active">Form</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Logic Flow</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Connect</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Share</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Results</a>
+
+
+                </div>
+                <div class="flex items-center justify-end gap-2.5 w-full max-w-[340px]">
+
+                    <button class="w-full max-w-[112px] p-[15px] py-2.5 rounded-[10px] bg-Theme-Black flex items-center justify-between text-sm font-medium leading-[140%] text-white
+                                   transition-all duration-500 hover:bg-gray-800 relative overflow-hidden group">
+                        Publish
+                        <svg class="relative z-10 transition-transform duration-500 group-hover:translate-x-1"
+                            xmlns="http://www.w3.org/2000/svg" width="5" height="10" viewBox="0 0 5 10" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M0.308661 9.9577C0.12182 9.8717 0 9.66913 0 9.44443L0 0.555583C0 0.330843 0.12182 0.128326 0.308661 0.042326C0.495495 -0.0436738 0.710556 0.00380744 0.853556 0.162696L4.85355 4.60713C5.04882 4.82409 5.04882 5.17587 4.85355 5.39283L0.853556 9.83727C0.710556 9.99616 0.495495 10.0437 0.308661 9.9577Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+                    <button class="btn-white-square">
+                        BD
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!--SideBar-->
+        <div class="relative flex md:h-full gap-5 md:overflow-hidden">
+
+        </div>
+        <div class=" w-full mx-auto relative md:h-screen md:overflow-y-hidden pt-[61px] ">
+            <!--Main Content Page-->
+            <div class="w-full h-full relative bg-[#F6F6F6] rounded-10px px-5 py-0 ">
+                <!-- header for main content  -->
+                <div class="flex items-center justify-center pt-2.5 pb-2.5">
+                    <div class="flex items-center justify-between w-full max-w-[440px] mx-auto">
+                        <label class=" flex items-center justify-between  cursor-pointer">
+                            <div class="relative">
+                                <input id="toggleView" type="checkbox" value="Original_UV" class="sr-only peer">
+                                <div class="w-20 h-10 bg-[#EDE9E9] peer-focus:outline-none rounded-md peer 
+                                peer-checked:after:translate-x-[40px] peer-checked:after:bg-white after:content-[''] after:absolute 
+                                after:top-[5px] after:right-[45px] after:bg-white  after:rounded-[5px] after:h-[30px] after:w-[30px] after:transition-all
+                              peer-checked:bg-[#EDE9E9] hover:peer-checked:bg-[#ece6e6]">
+
+                                    <svg class="absolute z-10 left-[11px] top-[11px]" width="18" height="18"
+                                        viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_365_244)">
+                                            <rect x="1" y="1" width="16" height="12" rx="2" stroke="#000A06"
+                                                stroke-width="1.2" />
+                                            <path d="M9 15V17M9 17H4M9 17H14" stroke="#000A06" stroke-width="1.2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_365_244">
+                                                <rect width="18" height="18" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg class="absolute z-10 right-[11px] top-[11px]" width="18" height="18"
+                                        viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="3" y="1" width="12" height="16" rx="2" stroke="#000A06"
+                                            stroke-width="1.2" />
+                                        <path d="M7 15H11" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M7 3L6 1H12L11 3H7Z" stroke="#000A06" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+
+                                </div>
+                            </div>
+                        </label>
+                        <div class="flex items-center justify-end gap-2.5">
+                            <button class="btn-white-square">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4745_1544)">
+                                        <path
+                                            d="M16.3328 5.8C15.0951 2.97455 12.2689 1 8.98019 1C4.82166 1 1.40237 4.15734 1 8.2"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M12.9883 5.80078H16.517C16.7828 5.80078 16.9982 5.58588 16.9982 5.32078V1.80078"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M1.66797 12.2008C2.90552 15.0262 5.73184 17.0008 9.0205 17.0008C13.179 17.0008 16.5983 13.8434 17.0007 9.80078"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M5.00991 12.1992H1.48119C1.21544 12.1992 1 12.4141 1 12.6792V16.1992"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4745_1544">
+                                            <rect width="18" height="18" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </button>
+                            <a href="welcome-screen.html" class="btn-white-square">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                                    fill="none">
+                                    <path d="M4 14L14 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M14 14L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="view-port relative mx-auto origin-center h-[calc(100%-140px)] overflow-y-auto flex flex-col items-center justify-center bg-white rounded-10px border border-[#E2DCDC] max-w-[1196px]">
+                    <!-- content preview  -->
+                    <div class="input w-full max-w-[400px]  h-full pt-2 flex flex-col items-center justify-center">
+
+                        <h4 class="text-2xl text-center leading-[160%] font-semibold text-[#000A06] mb-2.5">
+                            Welcome! Let’s begin.
+                        </h4>
+                        <p class="text-[15px] text-center font-normal leading-[120%] text-[#000A06] mb-[30px]">
+                            Thanks for being here! We appreciate your time.
+                        </p>
+
+                        <button
+                            class="w-max text-center min-w-[200px] mx-auto p-2.5 rounded-10px bg-Theme-Green text-white text-sm font-medium leading-[140%] transition-all duration-500 hover:bg-theme-Green-hover">
+                            Get Started
+                        </button>
+
+                    </div>
+                </div>
+                <!-- footer for main content-->
+
+            </div>
+        </div>
+
+    </div>
+    <!-- MAIN JS-->
+    <!-- MAIN JS-->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.6/Sortable.min.js"
+        integrity="sha512-csIng5zcB+XpulRUa+ev1zKo7zRNGpEaVfNB9On1no9KYTEY/rLGAEEpvgdw6nim1WdTuihZY1eqZ31K7/fZjw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- resize js  -->
+    <script>
+        const resizer = document.getElementById('resizer-y');
+        const div1 = document.getElementById('div1');
+        const div2 = document.getElementById('div2');
+
+        resizer.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            document.addEventListener('mousemove', resize);
+            document.addEventListener('mouseup', stopResize);
+        });
+
+        function resize(e) {
+            const container = div1.parentElement;
+            const containerTop = container.getBoundingClientRect().top;
+            const totalHeight = container.offsetHeight;
+            const resizerHeight = resizer.offsetHeight;
+
+            let newHeight1 = e.clientY - containerTop;
+            newHeight1 = Math.max(100, Math.min(newHeight1, totalHeight - 100 - resizerHeight));
+
+            const newHeight2 = totalHeight - newHeight1 - resizerHeight;
+
+            div1.style.height = `${newHeight1}px`;
+            div1.style.flex = 'none';
+
+            div2.style.height = `${newHeight2}px`;
+            div2.style.flex = 'none';
+        }
+
+        function stopResize() {
+            document.removeEventListener('mousemove', resize);
+            document.removeEventListener('mouseup', stopResize);
+        }
+    </script>
+
+    <!-- alpinejs  -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('dropdown', {
+                openId: null,
+            });
+        });
+    </script>
+
+    <script>
+        function dropdownComponent(id) {
+            return {
+                id,
+                height: 'auto',
+                opacity: 0,
+
+                visible: false,
+                get isOpen() {
+                    return Alpine.store('dropdown').openId === this.id;
+                },
+                toggle() {
+                    if (this.isOpen) {
+                        this.close();
+                    } else {
+                        Alpine.store('dropdown').openId = this.id;
+                        this.$nextTick(() => {
+                            this.visible = true;
+                            // const scrollHeight = this.$refs.menu.scrollHeight;
+                            // this.height = scrollHeight + 'px';
+                            this.opacity = 1;
+                        });
+                    }
+                },
+                close() {
+                    if (this.isOpen) {
+                        this.opacity = 0;
+                        // this.height = '0px';
+
+                        setTimeout(() => {
+                            this.visible = false;
+                            Alpine.store('dropdown').openId = null;
+                        }, 100); // match with transition duration
+                    }
+                }
+            };
+        }
+    </script>
+
+    <script>
+        // Initialize Sortable on the UL
+        const sortable = new Sortable(document.getElementById('Trigger-sortable'), {
+            animation: 150,
+            handle: '.Trigger', // Make only the number bubble draggable
+            onEnd: function () {
+                updateListNumbers();
+            }
+        });
+
+        // Function to update numbers based on current order
+        function updateListNumbers() {
+            const listItems = document.querySelectorAll('#Trigger-sortable > li');
+            listItems.forEach((item, index) => {
+                const numberDiv = item.querySelector('.Trigger');
+                if (numberDiv) {
+                    numberDiv.textContent = index + 1;
+                }
+            });
+        }
+    </script>
+
+    <script>
+        const toggle = document.getElementById('toggleView');
+        const viewport = document.querySelector('.view-port');
+
+        toggle.addEventListener('change', function () {
+            if (this.checked) {
+                // Switch to mobile view
+                viewport.classList.remove('desktop-view');
+                viewport.classList.add('mobile-view');
+            } else {
+                // Switch to desktop view
+                viewport.classList.remove('mobile-view');
+                viewport.classList.add('desktop-view');
+            }
+        });
+    </script>
+
+    <script>
+        const dropdownToggle = document.getElementById('dropdownToggle');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const selectedFlag = document.getElementById('selectedFlag');
+        const selectedCountry = document.getElementById('selectedCountry');
+        const countryList = document.getElementById('countryList');
+        const searchInput = document.getElementById('searchInput');
+
+        // Toggle dropdown
+        dropdownToggle.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Update selected country and add active class
+        countryList.addEventListener('click', (e) => {
+            const item = e.target.closest('li');
+            if (item) {
+                // Update flag and text
+                selectedFlag.src = item.getAttribute('data-flag');
+                selectedCountry.textContent = item.getAttribute('data-name');
+
+                // Remove 'active' from all li
+                countryList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+
+                // Add 'active' to the selected li
+                item.classList.add('active');
+
+                // Close dropdown
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+
+        // Search functionality
+        searchInput.addEventListener('input', () => {
+            const filter = searchInput.value.toLowerCase();
+            const items = countryList.querySelectorAll('li');
+            items.forEach(item => {
+                const text = item.getAttribute('data-name').toLowerCase();
+                item.style.display = text.includes(filter) ? '' : 'none';
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+
+</html>
