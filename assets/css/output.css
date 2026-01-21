@@ -450,6 +450,9 @@
   .left-\[11px\] {
     left: 11px;
   }
+  .left-\[15px\] {
+    left: 15px;
+  }
   .z-0 {
     z-index: 0;
   }
@@ -474,6 +477,9 @@
   .z-\[5\] {
     z-index: 5;
   }
+  .z-\[10\] {
+    z-index: 10;
+  }
   .z-\[500\] {
     z-index: 500;
   }
@@ -488,6 +494,9 @@
   }
   .col-span-8 {
     grid-column: span 8 / span 8;
+  }
+  .row-1 {
+    grid-row: 1;
   }
   .container {
     width: 100%;
@@ -1059,6 +1068,9 @@
   .w-28 {
     width: calc(var(--spacing) * 28);
   }
+  .w-40 {
+    width: calc(var(--spacing) * 40);
+  }
   .w-\[2px\] {
     width: 2px;
   }
@@ -1091,9 +1103,6 @@
   }
   .w-\[50\%\] {
     width: 50%;
-  }
-  .w-\[50\] {
-    width: 50;
   }
   .w-\[50px\] {
     width: 50px;
@@ -1130,6 +1139,12 @@
   }
   .w-\[100px\] {
     width: 100px;
+  }
+  .w-\[103px\] {
+    width: 103px;
+  }
+  .w-\[110px\] {
+    width: 110px;
   }
   .w-\[118px\] {
     width: 118px;
@@ -1203,8 +1218,8 @@
   .w-\[clamp\(0px\,calc\(\(100\%_-_1280px\)\/2\)\,9999px\)\] {
     width: clamp(0px, calc((100% - 1280px) / 2), 9999px);
   }
-  .w-\[max\] {
-    width: max;
+  .w-auto {
+    width: auto;
   }
   .w-full {
     width: 100%;
@@ -1437,8 +1452,17 @@
   .min-w-\[480px\] {
     min-width: 480px;
   }
+  .min-w-\[900px\] {
+    min-width: 900px;
+  }
+  .min-w-\[1000px\] {
+    min-width: 1000px;
+  }
   .min-w-\[1280px\] {
     min-width: 1280px;
+  }
+  .min-w-max {
+    min-width: max-content;
   }
   .flex-1 {
     flex: 1;
@@ -1816,6 +1840,9 @@
   .overflow-auto {
     overflow: auto;
   }
+  .overflow-clip {
+    overflow: clip;
+  }
   .overflow-hidden {
     overflow: hidden;
   }
@@ -1836,6 +1863,9 @@
   }
   .overflow-y-hidden {
     overflow-y: hidden;
+  }
+  .scroll-smooth {
+    scroll-behavior: smooth;
   }
   .\!rounded-\[5px\] {
     border-radius: 5px !important;
@@ -2929,6 +2959,9 @@
   .pl-3 {
     padding-left: calc(var(--spacing) * 3);
   }
+  .pl-4 {
+    padding-left: calc(var(--spacing) * 4);
+  }
   .pl-5 {
     padding-left: calc(var(--spacing) * 5);
   }
@@ -3108,10 +3141,6 @@
   .leading-\[140\%\] {
     --tw-leading: 140%;
     line-height: 140%;
-  }
-  .leading-\[140\] {
-    --tw-leading: 140;
-    line-height: 140;
   }
   .leading-\[150\%\] {
     --tw-leading: 150%;
@@ -4349,13 +4378,6 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-white);
-      }
-    }
-  }
-  .hover\:opacity-100 {
-    &:hover {
-      @media (hover: hover) {
-        opacity: 100%;
       }
     }
   }
