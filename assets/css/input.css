@@ -495,5 +495,12 @@
   .share-link.active {
     @apply !bg-white
   }
+  .view-port .picture-grid {
+    @apply grid-cols-4;
+  }
+  
+  .view-port.mobile-view .picture-grid {
+    @apply grid-cols-2;
+  }
 
 }
