@@ -183,16 +183,21 @@
             <div class="w-full h-full relative bg-[#F6F6F6] rounded-10px px-2 lg:px-2.5 py-2.5">
                 <div
                     class="w-full max-w-[1156px] mx-auto h-full overflow-auto  bg-white rounded-10px border border-[#E2DCDC] [&::-webkit-scrollbar]:hidden ">
-                    <div class="p-2.5 border-b border-[#E2DCDC] flex items-center justify-between sticky top-0 z-20 bg-white">
+                    <div
+                        class="p-2.5 border-b border-[#E2DCDC] flex items-center justify-between sticky top-0 z-20 bg-white">
                         <h1 class="font-Inter_tight text-2xl leading-[140%] text-Theme-Black pl-2.5">
                             Account & Settings
                         </h1>
 
                         <div class="min-[1120px]:flex hidden items-center gap-[5px] p-[5px] rounded-10px bg-[#EDE9E9]">
-                            <a href="#" class="py-[5px] px-[15px] header-links whitespace-nowrap active ">My Account</a>
-                            <a href="#" class="py-[5px] px-[15px] header-links whitespace-nowrap">Notifications</a>
-                            <a href="#" class="py-[5px] px-[15px] header-links whitespace-nowrap">SMTP Settings</a>
-                            <a href="#" class="py-[5px] px-[15px] header-links whitespace-nowrap">Plan & Billing</a>
+                            <a href="Account&Setting-my-ac.html"
+                                class="py-[5px] px-[15px] header-links whitespace-nowrap active ">My Account</a>
+                            <a href="Account&Setting-notification.html"
+                                class="py-[5px] px-[15px] header-links whitespace-nowrap">Notifications</a>
+                            <a href="Account&Setting-smtp.html"
+                                class="py-[5px] px-[15px] header-links whitespace-nowrap">SMTP Settings</a>
+                            <a href="Account&Setting-plan-free.html"
+                                class="py-[5px] px-[15px] header-links whitespace-nowrap">Plan & Billing</a>
 
                         </div>
                     </div>
@@ -213,7 +218,12 @@
                             </div>
                             <button
                                 class="py-2.5 px-[42px] rounded-10px bg-[#EDE9E9] text-sm font-medium leading-[140%] text-[#8C8484] whitespace-nowrap">Save
-                                Changes</button>
+                                Changes
+                            </button>
+                            <button
+                                class="py-2.5 px-[42px] rounded-10px bg-Theme-Green text-sm font-medium leading-[140%] text-white transition-all duration-500 hover:bg-theme-Green-hover whitespace-nowrap">Save
+                                Changes
+                            </button>
                         </div>
 
                         <!-- detail inputs -->

@@ -1,0 +1,11 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="30" y="30" width="60" height="60" rx="4" stroke="#8C8484" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M36 73C36 71.3431 37.3431 70 39 70C40.6569 70 42 71.3431 42 73V81C42 82.6569 40.6569 84 39 84C37.3431 84 36 82.6569 36 81V73Z" fill="#B8DD2F"/>
+<path d="M46 69C46 67.3431 47.3431 66 49 66C50.6569 66 52 67.3431 52 69V77C52 78.6569 50.6569 80 49 80C47.3431 80 46 78.6569 46 77V69Z" fill="#B8DD2F"/>
+<path d="M36 73C36 71.3431 37.3431 70 39 70C40.6569 70 42 71.3431 42 73V81C42 82.6569 40.6569 84 39 84C37.3431 84 36 82.6569 36 81V73Z" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M46 69C46 67.3431 47.3431 66 49 66C50.6569 66 52 67.3431 52 69V77C52 78.6569 50.6569 80 49 80C47.3431 80 46 78.6569 46 77V69Z" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60 10V20M60 10L64 13.9078M60 10L56 13.9078" stroke="#8C8484" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60 110L60 100M60 110L56 106.092M60 110L64 106.092" stroke="#8C8484" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M110 60L100 60M110 60L106.092 64M110 60L106.092 56" stroke="#8C8484" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10 60L20 60M10 60L13.9078 56M10 60L13.9078 64" stroke="#8C8484" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

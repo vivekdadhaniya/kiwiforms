@@ -10,6 +10,84 @@
     <!--- MAIN CSS ---->
     <link rel="stylesheet" href="assets/css/input.css">
     <link rel="stylesheet" href="assets/css/output.css">
+    <style>
+        .bar1 {
+            animation: bar1Anim 4s infinite ease-in-out;
+            transform-origin: center;
+        }
+
+        .bar2 {
+            animation: bar2Anim 4s infinite ease-in-out;
+            transform-origin: center;
+        }
+
+        @keyframes bar1Anim {
+
+            /* Initial */
+            0% {
+                fill: #FEFFA4;
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+
+            /* Color change */
+            29.5% {
+                fill: #B8DD2F;
+            }
+
+            /* Switch position */
+            70% {
+                transform: translate(-17px, 15px);
+                opacity: 1;
+            }
+
+            /* Fade out */
+            75% {
+                opacity: 0;
+            }
+
+            /* Reset */
+            100% {
+                fill: #FEFFA4;
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes bar2Anim {
+
+            /* Initial */
+            0% {
+                fill: #FEFFA4;
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+
+            /* Color change */
+            29.5% {
+                fill: #B8DD2F;
+            }
+
+            /* Switch position */
+            70% {
+                transform: translate(17px, -15px);
+                opacity: 1;
+            }
+
+            /* Fade out */
+            75% {
+                opacity: 0;
+            }
+
+            /* Reset */
+            100% {
+                fill: #FEFFA4;
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+        }
+    </style>
+
 </head>
 
 <body class=" bg-Theme-bg font-Inter">
@@ -470,7 +548,7 @@
                             </defs>
                         </svg>
                     </button>
-                    <button class="button-icon group">
+                    <button class="button-icon group" data-modal-target="mouse-animation-modal">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M3 7C3 3.68629 5.68629 1 9 1C12.3137 1 15 3.68629 15 7V11C15 14.3137 12.3137 17 9 17C5.68629 17 3 14.3137 3 11V7Z"
@@ -1170,7 +1248,7 @@
             <button class="btn-kiwi-green w-full max-w-[150px]">Save</button>
         </div>
     </div>
-    
+
     <!-- Edit Logic modal -->
     <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[956px] "
         id="Edit-Logic">
@@ -8474,6 +8552,9 @@
             <button class="btn-kiwi-green w-full max-w-[150px]">Save</button>
         </div>
     </div>
+
+
+   
     <!-- modal overlay  -->
     <div
         class="overlay-modal w-full h-screen z-[500] bg-[#012819]/30 backdrop-blur-[7.5px] fixed top-0 left-0 opacity-0 invisible">

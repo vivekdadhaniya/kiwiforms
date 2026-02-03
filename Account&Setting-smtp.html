@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- REQUIRED META TAGS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kiwiform
+    </title>
+    <!--- MAIN CSS ---->
+    <link rel="stylesheet" href="assets/css/input.css">
+    <link rel="stylesheet" href="assets/css/output.css">
+    <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
+    <style>
+
+    </style>
+</head>
+
+<body class="md:overflow-hidden bg-Theme-bg font-Inter">
+    <div class="flex flex-col max-md:gap-8 md:flex-row bg-black-0a0a0a">
+        <!--Header--->
+        <header class="p-2.5 rounded-b-2xl fixed top-0 z-[900] w-full bg-Theme-Forground">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2.5 w-full max-w-[350px]">
+                    <a href="#" class="p-2 bg-white rounded-10px shadow-Logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z"
+                                fill="#183C1A" />
+                            <path
+                                d="M12 1.2002C12.7732 1.2002 13.5273 1.28167 14.2544 1.43629C15.2288 1.64349 15.84 2.56199 15.84 3.55816V6.96019C15.84 7.62294 16.3772 8.1602 17.04 8.1602H20.442C21.4382 8.1602 22.3567 8.77135 22.5639 9.74573C22.7185 10.4728 22.8 11.227 22.8 12.0002C22.8 17.9649 17.9646 22.8002 12 22.8002C6.03528 22.8002 1.19995 17.9649 1.19995 12.0002C1.19995 6.03552 6.03528 1.2002 12 1.2002Z"
+                                fill="#B8DD2F" />
+                            <rect x="8.92041" y="8.81445" width="6.15932" height="6.15932" rx="3.07966"
+                                fill="#F2F3B5" />
+                            <ellipse cx="12.1062" cy="17.5222" rx="0.637171" ry="0.955756" fill="#183C1A" />
+                            <ellipse cx="12.1062" cy="6.37177" rx="0.637171" ry="0.955756" fill="#183C1A" />
+                            <ellipse cx="14.8939" cy="16.7747" rx="0.637171" ry="0.955756"
+                                transform="rotate(-30 14.8939 16.7747)" fill="#183C1A" />
+                            <ellipse cx="9.3185" cy="7.1185" rx="0.637171" ry="0.955756"
+                                transform="rotate(-30 9.3185 7.1185)" fill="#183C1A" />
+                            <ellipse cx="16.9339" cy="14.7347" rx="0.637171" ry="0.955756"
+                                transform="rotate(-60 16.9339 14.7347)" fill="#183C1A" />
+                            <ellipse cx="7.27764" cy="9.15947" rx="0.637171" ry="0.955756"
+                                transform="rotate(-60 7.27764 9.15947)" fill="#183C1A" />
+                            <ellipse cx="17.6811" cy="11.9478" rx="0.637171" ry="0.955756"
+                                transform="rotate(-90 17.6811 11.9478)" fill="#183C1A" />
+                            <ellipse cx="6.53046" cy="11.9478" rx="0.637171" ry="0.955756"
+                                transform="rotate(-90 6.53046 11.9478)" fill="#183C1A" />
+                            <ellipse cx="7.27743" cy="14.735" rx="0.637171" ry="0.955756"
+                                transform="rotate(-120 7.27743 14.735)" fill="#183C1A" />
+                            <ellipse cx="9.31816" cy="16.7756" rx="0.637171" ry="0.955756"
+                                transform="rotate(-150 9.31816 16.7756)" fill="#183C1A" />
+                            <path
+                                d="M16.1831 7.7998L22.7999 8.1598L23.0023 10.9554C23.0353 11.4106 23.0237 11.8679 22.9677 12.3209L22.879 13.0388C22.8264 13.4652 22.7346 13.8859 22.6049 14.2955L22.3439 15.1198L19.4399 11.5198L16.1831 7.7998Z"
+                                fill="url(#paint0_linear_149_8)" />
+                            <defs>
+                                <linearGradient id="paint0_linear_149_8" x1="19.7999" y1="8.1598" x2="22.7999"
+                                    y2="15.1198" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#183C1A" stop-opacity="0.25" />
+                                    <stop offset="1" stop-color="#183C1A" stop-opacity="0" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </a>
+                    <div class="px-[15px] py-[5px] rounded-10px bg-[#EDE9E9] min-h-10 flex items-center">
+                        <ol class="inline-flex items-center gap-1 md:gap-3.5">
+                            <li class="inline-flex items-center">
+                                <a href="javascript:;"
+                                    class="inline-flex items-center text-sm leading-[140%] font-normal text-Theme-Black hover:text-Theme-Green">
+                                    My Forms </a>
+                            </li>
+                            <li>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10"
+                                        fill="none">
+                                        <path d="M1 1L5 5L1 9" stroke="#000A06" stroke-width="1.2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <a href="javascript:;"
+                                        class="ml-1 text-sm leading-[140%] font-normal text-Theme-Black hover:text-Theme-Green md:ml-3.5">
+                                        New Form</a>
+                                </div>
+                            </li>
+
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="min-[1120px]:flex hidden items-center gap-2.5 p-[5px] rounded-10px bg-[#EDE9E9]">
+                    <a href="#" class="py-[5px] px-[15px] header-links ">Form</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links whitespace-nowrap">Logic Flow</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links active">Connect</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Share</a>
+                    <a href="#" class="py-[5px] px-[15px] header-links">Results</a>
+                </div>
+                <div x-data="dropdownComponent('menu-nav')" class="relative w-max hidden max-[1120px]:flex">
+                    <button @click="toggle"
+                        class="p-[5px] cursor-pointer rounded-10px bg-[#EDE9E9] flex items-center gap-2.5 text-sm font-medium leading-[140%] text-Theme-Black">
+                        <span class="bg-white py-[5px] px-[15px] text-center rounded-[5px]">
+                            Forms</span>
+
+                        <svg class="transition-all duration-300 ease-in-out" :class="{'-rotate-180': isOpen}" width="20"
+                            height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 8L10 12L6 8" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+
+                    <div x-ref="menu-nav" x-show="isOpen" x-transition=""
+                        x-bind:style="'overflow:hidden; transition:height 300ms ease; height:' + height"
+                        @click.outside="close"
+                        class="absolute sm:-right-0 z-10 p-2 mt-11 w-[124px] bg-white border border-[#E9E1E1] rounded-10px shadow-soft "
+                        style="overflow: hidden; transition: height 300ms; height: auto; display: none;">
+                        <ul class="flex flex-col gap-0.5">
+                            <li>
+                                <a href="#"
+                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                    Forms
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                    Logic Flow
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                    Connect
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                    Share
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="w-full rounded-[5px] py-1.5 px-2 flex items-center gap-2 text-sm leading-5 text-Theme-Black transition-all duration-500 ease-out hover:bg-[#F2EFEF]">
+                                    Results
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end gap-2.5 w-full max-w-[350px]">
+                    <button class="btn-white-square">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 14L6 14C3.79086 14 2 12.2091 2 10V10C2 7.79086 3.79086 6 6 6L7.5 6"
+                                stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                            <path d="M12.5 6L14 6C16.2091 6 18 7.79086 18 10V10C18 12.2091 16.2091 14 14 14L12.5 14"
+                                stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                            <path d="M7 10L13 10" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button class="w-full max-w-[112px] p-[15px] py-2.5 rounded-[10px] bg-Theme-Black flex items-center justify-between text-sm font-medium leading-[140%] text-white
+                                   transition-all duration-500 hover:bg-gray-800 relative overflow-hidden group">
+                        Publish
+                        <svg class="relative z-10 transition-transform duration-500 group-hover:translate-x-1"
+                            xmlns="http://www.w3.org/2000/svg" width="5" height="10" viewBox="0 0 5 10" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M0.308661 9.9577C0.12182 9.8717 0 9.66913 0 9.44443L0 0.555583C0 0.330843 0.12182 0.128326 0.308661 0.042326C0.495495 -0.0436738 0.710556 0.00380744 0.853556 0.162696L4.85355 4.60713C5.04882 4.82409 5.04882 5.17587 4.85355 5.39283L0.853556 9.83727C0.710556 9.99616 0.495495 10.0437 0.308661 9.9577Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+                    <button
+                        class="bg-white rounded-10px border border-[#E2DCDC] py-[9px] px-[15px] text-sm leading-[140%] font-medium text-Theme-Green whitespace-nowrap transition-all duration-500 hover:border-[#ccc6c6]">
+                        Go Premium
+                    </button>
+                    <button class="btn-white-square">
+                        BD
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!--SideBar-->
+
+        <div class="w-full mx-auto relative md:h-screen md:overflow-y-hidden pt-[61px] ">
+            <!--Main Content Page-->
+            <div class="w-full h-full relative bg-[#F6F6F6] rounded-10px px-2 lg:px-2.5 py-2.5">
+                <div
+                    class="w-full max-w-[1156px] mx-auto h-full overflow-auto  bg-white rounded-10px border border-[#E2DCDC] [&::-webkit-scrollbar]:hidden ">
+                    <div
+                        class="p-2.5 border-b border-[#E2DCDC] flex items-center justify-between sticky top-0 z-20 bg-white">
+                        <h1 class="font-Inter_tight text-2xl leading-[140%] text-Theme-Black pl-2.5">
+                            Account & Settings
+                        </h1>
+
+                        <div class="min-[1120px]:flex hidden items-center gap-[5px] p-[5px] rounded-10px bg-[#EDE9E9]">
+                            <a href="Account&Setting-my-ac.html"
+                                class="py-[5px] px-[15px] header-links whitespace-nowrap  ">My Account</a>
+                            <a href="Account&Setting-notification.html"
+                                class="py-[5px] px-[15px] header-links whitespace-nowrap ">Notifications</a>
+                            <a href="Account&Setting-smtp.html"
+                                class="py-[5px] px-[15px] header-links whitespace-nowrap active">SMTP Settings</a>
+                            <a href="Account&Setting-plan-free.html"
+                                class="py-[5px] px-[15px] header-links whitespace-nowrap">Plan & Billing</a>
+
+                        </div>
+                    </div>
+
+                    <!-- General Buttons, hints, and shortcuts -->
+                    <div class="px-0 py-0 ">
+                        <!-- profile -->
+                        <div class="py-[15px] border-b border-[#E2DCDC] flex items-center gap-[15px] px-5">
+                            <div
+                                class="w-20 min-w-[80px] aspect-square rounded-10px flex items-center text-[28px] font-medium leading-[140%] text-Theme-Black justify-center bg-[#F8F6F6]">
+                                <svg width="40" height="35" viewBox="0 0 40 35" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="40" height="35" rx="5.5" fill="#007D47" />
+                                    <path
+                                        d="M31.4317 8.93934C32.0175 8.35355 32.965 8.35355 33.5508 8.93934C34.1365 9.52514 34.1366 10.4727 33.5508 11.0585L27.0323 17.5746L33.6289 25.2723C34.1678 25.9011 34.096 26.8474 33.4678 27.3866C32.8391 27.9255 31.8928 27.8537 31.3536 27.2255L24.9058 19.7011L21.0508 23.5585C20.4651 24.1441 19.5174 24.1441 18.9317 23.5585L15.0743 19.7011L8.62894 27.2255C8.08968 27.8536 7.14337 27.9255 6.51468 27.3866C5.88659 26.8474 5.81477 25.901 6.35355 25.2723L12.9478 17.5746L6.43168 11.0585C5.84592 10.4727 5.84598 9.52513 6.43168 8.93934C7.01746 8.35355 7.96503 8.35355 8.55082 8.93934L19.9912 20.3798L31.4317 8.93934Z"
+                                        fill="white" />
+                                </svg>
+                            </div>
+                            <div class="w-full">
+                                <p class="text-base font-medium leading-[140%] text-Theme-Black mb-2.5">
+                                    SMTP Settings
+                                </p>
+                                <p class="text-sm leading-[140%] text-Theme-Black">
+                                    Configure your SMTP settings to send emails to respondents from your own email
+                                    address.
+                                </p>
+                            </div>
+
+                            <button class="btn-kiwi-green-icon-text whitespace-nowrap px-3.5 w-full max-w-[180px]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
+                                    fill="none">
+                                    <path
+                                        d="M0.601562 5.60156H5.60156M5.60156 5.60156H10.6016M5.60156 5.60156V0.601562M5.60156 5.60156V10.6016"
+                                        stroke="white" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                Configure SMTP
+                            </button>
+                        </div>
+
+                        <!-- detail inputs -->
+                        <div class="p-5 pt-24 gap-5 flex items-center justify-center flex-col ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="226" height="250" viewBox="0 0 226 250"
+                                fill="none">
+                                <rect width="226" height="80" rx="10" fill="url(#paint0_linear_6579_3457)" />
+                                <rect x="10" y="10" width="60" height="60" rx="5"
+                                    fill="url(#paint1_linear_6579_3457)" />
+                                <rect x="80" y="23" width="121" height="6" rx="3" fill="#EDEAEA" />
+                                <rect x="80" y="37" width="91" height="6" rx="3" fill="#EDEAEA" />
+                                <rect x="80" y="51" width="61" height="6" rx="3" fill="#EDEAEA" />
+                                <rect y="85" width="226" height="80" rx="10" fill="#E8F5B7" />
+                                <rect x="10" y="95" width="60" height="60" rx="5" fill="white" />
+                                <rect x="25" y="112" width="30" height="26" rx="4.125" fill="#B8DD2F" />
+                                <path
+                                    d="M48.5718 118.639C49.0111 118.204 49.7218 118.204 50.1612 118.639C50.6004 119.074 50.6005 119.778 50.1612 120.213L45.2722 125.054L50.2198 130.772C50.6239 131.239 50.57 131.942 50.0989 132.343C49.6274 132.743 48.9177 132.69 48.5132 132.223L43.6774 126.633L40.7862 129.499C40.3468 129.934 39.6361 129.934 39.1968 129.499L36.3037 126.633L31.4698 132.223C31.0653 132.689 30.3556 132.743 29.8841 132.343C29.413 131.942 29.3591 131.239 29.7632 130.772L34.7089 125.054L29.8218 120.213C29.3825 119.778 29.3825 119.074 29.8218 118.639C30.2611 118.204 30.9718 118.204 31.4112 118.639L39.9915 127.137L48.5718 118.639Z"
+                                    fill="white" />
+                                <rect x="80" y="108" width="121" height="6" rx="3" fill="white" />
+                                <rect x="80.0078" y="122" width="91" height="6" rx="3" fill="white" />
+                                <rect x="80" y="136" width="61" height="6" rx="3" fill="white" />
+                                <rect y="170" width="226" height="80" rx="10" fill="url(#paint2_linear_6579_3457)" />
+                                <rect x="10" y="180" width="60" height="60" rx="5"
+                                    fill="url(#paint3_linear_6579_3457)" />
+                                <rect x="80" y="193" width="121" height="6" rx="3" fill="#EDEAEA" />
+                                <rect x="80" y="207" width="91" height="6" rx="3" fill="#EDEAEA" />
+                                <rect x="80" y="221" width="61" height="6" rx="3" fill="#EDEAEA" />
+                                <defs>
+                                    <linearGradient id="paint0_linear_6579_3457" x1="113" y1="80" x2="113"
+                                        y2="-2.92306e-07" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#F6F6F6" />
+                                        <stop offset="1" stop-color="#F6F6F6" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint1_linear_6579_3457" x1="40" y1="70" x2="40" y2="10"
+                                        gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#EDEAEA" />
+                                        <stop offset="1" stop-color="#EDEAEA" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint2_linear_6579_3457" x1="113" y1="170" x2="113" y2="250"
+                                        gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#F6F6F6" />
+                                        <stop offset="1" stop-color="#F6F6F6" stop-opacity="0" />
+                                    </linearGradient>
+                                    <linearGradient id="paint3_linear_6579_3457" x1="40" y1="180" x2="40" y2="240"
+                                        gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#EDEAEA" />
+                                        <stop offset="1" stop-color="#EDEAEA" stop-opacity="0" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+
+                            <div class="block w-full">
+                                <p class="text-base font-medium leading-[140%] text-Theme-Black mb-2.5 text-center">
+                                    No SMTP Settings
+                                </p>
+                                <p class="text-sm leading-[24px] text-Theme-Black text-center">
+                                    Create your first SMTP configuration to Get Started!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <!-- Configure a Webhook -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+        id="Configure-a-Webhook">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Configure a Webhook
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col p-5 gap-0 border border-[#E9E1E1]">
+            <p class="text-base leading-[200%] text-Theme-Black mb-2.5">
+                Enter Webhook URL to Configure
+            </p>
+            <p class="text-base leading-[200%] text-Theme-Black mb-5">
+                Webhooks automatically send form responses to your server as they happen. Enter the URL that will
+                receive the webhook data.
+            </p>
+            <label for="workspace" class="text-xs leading-[14px] text-Theme-Black">
+                Endpoint URL
+            </label>
+            <input type="text" id="Configure_a_Webhook" class="text-base leading-[22px] border border-transparent text-Theme-Black placeholder:text-[#8C8484] w-full py-3.5 px-[15px] bg-[#F8F6F6] mt-[5px] rounded-10px
+            transition-all duration-500 hover:border-[#E9E1E1] hover:bg-white focus:outline-0 focus:border-Theme-Green"
+                placeholder="htttps://webhookurl.com/webhook">
+            <p class="text-[15px] leading-[140%] text-[#8C8484] mt-5">
+                Need help with Webhooks? Visit our <a href="#" class="font-medium text-Theme-Black underline">Help
+                    Center</a> for guidance.
+            </p>
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
+            <button data-modal-target="test-a-Webhook"
+                class="btn-kiwi-green  w-full text-center transition-all duration-500 hover:bg-theme-Green-hover">
+                Submit
+            </button>
+        </div>
+    </div>
+
+    <!-- test a Webhook -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+        id="test-a-Webhook">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Configure a Webhook
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col p-5 gap-0 border border-[#E9E1E1]">
+            <p class="text-base font-medium leading-[200%] text-Theme-Black mb-2.5">
+                Test your Webhook
+            </p>
+            <p class="text-base leading-[200%] text-Theme-Black ">
+                Send a test event to your endpoint to make sure it’s receiving data correctly before activating the
+                webhook.
+            </p>
+
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
+            <button data-modal-target="Add-a-webhook"
+                class="btn-kiwi-green  w-full text-center transition-all duration-500 hover:bg-theme-Green-hover">
+                Test This Webhook
+            </button>
+        </div>
+    </div>
+
+    <!-- add a Webhook -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+        id="Add-a-webhook">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Configure a Webhook
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col p-5 gap-5 border border-[#E9E1E1]">
+
+            <div class="w-full border-b border-[#E2DCDC]">
+                <p class="text-base font-medium leading-[140%] text-Theme-Black mb-5">Webhook URL</p>
+                <label for="url" class="mb-[5px] block text-xs leading-[120%] text-Theme-Black">Endpoint URL</label>
+                <input type="url" value="htttps://webhookurl.com/webhook" class="py-3.5 px-[15px] w-full mb-5 rounded-10px border border-[#F8F6F6] bg-[#F8F6F6] text-base font-medium leading-[140%] text-Theme-Black transition-all duration-500
+                focus:outline-0 focus:border-[#E2DCDC] " disabled>
+            </div>
+
+            <div class="w-full pb-5 border-b border-[#E2DCDC]">
+                <p class="text-base font-medium leading-[140%] text-Theme-Black mb-5">Triggers</p>
+                <label for="url" class="mb-[5px] block text-xs leading-[120%] text-Theme-Black">Delivery
+                    Condition</label>
+                <div class="custom-dropdown relative w-full" data-style="design1">
+                    <div class="relative ">
+                        <button type="button"
+                            class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] border border-[#E2DCDC] text-Theme-Black p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
+                            <span class="selected-option">Completed Submission</span>
+                            <svg class="dropdown-arrow w-4 h-4 ml-2 rotate-180 transition-transform duration-200"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div
+                            class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-10">
+                            <ul class="dropdown-list flex items-center flex-col gap-px w-full bg-[#F8F6F6]">
+                                <li class="bg-white w-full relative">
+                                    <div
+                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center active">
+                                        <span>Completed Submission</span>
+                                    </div>
+                                    <div
+                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                    </div>
+                                </li>
+
+                                <li class="bg-white w-full relative">
+                                    <div
+                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                        <span>Completed and Incomplete Submission</span>
+
+                                    </div>
+                                    <div
+                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full border-b border-[#E2DCDC]">
+                <p class="text-base font-medium leading-[140%] text-Theme-Black mb-2.5">Signature</p>
+                <label for="url" class="mb-5 block text-base leading-[200%] text-Theme-Black">Add a secret key to sign
+                    webhook requests so you can verify they’re sent securely from Kiwiform.</label>
+                <div x-data="{ show: false }" class="relative w-full mb-5">
+
+                    <!-- Password Input -->
+                    <input :type="show ? 'text' : 'password'" placeholder="Signature" class="py-3.5 px-[15px] pr-12 w-full rounded-10px border border-[#F8F6F6] bg-[#F8F6F6]
+               text-base font-medium leading-[140%] text-Theme-Black transition-all duration-500
+               focus:outline-0 focus:border-[#E2DCDC]" />
+
+                    <!-- Toggle Button -->
+                    <button type="button" @click="show = !show"
+                        class="absolute right-4 top-1/2 -translate-y-1/2 text-[#8C8484] hover:text-Theme-Black transition">
+                        <!-- Eye Open -->
+                        <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+
+                        <!-- Eye Closed -->
+                        <svg x-show="show" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20
+                     C5 20 1 12 1 12
+                     a21.77 21.77 0 0 1 5.06-6.94" />
+                            <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4
+                     c7 0 11 8 11 8
+                     a21.77 21.77 0 0 1-2.16 3.19" />
+                            <line x1="1" y1="1" x2="23" y2="23" />
+                        </svg>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="pt-0 w-full">
+                <div class="flex items-center justify-between mb-2.5">
+                    <p class="text-base leading-[200%] font-medium text-Theme-Black">SSL Verification</p>
+                    <label x-data="{ checked: true }" class="flex items-center gap-[10px] cursor-pointer">
+                        <div class="text-[12px] leading-[120%] font-normal text-[#8C8484]">
+                            (Recommended) <span class="text-Theme-Black text-[15px]">ON</span>
+                        </div>
+                        <div class="relative">
+                            <input type="checkbox" value="Original_UV" class="sr-only peer" x-model="checked">
+                            <div class="w-11 h-6 bg-[#EDE9E9] peer-focus:outline-none rounded-full peer 
+                                            peer-checked:after:translate-x-[20px] peer-checked:after:bg-white after:content-[''] after:absolute 
+                                            after:top-[2px] after:right-[22px] after:bg-white after:rounded-full after:h-[20px] after:w-[20px] after:transition-all
+                                            peer-checked:bg-Theme-Green hover:peer-checked:bg-Theme-Green">
+
+                                <!-- Static gray dot -->
+                                <svg :class="{'!text-white':checked}"
+                                    class="absolute top-2.5 left-2.5 z-20 text-[#E2DCDC]" width="4" height="4"
+                                    viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="2" cy="2" r="2" fill="currentcolor" />
+                                </svg>
+
+                                <!-- Visible only when checked -->
+                                <svg :class="{'!text-[#007D47]': checked}"
+                                    class="on block absolute top-[9px] right-[10.75px] z-20 text-white" width="2"
+                                    height="6" viewBox="0 0 2 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="2" height="6" rx="1" fill="currentcolor" />
+                                </svg>
+
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <p class="text-base leading-[200%] text-Theme-Black ">
+                    When enabled, Kiwiform will verify the SSL certificate of the webhook endpoint to keep data secure.
+                </p>
+            </div>
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
+            <a href="Connect-flow-Webhooks.html"
+                class="btn-kiwi-green  w-full text-center transition-all duration-500 hover:bg-theme-Green-hover">
+                Save Webhook
+            </a>
+        </div>
+    </div>
+
+    <div
+        class="overlay-modal w-full h-screen z-[500] bg-[#012819]/30 backdrop-blur-[7.5px] fixed top-0 left-0 opacity-0 invisible">
+    </div>
+
+
+
+
+    <!-- MAIN JS-->
+    <!-- MAIN JS-->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.6/Sortable.min.js"
+        integrity="sha512-csIng5zcB+XpulRUa+ev1zKo7zRNGpEaVfNB9On1no9KYTEY/rLGAEEpvgdw6nim1WdTuihZY1eqZ31K7/fZjw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/custom-select.js"></script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('variableEditor', (config) => ({
+                text: '',
+                originalText: '',
+                max: config.max || 200,
+                variables: config.variables || [],
+                defaultVar: config.defaultVar || null,
+                usedVariables: [],
+
+                init() {
+                    if (this.defaultVar) {
+                        this.addVariable(this.defaultVar, true)
+                        this.originalText = this.text
+                    }
+                },
+
+                addVariable(variable, isDefault = false) {
+                    if (!this.usedVariables.length && !isDefault) {
+                        this.originalText = this.text
+                    }
+
+                    this.usedVariables.push(variable)
+
+                    // Append token to text model (for backend)
+                    const token = `{{${variable.key}}}`
+                    this.text = this.text
+                        ? `${this.text} ${token}`
+                        : token
+                },
+
+                removeVariable(index) {
+                    const variable = this.usedVariables[index]
+                    const token = `{{${variable.key}}}`
+
+                    this.text = this.text
+                        .replace(token, '')
+                        .replace(/\s{2,}/g, ' ')
+                        .trim()
+
+                    this.usedVariables.splice(index, 1)
+                },
+
+                restore() {
+                    this.text = this.defaultVar
+                        ? `{{${this.defaultVar.key}}}`
+                        : ''
+
+                    this.usedVariables = this.defaultVar
+                        ? [this.defaultVar]
+                        : []
+                },
+
+                get count() {
+                    return this.text.length
+                }
+            }))
+        })
+    </script>
+
+
+    <!-- char. count by alpine  -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('charInput', (max = 100, initial = '') => ({
+                value: initial,
+                max,
+                get count() {
+                    return this.value.length
+                }
+            }))
+        })
+    </script>
+
+
+    <!-- alpinejs  -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('dropdown', {
+                openId: null,
+            });
+        });
+    </script>
+
+    <script>
+        function dropdownComponent(id) {
+            return {
+                id,
+                height: 'auto',
+                opacity: 0,
+
+                visible: false,
+                get isOpen() {
+                    return Alpine.store('dropdown').openId === this.id;
+                },
+                toggle() {
+                    if (this.isOpen) {
+                        this.close();
+                    } else {
+                        Alpine.store('dropdown').openId = this.id;
+                        this.$nextTick(() => {
+                            this.visible = true;
+                            // const scrollHeight = this.$refs.menu.scrollHeight;
+                            // this.height = scrollHeight + 'px';
+                            this.opacity = 1;
+                        });
+                    }
+                },
+                close() {
+                    if (this.isOpen) {
+                        this.opacity = 0;
+                        // this.height = '0px';
+
+                        setTimeout(() => {
+                            this.visible = false;
+                            Alpine.store('dropdown').openId = null;
+                        }, 100); // match with transition duration
+                    }
+                }
+            };
+        }
+    </script>
+</body>
+
+</html>
