@@ -15,6 +15,9 @@
   --color-theme-Green-hover: #026D3F;
   --color-Theme-Gray: #EDE9E9;
 
+  /* grid  */
+  --grid-cols-14: repeat(14, minmax(0, 1fr));
+  --grid-cols-15: repeat(15, minmax(0, 1fr));
   /* Animation  */
   --animate-Slide: Slide 8s ease-in-out infinite;
   --animate-toggle: togglePath 3s ease-in-out infinite;
