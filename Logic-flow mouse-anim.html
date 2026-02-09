@@ -700,121 +700,230 @@
 
     </div>
 
-    <!-- mouse animation  -->
-    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[956px] "
+
+
+    <!-- mouse animation modal -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[600px] "
         id="mouse-animation-modal">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
 
-        <div class="grid grid-cols-2 gap-2.5 w-full">
-            <div class="w-full h-[200px] rounded-10px bg-[#F8F3F3] flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
-                    <!-- Outer box -->
-                    <rect x="30" y="30" width="60" height="60" rx="4" stroke="#8C8484" stroke-width="1.5" />
-
-                    <!-- Switches -->
-                    <rect class="switch1" x="52" y="40" width="6" height="14" rx="3" stroke="black"
-                        stroke-width="1.5" />
-
-                    <rect class="switch1" x="62" y="36" width="6" height="14" rx="3" stroke="black"
-                        stroke-width="1.5" />
-
-                    <!-- Arrows -->
-                    <path d="M60 10V20M60 10L64 13.9078M60 10L56 13.9078" stroke="#8C8484" stroke-width="1.5" />
-                    <path d="M60 110L60 100M60 110L56 106.092M60 110L64 106.092" stroke="#8C8484" stroke-width="1.5" />
-                    <path d="M110 60L100 60M110 60L106.092 64M110 60L106.092 56" stroke="#8C8484" stroke-width="1.5" />
-                    <path d="M10 60L20 60M10 60L13.9078 56M10 60L13.9078 64" stroke="#8C8484" stroke-width="1.5" />
-
-                </svg>
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Select Mouse or Trackpad
+                </h2>
             </div>
-            <div class="w-full h-[200px] rounded-10px bg-[#F8F3F3] flex items-center justify-center">
-                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Outer Box -->
-                    <rect x="30" y="30" width="60" height="60" rx="4" stroke="#8C8484" stroke-width="1.5" />
 
-                    <!-- Bars -->
-                    <rect class="bar1" x="52" y="55" width="6" height="14" rx="3" stroke="black" stroke-width="1.5" />
-
-                    <rect class="bar2" x="62" y="51" width="6" height="14" rx="3" stroke="black" stroke-width="1.5" />
-
-                    <!-- Corner Arrows -->
-                    <path
-                        d="M45.5413 14.4651L38.4702 21.5362M45.5413 14.4651L45.6065 20.0568M45.5413 14.4651L39.9497 14.4"
-                        stroke="#8C8484" stroke-width="1.5" />
-
-                    <path
-                        d="M14.4606 45.5358L21.5317 38.4648M14.4606 45.5358L14.3954 39.9442M14.4606 45.5358L20.0523 45.601"
-                        stroke="#8C8484" stroke-width="1.5" />
-
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
                 </svg>
-            </div>
+            </span>
         </div>
-        <div class="grid grid-cols-2 gap-2.5 w-full mt-2.5">
-            <div class="w-full h-[200px] rounded-10px bg-[#F8F3F3] flex items-center justify-center">
-                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Main Fill Shape -->
-                    <path class="mainFill"
-                        d="M60 54C60 56.8284 59.9998 58.2424 59.1211 59.1211C58.2424 59.9998 56.8284 60 54 60H43V51C43 41.6112 50.6112 34 60 34V54Z" />
+        <div class="w-full bg-white rounded-10px flex flex-col p-5 h-auto overflow-auto [&::-webkit-scrollbar]:hidden">
+            <div x-data="{ tab: 'mouse' }" class="w-full bg-white rounded-xl ">
+                <!-- Tabs -->
+                <div class="flex bg-[#EDE9E9] rounded-10px p-[5px] w-max mx-auto">
+                    <button @click="tab = 'mouse'" :class="tab === 'mouse'
+        ? 'bg-white'
+        : 'bg-[#EDE9E9]'" class="w-[140px] text-center py-2.5 rounded-[5px] text-sm leading-[140%] transition">
+                        Mouse
+                    </button>
 
-                    <!-- Outer Shape -->
-                    <rect x="43" y="34" width="34" height="52" rx="17" stroke="black" stroke-width="1.5" />
+                    <button @click="tab = 'trackpad'" :class="tab === 'trackpad'
+        ? 'bg-white'
+        : 'bg-[#EDE9E9]'" class="w-[140px] text-center py-2.5 rounded-[5px] text-sm leading-[140%] transition">
+                        Trackpad
+                    </button>
+                </div>
 
-                    <!-- Inner Switch -->
-                    <rect x="57" y="39" width="6" height="15" rx="3" fill="white" stroke="black" stroke-width="1.5" />
+                <!-- Info text -->
+                <p class="text-center text-base text-Theme-Black mt-5">
+                    These preferences will apply universally to your Kiwiforms.
+                </p>
 
-                    <!-- Green Curve -->
-                    <path class="curve" d="M39 60V51C39 39.402 48.402 30 60 30" stroke="url(#paint0_linear_4737_942)"
-                        stroke-width="1.5" stroke-linecap="round" />
+                <!-- Tab Content -->
+                <div class="mt-5 w-full">
+                    <!-- Mouse Content -->
+                    <template x-if="tab === 'mouse'">
+                        <div class="grid grid-cols-2 gap-2.5 w-full mt-2.5">
+                            <div class="w-full">
+                                <div
+                                    class="w-full h-[200px] rounded-10px bg-[#F8F3F3] flex items-center justify-center">
+                                    <svg width="120" height="120" viewBox="0 0 120 120" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <!-- Main Fill Shape -->
+                                        <path class="mainFill"
+                                            d="M60 54C60 56.8284 59.9998 58.2424 59.1211 59.1211C58.2424 59.9998 56.8284 60 54 60H43V51C43 41.6112 50.6112 34 60 34V54Z" />
 
-                    <!-- Arrows -->
-                    <path d="M60 10V20M60 10L64 13.9078M60 10L56 13.9078" stroke="#8C8484" stroke-width="1.5" />
-                    <path d="M60 110L60 100M60 110L56 106.092M60 110L64 106.092" stroke="#8C8484" stroke-width="1.5" />
-                    <path d="M110 60L100 60M110 60L106.092 64M110 60L106.092 56" stroke="#8C8484" stroke-width="1.5" />
-                    <path d="M10 60L20 60M10 60L13.9078 56M10 60L13.9078 64" stroke="#8C8484" stroke-width="1.5" />
+                                        <!-- Outer Shape -->
+                                        <rect x="43" y="34" width="34" height="52" rx="17" stroke="black"
+                                            stroke-width="1.5" />
 
-                    <defs>
-                        <linearGradient id="paint0_linear_4737_942" x1="60" y1="34.5" x2="39" y2="55.5"
-                            gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#007D47" stop-opacity="0" />
-                            <stop offset="0.25" stop-color="#007D47" stop-opacity="0.8" />
-                            <stop offset="0.5" stop-color="#007D47" />
-                            <stop offset="0.75" stop-color="#007D47" stop-opacity="0.8" />
-                            <stop offset="1" stop-color="#007D47" stop-opacity="0" />
-                        </linearGradient>
-                    </defs>
+                                        <!-- Inner Switch -->
+                                        <rect x="57" y="39" width="6" height="15" rx="3" fill="white" stroke="black"
+                                            stroke-width="1.5" />
 
-                </svg>
+                                        <!-- Green Curve -->
+                                        <path class="curve" d="M39 60V51C39 39.402 48.402 30 60 30"
+                                            stroke="url(#paint0_linear_4737_942)" stroke-width="1.5"
+                                            stroke-linecap="round" />
 
+                                        <!-- Arrows -->
+                                        <path d="M60 10V20M60 10L64 13.9078M60 10L56 13.9078" stroke="#8C8484"
+                                            stroke-width="1.5" />
+                                        <path d="M60 110L60 100M60 110L56 106.092M60 110L64 106.092" stroke="#8C8484"
+                                            stroke-width="1.5" />
+                                        <path d="M110 60L100 60M110 60L106.092 64M110 60L106.092 56" stroke="#8C8484"
+                                            stroke-width="1.5" />
+                                        <path d="M10 60L20 60M10 60L13.9078 56M10 60L13.9078 64" stroke="#8C8484"
+                                            stroke-width="1.5" />
+
+                                        <defs>
+                                            <linearGradient id="paint0_linear_4737_942" x1="60" y1="34.5" x2="39"
+                                                y2="55.5" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#007D47" stop-opacity="0" />
+                                                <stop offset="0.25" stop-color="#007D47" stop-opacity="0.8" />
+                                                <stop offset="0.5" stop-color="#007D47" />
+                                                <stop offset="0.75" stop-color="#007D47" stop-opacity="0.8" />
+                                                <stop offset="1" stop-color="#007D47" stop-opacity="0" />
+                                            </linearGradient>
+                                        </defs>
+
+                                    </svg>
+
+                                </div>
+                                <p class="text-xs leading-[120%] text-[#8C8484] mt-2.5 text-center">
+                                    Left-click and drag to move
+                                </p>
+                            </div>
+                            <div class="w-full">
+                                <div
+                                    class="w-full h-[200px] rounded-10px bg-[#F8F3F3] flex items-center justify-center">
+                                    <svg width="120" height="120" viewBox="0 0 120 120" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <!-- Mouse Body -->
+                                        <rect x="43" y="34" width="34" height="52" rx="17" stroke="black"
+                                            stroke-width="1.5" />
+
+                                        <!-- Scroll Wheel (COLOR ONLY) -->
+                                        <rect class="scrollFill" x="57" y="39" width="6" height="15" rx="3"
+                                            stroke="black" stroke-width="1.5" />
+
+                                        <!-- Curve -->
+                                        <path class="curve"
+                                            d="M67 50.5V51C67 54.866 63.866 58 60 58C56.134 58 53 54.866 53 51V50.5"
+                                            stroke="url(#paint0_linear_4737_956)" stroke-width="1.5"
+                                            stroke-linecap="round" />
+
+                                        <!-- Side arrows -->
+                                        <path d="M91 46V56M91 46L95 49.9078M91 46L87 49.9078" stroke="#8C8484"
+                                            stroke-width="1.5" />
+                                        <path d="M91 74L91 64M91 74L87 70.0922M91 74L95 70.0922" stroke="#8C8484"
+                                            stroke-width="1.5" />
+
+                                        <defs>
+                                            <linearGradient id="paint0_linear_4737_956" x1="53" y1="54.25" x2="67"
+                                                y2="54.25" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#007D47" stop-opacity="0" />
+                                                <stop offset="0.25" stop-color="#007D47" stop-opacity="0.8" />
+                                                <stop offset="0.5" stop-color="#007D47" />
+                                                <stop offset="0.75" stop-color="#007D47" stop-opacity="0.8" />
+                                                <stop offset="1" stop-color="#007D47" stop-opacity="0" />
+                                            </linearGradient>
+                                        </defs>
+
+                                    </svg>
+
+                                </div>
+                                <p class="text-xs leading-[120%] text-[#8C8484] mt-2.5 text-center">
+                                    Scroll to zoom in and out
+                                </p>
+                            </div>
+
+                        </div>
+                    </template>
+
+                    <!-- Trackpad Content -->
+                    <template x-if="tab === 'trackpad'">
+
+                        <div class="grid grid-cols-2 gap-2.5 w-full">
+                            <div class="w-full">
+                                <div
+                                    class="w-full h-[200px] rounded-10px bg-[#F8F3F3] flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"
+                                        viewBox="0 0 120 120" fill="none">
+                                        <!-- Outer box -->
+                                        <rect x="30" y="30" width="60" height="60" rx="4" stroke="#8C8484"
+                                            stroke-width="1.5" />
+
+                                        <!-- Switches -->
+                                        <rect class="switch1" x="52" y="40" width="6" height="14" rx="3" stroke="black"
+                                            stroke-width="1.5" />
+
+                                        <rect class="switch1" x="62" y="36" width="6" height="14" rx="3" stroke="black"
+                                            stroke-width="1.5" />
+
+                                        <!-- Arrows -->
+                                        <path d="M60 10V20M60 10L64 13.9078M60 10L56 13.9078" stroke="#8C8484"
+                                            stroke-width="1.5" />
+                                        <path d="M60 110L60 100M60 110L56 106.092M60 110L64 106.092" stroke="#8C8484"
+                                            stroke-width="1.5" />
+                                        <path d="M110 60L100 60M110 60L106.092 64M110 60L106.092 56" stroke="#8C8484"
+                                            stroke-width="1.5" />
+                                        <path d="M10 60L20 60M10 60L13.9078 56M10 60L13.9078 64" stroke="#8C8484"
+                                            stroke-width="1.5" />
+
+                                    </svg>
+                                </div>
+                                <p class="text-xs leading-[120%] text-[#8C8484] mt-2.5 text-center">
+                                    Left-click and drag to move
+                                </p>
+                            </div>
+                            <div class="w-full">
+                                <div
+                                    class="w-full h-[200px] rounded-10px bg-[#F8F3F3] flex items-center justify-center">
+                                    <svg width="120" height="120" viewBox="0 0 120 120" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <!-- Outer Box -->
+                                        <rect x="30" y="30" width="60" height="60" rx="4" stroke="#8C8484"
+                                            stroke-width="1.5" />
+
+                                        <!-- Bars -->
+                                        <rect class="bar1" x="52" y="55" width="6" height="14" rx="3" stroke="black"
+                                            stroke-width="1.5" />
+
+                                        <rect class="bar2" x="62" y="51" width="6" height="14" rx="3" stroke="black"
+                                            stroke-width="1.5" />
+
+                                        <!-- Corner Arrows -->
+                                        <path
+                                            d="M45.5413 14.4651L38.4702 21.5362M45.5413 14.4651L45.6065 20.0568M45.5413 14.4651L39.9497 14.4"
+                                            stroke="#8C8484" stroke-width="1.5" />
+
+                                        <path
+                                            d="M14.4606 45.5358L21.5317 38.4648M14.4606 45.5358L14.3954 39.9442M14.4606 45.5358L20.0523 45.601"
+                                            stroke="#8C8484" stroke-width="1.5" />
+
+                                    </svg>
+                                </div>
+                                <p class="text-xs leading-[120%] text-[#8C8484] mt-2.5 text-center">
+                                    Left-click and drag to move
+                                </p>
+                            </div>
+
+                        </div>
+                    </template>
+                </div>
             </div>
-            <div class="w-full h-[200px] rounded-10px bg-[#F8F3F3] flex items-center justify-center">
-                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Mouse Body -->
-                    <rect x="43" y="34" width="34" height="52" rx="17" stroke="black" stroke-width="1.5" />
 
-                    <!-- Scroll Wheel (COLOR ONLY) -->
-                    <rect class="scrollFill" x="57" y="39" width="6" height="15" rx="3" stroke="black"
-                        stroke-width="1.5" />
-
-                    <!-- Curve -->
-                    <path class="curve" d="M67 50.5V51C67 54.866 63.866 58 60 58C56.134 58 53 54.866 53 51V50.5"
-                        stroke="url(#paint0_linear_4737_956)" stroke-width="1.5" stroke-linecap="round" />
-
-                    <!-- Side arrows -->
-                    <path d="M91 46V56M91 46L95 49.9078M91 46L87 49.9078" stroke="#8C8484" stroke-width="1.5" />
-                    <path d="M91 74L91 64M91 74L87 70.0922M91 74L95 70.0922" stroke="#8C8484" stroke-width="1.5" />
-
-                    <defs>
-                        <linearGradient id="paint0_linear_4737_956" x1="53" y1="54.25" x2="67" y2="54.25"
-                            gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#007D47" stop-opacity="0" />
-                            <stop offset="0.25" stop-color="#007D47" stop-opacity="0.8" />
-                            <stop offset="0.5" stop-color="#007D47" />
-                            <stop offset="0.75" stop-color="#007D47" stop-opacity="0.8" />
-                            <stop offset="1" stop-color="#007D47" stop-opacity="0" />
-                        </linearGradient>
-                    </defs>
-
-                </svg>
-
-            </div>
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
+            <button class="btn-kiwi-green w-full max-w-[150px]">Save</button>
         </div>
     </div>
     <!-- modal overlay  -->
