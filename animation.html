@@ -1,0 +1,170 @@
+```html
+<!DOCTYPE html>
+<html lang="en" x-data="flow()">
+
+<head>
+    <meta charset="UTF-8">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        [x-cloak] {
+            display: none !important
+        }
+
+        /* ===== BADGE ===== */
+        .badgePop {
+            animation: badgePop .7s cubic-bezier(.2, .9, .2, 1) forwards;
+        }
+
+        @keyframes badgePop {
+            from {
+                transform: scale(.7);
+                opacity: 0
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+
+        .badgeFade {
+            animation: badgeFade .6s ease forwards;
+        }
+
+        @keyframes badgeFade {
+            to {
+                opacity: 0;
+                transform: scale(.85)
+            }
+        }
+
+        /* ===== PLANE ===== */
+        .planeIn {
+            animation: planeIn .6s ease forwards;
+        }
+
+        @keyframes planeIn {
+            from {
+                opacity: 0;
+                transform: scale(.7)
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1)
+            }
+        }
+
+        .planeFly {
+            animation: planeFly 2s cubic-bezier(.25, .8, .25, 1) forwards;
+        }
+
+        @keyframes planeFly {
+
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+
+            25% {
+                transform: translate(25px, -15px) rotate(8deg);
+                opacity: 1;
+            }
+
+            60% {
+                transform: translate(100px, -80px) rotate(14deg) scale(.9);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(180px, -180px) rotate(20deg) scale(.7);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <button @click="start" class="px-6 py-3 bg-[#012819] text-white rounded-xl shadow hover:scale-105 transition">
+        Publish
+    </button>
+
+    <!-- OVERLAY -->
+    <div x-show="overlay" x-transition.opacity x-cloak
+        class="fixed inset-0 bg-[#012819]/20 backdrop-blur-md flex items-center justify-center">
+
+        <div class="relative w-[220px] h-[220px] flex items-center justify-center">
+
+            <!-- ===== CIRCLE ===== -->
+            <div x-show="showCircle" x-transition.opacity class="absolute">
+                <svg width="220" viewBox="0 0 220 220">
+                    <path
+                        d="M110 5C167.99 5 215 52.0101 215 110C215 167.99 167.99 215 110 215C52.0101 215 5 167.99 5 110C5 52.0101 52.0101 5 110 5Z"
+                        fill="white" stroke="#B8DD2F" stroke-width="10" />
+                </svg>
+            </div>
+
+            <!-- ===== BADGE ===== -->
+            <div x-show="step===1" :class="{'badgePop':step===1,'badgeFade':step===2}" class="absolute">
+
+                <svg width="100" viewBox="0 0 100 100">
+
+                    <path
+                        d="M90.9377 35.2922C89.6929 34.0389 88.9912 32.3463 88.9839 30.5799V24.6395C88.979 21.0249 87.5409 17.5597 84.985 15.0038C82.4291 12.4479 78.9639 11.0098 75.3493 11.0049H69.4182C67.6547 10.9994 65.9639 10.301 64.7105 9.06042L59.64 3.98525C57.0814 1.43319 53.6151 0 50.0014 0C46.3876 0 42.9213 1.43319 40.3627 3.98525L35.2969 9.06042C34.0435 10.3051 32.3509 11.0069 30.5845 11.0142H24.6441C21.0311 11.0191 17.5674 12.4559 15.0117 15.0098C12.4561 17.5637 11.0169 21.0265 11.0095 24.6395V30.5799C11.004 32.3434 10.3057 34.0342 9.06507 35.2876L3.98524 40.3581C1.43319 42.9167 0 46.3829 0 49.9967C0 53.6105 1.43319 57.0768 3.98524 59.6353L9.06507 64.7012C10.3098 65.9545 11.0116 67.6472 11.0188 69.4135V75.354C11.0238 78.9686 12.4618 82.4337 15.0178 84.9896C17.5737 87.5455 21.0388 88.9836 24.6534 88.9885H30.5845C32.3487 88.9953 34.0396 89.6954 35.2922 90.9377L40.3627 96.0128C42.9207 98.566 46.3872 100 50.0014 100C53.6155 100 57.082 98.566 59.64 96.0128L64.7059 90.9423C65.9592 89.6976 67.6518 88.9958 69.4182 88.9885H75.3586C78.9732 88.9836 82.4384 87.5455 84.9943 84.9896C87.5502 82.4337 88.9883 78.9686 88.9932 75.354V69.4135C88.9997 67.6484 89.7017 65.9569 90.947 64.7059L96.0175 59.6353C98.5695 57.0768 100.003 53.6105 100.003 49.9967C100.003 46.3829 98.5695 42.9167 96.0175 40.3581L90.9377 35.2922Z"
+                        fill="#B8DD2F" />
+
+                    <path
+                        d="M66.1668 34.2586C67.4737 34.2818 68.721 34.811 69.6453 35.7352C70.5696 36.6596 71.0998 37.9076 71.1228 39.2147C71.1458 40.5216 70.6603 41.7866 69.7693 42.743L69.7576 42.7566L69.7449 42.7684L48.1668 64.3465C47.7 64.8162 47.1446 65.1892 46.533 65.4432C45.9213 65.6971 45.2646 65.8261 44.6023 65.825L44.6033 65.826L44.6004 65.825L44.5984 65.826C43.9364 65.827 43.2802 65.6969 42.6687 65.4432C42.0571 65.1893 41.5018 64.8162 41.035 64.3465L30.2332 53.5447L30.2215 53.532C29.3303 52.5756 28.845 51.3107 28.868 50.0037C28.891 48.6965 29.4201 47.4487 30.3445 46.5242C31.269 45.5998 32.5169 45.0707 33.824 45.0477C35.0492 45.0262 36.238 45.4507 37.1697 46.2381L37.3523 46.4012L37.3777 46.4246L44.5994 53.6424L62.6248 35.6238L62.6375 35.6121C63.594 34.7209 64.8596 34.2355 66.1668 34.2586Z"
+                        fill="white" />
+
+                </svg>
+            </div>
+
+            <!-- ===== PLANE ===== -->
+            <div x-show="step===2" :class="{'planeIn':step===2,'planeFly':step===2}" class="absolute origin-center">
+
+                <svg width="90" viewBox="0 0 90 56">
+                    <path d="M20.625 29.5337L24.1605 46.1974L89.9928 0L20.625 29.5337Z" fill="#C4E939" />
+                    <path d="M90 0L20.6322 29.5337L0 13.4457L90 0Z" fill="#EAF6BB" />
+                    <path d="M28.8341 35.9239L24.1641 46.1974L89.9964 0L28.8341 35.9239Z" fill="#96BA0E" />
+                    <path d="M89.9982 0L28.8359 35.9239L54.6751 56L89.9982 0Z" fill="#D3FF30" />
+                </svg>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function flow() {
+            return {
+                overlay: false,
+                step: 1,
+                showCircle: true,
+
+                start() {
+                    this.overlay = true
+                    this.step = 1
+                    this.showCircle = true
+
+                    setTimeout(() => {
+                        this.step = 2
+                        this.showCircle = false
+                    }, 1600)
+
+                    setTimeout(() => {
+                        this.overlay = false
+                    }, 4000)
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
+```
