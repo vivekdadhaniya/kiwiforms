@@ -72,6 +72,93 @@
             /* align thumb */
             margin-top: -2px;
         }
+
+        .publish-wrapper {
+            position: relative;
+            width: 250px;
+            height: 250px;
+        }
+
+        .svg {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Initially hide rocket */
+        .svg-rocket {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        /* Saving Loader */
+        .saving .svg-success circle:first-child {
+            transform-origin: center;
+            animation: rotateRing 1.5s linear infinite;
+        }
+
+        /* Pulse */
+        .saving .svg-success {
+            animation: pulse 1.5s ease-in-out infinite alternate;
+        }
+
+        /* Transition to rocket */
+        .show-rocket .svg-success {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .show-rocket .svg-rocket {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.6s cubic-bezier(.34, 1.56, .64, 1);
+        }
+
+        /* Rocket launch */
+        .launch .svg-rocket {
+            animation: flyRight 1s ease-out forwards;
+        }
+
+        @keyframes rotateRing {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(0.5);
+                opacity: 0.1;
+            }
+
+            to {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+
+        @keyframes flyRight {
+            0% {
+                transform: translateX(0) translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            70% {
+                transform: translateX(150px) translateY(-150px) scale(1.1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(300px) translateY(-300px) scale(0.8);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
@@ -215,7 +302,7 @@
                                 stroke-linejoin="round" />
                         </svg>
                     </button>
-                    <button class="w-full max-w-[112px] p-[15px] py-2.5 rounded-[10px] bg-Theme-Black flex items-center justify-between text-sm font-medium leading-[140%] text-white
+                    <button data-modal-target="publish" class="w-full max-w-[112px] p-[15px] py-2.5 rounded-[10px] bg-Theme-Black flex items-center justify-between text-sm font-medium leading-[140%] text-white
                                    transition-all duration-500 hover:bg-gray-800 relative overflow-hidden group">
                         Publish
                         <svg class="relative z-10 transition-transform duration-500 group-hover:translate-x-1"
@@ -1250,6 +1337,56 @@
                         <input type="email" placeholder="name@email.com"
                             class="w-full pb-[15px] border-b border-[#DAEFE6] !bg-white placeholder:text-[#9ACEB8] text-xl font-medium leading-[140%] text-[#007D47] transition-all duration-500 focus:outline-0 focus:border-[#007D47]"
                             disabled />
+
+                        <div class="publish-wrapper w-[200px] aspect-square rounded-full bg-white border-[10px] border-[#B8DD2F] flex items-center justify-center shadow-[0_0px_0px_15px_rgba(184,221,47,0.25)]">
+
+                            <!-- SVG 1: Success Badge -->
+                            <div class="svg svg-success">
+                                <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M90.9377 35.2922C89.6929 34.0389 88.9911 32.3463 88.9839 30.5799V24.6395C88.979 21.0249 87.5409 17.5597 84.985 15.0038C82.4291 12.4479 78.9639 11.0098 75.3493 11.0049H69.4182C67.6547 10.9994 65.9639 10.301 64.7105 9.06042L59.64 3.98525C57.0814 1.43319 53.6151 0 50.0014 0C46.3876 0 42.9213 1.43319 40.3627 3.98525L35.2969 9.06042C34.0435 10.3051 32.3509 11.0069 30.5845 11.0142H24.6441C21.0311 11.0191 17.5674 12.4559 15.0117 15.0098C12.4561 17.5637 11.0169 21.0265 11.0095 24.6395V30.5799C11.004 32.3434 10.3057 34.0342 9.06507 35.2876L3.98524 40.3581C1.43318 42.9167 0 46.3829 0 49.9967C0 53.6105 1.43318 57.0768 3.98524 59.6353L9.06507 64.7012C10.3098 65.9545 11.0116 67.6472 11.0188 69.4135V75.354C11.0238 78.9686 12.4618 82.4337 15.0178 84.9896C17.5737 87.5455 21.0388 88.9836 24.6534 88.9885H30.5845C32.3487 88.9953 34.0396 89.6954 35.2922 90.9377L40.3627 96.0128C42.9207 98.566 46.3872 100 50.0014 100C53.6155 100 57.082 98.566 59.64 96.0128L64.7059 90.9423C65.9592 89.6976 67.6518 88.9958 69.4182 88.9885H75.3586C78.9732 88.9836 82.4384 87.5455 84.9943 84.9896C87.5502 82.4337 88.9883 78.9686 88.9932 75.354V69.4135C88.9997 67.6484 89.7017 65.9569 90.947 64.7059L96.0175 59.6353C98.5695 57.0768 100.003 53.6105 100.003 49.9967C100.003 46.3829 98.5695 42.9167 96.0175 40.3581L90.9377 35.2922Z"
+                                        fill="#B8DD2F" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M66.1707 34.2571C67.4776 34.2803 68.7249 34.8095 69.6492 35.7337C70.5735 36.6582 71.1037 37.9061 71.1268 39.2132C71.1497 40.5201 70.6642 41.7851 69.7732 42.7415L69.7615 42.7552L69.7488 42.7669L48.1707 64.345C47.7039 64.8148 47.1485 65.1877 46.5369 65.4417C45.9252 65.6956 45.2685 65.8246 44.6062 65.8235L44.6072 65.8245L44.6043 65.8235L44.6023 65.8245C43.9403 65.8255 43.2841 65.6955 42.6727 65.4417C42.061 65.1878 41.5057 64.8147 41.0389 64.345L30.2371 53.5433L30.2254 53.5306C29.3342 52.5742 28.8489 51.3093 28.8719 50.0023C28.8949 48.6951 29.424 47.4472 30.3484 46.5228C31.2729 45.5984 32.5208 45.0693 33.8279 45.0462C35.0531 45.0247 36.2419 45.4492 37.1736 46.2366L37.3562 46.3997L37.3816 46.4231L44.6033 53.6409L62.6287 35.6224L62.6414 35.6106C63.5979 34.7194 64.8635 34.2341 66.1707 34.2571Z"
+                                        fill="white" />
+                                </svg>
+
+                            </div>
+
+                            <!-- SVG 2: Rocket -->
+                            <div class="svg svg-rocket">
+                                <svg width="90" height="56" viewBox="0 0 90 56" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20.6289 29.5337L24.1644 46.1974L89.9967 0L20.6289 29.5337Z"
+                                        fill="url(#paint0_linear_4797_427)" />
+                                    <path d="M90 0L20.6322 29.5337L0 13.4457L90 0Z"
+                                        fill="url(#paint1_linear_4797_427)" />
+                                    <path d="M28.838 35.9239L24.168 46.1974L90.0003 0L28.838 35.9239Z" fill="#96BA0E" />
+                                    <path d="M89.9982 0L28.8359 35.9239L54.6751 56L89.9982 0Z"
+                                        fill="url(#paint2_linear_4797_427)" />
+                                    <defs>
+                                        <linearGradient id="paint0_linear_4797_427" x1="20.6291" y1="23.0988"
+                                            x2="89.9973" y2="23.0988" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#C4E939" />
+                                            <stop offset="1" stop-color="#A0C80C" />
+                                        </linearGradient>
+                                        <linearGradient id="paint1_linear_4797_427" x1="0.000356403" y1="14.7668"
+                                            x2="90.0006" y2="14.7668" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#EAF6BB" />
+                                            <stop offset="1" stop-color="#DCFF5C" />
+                                        </linearGradient>
+                                        <linearGradient id="paint2_linear_4797_427" x1="28.8353" y1="27.9999"
+                                            x2="89.9988" y2="27.9999" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#E4FF80" />
+                                            <stop offset="1" stop-color="#D3FF30" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
                 <!-- footer for main content-->
@@ -6248,6 +6385,204 @@
         </div>
     </div>
 
+    <!-- publish-modal -->
+    <div class="modalTrigger modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] pb-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+        id="publish">
+        <!-- modal header -->
+        <div class="flex items-center justify-between py-2.5 px-[5px] pl-[15px] w-full">
+            <h2 class="text-xl leading-[140%] text-Theme-Black font-Inter_tight">Share your Kiwiform</h2>
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                </svg>
+            </span>
+        </div>
+        <!-- modal body -->
+        <div
+            class="w-full relative bg-white rounded-10px flex flex-col h-auto overflow-auto p-0 gap-0 border border-[#E9E1E1] [&::-webkit-scrollbar]:hidden">
+            <div class="p-10 ">
+                <h3 class="text-[32px] leading-[140%] text-Theme-Black font-Inter_tight mb-5">
+                    <span class="text-Theme-Green">Your Kiwiform is live!</span> <br>
+                    Let the responses roll in.
+                </h3>
+                <p class="text-base leading-[110%] text-Theme-Green mb-2.5">
+                    Spread the word!
+                </p>
+                <div class="relative p-[5px] rounded-10px bg-[#EDE9E9] flex items-center gap-[15px] mb-6">
+                    <p class="text-base leading-[140%] w-full text-Theme-Black pl-2.5">
+                        https://share.kiwiform.com/to/form1</p>
+                    <button class="btn-kiwi-green-icon-text px-4 rounded-[5px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 14L6 14C3.79086 14 2 12.2091 2 10C2 7.79086 3.79086 6 6 6L7.5 6"
+                                stroke="white" stroke-width="1.2" stroke-linecap="round" />
+                            <path d="M12.5 6L14 6C16.2091 6 18 7.79086 18 10C18 12.2091 16.2091 14 14 14L12.5 14"
+                                stroke="white" stroke-width="1.2" stroke-linecap="round" />
+                            <path d="M7 10L13 10" stroke="white" stroke-width="1.2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="flex items-center gap-2.5 mb-10">
+                    <button
+                        class="btn-white-square bg-[#F2EFEF] border-[#E2DCDC] text-Theme-Black transition-all duration-500 hover:bg-white hover:text-Theme-Green hover:border-Theme-Green">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <g clip-path="url(#clip0_6709_2777)">
+                                <rect x="8" y="1" width="7" height="7" rx="2" transform="rotate(90 8 1)"
+                                    stroke="currentColor" stroke-width="1.2" />
+                                <rect x="6" y="3" width="3" height="3" rx="0.25" transform="rotate(90 6 3)"
+                                    stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" />
+                                <path d="M5.25 12L6 12L6 12.75" stroke="currentColor" stroke-width="1.2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M5 15L4 15C3.5286 15 3.29289 15 3.14645 14.8536C3 14.7071 3 14.4714 3 14L3 13"
+                                    stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                                <rect x="8" y="10" width="7" height="7" rx="2" transform="rotate(90 8 10)"
+                                    stroke="currentColor" stroke-width="1.2" />
+                                <path
+                                    d="M15 6L15 3.5C15 3.2643 15 3.14645 14.9268 3.07322C14.8536 3 14.7357 3 14.5 3L12 3"
+                                    stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <rect x="17" y="1" width="7" height="7" rx="2" transform="rotate(90 17 1)"
+                                    stroke="currentColor" stroke-width="1.2" />
+                                <path d="M16.5 16.5L16.5 14.5L14.5 14.5" stroke="currentColor" stroke-width="1.2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12.5 16.5L12.5 14.5L10.5 14.5L10.5 16.5L12.5 16.5Z" stroke="currentColor"
+                                    stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16.5 12.5L16.5 10.5L14.5 10.5L14.5 12.5L16.5 12.5Z" stroke="currentColor"
+                                    stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12.5 12.5L10.5 12.5L10.5 10.5" stroke="currentColor" stroke-width="1.2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_6709_2777">
+                                    <rect width="18" height="18" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+                    <button
+                        class="btn-white-square bg-[#F2EFEF] border-[#E2DCDC] text-Theme-Black transition-all duration-500 hover:bg-white hover:text-Theme-Green hover:border-Theme-Green">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path
+                                d="M14.6328 14.6329H12.2621V10.92C12.2621 10.0346 12.2463 8.89479 11.0291 8.89479C9.79431 8.89479 9.60538 9.85947 9.60538 10.8555V14.6327H7.23469V6.9973H9.51056V8.04076H9.54242C9.77018 7.6513 10.0993 7.33091 10.4947 7.11371C10.8902 6.89653 11.3371 6.79066 11.7879 6.8074C14.1907 6.8074 14.6338 8.388 14.6338 10.4443L14.6328 14.6329ZM4.55976 5.9536C4.28765 5.95367 4.02165 5.87301 3.79539 5.72186C3.56911 5.57073 3.39276 5.35587 3.28857 5.10449C3.1844 4.85309 3.15711 4.57647 3.21014 4.30955C3.26319 4.04264 3.39417 3.79747 3.58653 3.60502C3.7789 3.41256 4.02401 3.28147 4.29088 3.22833C4.55772 3.1752 4.83436 3.20241 5.08576 3.30649C5.33715 3.41058 5.55206 3.58689 5.70325 3.81314C5.85447 4.03936 5.9352 4.30536 5.93526 4.57749C5.93528 4.75817 5.89973 4.93708 5.83063 5.10402C5.76152 5.27097 5.66021 5.42266 5.53248 5.55045C5.40475 5.67823 5.25311 5.77961 5.08622 5.84878C4.91931 5.91795 4.74042 5.95358 4.55976 5.9536ZM5.74511 14.6329H3.37193V6.9973H5.74511V14.6329ZM15.8147 1.0001H2.18066C1.8712 0.99661 1.57302 1.11613 1.35164 1.33239C1.13025 1.54866 1.00378 1.84398 1 2.15345V15.8453C1.00365 16.1549 1.13004 16.4505 1.35142 16.6669C1.5728 16.8834 1.87105 17.0032 2.18066 16.9999H15.8147C16.1249 17.0038 16.424 16.8844 16.6462 16.6679C16.8685 16.4514 16.9957 16.1556 17 15.8453V2.15247C16.9956 1.84238 16.8683 1.54672 16.646 1.33046C16.4237 1.1142 16.1247 0.996012 15.8147 1.0001Z"
+                                fill="currentColor" />
+                        </svg>
+                    </button>
+                    <button
+                        class="btn-white-square bg-[#F2EFEF] border-[#E2DCDC] text-Theme-Black transition-all duration-500 hover:bg-white hover:text-Theme-Green hover:border-Theme-Green">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path
+                                d="M17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 12.993 3.92546 16.3027 7.75 16.9028V11.3125H5.71876V9H7.75V7.2375C7.75 5.2325 8.94438 4.125 10.7717 4.125C11.647 4.125 12.5625 4.28126 12.5625 4.28126V6.25H11.5537C10.56 6.25 10.25 6.86672 10.25 7.49938V9H12.4688L12.1141 11.3125H10.25V16.9028C14.0745 16.3027 17 12.9931 17 9Z"
+                                fill="currentColor" />
+                        </svg>
+                    </button>
+                    <button
+                        class="btn-white-square bg-[#F2EFEF] border-[#E2DCDC] text-Theme-Black transition-all duration-500 hover:bg-white hover:text-Theme-Green hover:border-Theme-Green">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path
+                                d="M9.53823 8.72754L13.1388 13.8777H11.6611L8.72298 9.67515V9.67489L8.29162 9.05797L4.85938 4.14844H6.33706L9.10687 8.11062L9.53823 8.72754Z"
+                                fill="currentColor" />
+                            <path
+                                d="M15.2712 1H2.72883C1.77405 1 1 1.77405 1 2.72883V15.2712C1 16.2259 1.77405 17 2.72883 17H15.2712C16.2259 17 17 16.2259 17 15.2712V2.72883C17 1.77405 16.2259 1 15.2712 1ZM11.2053 14.5683L8.23208 10.2411L4.50957 14.5683H3.54748L7.80489 9.61966L3.54748 3.42347H6.79469L9.61014 7.52101L13.1351 3.42347H14.0972L10.0375 8.14262H10.0372L14.4525 14.5683H11.2053Z"
+                                fill="currentColor" />
+                        </svg>
+                    </button>
+                    <button
+                        class="btn-white-square bg-[#F2EFEF] border-[#E2DCDC] text-Theme-Black transition-all duration-500 hover:bg-white hover:text-Theme-Green hover:border-Theme-Green">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <g clip-path="url(#clip0_6709_2807)">
+                                <path
+                                    d="M8 1H7H5C3.11438 1 2.17157 1 1.58579 1.58579C1 2.17157 1 3.11438 1 5V13C1 14.8856 1 15.8284 1.58579 16.4142C2.17157 17 3.11438 17 5 17H13C14.8856 17 15.8284 17 16.4142 16.4142C17 15.8284 17 14.8856 17 13V11V10"
+                                    stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                                <path d="M12 1L17 1L17 6" stroke="currentColor" stroke-width="1.2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M17 1L10 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_6709_2807">
+                                    <rect width="18" height="18" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex items-center gap-2.5">
+                    <button
+                        class="btn-white-icon-text w-full justify-center py-[9px] hover:bg-[#F2EFEF] hover:border-[#E2DCDC] group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <g clip-path="url(#clip0_6710_3124)">
+                                <path
+                                    class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                    d="M15.625 8.3125V5C15.625 3.11438 15.625 2.17157 15.0392 1.58579C14.4534 1 13.5106 1 11.625 1H5C3.11438 1 2.17157 1 1.58579 1.58579C1 2.17157 1 3.11438 1 5V11.625C1 13.5106 1 14.4534 1.58579 15.0392C2.17157 15.625 3.11438 15.625 5 15.625H8.3125"
+                                    stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <rect
+                                    class="fill-[#D4CFCF] stroke-[#726B6B] transition-all duration-500 group-hover:fill-[#CAEADC] group-hover:stroke-Theme-Green"
+                                    x="8.875" y="4.375" width="4.5" height="4.5" rx="0.5"
+                                    transform="rotate(90 8.875 4.375)" fill="" stroke="" stroke-width="1.5" />
+                                <path d="M15.6172 12.25V19" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M19 15.6172L12.25 15.6172" stroke="#000A06" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_6710_3124">
+                                    <rect width="20" height="20" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        Connect to Apps
+                    </button>
+                    <button
+                        class="btn-white-icon-text w-full justify-center py-[9px] hover:bg-[#F2EFEF] hover:border-[#E2DCDC] group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <g clip-path="url(#clip0_6710_3133)">
+                                <path
+                                    class="stroke-[#726B6B] transition-all duration-500 group-hover:stroke-Theme-Green"
+                                    d="M15.0625 11.2656V12.8125V15C15.0625 16.8856 15.0625 17.8284 14.4767 18.4142C13.8909 19 12.9481 19 11.0625 19H5C3.11438 19 2.17157 19 1.58579 18.4142C1 17.8284 1 16.8856 1 15V10.625C1 8.73938 1 7.79657 1.58579 7.21079C2.17157 6.625 3.11438 6.625 5 6.625H8.03125H9.4375"
+                                    stroke="" stroke-width="1.5" stroke-linecap="round" />
+                                <path
+                                    d="M11.5459 9.92969L10.667 10.6047L8.90918 11.9547C8.39085 12.3528 7.66969 12.3528 7.15137 11.9547L5.83301 10.9422L4.73438 10.0984"
+                                    stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    class="fill-[#D4CFCF] stroke-[#726B6B] transition-all duration-500 group-hover:fill-[#CAEADC] group-hover:stroke-Theme-Green"
+                                    d="M14.8749 1.5069C14.9536 1.2944 14.9929 1.18815 15.0625 1.18815C15.1321 1.18815 15.1714 1.2944 15.2501 1.5069L16.0941 3.78777C16.1098 3.8302 16.1176 3.85142 16.1331 3.8669C16.1486 3.88238 16.1698 3.89023 16.2122 3.90593L18.4931 4.74993C18.7056 4.82856 18.8118 4.86788 18.8118 4.9375C18.8118 5.00712 18.7056 5.04644 18.4931 5.12507L16.2122 5.96907C16.1698 5.98477 16.1486 5.99262 16.1331 6.0081C16.1176 6.02358 16.1098 6.0448 16.0941 6.08723L15.2501 8.3681C15.1714 8.5806 15.1321 8.68685 15.0625 8.68685C14.9929 8.68685 14.9536 8.5806 14.8749 8.3681L14.0309 6.08723C14.0152 6.0448 14.0074 6.02358 13.9919 6.0081C13.9764 5.99262 13.9552 5.98477 13.9128 5.96907L11.6319 5.12507C11.4194 5.04644 11.3132 5.00712 11.3132 4.9375C11.3132 4.86788 11.4194 4.82856 11.6319 4.74993L13.9128 3.90593C13.9552 3.89023 13.9764 3.88238 13.9919 3.8669C14.0074 3.85142 14.0152 3.8302 14.0309 3.78777L14.8749 1.5069Z"
+                                    fill="" stroke="" stroke-width="1.5" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_6710_3133">
+                                    <rect width="20" height="20" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        Get Notified
+                    </button>
+                </div>
+                <button
+                    class="btn-white-icon-text w-full justify-center py-[9px] mt-2.5 hover:bg-[#F2EFEF] hover:border-[#E2DCDC] group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <g clip-path="url(#clip0_6710_3140)">
+                            <rect
+                                class="fill-[#D4CFCF] stroke-[#726B6B] transition-all duration-500 group-hover:fill-[#CAEADC] group-hover:stroke-Theme-Green"
+                                x="1" y="1" width="18" height="18" rx="2" fill="" stroke="" stroke-width="1.5" />
+                            <path d="M11.125 6.625L8.875 13.375" stroke="#000A06" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M6.625 7.75L4.375 10L6.625 12.25M13.375 12.25L15.625 10L13.375 7.75"
+                                stroke="#000A06" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_6710_3140">
+                                <rect width="20" height="20" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    Embed This Form
+                </button>
+            </div>
+        </div>
+    </div>
+
 
     <div
         class="overlay-modal w-full h-screen z-[500] bg-[#012819]/30 backdrop-blur-[7.5px] fixed top-0 left-0 opacity-0 invisible">
@@ -6585,6 +6920,25 @@
         }
 
     </script>
+
+    <script>
+        const wrapper = document.querySelector('.publish-wrapper');
+
+        // Phase 1: Saving
+        wrapper.classList.add('saving');
+
+        // After 2 seconds → show rocket
+        setTimeout(() => {
+            wrapper.classList.remove('saving');
+            wrapper.classList.add('show-rocket');
+        }, 2000);
+
+        // After 3 seconds → launch
+        setTimeout(() => {
+            wrapper.classList.add('launch');
+        }, 3000);
+    </script>
+
 </body>
 
 </html>
