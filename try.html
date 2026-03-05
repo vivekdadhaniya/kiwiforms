@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .perspective {
+            perspective: 1200px;
+        }
+
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+    </style>
+
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div x-data="{ plan:'monthly', lifetime:false }" class="w-[600px]">
+
+        <!-- CARD WRAPPER -->
+
+        <div class="perspective">
+
+            <div class="relative transition-transform duration-700 preserve-3d" :class="lifetime ? 'rotate-y-180' : ''">
+
+                <!-- FRONT CARD -->
+
+                <div
+                    class="backface-hidden rounded-2xl bg-[#13B871] bg-[radial-gradient(162.21%_129.71%_at_93.68%_89.71%,#B8DD2F_0%,rgba(92,173,59,0.60)_49.99%,rgba(0,125,71,0.20)_100%)] p-8">
+
+                    <!-- Badge -->
+
+                    <p class="bg-white text-sm px-3 py-1 rounded-md w-max mb-10 font-semibold">
+                        PRO
+                    </p>
+
+                    <!-- Tabs -->
+
+                    <div class="flex items-center gap-3 mb-10">
+
+                        <button @click="plan='monthly'" :class="plan==='monthly' ? 'text-white' : 'text-white/50'"
+                            class="font-semibold tracking-wider">
+                            MONTHLY
+                        </button>
+
+                        <button @click="plan = plan==='monthly' ? 'yearly' : 'monthly'"
+                            class="relative w-[34px] h-[16px] rounded-full bg-[#0B6B3A]">
+
+                            <span
+                                class="absolute top-[2px] w-[14px] left-px h-[12px] bg-white rounded-full transition-all"
+                                :class="plan==='yearly' ? 'translate-x-[16px]' : 'translate-x-[2px]'">
+                            </span>
+
+                        </button>
+
+                        <button @click="plan='yearly'" :class="plan==='yearly' ? 'text-white' : 'text-white/50'"
+                            class="font-semibold tracking-wider flex items-center gap-2">
+
+                            YEARLY
+
+                            <span class="text-[10px] px-1.5 py-0.5 rounded"
+                                :class="plan==='yearly' ? 'bg-yellow-200 text-green-900' : 'bg-green-700 text-white'">
+                                30% OFF
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                    <!-- Price -->
+
+                    <div class="flex items-end justify-between">
+
+                        <div class="flex items-end gap-2">
+
+                            <h2 class="text-white text-[64px] leading-none font-semibold">
+                                $<span x-text="plan==='monthly' ? '29' : '20'"></span>
+                            </h2>
+
+                            <span class="text-white mb-2">
+                                /month
+                            </span>
+
+                        </div>
+
+                        <button class="bg-white text-black px-6 py-3 rounded-lg font-medium">
+                            Upgrade to Pro
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- BACK CARD (LIFETIME) -->
+
+                <div class="absolute inset-0 rotate-y-180 backface-hidden overflow-hidden rounded-[16px]
+bg-[linear-gradient(90deg,#BC6500_0%,#E89B2D_12.53%,#D3842A_34.02%,#FFD57B_69.03%,#C87E06_100%)] ">
+                    <div class="w-full h-full backdrop-blur-[51px] bg-transparent p-8 ">
+                        <div class="flex flex-col justify-between h-full">
+
+                            <div class="w-full h-full flex items-start justify-between flex-col">
+
+                                <p class="bg-white text-xs px-3 py-1 rounded w-max font-semibold mb-12">
+                                    PRO
+                                </p>
+                                <div class="flex items-end justify-between w-full">
+                                    <h2 class="text-white text-[60px] font-semibold leading-none">
+                                        $299<span class="text-white mb-1 text-base">for Lifetime
+                                        </span>
+                                    </h2>
+
+                                    <button class="bg-black text-white px-6 py-3 rounded-lg font-medium w-max">
+                                        Get Lifetime Access
+                                    </button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TOGGLE BUTTON -->
+
+        <button @click="lifetime = !lifetime" class="mt-6 w-full text-center text-base font-medium">
+
+            <span x-show="!lifetime">
+                <span class="text-green-600">Click</span> to Claim Limited Time Lifetime Deal
+            </span>
+
+            <span x-show="lifetime">
+                Not Interested
+            </span>
+
+        </button>
+
+    </div>
+
+</body>
+
+</html>

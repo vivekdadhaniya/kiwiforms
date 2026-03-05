@@ -10,10 +10,26 @@
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="assets/css/input.css">
     <link rel="stylesheet" href="assets/css/output.css">
+    <style>
+        .perspective {
+            perspective: 1200px;
+        }
 
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+    </style>
 </head>
 
-<body class="bg-Theme-bg font-Inter flex flex-col gap-px" x-data="{ plan: 'yearly' }">
+<body class="bg-Theme-bg font-Inter flex flex-col gap-px" x-data="{ plan: 'yearly', lifetime:false }">
 
 
     <button data-modal-target="pricing-modal" class="btn-white-icon-text">
@@ -50,77 +66,160 @@
                             collection.
                         </p>
                     </div>
-                    <div class="bg-Theme-bg w-full h-auto flex items-center gap-px">
+                    <div class="perspective bg-Theme-bg w-full h-auto flex items-center gap-px">
                         <div class="w-5 lg:w-full h-full rounded-10px bg-white"></div>
-                        <div class="w-full h-full rounded-10px bg-white p-3.5 lg:min-w-[598px]">
-                            <div class="bg-[#13B871] w-full rounded-[16px] overflow-visible">
-                                <div
-                                    class="w-full rounded-[16px] bg-[radial-gradient(162.21%_129.71%_at_93.68%_89.71%,#B8DD2F_0%,rgba(92,173,59,0.60)_49.99%,rgba(0,125,71,0.20)_100%)] p-5 
-                            shadow-[0_40px_48px_-20px_rgba(0,0,0,0.06),0_32px_32px_-20px_rgba(0,0,0,0.04),0_16px_24px_-12px_rgba(0,0,0,0.06),0_0_0_1px_rgba(0,0,0,0.06)]">
-                                    <p
-                                        class="py-2.5 px-3.5 rounded-lg bg-white shadow-[0_2px_8px_0_rgba(0,0,0,0.16)] w-max mb-28">
-                                        <span
-                                            class="text-transparent bg-clip-text bg-[linear-gradient(90deg,#007D47_30%,#B8DD2F80_50%,#007D47_70%)] text-base font-semibold leading-[18px] uppercase">Pro</span>
-                                    </p>
+                        
 
+                        <div :class="lifetime ? 'bg-[#FEF9F3]' : 'bg-[#F3FAF2]'"
 
+                        
+                            class="w-full h-full relative rounded-10px  p-3.5 lg:min-w-[598px] flex items-center justify-center flex-col gap-2.5">
+                            <div class="perspective w-full">
 
-                                    <!-- Tabs -->
-                                    
-                                    <div  class="flex items-center gap-2">
+                                <div class="relative w-full transition-transform duration-700 preserve-3d"
+                                    :class="lifetime ? 'rotate-y-180' : ''">
 
-                                        <!-- MONTHLY -->
-                                        <button @click="plan = 'monthly'"
-                                            :class="plan === 'monthly' ? 'text-white' : 'text-white/50'"
-                                            class="text-base font-semibold leading-[140%] tracking-[1.44px] transition">
-                                            MONTHLY
-                                        </button>
+                                    <!-- FRONT CARD -->
 
-                                        <!-- TOGGLE SWITCH -->
-                                        <button @click="plan = plan === 'monthly' ? 'yearly' : 'monthly'"
-                                            class="relative w-[30px] h-[14px] rounded-full bg-[#0B6B3A] flex items-center p-px transition">
+                                    <div class="backface-hidden">
 
-                                            <!-- KNOB -->
-                                            <span
-                                                class="absolute w-[16px] h-[12px] bg-white rounded-full shadow transition-all duration-300"
-                                                :class="plan === 'yearly' ? 'translate-x-[12px]' : 'translate-x-0'">
-                                            </span>
+                                        <div class="bg-[#13B871] w-full rounded-[16px] overflow-visible">
+                                            <div
+                                                class="w-full rounded-[16px] bg-[radial-gradient(162.21%_129.71%_at_93.68%_89.71%,#B8DD2F_0%,rgba(92,173,59,0.60)_49.99%,rgba(0,125,71,0.20)_100%)] p-5 shadow-[0_40px_48px_-20px_rgba(0,0,0,0.06),0_32px_32px_-20px_rgba(0,0,0,0.04),0_16px_24px_-12px_rgba(0,0,0,0.06),0_0_0_1px_rgba(0,0,0,0.06)]">
 
-                                        </button>
+                                                <p
+                                                    class="py-2.5 px-3.5 rounded-lg bg-white shadow-[0_2px_8px_0_rgba(0,0,0,0.16)] w-max mb-28">
+                                                    <span
+                                                        class="text-transparent bg-clip-text bg-[linear-gradient(90deg,#007D47_30%,#B8DD2F80_50%,#007D47_70%)] text-base font-semibold leading-[18px] uppercase">
+                                                        Pro
+                                                    </span>
+                                                </p>
 
-                                        <!-- YEARLY -->
-                                        <button @click="plan = 'yearly'"
-                                            :class="plan === 'yearly' ? 'text-white' : 'text-white/50'"
-                                            class="flex items-center gap-[5px] text-base leading-[140%] font-semibold tracking-[1.44px] transition">
+                                                <!-- Tabs -->
 
-                                            YEARLY
+                                                <div class="flex items-center gap-2">
 
-                                            <span class="py-0.5 px-1.5 rounded-[4px] text-[10px] leading-4 tracking-[-0px]"
-                                                :class="plan === 'yearly' ? 'bg-[#F5F865] text-[#073B24]' : 'bg-[#007D47] text-white'">
-                                                30% OFF
-                                            </span>
-                                        </button>
+                                                    <button @click="plan = 'monthly'"
+                                                        :class="plan === 'monthly' ? 'text-white' : 'text-white/50'"
+                                                        class="text-base font-semibold leading-[140%] tracking-[1.44px] transition">
+                                                        MONTHLY
+                                                    </button>
 
-                                    </div>
-                                    <!-- Price -->
-                                    <div class="mt-8 flex items-end justify-between">
-                                        <div class="flex items-end gap-px">
-                                            <h2
-                                                class="text-[60px] font-medium leading-[120%] tracking-[-1.2px] text-white min-w-[108px]">
-                                                $<span x-text="plan === 'monthly' ? '29' : '20'"></span>
-                                            </h2>
+                                                    <button @click="plan = plan === 'monthly' ? 'yearly' : 'monthly'"
+                                                        class="relative w-[30px] h-[14px] rounded-full bg-[#0B6B3A] flex items-center p-px transition">
 
-                                            <span class="text-base font-normal leading-[140%] text-white mb-2">
-                                                /month
-                                            </span>
+                                                        <span
+                                                            class="absolute w-[16px] h-[12px] bg-white rounded-full shadow transition-all duration-300"
+                                                            :class="plan === 'yearly' ? 'translate-x-[12px]' : 'translate-x-0'">
+                                                        </span>
+
+                                                    </button>
+
+                                                    <button @click="plan = 'yearly'"
+                                                        :class="plan === 'yearly' ? 'text-white' : 'text-white/50'"
+                                                        class="flex items-center gap-[5px] text-base leading-[140%] font-semibold tracking-[1.44px] transition">
+
+                                                        YEARLY
+
+                                                        <span class="py-0.5 px-1.5 rounded-[4px] text-[10px] leading-4"
+                                                            :class="plan === 'yearly' ? 'bg-[#F5F865] text-[#073B24]' : 'bg-[#007D47] text-white'">
+                                                            30% OFF
+                                                        </span>
+
+                                                    </button>
+
+                                                </div>
+
+                                                <!-- Price -->
+
+                                                <div class="mt-8 flex items-start justify-start md:items-end md:justify-between flex-col gap-4 md:flex-row w-full">
+
+                                                    <div class="flex items-end gap-px">
+
+                                                        <h2
+                                                            class="text-[60px] font-medium leading-[120%] tracking-[-1.2px] text-white min-w-[108px]">
+                                                            $<span x-text="plan === 'monthly' ? '29' : '20'"></span>
+                                                        </h2>
+
+                                                        <span
+                                                            class="text-base font-normal leading-[140%] text-white mb-2">
+                                                            /month
+                                                        </span>
+
+                                                    </div>
+
+                                                    <button
+                                                        class="bg-white text-base leading-5 text-Theme-Black font-medium px-6 py-3.5 rounded-lg hover:bg-gray-100 transition w-full text-center md:w-max">
+                                                        Upgrade to Pro
+                                                    </button>
+
+                                                </div>
+
+                                            </div>
                                         </div>
-                                        <button
-                                            class="bg-white text-base leading-5 text-Theme-Black font-medium px-6 py-3.5 rounded-lg hover:bg-gray-100 transition">
-                                            Upgrade to Pro
-                                        </button>
+
                                     </div>
+
+                                    <!-- BACK CARD -->
+
+                                    <div class="absolute inset-0 rotate-y-180 backface-hidden overflow-hidden rounded-[16px]
+bg-[linear-gradient(90deg,#BC6500_0%,#E89B2D_12.53%,#D3842A_34.02%,#FFD57B_69.03%,#C87E06_100%)]">
+
+                                        <div class="w-full h-full backdrop-blur-[51px] bg-transparent p-5">
+
+                                            <div class="flex flex-col justify-between h-full">
+
+                                                <div class="w-full h-full flex items-start justify-between flex-col">
+
+                                                    <p
+                                                        class="py-2.5 px-3.5 rounded-lg bg-white shadow-[0_2px_8px_0_rgba(0,0,0,0.16)] w-max mb-28">
+                                                        <span
+                                                            class="text-transparent bg-clip-text bg-[linear-gradient(90deg,#E8B852_80%,#FFE582_50%,#C68300_100%)] text-base font-semibold leading-[18px] uppercase">
+                                                            Pro
+                                                        </span>
+                                                    </p>
+
+
+                                                    <div class="flex items-start justify-start md:items-end md:justify-between flex-col gap-4 md:flex-row w-full">
+
+                                                        <h2 class="text-white text-[60px] font-semibold leading-none">
+                                                            $299
+                                                            <span class="text-white mb-1 text-base">for Lifetime</span>
+                                                        </h2>
+
+                                                        <button
+                                                            class="bg-black text-white px-6 py-3 rounded-lg font-medium w-full text-center md:w-max">
+                                                            <span
+                                                            class="text-transparent bg-clip-text bg-[linear-gradient(90deg,#E8B852_80%,#FFE582_50%,#C68300_100%)] text-base font-semibold leading-[18px] uppercase">
+                                                           Get Lifetime Access
+                                                        </span>
+                                                            
+                                                        </button>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
                                 </div>
+
                             </div>
+                            <button @click="lifetime = !lifetime" class="mt-6 w-full text-center text-base font-medium">
+
+                                <span x-show="!lifetime">
+                                    <span class="text-green-600">Click</span> to Claim Limited Time Lifetime Deal
+                                </span>
+
+                                <span x-show="lifetime">
+                                    Not Interested
+                                </span>
+
+                            </button>
                         </div>
                         <div class="w-5 lg:w-full h-full rounded-10px bg-white"></div>
                     </div>
@@ -183,7 +282,7 @@
                                 </p>
                                 <div class="flex items-end gap-px mb-[18px]">
                                     <h2 class="text-[32px] font-medium leading-[120%] text-white">
-                                        $<span x-text="plan === 'monthly' ? '29' : '20'"></span>
+                                        $<span x-text="lifetime ? '299' : (plan === 'monthly' ? '29' : '20')"></span>
                                     </h2>
                                     <span class="text-sm font-medium leading-[140%] text-white mb-1">
                                         /month
