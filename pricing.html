@@ -284,9 +284,9 @@ bg-[linear-gradient(90deg,#BC6500_0%,#E89B2D_12.53%,#D3842A_34.02%,#FFD57B_69.03
                                     <h2 class="text-[32px] font-medium leading-[120%] text-white">
                                         $<span x-text="lifetime ? '299' : (plan === 'monthly' ? '29' : '20')"></span>
                                     </h2>
-                                    <span class="text-sm font-medium leading-[140%] text-white mb-1">
-                                        /month
-                                    </span>
+                                    <span class="text-sm font-medium leading-[140%] text-white mb-1"
+      x-text="lifetime ? 'for Lifetime' : (plan === 'monthly' ? '/month' : '/month')">
+</span>
                                 </div>
                                 <button class="btn-white-icon-text">Upgrade to Pro</button>
                             </div>
