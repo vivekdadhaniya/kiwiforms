@@ -67,7 +67,7 @@
                         </p>
                     </div>
                     <div class="perspective bg-Theme-bg w-full h-auto flex items-center gap-px">
-                        <div class="w-5 lg:w-full h-full rounded-10px bg-white"></div>
+                        <div class="w-5 lg:w-full h-full rounded-10px bg-white hidden"></div>
                         
 
                         <div :class="lifetime ? 'bg-[#FEF9F3]' : 'bg-[#F3FAF2]'"
@@ -76,12 +76,12 @@
                             class="w-full h-full relative rounded-10px  p-3.5 lg:min-w-[598px] flex items-center justify-center flex-col gap-2.5">
                             <div class="perspective w-full">
 
-                                <div class="relative w-full transition-transform duration-700 preserve-3d"
-                                    :class="lifetime ? 'rotate-y-180' : ''">
+                                <div class="relative w-full transition-transform duration-700 preserve-3d flex flex-col lg:flex-row items-center gap-4 lg:gap-6 p-2.5 lg:p-6"
+                                    >
 
                                     <!-- FRONT CARD -->
 
-                                    <div class="backface-hidden">
+                                    <div class="backface-hidden w-full h-auto">
 
                                         <div class="bg-[#13B871] w-full rounded-[16px] overflow-visible">
                                             <div
@@ -162,10 +162,10 @@
 
                                     <!-- BACK CARD -->
 
-                                    <div class="absolute inset-0 rotate-y-180 backface-hidden overflow-hidden rounded-[16px]
-bg-[linear-gradient(90deg,#BC6500_0%,#E89B2D_12.53%,#D3842A_34.02%,#FFD57B_69.03%,#C87E06_100%)]">
+                                    <div class="relative w-full h-full backface-hidden overflow-hidden rounded-[16px]
+bg-[linear-gradient(90deg,#BC6500_0%,#E89B2D_12.53%,#D3842A_34.02%,#FFD57B_69.03%,#C87E06_100%)] shadow-[0_40px_48px_-20px_rgba(0,0,0,0.06),0_32px_32px_-20px_rgba(0,0,0,0.04),0_16px_24px_-12px_rgba(0,0,0,0.06),0_0_0_1px_rgba(0,0,0,0.06)]">
 
-                                        <div class="w-full h-full backdrop-blur-[51px] bg-transparent p-5">
+                                        <div class="w-full h-full backdrop-blur-[51px] bg-transparent p-5 ">
 
                                             <div class="flex flex-col justify-between h-full">
 
@@ -180,7 +180,7 @@ bg-[linear-gradient(90deg,#BC6500_0%,#E89B2D_12.53%,#D3842A_34.02%,#FFD57B_69.03
                                                     </p>
 
 
-                                                    <div class="flex items-start justify-start md:items-end md:justify-between flex-col gap-4 md:flex-row w-full">
+                                                    <div class="flex flex-col items-start justify-start  gap-4 w-full pt-[9px]">
 
                                                         <h2 class="text-white text-[60px] font-semibold leading-none">
                                                             $299
@@ -188,7 +188,7 @@ bg-[linear-gradient(90deg,#BC6500_0%,#E89B2D_12.53%,#D3842A_34.02%,#FFD57B_69.03
                                                         </h2>
 
                                                         <button
-                                                            class="bg-black text-white px-6 py-3 rounded-lg font-medium w-full text-center md:w-max">
+                                                            class="bg-black text-white px-6 py-3 rounded-lg font-medium w-full text-center ">
                                                             <span
                                                             class="text-transparent bg-clip-text bg-[linear-gradient(90deg,#E8B852_80%,#FFE582_50%,#C68300_100%)] text-base font-semibold leading-[18px] uppercase">
                                                            Get Lifetime Access
@@ -209,7 +209,7 @@ bg-[linear-gradient(90deg,#BC6500_0%,#E89B2D_12.53%,#D3842A_34.02%,#FFD57B_69.03
                                 </div>
 
                             </div>
-                            <button @click="lifetime = !lifetime" class="mt-6 w-full text-center text-base font-medium">
+                            <button @click="lifetime = !lifetime" class="mt-6 w-full text-center text-base font-medium hidden">
 
                                 <span x-show="!lifetime">
                                     Click to Claim <span class="animated-gradient">Limited Time Lifetime Deal</span>
@@ -221,7 +221,7 @@ bg-[linear-gradient(90deg,#BC6500_0%,#E89B2D_12.53%,#D3842A_34.02%,#FFD57B_69.03
 
                             </button>
                         </div>
-                        <div class="w-5 lg:w-full h-full rounded-10px bg-white"></div>
+                        <div class="w-5 lg:w-full h-full rounded-10px bg-white hidden"></div>
                     </div>
                     <div class="w-full h-12 rounded-10px bg-white"></div>
                 </div>
@@ -246,9 +246,9 @@ bg-[linear-gradient(90deg,#BC6500_0%,#E89B2D_12.53%,#D3842A_34.02%,#FFD57B_69.03
             <div class="col-span-1 bg-white rounded-10px  "></div>
             <!-- main-container  -->
             <div class="col-span-12 bg-Theme-bg rounded-10px grid grid-cols-15 gap-px">
-                <div class="col-span-2 bg-white rounded-10px "></div>
+                <div class="col-span-2 bg-white rounded-10px max-lg:hidden"></div>
                 <!-- place content here -->
-                <div class="col-span-11 bg-Theme-bg rounded-10px flex flex-col gap-px ">
+                <div class="col-span-15 lg:col-span-11 bg-Theme-bg rounded-10px flex flex-col gap-px ">
                     <div class="w-full grid grid-cols-2 lg:flex items-center gap-px bg-Theme-bg">
                         <div class="w-full max-lg:col-span-2 rounded-10px bg-white py-6 px-8 h-full">
                             <h4 class="text-2xl leading-[120%] font-medium text-Theme-Black mb-[5px]">
@@ -5210,7 +5210,7 @@ pointer-events-none">
                         </div>
                     </div>
                 </div>
-                <div class="col-span-2 bg-white rounded-10px "></div>
+                <div class="col-span-2 bg-white rounded-10px max-lg:hidden"></div>
             </div>
             <div class="col-span-1 bg-white rounded-10px "></div>
         </div>
