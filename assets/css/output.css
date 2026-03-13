@@ -705,14 +705,8 @@
   .mb-28 {
     margin-bottom: calc(var(--spacing) * 28);
   }
-  .mb-32 {
-    margin-bottom: calc(var(--spacing) * 32);
-  }
-  .mb-34 {
-    margin-bottom: calc(var(--spacing) * 34);
-  }
-  .mb-36 {
-    margin-bottom: calc(var(--spacing) * 36);
+  .mb-\[-\] {
+    margin-bottom: -;
   }
   .mb-\[5px\] {
     margin-bottom: 5px;
@@ -723,11 +717,17 @@
   .mb-\[11px\] {
     margin-bottom: 11px;
   }
+  .mb-\[15\] {
+    margin-bottom: 15;
+  }
   .mb-\[15px\] {
     margin-bottom: 15px;
   }
   .mb-\[18px\] {
     margin-bottom: 18px;
+  }
+  .mb-\[30\] {
+    margin-bottom: 30;
   }
   .mb-\[30px\] {
     margin-bottom: 30px;
