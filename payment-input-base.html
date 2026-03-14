@@ -800,7 +800,7 @@
                                     Stripe
                                 </button>
 
-                                <button
+                                <button data-modal-target="Authorize"
                                     class="w-full p-2.5 pr-[15px] rounded-10px flex items-center justify-between bg-[#F8F6F6] border border-[#E2DCDC] text-base leading-[22px] font-medium text-Theme-Black">
                                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -824,8 +824,9 @@
                                 <p class="text-xs leading-[200%] text-Theme-Black">
                                     A payment service must be connected before this field can collect payments from
                                     respondents. <br>
-                                   <span class="font-medium">Make sure payment details and pricing are clearly explained to respondents before
-                                    collecting payments.</span> 
+                                    <span class="font-medium">Make sure payment details and pricing are clearly
+                                        explained to respondents before
+                                        collecting payments.</span>
                                 </p>
                             </div>
                         </div>
@@ -1506,6 +1507,460 @@
             </div>
 
         </div>
+
+    </div>
+
+    <!-- Authorize.Net Modal -->
+    <div x-data="{mode:'live', name:'', nameTest:''}"
+        class="modalTrigger modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+        id="Authorize">
+
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+
+            <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                Connect to <span class="text-[#007D47]">Authorize.Net</span>
+            </h2>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                </svg>
+            </span>
+
+        </div>
+
+        <!-- Modal Body -->
+        <div class="w-full bg-white rounded-[10px] flex flex-col p-5 border border-[#E9E1E1] gap-5">
+
+            <!-- Tabs -->
+            <div class="flex bg-[#F2EFEF] rounded-10px p-[5px] w-max mx-auto">
+
+                <button @click="mode='test'" :class="mode==='test' ? 'bg-white text-black' : 'text-gray-500'"
+                    class="px-4 py-2.5 min-w-[140px] text-sm font-medium rounded-[5px] transition">
+                    Test Mode
+                </button>
+
+                <button @click="mode='live'" :class="mode==='live' ? 'bg-white text-black' : 'text-gray-500'"
+                    class="px-4 py-2.5 min-w-[140px] text-sm font-medium rounded-[5px] transition">
+                    Live Mode
+                </button>
+
+            </div>
+
+            <!-- TEST MODE PANEL -->
+            <div x-show="mode==='test'" class="flex flex-col gap-5">
+
+                <!-- Connection Name -->
+                <div class="relative">
+                    <div class="flex items-end justify-between mb-[5px]">
+                        <label class="text-sm font-medium text-Theme-Black">
+                            Connection Name*
+                        </label>
+                        <p class="text-[#8C8484] text-xs">
+                            Name this connection to reuse it in the future*
+                        </p>
+                    </div>
+
+                    <span class="absolute right-[15px] bottom-[15px] text-sm text-[#8C8484]"
+                        x-text="nameTest.length + '/40'"></span>
+
+                    <input type="text" maxlength="40" x-model="nameTest" placeholder="Authorize.Net Test Connection"
+                        class="w-full rounded-10px placeholder:text-[#8C8484] px-[15px] py-3.5 text-base outline-none bg-[#F8F6F6] transition-all duration-500 border border-transparent hover:border-[#007D47] focus:bg-white focus:border-[#007D47]">
+                </div>
+
+                <!-- API Fields -->
+                <div class="grid grid-cols-2 gap-5">
+
+                    <div>
+                        <label class="text-sm font-medium text-Theme-Black">
+                            API Login ID*
+                        </label>
+
+                        <input type="text" placeholder="API Login ID"
+                            class="mt-1 w-full rounded-10px placeholder:text-[#8C8484] px-[15px] py-3.5 text-base outline-none bg-[#F8F6F6] border border-transparent hover:border-[#007D47] focus:bg-white focus:border-[#007D47]">
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-medium text-Theme-Black">
+                            Transaction Key*
+                        </label>
+
+                        <input type="text" placeholder="Transaction Key"
+                            class="mt-1 w-full rounded-10px placeholder:text-[#8C8484] px-[15px] py-3.5 text-base outline-none bg-[#F8F6F6] border border-transparent hover:border-[#007D47] focus:bg-white focus:border-[#007D47]">
+                    </div>
+
+                </div>
+
+                <!-- Client Key -->
+                <div>
+                    <label class="text-sm font-medium text-Theme-Black">
+                        Client Key*
+                    </label>
+
+                    <input type="text" placeholder="Client Key"
+                        class="mt-1 w-full rounded-10px placeholder:text-[#8C8484] px-[15px] py-3.5 text-base outline-none bg-[#F8F6F6] border border-transparent hover:border-[#007D47] focus:bg-white focus:border-[#007D47]">
+                </div>
+
+            </div>
+
+
+            <!-- LIVE MODE PANEL -->
+            <div x-show="mode==='live'" class="flex flex-col gap-5">
+
+                <!-- Connection Name -->
+                <div class="relative">
+                    <div class="flex items-end justify-between mb-[5px]">
+                        <label class="text-sm font-medium text-Theme-Black">
+                            Connection Name*
+                        </label>
+                        <p class="text-[#8C8484] text-xs">
+                            Name this connection to reuse it in the future*
+                        </p>
+                    </div>
+
+                    <span class="absolute right-[15px] bottom-[15px] text-sm text-[#8C8484]"
+                        x-text="name.length + '/40'"></span>
+
+                    <input type="text" maxlength="40" x-model="name" placeholder="Authorize.Net Connection 1"
+                        class="w-full rounded-10px placeholder:text-[#8C8484] px-[15px] py-3.5 text-base outline-none bg-[#F8F6F6] transition-all duration-500 border border-transparent hover:border-[#007D47] focus:bg-white focus:border-[#007D47]">
+                </div>
+
+                <!-- API Fields -->
+                <div class="grid grid-cols-2 gap-5">
+
+                    <div>
+                        <label class="text-sm font-medium text-Theme-Black">
+                            API Login ID*
+                        </label>
+
+                        <input type="text" placeholder="API Login ID"
+                            class="mt-1 w-full rounded-10px placeholder:text-[#8C8484] px-[15px] py-3.5 text-base outline-none bg-[#F8F6F6] border border-transparent hover:border-[#007D47] focus:bg-white focus:border-[#007D47]">
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-medium text-Theme-Black">
+                            Transaction Key*
+                        </label>
+
+                        <input type="text" placeholder="Transaction Key"
+                            class="mt-1 w-full rounded-10px placeholder:text-[#8C8484] px-[15px] py-3.5 text-base outline-none bg-[#F8F6F6] border border-transparent hover:border-[#007D47] focus:bg-white focus:border-[#007D47]">
+                    </div>
+
+                </div>
+
+                <!-- Client Key -->
+                <div>
+                    <label class="text-sm font-medium text-Theme-Black">
+                        Client Key*
+                    </label>
+
+                    <input type="text" placeholder="Client Key"
+                        class="mt-1 w-full rounded-10px placeholder:text-[#8C8484] px-[15px] py-3.5 text-base outline-none bg-[#F8F6F6] border border-transparent hover:border-[#007D47] focus:bg-white focus:border-[#007D47]">
+                </div>
+
+            </div>
+
+            <!-- Connect Button -->
+            <button data-modal-target="Connection-Successful!"
+                class="w-full bg-black text-white py-2.5 rounded-lg font-medium hover:bg-gray-900 transition max-w-[290px] mx-auto">
+                Connect to Authorize.Net
+            </button>
+
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
+
+            <button class="btn-kiwi-green-icon-text w-full justify-center">
+                Save Connection
+            </button>
+
+        </div>
+
+    </div>
+    <!-- Connection-Successful! -->
+    <div class="modalTrigger modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+        id="Connection-Successful!">
+
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+
+            <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                Connect to <span class="text-[#007D47]">Authorize.Net</span>
+            </h2>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                </svg>
+            </span>
+
+        </div>
+
+        <!-- Modal Body -->
+        <div
+            class="w-full bg-white rounded-[10px] flex justify-between flex-col  p-5 border border-[#E9E1E1] min-h-[459px] gap-5">
+
+            <div class="flex items-center justify-between border border-[#E9E1E1] rounded-[10px] p-2.5 bg-[#F8F6F6]">
+
+                <div class="flex items-center gap-3">
+                    <div class="  rounded-md flex items-center justify-center text-white font-bold">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="30" height="30" rx="5" fill="#202A44" />
+                            <circle cx="12.5" cy="13.125" r="7.5" fill="#2B6AFD" />
+                            <circle cx="22.125" cy="21.5" r="2.875" fill="#FFC300" />
+                        </svg>
+                    </div>
+
+                    <div class="flex items-center gap-2.5">
+
+                        <span class="font-medium text-base leading-[22px] text-Theme-Black">
+                            Connection 2
+                        </span>
+
+                        <span class="text-xs leading-4 bg-[#DAEFE6] text-Theme-Green px-2.5 py-[3px] rounded-full">
+                            Live Mode
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <span class="text-xs leading-4 bg-white text-Theme-Green px-2.5 py-[3px] rounded-full">
+                    Connected
+                </span>
+
+            </div>
+
+            <div class="w-full">
+                <p class="text-base leading-[22px] font-semibold text-Theme-Green mb-2.5">
+                    Connection Successful!
+                </p>
+                <p class="text-base leading-[200%] text-Theme-Black">
+                    Your <span class="font-semibold"> Authorize.Net</span> account is connected successfully. You can
+                    now save this connection to start collecting payments with your forms.
+                </p>
+            </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
+
+            <button data-modal-target="saved-auth" class="btn-kiwi-green-icon-text w-full justify-center">
+                Save Connection
+            </button>
+
+        </div>
+
+    </div>
+    <!-- saved connections -->
+    <div class="modalTrigger modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+        id="saved-auth">
+
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+
+            <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                Saved <span class="text-[#007D47]">Authorize.Net</span> Connections
+            </h2>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                </svg>
+            </span>
+
+        </div>
+
+        <!-- Modal Body -->
+        <div
+            class="w-full bg-white rounded-[10px] flex justify-between flex-col  p-5 border border-[#E9E1E1] min-h-[520px] gap-5">
+
+            <div class="flex flex-col gap-[15px]">
+                <div
+                    class="flex items-center justify-between border border-[#E9E1E1] rounded-[10px] p-2.5 bg-[#F8F6F6]">
+                    <div class="flex items-center gap-3">
+                        <div class="  rounded-md flex items-center justify-center text-white font-bold">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="30" height="30" rx="5" fill="#202A44" />
+                                <circle cx="12.5" cy="13.125" r="7.5" fill="#2B6AFD" />
+                                <circle cx="22.125" cy="21.5" r="2.875" fill="#FFC300" />
+                            </svg>
+                        </div>
+
+                        <div class="flex items-center gap-2.5">
+
+                            <span class="font-medium text-base leading-[22px] text-Theme-Black">
+                                Connection 1
+                            </span>
+
+                            <span class="text-xs leading-4 bg-[#E8F5B7] text-[#6A8700] px-2.5 py-[3px] rounded-full">
+                                Test Mode
+                            </span>
+
+                        </div>
+
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                        <span class="text-xs leading-4 bg-[#FFECEB] text-[#DC3027] px-2.5 py-[3px] rounded-full">
+                            Disconnected
+                        </span>
+                        <button
+                            class="w-[30px] aspect-square flex items-center justify-center text-Theme-Black transition-all duration-300 rounded-[5px] hover:bg-Theme-Green hover:text-white">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.666 18L15.3327 18L17.9993 18" stroke="currentColor" stroke-width="1.2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M11.2658 3.38709L3.05356 11.7631C2.74347 12.0812 2.44339 12.7077 2.38337 13.1415L2.01327 16.2644C1.88324 17.3921 2.72347 18.1632 3.88378 17.9704L7.10466 17.4403C7.55478 17.3632 8.18495 17.0451 8.49504 16.7174L16.7073 8.34138C18.1277 6.89558 18.7678 5.24736 16.5572 3.23287C14.3566 1.23766 12.6862 1.94128 11.2658 3.38709Z"
+                                    stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M10.6152 4.46094C11.0037 7.09932 13.0271 9.11635 15.5383 9.38401"
+                                    stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button
+                            class="w-[30px] aspect-square flex items-center justify-center text-Theme-Black transition-all duration-300 rounded-[5px] hover:bg-[#DC3027] hover:text-white">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M4 5H16V14.5C16 16.1499 16 16.9749 15.4874 17.4874C14.9749 18 14.1499 18 12.5 18H7.5C5.85008 18 5.02513 18 4.51256 17.4874C4 16.9749 4 16.1499 4 14.5V5Z"
+                                    stroke="currentColor" stroke-width="1.2" />
+                                <path d="M2 5H18" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M6 3.75C6 2.92504 6 2.51256 6.25628 2.25628C6.51256 2 6.92504 2 7.75 2H12.25C13.075 2 13.4874 2 13.7437 2.25628C14 2.51256 14 2.92504 14 3.75V5H6V3.75Z"
+                                    stroke="currentColor" stroke-width="1.2" />
+                                <path d="M8 9V14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M12 9V14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    class="flex items-center justify-between border border-[#E9E1E1] rounded-[10px] p-2.5 bg-[#F8F6F6]">
+                    <div class="flex items-center gap-3">
+                        <div class="  rounded-md flex items-center justify-center text-white font-bold">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="30" height="30" rx="5" fill="#202A44" />
+                                <circle cx="12.5" cy="13.125" r="7.5" fill="#2B6AFD" />
+                                <circle cx="22.125" cy="21.5" r="2.875" fill="#FFC300" />
+                            </svg>
+                        </div>
+
+                        <div class="flex items-center gap-2.5">
+
+                            <span class="font-medium text-base leading-[22px] text-Theme-Black">
+                                Connection 2
+                            </span>
+
+                            <span class="text-xs leading-4 bg-[#E8F5B7] text-[#6A8700] px-2.5 py-[3px] rounded-full">
+                                Test Mode
+                            </span>
+
+                        </div>
+
+                    </div>
+                    <div class="flex items-center gap-2.5">
+
+                        <button
+                            class="w-[30px] aspect-square flex items-center justify-center text-Theme-Black transition-all duration-300 rounded-[5px] hover:bg-[#DC3027] hover:text-white">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M4 5H16V14.5C16 16.1499 16 16.9749 15.4874 17.4874C14.9749 18 14.1499 18 12.5 18H7.5C5.85008 18 5.02513 18 4.51256 17.4874C4 16.9749 4 16.1499 4 14.5V5Z"
+                                    stroke="currentColor" stroke-width="1.2" />
+                                <path d="M2 5H18" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M6 3.75C6 2.92504 6 2.51256 6.25628 2.25628C6.51256 2 6.92504 2 7.75 2H12.25C13.075 2 13.4874 2 13.7437 2.25628C14 2.51256 14 2.92504 14 3.75V5H6V3.75Z"
+                                    stroke="currentColor" stroke-width="1.2" />
+                                <path d="M8 9V14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M12 9V14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    class="flex items-center justify-between border border-[#E9E1E1] rounded-[10px] p-2.5 bg-[#F8F6F6]">
+                    <div class="flex items-center gap-3">
+                        <div class="  rounded-md flex items-center justify-center text-white font-bold">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="30" height="30" rx="5" fill="#202A44" />
+                                <circle cx="12.5" cy="13.125" r="7.5" fill="#2B6AFD" />
+                                <circle cx="22.125" cy="21.5" r="2.875" fill="#FFC300" />
+                            </svg>
+                        </div>
+
+                        <div class="flex items-center gap-2.5">
+
+                            <span class="font-medium text-base leading-[22px] text-Theme-Black">
+                                Connection 3
+                            </span>
+
+                            <span class="text-xs leading-4 bg-[#DAEFE6] text-Theme-Green px-2.5 py-[3px] rounded-full">
+                                Live Mode
+                            </span>
+
+                        </div>
+
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                        <span class="text-xs leading-4 bg-white text-Theme-Green px-2.5 py-[3px] rounded-full">
+                            Active
+                        </span>
+                        <button
+                            class="w-[30px] aspect-square flex items-center justify-center text-Theme-Black transition-all duration-300 rounded-[5px] hover:bg-[#DC3027] hover:text-white">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M4 5H16V14.5C16 16.1499 16 16.9749 15.4874 17.4874C14.9749 18 14.1499 18 12.5 18H7.5C5.85008 18 5.02513 18 4.51256 17.4874C4 16.9749 4 16.1499 4 14.5V5Z"
+                                    stroke="currentColor" stroke-width="1.2" />
+                                <path d="M2 5H18" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M6 3.75C6 2.92504 6 2.51256 6.25628 2.25628C6.51256 2 6.92504 2 7.75 2H12.25C13.075 2 13.4874 2 13.7437 2.25628C14 2.51256 14 2.92504 14 3.75V5H6V3.75Z"
+                                    stroke="currentColor" stroke-width="1.2" />
+                                <path d="M8 9V14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M12 9V14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                        </button>
+                    </div>
+
+                </div>
+                <button class="btn-kiwi-green-icon-text w-full max-w-[240px] mx-auto justify-center">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0.599609 5.60156H5.59961M5.59961 5.60156H10.5996M5.59961 5.60156V0.601562M5.59961 5.60156V10.6016"
+                            stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Add New Connections
+                </button>
+            </div>
+
+
+        </div>
+
+       
 
     </div>
     <div
