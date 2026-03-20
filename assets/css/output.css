@@ -716,6 +716,9 @@
   .mb-\[11px\] {
     margin-bottom: 11px;
   }
+  .mb-\[15\] {
+    margin-bottom: 15;
+  }
   .mb-\[15px\] {
     margin-bottom: 15px;
   }
@@ -3556,6 +3559,10 @@
   .leading-\[200\%\] {
     --tw-leading: 200%;
     line-height: 200%;
+  }
+  .leading-\[200\] {
+    --tw-leading: 200;
+    line-height: 200;
   }
   .leading-none {
     --tw-leading: 1;

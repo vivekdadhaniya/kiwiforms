@@ -857,7 +857,7 @@
             <p class="mb-5 text-base leading-[200%] text-Theme-Black ">
                 Describe what your Kiwiform is about. Don’t forget to update previously shared links if you edit this.
             </p>
-            <div class="relative">
+            <div class="relative pb-5 border-b border-[#EDE9E9]">
                 <label for="workspace" class="text-xs leading-[14px] text-Theme-Black">
                     Custom Link
                 </label>
@@ -865,31 +865,74 @@
             transition-all duration-500 hover:border-[#E9E1E1] hover:bg-white focus:outline-0 focus:border-Theme-Green"
                     placeholder="https://share.kiwiform.com/to/form1" value="https://share.kiwiform.com/to/form1">
             </div>
-            <div class="w-full flex items-center justify-center flex-col min-h-[55px]">
-                <div
-                    class="flex items-center gap-1.5 rounded-full py-[5px] pr-2.5 pl-[7px] bg-[#FFECEB] text-[15px] leading-[18px] text-Theme-Black">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+
+            <div class="w-full py-5 ">
+                <p class="text-base font-medium leading-[200%] text-Theme-Black mb-[5px]">
+                    Use Custom Domain
+                </p>
+                <p class="text-base leading-[200%] text-Theme-Black mb-[15px]">
+                    Use your own domain for this form link instead of the default Kiwiform URL. Make sure your domain is
+                    properly configured before publishing or sharing the form.
+                </p>
+                <button class="btn-kiwi-green-icon-text w-full justify-center py-[15px] mb-2.5">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
-                            d="M5.17418 7.24756C7.31622 3.41585 8.38724 1.5 10 1.5C11.6128 1.5 12.6838 3.41585 14.8258 7.24756L16.3644 9.99983C18.4777 13.7801 19.5344 15.6702 18.7311 17.0851C17.9278 18.5 15.7981 18.5 11.5386 18.5H8.46139C4.20192 18.5 2.07218 18.5 1.2689 17.0851C0.465633 15.6702 1.52228 13.7801 3.63557 9.99983L5.17418 7.24756Z"
-                            fill="#DC3027" />
-                        <path d="M10 9L10 15" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M9.99609 6.5L9.98712 6.5" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
+                            d="M0.601562 5.59961H5.60156M5.60156 5.59961H10.6016M5.60156 5.59961V0.599609M5.60156 5.59961V10.5996"
+                            stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-                    Try a different one, This link isn’t available.
-                </div>
-                <div class="flex items-center gap-2.5">
-                    <div
-                        class="flex items-center gap-1.5 rounded-full py-[5px] pr-2.5 pl-[7px] bg-[#ECF9BB] text-[15px] leading-[18px] text-Theme-Black">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <rect width="20" height="20" rx="10" fill="#B8DD2F" />
-                            <path d="M6.25 9.71875L8.75 12.2188L13.75 7.21875" stroke="#000A06" stroke-width="1.2"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        Nice! Your custom link is all set.
+                    Add Custom Domain
+                </button>
+
+                <div class="relative pb-5">
+                    <label for="workspace" class="text-xs leading-[14px] text-Theme-Black">
+                        Custom Domain
+                    </label>
+                    <div x-data="{ open: false, selected: 'Select Custom Domain' }" class="relative w-full ">
+
+                        <!-- BUTTON -->
+                        <button @click="open = !open"
+                            class="w-full flex justify-between items-center bg-[#F8F6F6] border border-transparent text-Theme-Black p-2.5 py-[13px] pl-[15px] rounded-10px text-base leading-[22px] font-medium">
+
+                            <span x-text="selected" class="leading-[22px]"></span>
+
+                            <svg class="w-4 h-4 ml-2 transition-transform" :class="{ 'rotate-180': open }" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <!-- DROPDOWN -->
+                        <div x-show="open" @click.outside="open = false" x-transition
+                            class="absolute w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 z-50">
+
+                            <ul class="flex flex-col gap-px">
+
+                                <li>
+                                    <button @click="selected = 'https://form.customlink.com/'; open = false"
+                                        class="w-full text-left p-2.5 hover:bg-[#F8F6F6] rounded-[5px]">
+                                        https://form.customlink.com/
+                                    </button>
+                                </li>
+
+                                <li>
+                                    <button @click="selected = 'https://form.customlink.com/'; open = false"
+                                        class="w-full text-left p-2.5 hover:bg-[#F8F6F6] rounded-[5px]">
+                                        https://form.customlink.com/
+                                    </button>
+                                </li>
+
+                            </ul>
+                        </div>
+
                     </div>
-                    <a href="#" class="text-[#8C8484] text-[15px] leading-[18px] underline underline-offset-2">Undo</a>
+                </div>
+                <div class="relative pb-5">
+                    <label for="workspace" class="text-xs leading-[14px] text-Theme-Green">
+                        Custom Domain
+                    </label>
+                    <input type="text" id="CustomLink" class="text-base leading-[22px] border border-transparent text-Theme-Black placeholder:text-[#8C8484] w-full py-3.5 px-[15px] bg-[#F8F6F6] mt-[5px] rounded-10px
+            transition-all duration-500 hover:border-[#E9E1E1] hover:bg-white focus:outline-0 focus:border-Theme-Green"
+                        placeholder="https://share.kiwiform.com/to/form1" value="https://share.kiwiform.com/to/form1">
                 </div>
             </div>
 
@@ -910,8 +953,9 @@
         </div>
         <!-- modal footer  -->
         <div class="flex items-center justify-end gap-2.5 w-full py-2.5 px-[5px]">
-            
-            <button class="py-2.5 w-full text-center rounded-10px bg-[#E2DCDC] text-theme-Black text-sm font-medium leading-5">
+
+            <button
+                class="py-2.5 w-full text-center rounded-10px bg-[#E2DCDC] text-theme-Black text-sm font-medium leading-5">
                 Restore Defaults
             </button>
             <button class="btn-kiwi-green-icon-text w-full justify-center leading-5">
