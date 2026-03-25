@@ -31,6 +31,7 @@
   --animate-light-sm2: light-sm 0.9s infinite 0.30s ease-in-out;
   --animate-light-sm3: light-sm 0.9s infinite 0.45s ease-in-out;
   --animate-spin1: spin1 3s infinite linear;
+  --animate-spin: spin 13s infinite linear;
   --animate-animation: spin-slow 6s linear infinite;
   /* border radius  */
   --radius-10px: 10px;
@@ -525,12 +526,90 @@
   }
 
   @keyframes gradientMove {
-    0%, 100% {
+
+    0%,
+    100% {
       background-position: 0% center;
     }
 
     50% {
       background-position: 200% center;
     }
+  }
+
+  /* shimmer effect */
+  .shimmer {
+    background: linear-gradient(120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.5) 50%,
+        transparent 100%);
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(190%);
+    }
+  }
+
+  /* floating icon */
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  .animate-float {
+    animation: float 2s ease-in-out infinite;
+  }
+
+  /* animated dots (...) */
+  .dots::after {
+    content: '';
+    animation: dots 1.5s steps(4, end) infinite;
+  }
+
+  @keyframes dots {
+    0% {
+      content: '';
+    }
+
+    25% {
+      content: '.';
+    }
+
+    50% {
+      content: '..';
+    }
+
+    75% {
+      content: '...';
+    }
+  }
+
+  @keyframes spin-slow {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
   }
 }
