@@ -800,7 +800,7 @@
                         Kiwizard will generate your form!
                     </p>
 
-                    <div class="relative w-full max-w-xl rounded-2xl p-[2px] overflow-hidden">
+                    <div class="group relative w-full max-w-xl rounded-2xl p-[2px] overflow-hidden bg-[#EDE9E9]">
 
                         <!-- Rotating Radial Gradient -->
                         <div class="absolute inset-0 flex items-center justify-center z-0">
@@ -812,9 +812,10 @@
 
                         <!-- Inner Content -->
                         <div class="relative z-10 w-full p-2.5 bg-[#F8F6F6] rounded-[14px] flex items-start gap-2.5">
-
+                            <!-- plus button  -->
                             <button
-                                class="w-[30px] aspect-square flex items-center justify-center text-[#8C8484] transition-all duration-300 hover:text-black">
+                                class="w-[40px] aspect-square flex items-center justify-center text-[#8C8484] rounded-[5px] transition-all duration-300 hover:bg-[#EDE9E9] group-hover:text-Theme-Green 
+         group-focus-within:text-Theme-Green">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                     <rect x="2" y="2" width="16" height="16" rx="8" stroke="currentColor"
                                         stroke-width="1.2" />
@@ -901,7 +902,7 @@
                         </svg>
                         Create from Scratch
                     </button>
-                    <button
+                    <button data-modal-target="template"
                         class="p-2.5 bg-[#F8F3F3] rounded-10px flex items-center gap-2.5 text-lg leading-[22px] text-Theme-Black w-full">
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -957,7 +958,7 @@
     </div>
 
     <!-- Create new form-name -->
-    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[570px]"
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
         id="new-form-name">
         <!-- modal header  -->
         <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
@@ -995,6 +996,430 @@
                 Create Workspace
             </button>
         </div>
+    </div>
+
+    <!-- template -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] pb-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+        id="template">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Start with Template
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col border border-[#E9E1E1] h-auto ">
+            <div class="p-2.5 border-b border-[#E9E1E1]">
+                <div class="relative w-full">
+                    <input type="search"
+                        class="p-2.5 pl-10 w-full rounded-[5px] bg-[#EDE9E9] text-sm leading-5 placeholder:text-[#8C8484] text-Theme-Black
+                    outline-0 transition-all duration-500 focus:outline-0 hover:border-[#EDE9E9] focus:border-Theme-Green hover:bg-[#EDE9E9] focus:bg-white"
+                        placeholder="Search templates by use case and categories here . . .">
+                    <svg class="absolute top-2.5 left-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9.34375 15.6875C12.8473 15.6875 15.6875 12.8473 15.6875 9.34375C15.6875 5.84019 12.8473 3 9.34375 3C5.84019 3 3 5.84019 3 9.34375C3 12.8473 5.84019 15.6875 9.34375 15.6875Z"
+                            stroke="#8C8484" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M17 17L15.25 15.25" stroke="#8C8484" stroke-width="1.2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+
+                </div>
+            </div>
+            <div class="p-5 pr-[5px] w-full h-full">
+                <div class="custom-dropdown relative w-full pr-[15px]" data-style="design1">
+                    <div class="relative ">
+                        <button type="button"
+                            class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] border border-[#E2DCDC] text-[#8C8484] p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
+                            <span class="selected-option font-medium text-Theme-Black">All Categories</span>
+                            <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div
+                            class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-20">
+                            <ul
+                                class="dropdown-list flex items-center flex-col gap-px w-full bg-[#F8F6F6] max-h-64 overflow-y-auto
+                            [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-[#C4C4C4] [&::-webkit-scrollbar-thumb]:rounded-10px [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#EDE9E9]">
+                                <li class="bg-white w-full relative">
+                                    <div
+                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center active">
+                                        <span>All Categories</span>
+                                    </div>
+                                    <div
+                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                    </div>
+                                </li>
+
+                                <li class="bg-white w-full relative">
+                                    <div
+                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                        <span>Lead Generation</span>
+
+                                    </div>
+                                    <div
+                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                    </div>
+                                </li>
+
+                                <li class="bg-white w-full relative">
+                                    <div
+                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                        <span>Survey Form</span>
+
+                                    </div>
+                                    <div
+                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                    </div>
+                                </li>
+
+                                <li class="bg-white w-full relative">
+                                    <div
+                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                        <span>Request Form</span>
+
+                                    </div>
+                                    <div
+                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                    </div>
+                                </li>
+
+                                <li class="bg-white w-full relative">
+                                    <div
+                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                        <span>Remote Work Form</span>
+
+                                    </div>
+                                    <div
+                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                    </div>
+                                </li>
+
+                                <li class="bg-white w-full relative">
+                                    <div
+                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                        <span>Contact Form</span>
+
+                                    </div>
+                                    <div
+                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 w-full">
+                    <p class="text-xl leading-7 font-medium text-Theme-Black mb-2.5 hidden">Lead Generation</p>
+                    <div class="relative w-full">
+                        <div class="absolute top-0 left-0 w-[calc(100%-15px)] h-[50px] bg-gradient-to-b from-white to-white/0 z-10 pointer-events-none"></div>
+                        <div class="absolute bottom-0 left-0 w-[calc(100%-15px)] h-[50px] bg-gradient-to-t from-white to-white/0 z-10 pointer-events-none">
+                        </div>
+
+                        <div
+                            class="w-full grid grid-cols-2 gap-5 h-full overflow-auto max-h-[530px] pr-[10px] relative z-0
+                    [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-[#C4C4C4] [&::-webkit-scrollbar-thumb]:rounded-10px [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#EDE9E9]">
+                            <div class="group w-full">
+                                <div
+                                    class="w-full relative border border-transparent rounded-10px transition-all duration-500 group-hover:border-Theme-Green overflow-hidden">
+                                    <img src="assets/images/template-1.png" alt="">
+                                    <div class="absolute left-0 w-full h-full gap-2.5 bg-gradient-to-b from-black/0 via-black/40 to-black/80 rounded-[5px] p-2.5 flex items-end transition-all duration-500
+                                    opacity-0 top-8 group-hover:opacity-100 group-hover:top-0">
+                                        <button class="btn-white-icon-text py-[9px]">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_10517_3330)">
+                                                    <path
+                                                        d="M8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1C4.13401 1 1 4.13401 1 8C1 11.866 4.13401 15 8 15Z"
+                                                        stroke="#007D47" stroke-width="1.4" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8 11C9.65685 11 11 9.65685 11 8C11 6.34315 9.65685 5 8 5C6.34315 5 5 6.34315 5 8C5 9.65685 6.34315 11 8 11Z"
+                                                        fill="#E8F5B7" stroke="#B8DD2F" stroke-width="1.4"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_10517_3330">
+                                                        <rect width="16" height="16" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            Live Preview
+                                        </button>
+                                        <button class="btn-kiwi-green px-4 w-max whitespace-nowrap">Use This</button>
+                                    </div>
+                                </div>
+                                <p
+                                    class="mt-2.5 px-2.5 text-[15px] leading-[18px] font-medium text-Theme-Black line-clamp-1 transition-all duration-500 group-hover:text-Theme-Green ">
+                                    Trade Show Lead Form Template
+                                </p>
+                            </div>
+                            <div class="group w-full">
+                                <div
+                                    class="w-full relative border border-transparent rounded-10px transition-all duration-500 group-hover:border-Theme-Green overflow-hidden">
+                                    <img src="assets/images/template-2.png" alt="">
+                                    <div class="absolute left-0 w-full h-full gap-2.5 bg-gradient-to-b from-black/0 via-black/40 to-black/80 rounded-[5px] p-2.5 flex items-end transition-all duration-500
+                                    opacity-0 top-8 group-hover:opacity-100 group-hover:top-0">
+                                        <button class="btn-white-icon-text py-[9px]">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_10517_3330)">
+                                                    <path
+                                                        d="M8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1C4.13401 1 1 4.13401 1 8C1 11.866 4.13401 15 8 15Z"
+                                                        stroke="#007D47" stroke-width="1.4" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8 11C9.65685 11 11 9.65685 11 8C11 6.34315 9.65685 5 8 5C6.34315 5 5 6.34315 5 8C5 9.65685 6.34315 11 8 11Z"
+                                                        fill="#E8F5B7" stroke="#B8DD2F" stroke-width="1.4"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_10517_3330">
+                                                        <rect width="16" height="16" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            Live Preview
+                                        </button>
+                                        <button class="btn-kiwi-green px-4 w-max whitespace-nowrap">Use This</button>
+                                    </div>
+                                </div>
+                                <p
+                                    class="mt-2.5 px-2.5 text-[15px] leading-[18px] font-medium text-Theme-Black line-clamp-1 transition-all duration-500 group-hover:text-Theme-Green ">
+                                    Early Access Form Template
+                                </p>
+                            </div>
+                            <div class="group w-full">
+                                <div
+                                    class="w-full relative border border-transparent rounded-10px transition-all duration-500 group-hover:border-Theme-Green overflow-hidden">
+                                    <img src="assets/images/template-3.png" alt="">
+                                    <div class="absolute left-0 w-full h-full gap-2.5 bg-gradient-to-b from-black/0 via-black/40 to-black/80 rounded-[5px] p-2.5 flex items-end transition-all duration-500
+                                    opacity-0 top-8 group-hover:opacity-100 group-hover:top-0">
+                                        <button class="btn-white-icon-text py-[9px]">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_10517_3330)">
+                                                    <path
+                                                        d="M8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1C4.13401 1 1 4.13401 1 8C1 11.866 4.13401 15 8 15Z"
+                                                        stroke="#007D47" stroke-width="1.4" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8 11C9.65685 11 11 9.65685 11 8C11 6.34315 9.65685 5 8 5C6.34315 5 5 6.34315 5 8C5 9.65685 6.34315 11 8 11Z"
+                                                        fill="#E8F5B7" stroke="#B8DD2F" stroke-width="1.4"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_10517_3330">
+                                                        <rect width="16" height="16" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            Live Preview
+                                        </button>
+                                        <button class="btn-kiwi-green px-4 w-max whitespace-nowrap">Use This</button>
+                                    </div>
+                                </div>
+                                <p
+                                    class="mt-2.5 px-2.5 text-[15px] leading-[18px] font-medium text-Theme-Black line-clamp-1 transition-all duration-500 group-hover:text-Theme-Green ">
+                                    Trade Show Lead Form Template
+                                </p>
+                            </div>
+                            <div class="group w-full">
+                                <div
+                                    class="w-full relative border border-transparent rounded-10px transition-all duration-500 group-hover:border-Theme-Green overflow-hidden">
+                                    <img src="assets/images/template-4.png" alt="">
+                                    <div class="absolute left-0 w-full h-full gap-2.5 bg-gradient-to-b from-black/0 via-black/40 to-black/80 rounded-[5px] p-2.5 flex items-end transition-all duration-500
+                                    opacity-0 top-8 group-hover:opacity-100 group-hover:top-0">
+                                        <button class="btn-white-icon-text py-[9px]">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_10517_3330)">
+                                                    <path
+                                                        d="M8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1C4.13401 1 1 4.13401 1 8C1 11.866 4.13401 15 8 15Z"
+                                                        stroke="#007D47" stroke-width="1.4" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8 11C9.65685 11 11 9.65685 11 8C11 6.34315 9.65685 5 8 5C6.34315 5 5 6.34315 5 8C5 9.65685 6.34315 11 8 11Z"
+                                                        fill="#E8F5B7" stroke="#B8DD2F" stroke-width="1.4"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_10517_3330">
+                                                        <rect width="16" height="16" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            Live Preview
+                                        </button>
+                                        <button class="btn-kiwi-green px-4 w-max whitespace-nowrap">Use This</button>
+                                    </div>
+                                </div>
+                                <p
+                                    class="mt-2.5 px-2.5 text-[15px] leading-[18px] font-medium text-Theme-Black line-clamp-1 transition-all duration-500 group-hover:text-Theme-Green ">
+                                    Product Registration Form Template
+                                </p>
+                            </div>
+                            <div class="group w-full">
+                                <div
+                                    class="w-full relative border border-transparent rounded-10px transition-all duration-500 group-hover:border-Theme-Green overflow-hidden">
+                                    <img src="assets/images/template-1.png" alt="">
+                                    <div class="absolute left-0 w-full h-full gap-2.5 bg-gradient-to-b from-black/0 via-black/40 to-black/80 rounded-[5px] p-2.5 flex items-end transition-all duration-500
+                                    opacity-0 top-8 group-hover:opacity-100 group-hover:top-0">
+                                        <button class="btn-white-icon-text py-[9px]">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_10517_3330)">
+                                                    <path
+                                                        d="M8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1C4.13401 1 1 4.13401 1 8C1 11.866 4.13401 15 8 15Z"
+                                                        stroke="#007D47" stroke-width="1.4" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8 11C9.65685 11 11 9.65685 11 8C11 6.34315 9.65685 5 8 5C6.34315 5 5 6.34315 5 8C5 9.65685 6.34315 11 8 11Z"
+                                                        fill="#E8F5B7" stroke="#B8DD2F" stroke-width="1.4"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_10517_3330">
+                                                        <rect width="16" height="16" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            Live Preview
+                                        </button>
+                                        <button class="btn-kiwi-green px-4 w-max whitespace-nowrap">Use This</button>
+                                    </div>
+                                </div>
+                                <p
+                                    class="mt-2.5 px-2.5 text-[15px] leading-[18px] font-medium text-Theme-Black line-clamp-1 transition-all duration-500 group-hover:text-Theme-Green ">
+                                    Trade Show Lead Form Template
+                                </p>
+                            </div>
+                            <div class="group w-full">
+                                <div
+                                    class="w-full relative border border-transparent rounded-10px transition-all duration-500 group-hover:border-Theme-Green overflow-hidden">
+                                    <img src="assets/images/template-2.png" alt="">
+                                    <div class="absolute left-0 w-full h-full gap-2.5 bg-gradient-to-b from-black/0 via-black/40 to-black/80 rounded-[5px] p-2.5 flex items-end transition-all duration-500
+                                    opacity-0 top-8 group-hover:opacity-100 group-hover:top-0">
+                                        <button class="btn-white-icon-text py-[9px]">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_10517_3330)">
+                                                    <path
+                                                        d="M8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1C4.13401 1 1 4.13401 1 8C1 11.866 4.13401 15 8 15Z"
+                                                        stroke="#007D47" stroke-width="1.4" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8 11C9.65685 11 11 9.65685 11 8C11 6.34315 9.65685 5 8 5C6.34315 5 5 6.34315 5 8C5 9.65685 6.34315 11 8 11Z"
+                                                        fill="#E8F5B7" stroke="#B8DD2F" stroke-width="1.4"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_10517_3330">
+                                                        <rect width="16" height="16" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            Live Preview
+                                        </button>
+                                        <button class="btn-kiwi-green px-4 w-max whitespace-nowrap">Use This</button>
+                                    </div>
+                                </div>
+                                <p
+                                    class="mt-2.5 px-2.5 text-[15px] leading-[18px] font-medium text-Theme-Black line-clamp-1 transition-all duration-500 group-hover:text-Theme-Green ">
+                                    Early Access Form Template
+                                </p>
+                            </div>
+                            <div class="group w-full">
+                                <div
+                                    class="w-full relative border border-transparent rounded-10px transition-all duration-500 group-hover:border-Theme-Green overflow-hidden">
+                                    <img src="assets/images/template-3.png" alt="">
+                                    <div class="absolute left-0 w-full h-full gap-2.5 bg-gradient-to-b from-black/0 via-black/40 to-black/80 rounded-[5px] p-2.5 flex items-end transition-all duration-500
+                                    opacity-0 top-8 group-hover:opacity-100 group-hover:top-0">
+                                        <button class="btn-white-icon-text py-[9px]">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_10517_3330)">
+                                                    <path
+                                                        d="M8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1C4.13401 1 1 4.13401 1 8C1 11.866 4.13401 15 8 15Z"
+                                                        stroke="#007D47" stroke-width="1.4" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8 11C9.65685 11 11 9.65685 11 8C11 6.34315 9.65685 5 8 5C6.34315 5 5 6.34315 5 8C5 9.65685 6.34315 11 8 11Z"
+                                                        fill="#E8F5B7" stroke="#B8DD2F" stroke-width="1.4"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_10517_3330">
+                                                        <rect width="16" height="16" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            Live Preview
+                                        </button>
+                                        <button class="btn-kiwi-green px-4 w-max whitespace-nowrap">Use This</button>
+                                    </div>
+                                </div>
+                                <p
+                                    class="mt-2.5 px-2.5 text-[15px] leading-[18px] font-medium text-Theme-Black line-clamp-1 transition-all duration-500 group-hover:text-Theme-Green ">
+                                    Trade Show Lead Form Template
+                                </p>
+                            </div>
+                            <div class="group w-full">
+                                <div
+                                    class="w-full relative border border-transparent rounded-10px transition-all duration-500 group-hover:border-Theme-Green overflow-hidden">
+                                    <img src="assets/images/template-4.png" alt="">
+                                    <div class="absolute left-0 w-full h-full gap-2.5 bg-gradient-to-b from-black/0 via-black/40 to-black/80 rounded-[5px] p-2.5 flex items-end transition-all duration-500
+                                    opacity-0 top-8 group-hover:opacity-100 group-hover:top-0">
+                                        <button class="btn-white-icon-text py-[9px]">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_10517_3330)">
+                                                    <path
+                                                        d="M8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1C4.13401 1 1 4.13401 1 8C1 11.866 4.13401 15 8 15Z"
+                                                        stroke="#007D47" stroke-width="1.4" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M8 11C9.65685 11 11 9.65685 11 8C11 6.34315 9.65685 5 8 5C6.34315 5 5 6.34315 5 8C5 9.65685 6.34315 11 8 11Z"
+                                                        fill="#E8F5B7" stroke="#B8DD2F" stroke-width="1.4"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_10517_3330">
+                                                        <rect width="16" height="16" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            Live Preview
+                                        </button>
+                                        <button class="btn-kiwi-green px-4 w-max whitespace-nowrap">Use This</button>
+                                    </div>
+                                </div>
+                                <p
+                                    class="mt-2.5 px-2.5 text-[15px] leading-[18px] font-medium text-Theme-Black line-clamp-1 transition-all duration-500 group-hover:text-Theme-Green ">
+                                    Product Registration Form Template
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- ai-modal -->
@@ -1625,6 +2050,7 @@
     <!-- MAIN JS-->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/custom-select.js"></script>
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.store('dropdown', {
