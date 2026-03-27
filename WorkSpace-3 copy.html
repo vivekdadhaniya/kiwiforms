@@ -717,13 +717,107 @@
                     </div>
                 </div>
 
+                <button data-modal-target="Legal-Disclaimer"
+                    class="btn-kiwi-green-icon-text max-[1080px]:py-3.5 px-3.5 min-[1080px]:px-8 mx-auto mt-10">
+                    <span class="min-[1080px]:block hidden">Legal Disclaimer</span>
+                </button>
 
+                <button data-modal-target="Close-Kiwizard"
+                    class="btn-kiwi-green-icon-text max-[1080px]:py-3.5 px-3.5 min-[1080px]:px-8 mx-auto mt-10">
+                    <span class="min-[1080px]:block hidden">Close Kiwizard AI?</span>
+                </button>
             </div>
 
         </div>
 
     </div>
 
+    <!-- Legal Disclaimer -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+        id="Legal-Disclaimer">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Legal Disclaimer
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col p-5 border border-[#E9E1E1]">
+            <p class="mb-2.5 text-base leading-[32px] text-Theme-Black ">
+                Use of <span class="font-semibold">Kiwizard</span> AI may involve sharing form inputs and responses with
+                third-party AI service providers
+                to generate and improve your form. This may include the information you provide, as well as interactions
+                during form creation.
+            </p>
+            <p class="text-base leading-[32px] text-Theme-Black ">
+                You are responsible for informing respondents about how their data is used and for obtaining consent
+                where required, in accordance with applicable laws. Learn more about data practices.
+            </p>
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end w-full py-2.5 px-[5px] gap-2.5">
+
+            <button
+                class="btn-kiwi-green text-center w-full justify-center text-Theme-Black bg-[#E2DCDC] hover:bg-[#ddd0d0]">
+                Decline
+            </button>
+            <button class="btn-kiwi-green text-center w-full justify-center">
+                Accept & Continue
+            </button>
+        </div>
+    </div>
+
+    <!-- Close Kiwizard -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[420px]"
+        id="Close-Kiwizard">
+        <!-- modal header  -->
+        <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+            <div class="flex items-center gap-[15px] ">
+
+                <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+                    Close Kiwizard
+                </h2>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+        </div>
+        <div class="w-full bg-white rounded-10px flex flex-col p-5 border border-[#E9E1E1]">
+
+            <p class="text-base leading-[32px] text-Theme-Black ">
+                If you close Kiwizard AI, any progress, edits, or form changes generated during this session will not be
+                saved. You may lose your current work and need to start again to continue.
+            </p>
+        </div>
+        <!-- modal footer  -->
+        <div class="flex items-center justify-end w-full py-2.5 px-[5px] gap-2.5">
+
+            <button
+                class="btn-kiwi-green text-center w-full justify-center text-Theme-Black bg-[#E2DCDC] hover:bg-[#ddd0d0]">
+                Continue Editing
+            </button>
+            <button class="btn-kiwi-green text-center w-full justify-center bg-[#DC3027] hover:bg-[#d3241b]">
+                Close & Discard
+            </button>
+        </div>
+    </div>
 
     <!-- Create New Form -->
     <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] pb-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
@@ -813,8 +907,7 @@
                         <!-- Inner Content -->
                         <div class="relative z-10 w-full p-2.5 bg-[#F8F6F6] rounded-[14px] flex items-start gap-2.5">
                             <!-- plus button  -->
-                            <button
-                                class="w-[40px] aspect-square flex items-center justify-center text-[#8C8484] rounded-[5px] transition-all duration-300 hover:bg-[#EDE9E9] group-hover:text-Theme-Green 
+                            <button class="w-[40px] aspect-square flex items-center justify-center text-[#8C8484] rounded-[5px] transition-all duration-300 hover:bg-[#EDE9E9] group-hover:text-Theme-Green 
          group-focus-within:text-Theme-Green">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                     <rect x="2" y="2" width="16" height="16" rx="8" stroke="currentColor"
@@ -850,7 +943,7 @@
                 <p class="text-base leading-6 text-[#8C8484] text-center mb-5">Or</p>
                 <div class="flex items-center gap-5">
                     <button data-modal-target="new-form-name"
-                        class="p-2.5 bg-[#F8F3F3] rounded-10px flex items-center gap-2.5 text-lg leading-[22px] text-Theme-Black w-full">
+                        class="p-2.5 bg-[#F8F3F3] rounded-10px flex items-center gap-2.5 text-lg leading-[22px] text-Theme-Black w-full transition-all duration-500 hover:bg-Theme-bg">
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M34.8591 45.1201H20.6179C18.3432 45.1201 16.4993 43.2699 16.4993 40.9875V20.8754C16.4993 19.3538 17.7285 18.1203 19.245 18.1203H46.1533C47.6698 18.1203 48.899 19.3538 48.899 20.8754V34.8602"
@@ -903,7 +996,7 @@
                         Create from Scratch
                     </button>
                     <button data-modal-target="template"
-                        class="p-2.5 bg-[#F8F3F3] rounded-10px flex items-center gap-2.5 text-lg leading-[22px] text-Theme-Black w-full">
+                        class="p-2.5 bg-[#F8F3F3] rounded-10px flex items-center gap-2.5 text-lg leading-[22px] text-Theme-Black w-full transition-all duration-500 hover:bg-Theme-bg">
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M29.8394 15.9051C29.5801 12.2743 32.923 9.47554 36.4324 10.3274C37.1438 7.12183 40.0032 4.72461 43.423 4.72461C47.4758 4.72461 50.7439 8.09238 50.5775 12.1819C50.5798 12.1819 50.5819 12.1817 50.5841 12.1817C54.1259 12.1817 56.9971 15.0529 56.9971 18.5947C56.9971 22.0531 54.2592 24.8716 50.8328 25.0023V25.0076H30.2315C27.713 25.0076 25.6713 22.9659 25.6713 20.4473C25.6713 18.0611 27.5046 16.1041 29.8394 15.9051Z"
@@ -1126,8 +1219,11 @@
                 <div class="mt-5 w-full">
                     <p class="text-xl leading-7 font-medium text-Theme-Black mb-2.5 hidden">Lead Generation</p>
                     <div class="relative w-full">
-                        <div class="absolute top-0 left-0 w-[calc(100%-15px)] h-[50px] bg-gradient-to-b from-white to-white/0 z-10 pointer-events-none"></div>
-                        <div class="absolute bottom-0 left-0 w-[calc(100%-15px)] h-[50px] bg-gradient-to-t from-white to-white/0 z-10 pointer-events-none">
+                        <div
+                            class="absolute top-0 left-0 w-[calc(100%-15px)] h-[50px] bg-gradient-to-b from-white to-white/0 z-10 pointer-events-none">
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 w-[calc(100%-15px)] h-[50px] bg-gradient-to-t from-white to-white/0 z-10 pointer-events-none">
                         </div>
 
                         <div
@@ -1709,22 +1805,12 @@
                         steps (e.g., response time).
                     </div>
                     <div
-                        class="h-auto py-2.5 px-[15px] rounded-10px rounded-br-[2px] bg-[#F8F6F6] w-full max-w-[calc(100%-70px)] ml-auto text-sm leading-[200%] text-Theme-Black">
-                        Create a clean, conversational lead generation form that captures high-quality prospects without
-                        overwhelming them. Start with a friendly welcome screen that clearly communicates the value
-                        (e.g.,
-                        “Tell us a bit about your needs and we’ll get back with the best solution for you”). Include
-                        essential fields only: Name, Email, Company (optional), and one qualifying question (e.g., “What
-                        are
-                        you looking for?” with multiple choice or short answer). Use conditional logic to personalize
-                        follow-up questions based on responses. Keep the tone human, simple, and non-salesy. Add a short
-                        reassurance note about privacy (“No spam. Just helpful responses.”). End with a strong, clear
-                        CTA
-                        like “Get Started” or “Request Details,” and a thank-you screen that sets expectations for next
-                        steps (e.g., response time).
+                        class="h-auto py-2.5 px-[15px] rounded-10px rounded-bl-[2px] bg-[#DAEFE6] w-full max-w-[calc(100%-70px)] mr-auto text-sm leading-[200%] text-Theme-Black">
+                        I’ve added clear descriptions to each field to improve clarity. Let me know if you’d like any
+                        changes based on your workflow.
                     </div>
                     <div
-                        class="h-auto relative overflow-hidden w-full max-w-[295px] min-h-[50px] p-2.5 pr-5 mr-auto rounded-10px rounded-bl-[2px] flex items-center gap-[8px] bg-gradient-to-r from-[#ABE0CA] to-[#FDFFB1] ">
+                        class="h-auto hidden relative overflow-hidden w-full max-w-[295px] min-h-[50px] p-2.5 pr-5 mr-auto rounded-10px rounded-bl-[2px] flex items-center gap-[8px] bg-gradient-to-r from-[#ABE0CA] to-[#FDFFB1] ">
 
                         <!-- ✨ Shimmer Effect -->
                         <div class="absolute inset-0">
