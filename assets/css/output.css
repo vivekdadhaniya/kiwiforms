@@ -4219,6 +4219,13 @@
       }
     }
   }
+  .group-hover\:bg-Theme-bg {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        background-color: var(--color-Theme-bg);
+      }
+    }
+  }
   .group-hover\:bg-\[\#007D47\] {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {

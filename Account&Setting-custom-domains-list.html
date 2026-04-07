@@ -257,7 +257,7 @@
                                 <div x-data="{ active: 0 , addDomain: 0 }" class="w-full flex flex-col gap-[15px]">
 
                                     <!-- Active -->
-                                    <div class="border border-Theme-bg rounded-10px overflow-hidden">
+                                    <div class="group border border-Theme-bg rounded-10px overflow-hidden">
 
                                         <!-- Header -->
                                         <div class="w-full flex justify-between pr-2.5 py-2.5 pl-5 bg-white hover:bg-[#F8F6F6] transition"
@@ -297,7 +297,7 @@
                                                             stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
                                                 </span>
-                                                <span class="close-btn cursor-pointer rounded-[5px]"
+                                                <span class="close-btn cursor-pointer rounded-[5px] group-hover:bg-Theme-bg"
                                                     @click="active = active === 1 ? 0 : 1"
                                                     :class="active === 1 ? 'bg-[#EDE9E9]' : ''">
                                                     <svg class="w-5 h-5 text-Theme-Black transition-transform duration-500"
@@ -1518,7 +1518,7 @@
                                     </div>
 
                                     <!-- Issuing SSL -->
-                                    <div class="border border-Theme-bg rounded-10px overflow-hidden">
+                                    <div class="group border border-Theme-bg rounded-10px overflow-hidden">
 
                                         <!-- Header -->
                                         <div class="w-full flex justify-between pr-2.5 py-2.5 pl-5 bg-white hover:bg-[#F8F6F6] transition"
@@ -1558,7 +1558,7 @@
                                                             stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
                                                 </span>
-                                                <span class="close-btn cursor-pointer rounded-[5px]"
+                                                <span class="close-btn cursor-pointer rounded-[5px] group-hover:bg-Theme-bg"
                                                     @click="active = active === 2 ? 0 : 2"
                                                     :class="active === 2 ? 'bg-[#EDE9E9]' : ''">
                                                     <svg class="w-5 h-5 text-Theme-Black transition-transform duration-500"
@@ -2779,7 +2779,7 @@
                                     </div>
 
                                     <!-- Verifying -->
-                                    <div class="border border-Theme-bg rounded-10px overflow-hidden">
+                                    <div class="group border border-Theme-bg rounded-10px overflow-hidden">
 
                                         <!-- Header -->
                                         <div class="w-full flex justify-between pr-2.5 py-2.5 pl-5 bg-white hover:bg-[#F8F6F6] transition"
@@ -2819,7 +2819,7 @@
                                                             stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
                                                 </span>
-                                                <span class="close-btn cursor-pointer rounded-[5px]"
+                                                <span class="close-btn cursor-pointer rounded-[5px] group-hover:bg-Theme-bg"
                                                     @click="active = active === 3 ? 0 : 3"
                                                     :class="active === 3 ? 'bg-[#EDE9E9]' : ''">
                                                     <svg class="w-5 h-5 text-Theme-Black transition-transform duration-500"
@@ -3978,7 +3978,7 @@
                                     </div>
 
                                     <!-- Unreachable -->
-                                    <div class="border border-Theme-bg rounded-10px overflow-hidden">
+                                    <div class="group border border-Theme-bg rounded-10px overflow-hidden">
                                         <!-- Header -->
                                         <div class="w-full flex justify-between pr-2.5 py-2.5 pl-5 bg-white hover:bg-[#F8F6F6] transition"
                                             :class="active === 4 ? 'items-start' : 'items-center'">
@@ -4040,7 +4040,7 @@
                                                     </svg>
                                                     Verify
                                                 </button>
-                                                <span class="close-btn cursor-pointer rounded-[5px]"
+                                                <span class="close-btn cursor-pointer rounded-[5px]  group-hover:bg-Theme-bg"
                                                     @click="active = active === 4 ? 0 : 4"
                                                     :class="active === 4 ? 'bg-[#EDE9E9]' : ''">
                                                     <svg class="w-5 h-5 text-Theme-Black transition-transform duration-500"
@@ -5199,7 +5199,7 @@
                                     </div>
 
                                     <!-- Connection Failed -->
-                                    <div class="border border-Theme-bg rounded-10px overflow-hidden">
+                                    <div class="group border border-Theme-bg rounded-10px overflow-hidden">
 
                                         <!-- Header -->
                                         <div class="w-full flex justify-between pr-2.5 py-2.5 pl-5 bg-white hover:bg-[#F8F6F6] transition"
@@ -5239,7 +5239,7 @@
                                                             stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
                                                 </span>
-                                                <span class="close-btn cursor-pointer rounded-[5px]"
+                                                <span class="close-btn cursor-pointer rounded-[5px] group-hover:bg-Theme-bg"
                                                     @click="active = active === 5 ? 0 : 5"
                                                     :class="active === 5 ? 'bg-[#EDE9E9]' : ''">
                                                     <svg class="w-5 h-5 text-Theme-Black transition-transform duration-500"
