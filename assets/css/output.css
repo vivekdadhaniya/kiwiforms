@@ -1454,6 +1454,9 @@
   .max-w-\[246px\] {
     max-width: 246px;
   }
+  .max-w-\[250px\] {
+    max-width: 250px;
+  }
   .max-w-\[258px\] {
     max-width: 258px;
   }
@@ -2544,6 +2547,9 @@
   .bg-\[\#F5F865\] {
     background-color: #F5F865;
   }
+  .bg-\[\#F5FED6\] {
+    background-color: #F5FED6;
+  }
   .bg-\[\#F6F4F4\] {
     background-color: #F6F4F4;
   }
@@ -3112,6 +3118,9 @@
   }
   .px-\[5px\] {
     padding-inline: 5px;
+  }
+  .px-\[7px\] {
+    padding-inline: 7px;
   }
   .px-\[10px\] {
     padding-inline: 10px;

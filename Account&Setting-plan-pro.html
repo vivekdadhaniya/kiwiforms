@@ -249,11 +249,17 @@
                                 </svg>
                             </div>
                             <div class="w-full">
-                                <p class="text-xl font-medium leading-[120%] text-[#98BE0A] mb-2.5">
+                                <div class="flex items-center gap-2.5 mb-2.5">
+                                    <p class="text-xl font-medium leading-[120%] text-[#98BE0A] ">
                                     Kiwiform Pro
                                 </p>
+                                <p class="w-max py-0.5 px-[7px] rounded-full bg-[#F5FED6] text-xs leading-4 font-medium text-Theme-Black">
+                                    AppSumo <span class="text-[#98BE0A]">1 Code</span>
+                                </p>
+                                </div>
+
                                 <p class="text-sm leading-[140%] text-Theme-Black">
-                                    Billed Annually • Pro Plan Active since: <span class="font-medium ">15 July
+                                    Lifetime Plan • Pro Plan Active since: <span class="font-medium ">15 July
                                         2025</span>
                                 </p>
                             </div>
@@ -262,9 +268,49 @@
                                 Cancel Subscription
                             </button>
                         </div>
-                        <p class="text-center text-base leading-[120%] text-[#8C8484] mt-5">
+                        <p class="text-center text-base leading-[120%] text-[#8C8484] mt-5 hidden">
                             *You can review plan and billing history, Access invoices and billing details on your <a href="#" class="underline text-Theme-Green font-semibold">Creem Account</a>.</span>
-                        </p>M
+                        </p>
+                        <!-- second code block  -->
+                        <div class="p-5 w-full border-b border-[#E2DCDC]">
+                            <h5 class="text-base leading-[22px] font-medium text-Theme-Black mb-2.5">Redeem AppSumo Code 2</h5>
+                            <p class="text-sm leading-5 text-Theme-Black mb-5">
+                                Redeem your second code to finish activation and access all Kiwiform Pro features.
+                            </p>
+                            <div class="flex items-end gap-2.5">
+                                <div class="relative w-full">
+              <label for="appsumo" class="text-xs leading-[14px] text-[#8C8484]"
+                >AppSumo Code</label
+              >
+              <input
+                type="text"
+                name="appsumo"
+                id="appsumo"
+                class="w-full bg-transparent rounded-10px mt-[5px]  border border-[#E2DCDC] p-[15px] py-3.5 text-base leading-5 text-Theme-Black placeholder:text-[#8C8484] outline-0 transition-all duration-500 focus:outline-0 hover:border-[#EDE9E9] focus:border-Theme-Green hover:bg-[#EDE9E9] focus:bg-white"
+                placeholder="Enter your AppSumo Code"
+                required
+              />
+                                </div>
+                                <button class="w-full max-w-[250px] mt-6 p-[15px] rounded-[10px] bg-Theme-Green  flex items-center justify-between text-sm font-medium leading-[140%] text-white transition-all duration-500 hover:bg-[#026D3F] relative overflow-hidden group">
+                                    <span class="relative z-10 whitespace-nowrap">Redeem & Unlock Full Access</span>
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="5"
+                                      height="10"
+                                      viewBox="0 0 5 10"
+                                      fill="none"
+                                      class="relative z-10 transition-transform duration-500 group-hover:translate-x-1"
+                                    >
+                                      <path
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M0.308661 9.9577C0.12182 9.8717 0 9.66913 0 9.44443L0 0.555583C0 0.330843 0.12182 0.128326 0.308661 0.042326C0.495495 -0.0436738 0.710556 0.00380744 0.853556 0.162696L4.85355 4.60713C5.04882 4.82409 5.04882 5.17587 4.85355 5.39283L0.853556 9.83727C0.710556 9.99616 0.495495 10.0437 0.308661 9.9577Z"
+                                        fill="white"
+                                      />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
                         <!-- Billing History  -->
                         <div class="w-full p-5 hidden">
                             <h4 class="text-base font-medium leading-[140%] text-Theme-Black mb-[5px]">
@@ -364,12 +410,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
-
-
-
 
 
     <!-- Configure a Webhook -->
