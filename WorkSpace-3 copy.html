@@ -8,6 +8,11 @@
     <!--- MAIN CSS ---->
     <link rel="stylesheet" href="assets/css/input.css" />
     <link rel="stylesheet" href="assets/css/output.css" />
+    <style>
+      input:-internal-autofill-selected {
+        background-color: transparent !important;
+      }
+    </style>
   </head>
 
   <body x-data="setup()" class="md:overflow-hidden bg-Theme-bg font-Inter">
@@ -833,6 +838,7 @@
               <h5 class="font-Inter_tight font-normal text-2xl leading-[140%] text-Theme-Black">
                 Survey Forms
               </h5>
+
               <div x-data="dropdownComponent('main-dp')" class="relative w-max">
                 <button
                   @click="toggle"
@@ -961,6 +967,32 @@
                     </li>
                   </ul>
                 </div>
+              </div>
+              <div class="flex items-center gap-0">
+                <button class="rounded-full">
+                  <img src="assets/images/user-icon.png" alt="user image" />
+                </button>
+                <button
+                  data-modal-target="invite-modal"
+                  class="rounded-full ml-2 text-sm leading-5 font-medium flex items-center justify-center gap-2.5 py-[7px] px-[15px] text-Theme-Black bg-[#B8DD2F] transition-all duration-500 hover:bg-Theme-Green hover:text-white"
+                >
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0.599609 5.6001H5.59961M5.59961 5.6001H10.5996M5.59961 5.6001V0.600098M5.59961 5.6001V10.6001"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  Invite
+                </button>
               </div>
             </div>
 
@@ -1288,6 +1320,130 @@
           >
             <span class="min-[1080px]:block hidden">Close Kiwizard AI?</span>
           </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- invite-modal -->
+    <div
+      class="modalTrigger modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] pb-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+      id="invite-modal"
+    >
+      <!-- modal header  -->
+      <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+        <div class="flex items-center gap-[15px]">
+          <h2 class="font-Inter_tight text-xl leading-140 text-Theme-Black">
+            Invite <span class="text-Theme-Green">Members</span>
+          </h2>
+        </div>
+        <span class="close-btn cursor-pointer">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 16L16 4"
+              stroke="#000A06"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M16 16L4 4"
+              stroke="#000A06"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+      </div>
+      <div
+        class="w-full bg-white rounded-10px flex flex-col p-0 gap-0 border border-[#E9E1E1] min-h-[535px] max-h-[590px]"
+      >
+        <div class="border-b border-[#E2DCDC] p-5">
+          <h3 class="text-[28px] leading-[39px] text-Theme-Black mb-2.5">
+            Invite Members to Your Workspace
+          </h3>
+          <p class="text-sm leading-[28px] text-Theme-Black mb-5">
+            Enter email addresses to invite team members to your workspace. They’ll receive an email
+            with access to collaborate on forms, responses, and workflows.
+          </p>
+          <label for="appsumo" class="text-xs leading-[14px] text-[#8C8484]">
+            Invite via email
+          </label>
+          <div
+            class="main-wrapper group relative bg-[#EDE9E9] px-[5px] mt-[5px] flex items-center gap-2.5 rounded-[10px] transition-all duration-500 hover:bg-Theme-bg focus-within:bg-Theme-bg"
+          >
+            <div class="relative w-full">
+              <input
+                type="text"
+                name="appsumo"
+                id="appsumo"
+                class="w-full bg-transparent rounded-[10px] p-[14px] text-base leading-5 text-Theme-Black placeholder:text-[#8C8484] outline-0 focus-within:bg-transparent"
+                placeholder="Enter email address"
+                required
+              />
+            </div>
+
+            <button
+              class="w-full max-w-[100px] px-[15px] py-2.5 rounded-[10px] bg-Theme-Green flex items-center justify-between text-sm font-medium leading-[140%] text-white transition-all duration-500 hover:bg-[#026D3F] relative overflow-hidden"
+            >
+              <span class="relative z-10 whitespace-nowrap">Invite</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="5"
+                height="10"
+                viewBox="0 0 5 10"
+                fill="none"
+                class="relative z-10 transition-transform duration-500 group-hover:translate-x-1"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M0.308661 9.9577C0.12182 9.8717 0 9.66913 0 9.44443L0 0.555583C0 0.330843 0.12182 0.128326 0.308661 0.042326C0.495495 -0.0436738 0.710556 0.00380744 0.853556 0.162696L4.85355 4.60713C5.04882 4.82409 5.04882 5.17587 4.85355 5.39283L0.853556 9.83727C0.710556 9.99616 0.495495 10.0437 0.308661 9.9577Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center justify-between mb-5">
+            <h5 class="font-Inter_tight text-xl leading-[140%] text-Theme-Black">
+              Workspace Members
+            </h5>
+            <span
+              class="py-[5px] px-2.5 rounded-full bg-[#EDE9E9] text-sm leading-[18px] text-Theme-Black"
+              >1/10 Members</span
+            >
+          </div>
+          <div
+            class="flex items-center justify-between pb-[15px] border-b border-[#E2DCDC] mb-[15px]"
+          >
+            <div class="flex items-center gap-2.5">
+              <img
+                src="assets/images/user-image.png"
+                alt="user image"
+                class="w-[40px] h-[40px] rounded-full"
+              />
+              <div>
+                <h6 class="text-xs leading-[17px] font-medium mb-1 text-Theme-Black">You</h6>
+                <p class="text-xs leading-[17px] text-[#7D7676]">john.marks@email.com</p>
+              </div>
+            </div>
+            <button
+              class="py-[5px] px-3 rounded-[5px] bg-[#F2F3B5] text-xs leading-[18px] font-medium text-Theme-Black transition-all duration-500"
+            >
+              Admin
+            </button>
+          </div>
+          <p class="text-xs leading-[18px] text-[#7D7676] text-center">
+            You can invite up to 10 members to this workspace.
+          </p>
         </div>
       </div>
     </div>
