@@ -960,36 +960,77 @@
                         </div>
 
                     </li>
-                    <li class="px-[15px] py-5">
-                        <label x-data="{ checked: false }" class="flex items-center justify-between cursor-pointer">
-                            <span class="text-base leading-[140%] font-medium text-Theme-Black">Required field</span>
-                            <div class="relative">
-                                <input type="checkbox" value="Original_UV" class="sr-only peer" x-model="checked">
-                                <div class="w-11 h-6 bg-[#EDE9E9] peer-focus:outline-none rounded-full peer 
+                    <li>
+                        <ul class="flex flex-col px-[15px] ">
+                            <li class="px-[5px] py-5 relative border-b border-[#E2DCDC]">
+                                <label for="btntext"
+                                    class="text-xs leading-[120%] font-medium text-[#8C8484] uppercase tracking-[1.2px] flex items-center gap-[5px]">
+                                    Placeholder text <span
+                                        class="text-[#8C8484] transiation-all duration-300 text-Theme-Black">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 14 14" fill="none">
+                                            <g clip-path="url(#clip0_7627_680)">
+                                                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
+                                                <path d="M7 6.36719V9.73228" stroke="currentColor" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M7 4.375L6.994 4.375" stroke="currentColor" stroke-width="1.2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_7627_680">
+                                                    <rect width="14" height="14" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </span>
+                                </label>
+                                <input type="text" id="buttonInput" maxlength="100" value="name@email.com"
+                                    placeholder="Enter button label"
+                                    class="w-full py-[13px] px-[15px] pr-16 rounded-10px bg-[#EDE9E9] mt-2.5 focus:outline-none focus:ring-0 text-[#000A06] text-sm font-medium leading- placeholder-[#8C8484]" />
+                                <!-- Character Counter -->
+                                <div id="charCount"
+                                    class="text-[#8C8484] z-10 text-xs font-medium leading-[120%] absolute right-5 bottom-[33px]">
+                                    0 / 24
+                                </div>
+
+                         </li>
+
+                            <li class="px-[15px] py-5">
+                                <label x-data="{ checked: false }"
+                                    class="flex items-center justify-between cursor-pointer">
+                                    <span class="text-base leading-[140%] font-medium text-Theme-Black">Required
+                                        field</span>
+                                    <div class="relative">
+                                        <input type="checkbox" value="Original_UV" class="sr-only peer"
+                                            x-model="checked">
+                                        <div class="w-11 h-6 bg-[#EDE9E9] peer-focus:outline-none rounded-full peer 
                                             peer-checked:after:translate-x-[20px] peer-checked:after:bg-white after:content-[''] after:absolute 
                                             after:top-[2px] after:right-[22px] after:bg-white after:rounded-full after:h-[20px] after:w-[20px] after:transition-all
                                             peer-checked:bg-Theme-Green hover:peer-checked:bg-Theme-Green">
 
-                                    <!-- Static gray dot -->
-                                    <svg :class="{'!text-white':checked}"
-                                        class="absolute top-2.5 left-2.5 z-20 text-[#E2DCDC]" width="4" height="4"
-                                        viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="2" cy="2" r="2" fill="currentcolor" />
-                                    </svg>
+                                            <!-- Static gray dot -->
+                                            <svg :class="{'!text-white':checked}"
+                                                class="absolute top-2.5 left-2.5 z-20 text-[#E2DCDC]" width="4"
+                                                height="4" viewBox="0 0 4 4" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="2" cy="2" r="2" fill="currentcolor" />
+                                            </svg>
 
-                                    <!-- Visible only when checked -->
-                                    <svg :class="{'!text-[#007D47]': checked}"
-                                        class="on block absolute top-[9px] right-[10.75px] z-20 text-white" width="2"
-                                        height="6" viewBox="0 0 2 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="2" height="6" rx="1" fill="currentcolor" />
-                                    </svg>
+                                            <!-- Visible only when checked -->
+                                            <svg :class="{'!text-[#007D47]': checked}"
+                                                class="on block absolute top-[9px] right-[10.75px] z-20 text-white"
+                                                width="2" height="6" viewBox="0 0 2 6" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect width="2" height="6" rx="1" fill="currentcolor" />
+                                            </svg>
 
-                                </div>
-                            </div>
-                        </label>
+                                        </div>
+                                    </div>
+                                </label>
 
+                            </li>
+                        </ul>
                     </li>
-
                 </ul>
                 <!-- The button should have position absolute, bottom 0 to stick to the bottom -->
 
@@ -1338,7 +1379,7 @@
                             class="w-full pb-[15px] border-b border-[#DAEFE6] !bg-white placeholder:text-[#9ACEB8] text-xl font-medium leading-[140%] text-[#007D47] transition-all duration-500 focus:outline-0 focus:border-[#007D47]"
                             disabled />
 
-                       
+
 
                     </div>
                 </div>
@@ -6890,6 +6931,26 @@
         setTimeout(() => {
             wrapper.classList.add('launch');
         }, 3000);
+    </script>
+    <script>
+        const input = document.getElementById("buttonInput");
+        const charCount = document.getElementById("charCount");
+        const dynamicButtons = document.querySelectorAll(".dynamicButton");
+
+        function updateUI() {
+            const value = input.value;
+            charCount.textContent = `${value.length} / 100`;
+
+            // ✅ Save to localStorage
+            localStorage.setItem("buttonLabel", value);
+
+            dynamicButtons.forEach(btn => {
+                btn.textContent = value;
+            });
+        }
+
+        updateUI();
+        input.addEventListener("input", updateUI);
     </script>
 
 </body>

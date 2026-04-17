@@ -627,6 +627,9 @@
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
   }
+  .mt-3\.5 {
+    margin-top: calc(var(--spacing) * 3.5);
+  }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
@@ -650,9 +653,6 @@
   }
   .mt-14 {
     margin-top: calc(var(--spacing) * 14);
-  }
-  .mt-\[4\] {
-    margin-top: 4;
   }
   .mt-\[5px\] {
     margin-top: 5px;
@@ -782,12 +782,6 @@
   }
   .mb-\[66px\] {
     margin-bottom: 66px;
-  }
-  .-ml-2 {
-    margin-left: calc(var(--spacing) * -2);
-  }
-  .-ml-2\.5 {
-    margin-left: calc(var(--spacing) * -2.5);
   }
   .ml-1 {
     margin-left: calc(var(--spacing) * 1);
@@ -1329,9 +1323,6 @@
   .w-\[34px\] {
     width: 34px;
   }
-  .w-\[38\] {
-    width: 38;
-  }
   .w-\[38px\] {
     width: 38px;
   }
@@ -1527,6 +1518,9 @@
   .max-w-\[120px\] {
     max-width: 120px;
   }
+  .max-w-\[130\] {
+    max-width: 130;
+  }
   .max-w-\[130px\] {
     max-width: 130px;
   }
@@ -1544,9 +1538,6 @@
   }
   .max-w-\[156px\] {
     max-width: 156px;
-  }
-  .max-w-\[160px\] {
-    max-width: 160px;
   }
   .max-w-\[170px\] {
     max-width: 170px;
@@ -2759,9 +2750,6 @@
   .bg-\[\#FFF\] {
     background-color: #FFF;
   }
-  .bg-\[Theme-Green\] {
-    background-color: Theme-Green;
-  }
   .bg-\[rgba\(184\,221\,47\,0\.25\)\] {
     background-color: rgba(184,221,47,0.25);
   }
@@ -3259,9 +3247,6 @@
   .p-\[5px\] {
     padding: 5px;
   }
-  .p-\[9px\] {
-    padding: 9px;
-  }
   .p-\[10px\] {
     padding: 10px;
   }
@@ -3544,6 +3529,12 @@
   .pr-12 {
     padding-right: calc(var(--spacing) * 12);
   }
+  .pr-14 {
+    padding-right: calc(var(--spacing) * 14);
+  }
+  .pr-16 {
+    padding-right: calc(var(--spacing) * 16);
+  }
   .pr-\[5px\] {
     padding-right: 5px;
   }
@@ -3771,17 +3762,9 @@
     --tw-leading: var(--leading-140);
     line-height: var(--leading-140);
   }
-  .leading-\[1\] {
-    --tw-leading: 1;
-    line-height: 1;
-  }
   .leading-\[3\.25rem\] {
     --tw-leading: 3.25rem;
     line-height: 3.25rem;
-  }
-  .leading-\[8\] {
-    --tw-leading: 8;
-    line-height: 8;
   }
   .leading-\[14px\] {
     --tw-leading: 14px;
@@ -3818,10 +3801,6 @@
   .leading-\[26px\] {
     --tw-leading: 26px;
     line-height: 26px;
-  }
-  .leading-\[28\] {
-    --tw-leading: 28;
-    line-height: 28;
   }
   .leading-\[28px\] {
     --tw-leading: 28px;
@@ -3927,6 +3906,10 @@
     --tw-tracking: 0.96px;
     letter-spacing: 0.96px;
   }
+  .tracking-\[1\.2\] {
+    --tw-tracking: 1.2;
+    letter-spacing: 1.2;
+  }
   .tracking-\[1\.2px\] {
     --tw-tracking: 1.2px;
     letter-spacing: 1.2px;
@@ -4023,9 +4006,6 @@
   }
   .text-\[\#EDE9E9\] {
     color: #EDE9E9;
-  }
-  .text-\[28\] {
-    color: 28;
   }
   .text-amber-400 {
     color: var(--color-amber-400);
@@ -4796,11 +4776,6 @@
       background-color: #007D47;
     }
   }
-  .focus-within\:border-\[\#EDE9E9\] {
-    &:focus-within {
-      border-color: #EDE9E9;
-    }
-  }
   .focus-within\:bg-Theme-bg {
     &:focus-within {
       background-color: var(--color-Theme-bg);
@@ -4809,11 +4784,6 @@
   .focus-within\:bg-transparent {
     &:focus-within {
       background-color: transparent;
-    }
-  }
-  .focus-within\:bg-white {
-    &:focus-within {
-      background-color: var(--color-white);
     }
   }
   .hover\:scale-105 {
@@ -5142,13 +5112,6 @@
     &:hover {
       @media (hover: hover) {
         background-color: #F8F6F6;
-      }
-    }
-  }
-  .hover\:bg-\[\#FFC21A\] {
-    &:hover {
-      @media (hover: hover) {
-        background-color: #FFC21A;
       }
     }
   }
