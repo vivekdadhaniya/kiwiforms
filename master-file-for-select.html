@@ -1,582 +1,986 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Custom Select Dropdowns</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
+  </head>
 
-<body class="flex flex-col items-center justify-center min-h-screen gap-20 bg-gray-50 py-10">
-
+  <body class="flex flex-col items-center justify-center min-h-screen gap-20 bg-gray-50 py-10">
     <!-- ================= DESIGN 1 ================= -->
     <div class="custom-dropdown relative w-full max-w-[700px] ml-2.5 pt-[5px]" data-style="design1">
-        <div class="relative ">
-            <button type="button"
-                class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] border border-[#E2DCDC] text-Theme-Black p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
-                <span class="selected-option">If</span>
-                <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200" fill="none"
-                    stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-            </button>
+      <div class="relative">
+        <button
+          type="button"
+          class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] border border-[#E2DCDC] text-Theme-Black p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all"
+        >
+          <span class="selected-option">If</span>
+          <svg
+            class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
 
-            <div
-                class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-10">
-                <ul class="dropdown-list flex items-center flex-col gap-px w-full bg-[#F8F6F6]">
-                    <li class="bg-white w-full relative">
-                        <div
-                            class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center active">
-                            <span>if</span>
-                        </div>
-                        <div class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
-                        </div>
-                    </li>
+        <div
+          class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-10"
+        >
+          <ul class="dropdown-list flex items-center flex-col gap-px w-full bg-[#F8F6F6]">
+            <li class="bg-white w-full relative">
+              <div
+                class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center active"
+              >
+                <span>if</span>
+              </div>
+              <div
+                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg"
+              ></div>
+            </li>
 
-                    <li class="bg-white w-full relative">
-                        <div
-                            class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
-                            <span>Always</span>
-
-                        </div>
-                        <div class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            <li class="bg-white w-full relative">
+              <div
+                class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center"
+              >
+                <span>Always</span>
+              </div>
+              <div
+                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg"
+              ></div>
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
 
     <!-- ================= DESIGN 2 ================= -->
-    <div class="custom-dropdown relative w-full max-w-[700px]" data-style="design2" data-copy-html="true">
-        <div class="relative w-full">
+    <div
+      class="custom-dropdown relative w-full max-w-[700px]"
+      data-style="design2"
+      data-copy-html="true"
+    >
+      <div class="relative w-full">
+        <!-- Button -->
+        <button
+          id="dropdownButton"
+          type="button"
+          class="dropdown-button w-full flex justify-between items-center border border-[#E2DCDC] bg-[#F8F6F6] rounded-[10px] px-[15px] py-[8px] transition-all duration-500 hover:bg-white focus:outline-none focus:border-Theme-Green"
+        >
+          <div
+            id="selectedOption"
+            class="selected-option flex items-center gap-[15px] text-[15px] leading-120 font-medium text-[#8C8484]"
+          >
+            <span
+              class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black"
+              >1</span
+            >
+            <p
+              class="flex items-center gap-2.5 text-[15px] leading-[22px] font-medium text-Theme-Black"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <ellipse
+                  cx="10.0009"
+                  cy="4.78947"
+                  rx="3.73333"
+                  ry="3.78947"
+                  stroke="#000A06"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M10 11C7.16745 11 4.70165 12.6749 3.4256 15.147C2.76004 16.4363 2.42726 17.081 3.01177 18.0405C3.59628 19 4.56419 19 6.5 19H13.5C15.4358 19 16.4037 19 16.9882 18.0405C17.5727 17.081 17.24 16.4363 16.5744 15.147C15.2984 12.6749 12.8326 11 10 11Z"
+                  fill="#CAEADC"
+                  stroke="#007D47"
+                  stroke-width="1.5"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Full Name
+            </p>
+          </div>
+          <svg
+            class="dropdown-arrow w-4 h-4 text-gray-500"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
 
-            <!-- Button -->
-            <button id="dropdownButton" type="button"
-                class="dropdown-button w-full flex justify-between items-center border border-[#E2DCDC] bg-[#F8F6F6] rounded-[10px] px-[15px] py-[8px] transition-all duration-500 hover:bg-white focus:outline-none focus:border-Theme-Green">
-                <div id="selectedOption"
-                    class="selected-option flex items-center gap-[15px] text-[15px] leading-120 font-medium text-[#8C8484]">
-                    <span
-                        class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">1</span>
-                    <p class="flex items-center gap-2.5 text-[15px] leading-[22px] font-medium text-Theme-Black">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <ellipse cx="10.0009" cy="4.78947" rx="3.73333" ry="3.78947" stroke="#000A06"
-                                stroke-width="1.5" />
-                            <path
-                                d="M10 11C7.16745 11 4.70165 12.6749 3.4256 15.147C2.76004 16.4363 2.42726 17.081 3.01177 18.0405C3.59628 19 4.56419 19 6.5 19H13.5C15.4358 19 16.4037 19 16.9882 18.0405C17.5727 17.081 17.24 16.4363 16.5744 15.147C15.2984 12.6749 12.8326 11 10 11Z"
-                                fill="#CAEADC" stroke="#007D47" stroke-width="1.5" stroke-linejoin="round" />
-                        </svg>
-                        Full Name
-                    </p>
-                </div>
-                <svg class="dropdown-arrow w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        <!-- Dropdown Menu -->
+        <div
+          id="dropdownMenu"
+          class="dropdown-menu hidden absolute p-[5px] z-10 mt-[5px] w-full bg-white border border-gray-200 rounded-[10px] shadow-soft"
+        >
+          <!-- Search -->
+          <div class="relative mb-2">
+            <svg
+              class="absolute top-2.5 left-2.5"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.34375 15.6875C12.8473 15.6875 15.6875 12.8473 15.6875 9.34375C15.6875 5.84019 12.8473 3 9.34375 3C5.84019 3 3 5.84019 3 9.34375C3 12.8473 5.84019 15.6875 9.34375 15.6875Z"
+                stroke="#8C8484"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M17 17L15.25 15.25"
+                stroke="#8C8484"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search..."
+              class="dropdown-search w-full p-2.5 pl-10 rounded-[10px] focus:outline-none bg-[#EDE9E9] placeholder:text-[#8C8484] text-sm leading-140 text-Theme-Black"
+            />
+          </div>
+
+          <!-- Options -->
+          <ul class="dropdown-list text-sm flex flex-col gap-px bg-[#F8F6F6]">
+            <!-- Example items (keep your SVGs and text same as before) -->
+            <li
+              class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]"
+            >
+              <span
+                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black"
+                >1</span
+              >
+              <p
+                class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <ellipse
+                    cx="10.0009"
+                    cy="4.78947"
+                    rx="3.73333"
+                    ry="3.78947"
+                    stroke="#000A06"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M10 11C7.16745 11 4.70165 12.6749 3.4256 15.147C2.76004 16.4363 2.42726 17.081 3.01177 18.0405C3.59628 19 4.56419 19 6.5 19H13.5C15.4358 19 16.4037 19 16.9882 18.0405C17.5727 17.081 17.24 16.4363 16.5744 15.147C15.2984 12.6749 12.8326 11 10 11Z"
+                    fill="#CAEADC"
+                    stroke="#007D47"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                  />
                 </svg>
-            </button>
+                Full Name
+              </p>
+            </li>
 
-            <!-- Dropdown Menu -->
-            <div id="dropdownMenu"
-                class="dropdown-menu hidden absolute p-[5px] z-10 mt-[5px] w-full bg-white border border-gray-200 rounded-[10px] shadow-soft">
-
-                <!-- Search -->
-                <div class="relative mb-2">
-                    <svg class="absolute top-2.5 left-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M9.34375 15.6875C12.8473 15.6875 15.6875 12.8473 15.6875 9.34375C15.6875 5.84019 12.8473 3 9.34375 3C5.84019 3 3 5.84019 3 9.34375C3 12.8473 5.84019 15.6875 9.34375 15.6875Z"
-                            stroke="#8C8484" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M17 17L15.25 15.25" stroke="#8C8484" stroke-width="1.2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                    <input type="text" placeholder="Search..."
-                        class="dropdown-search w-full p-2.5 pl-10 rounded-[10px] focus:outline-none bg-[#EDE9E9] placeholder:text-[#8C8484] text-sm leading-140 text-Theme-Black">
-                </div>
-
-                <!-- Options -->
-                <ul class="dropdown-list text-sm flex flex-col gap-px bg-[#F8F6F6]">
-
-                    <!-- Example items (keep your SVGs and text same as before) -->
-                    <li
-                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
-                        <span
-                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">1</span>
-                        <p class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <ellipse cx="10.0009" cy="4.78947" rx="3.73333" ry="3.78947" stroke="#000A06"
-                                    stroke-width="1.5" />
-                                <path
-                                    d="M10 11C7.16745 11 4.70165 12.6749 3.4256 15.147C2.76004 16.4363 2.42726 17.081 3.01177 18.0405C3.59628 19 4.56419 19 6.5 19H13.5C15.4358 19 16.4037 19 16.9882 18.0405C17.5727 17.081 17.24 16.4363 16.5744 15.147C15.2984 12.6749 12.8326 11 10 11Z"
-                                    fill="#CAEADC" stroke="#007D47" stroke-width="1.5" stroke-linejoin="round" />
-                            </svg>
-                            Full Name
-                        </p>
-                    </li>
-
-                    <li
-                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]">
-                        <span
-                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">2</span>
-                        <p class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="2.5" width="18" height="15" rx="2" fill="#CAEADC" stroke="#007D47"
-                                    stroke-width="1.5" />
-                                <path
-                                    d="M4.375 6.78516L8.875 10.2137C9.53955 10.72 10.4605 10.72 11.125 10.2137L15.625 6.78516"
-                                    stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                            Email Address
-                        </p>
-                    </li>
-
-                </ul>
-            </div>
+            <li
+              class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white transition-all duration-500 hover:bg-[#F8F6F6]"
+            >
+              <span
+                class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black"
+                >2</span
+              >
+              <p
+                class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="2.5"
+                    width="18"
+                    height="15"
+                    rx="2"
+                    fill="#CAEADC"
+                    stroke="#007D47"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M4.375 6.78516L8.875 10.2137C9.53955 10.72 10.4605 10.72 11.125 10.2137L15.625 6.78516"
+                    stroke="#000A06"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                Email Address
+              </p>
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
-
 
     <!-- ================= DESIGN 3 (MULTI-SELECT) ================= -->
 
     <div class="custom-dropdown relative w-full max-w-[700px]" data-style="design3">
-        <div class="relative">
-            <!-- Button -->
-            <button type="button"
-                class="dropdown-button w-full flex justify-between items-center border border-[#E2DCDC] bg-[#F8F6F6] rounded-[10px] px-[15px] py-[7px] focus:outline-none transition-all">
-                <div class="selected-option flex flex-wrap gap-2 items-center text-[#8C8484]">
-                    <span class="placeholder">Select Answers</span>
-                </div>
-                <svg class="dropdown-arrow w-4 h-4 text-gray-500 transition-transform duration-200" fill="none"
-                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-            </button>
-
-            <!-- Menu -->
-            <div
-                class="dropdown-menu hidden relative left-0 mt-2 w-full bg-white border border-[#E2DCDC] rounded-[10px] shadow-lg p-[5px] z-10">
-                <!-- Search (optional in screenshot - left in case you want it later) -->
-                <div class="relative mb-[15px]">
-                    <svg class="absolute top-2.5 left-2.5" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M9.34375 15.6875C12.8473 15.6875 15.6875 12.8473 15.6875 9.34375C15.6875 5.84019 12.8473 3 9.34375 3C5.84019 3 3 5.84019 3 9.34375C3 12.8473 5.84019 15.6875 9.34375 15.6875Z"
-                            stroke="#8C8484" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M17 17L15.25 15.25" stroke="#8C8484" stroke-width="1.2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                    <input type="text" placeholder="Search..."
-                        class="dropdown-search w-full p-2.5 pl-10 rounded-[5px] focus:outline-none bg-[#EDE9E9] placeholder:text-[#8C8484] text-sm leading-140 text-Theme-Black">
-                </div>
-                <!-- Group 1 -->
-                <div class="px-2.5">
-                    <ul class="dropdown-list flex flex-col gap-[5px] pb-[15px] border-b border-[#E2DCDC] mb-[15px]"
-                        data-group="1">
-                        <li class="flex items-center justify-between pb-[5px]">
-                            <div class="flex items-center gap-[15px]">
-                                <div
-                                    class="w-10 aspect-square rounded-[10px] flex items-center justify-center bg-[#F2EFEF]">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.03763 1.53846C4.46535 0.820513 5.53465 0.820512 5.96237 1.53846L8.84946 6.38461C9.27718 7.10256 8.74254 8 7.8871 8H2.1129C1.25747 8 0.722818 7.10256 1.15054 6.38462L4.03763 1.53846Z"
-                                            fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
-                                            stroke-linejoin="round" />
-                                        <circle cx="5" cy="15" r="4" stroke="#000A06" stroke-width="1.5"
-                                            stroke-linejoin="round" />
-                                        <path d="M12 3L19 3" stroke="#007D47" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M12 13L19 13" stroke="#000A06" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M12 6L15 6" stroke="#007D47" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M12 16L15 16" stroke="#000A06" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </div>
-                                <h4 class="text-base font-medium leading-140 text-Theme-Black">Select multiple options
-                                </h4>
-                            </div>
-                            <span
-                                class="w-[30px] aspect-square rounded-full text-[15px] leading-6 bg-[#EBF8F2] text-[#007D47] flex items-center justify-center">1</span>
-                        </li>
-                        <li class="dropdown-item flex items-center gap-[15px] relative cursor-pointer rounded-[8px] px-3 py-2 bg-[#F8F6F6] hover:bg-[#EBF8F2]"
-                            data-index="1" data-label="A">
-                            <span
-                                class="index w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold text-Theme-Black">A</span>
-                            <p
-                                class="flex items-center gap-2.5 text-[15px] leading-[120%] font-normal text-Theme-Black">
-                                Choice 1
-                            </p>
-                            <svg class="absolute top-[11px] right-[11px] opacity-0 transition-opacity" width="18"
-                                height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="18" height="18" rx="9" fill="#007D47" />
-                                <path d="M5.25 8.71875L7.75 11.2188L12.75 6.21875" stroke="white" stroke-width="1.2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </li>
-                        <li class="dropdown-item flex items-center gap-[15px] relative cursor-pointer rounded-[8px] px-3 py-2 bg-[#F8F6F6] hover:bg-[#EBF8F2]"
-                            data-index="1" data-label="B">
-                            <span
-                                class="index w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold text-Theme-Black">B</span>
-                            <p
-                                class="flex items-center gap-2.5 text-[15px] leading-[120%] font-normal text-Theme-Black">
-                                Choice 2
-                            </p>
-                            <svg class="absolute top-[11px] right-[11px] opacity-0 transition-opacity" width="18"
-                                height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="18" height="18" rx="9" fill="#007D47" />
-                                <path d="M5.25 8.71875L7.75 11.2188L12.75 6.21875" stroke="white" stroke-width="1.2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </li>
-                    </ul>
-
-                    <!-- Group 2 -->
-                    <ul class="dropdown-list flex flex-col gap-[5px] pb-[15px] border-b border-[#E2DCDC] mb-[15px]"
-                        data-group="2">
-                        <li class="flex items-center justify-between pb-[5px]">
-                            <div class="flex items-center gap-[15px]">
-                                <div
-                                    class="w-10 aspect-square rounded-[10px] flex items-center justify-center bg-[#F2EFEF]">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="10" cy="10" r="9" fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
-                                            stroke-linejoin="round" />
-                                        <path d="M14 8L10 12L6 8" stroke="#000A06" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </div>
-                                <h4 class="text-base font-medium leading-140 text-Theme-Black">Drop Down
-                                </h4>
-                            </div>
-                            <span
-                                class="w-[30px] aspect-square rounded-full text-[15px] leading-6 bg-[#EBF8F2] text-[#007D47] flex items-center justify-center">2</span>
-                        </li>
-                        <li class="dropdown-item flex items-center gap-[15px] relative cursor-pointer rounded-[8px] px-3 py-2 bg-[#F8F6F6] hover:bg-[#EBF8F2]"
-                            data-index="2" data-label="A">
-                            <span
-                                class="index w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold text-Theme-Black">A</span>
-                            <p
-                                class="flex items-center gap-2.5 text-[15px] leading-[120%] font-normal text-Theme-Black">
-                                Choice 1
-                            </p>
-                            <svg class="absolute top-[11px] right-[11px] opacity-0 transition-opacity" width="18"
-                                height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="18" height="18" rx="9" fill="#007D47" />
-                                <path d="M5.25 8.71875L7.75 11.2188L12.75 6.21875" stroke="white" stroke-width="1.2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </li>
-                        <li class="dropdown-item flex items-center gap-[15px] relative cursor-pointer rounded-[8px] px-3 py-2 bg-[#F8F6F6] hover:bg-[#EBF8F2]"
-                            data-index="2" data-label="B">
-                            <span
-                                class="index w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold text-Theme-Black">B</span>
-                            <p
-                                class="flex items-center gap-2.5 text-[15px] leading-[120%] font-normal text-Theme-Black">
-                                Choice 1
-                            </p>
-                            <svg class="absolute top-[11px] right-[11px] opacity-0 transition-opacity" width="18"
-                                height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="18" height="18" rx="9" fill="#007D47" />
-                                <path d="M5.25 8.71875L7.75 11.2188L12.75 6.21875" stroke="white" stroke-width="1.2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </li>
-                    </ul>
-
-                    <!-- Group 3 -->
-                    <ul class="dropdown-list flex flex-col gap-1" data-group="3">
-                        <li class="flex items-center justify-between pb-[5px]">
-                            <div class="flex items-center gap-[15px]">
-                                <div
-                                    class="w-10 aspect-square rounded-[10px] flex items-center justify-center bg-[#F2EFEF]">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="1" y="1" width="18" height="18" rx="2" fill="#CAEADC" stroke="#007D47"
-                                            stroke-width="1.5" />
-                                        <circle cx="11" cy="6" r="2" stroke="#000A06" stroke-width="1.5"
-                                            stroke-linejoin="round" />
-                                        <path d="M10 15L14.8777 10L19.0001 14" stroke="#007D47" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M1 18L8 11L11 14" stroke="#007D47" stroke-width="1.5"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </div>
-                                <h4 class="text-base font-medium leading-140 text-Theme-Black">Picture Selection
-                                </h4>
-                            </div>
-                            <span
-                                class="w-[30px] aspect-square rounded-full text-[15px] leading-6 bg-[#EBF8F2] text-[#007D47] flex items-center justify-center">3</span>
-                        </li>
-                        <li class="dropdown-item flex items-center gap-[15px] relative cursor-pointer rounded-[8px] px-3 py-2 bg-[#F8F6F6] hover:bg-[#EBF8F2]"
-                            data-index="3" data-label="A">
-                            <span
-                                class="index w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold text-Theme-Black">A</span>
-                            <p
-                                class="flex items-center gap-2.5 text-[15px] leading-[120%] font-normal text-Theme-Black">
-                                Choice 1
-                            </p>
-                            <svg class="absolute top-[11px] right-[11px] opacity-0 transition-opacity" width="18"
-                                height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="18" height="18" rx="9" fill="#007D47" />
-                                <path d="M5.25 8.71875L7.75 11.2188L12.75 6.21875" stroke="white" stroke-width="1.2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </li>
-                        <li class="dropdown-item flex items-center gap-[15px] relative cursor-pointer rounded-[8px] px-3 py-2 bg-[#F8F6F6] hover:bg-[#EBF8F2]"
-                            data-index="3" data-label="B">
-                            <span
-                                class="index w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold text-Theme-Black">B</span>
-                            <p
-                                class="flex items-center gap-2.5 text-[15px] leading-[120%] font-normal text-Theme-Black">
-                                Choice 1
-                            </p>
-                            <svg class="absolute top-[11px] right-[11px] opacity-0 transition-opacity" width="18"
-                                height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="18" height="18" rx="9" fill="#007D47" />
-                                <path d="M5.25 8.71875L7.75 11.2188L12.75 6.21875" stroke="white" stroke-width="1.2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ================= DESIGN 4 ================= -->
-    <div class="custom-dropdown relative w-full max-w-[700px]" data-style="design4">
+      <div class="relative">
         <!-- Button -->
-        <button type="button"
-            class="dropdown-button w-full flex justify-between items-center bg-white border border-[#E2DCDC] rounded-[10px] px-[14px] py-[10px] focus:outline-none transition-all">
-            <div class="selected-option flex flex-wrap gap-2 items-center text-[#8C8484]">
-                <span class="placeholder">Select one or more options…</span>
-            </div>
-            <svg class="dropdown-arrow w-4 h-4 text-[#8C8484] transition-transform duration-200" fill="none"
-                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
+        <button
+          type="button"
+          class="dropdown-button w-full flex justify-between items-center border border-[#E2DCDC] bg-[#F8F6F6] rounded-[10px] px-[15px] py-[7px] focus:outline-none transition-all"
+        >
+          <div class="selected-option flex flex-wrap gap-2 items-center text-[#8C8484]">
+            <span class="placeholder">Select Answers</span>
+          </div>
+          <svg
+            class="dropdown-arrow w-4 h-4 text-gray-500 transition-transform duration-200"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
         </button>
 
         <!-- Menu -->
         <div
-            class="dropdown-menu hidden absolute left-0 mt-2 w-full bg-white border border-[#E2DCDC] rounded-[12px] shadow-lg p-2 z-10">
-            <ul class="flex flex-col gap-px bg-[#F8F6F6]">
-                <li class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green">
-                    Choice 1
-                </li>
-                <li
-                    class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green">
-                    Choice 2
-                </li>
-                <li class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green">
-                    Choice 3
-                </li>
-                <li class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green">
-                    Choice 4
-                </li>
+          class="dropdown-menu hidden relative left-0 mt-2 w-full bg-white border border-[#E2DCDC] rounded-[10px] shadow-lg p-[5px] z-10"
+        >
+          <!-- Search (optional in screenshot - left in case you want it later) -->
+          <div class="relative mb-[15px]">
+            <svg
+              class="absolute top-2.5 left-2.5"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.34375 15.6875C12.8473 15.6875 15.6875 12.8473 15.6875 9.34375C15.6875 5.84019 12.8473 3 9.34375 3C5.84019 3 3 5.84019 3 9.34375C3 12.8473 5.84019 15.6875 9.34375 15.6875Z"
+                stroke="#8C8484"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M17 17L15.25 15.25"
+                stroke="#8C8484"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search..."
+              class="dropdown-search w-full p-2.5 pl-10 rounded-[5px] focus:outline-none bg-[#EDE9E9] placeholder:text-[#8C8484] text-sm leading-140 text-Theme-Black"
+            />
+          </div>
+          <!-- Group 1 -->
+          <div class="px-2.5">
+            <ul
+              class="dropdown-list flex flex-col gap-[5px] pb-[15px] border-b border-[#E2DCDC] mb-[15px]"
+              data-group="1"
+            >
+              <li class="flex items-center justify-between pb-[5px]">
+                <div class="flex items-center gap-[15px]">
+                  <div
+                    class="w-10 aspect-square rounded-[10px] flex items-center justify-center bg-[#F2EFEF]"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4.03763 1.53846C4.46535 0.820513 5.53465 0.820512 5.96237 1.53846L8.84946 6.38461C9.27718 7.10256 8.74254 8 7.8871 8H2.1129C1.25747 8 0.722818 7.10256 1.15054 6.38462L4.03763 1.53846Z"
+                        fill="#CAEADC"
+                        stroke="#007D47"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                      <circle
+                        cx="5"
+                        cy="15"
+                        r="4"
+                        stroke="#000A06"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12 3L19 3"
+                        stroke="#007D47"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12 13L19 13"
+                        stroke="#000A06"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12 6L15 6"
+                        stroke="#007D47"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12 16L15 16"
+                        stroke="#000A06"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <h4 class="text-base font-medium leading-140 text-Theme-Black">
+                    Select multiple options
+                  </h4>
+                </div>
+                <span
+                  class="w-[30px] aspect-square rounded-full text-[15px] leading-6 bg-[#EBF8F2] text-[#007D47] flex items-center justify-center"
+                  >1</span
+                >
+              </li>
+              <li
+                class="dropdown-item flex items-center gap-[15px] relative cursor-pointer rounded-[8px] px-3 py-2 bg-[#F8F6F6] hover:bg-[#EBF8F2]"
+                data-index="1"
+                data-label="A"
+              >
+                <span
+                  class="index w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold text-Theme-Black"
+                  >A</span
+                >
+                <p
+                  class="flex items-center gap-2.5 text-[15px] leading-[120%] font-normal text-Theme-Black"
+                >
+                  Choice 1
+                </p>
+                <svg
+                  class="absolute top-[11px] right-[11px] opacity-0 transition-opacity"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="18" height="18" rx="9" fill="#007D47" />
+                  <path
+                    d="M5.25 8.71875L7.75 11.2188L12.75 6.21875"
+                    stroke="white"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </li>
+              <li
+                class="dropdown-item flex items-center gap-[15px] relative cursor-pointer rounded-[8px] px-3 py-2 bg-[#F8F6F6] hover:bg-[#EBF8F2]"
+                data-index="1"
+                data-label="B"
+              >
+                <span
+                  class="index w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold text-Theme-Black"
+                  >B</span
+                >
+                <p
+                  class="flex items-center gap-2.5 text-[15px] leading-[120%] font-normal text-Theme-Black"
+                >
+                  Choice 2
+                </p>
+                <svg
+                  class="absolute top-[11px] right-[11px] opacity-0 transition-opacity"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="18" height="18" rx="9" fill="#007D47" />
+                  <path
+                    d="M5.25 8.71875L7.75 11.2188L12.75 6.21875"
+                    stroke="white"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </li>
             </ul>
+
+            <!-- Group 2 -->
+            <ul
+              class="dropdown-list flex flex-col gap-[5px] pb-[15px] border-b border-[#E2DCDC] mb-[15px]"
+              data-group="2"
+            >
+              <li class="flex items-center justify-between pb-[5px]">
+                <div class="flex items-center gap-[15px]">
+                  <div
+                    class="w-10 aspect-square rounded-[10px] flex items-center justify-center bg-[#F2EFEF]"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="10"
+                        cy="10"
+                        r="9"
+                        fill="#CAEADC"
+                        stroke="#007D47"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M14 8L10 12L6 8"
+                        stroke="#000A06"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <h4 class="text-base font-medium leading-140 text-Theme-Black">Drop Down</h4>
+                </div>
+                <span
+                  class="w-[30px] aspect-square rounded-full text-[15px] leading-6 bg-[#EBF8F2] text-[#007D47] flex items-center justify-center"
+                  >2</span
+                >
+              </li>
+              <li
+                class="dropdown-item flex items-center gap-[15px] relative cursor-pointer rounded-[8px] px-3 py-2 bg-[#F8F6F6] hover:bg-[#EBF8F2]"
+                data-index="2"
+                data-label="A"
+              >
+                <span
+                  class="index w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold text-Theme-Black"
+                  >A</span
+                >
+                <p
+                  class="flex items-center gap-2.5 text-[15px] leading-[120%] font-normal text-Theme-Black"
+                >
+                  Choice 1
+                </p>
+                <svg
+                  class="absolute top-[11px] right-[11px] opacity-0 transition-opacity"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="18" height="18" rx="9" fill="#007D47" />
+                  <path
+                    d="M5.25 8.71875L7.75 11.2188L12.75 6.21875"
+                    stroke="white"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </li>
+              <li
+                class="dropdown-item flex items-center gap-[15px] relative cursor-pointer rounded-[8px] px-3 py-2 bg-[#F8F6F6] hover:bg-[#EBF8F2]"
+                data-index="2"
+                data-label="B"
+              >
+                <span
+                  class="index w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold text-Theme-Black"
+                  >B</span
+                >
+                <p
+                  class="flex items-center gap-2.5 text-[15px] leading-[120%] font-normal text-Theme-Black"
+                >
+                  Choice 1
+                </p>
+                <svg
+                  class="absolute top-[11px] right-[11px] opacity-0 transition-opacity"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="18" height="18" rx="9" fill="#007D47" />
+                  <path
+                    d="M5.25 8.71875L7.75 11.2188L12.75 6.21875"
+                    stroke="white"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </li>
+            </ul>
+
+            <!-- Group 3 -->
+            <ul class="dropdown-list flex flex-col gap-1" data-group="3">
+              <li class="flex items-center justify-between pb-[5px]">
+                <div class="flex items-center gap-[15px]">
+                  <div
+                    class="w-10 aspect-square rounded-[10px] flex items-center justify-center bg-[#F2EFEF]"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="1"
+                        y="1"
+                        width="18"
+                        height="18"
+                        rx="2"
+                        fill="#CAEADC"
+                        stroke="#007D47"
+                        stroke-width="1.5"
+                      />
+                      <circle
+                        cx="11"
+                        cy="6"
+                        r="2"
+                        stroke="#000A06"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M10 15L14.8777 10L19.0001 14"
+                        stroke="#007D47"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M1 18L8 11L11 14"
+                        stroke="#007D47"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <h4 class="text-base font-medium leading-140 text-Theme-Black">
+                    Picture Selection
+                  </h4>
+                </div>
+                <span
+                  class="w-[30px] aspect-square rounded-full text-[15px] leading-6 bg-[#EBF8F2] text-[#007D47] flex items-center justify-center"
+                  >3</span
+                >
+              </li>
+              <li
+                class="dropdown-item flex items-center gap-[15px] relative cursor-pointer rounded-[8px] px-3 py-2 bg-[#F8F6F6] hover:bg-[#EBF8F2]"
+                data-index="3"
+                data-label="A"
+              >
+                <span
+                  class="index w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold text-Theme-Black"
+                  >A</span
+                >
+                <p
+                  class="flex items-center gap-2.5 text-[15px] leading-[120%] font-normal text-Theme-Black"
+                >
+                  Choice 1
+                </p>
+                <svg
+                  class="absolute top-[11px] right-[11px] opacity-0 transition-opacity"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="18" height="18" rx="9" fill="#007D47" />
+                  <path
+                    d="M5.25 8.71875L7.75 11.2188L12.75 6.21875"
+                    stroke="white"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </li>
+              <li
+                class="dropdown-item flex items-center gap-[15px] relative cursor-pointer rounded-[8px] px-3 py-2 bg-[#F8F6F6] hover:bg-[#EBF8F2]"
+                data-index="3"
+                data-label="B"
+              >
+                <span
+                  class="index w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs font-semibold text-Theme-Black"
+                  >B</span
+                >
+                <p
+                  class="flex items-center gap-2.5 text-[15px] leading-[120%] font-normal text-Theme-Black"
+                >
+                  Choice 1
+                </p>
+                <svg
+                  class="absolute top-[11px] right-[11px] opacity-0 transition-opacity"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="18" height="18" rx="9" fill="#007D47" />
+                  <path
+                    d="M5.25 8.71875L7.75 11.2188L12.75 6.21875"
+                    stroke="white"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
 
+    <!-- ================= DESIGN 4 ================= -->
+    <div class="custom-dropdown relative w-full max-w-[700px]" data-style="design4">
+      <!-- Button -->
+      <button
+        type="button"
+        class="dropdown-button w-full flex justify-between items-center bg-white border border-[#E2DCDC] rounded-[10px] px-[14px] py-[10px] focus:outline-none transition-all"
+      >
+        <div class="selected-option flex flex-wrap gap-2 items-center text-[#8C8484]">
+          <span class="placeholder">Select one or more options…</span>
+        </div>
+        <svg
+          class="dropdown-arrow w-4 h-4 text-[#8C8484] transition-transform duration-200"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
 
+      <!-- Menu -->
+      <div
+        class="dropdown-menu hidden absolute left-0 mt-2 w-full bg-white border border-[#E2DCDC] rounded-[12px] shadow-lg p-2 z-10"
+      >
+        <ul class="flex flex-col gap-px bg-[#F8F6F6]">
+          <li
+            class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green"
+          >
+            Choice 1
+          </li>
+          <li
+            class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green"
+          >
+            Choice 2
+          </li>
+          <li
+            class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green"
+          >
+            Choice 3
+          </li>
+          <li
+            class="dropdown-item p-2.5 text-[15px] leading-120 text-Theme-Black bg-white cursor-pointer transition-all duration-500 hover:bg-[#F8F6F6] hover:text-Theme-Green"
+          >
+            Choice 4
+          </li>
+        </ul>
+      </div>
+    </div>
 
+    <div class="custom-dropdown relative w-full max-w-[700px]" data-style="design6">
+      <!-- Button -->
+      <div
+        class="dropdown-button w-full flex items-center justify-between border border-[#E2DCDC] bg-[#F8F6F6] rounded-[10px] px-[12px] min-h-[50px] py-[9px] cursor-pointer"
+      >
+        <!-- Selected -->
+        <div class="selected-option flex items-center flex-wrap gap-2 w-full">
+          <span class="placeholder text-[#8C8484] text-sm">Select options...</span>
+
+          <!-- Input (only for layout, no use) -->
+          <input type="text" class="hidden" />
+        </div>
+
+        <!-- Arrow -->
+        <svg
+          class="dropdown-arrow w-4 h-4 text-gray-500 transition-transform duration-200"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+
+      <!-- Menu -->
+      <div
+        class="dropdown-menu hidden mt-2 w-full bg-white border border-[#E2DCDC] rounded-[10px] shadow-lg p-[5px]"
+      >
+        <ul class="flex flex-col gap-1">
+          <li
+            class="dropdown-item flex items-center gap-3 px-3 py-2 rounded-[8px] cursor-pointer hover:bg-[#EBF8F2]"
+            data-value="Insurance Certificate"
+          >
+            <span
+              class="w-6 h-6 flex items-center justify-center rounded-full bg-[#EBF8F2] text-[#007D47] text-xs font-semibold"
+              >1</span
+            >
+            <p class="text-sm">Insurance Certificate</p>
+          </li>
+
+          <li
+            class="dropdown-item flex items-center gap-3 px-3 py-2 rounded-[8px] cursor-pointer hover:bg-[#EBF8F2]"
+            data-value="Driving License"
+          >
+            <span
+              class="w-6 h-6 flex items-center justify-center rounded-full bg-[#EBF8F2] text-[#007D47] text-xs font-semibold"
+              >2</span
+            >
+            <p class="text-sm">Driving License</p>
+          </li>
+
+          <li
+            class="dropdown-item flex items-center gap-3 px-3 py-2 rounded-[8px] cursor-pointer hover:bg-[#EBF8F2]"
+            data-value="PAN Card"
+          >
+            <span
+              class="w-6 h-6 flex items-center justify-center rounded-full bg-[#EBF8F2] text-[#007D47] text-xs font-semibold"
+              >3</span
+            >
+            <p class="text-sm">PAN Card</p>
+          </li>
+        </ul>
+      </div>
+    </div>
 
     <!-- ================= SCRIPT ================= -->
     <!-- design-1  -->
     <script>
-        document.querySelectorAll('.custom-dropdown[data-style="design1"]').forEach(dropdown => {
-            const button = dropdown.querySelector('.dropdown-button');
-            const menu = dropdown.querySelector('.dropdown-menu');
-            const selectedOption = dropdown.querySelector('.selected-option');
-            const items = dropdown.querySelectorAll('.dropdown-item');
+      document.querySelectorAll('.custom-dropdown[data-style="design1"]').forEach((dropdown) => {
+        const button = dropdown.querySelector('.dropdown-button')
+        const menu = dropdown.querySelector('.dropdown-menu')
+        const selectedOption = dropdown.querySelector('.selected-option')
+        const items = dropdown.querySelectorAll('.dropdown-item')
 
-            // Toggle dropdown visibility
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
-                menu.classList.toggle('hidden');
-            });
+        // Toggle dropdown visibility
+        button.addEventListener('click', (e) => {
+          e.stopPropagation()
+          menu.classList.toggle('hidden')
+        })
 
-            // Close dropdown when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!dropdown.contains(e.target)) {
-                    menu.classList.add('hidden');
-                }
-            });
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!dropdown.contains(e.target)) {
+            menu.classList.add('hidden')
+          }
+        })
 
-            // Handle item click (single-select)
-            items.forEach(item => {
-                item.addEventListener('click', (e) => {
-                    e.stopPropagation();
+        // Handle item click (single-select)
+        items.forEach((item) => {
+          item.addEventListener('click', (e) => {
+            e.stopPropagation()
 
-                    // Remove active styling from all items
-                    items.forEach(i => i.classList.remove('bg-[#F8F6F6]', 'opacity-70'));
+            // Remove active styling from all items
+            items.forEach((i) => i.classList.remove('bg-[#F8F6F6]', 'opacity-70'))
 
-                    // Add active styling to selected item
-                    item.classList.add('bg-[#F8F6F6]', 'opacity-70');
+            // Add active styling to selected item
+            item.classList.add('bg-[#F8F6F6]', 'opacity-70')
 
-                    // Update button text
-                    const text = item.querySelector('span') ? item.querySelector('span').textContent.trim() : item.textContent.trim();
-                    selectedOption.textContent = text;
+            // Update button text
+            const text = item.querySelector('span')
+              ? item.querySelector('span').textContent.trim()
+              : item.textContent.trim()
+            selectedOption.textContent = text
 
-                    // Close dropdown
-                    menu.classList.add('hidden');
-                });
-            });
-        });
+            // Close dropdown
+            menu.classList.add('hidden')
+          })
+        })
+      })
     </script>
 
     <!-- design-2  -->
     <script>
-        document.querySelectorAll('[data-style="design2"]').forEach(dropdown => {
-            const button = dropdown.querySelector('.dropdown-button');
-            const menu = dropdown.querySelector('.dropdown-menu');
-            const arrow = dropdown.querySelector('.dropdown-arrow');
-            const selectedOption = dropdown.querySelector('#selectedOption');
-            const items = dropdown.querySelectorAll('.dropdown-item');
-            const searchInput = dropdown.querySelector('.dropdown-search'); // 👈 search input
+      document.querySelectorAll('[data-style="design2"]').forEach((dropdown) => {
+        const button = dropdown.querySelector('.dropdown-button')
+        const menu = dropdown.querySelector('.dropdown-menu')
+        const arrow = dropdown.querySelector('.dropdown-arrow')
+        const selectedOption = dropdown.querySelector('#selectedOption')
+        const items = dropdown.querySelectorAll('.dropdown-item')
+        const searchInput = dropdown.querySelector('.dropdown-search') // 👈 search input
 
-            // --- Toggle dropdown
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
-                menu.classList.toggle('hidden');
-                arrow.classList.toggle('rotate-180');
-                if (!menu.classList.contains('hidden') && searchInput) {
-                    searchInput.focus();
-                }
-            });
+        // --- Toggle dropdown
+        button.addEventListener('click', (e) => {
+          e.stopPropagation()
+          menu.classList.toggle('hidden')
+          arrow.classList.toggle('rotate-180')
+          if (!menu.classList.contains('hidden') && searchInput) {
+            searchInput.focus()
+          }
+        })
 
-            // --- Filter items on search
-            if (searchInput) {
-                searchInput.addEventListener('input', (e) => {
-                    const query = e.target.value.toLowerCase();
-                    items.forEach(item => {
-                        const text = item.textContent.toLowerCase();
-                        item.style.display = text.includes(query) ? 'flex' : 'none';
-                    });
-                });
-            }
+        // --- Filter items on search
+        if (searchInput) {
+          searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase()
+            items.forEach((item) => {
+              const text = item.textContent.toLowerCase()
+              item.style.display = text.includes(query) ? 'flex' : 'none'
+            })
+          })
+        }
 
-            // --- Handle item click
-            items.forEach(item => {
-                item.addEventListener('click', () => {
-                    // Remove previous highlight
-                    items.forEach(i => i.classList.remove('!bg-[#F8F6F6]', 'opacity-100'));
-                    // Highlight selected
-                    item.classList.add('!bg-[#F8F6F6]', 'opacity-100');
+        // --- Handle item click
+        items.forEach((item) => {
+          item.addEventListener('click', () => {
+            // Remove previous highlight
+            items.forEach((i) => i.classList.remove('!bg-[#F8F6F6]', 'opacity-100'))
+            // Highlight selected
+            item.classList.add('!bg-[#F8F6F6]', 'opacity-100')
 
-                    // Copy HTML content (number + svg + text)
-                    selectedOption.innerHTML = item.innerHTML;
+            // Copy HTML content (number + svg + text)
+            selectedOption.innerHTML = item.innerHTML
 
-                    // Close menu
-                    menu.classList.add('hidden');
-                    arrow.classList.remove('rotate-180');
-                });
-            });
+            // Close menu
+            menu.classList.add('hidden')
+            arrow.classList.remove('rotate-180')
+          })
+        })
 
-            // --- Close when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!dropdown.contains(e.target)) {
-                    menu.classList.add('hidden');
-                    arrow.classList.remove('rotate-180');
-                }
-            });
-        });
+        // --- Close when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!dropdown.contains(e.target)) {
+            menu.classList.add('hidden')
+            arrow.classList.remove('rotate-180')
+          }
+        })
+      })
     </script>
 
     <!-- ================= DESIGN-3 ================= -->
     <script>
-        document.querySelectorAll('.custom-dropdown[data-style="design3"]').forEach(dropdown => {
-            const button = dropdown.querySelector('.dropdown-button');
-            const menu = dropdown.querySelector('.dropdown-menu');
-            const arrow = dropdown.querySelector('.dropdown-arrow');
-            const selectedContainer = dropdown.querySelector('.selected-option');
-            const placeholder = selectedContainer.querySelector('.placeholder');
-            const items = dropdown.querySelectorAll('.dropdown-item');
-            const searchInput = dropdown.querySelector('.dropdown-search'); // 👈 Search box
-            const selectedItems = new Map(); // key = group|label, value = { group, index, label }
+      document.querySelectorAll('.custom-dropdown[data-style="design3"]').forEach((dropdown) => {
+        const button = dropdown.querySelector('.dropdown-button')
+        const menu = dropdown.querySelector('.dropdown-menu')
+        const arrow = dropdown.querySelector('.dropdown-arrow')
+        const selectedContainer = dropdown.querySelector('.selected-option')
+        const placeholder = selectedContainer.querySelector('.placeholder')
+        const items = dropdown.querySelectorAll('.dropdown-item')
+        const searchInput = dropdown.querySelector('.dropdown-search') // 👈 Search box
+        const selectedItems = new Map() // key = group|label, value = { group, index, label }
 
-            // --- Toggle dropdown open/close
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
-                menu.classList.toggle('hidden');
-                arrow.classList.toggle('rotate-180');
-                if (!menu.classList.contains('hidden') && searchInput) {
-                    searchInput.focus();
-                }
-            });
+        // --- Toggle dropdown open/close
+        button.addEventListener('click', (e) => {
+          e.stopPropagation()
+          menu.classList.toggle('hidden')
+          arrow.classList.toggle('rotate-180')
+          if (!menu.classList.contains('hidden') && searchInput) {
+            searchInput.focus()
+          }
+        })
 
-            // --- Close when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!dropdown.contains(e.target)) {
-                    menu.classList.add('hidden');
-                    arrow.classList.remove('rotate-180');
-                }
-            });
+        // --- Close when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!dropdown.contains(e.target)) {
+            menu.classList.add('hidden')
+            arrow.classList.remove('rotate-180')
+          }
+        })
 
-            // --- Handle search filter
-            if (searchInput) {
-                searchInput.addEventListener('input', (e) => {
-                    const query = e.target.value.toLowerCase();
-                    items.forEach(item => {
-                        const text = item.textContent.toLowerCase();
-                        item.style.display = text.includes(query) ? 'flex' : 'none';
-                    });
-                });
+        // --- Handle search filter
+        if (searchInput) {
+          searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase()
+            items.forEach((item) => {
+              const text = item.textContent.toLowerCase()
+              item.style.display = text.includes(query) ? 'flex' : 'none'
+            })
+          })
+        }
+
+        // --- Handle item selection
+        items.forEach((item) => {
+          const svg = item.querySelector('svg')
+          item.addEventListener('click', (e) => {
+            e.stopPropagation()
+            const label = item.dataset.label
+            const group = item.closest('.dropdown-list').dataset.group
+            const index = item.dataset.index
+            const key = `${group}|${label}`
+
+            const isSelected = selectedItems.has(key)
+
+            if (isSelected) {
+              selectedItems.delete(key)
+              svg.classList.remove('opacity-100')
+              svg.classList.add('opacity-0')
+            } else {
+              selectedItems.set(key, { group, index, label })
+              svg.classList.add('opacity-100')
+              svg.classList.remove('opacity-0')
             }
 
-            // --- Handle item selection
-            items.forEach(item => {
-                const svg = item.querySelector('svg');
-                item.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const label = item.dataset.label;
-                    const group = item.closest('.dropdown-list').dataset.group;
-                    const index = item.dataset.index;
-                    const key = `${group}|${label}`;
+            renderSelected()
+          })
+        })
 
-                    const isSelected = selectedItems.has(key);
+        // --- Render selected chips
+        function renderSelected() {
+          selectedContainer.innerHTML = ''
+          const selectedArray = Array.from(selectedItems.values())
+          const totalSelected = selectedArray.length
 
-                    if (isSelected) {
-                        selectedItems.delete(key);
-                        svg.classList.remove('opacity-100');
-                        svg.classList.add('opacity-0');
-                    } else {
-                        selectedItems.set(key, { group, index, label });
-                        svg.classList.add('opacity-100');
-                        svg.classList.remove('opacity-0');
-                    }
+          if (totalSelected === 0) {
+            placeholder.style.display = 'block'
+            selectedContainer.appendChild(placeholder)
+            return
+          }
 
-                    renderSelected();
-                });
-            });
+          placeholder.style.display = 'none'
 
-            // --- Render selected chips
-            function renderSelected() {
-                selectedContainer.innerHTML = '';
-                const selectedArray = Array.from(selectedItems.values());
-                const totalSelected = selectedArray.length;
+          const visibleCount = 6
+          const visibleItems = selectedArray.slice(0, visibleCount)
+          const remainingCount = totalSelected - visibleCount
 
-                if (totalSelected === 0) {
-                    placeholder.style.display = 'block';
-                    selectedContainer.appendChild(placeholder);
-                    return;
-                }
-
-                placeholder.style.display = 'none';
-
-                const visibleCount = 6;
-                const visibleItems = selectedArray.slice(0, visibleCount);
-                const remainingCount = totalSelected - visibleCount;
-
-                visibleItems.forEach((data) => {
-                    const chip = document.createElement('div');
-                    chip.className = 'chip flex items-center gap-2.5 bg-white rounded-[30px] p-[3px] pr-2.5';
-                    chip.innerHTML = `
+          visibleItems.forEach((data) => {
+            const chip = document.createElement('div')
+            chip.className = 'chip flex items-center gap-2.5 bg-white rounded-[30px] p-[3px] pr-2.5'
+            chip.innerHTML = `
                 <span class="w-[20px] h-[20px] flex items-center justify-center rounded-full bg-[#007D47] text-white text-xs font-semibold">${data.index}</span>
                 <span class="text-[#007D47] text-[16px] font-medium">${data.label}</span>
                 <button class="remove-chip text-[#000A06] text-xl leading-[100%]">
@@ -588,87 +992,90 @@
                         <defs><clipPath id="clip0_1415_2279"><rect width="10" height="10" fill="white"/></clipPath></defs>
                     </svg>
                 </button>
-            `;
+            `
 
-                    chip.querySelector('.remove-chip').addEventListener('click', (ev) => {
-                        ev.stopPropagation();
-                        const key = `${data.group}|${data.label}`;
-                        selectedItems.delete(key);
+            chip.querySelector('.remove-chip').addEventListener('click', (ev) => {
+              ev.stopPropagation()
+              const key = `${data.group}|${data.label}`
+              selectedItems.delete(key)
 
-                        const item = dropdown.querySelector(`.dropdown-list[data-group="${data.group}"] .dropdown-item[data-label="${data.label}"]`);
-                        if (item) {
-                            const svg = item.querySelector('svg');
-                            if (svg) {
-                                svg.classList.remove('opacity-100');
-                                svg.classList.add('opacity-0');
-                            }
-                        }
-
-                        renderSelected();
-                    });
-
-                    selectedContainer.appendChild(chip);
-                });
-
-                if (remainingCount > 0) {
-                    const moreChip = document.createElement('div');
-                    moreChip.className = 'chip flex items-center justify-center bg-[#F8F6F6] rounded-[20px] border border-[#E2DCDC] px-2 py-1 text-[#8C8484] text-[14px] font-medium';
-                    moreChip.textContent = `+${remainingCount}`;
-                    selectedContainer.appendChild(moreChip);
+              const item = dropdown.querySelector(
+                `.dropdown-list[data-group="${data.group}"] .dropdown-item[data-label="${data.label}"]`
+              )
+              if (item) {
+                const svg = item.querySelector('svg')
+                if (svg) {
+                  svg.classList.remove('opacity-100')
+                  svg.classList.add('opacity-0')
                 }
-            }
-        });
+              }
+
+              renderSelected()
+            })
+
+            selectedContainer.appendChild(chip)
+          })
+
+          if (remainingCount > 0) {
+            const moreChip = document.createElement('div')
+            moreChip.className =
+              'chip flex items-center justify-center bg-[#F8F6F6] rounded-[20px] border border-[#E2DCDC] px-2 py-1 text-[#8C8484] text-[14px] font-medium'
+            moreChip.textContent = `+${remainingCount}`
+            selectedContainer.appendChild(moreChip)
+          }
+        }
+      })
     </script>
 
     <!-- design 4  -->
     <script>
-        document.querySelectorAll('.custom-dropdown[data-style="design4"]').forEach(dropdown => {
-            const button = dropdown.querySelector('.dropdown-button')
-            const menu = dropdown.querySelector('.dropdown-menu')
-            const arrow = dropdown.querySelector('.dropdown-arrow')
-            const selectedContainer = dropdown.querySelector('.selected-option')
-            const placeholder = selectedContainer.querySelector('.placeholder')
-            const items = dropdown.querySelectorAll('.dropdown-item')
+      document.querySelectorAll('.custom-dropdown[data-style="design4"]').forEach((dropdown) => {
+        const button = dropdown.querySelector('.dropdown-button')
+        const menu = dropdown.querySelector('.dropdown-menu')
+        const arrow = dropdown.querySelector('.dropdown-arrow')
+        const selectedContainer = dropdown.querySelector('.selected-option')
+        const placeholder = selectedContainer.querySelector('.placeholder')
+        const items = dropdown.querySelectorAll('.dropdown-item')
 
-            const selectedValues = new Set()
+        const selectedValues = new Set()
 
-            // Toggle
-            button.addEventListener('click', e => {
-                e.stopPropagation()
-                menu.classList.toggle('hidden')
-                arrow.classList.toggle('rotate-180')
-            })
+        // Toggle
+        button.addEventListener('click', (e) => {
+          e.stopPropagation()
+          menu.classList.toggle('hidden')
+          arrow.classList.toggle('rotate-180')
+        })
 
-            // Outside click
-            document.addEventListener('click', e => {
-                if (!dropdown.contains(e.target)) {
-                    menu.classList.add('hidden')
-                    arrow.classList.remove('rotate-180')
-                }
-            })
+        // Outside click
+        document.addEventListener('click', (e) => {
+          if (!dropdown.contains(e.target)) {
+            menu.classList.add('hidden')
+            arrow.classList.remove('rotate-180')
+          }
+        })
 
-            // Select
-            items.forEach(item => {
-                item.addEventListener('click', e => {
-                    e.stopPropagation()
-                    const value = item.textContent.trim()
+        // Select
+        items.forEach((item) => {
+          item.addEventListener('click', (e) => {
+            e.stopPropagation()
+            const value = item.textContent.trim()
 
-                    if (selectedValues.has(value)) return
+            if (selectedValues.has(value)) return
 
-                    selectedValues.add(value)
-                    renderChips()
-                })
-            })
+            selectedValues.add(value)
+            renderChips()
+          })
+        })
 
-            function renderChips() {
-                selectedContainer.innerHTML = ''
-                placeholder.style.display = 'none'
+        function renderChips() {
+          selectedContainer.innerHTML = ''
+          placeholder.style.display = 'none'
 
-                selectedValues.forEach(value => {
-                    const chip = document.createElement('div')
-                    chip.className =
-                        'flex items-center gap-2 bg-[#F6F6F6] border border-[#E2DCDC] rounded-[6px] px-2 py-1 text-sm text-[#000A06]'
-                    chip.innerHTML = `
+          selectedValues.forEach((value) => {
+            const chip = document.createElement('div')
+            chip.className =
+              'flex items-center gap-2 bg-[#F6F6F6] border border-[#E2DCDC] rounded-[6px] px-2 py-1 text-sm text-[#000A06]'
+            chip.innerHTML = `
                 <span>${value}</span>
                 <button class="remove-chip text-[#8C8484] hover:text-black">
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
@@ -679,23 +1086,113 @@
                 </button>
             `
 
-                    chip.querySelector('.remove-chip').addEventListener('click', e => {
-                        e.stopPropagation()
-                        selectedValues.delete(value)
-                        renderChips()
-                    })
+            chip.querySelector('.remove-chip').addEventListener('click', (e) => {
+              e.stopPropagation()
+              selectedValues.delete(value)
+              renderChips()
+            })
 
-                    selectedContainer.appendChild(chip)
-                })
+            selectedContainer.appendChild(chip)
+          })
 
-                if (selectedValues.size === 0) {
-                    selectedContainer.appendChild(placeholder)
-                    placeholder.style.display = 'block'
-                }
-            }
-        })
+          if (selectedValues.size === 0) {
+            selectedContainer.appendChild(placeholder)
+            placeholder.style.display = 'block'
+          }
+        }
+      })
     </script>
 
-</body>
+    <script>
+      document.querySelectorAll('[data-style="design6"]').forEach((dropdown) => {
+        const button = dropdown.querySelector('.dropdown-button')
+        const menu = dropdown.querySelector('.dropdown-menu')
+        const arrow = dropdown.querySelector('.dropdown-arrow')
+        const selectedContainer = dropdown.querySelector('.selected-option')
+        const placeholder = dropdown.querySelector('.placeholder')
+        const items = dropdown.querySelectorAll('.dropdown-item')
 
+        let selected = []
+
+        // Toggle dropdown
+        button.addEventListener('click', (e) => {
+          e.stopPropagation()
+          menu.classList.toggle('hidden')
+          arrow.classList.toggle('rotate-180')
+        })
+
+        // Close outside
+        document.addEventListener('click', (e) => {
+          if (!dropdown.contains(e.target)) {
+            menu.classList.add('hidden')
+            arrow.classList.remove('rotate-180')
+          }
+        })
+
+        // Select item
+        items.forEach((item) => {
+          item.addEventListener('click', (e) => {
+            e.stopPropagation()
+
+            const value = item.dataset.value
+
+            if (selected.includes(value)) {
+              selected = selected.filter((v) => v !== value)
+              item.classList.remove('bg-[#EBF8F2]')
+            } else {
+              selected.push(value)
+              item.classList.add('bg-[#EBF8F2]')
+            }
+
+            render()
+          })
+        })
+
+        // Render badges
+        function render() {
+          selectedContainer.querySelectorAll('.badge').forEach((el) => el.remove())
+
+          if (selected.length === 0) {
+            placeholder.style.display = 'block'
+          } else {
+            placeholder.style.display = 'none'
+          }
+
+          selected.forEach((value, i) => {
+            const badge = document.createElement('div')
+            badge.className =
+              'badge flex items-center gap-2 bg-white border border-[#E2DCDC] rounded-[20px] px-2 py-1'
+
+            badge.innerHTML = `
+        <span class="w-5 h-5 flex items-center justify-center rounded-full bg-[#EBF8F2] text-[#007D47] text-xs font-semibold">
+          ${i + 1}
+        </span>
+
+        <span class="text-[#007D47] text-sm">${value}</span>
+
+        <button class="remove-btn ml-1">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <path d="M1 1L9 9M9 1L1 9" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      `
+
+            // Remove click
+            badge.querySelector('.remove-btn').addEventListener('click', (e) => {
+              e.stopPropagation()
+
+              selected = selected.filter((v) => v !== value)
+
+              const item = [...items].find((i) => i.dataset.value === value)
+              if (item) item.classList.remove('bg-[#EBF8F2]')
+
+              render()
+            })
+
+            selectedContainer.appendChild(badge)
+          })
+        }
+      })
+    </script>
+  </body>
 </html>
