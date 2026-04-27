@@ -1355,21 +1355,14 @@
       </div>
       <div class="w-full bg-white rounded-10px flex flex-col p-5 gap-0 border border-[#E9E1E1]">
         <p class="text-base leading-[200%] font-medium text-Theme-Black mb-2.5">
-          Enter your Dropbox account email
+          Connect your Dropbox account
         </p>
         <p class="text-base leading-[200%] text-Theme-Black mb-5">
-          Dropbox stores uploaded files and form data. Enter the email associated with your Dropbox
-          account to authenticate and connect.
+          Authenticate your Dropbox account to start storing form submissions, uploaded files, and
+          PDFs automatically. You’ll be able to configure how and where your data is saved after
+          connecting.
         </p>
-        <label for="workspace" class="text-xs leading-[14px] text-Theme-Black">
-          Dropbox Account
-        </label>
-        <input
-          type="text"
-          id="Configure_a_dropbox"
-          class="text-base leading-[22px] border border-transparent text-Theme-Black placeholder:text-[#8C8484] w-full py-3.5 px-[15px] bg-[#F8F6F6] mt-[5px] rounded-10px transition-all duration-500 hover:border-[#E9E1E1] hover:bg-white focus:outline-0 focus:border-Theme-Green"
-          placeholder="name@email.com"
-        />
+
         <p class="text-[15px] leading-[140%] text-[#8C8484] mt-5">
           Need help with Dropbox? Visit our
           <a href="#" class="font-medium text-Theme-Black underline">Help Center</a> for guidance.
@@ -1424,11 +1417,11 @@
       </div>
       <div class="w-full bg-white rounded-10px flex flex-col p-5 gap-0 border border-[#E9E1E1]">
         <p class="text-base leading-[200%] font-medium text-Theme-Black mb-2.5">
-          Enter your Dropbox account email
+          Connect your Dropbox account
         </p>
         <p class="text-base leading-[200%] text-Theme-Black mb-5">
-          Dropbox stores uploaded files and form data. Enter the email associated with your Dropbox
-          account to authenticate and connect.
+          Choose an existing Dropbox account to authenticate, or add a new one to connect. Once
+          connected, you can configure how your form submissions, files, and PDFs are stored.
         </p>
         <label for="Dropbox" class="text-xs leading-[14px] text-Theme-Black">
           Dropbox Account
@@ -1438,9 +1431,11 @@
           <div class="relative">
             <button
               type="button"
-              class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] border border-[#E2DCDC] text-[#8C8484] p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all"
+              class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] text-[#8C8484] p-3.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all"
             >
-              <span class="selected-option">name@email.com</span>
+              <span class="selected-option text-Theme-Green font-medium text-base leading-[22px]"
+                >name@email.com</span
+              >
               <svg
                 class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200"
                 fill="none"
@@ -1488,7 +1483,7 @@
 
         <button
           data-modal-target="drop-1"
-          class="btn-white-icon-text bg-[#F8F6F6] border-transparent mt-2.5"
+          class="btn-white-icon-text bg-[#F8F6F6] border-transparent mt-2.5 text-sm leading-5 font-medium py-[14px]"
         >
           <svg
             width="12"
@@ -1835,7 +1830,7 @@
     </div>
     <!-- drop-setting -->
     <div
-      class="modalTrigger modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+      class="modalTrigger modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] pb-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
       id="drop-setting"
     >
       <!-- modal header  -->
@@ -1993,6 +1988,7 @@
           </button>
 
           <button
+            data-modal-target="drop-logs"
             class="w-[50px] h-[50px] aspect-square flex items-center justify-center rounded-10px bg-[#F8F6F6] transition-all duration-500 hover:bg-Theme-bg"
           >
             <svg
@@ -2077,6 +2073,146 @@
             </svg>
           </button>
         </div>
+      </div>
+      <!-- modal footer  -->
+    </div>
+
+    <!-- drop-logs -->
+    <div
+      class="modalTrigger modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+      id="drop-logs"
+    >
+      <!-- modal header  -->
+      <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+        <div class="flex items-center gap-[15px]">
+          <h2 class="font-Inter_tight text-2xl leading-140 text-Theme-Black">
+            Dropbox Activity Logs
+          </h2>
+        </div>
+
+        <span class="close-btn cursor-pointer">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 16L16 4"
+              stroke="#000A06"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M16 16L4 4"
+              stroke="#000A06"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+      </div>
+      <div
+        class="w-full bg-white rounded-10px flex flex-col p-5 gap-0 h-[580px] overflow-y-auto border border-[#E9E1E1]"
+      >
+        <div x-data="logFilter()">
+          <!-- Tabs -->
+          <div class="flex bg-[#EDE9E9] rounded-10px p-[5px] gap-[5px] mb-2.5 w-full">
+            <button
+              @click="filter='all'"
+              :class="tabClass('all')"
+              class="w-full px-5 py-[5px] text-sm leading-5 text-Theme-Black rounded-[5px]"
+            >
+              All
+            </button>
+            <button
+              @click="filter='success'"
+              :class="tabClass('success')"
+              class="w-full px-5 py-[5px] text-sm leading-5 text-Theme-Black rounded-[5px]"
+            >
+              Success
+            </button>
+            <button
+              @click="filter='failed'"
+              :class="tabClass('failed')"
+              class="w-full px-5 py-[5px] text-sm leading-5 text-Theme-Black rounded-[5px]"
+            >
+              Failed
+            </button>
+          </div>
+
+          <!-- Table -->
+          <div class="overflow-hidden border border-[#E2DCDC] rounded-10px bg-white">
+            <table class="w-full border-collapse table-auto">
+              <!-- Head -->
+              <thead class="bg-white text-left text-sm text-gray-600">
+                <tr>
+                  <th class="p-3 border-b border-r border-Theme-bg w-[140px]">Date & Time</th>
+                  <th class="p-3 border-b border-r border-Theme-bg">Submission Id</th>
+                  <th class="p-3 border-b border-Theme-bg w-[100px]">Status</th>
+                </tr>
+              </thead>
+
+              <!-- Body -->
+              <tbody>
+                <!-- ✅ REQUIRED template wrapper -->
+                <template
+                  x-for="log in logs.filter(l => filter === 'all' || l.status === filter)"
+                  :key="index"
+                >
+                  <tr
+                    x-show="filter === 'all' || log.status === filter"
+                    class="border-b border-Theme-bg last:border-none"
+                  >
+                    <td class="p-3 border-r border-Theme-bg w-[140px]">
+                      <div x-text="log.date"></div>
+                      <div class="text-xs text-gray-400" x-text="log.time"></div>
+                    </td>
+
+                    <td
+                      class="p-3 max-w-[300px] truncate border-r border-Theme-bg"
+                      x-text="log.id"
+                    ></td>
+
+                    <td class="p-3">
+                      <span
+                        class="px-1.5 py-[3px] text-sm leading-[18px] rounded-full font-medium"
+                        :class="log.status === 'success' 
+                  ? 'bg-green-100 text-green-600' 
+                  : 'bg-red-100 text-red-600'"
+                        x-text="log.status === 'success' ? 'Success' : 'Failed'"
+                      ></span>
+                    </td>
+                  </tr>
+                </template>
+
+                <!-- Empty -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <script>
+          function logFilter() {
+            return {
+              filter: 'all',
+
+              logs: [
+                { id: 'acdsaasd...', status: 'success', date: '14 Nov 2025', time: '16:26' },
+                { id: 'acdsaasd...', status: 'failed', date: '14 Nov 2025', time: '16:26' },
+                { id: 'acdsaasd...', status: 'success', date: '14 Nov 2025', time: '16:26' },
+                { id: 'acdsaasd...', status: 'success', date: '5 Nov 2025', time: '16:26' }
+              ],
+
+              tabClass(tab) {
+                return this.filter === tab ? 'bg-white font-medium' : 'font-normal'
+              }
+            }
+          }
+        </script>
       </div>
       <!-- modal footer  -->
       <div class="flex items-center justify-end w-full py-2.5 px-[5px]">

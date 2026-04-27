@@ -722,6 +722,72 @@
       </div>
     </div>
 
+    <div class="custom-dropdown relative w-full max-w-[550px]" data-style="design5">
+      <!-- Input Area -->
+      <div
+        class="dropdown-input flex items-center flex-wrap gap-2 px-3 py-2 bg-[#F8F6F6] min-h-[50px] border border-transparent rounded-[10px] cursor-text"
+      >
+        <!-- Selected badges -->
+        <div class="selected-values flex items-center flex-wrap gap-2"></div>
+
+        <!-- Input -->
+        <input
+          type="text"
+          class="search-input flex-1 min-w-[80px] outline-none text-base leading-[22px] text-Theme-Black bg-transparent"
+          placeholder="Setup subfolder name"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+          inputmode="none"
+        />
+
+        <!-- Arrow -->
+        <span class="ml-auto text-[#8C8484]">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 7.5L10 12.5L5 7.5"
+              stroke="#8C8484"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+      </div>
+
+      <!-- Dropdown -->
+      <div
+        class="dropdown-menu absolute w-full mt-2 bg-white border border-[#E2DCDC] rounded-[10px] shadow hidden z-10"
+      >
+        <div class="p-2 space-y-1">
+          <div
+            class="option px-3 py-2 rounded cursor-pointer hover:bg-[#F5F5F5]"
+            data-value="Submission Id"
+          >
+            Submission Id
+          </div>
+
+          <div class="option px-3 py-2 rounded cursor-pointer hover:bg-[#F5F5F5]" data-value="Name">
+            Name
+          </div>
+
+          <div
+            class="option px-3 py-2 rounded cursor-pointer hover:bg-[#F5F5F5]"
+            data-value="Email"
+          >
+            Email
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="custom-dropdown relative w-full max-w-[700px]" data-style="design6">
       <!-- Button -->
       <div
@@ -1100,6 +1166,84 @@
             placeholder.style.display = 'block'
           }
         }
+      })
+    </script>
+
+    <script>
+      document.querySelectorAll('[data-style="design5"]').forEach((dropdown) => {
+        const inputBox = dropdown.querySelector('.dropdown-input')
+        const menu = dropdown.querySelector('.dropdown-menu')
+        const options = dropdown.querySelectorAll('.option')
+        const selectedContainer = dropdown.querySelector('.selected-values')
+        const input = dropdown.querySelector('.search-input')
+
+        let selected = []
+
+        // ❗ Disable typing (only allow Backspace)
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace') {
+            if (input.value === '' && selected.length > 0) {
+              selected.pop()
+              renderTags()
+            }
+          } else {
+            e.preventDefault() // block typing
+          }
+        })
+
+        // Open dropdown
+        inputBox.addEventListener('click', () => {
+          menu.classList.toggle('hidden')
+          input.focus()
+        })
+
+        // Select option
+        options.forEach((option) => {
+          option.addEventListener('click', () => {
+            const value = option.dataset.value
+
+            if (!selected.includes(value)) {
+              selected.push(value)
+              renderTags()
+            }
+          })
+        })
+
+        // Render badges + placeholder logic
+        function renderTags() {
+          selectedContainer.innerHTML = ''
+
+          selected.forEach((item, index) => {
+            const tag = document.createElement('span')
+            tag.className =
+              'flex items-center bg-white px-2 text-Theme-Black font-medium py-1 rounded-full text-base leading-[22px] whitespace-nowrap'
+            tag.innerText = item
+
+            selectedContainer.appendChild(tag)
+
+            // "-" separator
+            if (index < selected.length - 1) {
+              const dash = document.createElement('span')
+              dash.className = 'text-[#8C8484]'
+              dash.innerText = '-'
+              selectedContainer.appendChild(dash)
+            }
+          })
+
+          // 🔥 Hide / Show placeholder
+          if (selected.length > 0) {
+            input.placeholder = ''
+          } else {
+            input.placeholder = 'Select options...'
+          }
+        }
+
+        // Close outside
+        document.addEventListener('click', (e) => {
+          if (!dropdown.contains(e.target)) {
+            menu.classList.add('hidden')
+          }
+        })
       })
     </script>
 
