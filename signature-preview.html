@@ -393,7 +393,7 @@
             </div>
           </div>
           <div
-            class="view-port relative mx-auto origin-center h-[calc(100%-140px)] flex flex-col items-center justify-center bg-white rounded-10px border border-[#E2DCDC] max-w-[1196px]"
+            class="view-port relative mx-auto origin-center h-[calc(100%-140px)] px-3 flex flex-col items-center justify-center bg-white rounded-10px border border-[#E2DCDC] max-w-[1196px]"
           >
             <!-- progress bar  -->
             <p
@@ -403,7 +403,7 @@
             </p>
 
             <!-- content preview  -->
-            <div class="input w-full max-w-[400px]">
+            <div class="input w-full max-w-[600px]">
               <div
                 class="text-sm font-semibold leading-[140%] text-white p-[5px] rounded-full bg-[#007D47] aspect-square w-[30px] flex items-center justify-center mb-5"
               >
@@ -548,14 +548,13 @@
                       type="Name"
                       placeholder="Write your name here"
                       class="w-full pb-[15px] border-b-2 border-[#9ACEB8] bg-transparent placeholder:text-[#9ACEB8] text-xl font-medium leading-[140%] text-[#007D47] transition-all duration-500 focus:outline-0 focus:border-[#007D47]"
-                      disabled
                     />
                   </div>
 
                   <!-- DRAW -->
                   <div
                     x-show="tab === 'draw'"
-                    class="py-[10px] px-5 rounded-10px bg-[#DAEFE6]/50 border border-[#DAEFE6]"
+                    class="py-[10px] px-2.5 rounded-10px bg-[#DAEFE6]/50 border border-[#DAEFE6]"
                   >
                     <div x-data="signaturePad(tab)" x-init="init()" class="max-w-3xl mx-auto">
                       <div class="relative bg-transparent rounded-2xl">
@@ -575,9 +574,9 @@
                         <!-- Clear -->
                         <button
                           @click="clearCanvas()"
-                          class="absolute bottom-3 right-3 px-3 py-1 text-xs bg-white border rounded-lg"
+                          class="absolute bottom-0 right-0 px-2.5 py-1 text-base leading-[22px] text-Theme-Green bg-white rounded-[5px] border border-transparent transition-all duration-300 hover:border-Theme-Green"
                         >
-                          Clear
+                          Erase
                         </button>
                       </div>
                     </div>
