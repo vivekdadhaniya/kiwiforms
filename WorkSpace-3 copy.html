@@ -1701,8 +1701,8 @@
           </svg>
         </span>
       </div>
-      <div class="w-full bg-white rounded-10px flex flex-col p-0 border border-[#E9E1E1] h-[715px]">
-        <div class="border-b border-[#E2DCDC] py-[60px] px-5">
+      <div class="w-full bg-white rounded-10px flex flex-col p-0 border border-[#E9E1E1] h-auto">
+        <div class="border-b border-[#E2DCDC] pt-[40px] pb-5 px-5">
           <div class="flex items-center justify-center flex-col gap-5">
             <svg
               width="100"
@@ -1769,7 +1769,7 @@
               />
             </svg>
           </div>
-          <div class="pt-10 w-full">
+          <div class="pt-5 w-full">
             <p class="text-xl leading-7 text-Theme-Black font-Inter_tight text-center mb-2.5">
               What kind of form are you building?
             </p>
@@ -1852,8 +1852,8 @@
           </div>
         </div>
         <div class="p-5 w-full">
-          <p class="text-base leading-6 text-[#8C8484] text-center mb-5">Or</p>
-          <div class="flex items-center gap-5">
+          <p class="text-base leading-6 text-[#8C8484] text-center mb-2.5">Or</p>
+          <div class="grid grid-cols-2 items-center gap-5">
             <button
               data-modal-target="new-form-name"
               class="p-2.5 bg-[#F8F3F3] rounded-10px flex items-center gap-2.5 text-lg leading-[22px] text-Theme-Black w-full transition-all duration-500 hover:bg-Theme-bg"
@@ -2028,6 +2028,183 @@
               </svg>
               Start with Template
             </button>
+            <button
+              data-modal-target="Connect-HubSpot"
+              class="p-[15px] col-span-2 bg-[#F8F3F3] rounded-10px flex items-center justify-center gap-2.5 text-lg leading-[22px] text-Theme-Black w-full transition-all duration-500 hover:bg-Theme-bg"
+            >
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 30 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect width="30" height="30" rx="5" fill="#FF4800" />
+                <path
+                  d="M19.6099 11.9244V9.78124C20.1694 9.51713 20.5612 8.95094 20.5612 8.29449V8.24475C20.5612 7.33854 19.8196 6.59696 18.9134 6.59696H18.8642C17.958 6.59696 17.2164 7.33854 17.2164 8.24475V8.29449C17.2164 8.95145 17.6082 9.51713 18.1677 9.78124V11.9244C17.3349 12.0532 16.5738 12.3968 15.9461 12.9019L10.0622 8.32475C10.1006 8.17551 10.1278 8.02217 10.1283 7.86113C10.1288 6.83441 9.29801 6.00154 8.27129 6C7.24456 5.99846 6.4117 6.82979 6.41016 7.85652C6.40913 8.88324 7.23995 9.71611 8.26667 9.71765C8.60105 9.71765 8.91081 9.62329 9.18211 9.46892L14.9701 13.9712C14.4778 14.7143 14.1896 15.6041 14.1896 16.5621C14.1896 17.5201 14.5065 18.493 15.0419 19.2561L13.2818 21.0162C13.1428 20.9747 12.9982 20.9455 12.8454 20.9455C12.0018 20.9455 11.3181 21.6291 11.3181 22.4727C11.3181 23.3164 12.0023 24 12.8454 24C13.6885 24 14.3727 23.3164 14.3727 22.4727C14.3727 22.3199 14.3434 22.1753 14.3019 22.0363L16.043 20.2952C16.8333 20.8983 17.8175 21.2609 18.8888 21.2609C21.4838 21.2609 23.5875 19.1572 23.5875 16.5621C23.5875 14.2128 21.8618 12.2722 19.6099 11.9244ZM18.8883 18.971C17.558 18.971 16.4789 17.8925 16.4789 16.5621C16.4789 15.2318 17.5575 14.1533 18.8883 14.1533C20.2191 14.1533 21.2972 15.2318 21.2972 16.5621C21.2972 17.8925 20.2186 18.971 18.8883 18.971Z"
+                  fill="white"
+                />
+              </svg>
+              Sync with HubSpot
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- modal footer  -->
+    </div>
+
+    <!-- Connect-HubSpot -->
+    <div
+      class="modalTrigger modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] pb-[5px] flex-col gap-0 w-full h-auto max-w-[600px]"
+      id="Connect-HubSpot"
+    >
+      <!-- modal header  -->
+      <div class="flex items-center justify-between py-2.5 pr-[5px] pl-[15px] w-full">
+        <div class="flex items-center gap-[15px]">
+          <h2 class="font-Inter_tight text-xl leading-140 text-Theme-Black">Connect HubSpot</h2>
+        </div>
+
+        <span class="close-btn cursor-pointer">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 16L16 4"
+              stroke="#000A06"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M16 16L4 4"
+              stroke="#000A06"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+      </div>
+      <div class="w-full bg-white rounded-10px flex flex-col p-0 border border-[#E9E1E1] h-auto">
+        <div class="border-b border-[#E2DCDC] pt-[40px] pb-5 px-5">
+          <div class="flex items-center justify-center flex-col gap-5">
+            <svg
+              width="100"
+              height="100"
+              viewBox="0 0 100 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="100" height="100" rx="50" fill="#FF4800" />
+              <path
+                d="M65.3663 39.7481V32.6041C67.2313 31.7238 68.5374 29.8365 68.5374 27.6483V27.4825C68.5374 24.4618 66.0655 21.9899 63.0448 21.9899H62.8807C59.86 21.9899 57.388 24.4618 57.388 27.4825V27.6483C57.388 29.8382 58.6941 31.7238 60.5592 32.6041V39.7481C57.7829 40.1772 55.246 41.3226 53.1536 43.0064L33.5405 27.7492C33.6687 27.2517 33.7593 26.7406 33.7611 26.2038C33.7628 22.7814 30.9934 20.0051 27.571 20C24.1485 19.9949 21.3723 22.766 21.3672 26.1884C21.3638 29.6108 24.1332 32.387 27.5556 32.3922C28.6702 32.3922 29.7027 32.0776 30.607 31.5631L49.9004 46.5707C48.2593 49.0478 47.2986 52.0138 47.2986 55.2071C47.2986 58.4005 48.355 61.6434 50.1398 64.1871L44.2728 70.0541C43.8095 69.9157 43.3274 69.8182 42.818 69.8182C40.0059 69.8182 37.7271 72.097 37.7271 74.9091C37.7271 77.7212 40.0076 80 42.818 80C45.6284 80 47.9089 77.7212 47.9089 74.9091C47.9089 74.3997 47.8114 73.9176 47.673 73.4543L53.4767 67.6506C56.111 69.6609 59.3916 70.8696 62.9627 70.8696C71.6128 70.8696 78.6251 63.8572 78.6251 55.2071C78.6251 47.3759 72.8727 40.9072 65.3663 39.7481ZM62.961 63.2367C58.5266 63.2367 54.9298 59.6416 54.9298 55.2071C54.9298 50.7727 58.5248 47.1776 62.961 47.1776C67.3971 47.1776 70.9905 50.7727 70.9905 55.2071C70.9905 59.6416 67.3954 63.2367 62.961 63.2367Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <div class="pt-5 w-full">
+            <p class="text-xl leading-7 text-Theme-Black font-Inter_tight text-center mb-2.5">
+              Choose a HubSpot account
+            </p>
+            <p class="text-base leading-8 text-center text-[#8C8484] mb-5">
+              Select an authorized HubSpot account to create HubSpot-connected forms and sync
+              submissions with your CRM.
+            </p>
+
+            <!-- ================= DESIGN 1 ================= -->
+            <div
+              class="custom-dropdown relative w-full max-w-[700px] ml-2.5 pt-[5px]"
+              data-style="design1"
+            >
+              <div class="relative">
+                <span class="text-xs leading-3.5 text-Theme-Black mb-[5px]">HubSpot Account</span>
+                <button
+                  type="button"
+                  class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] border border-transparent text-Theme-Black p-[13px] pl-[15px] rounded-10px text-base font-normal leading-[22px] focus:outline-none transition-all"
+                >
+                  <span class="selected-option">Select a HubSpot account</span>
+                  <svg
+                    class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+
+                <div
+                  class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-10"
+                >
+                  <ul class="dropdown-list flex items-center flex-col gap-px w-full bg-[#F8F6F6]">
+                    <li class="bg-white w-full relative">
+                      <div
+                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center active"
+                      >
+                        <span>Select a HubSpot account</span>
+                      </div>
+                      <div
+                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg"
+                      ></div>
+                    </li>
+
+                    <li class="bg-white w-full relative">
+                      <div
+                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center"
+                      >
+                        <span>Select a HubSpot account</span>
+                      </div>
+                      <div
+                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg"
+                      ></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-5 w-full bg-white rounded-b-10px">
+          <p class="text-base leading-[22px] text-[#8C8484] text-center mb-2.5">
+            Or connect a new HubSpot account
+          </p>
+          <div class="flex flex-col w-full items-center gap-5">
+            <button
+              data-modal-target="Connect-HubSpot"
+              class="p-[15px] col-span-2 bg-[#F8F6F6] rounded-10px flex items-center justify-center gap-2.5 text-sm leading-[20px] text-Theme-Black w-full transition-all duration-500 hover:bg-Theme-bg"
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.601562 5.60156H5.60156M5.60156 5.60156H10.6016M5.60156 5.60156V0.601562M5.60156 5.60156V10.6016"
+                  stroke="#000A06"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              New HubSpot Account
+            </button>
+            <p class="text-base leading-8 text-[#7D7676] text-center px-4">
+              Please note that this authorization will remain active until you disconnect your
+              HubSpot account.
+            </p>
           </div>
         </div>
       </div>
