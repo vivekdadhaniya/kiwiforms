@@ -1049,7 +1049,7 @@
                                             class="absolute left-0 mt-2 p-[5px] w-full bg-white rounded-[10px] shadow-lg border border-[#E9E1E1] z-50">
                                             <div @click="selected = 'Contact Details'; open = false"
                                                 class="px-2.5 py-[7px] text-xs leading-[130%] text-[#000A06] rounded-[5px] hover:bg-[#F2EFEF] cursor-pointer">
-                                               Contact Details
+                                                Contact Details
                                             </div>
 
                                             <div @click="selected = 'Contact Details'; open = false"
@@ -1268,7 +1268,7 @@
                                     <circle cx="9" cy="9" r="2" stroke="#000A06" stroke-width="1.2" />
                                 </svg>
                             </button>
-                            <button class="btn-white-square" data-modal-target="Setting-modal">
+                            <button class="btn-white-square" data-modal-target="HubSpot-Settings">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_13619_2263)">
@@ -7191,6 +7191,2032 @@
         <!-- modal footer -->
         <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
             <button class="btn-kiwi-green  w-full text-center transition-all duration-500 hover:bg-theme-Green-hover">
+                Save
+            </button>
+        </div>
+    </div>
+
+    <!-- HubSpot Settings -->
+    <div class="modalTrigger modal bg-[#F2EFEF] rounded-[15px] shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] px-[5px] flex-col gap-0 w-full h-auto max-w-[956px]"
+        id="HubSpot-Settings" x-data="{ tab: 'general' }">
+
+        <!-- modal header -->
+        <div class="flex items-center justify-between py-2.5 px-[5px] w-full">
+            <!-- Tabs -->
+            <div class="flex gap-0 items-center w-full">
+                <button @click="tab='general'"
+                    class="px-3 py-2.5 w-full max-w-[210px] rounded-[5px] text-sm font-medium leading-[140%] text-Theme-Black transition"
+                    :class="tab==='general' ? 'bg-white' : 'bg-transparent'">
+                    General
+                </button>
+
+                <button @click="tab='map'"
+                    class="px-3 py-2.5 w-full max-w-[210px] rounded-[5px] text-sm font-medium leading-[140%] text-Theme-Black transition"
+                    :class="tab==='map' ? 'bg-white' : 'bg-transparent'">
+                    Map Contact Properties
+                </button>
+
+                <button @click="tab='Companies'"
+                    class="px-3 py-2.5 w-full max-w-[210px] rounded-[5px] text-sm font-medium leading-[140%] text-Theme-Black transition"
+                    :class="tab==='Companies' ? 'bg-white' : 'bg-transparent'">
+                    Map Companies & Deals
+                </button>
+            </div>
+
+            <span class="close-btn cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                    <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                </svg>
+            </span>
+        </div>
+
+        <!-- modal body -->
+        <div
+            class="w-full relative bg-white rounded-10px flex flex-col h-[600px] overflow-auto p-0 gap-0 border border-[#E9E1E1] [&::-webkit-scrollbar]:hidden">
+            <!-- TAB CONTENT -->
+
+            <!-- GENERAL -->
+            <div x-show="tab==='general'" class="block">
+
+                <div>
+                    <h3
+                        class="text-base leading-[140%] font-medium text-Theme-Black p-5 border-b border-[#E9E1E1] flex items-center gap-2.5">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_13704_2298)">
+                                <path
+                                    d="M0 2.77778C0 1.24365 1.24365 0 2.77778 0H19.2222C20.7563 0 22 1.24365 22 2.77778V19.2222C22 20.7563 20.7563 22 19.2222 22H2.77778C1.24365 22 0 20.7563 0 19.2222V2.77778Z"
+                                    fill="#FF4800" />
+                                <path
+                                    d="M14.7942 8.47693V6.71606C15.2539 6.49906 15.5758 6.03388 15.5758 5.49454V5.45367C15.5758 4.70913 14.9665 4.09984 14.222 4.09984H14.1815C13.437 4.09984 12.8277 4.70913 12.8277 5.45367V5.49454C12.8277 6.0343 13.1496 6.49906 13.6093 6.71606V8.47693C12.925 8.58269 12.2997 8.865 11.784 9.28004L6.94972 5.5194C6.98133 5.39679 7.00366 5.2708 7.00408 5.13849C7.0045 4.29493 6.3219 3.61064 5.47833 3.60938C4.63477 3.60811 3.95048 4.29114 3.94922 5.1347C3.94838 5.97826 4.63098 6.66255 5.47454 6.66381C5.74927 6.66381 6.00377 6.58628 6.22667 6.45945L10.9821 10.1586C10.5776 10.7691 10.3408 11.5002 10.3408 12.2873C10.3408 13.0744 10.6012 13.8737 11.0411 14.5007L9.59502 15.9468C9.48083 15.9127 9.36201 15.8886 9.23644 15.8886C8.5433 15.8886 7.98163 16.4503 7.98163 17.1435C7.98163 17.8366 8.54373 18.3983 9.23644 18.3983C9.92916 18.3983 10.4913 17.8366 10.4913 17.1435C10.4913 17.0179 10.4672 16.8991 10.4331 16.7849L11.8636 15.3544C12.5129 15.8499 13.3215 16.1478 14.2017 16.1478C16.3338 16.1478 18.0622 14.4194 18.0622 12.2873C18.0622 10.357 16.6444 8.76261 14.7942 8.47693ZM14.2013 14.2664C13.1083 14.2664 12.2218 13.3803 12.2218 12.2873C12.2218 11.1943 13.1079 10.3082 14.2013 10.3082C15.2948 10.3082 16.1805 11.1943 16.1805 12.2873C16.1805 13.3803 15.2943 14.2664 14.2013 14.2664Z"
+                                    fill="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_13704_2298">
+                                    <rect width="22" height="22" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <span>HubSpot Settings</span>
+                    </h3>
+                </div>
+
+                <div class="p-5 w-full">
+                    <!-- Display Progress Bar -->
+                    <div class="w-full pb-5 border-b border-[#E9E1E1]">
+                        <p class="text-xs leading-[120%] text-[#8C8484] uppercase tracking-[1.2px] mb-5">
+                            HubSpot integration
+                        </p>
+                        <p class="text-base leading-[22px] text-Theme-Black mb-[15px]">HubSpot Authorization</p>
+                        <div class="flex items-end gap-2.5">
+                            <div class="w-full">
+                                <span class="text-[#8C8484] text-[15px] leading-[18px]">HubSpot Account</span>
+                                <div x-data="{ open: false, selected: 'mythicsdesign.com' }"
+                                    class="relative w-full mt-[5px]">
+
+                                    <!-- Button -->
+                                    <button @click="open = !open"
+                                        class="w-full bg-[#F8F6F6] border border-Theme-bg py-[9px] px-4 rounded-10px text-sm font-normal text-gray-900 flex items-center justify-between focus:outline-none">
+                                        <span x-text="selected">mythicsdesign.com</span>
+
+                                        <svg class="w-5 h-5 text-gray-600 transition-transform duration-200"
+                                            :class="{ 'rotate-180': open }" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+
+                                    <!-- Dropdown Menu -->
+                                    <div x-show="open" @click.outside="open = false" x-transition=""
+                                        class="absolute left-0 mt-2 p-[5px] w-full bg-white rounded-[10px] shadow-lg border border-[#E9E1E1] z-50"
+                                        style="display: none;">
+                                        <div @click="selected = 'Contact Details'; open = false"
+                                            class="px-2.5 py-[7px] text-xs leading-[130%] text-[#000A06] rounded-[5px] hover:bg-[#F2EFEF] cursor-pointer">
+                                            mythicsdesign.com
+                                        </div>
+
+                                        <div @click="selected = 'Contact Details'; open = false"
+                                            class="px-2.5 py-[7px] text-xs leading-[130%] text-[#000A06] rounded-[5px] hover:bg-[#F2EFEF] cursor-pointer">
+                                            Contact Details
+                                        </div>
+
+                                        <div @click="selected = 'Contact Details'; open = false"
+                                            class="px-2.5 py-[7px] text-xs leading-[130%] text-[#000A06] rounded-[5px] hover:bg-[#F2EFEF] cursor-pointer">
+                                            Contact Details
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <button class="btn-white-icon-text w-max px-4 rounded-10px">Revoke</button>
+                        </div>
+                    </div>
+
+                    <!-- Autosave Responses -->
+                    <div x-data="{
+        checked: false,
+        tool1: false
+    }" class="w-full py-[15px] border-b border-[#E9E1E1]">
+                        <p class="text-xs leading-[120%] text-[#8C8484] uppercase tracking-[1.2px] mb-5">
+                            General Mapping rules
+                        </p>
+
+                        <div class="flex items-center justify-between">
+
+                            <!-- Left Content -->
+                            <div class="flex items-center gap-1.5">
+
+                                <span class="text-base leading-[140%] font-normal text-Theme-Black">
+                                    Create new records only when an email is provided
+                                </span>
+
+                                <!-- Tooltip -->
+                                <div class="relative flex-shrink-0 h-max flex items-center justify-center"
+                                    @mouseenter="tool1 = true" @mouseleave="tool1 = false">
+                                    <button type="button" @click.stop.prevent
+                                        class="text-[#8C8484] transition-all duration-300 hover:text-Theme-Black">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2" />
+                                            <path d="M8 7.25V11.17" stroke="currentColor" stroke-width="1.2"
+                                                stroke-linecap="round" />
+                                            <path d="M8 4.94H8.01" stroke="currentColor" stroke-width="1.2"
+                                                stroke-linecap="round" />
+                                        </svg>
+                                    </button>
+
+                                    <!-- Tooltip -->
+                                    <div x-cloak x-show="tool1" x-transition class="absolute left-1/2 -translate-x-1/2 bottom-full mb-3 z-50
+                           bg-[#F2EFEF] rounded-[10px] px-3 py-3
+                           text-xs leading-[140%] text-center text-Theme-Black
+                           shadow-lg w-[260px] pointer-events-none">
+                                        New records (Contacts, Companies, and Deals)
+                                        will be created only when the respondent
+                                        provides an email address.
+
+                                        <div class="absolute left-1/2 top-full -translate-x-1/2
+                               -translate-y-1 w-2 h-2 bg-[#F2EFEF] rotate-45"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Toggle -->
+                            <button type="button" @click="
+                checked = !checked;
+                tool1 = false;
+            " class="relative w-11 h-6 rounded-full transition-all duration-300"
+                                :class="checked ? 'bg-Theme-Green' : 'bg-[#EDE9E9]'">
+                                <!-- Circle -->
+                                <span
+                                    class="absolute top-[2px] left-[2px] h-5 w-5 rounded-full bg-white transition-all duration-300"
+                                    :class="checked ? 'translate-x-5' : ''"></span>
+
+                                <!-- Left Dot -->
+                                <svg class="absolute left-[10px] top-[10px]"
+                                    :class="checked ? 'text-white' : 'text-[#E2DCDC]'" width="4" height="4"
+                                    viewBox="0 0 4 4" fill="none">
+                                    <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
+                                </svg>
+
+                                <!-- Right Line -->
+                                <svg class="absolute right-[11px] top-[9px]"
+                                    :class="checked ? 'text-[#007D47]' : 'text-white'" width="2" height="6"
+                                    viewBox="0 0 2 6" fill="none">
+                                    <rect width="2" height="6" rx="1" fill="currentColor"></rect>
+                                </svg>
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <!-- Update existing contacts when properties match -->
+                    <div x-data="{
+    checked: false,
+    tool1: false
+}" class="w-full py-[15px] border-b border-[#E9E1E1]">
+
+                        <!-- Header Row -->
+                        <div class="flex items-center justify-between">
+
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-base leading-[140%] font-normal text-Theme-Black">
+                                    Update existing contacts when properties match
+                                </span>
+
+                                <!-- Tooltip -->
+                                <div class="relative flex-shrink-0" @mouseenter="tool1 = true"
+                                    @mouseleave="tool1 = false">
+                                    <button type="button" @click.stop.prevent
+                                        class="text-[#8C8484] hover:text-Theme-Black transition-all duration-300">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2" />
+                                            <path d="M8 7.25V11.17" stroke="currentColor" stroke-width="1.2"
+                                                stroke-linecap="round" />
+                                            <path d="M8 4.94H8.01" stroke="currentColor" stroke-width="1.2"
+                                                stroke-linecap="round" />
+                                        </svg>
+                                    </button>
+
+                                    <div x-show="tool1" x-transition x-cloak
+                                        class="absolute left-1/2 -translate-x-1/2 bottom-full mb-3 z-50 bg-[#F2EFEF] rounded-[10px] px-3 py-3 text-xs leading-[140%] text-center shadow-lg w-[280px]">
+                                        Existing contacts will be updated when the respondent's email address matches a
+                                        contact in HubSpot.
+
+                                        <div
+                                            class="absolute left-1/2 top-full -translate-x-1/2 -translate-y-1 w-2 h-2 bg-[#F2EFEF] rotate-45">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Toggle -->
+                            <button type="button" @click="checked = !checked"
+                                class="relative w-11 h-6 rounded-full transition-all duration-300"
+                                :class="checked ? 'bg-Theme-Green' : 'bg-[#EDE9E9]'">
+                                <span
+                                    class="absolute top-[2px] left-[2px] h-5 w-5 rounded-full bg-white transition-all duration-300"
+                                    :class="checked ? 'translate-x-5' : ''"></span>
+
+                                <svg class="absolute left-[10px] top-[10px]"
+                                    :class="checked ? 'text-white' : 'text-[#E2DCDC]'" width="4" height="4"
+                                    viewBox="0 0 4 4" fill="none">
+                                    <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
+                                </svg>
+
+                                <svg class="absolute right-[11px] top-[9px]"
+                                    :class="checked ? 'text-[#007D47]' : 'text-white'" width="2" height="6"
+                                    viewBox="0 0 2 6" fill="none">
+                                    <rect width="2" height="6" rx="1" fill="currentColor"></rect>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Box Appears When Toggle Is ON -->
+                        <div x-show="checked" x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 -translate-y-2"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-200"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 -translate-y-2" x-cloak
+                            class="mt-3 rounded-10px border border-[#E9E1E1] bg-[#F8F6F6] p-5">
+                            <p class="text-[15px] leading-[18px] text-[#8C8484] mb-5">
+                                Select 1 to 3 properties:
+                            </p>
+
+                            <div class="flex flex-wrap gap-8">
+
+                                <label class="flex items-center gap-2.5 cursor-pointer select-none relative">
+
+                                    <!-- Checkbox -->
+                                    <input type="checkbox"
+                                        class="appearance-none w-5 h-5 bg-[#EDE9E9] rounded-md checked:bg-[#007D47] checked:border-[#007D47] relative z-10"
+                                        checked>
+
+                                    <!-- SVG Checkmark -->
+                                    <div
+                                        class="absolute w-5 h-5 z-10 pointer-events-none checkmark flex items-center justify-center">
+                                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 5L4.333 8.5L11 1.5" stroke="white" stroke-width="1.6"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </div>
+
+                                    <!-- Label text -->
+                                    <span
+                                        class="text-sm font-normal leading-[18px] text-Theme-Black w-[calc(100%-34px)] whitespace-nowrap">
+                                        Annual Revenue
+                                    </span>
+                                </label>
+
+                                <label class="flex items-center gap-2.5 cursor-pointer select-none relative">
+
+                                    <!-- Checkbox -->
+                                    <input type="checkbox"
+                                        class="appearance-none w-5 h-5 bg-[#EDE9E9] rounded-md checked:bg-[#007D47] checked:border-[#007D47] relative z-10 "
+                                        checked>
+
+                                    <!-- SVG Checkmark -->
+                                    <div
+                                        class="absolute w-5 h-5 z-10 pointer-events-none checkmark flex items-center justify-center">
+                                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 5L4.333 8.5L11 1.5" stroke="white" stroke-width="1.6"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </div>
+
+                                    <!-- Label text -->
+                                    <span
+                                        class="text-sm font-normal leading-[18px] text-Theme-Black w-[calc(100%-34px)] whitespace-nowrap">
+                                        Buying Role
+                                    </span>
+                                </label>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Autosave Responses -->
+                    <div x-data="{
+        checked: false,
+        tool1: false
+    }" class="w-full py-[15px] ">
+                        <p class="text-xs leading-[120%] text-[#8C8484] uppercase tracking-[1.2px] mb-5">
+                            Other settings
+                        </p>
+
+                        <div class="flex items-center justify-between mb-2.5">
+
+                            <!-- Left Content -->
+                            <div class="flex items-center gap-1.5">
+
+                                <span class="text-base leading-[140%] font-normal text-Theme-Black">
+                                    Track respondent source
+                                </span>
+
+                                <!-- Tooltip -->
+                                <div class="relative flex-shrink-0 h-max flex items-center justify-center"
+                                    @mouseenter="tool1 = true" @mouseleave="tool1 = false">
+                                    <button type="button" @click.stop.prevent
+                                        class="text-[#8C8484] transition-all duration-300 hover:text-Theme-Black">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2" />
+                                            <path d="M8 7.25V11.17" stroke="currentColor" stroke-width="1.2"
+                                                stroke-linecap="round" />
+                                            <path d="M8 4.94H8.01" stroke="currentColor" stroke-width="1.2"
+                                                stroke-linecap="round" />
+                                        </svg>
+                                    </button>
+
+                                    <!-- Tooltip -->
+                                    <div x-cloak x-show="tool1" x-transition class="absolute left-1/2 -translate-x-1/2 bottom-full mb-3 z-50
+                           bg-[#F2EFEF] rounded-[10px] px-3 py-3
+                           text-xs leading-[140%] text-center text-Theme-Black
+                           shadow-lg w-[260px] pointer-events-none">
+                                        Privacy regulations may require you to inform respondents about the use of
+                                        cookies for tracking purposes.
+
+                                        <div class="absolute left-1/2 top-full -translate-x-1/2
+                               -translate-y-1 w-2 h-2 bg-[#F2EFEF] rotate-45"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Toggle -->
+                            <button type="button" @click="
+                checked = !checked;
+                tool1 = false;
+            " class="relative w-11 h-6 rounded-full transition-all duration-300"
+                                :class="checked ? 'bg-Theme-Green' : 'bg-[#EDE9E9]'">
+                                <!-- Circle -->
+                                <span
+                                    class="absolute top-[2px] left-[2px] h-5 w-5 rounded-full bg-white transition-all duration-300"
+                                    :class="checked ? 'translate-x-5' : ''"></span>
+
+                                <!-- Left Dot -->
+                                <svg class="absolute left-[10px] top-[10px]"
+                                    :class="checked ? 'text-white' : 'text-[#E2DCDC]'" width="4" height="4"
+                                    viewBox="0 0 4 4" fill="none">
+                                    <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
+                                </svg>
+
+                                <!-- Right Line -->
+                                <svg class="absolute right-[11px] top-[9px]"
+                                    :class="checked ? 'text-[#007D47]' : 'text-white'" width="2" height="6"
+                                    viewBox="0 0 2 6" fill="none">
+                                    <rect width="2" height="6" rx="1" fill="currentColor"></rect>
+                                </svg>
+                            </button>
+
+                        </div>
+                        <p class="text-[15px] leading-[30px] text-Theme-Black">
+                            Track where your HubSpot contacts come from by sending source and attribution data. When
+                            embedding your form on a website, <a href="#" class="underline">follow this guide</a>.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ACCESS TAB (placeholder) -->
+            <div x-show="tab==='map'" class="block h-full">
+                <div>
+                    <h3
+                        class="text-base leading-[140%] font-medium text-Theme-Black p-5 border-b border-[#E9E1E1] flex items-center gap-2.5">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_13704_2298)">
+                                <path
+                                    d="M0 2.77778C0 1.24365 1.24365 0 2.77778 0H19.2222C20.7563 0 22 1.24365 22 2.77778V19.2222C22 20.7563 20.7563 22 19.2222 22H2.77778C1.24365 22 0 20.7563 0 19.2222V2.77778Z"
+                                    fill="#FF4800"></path>
+                                <path
+                                    d="M14.7942 8.47693V6.71606C15.2539 6.49906 15.5758 6.03388 15.5758 5.49454V5.45367C15.5758 4.70913 14.9665 4.09984 14.222 4.09984H14.1815C13.437 4.09984 12.8277 4.70913 12.8277 5.45367V5.49454C12.8277 6.0343 13.1496 6.49906 13.6093 6.71606V8.47693C12.925 8.58269 12.2997 8.865 11.784 9.28004L6.94972 5.5194C6.98133 5.39679 7.00366 5.2708 7.00408 5.13849C7.0045 4.29493 6.3219 3.61064 5.47833 3.60938C4.63477 3.60811 3.95048 4.29114 3.94922 5.1347C3.94838 5.97826 4.63098 6.66255 5.47454 6.66381C5.74927 6.66381 6.00377 6.58628 6.22667 6.45945L10.9821 10.1586C10.5776 10.7691 10.3408 11.5002 10.3408 12.2873C10.3408 13.0744 10.6012 13.8737 11.0411 14.5007L9.59502 15.9468C9.48083 15.9127 9.36201 15.8886 9.23644 15.8886C8.5433 15.8886 7.98163 16.4503 7.98163 17.1435C7.98163 17.8366 8.54373 18.3983 9.23644 18.3983C9.92916 18.3983 10.4913 17.8366 10.4913 17.1435C10.4913 17.0179 10.4672 16.8991 10.4331 16.7849L11.8636 15.3544C12.5129 15.8499 13.3215 16.1478 14.2017 16.1478C16.3338 16.1478 18.0622 14.4194 18.0622 12.2873C18.0622 10.357 16.6444 8.76261 14.7942 8.47693ZM14.2013 14.2664C13.1083 14.2664 12.2218 13.3803 12.2218 12.2873C12.2218 11.1943 13.1079 10.3082 14.2013 10.3082C15.2948 10.3082 16.1805 11.1943 16.1805 12.2873C16.1805 13.3803 15.2943 14.2664 14.2013 14.2664Z"
+                                    fill="white"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_13704_2298">
+                                    <rect width="22" height="22" fill="white"></rect>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <span>HubSpot Settings</span>
+                    </h3>
+                </div>
+
+                <div class="p-5 w-full h-full">
+                    <div class="w-full pb-5 border-b border-[#E9E1E1]">
+                        <p class="text-xs leading-[120%] text-[#8C8484] uppercase tracking-[1.2px] mb-5">
+                            map form Data
+                        </p>
+                        <p class="text-base leading-[22px] text-Theme-Black mb-2.5">Map Elements</p>
+                        <div
+                            class="rounded-10px bg-[#F8F6F6] border border-[#E9E1E1] w-full p-5 flex items-center flex-col gap-[15px]">
+                            <div class="w-full flex items-center gap-0">
+                                <!-- ================= DESIGN 7 ================= -->
+                                <div class="custom-dropdown relative w-full max-w-[700px]" data-style="design7">
+                                    <!-- Button -->
+                                    <div
+                                        class="dropdown-button flex items-center justify-between w-full min-h-[40px] px-4 py-[3px] bg-white border border-[#E2DCDC] rounded-10px cursor-pointer">
+                                        <div
+                                            class="selected-option flex items-center gap-3 p-0.5 pr-[15px] border border-[#E9E1E1] rounded-full">
+                                            <!-- Icon -->
+                                            <div
+                                                class="w-auto h-auto rounded-full bg-white flex items-center justify-center shrink-0">
+                                                <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                    <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                        stroke="#000A06" stroke-width="1.2" />
+                                                    <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                </svg>
+                                            </div>
+
+                                            <!-- Text -->
+                                            <span class="selected-text text-sm leading-5 font-normal text-Theme-Black">
+                                                Segment
+                                            </span>
+                                        </div>
+
+                                        <!-- Arrow -->
+                                        <svg class="dropdown-arrow w-4 h-4 text-[#8C8484] transition-all duration-300"
+                                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </div>
+
+                                    <!-- Menu -->
+                                    <div
+                                        class="dropdown-menu hidden absolute left-0 top-full mt-2 w-full bg-white border border-[#E2DCDC] rounded-[14px] shadow-lg overflow-hidden z-50">
+                                        <ul>
+                                            <li class="dropdown-item flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-[#F8F6F6]"
+                                                data-value="Segment">
+                                                <div
+                                                    class="w-auto h-auto rounded-full bg-white flex items-center justify-center">
+                                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                        <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                            stroke="#000A06" stroke-width="1.2" />
+                                                        <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                    </svg>
+                                                </div>
+                                                <span class="text-base text-[#202020]">Segment</span>
+                                            </li>
+
+                                            <li class="dropdown-item flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-[#F8F6F6]"
+                                                data-value="Company">
+                                                <div
+                                                    class="w-auto h-auto rounded-full bg-white flex items-center justify-center">
+                                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                        <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                            stroke="#000A06" stroke-width="1.2" />
+                                                        <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                    </svg>
+                                                </div>
+                                                <span class="text-base text-[#202020]">Company</span>
+                                            </li>
+
+                                            <li class="dropdown-item flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-[#F8F6F6]"
+                                                data-value="Team">
+                                                <div
+                                                    class="w-auto h-auto rounded-full bg-white flex items-center justify-center">
+                                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                        <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                            stroke="#000A06" stroke-width="1.2" />
+                                                        <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                    </svg>
+                                                </div>
+                                                <span class="text-base text-[#202020]">Team</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="w-5 h-px bg-[#E2DCDC] flex-shrink-0"></div>
+                                <!-- ================= DESIGN 1 ================= -->
+                                <div class="custom-dropdown relative w-full max-w-[700px] " data-style="design1">
+                                    <div class="relative">
+                                        <button type="button"
+                                            class="dropdown-button w-full flex justify-between items-center bg-white border border-[#E2DCDC] text-Theme-Black p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
+                                            <span class="selected-option">Select a HubSpot Property</span>
+                                            <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200"
+                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
+
+                                        <div
+                                            class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-10">
+                                            <ul
+                                                class="dropdown-list flex items-center flex-col gap-px w-full bg-[#F8F6F6]">
+                                                <li class="bg-white w-full relative">
+                                                    <div
+                                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center active">
+                                                        <span>Select a HubSpot Property</span>
+                                                    </div>
+                                                    <div
+                                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                    </div>
+                                                </li>
+
+                                                <li class="bg-white w-full relative">
+                                                    <div
+                                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                                        <span>Select a HubSpot Property</span>
+                                                    </div>
+                                                    <div
+                                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full flex items-center gap-0">
+                                <!-- ================= DESIGN 7 ================= -->
+                                <div class="custom-dropdown relative w-full max-w-[700px]" data-style="design7">
+                                    <!-- Button -->
+                                    <div
+                                        class="dropdown-button flex items-center justify-between w-full min-h-[40px] px-4 py-[3px] bg-white border border-[#E2DCDC] rounded-10px cursor-pointer">
+                                        <div
+                                            class="selected-option flex items-center gap-3 p-0.5 pr-[15px] border border-[#E9E1E1] rounded-full">
+                                            <!-- Icon -->
+                                            <div
+                                                class="w-auto h-auto rounded-full bg-white flex items-center justify-center shrink-0">
+                                                <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                    <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                        stroke="#000A06" stroke-width="1.2" />
+                                                    <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                </svg>
+                                            </div>
+
+                                            <!-- Text -->
+                                            <span class="selected-text text-sm leading-5 font-normal text-Theme-Black">
+                                                Score
+                                            </span>
+                                        </div>
+
+                                        <!-- Arrow -->
+                                        <svg class="dropdown-arrow w-4 h-4 text-[#8C8484] transition-all duration-300"
+                                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </div>
+
+                                    <!-- Menu -->
+                                    <div
+                                        class="dropdown-menu hidden absolute left-0 top-full mt-2 w-full bg-white border border-[#E2DCDC] rounded-[14px] shadow-lg overflow-hidden z-50">
+                                        <ul>
+                                            <li class="dropdown-item flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-[#F8F6F6]"
+                                                data-value="Segment">
+                                                <div
+                                                    class="w-auto h-auto rounded-full bg-white flex items-center justify-center">
+                                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                        <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                            stroke="#000A06" stroke-width="1.2" />
+                                                        <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                    </svg>
+                                                </div>
+                                                <span class="text-base text-[#202020]">Segment</span>
+                                            </li>
+
+                                            <li class="dropdown-item flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-[#F8F6F6]"
+                                                data-value="Company">
+                                                <div
+                                                    class="w-auto h-auto rounded-full bg-white flex items-center justify-center">
+                                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                        <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                            stroke="#000A06" stroke-width="1.2" />
+                                                        <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                    </svg>
+                                                </div>
+                                                <span class="text-base text-[#202020]">Company</span>
+                                            </li>
+
+                                            <li class="dropdown-item flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-[#F8F6F6]"
+                                                data-value="Team">
+                                                <div
+                                                    class="w-auto h-auto rounded-full bg-white flex items-center justify-center">
+                                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                        <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                            stroke="#000A06" stroke-width="1.2" />
+                                                        <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                    </svg>
+                                                </div>
+                                                <span class="text-base text-[#202020]">Team</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="w-5 h-px bg-[#E2DCDC] flex-shrink-0"></div>
+                                <!-- ================= DESIGN 1 ================= -->
+                                <div class="custom-dropdown relative w-full max-w-[700px] " data-style="design1">
+                                    <div class="relative">
+                                        <button type="button"
+                                            class="dropdown-button w-full flex justify-between items-center bg-white border border-[#E2DCDC] text-Theme-Black p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
+                                            <span class="selected-option">Select a HubSpot Property</span>
+                                            <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200"
+                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
+
+                                        <div
+                                            class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-10">
+                                            <ul
+                                                class="dropdown-list flex items-center flex-col gap-px w-full bg-[#F8F6F6]">
+                                                <li class="bg-white w-full relative">
+                                                    <div
+                                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center active">
+                                                        <span>Select a HubSpot Property</span>
+                                                    </div>
+                                                    <div
+                                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                    </div>
+                                                </li>
+
+                                                <li class="bg-white w-full relative">
+                                                    <div
+                                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                                        <span>Select a HubSpot Property</span>
+                                                    </div>
+                                                    <div
+                                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full flex items-center gap-0">
+                                <!-- ================= DESIGN 7 ================= -->
+                                <div class="custom-dropdown relative w-full max-w-[700px]" data-style="design7">
+                                    <!-- Button -->
+                                    <div
+                                        class="dropdown-button flex items-center justify-between w-full min-h-[40px] px-4 py-[3px] bg-white border border-[#E2DCDC] rounded-10px cursor-pointer">
+                                        <div
+                                            class="selected-option flex items-center gap-3 p-0.5 pr-[15px] border border-[#E9E1E1] rounded-full">
+                                            <!-- Icon -->
+                                            <div
+                                                class="w-auto h-auto rounded-full bg-white flex items-center justify-center shrink-0">
+                                                <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                    <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                        stroke="#000A06" stroke-width="1.2" />
+                                                    <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                </svg>
+                                            </div>
+
+                                            <!-- Text -->
+                                            <span class="selected-text text-sm leading-5 font-normal text-Theme-Black">
+                                                Submitted at
+                                            </span>
+                                        </div>
+
+                                        <!-- Arrow -->
+                                        <svg class="dropdown-arrow w-4 h-4 text-[#8C8484] transition-all duration-300"
+                                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </div>
+
+                                    <!-- Menu -->
+                                    <div
+                                        class="dropdown-menu hidden absolute left-0 top-full mt-2 w-full bg-white border border-[#E2DCDC] rounded-[14px] shadow-lg overflow-hidden z-50">
+                                        <ul>
+                                            <li class="dropdown-item flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-[#F8F6F6]"
+                                                data-value="Segment">
+                                                <div
+                                                    class="w-auto h-auto rounded-full bg-white flex items-center justify-center">
+                                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                        <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                            stroke="#000A06" stroke-width="1.2" />
+                                                        <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                    </svg>
+                                                </div>
+                                                <span class="text-base text-[#202020]">Segment</span>
+                                            </li>
+
+                                            <li class="dropdown-item flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-[#F8F6F6]"
+                                                data-value="Company">
+                                                <div
+                                                    class="w-auto h-auto rounded-full bg-white flex items-center justify-center">
+                                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                        <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                            stroke="#000A06" stroke-width="1.2" />
+                                                        <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                    </svg>
+                                                </div>
+                                                <span class="text-base text-[#202020]">Company</span>
+                                            </li>
+
+                                            <li class="dropdown-item flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-[#F8F6F6]"
+                                                data-value="Team">
+                                                <div
+                                                    class="w-auto h-auto rounded-full bg-white flex items-center justify-center">
+                                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                        <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                            stroke="#000A06" stroke-width="1.2" />
+                                                        <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                    </svg>
+                                                </div>
+                                                <span class="text-base text-[#202020]">Team</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="w-5 h-px bg-[#E2DCDC] flex-shrink-0"></div>
+                                <!-- ================= DESIGN 1 ================= -->
+                                <div class="custom-dropdown relative w-full max-w-[700px] " data-style="design1">
+                                    <div class="relative">
+                                        <button type="button"
+                                            class="dropdown-button w-full flex justify-between items-center bg-white border border-[#E2DCDC] text-Theme-Black p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
+                                            <span class="selected-option">Select a HubSpot Property</span>
+                                            <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200"
+                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
+
+                                        <div
+                                            class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-10">
+                                            <ul
+                                                class="dropdown-list flex items-center flex-col gap-px w-full bg-[#F8F6F6]">
+                                                <li class="bg-white w-full relative">
+                                                    <div
+                                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center active">
+                                                        <span>Select a HubSpot Property</span>
+                                                    </div>
+                                                    <div
+                                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                    </div>
+                                                </li>
+
+                                                <li class="bg-white w-full relative">
+                                                    <div
+                                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                                        <span>Select a HubSpot Property</span>
+                                                    </div>
+                                                    <div
+                                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full flex items-center gap-0">
+                                <!-- ================= DESIGN 7 ================= -->
+                                <div class="custom-dropdown relative w-full max-w-[700px]" data-style="design7">
+                                    <!-- Button -->
+                                    <div
+                                        class="dropdown-button flex items-center justify-between w-full min-h-[40px] px-4 py-[3px] bg-white border border-[#E2DCDC] rounded-10px cursor-pointer">
+                                        <div
+                                            class="selected-option flex items-center gap-3 p-0.5 pr-[15px] border border-[#E9E1E1] rounded-full">
+                                            <!-- Icon -->
+                                            <div
+                                                class="w-auto h-auto rounded-full bg-white flex items-center justify-center shrink-0">
+                                                <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                    <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                        stroke="#000A06" stroke-width="1.2" />
+                                                    <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                    <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                        stroke-width="1.2" />
+                                                </svg>
+                                            </div>
+
+                                            <!-- Text -->
+                                            <span class="selected-text text-sm leading-5 font-normal text-Theme-Black">
+                                                Token
+                                            </span>
+                                        </div>
+
+                                        <!-- Arrow -->
+                                        <svg class="dropdown-arrow w-4 h-4 text-[#8C8484] transition-all duration-300"
+                                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </div>
+
+                                    <!-- Menu -->
+                                    <div
+                                        class="dropdown-menu hidden absolute left-0 top-full mt-2 w-full bg-white border border-[#E2DCDC] rounded-[14px] shadow-lg overflow-hidden z-50">
+                                        <ul>
+                                            <li class="dropdown-item flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-[#F8F6F6]"
+                                                data-value="Segment">
+                                                <div
+                                                    class="w-auto h-auto rounded-full bg-white flex items-center justify-center">
+                                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                        <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                            stroke="#000A06" stroke-width="1.2" />
+                                                        <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                    </svg>
+                                                </div>
+                                                <span class="text-base text-[#202020]">Segment</span>
+                                            </li>
+
+                                            <li class="dropdown-item flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-[#F8F6F6]"
+                                                data-value="Company">
+                                                <div
+                                                    class="w-auto h-auto rounded-full bg-white flex items-center justify-center">
+                                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                        <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                            stroke="#000A06" stroke-width="1.2" />
+                                                        <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                    </svg>
+                                                </div>
+                                                <span class="text-base text-[#202020]">Company</span>
+                                            </li>
+
+                                            <li class="dropdown-item flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-[#F8F6F6]"
+                                                data-value="Team">
+                                                <div
+                                                    class="w-auto h-auto rounded-full bg-white flex items-center justify-center">
+                                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="26" height="26" rx="13" fill="#EDE9E9" />
+                                                        <rect x="7.75" y="6" width="10.5" height="14" rx="1.75"
+                                                            stroke="#000A06" stroke-width="1.2" />
+                                                        <path d="M7.75 10.375L13 10.375L18.25 10.375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="10.8125" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="13.4375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                        <circle cx="15.1875" cy="16.9375" r="0.4375" stroke="#000A06"
+                                                            stroke-width="1.2" />
+                                                    </svg>
+                                                </div>
+                                                <span class="text-base text-[#202020]">Team</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="w-5 h-px bg-[#E2DCDC] flex-shrink-0"></div>
+                                <!-- ================= DESIGN 1 ================= -->
+                                <div class="custom-dropdown relative w-full max-w-[700px] " data-style="design1">
+                                    <div class="relative">
+                                        <button type="button"
+                                            class="dropdown-button w-full flex justify-between items-center bg-white border border-[#E2DCDC] text-Theme-Black p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
+                                            <span class="selected-option">Select a HubSpot Property</span>
+                                            <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200"
+                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
+
+                                        <div
+                                            class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-10">
+                                            <ul
+                                                class="dropdown-list flex items-center flex-col gap-px w-full bg-[#F8F6F6]">
+                                                <li class="bg-white w-full relative">
+                                                    <div
+                                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center active">
+                                                        <span>Select a HubSpot Property</span>
+                                                    </div>
+                                                    <div
+                                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                    </div>
+                                                </li>
+
+                                                <li class="bg-white w-full relative">
+                                                    <div
+                                                        class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                                        <span>Select a HubSpot Property</span>
+                                                    </div>
+                                                    <div
+                                                        class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full py-5">
+                        <p class="text-xs leading-[120%] text-[#8C8484] uppercase tracking-[1.2px] mb-5">
+                            Map form fields
+                        </p>
+                        <p class="text-base leading-[22px] text-Theme-Black mb-2.5">Required Form Fields</p>
+
+                        <div class="border border-[#E9E1E1] rounded-10px w-full h-auto mb-4">
+                            <div class="flex items-center justify-between p-2.5 pr-[15px] border-b border-[#E2DCDC]">
+                                <div class="flex items-center gap-[15px]">
+                                    <span
+                                        class="w-10 aspect-square rounded-10px bg-[#F2EFEF] flex items-center justify-center">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="1" y="2.5" width="18" height="15" rx="2" fill="#CAEADC"
+                                                stroke="#007D47" stroke-width="1.5" />
+                                            <path
+                                                d="M4.375 6.78125L8.875 10.2098C9.53955 10.7161 10.4605 10.7161 11.125 10.2098L15.625 6.78125"
+                                                stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+
+                                    </span>
+                                    <h3 class="text-base leading-140 font-medium text-Theme-Black">Email</h3>
+                                </div>
+                                <span
+                                    class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#CAEADC] text-[15px] font-semibold leading-[160%] text-[#007D47]">1</span>
+                            </div>
+                            <div class="py-5 w-full">
+                                <div class="px-5 w-full flex items-end gap-2.5">
+                                    <div class="custom-dropdown relative w-full" data-style="design2"
+                                        data-copy-html="true">
+                                        <div class="relative w-full">
+                                            <label for="" class="text-[15px] leading-120 text-[#8C8484]">Map to</label>
+                                            <button id="dropdownButton" type="button"
+                                                class="dropdown-button w-full mt-[5px] flex justify-between items-center border border-[#E2DCDC] bg-[#F8F6F6] rounded-[10px] px-[15px] py-2.5 transition-all duration-500 hover:bg-white focus:outline-none focus:border-Theme-Green">
+                                                <div id="selectedOption"
+                                                    class="selected-option flex items-center gap-[15px] text-[15px] leading-120 font-medium text-[#8C8484]">
+                                                    <p class="flex items-center gap-2.5">Select a HubSpot Property</p>
+                                                </div>
+                                                <svg class="dropdown-arrow w-4 h-4 text-gray-500" fill="none"
+                                                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M19 9l-7 7-7-7"></path>
+                                                </svg>
+                                            </button>
+
+                                            <div id="dropdownMenu"
+                                                class="dropdown-menu hidden absolute p-[5px] z-10 mt-[5px] w-full bg-white border border-gray-200 rounded-[10px] shadow-soft">
+                                                <!-- Search -->
+                                                <div class="relative mb-2">
+                                                    <svg class="absolute top-2.5 left-2.5" width="20" height="20"
+                                                        viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M9.34375 15.6875C12.8473 15.6875 15.6875 12.8473 15.6875 9.34375C15.6875 5.84019 12.8473 3 9.34375 3C5.84019 3 3 5.84019 3 9.34375C3 12.8473 5.84019 15.6875 9.34375 15.6875Z"
+                                                            stroke="#8C8484" stroke-width="1.2" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path>
+                                                        <path d="M17 17L15.25 15.25" stroke="#8C8484" stroke-width="1.2"
+                                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                                    </svg>
+                                                    <input type="text" placeholder="Search..."
+                                                        class="dropdown-search w-full p-2.5 pl-10 rounded-[10px] focus:outline-none bg-[#EDE9E9] placeholder:text-[#8C8484] text-sm leading-140 text-Theme-Black">
+                                                </div>
+
+                                                <ul class="dropdown-list text-sm flex flex-col gap-px bg-[#F8F6F6]">
+                                                    <li
+                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                        <span
+                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">1</span>
+                                                        <p
+                                                            class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                            <!-- svg + label identical to original -->
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <ellipse cx="10.0009" cy="4.78947" rx="3.73333"
+                                                                    ry="3.78947" stroke="#000A06" stroke-width="1.5">
+                                                                </ellipse>
+                                                                <path
+                                                                    d="M10 11C7.16745 11 4.70165 12.6749 3.4256 15.147C2.76004 16.4363 2.42726 17.081 3.01177 18.0405C3.59628 19 4.56419 19 6.5 19H13.5C15.4358 19 16.4037 19 16.9882 18.0405C17.5727 17.081 17.24 16.4363 16.5744 15.147C15.2984 12.6749 12.8326 11 10 11Z"
+                                                                    fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linejoin="round"></path>
+                                                            </svg>
+                                                            Full Name
+                                                        </p>
+                                                        <div
+                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                        </div>
+                                                    </li>
+
+                                                    <li
+                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                        <span
+                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">2</span>
+                                                        <p
+                                                            class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <rect x="1" y="2.5" width="18" height="15" rx="2"
+                                                                    fill="#CAEADC" stroke="#007D47" stroke-width="1.5">
+                                                                </rect>
+                                                                <path
+                                                                    d="M4.375 6.78516L8.875 10.2137C9.53955 10.72 10.4605 10.72 11.125 10.2137L15.625 6.78516"
+                                                                    stroke="#000A06" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                </path>
+                                                            </svg>
+                                                            Email Address
+                                                        </p>
+                                                        <div
+                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                        </div>
+                                                    </li>
+
+                                                    <li
+                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                        <span
+                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">3</span>
+                                                        <p
+                                                            class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M18.973 15.697C18.973 16.021 18.901 16.354 18.748 16.678C18.595 17.002 18.397 17.308 18.136 17.596C17.695 18.082 17.209 18.433 16.66 18.658C16.12 18.883 15.535 19 14.905 19C13.987 19 13.006 18.784 11.971 18.343C10.936 17.902 9.901 17.308 8.875 16.561C7.84 15.805 6.859 14.968 5.923 14.041C4.996 13.105 4.159 12.124 3.412 11.098C2.674 10.072 2.08 9.046 1.648 8.029C1.216 7.003 1 6.022 1 5.086C1 4.474 1.108 3.889 1.324 3.349C1.54 2.8 1.882 2.296 2.359 1.846C2.935 1.279 3.565 1 4.231 1C4.483 1 4.735 1.054 4.96 1.162C5.194 1.27 5.401 1.432 5.563 1.666L7.651 4.609C7.813 4.834 7.93 5.041 8.011 5.239C8.092 5.428 8.137 5.617 8.137 5.788C8.137 6.004 8.074 6.22 7.948 6.427C7.831 6.634 7.66 6.85 7.444 7.066L6.76 7.777C6.661 7.876 6.616 7.993 6.616 8.137C6.616 8.209 6.625 8.272 6.643 8.344C6.67 8.416 6.697 8.47 6.715 8.524C6.877 8.821 7.156 9.208 7.552 9.676C7.957 10.144 8.389 10.621 8.857 11.098C9.343 11.575 9.811 12.016 10.288 12.421C10.756 12.817 11.143 13.087 11.449 13.249C11.494 13.267 11.548 13.294 11.611 13.321C11.683 13.348 11.755 13.357 11.836 13.357C11.989 13.357 12.106 13.303 12.205 13.204L12.889 12.529C13.114 12.304 13.33 12.133 13.537 12.025C13.744 11.899 13.951 11.836 14.176 11.836C14.347 11.836 14.527 11.872 14.725 11.953C14.923 12.034 15.13 12.151 15.355 12.304L18.334 14.419C18.568 14.581 18.73 14.77 18.829 14.995C18.919 15.22 18.973 15.445 18.973 15.697Z"
+                                                                    fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-miterlimit="10"></path>
+                                                                <path
+                                                                    d="M15.8492 7.30039C15.8492 6.76039 15.4262 5.93239 14.7962 5.25739C14.2202 4.63639 13.4552 4.15039 12.6992 4.15039"
+                                                                    stroke="#000A06" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                </path>
+                                                                <path d="M18.9992 7.3C18.9992 3.817 16.1822 1 12.6992 1"
+                                                                    stroke="#000A06" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                </path>
+                                                            </svg>
+                                                            Phone Number
+                                                        </p>
+                                                        <div
+                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                        </div>
+                                                    </li>
+
+                                                    <li
+                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                        <span
+                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">4</span>
+                                                        <p
+                                                            class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M9.24414 3.25V4H10.7441V3.25H9.99414H9.24414ZM10.7441 1C10.7441 0.585786 10.4084 0.25 9.99414 0.25C9.57993 0.25 9.24414 0.585786 9.24414 1H9.99414H10.7441ZM9.99414 3.25H10.7441V1H9.99414H9.24414V3.25H9.99414Z"
+                                                                    fill="#007D47"></path>
+                                                                <path
+                                                                    d="M9.24414 19C9.24414 19.4142 9.57993 19.75 9.99414 19.75C10.4084 19.75 10.7441 19.4142 10.7441 19H9.99414H9.24414ZM10.7441 16.75V16H9.24414V16.75H9.99414H10.7441ZM9.99414 19H10.7441V16.75H9.99414H9.24414V19H9.99414Z"
+                                                                    fill="#007D47"></path>
+                                                                <path
+                                                                    d="M16.75 9.24414L16 9.24414L16 10.7441L16.75 10.7441L16.75 9.99414L16.75 9.24414ZM19 10.7441C19.4142 10.7441 19.75 10.4084 19.75 9.99414C19.75 9.57993 19.4142 9.24414 19 9.24414L19 9.99414L19 10.7441ZM16.75 9.99414L16.75 10.7441L19 10.7441L19 9.99414L19 9.24414L16.75 9.24414L16.75 9.99414Z"
+                                                                    fill="#007D47"></path>
+                                                                <path
+                                                                    d="M1 9.24414C0.585786 9.24414 0.25 9.57993 0.25 9.99414C0.25 10.4084 0.585786 10.7441 1 10.7441L1 9.99414L1 9.24414ZM3.25 10.7441L4 10.7441L4 9.24414L3.25 9.24414L3.25 9.99414L3.25 10.7441ZM1 9.99414L1 10.7441L3.25 10.7441L3.25 9.99414L3.25 9.24414L1 9.24414L1 9.99414Z"
+                                                                    fill="#007D47"></path>
+                                                                <circle cx="9.99414" cy="10" r="6.75" fill="#CAEADC"
+                                                                    stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linejoin="round"></circle>
+                                                                <circle cx="9.99414" cy="10" r="2.25" stroke="#000A06"
+                                                                    stroke-width="1.5" stroke-linejoin="round"></circle>
+                                                            </svg>
+                                                            Address
+                                                        </p>
+                                                        <div
+                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                        </div>
+                                                    </li>
+
+                                                    <li
+                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                        <span
+                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">5</span>
+                                                        <p
+                                                            class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M4.03763 1.53846C4.46535 0.820513 5.53465 0.820512 5.96237 1.53846L8.84946 6.38461C9.27718 7.10256 8.74254 8 7.8871 8H2.1129C1.25747 8 0.722818 7.10256 1.15054 6.38462L4.03763 1.53846Z"
+                                                                    fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linejoin="round"></path>
+                                                                <circle cx="5" cy="15" r="4" stroke="#000A06"
+                                                                    stroke-width="1.5" stroke-linejoin="round"></circle>
+                                                                <path d="M12 3L19 3" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                </path>
+                                                                <path d="M12 13L19 13" stroke="#000A06"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round"></path>
+                                                                <path d="M12 6L15 6" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                </path>
+                                                                <path d="M12 16L15 16" stroke="#000A06"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round"></path>
+                                                            </svg>
+                                                            Multiple Selection
+                                                        </p>
+                                                        <div
+                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                        </div>
+                                                    </li>
+
+                                                    <li
+                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                        <span
+                                                            class="w-5 aspect-square rounded-full flex items-center justify-center opacity-0 bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">5</span>
+                                                        <p
+                                                            class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M5 3L5 17" stroke="black" stroke-width="1.5"
+                                                                    stroke-linecap="round"></path>
+                                                                <path d="M1 5L1 15" stroke="black" stroke-width="1.5"
+                                                                    stroke-linecap="round"></path>
+                                                                <path
+                                                                    d="M19 6.27922C19 4.70946 19 3.92459 18.5467 3.37163C18.0934 2.81867 17.3237 2.66475 15.7845 2.35689L13.7845 1.95689C11.5709 1.51417 10.464 1.29281 9.73202 1.89292C9 2.49304 9 3.62176 9 5.87922V14.1208C9 16.3782 9 17.507 9.73202 18.1071C10.464 18.7072 11.5709 18.4858 13.7845 18.0431L15.7845 17.6431C17.3237 17.3353 18.0934 17.1813 18.5467 16.6284C19 16.0754 19 15.2905 19 13.7208V6.27922Z"
+                                                                    fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linejoin="round"></path>
+                                                            </svg>
+                                                            Default Ending
+                                                        </p>
+                                                        <div
+                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="!w-10 !h-10 rounded-full flex items-center justify-center bg-[#F8F1F1] transition-all duration-500 hover:bg-[#E2DCDC] hover:text-white">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M17.6758 8.8564C19.2008 7.33135 18.9745 4.63243 17.1703 2.82821C15.3661 1.024 12.6672 0.797684 11.1421 2.32273L8.68362 4.78128L11.9504 8.04808L15.2172 11.3149L17.6758 8.8564Z"
+                                                fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M17.4922 2.5L18.7642 1.22797" stroke="#726B6B" stroke-width="1.5"
+                                                stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M6.91406 10.8047L8.68183 9.03692" stroke="#000A06"
+                                                stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M9.20312 13.0938L10.9709 11.326" stroke="#000A06"
+                                                stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path
+                                                d="M2.82933 17.1653C1.02512 15.3611 0.798809 12.6621 2.32386 11.1371L4.78237 8.67857L11.316 15.2122L8.85753 17.6707C7.33248 19.1958 4.63355 18.9695 2.82933 17.1653Z"
+                                                stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M2.49545 17.485L1.22266 18.7578" stroke="#000A06"
+                                                stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border border-[#E9E1E1] rounded-10px w-full h-auto mb-4">
+                            <div class="flex items-center justify-between p-2.5 pr-[15px] border-b border-[#E2DCDC]">
+                                <div class="flex items-center gap-[15px]">
+                                    <span
+                                        class="w-10 aspect-square rounded-10px bg-[#F2EFEF] flex items-center justify-center">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="10" cy="10" r="9" fill="#CAEADC" stroke="#007D47"
+                                                stroke-width="1.5" stroke-linejoin="round" />
+                                            <path d="M14 8L10 12L6 8" stroke="#000A06" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
+                                    </span>
+                                    <h3 class="text-base leading-140 font-medium text-Theme-Black">Lead Status</h3>
+                                </div>
+                                <span
+                                    class="w-[30px] aspect-square rounded-full flex items-center justify-center bg-[#CAEADC] text-[15px] font-semibold leading-[160%] text-[#007D47]">2</span>
+                            </div>
+                            <div class="py-5 w-full">
+                                <div class="px-5 w-full flex items-end gap-2.5">
+                                    <div class="custom-dropdown relative w-full" data-style="design2"
+                                        data-copy-html="true">
+                                        <div class="relative w-full">
+                                            <label for="" class="text-[15px] leading-120 text-[#8C8484]">Map to</label>
+                                            <button id="dropdownButton" type="button"
+                                                class="dropdown-button w-full mt-[5px] flex justify-between items-center border border-[#E2DCDC] bg-[#F8F6F6] rounded-[10px] px-[15px] py-2.5 transition-all duration-500 hover:bg-white focus:outline-none focus:border-Theme-Green">
+                                                <div id="selectedOption"
+                                                    class="selected-option flex items-center gap-[15px] text-[15px] leading-120 font-medium text-[#8C8484]">
+                                                    <p class="flex items-center gap-2.5">Select a HubSpot Property</p>
+                                                </div>
+                                                <svg class="dropdown-arrow w-4 h-4 text-gray-500" fill="none"
+                                                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M19 9l-7 7-7-7"></path>
+                                                </svg>
+                                            </button>
+
+                                            <div id="dropdownMenu"
+                                                class="dropdown-menu hidden absolute p-[5px] z-10 mt-[5px] w-full bg-white border border-gray-200 rounded-[10px] shadow-soft">
+                                                <!-- Search -->
+                                                <div class="relative mb-2">
+                                                    <svg class="absolute top-2.5 left-2.5" width="20" height="20"
+                                                        viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M9.34375 15.6875C12.8473 15.6875 15.6875 12.8473 15.6875 9.34375C15.6875 5.84019 12.8473 3 9.34375 3C5.84019 3 3 5.84019 3 9.34375C3 12.8473 5.84019 15.6875 9.34375 15.6875Z"
+                                                            stroke="#8C8484" stroke-width="1.2" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path>
+                                                        <path d="M17 17L15.25 15.25" stroke="#8C8484" stroke-width="1.2"
+                                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                                    </svg>
+                                                    <input type="text" placeholder="Search..."
+                                                        class="dropdown-search w-full p-2.5 pl-10 rounded-[10px] focus:outline-none bg-[#EDE9E9] placeholder:text-[#8C8484] text-sm leading-140 text-Theme-Black">
+                                                </div>
+
+                                                <ul class="dropdown-list text-sm flex flex-col gap-px bg-[#F8F6F6]">
+                                                    <li
+                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                        <span
+                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">1</span>
+                                                        <p
+                                                            class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                            <!-- svg + label identical to original -->
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <ellipse cx="10.0009" cy="4.78947" rx="3.73333"
+                                                                    ry="3.78947" stroke="#000A06" stroke-width="1.5">
+                                                                </ellipse>
+                                                                <path
+                                                                    d="M10 11C7.16745 11 4.70165 12.6749 3.4256 15.147C2.76004 16.4363 2.42726 17.081 3.01177 18.0405C3.59628 19 4.56419 19 6.5 19H13.5C15.4358 19 16.4037 19 16.9882 18.0405C17.5727 17.081 17.24 16.4363 16.5744 15.147C15.2984 12.6749 12.8326 11 10 11Z"
+                                                                    fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linejoin="round"></path>
+                                                            </svg>
+                                                            Full Name
+                                                        </p>
+                                                        <div
+                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                        </div>
+                                                    </li>
+
+                                                    <li
+                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                        <span
+                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">2</span>
+                                                        <p
+                                                            class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <rect x="1" y="2.5" width="18" height="15" rx="2"
+                                                                    fill="#CAEADC" stroke="#007D47" stroke-width="1.5">
+                                                                </rect>
+                                                                <path
+                                                                    d="M4.375 6.78516L8.875 10.2137C9.53955 10.72 10.4605 10.72 11.125 10.2137L15.625 6.78516"
+                                                                    stroke="#000A06" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                </path>
+                                                            </svg>
+                                                            Email Address
+                                                        </p>
+                                                        <div
+                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                        </div>
+                                                    </li>
+
+                                                    <li
+                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                        <span
+                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">3</span>
+                                                        <p
+                                                            class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M18.973 15.697C18.973 16.021 18.901 16.354 18.748 16.678C18.595 17.002 18.397 17.308 18.136 17.596C17.695 18.082 17.209 18.433 16.66 18.658C16.12 18.883 15.535 19 14.905 19C13.987 19 13.006 18.784 11.971 18.343C10.936 17.902 9.901 17.308 8.875 16.561C7.84 15.805 6.859 14.968 5.923 14.041C4.996 13.105 4.159 12.124 3.412 11.098C2.674 10.072 2.08 9.046 1.648 8.029C1.216 7.003 1 6.022 1 5.086C1 4.474 1.108 3.889 1.324 3.349C1.54 2.8 1.882 2.296 2.359 1.846C2.935 1.279 3.565 1 4.231 1C4.483 1 4.735 1.054 4.96 1.162C5.194 1.27 5.401 1.432 5.563 1.666L7.651 4.609C7.813 4.834 7.93 5.041 8.011 5.239C8.092 5.428 8.137 5.617 8.137 5.788C8.137 6.004 8.074 6.22 7.948 6.427C7.831 6.634 7.66 6.85 7.444 7.066L6.76 7.777C6.661 7.876 6.616 7.993 6.616 8.137C6.616 8.209 6.625 8.272 6.643 8.344C6.67 8.416 6.697 8.47 6.715 8.524C6.877 8.821 7.156 9.208 7.552 9.676C7.957 10.144 8.389 10.621 8.857 11.098C9.343 11.575 9.811 12.016 10.288 12.421C10.756 12.817 11.143 13.087 11.449 13.249C11.494 13.267 11.548 13.294 11.611 13.321C11.683 13.348 11.755 13.357 11.836 13.357C11.989 13.357 12.106 13.303 12.205 13.204L12.889 12.529C13.114 12.304 13.33 12.133 13.537 12.025C13.744 11.899 13.951 11.836 14.176 11.836C14.347 11.836 14.527 11.872 14.725 11.953C14.923 12.034 15.13 12.151 15.355 12.304L18.334 14.419C18.568 14.581 18.73 14.77 18.829 14.995C18.919 15.22 18.973 15.445 18.973 15.697Z"
+                                                                    fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-miterlimit="10"></path>
+                                                                <path
+                                                                    d="M15.8492 7.30039C15.8492 6.76039 15.4262 5.93239 14.7962 5.25739C14.2202 4.63639 13.4552 4.15039 12.6992 4.15039"
+                                                                    stroke="#000A06" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                </path>
+                                                                <path d="M18.9992 7.3C18.9992 3.817 16.1822 1 12.6992 1"
+                                                                    stroke="#000A06" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                </path>
+                                                            </svg>
+                                                            Phone Number
+                                                        </p>
+                                                        <div
+                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                        </div>
+                                                    </li>
+
+                                                    <li
+                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                        <span
+                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">4</span>
+                                                        <p
+                                                            class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M9.24414 3.25V4H10.7441V3.25H9.99414H9.24414ZM10.7441 1C10.7441 0.585786 10.4084 0.25 9.99414 0.25C9.57993 0.25 9.24414 0.585786 9.24414 1H9.99414H10.7441ZM9.99414 3.25H10.7441V1H9.99414H9.24414V3.25H9.99414Z"
+                                                                    fill="#007D47"></path>
+                                                                <path
+                                                                    d="M9.24414 19C9.24414 19.4142 9.57993 19.75 9.99414 19.75C10.4084 19.75 10.7441 19.4142 10.7441 19H9.99414H9.24414ZM10.7441 16.75V16H9.24414V16.75H9.99414H10.7441ZM9.99414 19H10.7441V16.75H9.99414H9.24414V19H9.99414Z"
+                                                                    fill="#007D47"></path>
+                                                                <path
+                                                                    d="M16.75 9.24414L16 9.24414L16 10.7441L16.75 10.7441L16.75 9.99414L16.75 9.24414ZM19 10.7441C19.4142 10.7441 19.75 10.4084 19.75 9.99414C19.75 9.57993 19.4142 9.24414 19 9.24414L19 9.99414L19 10.7441ZM16.75 9.99414L16.75 10.7441L19 10.7441L19 9.99414L19 9.24414L16.75 9.24414L16.75 9.99414Z"
+                                                                    fill="#007D47"></path>
+                                                                <path
+                                                                    d="M1 9.24414C0.585786 9.24414 0.25 9.57993 0.25 9.99414C0.25 10.4084 0.585786 10.7441 1 10.7441L1 9.99414L1 9.24414ZM3.25 10.7441L4 10.7441L4 9.24414L3.25 9.24414L3.25 9.99414L3.25 10.7441ZM1 9.99414L1 10.7441L3.25 10.7441L3.25 9.99414L3.25 9.24414L1 9.24414L1 9.99414Z"
+                                                                    fill="#007D47"></path>
+                                                                <circle cx="9.99414" cy="10" r="6.75" fill="#CAEADC"
+                                                                    stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linejoin="round"></circle>
+                                                                <circle cx="9.99414" cy="10" r="2.25" stroke="#000A06"
+                                                                    stroke-width="1.5" stroke-linejoin="round"></circle>
+                                                            </svg>
+                                                            Address
+                                                        </p>
+                                                        <div
+                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                        </div>
+                                                    </li>
+
+                                                    <li
+                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                        <span
+                                                            class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">5</span>
+                                                        <p
+                                                            class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M4.03763 1.53846C4.46535 0.820513 5.53465 0.820512 5.96237 1.53846L8.84946 6.38461C9.27718 7.10256 8.74254 8 7.8871 8H2.1129C1.25747 8 0.722818 7.10256 1.15054 6.38462L4.03763 1.53846Z"
+                                                                    fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linejoin="round"></path>
+                                                                <circle cx="5" cy="15" r="4" stroke="#000A06"
+                                                                    stroke-width="1.5" stroke-linejoin="round"></circle>
+                                                                <path d="M12 3L19 3" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                </path>
+                                                                <path d="M12 13L19 13" stroke="#000A06"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round"></path>
+                                                                <path d="M12 6L15 6" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                </path>
+                                                                <path d="M12 16L15 16" stroke="#000A06"
+                                                                    stroke-width="1.5" stroke-linecap="round"
+                                                                    stroke-linejoin="round"></path>
+                                                            </svg>
+                                                            Multiple Selection
+                                                        </p>
+                                                        <div
+                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                        </div>
+                                                    </li>
+
+                                                    <li
+                                                        class="dropdown-item flex items-center gap-[15px] p-[15px] cursor-pointer relative bg-white">
+                                                        <span
+                                                            class="w-5 aspect-square rounded-full flex items-center justify-center opacity-0 bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">5</span>
+                                                        <p
+                                                            class="flex items-center gap-2.5 text-[15px] leading-120 font-medium text-Theme-Black">
+                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M5 3L5 17" stroke="black" stroke-width="1.5"
+                                                                    stroke-linecap="round"></path>
+                                                                <path d="M1 5L1 15" stroke="black" stroke-width="1.5"
+                                                                    stroke-linecap="round"></path>
+                                                                <path
+                                                                    d="M19 6.27922C19 4.70946 19 3.92459 18.5467 3.37163C18.0934 2.81867 17.3237 2.66475 15.7845 2.35689L13.7845 1.95689C11.5709 1.51417 10.464 1.29281 9.73202 1.89292C9 2.49304 9 3.62176 9 5.87922V14.1208C9 16.3782 9 17.507 9.73202 18.1071C10.464 18.7072 11.5709 18.4858 13.7845 18.0431L15.7845 17.6431C17.3237 17.3353 18.0934 17.1813 18.5467 16.6284C19 16.0754 19 15.2905 19 13.7208V6.27922Z"
+                                                                    fill="#CAEADC" stroke="#007D47" stroke-width="1.5"
+                                                                    stroke-linejoin="round"></path>
+                                                            </svg>
+                                                            Default Ending
+                                                        </p>
+                                                        <div
+                                                            class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg pointer-events-none">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="!w-10 !h-10 rounded-full flex items-center justify-center bg-[#F8F1F1] transition-all duration-500 hover:bg-[#E2DCDC] hover:text-white">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M17.6758 8.8564C19.2008 7.33135 18.9745 4.63243 17.1703 2.82821C15.3661 1.024 12.6672 0.797684 11.1421 2.32273L8.68362 4.78128L11.9504 8.04808L15.2172 11.3149L17.6758 8.8564Z"
+                                                fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M17.4922 2.5L18.7642 1.22797" stroke="#726B6B" stroke-width="1.5"
+                                                stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M6.91406 10.8047L8.68183 9.03692" stroke="#000A06"
+                                                stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M9.20312 13.0938L10.9709 11.326" stroke="#000A06"
+                                                stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path
+                                                d="M2.82933 17.1653C1.02512 15.3611 0.798809 12.6621 2.32386 11.1371L4.78237 8.67857L11.316 15.2122L8.85753 17.6707C7.33248 19.1958 4.63355 18.9695 2.82933 17.1653Z"
+                                                stroke="#000A06" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M2.49545 17.485L1.22266 18.7578" stroke="#000A06"
+                                                stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="px-5 pb-5 w-full">
+                                <svg class="w-full h-auto" width="866" height="11" viewBox="0 0 866 11" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0 0.5L422.172 0.5C422.702 0.5 423.211 0.710714 423.586 1.08579L431.586 9.08579C432.367 9.86684 433.633 9.86683 434.414 9.08579L442.414 1.08579C442.789 0.710713 443.298 0.5 443.828 0.5L866 0.5"
+                                        stroke="#E2DCDC" />
+                                </svg>
+
+                                <div x-data="{ open: false, selected: 'Map Answer Choices' }" class="relative w-full ">
+                                    <!-- Trigger -->
+                                    <button @click="open = !open" type="button"
+                                        class="w-full flex items-center justify-between px-0 py-2.5 bg-white ">
+                                        <span x-text="selected"></span>
+                                        <svg :class="open ? '' : 'rotate-180'" width="20" height="20"
+                                            viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M5 12.5L10 7.5L15 12.5" stroke="#000A06" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
+                                    </button>
+
+                                    <!-- Dropdown -->
+                                    <div x-show="open" @click.outside="open = false" x-transition
+                                        class="relative left-0 top-full mt-2 w-full bg-white overflow-visible z-50">
+                                        <div class="w-full flex items-center gap-0">
+                                            <!-- ================= DESIGN 7 ================= -->
+                                            <div class="custom-dropdown relative w-full max-w-[700px]"
+                                                data-style="design7">
+                                                <!-- Button -->
+                                                <div
+                                                    class="dropdown-button flex items-center justify-between w-full min-h-[40px] px-4 py-[3px] bg-white border border-[#E2DCDC] rounded-10px cursor-pointer">
+                                                    <div
+                                                        class="selected-option flex items-center gap-3 p-0.5 pr-[15px] ">
+                                                        <!-- Icon -->
+                                                        <div
+                                                            class="w-auto h-auto rounded-full bg-white flex items-center justify-center shrink-0">
+                                                            <span class="w-5 aspect-square rounded-full flex items-center justify-center bg-[#E8E1E1] text-xs leading-[100%] font-semibold text-Theme-Black">A</span>
+                                                        </div>
+
+                                                        <!-- Text -->
+                                                        <span
+                                                            class="selected-text text-sm leading-5 font-normal text-Theme-Black">
+                                                            New
+                                                        </span>
+                                                    </div>
+
+                                                    <!-- Arrow -->
+                                                    <svg class="dropdown-arrow w-4 h-4 text-[#8C8484] transition-all duration-300"
+                                                        fill="none" stroke="currentColor" stroke-width="2"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M19 9l-7 7-7-7"></path>
+                                                    </svg>
+                                                </div>
+
+                                                <!-- Menu -->
+                                                <div
+                                                    class="dropdown-menu hidden absolute left-0 top-full mt-2 w-full bg-white border border-[#E2DCDC] rounded-[14px] shadow-lg overflow-hidden z-50">
+                                                    <ul>
+                                                        <li class="dropdown-item flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-[#F8F6F6]"
+                                                            data-value="Segment">
+                                                            <div
+                                                                class="w-auto h-auto rounded-full bg-white flex items-center justify-center">
+                                                                <svg width="26" height="26" viewBox="0 0 26 26"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <rect width="26" height="26" rx="13" fill="#EDE9E9">
+                                                                    </rect>
+                                                                    <rect x="7.75" y="6" width="10.5" height="14"
+                                                                        rx="1.75" stroke="#000A06" stroke-width="1.2">
+                                                                    </rect>
+                                                                    <path d="M7.75 10.375L13 10.375L18.25 10.375"
+                                                                        stroke="#000A06" stroke-width="1.2"></path>
+                                                                    <circle cx="10.8125" cy="13.4375" r="0.4375"
+                                                                        stroke="#000A06" stroke-width="1.2"></circle>
+                                                                    <circle cx="10.8125" cy="16.9375" r="0.4375"
+                                                                        stroke="#000A06" stroke-width="1.2"></circle>
+                                                                    <circle cx="15.1875" cy="13.4375" r="0.4375"
+                                                                        stroke="#000A06" stroke-width="1.2"></circle>
+                                                                    <circle cx="15.1875" cy="16.9375" r="0.4375"
+                                                                        stroke="#000A06" stroke-width="1.2"></circle>
+                                                                </svg>
+                                                            </div>
+                                                            <span class="text-base text-[#202020]">Segment</span>
+                                                        </li>
+
+                                                        <li class="dropdown-item flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-[#F8F6F6]"
+                                                            data-value="Company">
+                                                            <div
+                                                                class="w-auto h-auto rounded-full bg-white flex items-center justify-center">
+                                                                <svg width="26" height="26" viewBox="0 0 26 26"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <rect width="26" height="26" rx="13" fill="#EDE9E9">
+                                                                    </rect>
+                                                                    <rect x="7.75" y="6" width="10.5" height="14"
+                                                                        rx="1.75" stroke="#000A06" stroke-width="1.2">
+                                                                    </rect>
+                                                                    <path d="M7.75 10.375L13 10.375L18.25 10.375"
+                                                                        stroke="#000A06" stroke-width="1.2"></path>
+                                                                    <circle cx="10.8125" cy="13.4375" r="0.4375"
+                                                                        stroke="#000A06" stroke-width="1.2"></circle>
+                                                                    <circle cx="10.8125" cy="16.9375" r="0.4375"
+                                                                        stroke="#000A06" stroke-width="1.2"></circle>
+                                                                    <circle cx="15.1875" cy="13.4375" r="0.4375"
+                                                                        stroke="#000A06" stroke-width="1.2"></circle>
+                                                                    <circle cx="15.1875" cy="16.9375" r="0.4375"
+                                                                        stroke="#000A06" stroke-width="1.2"></circle>
+                                                                </svg>
+                                                            </div>
+                                                            <span class="text-base text-[#202020]">Company</span>
+                                                        </li>
+
+                                                        <li class="dropdown-item flex items-center gap-3 px-4 py-2 cursor-pointer hover:bg-[#F8F6F6]"
+                                                            data-value="Team">
+                                                            <div
+                                                                class="w-auto h-auto rounded-full bg-white flex items-center justify-center">
+                                                                <svg width="26" height="26" viewBox="0 0 26 26"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <rect width="26" height="26" rx="13" fill="#EDE9E9">
+                                                                    </rect>
+                                                                    <rect x="7.75" y="6" width="10.5" height="14"
+                                                                        rx="1.75" stroke="#000A06" stroke-width="1.2">
+                                                                    </rect>
+                                                                    <path d="M7.75 10.375L13 10.375L18.25 10.375"
+                                                                        stroke="#000A06" stroke-width="1.2"></path>
+                                                                    <circle cx="10.8125" cy="13.4375" r="0.4375"
+                                                                        stroke="#000A06" stroke-width="1.2"></circle>
+                                                                    <circle cx="10.8125" cy="16.9375" r="0.4375"
+                                                                        stroke="#000A06" stroke-width="1.2"></circle>
+                                                                    <circle cx="15.1875" cy="13.4375" r="0.4375"
+                                                                        stroke="#000A06" stroke-width="1.2"></circle>
+                                                                    <circle cx="15.1875" cy="16.9375" r="0.4375"
+                                                                        stroke="#000A06" stroke-width="1.2"></circle>
+                                                                </svg>
+                                                            </div>
+                                                            <span class="text-base text-[#202020]">Team</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="w-5 h-px bg-[#E2DCDC] flex-shrink-0"></div>
+                                            <!-- ================= DESIGN 1 ================= -->
+                                            <div class="custom-dropdown relative w-full max-w-[700px] "
+                                                data-style="design1">
+                                                <div class="relative">
+                                                    <button type="button"
+                                                        class="dropdown-button w-full flex justify-between items-center bg-white border border-[#E2DCDC] text-Theme-Black p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
+                                                        <span class="selected-option">New</span>
+                                                        <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200 rotate-180"
+                                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                        </svg>
+                                                    </button>
+
+                                                    <div
+                                                        class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-10">
+                                                        <ul
+                                                            class="dropdown-list flex items-center flex-col gap-px w-full bg-[#F8F6F6]">
+                                                            <li class="bg-white w-full relative">
+                                                                <div
+                                                                    class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center active">
+                                                                    <span>Select a HubSpot Property</span>
+                                                                </div>
+                                                                <div
+                                                                    class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                                </div>
+                                                            </li>
+
+                                                            <li class="bg-white w-full relative">
+                                                                <div
+                                                                    class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                                                    <span>Select a HubSpot Property</span>
+                                                                </div>
+                                                                <div
+                                                                    class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="flex-shrink-0 w-full max-w-[40px] ml-2.5 !h-10 rounded-full flex items-center justify-center bg-[#F8F1F1] transition-all duration-500 hover:bg-[#E2DCDC] hover:text-white">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M17.6758 8.8564C19.2008 7.33135 18.9745 4.63243 17.1703 2.82821C15.3661 1.024 12.6672 0.797684 11.1421 2.32273L8.68362 4.78128L11.9504 8.04808L15.2172 11.3149L17.6758 8.8564Z" fill="#D4CFCF" stroke="#726B6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M17.4922 2.5L18.7642 1.22797" stroke="#726B6B" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M6.91406 10.8047L8.68183 9.03692" stroke="#000A06" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M9.20312 13.0938L10.9709 11.326" stroke="#000A06" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M2.82933 17.1653C1.02512 15.3611 0.798809 12.6621 2.32386 11.1371L4.78237 8.67857L11.316 15.2122L8.85753 17.6707C7.33248 19.1958 4.63355 18.9695 2.82933 17.1653Z" stroke="#000A06" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M2.49545 17.485L1.22266 18.7578" stroke="#000A06" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+
+                                    </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- LANGUAGES TAB (placeholder) -->
+            <div x-show="tab==='Companies'" class="block">
+                <div>
+                    <h3
+                        class="text-base leading-[140%] font-medium text-Theme-Black p-5 border-b border-[#E9E1E1] flex items-center gap-2.5">
+                        Form
+                        Settings</h3>
+                </div>
+
+                <div class="p-5 w-full">
+                    <!-- Primary Language -->
+                    <div class="w-full pb-[15px] border-b border-[#E9E1E1] hidden">
+                        <p class="text-xs leading-[120%] text-[#8C8484] uppercase tracking-[1.2px] mb-5">
+                            Form Languages
+                        </p>
+                        <label class="text-[15px] leading-[120%] text-[#8C8484] mb-[5px] block">
+                            Primary Language
+                        </label>
+                        <div class="custom-dropdown relative w-full max-w-[700px]" data-style="design1">
+                            <div class="relative ">
+                                <button type="button"
+                                    class="dropdown-button w-full flex justify-between items-center bg-[#F8F6F6] border border-[#E2DCDC] text-Theme-Black p-2.5 pl-[15px] rounded-10px text-[15px] font-normal leading-[18px] focus:outline-none transition-all">
+                                    <span class="selected-option">English</span>
+                                    <svg class="dropdown-arrow w-4 h-4 ml-2 transition-transform duration-200"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+
+                                <div
+                                    class="dropdown-menu absolute hidden w-full bg-white border border-[#E9E1E1] rounded-10px shadow-strong p-1.5 mt-2 text-[15px] leading-120 text-gray-700 overflow-hidden z-10">
+                                    <ul class="dropdown-list flex items-center flex-col gap-px w-full bg-[#F8F6F6]">
+                                        <li class="bg-white w-full relative">
+                                            <div
+                                                class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center active">
+                                                <span>English</span>
+                                            </div>
+                                            <div
+                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                            </div>
+                                        </li>
+
+                                        <li class="bg-white w-full relative">
+                                            <div
+                                                class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                                <span>Arabic</span>
+
+                                            </div>
+                                            <div
+                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                            </div>
+                                        </li>
+
+                                        <li class="bg-white w-full relative">
+                                            <div
+                                                class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                                <span>Catalan</span>
+
+                                            </div>
+                                            <div
+                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                            </div>
+                                        </li>
+
+                                        <li class="bg-white w-full relative">
+                                            <div
+                                                class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                                <span>Chinese (Simplified)</span>
+
+                                            </div>
+                                            <div
+                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                            </div>
+                                        </li>
+
+                                        <li class="bg-white w-full relative">
+                                            <div
+                                                class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                                <span>Croatian</span>
+
+                                            </div>
+                                            <div
+                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                            </div>
+                                        </li>
+                                        <li class="bg-white w-full relative">
+                                            <div
+                                                class="dropdown-item relative z-10 p-2.5 hover:bg-[#F8F6F6] rounded-[5px] transition-all duration-300 cursor-pointer w-full bg-white flex justify-between items-center">
+                                                <span>Danish</span>
+
+                                            </div>
+                                            <div
+                                                class="absolute -top-px left-0 opacity-0 w-full h-[calc(100%+2px)] bg-white abs-bg">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Translate Forms -->
+                    <div class="w-full py-[15px] border-b border-[#E9E1E1] hidden">
+                        <p class="text-xs leading-[120%] text-[#8C8484] uppercase tracking-[1.2px] mb-5">
+                            Translations
+                        </p>
+                        <p class="text-base leading-[140%] text-Theme-Black mb-2.5 block">
+                            Translate Forms
+                        </p>
+                        <p class="text-sm leading-[140%] text-[#8C8484] mb-[15px] block">
+                            Translate your form automatically or upload your own translations.
+                        </p>
+                        <button class="btn-white-icon-text w-max px-[15px]" data-modal-target="Language-&-Translations">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="2" width="16" height="16" rx="2" stroke="#000A06" stroke-width="1.2" />
+                                <path d="M13.9918 7.34375H6.00781" stroke="#000A06" stroke-width="1.2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M10 6V7.34399" stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M12.6 7.5V6.9H11.4V7.5H12H12.6ZM6 12.9517C5.66863 12.9517 5.4 13.2204 5.4 13.5517C5.4 13.8831 5.66863 14.1517 6 14.1517V13.5517V12.9517ZM12 7.5H11.4C11.4 10.607 8.98223 12.9517 6 12.9517V13.5517V14.1517C9.64177 14.1517 12.6 11.273 12.6 7.5H12Z"
+                                    fill="#000A06" />
+                                <path
+                                    d="M14.0003 14.1519C14.3317 14.1519 14.6003 13.8833 14.6003 13.5519C14.6003 13.2205 14.3317 12.9519 14.0003 12.9519V13.5519V14.1519ZM10.9773 11.6365L10.6138 11.1591L9.65914 11.8862L10.0227 12.3635L10.5 12L10.9773 11.6365ZM14.0003 13.5519V12.9519C13.3248 12.9519 12.7646 12.8706 12.2821 12.6735C11.808 12.4799 11.3772 12.1615 10.9773 11.6365L10.5 12L10.0227 12.3635C10.5428 13.0465 11.1421 13.5041 11.8283 13.7844C12.5059 14.0612 13.2359 14.1519 14.0003 14.1519V13.5519Z"
+                                    fill="#000A06" />
+                            </svg>
+                            Manage Translations
+                        </button>
+                    </div>
+
+                    <!-- System Messages -->
+                    <div class="w-full pt-[15px] ">
+                        <p class="text-xs leading-[120%] text-[#8C8484] uppercase tracking-[1.2px] mb-5">
+                            System Defaults
+                        </p>
+                        <p class="text-base leading-[140%] text-Theme-Black mb-2.5 block">
+                            System Messages
+                        </p>
+                        <p class="text-sm leading-[140%] text-[#8C8484] mb-[15px] block">
+                            Buttons, labels, hints, and shortcuts shown throughout the Kiwiform.
+                        </p>
+                        <div class="relative w-full">
+                            <div>
+                                <label class="text-[15px] leading-[120%] text-Theme-Black block mb-[5px]">
+                                    Button to submit the answer
+                                </label>
+                                <!-- Button Label Input -->
+                                <div x-data="charInput(100, 'Continue')" class="relative">
+                                    <input type="text" x-model="value" :maxlength="max" placeholder="Continue" class="w-full bg-white border border-[#E2DCDC]
+        rounded-10px px-[15px] py-[11px]
+        text-[15px] leading-[120%] text-Theme-Black
+        outline-none focus:border-Theme-Green transition">
+
+                                    <span class="absolute right-3 bottom-2.5 text-xs text-[#8C8484]"
+                                        x-text="`${count}/${max}`">
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="pt-[15px]">
+                                <label class="text-[15px] leading-[120%] text-Theme-Black block mb-[5px]">
+                                    Keyboard command to proceed to the next field
+                                </label>
+                                <!-- Button Label Input -->
+                                <div x-data="charInput(100, 'Continue')" class="relative">
+                                    <input type="text" x-model="value" :maxlength="max" placeholder="Press Enter" class="w-full bg-white border border-[#E2DCDC]
+        rounded-10px px-[15px] py-[11px]
+        text-[15px] leading-[120%] text-Theme-Black
+        outline-none focus:border-Theme-Green transition">
+
+                                    <span class="absolute right-3 bottom-2.5 text-xs text-[#8C8484]"
+                                        x-text="`${count}/${max}`">
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div
+                                class="absolute bottom-0 left-0 right-0 backdrop-blur-[0.5px] w-full h-[110px] bg-gradient-to-b from-white/0 via-white/80 to-white flex items-end justify-center">
+                                <a href="Form-settings.html" class="btn-white-icon-text">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8 18H6C4.11438 18 3.17157 18 2.58579 17.4142C2 16.8284 2 15.8856 2 14V6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2H14C15.8856 2 16.8284 2 17.4142 2.58579C18 3.17157 18 4.11438 18 6V7"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round" />
+                                        <path
+                                            d="M13.5444 8C14.7988 8 15.1008 8.81062 15.1283 9.50868C15.1385 9.76885 15.5916 10.0356 15.8256 9.92126C16.4111 9.63516 17.198 9.53072 17.7837 10.5C18.3454 11.5914 17.6999 12.2939 17.1346 12.668C16.9356 12.7997 16.9356 13.2003 17.1346 13.332C17.6999 13.7061 18.3454 14.4086 17.7837 15.5C17.198 16.4693 16.4111 16.3648 15.8256 16.0787C15.5916 15.9644 15.1385 16.2311 15.1283 16.4913C15.1008 17.1894 14.7988 18 13.5444 18C12.2901 18 11.9881 17.1894 11.9606 16.4913C11.9503 16.2311 11.4972 15.9644 11.2633 16.0787C10.6778 16.3648 9.89086 16.4693 9.30516 15.5C8.79377 14.5063 9.28307 13.835 9.80147 13.4404C10.0043 13.2859 9.97348 12.7907 9.75533 12.6587C9.1825 12.3121 8.64254 11.6571 9.30516 10.5C9.87825 9.49926 10.6114 9.54715 11.1796 9.81956C11.421 9.93531 11.9449 9.64552 11.9689 9.37886C12.0288 8.714 12.3672 8 13.5444 8Z"
+                                            stroke="#000A06" stroke-width="1.2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <ellipse cx="13.5" cy="13" rx="1.5" ry="1.5" stroke="#000A06" stroke-width="1.2"
+                                            stroke-linecap="round" />
+                                    </svg>
+                                    Manage System Messages
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- modal footer -->
+        <div class="flex items-center justify-end w-full py-2.5 px-[5px]">
+            <button
+                class="btn-kiwi-green min-w-[150px] w-max text-center transition-all duration-500 hover:bg-theme-Green-hover">
                 Save
             </button>
         </div>

@@ -618,7 +618,9 @@
     }
   }
 
-
+  [x-cloak] {
+    display: none !important;
+  }
 
 
   .animate-spin-slow {
