@@ -36,7 +36,6 @@
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-xs: 20rem;
-    --container-sm: 24rem;
     --container-md: 28rem;
     --container-xl: 36rem;
     --container-3xl: 48rem;
@@ -880,9 +879,6 @@
   .h-7 {
     height: calc(var(--spacing) * 7);
   }
-  .h-9 {
-    height: calc(var(--spacing) * 9);
-  }
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
@@ -1138,9 +1134,6 @@
   .min-h-\[55px\] {
     min-height: 55px;
   }
-  .min-h-\[60px\] {
-    min-height: 60px;
-  }
   .min-h-\[80px\] {
     min-height: 80px;
   }
@@ -1254,9 +1247,6 @@
   }
   .w-7 {
     width: calc(var(--spacing) * 7);
-  }
-  .w-9 {
-    width: calc(var(--spacing) * 9);
   }
   .w-10 {
     width: calc(var(--spacing) * 10);
@@ -1708,9 +1698,6 @@
   .max-w-md {
     max-width: var(--container-md);
   }
-  .max-w-sm {
-    max-width: var(--container-sm);
-  }
   .max-w-xl {
     max-width: var(--container-xl);
   }
@@ -2135,6 +2122,9 @@
   }
   .gap-\[11px\] {
     gap: 11px;
+  }
+  .gap-\[15\] {
+    gap: 15;
   }
   .gap-\[15px\] {
     gap: 15px;
@@ -2791,9 +2781,6 @@
   .bg-\[\#F9F9F9\] {
     background-color: #F9F9F9;
   }
-  .bg-\[\#FAF8F8\] {
-    background-color: #FAF8F8;
-  }
   .bg-\[\#FDFBFA\] {
     background-color: #FDFBFA;
   }
@@ -3304,6 +3291,9 @@
   .p-\[3px\] {
     padding: 3px;
   }
+  .p-\[5\] {
+    padding: 5;
+  }
   .p-\[5px\] {
     padding: 5px;
   }
@@ -3454,9 +3444,6 @@
   .py-24 {
     padding-block: calc(var(--spacing) * 24);
   }
-  .py-\[1\] {
-    padding-block: 1;
-  }
   .py-\[3px\] {
     padding-block: 3px;
   }
@@ -3468,9 +3455,6 @@
   }
   .py-\[8px\] {
     padding-block: 8px;
-  }
-  .py-\[9\] {
-    padding-block: 9;
   }
   .py-\[9px\] {
     padding-block: 9px;
@@ -3519,9 +3503,6 @@
   }
   .pt-2\.5 {
     padding-top: calc(var(--spacing) * 2.5);
-  }
-  .pt-3 {
-    padding-top: calc(var(--spacing) * 3);
   }
   .pt-5 {
     padding-top: calc(var(--spacing) * 5);
@@ -4091,6 +4072,9 @@
   }
   .text-\[\#FF4F00\] {
     color: #FF4F00;
+  }
+  .text-\[15\] {
+    color: 15;
   }
   .text-black {
     color: var(--color-black);
