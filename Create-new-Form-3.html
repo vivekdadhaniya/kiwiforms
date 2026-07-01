@@ -8,6 +8,45 @@
     <!--- MAIN CSS ---->
     <link rel="stylesheet" href="assets/css/input.css" />
     <link rel="stylesheet" href="assets/css/output.css" />
+    <style>
+      .group .gradient-start1,
+      .group .gradient-end1 {
+        transition:
+          stop-color 0.3s ease,
+          stop-opacity 0.3s ease;
+      }
+
+      .group:hover .gradient-start1 {
+        stop-color: #ffffff;
+      }
+
+      .group:hover .gradient-end1 {
+        stop-color: #ffffff;
+        stop-opacity: 0;
+      }
+      .group:hover .gradient-start1 {
+        stop-color: #fff;
+      }
+
+      .group .gradient-start2,
+      .group .gradient-end2 {
+        transition:
+          stop-color 0.3s ease,
+          stop-opacity 0.3s ease;
+      }
+
+      .group:hover .gradient-start2 {
+        stop-color: #ffffff;
+      }
+
+      .group:hover .gradient-end2 {
+        stop-color: #ffffff;
+        stop-opacity: 0;
+      }
+      .group:hover .gradient-start2 {
+        stop-color: #fff;
+      }
+    </style>
   </head>
 
   <body class="md:overflow-hidden bg-Theme-bg font-Inter">
@@ -314,11 +353,84 @@
             <!-- btns for import  -->
             <div class="w-full max-w-[680px] mx-auto flex items-center gap-5">
               <a href="#" class="group w-full">
-                <img
-                  src="assets/images/card-1.svg"
-                  alt="multi-step form"
-                  class="border border-transparent rounded-10px transition-all duration-500 group-hover:border-[#007D47]"
-                />
+                <div
+                  class="w-full h-[230px] rounded-10px border border-[#F8F3F3] bg-[#FFFAFA] transition-all duration-300 group-hover:bg-[#F8F3F3] group-hover:border-Theme-Green flex items-center justify-center"
+                >
+                  <svg
+                    width="230"
+                    height="60"
+                    viewBox="0 0 230 60"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      class="fill-[#E6F6A8] transition-all duration-300 group-hover:fill-[#B8DD2F]"
+                      x="78"
+                      width="74"
+                      height="60"
+                      rx="5"
+                      fill=""
+                    />
+                    <rect x="100" y="18" width="30" height="4" rx="2" fill="white" />
+                    <rect x="100" y="28" width="20" height="4" rx="2" fill="white" />
+                    <rect x="100" y="38" width="10" height="4" rx="2" fill="white" />
+                    <rect
+                      class="transition-all duration-300"
+                      x="73"
+                      y="60"
+                      width="73"
+                      height="60"
+                      rx="5"
+                      transform="rotate(-180 73 60)"
+                      fill="url(#paint0_linear_13990_272)"
+                    />
+                    <rect class="" x="22" y="24" width="30" height="4" rx="2" fill="#EACDCD" />
+                    <rect class="" x="29" y="34" width="16" height="4" rx="2" fill="#EACDCD" />
+                    <rect
+                      x="157"
+                      width="73"
+                      height="60"
+                      rx="5"
+                      fill="url(#paint1_linear_13990_272)"
+                    />
+                    <rect x="178" y="23" width="30" height="4" rx="2" fill="#EACDCD" />
+                    <rect x="185" y="33" width="16" height="4" rx="2" fill="#EACDCD" />
+                    <defs>
+                      <linearGradient
+                        id="paint0_linear_13990_272"
+                        x1="73"
+                        y1="90"
+                        x2="146"
+                        y2="90"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop class="gradient-start1" stop-color="#F3E9E9" />
+                        <stop
+                          class="gradient-end1"
+                          offset="1"
+                          stop-color="white"
+                          stop-opacity="0"
+                        />
+                      </linearGradient>
+                      <linearGradient
+                        id="paint1_linear_13990_272"
+                        x1="157"
+                        y1="30"
+                        x2="230"
+                        y2="30"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop class="gradient-start1" stop-color="#F3E9E9" />
+                        <stop
+                          class="gradient-end1"
+                          offset="1"
+                          stop-color="white"
+                          stop-opacity="0"
+                        />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
                 <h4
                   class="mt-5 text-center font-Inter_tight font-medium text-lg leading-[25px] text-Theme-Black transition-all duration-500 group-hover:text-Theme-Green"
                 >
@@ -332,11 +444,41 @@
                 </p>
               </a>
               <a href="#" class="group w-full">
-                <img
-                  src="assets/images/card-2.svg"
-                  alt="Document-Style Form"
-                  class="border border-transparent rounded-10px transition-all duration-500 group-hover:border-[#007D47]"
-                />
+                <div
+                  class="w-full h-[230px] rounded-10px border border-[#F8F3F3] bg-[#FFFAFA] transition-all duration-300 hover:bg-[#F8F3F3] hover:border-Theme-Green flex items-center justify-center"
+                >
+                  <svg
+                    width="90"
+                    height="130"
+                    viewBox="0 0 90 130"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      class="fill-[#E6F6A8] transition-all duration-300 group-hover:fill-[#B8DD2F]"
+                      width="90"
+                      height="110"
+                      rx="5"
+                      fill=""
+                    />
+                    <rect
+                      class="fill-[#F3E9E9] transition-all duration-300 group-hover:fill-white"
+                      y="115"
+                      width="90"
+                      height="15"
+                      rx="7.5"
+                      fill=""
+                    />
+                    <rect x="25" y="120.5" width="40" height="4" rx="2" fill="#EACDCD" />
+                    <rect x="25" y="23" width="40" height="4" rx="2" fill="white" />
+                    <rect x="25" y="33" width="30" height="4" rx="2" fill="white" />
+                    <rect x="25" y="43" width="20" height="4" rx="2" fill="white" />
+                    <rect x="25" y="63" width="40" height="4" rx="2" fill="white" />
+                    <rect x="25" y="73" width="30" height="4" rx="2" fill="white" />
+                    <rect x="25" y="83" width="20" height="4" rx="2" fill="white" />
+                  </svg>
+                </div>
+
                 <h4
                   class="mt-5 text-center font-Inter_tight font-medium text-lg leading-[25px] text-Theme-Black transition-all duration-500 group-hover:text-Theme-Green"
                 >

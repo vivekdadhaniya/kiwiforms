@@ -21,13 +21,6 @@
     --color-green-700: oklch(52.7% 0.154 150.069);
     --color-sky-400: oklch(74.6% 0.16 232.661);
     --color-blue-600: oklch(54.6% 0.245 262.881);
-    --color-purple-400: oklch(71.4% 0.203 305.504);
-    --color-pink-50: oklch(97.1% 0.014 343.198);
-    --color-pink-100: oklch(94.8% 0.028 342.258);
-    --color-pink-500: oklch(65.6% 0.241 354.308);
-    --color-pink-600: oklch(59.2% 0.249 0.584);
-    --color-rose-50: oklch(96.9% 0.015 12.422);
-    --color-rose-400: oklch(71.2% 0.194 13.428);
     --color-slate-800: oklch(27.9% 0.041 260.031);
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-gray-100: oklch(96.7% 0.003 264.542);
@@ -63,10 +56,6 @@
     --text-3xl--line-height: calc(2.25 / 1.875);
     --text-4xl: 2.25rem;
     --text-4xl--line-height: calc(2.5 / 2.25);
-    --text-5xl: 3rem;
-    --text-5xl--line-height: 1;
-    --text-6xl: 3.75rem;
-    --text-6xl--line-height: 1;
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
@@ -75,7 +64,6 @@
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
     --radius-2xl: 1rem;
-    --radius-3xl: 1.5rem;
     --ease-in: cubic-bezier(0.4, 0, 1, 1);
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
@@ -673,9 +661,6 @@
   .mt-14 {
     margin-top: calc(var(--spacing) * 14);
   }
-  .mt-\[5\] {
-    margin-top: 5;
-  }
   .mt-\[5px\] {
     margin-top: 5px;
   }
@@ -690,9 +675,6 @@
   }
   .mt-\[30px\] {
     margin-top: 30px;
-  }
-  .mt-\[58\] {
-    margin-top: 58;
   }
   .mt-\[72px\] {
     margin-top: 72px;
@@ -999,6 +981,9 @@
   }
   .h-\[225px\] {
     height: 225px;
+  }
+  .h-\[230px\] {
+    height: 230px;
   }
   .h-\[264px\] {
     height: 264px;
@@ -1453,9 +1438,6 @@
   .w-\[calc\(100\%-34px\)\] {
     width: calc(100% - 34px);
   }
-  .w-\[calc\(100\%-40px\)\] {
-    width: calc(100% - 40px);
-  }
   .w-\[calc\(100\%-81px\)\] {
     width: calc(100% - 81px);
   }
@@ -1686,9 +1668,6 @@
   }
   .max-w-\[660px\] {
     max-width: 660px;
-  }
-  .max-w-\[680\] {
-    max-width: 680;
   }
   .max-w-\[680px\] {
     max-width: 680px;
@@ -2823,6 +2802,9 @@
   .bg-\[\#FFF9CD\] {
     background-color: #FFF9CD;
   }
+  .bg-\[\#FFFAFA\] {
+    background-color: #FFFAFA;
+  }
   .bg-\[\#FFF\] {
     background-color: #FFF;
   }
@@ -3257,6 +3239,30 @@
   }
   .fill-\[\#D4CFCF\] {
     fill: #D4CFCF;
+  }
+  .fill-\[\#E6F6A8\] {
+    fill: #E6F6A8;
+  }
+  .fill-\[\#E6F\] {
+    fill: #E6F;
+  }
+  .fill-\[\#E6\] {
+    fill: #E6;
+  }
+  .fill-\[\#EACDCD\] {
+    fill: #EACDCD;
+  }
+  .fill-\[\#EA\] {
+    fill: #EA;
+  }
+  .fill-\[\#E\] {
+    fill: #E;
+  }
+  .fill-\[\#F3E9E9\] {
+    fill: #F3E9E9;
+  }
+  .fill-\[\#\] {
+    fill: #;
   }
   .stroke-\[\#726B6B\] {
     stroke: #726B6B;
@@ -3879,10 +3885,6 @@
     --tw-leading: 24px;
     line-height: 24px;
   }
-  .leading-\[25\] {
-    --tw-leading: 25;
-    line-height: 25;
-  }
   .leading-\[25px\] {
     --tw-leading: 25px;
     line-height: 25px;
@@ -3966,10 +3968,6 @@
   .leading-\[200\%\] {
     --tw-leading: 200%;
     line-height: 200%;
-  }
-  .leading-\[\=36\] {
-    --tw-leading: =36;
-    line-height: =36;
   }
   .leading-none {
     --tw-leading: 1;
@@ -4482,13 +4480,6 @@
       }
     }
   }
-  .group-hover\:border-\[\#007D47\] {
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        border-color: #007D47;
-      }
-    }
-  }
   .group-hover\:border-transparent {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
@@ -4510,6 +4501,13 @@
       }
     }
   }
+  .group-hover\:bg-\[\#F8F3F3\] {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        background-color: #F8F3F3;
+      }
+    }
+  }
   .group-hover\:bg-white {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
@@ -4517,10 +4515,24 @@
       }
     }
   }
+  .group-hover\:fill-\[\#B8DD2F\] {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        fill: #B8DD2F;
+      }
+    }
+  }
   .group-hover\:fill-\[\#CAEADC\] {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
         fill: #CAEADC;
+      }
+    }
+  }
+  .group-hover\:fill-white {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        fill: var(--color-white);
       }
     }
   }
