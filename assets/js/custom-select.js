@@ -469,3 +469,96 @@ document.addEventListener('click', () => {
     dropdown.querySelector('.dropdown-arrow').classList.remove('rotate-180')
   })
 })
+
+document.querySelectorAll('[data-style="design6"]').forEach((dropdown) => {
+  const button = dropdown.querySelector('.dropdown-button')
+  const menu = dropdown.querySelector('.dropdown-menu')
+  const arrow = dropdown.querySelector('.dropdown-arrow')
+  const selectedContainer = dropdown.querySelector('.selected-option')
+  const placeholder = dropdown.querySelector('.placeholder')
+  const items = dropdown.querySelectorAll('.dropdown-item')
+
+  let selected = []
+
+  // Toggle dropdown
+  button.addEventListener('click', (e) => {
+    e.stopPropagation()
+    menu.classList.toggle('hidden')
+    arrow.classList.toggle('rotate-180')
+  })
+
+  // Close outside
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) {
+      menu.classList.add('hidden')
+      arrow.classList.remove('rotate-180')
+    }
+  })
+
+  // Select item
+  items.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation()
+
+      const value = item.dataset.value
+
+      if (selected.includes(value)) {
+        selected = selected.filter((v) => v !== value)
+        item.classList.remove('bg-[#EBF8F2]')
+      } else {
+        selected.push(value)
+        item.classList.add('bg-[#EBF8F2]')
+      }
+
+      render()
+    })
+  })
+
+  // Render badges
+  function render() {
+    selectedContainer.querySelectorAll('.badge').forEach((el) => el.remove())
+
+    if (selected.length === 0) {
+      placeholder.style.display = 'block'
+    } else {
+      placeholder.style.display = 'none'
+    }
+
+    selected.forEach((value, i) => {
+      const badge = document.createElement('div')
+      badge.className = 'badge flex items-center gap-2 bg-white rounded-[24px] px-2 pl-2.5 py-1'
+
+      badge.innerHTML = `
+        <span class="text-[#007D47] text-xs leading-4 font-medium">${value}</span>
+
+        <button class="remove-btn ml-1">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_15296_934)">
+<path d="M1 7L7 1" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7 7L1 1" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_15296_934">
+<rect width="8" height="8" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+        </button>
+      `
+
+      // Remove click
+      badge.querySelector('.remove-btn').addEventListener('click', (e) => {
+        e.stopPropagation()
+
+        selected = selected.filter((v) => v !== value)
+
+        const item = [...items].find((i) => i.dataset.value === value)
+        if (item) item.classList.remove('bg-[#EBF8F2]')
+
+        render()
+      })
+
+      selectedContainer.appendChild(badge)
+    })
+  }
+})

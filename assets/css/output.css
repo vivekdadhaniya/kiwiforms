@@ -1783,6 +1783,9 @@
   .flex-grow {
     flex-grow: 1;
   }
+  .grow {
+    flex-grow: 1;
+  }
   .table-auto {
     table-layout: auto;
   }
@@ -2124,6 +2127,9 @@
   .gap-\[1px\] {
     gap: 1px;
   }
+  .gap-\[2\.5\] {
+    gap: 2.5;
+  }
   .gap-\[5px\] {
     gap: 5px;
   }
@@ -2180,6 +2186,13 @@
       --tw-space-y-reverse: 0;
       margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
       margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-\[15px\] {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(15px * var(--tw-space-y-reverse));
+      margin-block-end: calc(15px * calc(1 - var(--tw-space-y-reverse)));
     }
   }
   .gap-x-5 {
@@ -3243,26 +3256,8 @@
   .fill-\[\#E6F6A8\] {
     fill: #E6F6A8;
   }
-  .fill-\[\#E6F\] {
-    fill: #E6F;
-  }
-  .fill-\[\#E6\] {
-    fill: #E6;
-  }
-  .fill-\[\#EACDCD\] {
-    fill: #EACDCD;
-  }
-  .fill-\[\#EA\] {
-    fill: #EA;
-  }
-  .fill-\[\#E\] {
-    fill: #E;
-  }
   .fill-\[\#F3E9E9\] {
     fill: #F3E9E9;
-  }
-  .fill-\[\#\] {
-    fill: #;
   }
   .stroke-\[\#726B6B\] {
     stroke: #726B6B;
@@ -3509,6 +3504,9 @@
   }
   .py-\[60px\] {
     padding-block: 60px;
+  }
+  .py-\[80px\] {
+    padding-block: 80px;
   }
   .py-px {
     padding-block: 1px;
@@ -3996,6 +3994,10 @@
   .tracking-\[-1\.2px\] {
     --tw-tracking: -1.2px;
     letter-spacing: -1.2px;
+  }
+  .tracking-\[0\.08em\] {
+    --tw-tracking: 0.08em;
+    letter-spacing: 0.08em;
   }
   .tracking-\[0\.96px\] {
     --tw-tracking: 0.96px;
@@ -4761,6 +4763,12 @@
       right: 45px;
     }
   }
+  .after\:h-5 {
+    &::after {
+      content: var(--tw-content);
+      height: calc(var(--spacing) * 5);
+    }
+  }
   .after\:h-\[20px\] {
     &::after {
       content: var(--tw-content);
@@ -4771,6 +4779,12 @@
     &::after {
       content: var(--tw-content);
       height: 30px;
+    }
+  }
+  .after\:w-5 {
+    &::after {
+      content: var(--tw-content);
+      width: calc(var(--spacing) * 5);
     }
   }
   .after\:w-\[20px\] {

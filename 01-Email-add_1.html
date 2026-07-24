@@ -4590,7 +4590,7 @@
             <!-- Tab Contents -->
             <div class="tab-contents">
                 <div class="tab-content active p-[5px] bg-white border border-[#E9E1E1] rounded-10px" id="tab1">
-                    <div class="pt-[60px] pb-10 border-b border-[#E2DCDC]">
+                    <div class="py-[80px] border-b border-[#E2DCDC]">
                         <label class="flex justify-center items-center cursor-pointer border-dashed border border-[#DBCECE] bg-[#F2EFEF] rounded-10px gap-2.5 py-5 w-full max-w-[310px] mx-auto
                         transition-all duration-300 hover:border-solid focus:border-solid"">
                         <div class=" flex gap-2.5 items-center">
@@ -4625,7 +4625,7 @@
                     </p>
                 </div>
 
-                <div class="pb-[60px] pt-10">
+                <div class="py-10">
                     <label class="flex justify-center items-center cursor-pointer border-dashed border border-[#DBCECE] bg-[#F2EFEF] rounded-10px gap-2.5 py-5 w-full max-w-[310px] mx-auto
                         transition-all duration-300 hover:border-solid focus:border-solid">
                         <div class="flex gap-2.5 items-center">
@@ -4653,7 +4653,22 @@
                         Upload a
                         video
                         here</h5>
-                    <p class="text-xs leading-[14px] text-[#8C8484] text-center">Max 5 mins • 500MB Max</p>
+                    <p class="text-xs leading-[14px] text-[#8C8484] text-center mb-10">Max 5 mins • 500MB Max</p>
+
+                    <button data-modal-target="embed-video" class="flex justify-center items-center cursor-pointer border-dashed border border-[#DBCECE] bg-[#F2EFEF] rounded-10px gap-2.5 py-2.5 w-full max-w-[310px] mx-auto
+                        transition-all duration-300 hover:border-solid focus:border-solid">
+                        <div class="flex gap-2.5 items-center">
+                            <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.6016 8.59961V4.59961C14.6016 2.71399 14.6016 1.77118 14.0158 1.1854C13.43 0.599609 12.4872 0.599609 10.6016 0.599609H4.60156C2.71594 0.599609 1.77314 0.599609 1.18735 1.1854C0.601562 1.77118 0.601562 2.71399 0.601562 4.59961V8.59961C0.601562 10.4852 0.601562 11.428 1.18735 12.0138C1.77314 12.5996 2.71594 12.5996 4.60156 12.5996H10.6016" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="4 4"/>
+<path d="M6.46967 4.31384L9.74956 6.06312C10.2788 6.34535 10.2788 7.10386 9.74956 7.3861L6.46967 9.13537C5.9703 9.40171 5.36719 9.03984 5.36719 8.47388V4.97533C5.36719 4.40938 5.9703 4.04751 6.46967 4.31384Z" stroke="#000A06" stroke-width="1.2"/>
+<path d="M14.6016 10.5996V14.5996" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.6016 12.5957L12.6016 12.5957" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                            <span class="font-medium text-sm leading-5 text-Theme-Black">Embed Video</span>
+                        </div>
+                        
+                    </button>
                 </div>
             </div>
             <div class="tab-content hidden p-2.5 pb-5 pr-[5px] bg-white border border-[#E9E1E1] rounded-10px" id="tab2">
@@ -5005,6 +5020,94 @@
             </div>
         </div>
     </div>
+
+    </div>
+
+     <!-- embed-video modal  -->
+    <div class="modalTrigger  modal bg-[#F2EFEF] rounded-[15px] flex flex-col shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] p-[5px] pb-0 w-full h-auto max-w-[520px]"
+        id="embed-video">
+        <div class="flex w-full items-center justify-between pt-[7px] pb-[13px] pl-[15px] pr-[5px] ">
+                                    <h2 class="text-2xl font-normal leading-[140%] text-Theme-Black font-Inter_tight">
+                                        Embed Video</h2>
+                                    <button @click="openDesign = false" class="close-btn cursor-pointer">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4 16L16 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M16 16L4 4" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+
+        <div class="w-full tab-group p-5 rounded-10px bg-white border border-[#E9E1E1]">
+            <!-- Tabs -->
+            <div class="flex p-[5px] items-center tab-buttons bg-[#EDE9E9] rounded-10px">
+                <button
+                    class="tab-btn bg-white rounded-[5px] w-full flex items-center justify-center py-2.5 text-sm font-medium leading-[140%] text-[#000A06] active"
+                    data-tab="YouTube">YouTube</button>
+                <button
+                    class="tab-btn bg-transparent rounded-[5px] w-full flex items-center justify-center py-2.5 text-sm font-medium leading-[140%] text-[#000A06]"
+                    data-tab="Vimeo">Vimeo</button>
+
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="tab-contents">
+                <div class="tab-content active pt-10 " id="YouTube">
+                    
+                    <h4 class="text-base leading-[22px] font-medium text-Theme-Black mb-2.5 text-center">Embed YouTube Video</h4>
+                    <p class="text-sm leading-7 text-[#8C8484] text-center mb-5">Paste a public YouTube video URL to embed it directly in your form. Respondents can watch the video without leaving the form.</p>
+
+                    <div class="w-full relative">
+                      <label for="url1" class="text-xs leading-3.5 text-Theme-Black">YouTube Video Link</label>
+                      <input type="text" name="url1" id="url1" class="w-full bg-[#F8F6F6] rounded-10px border border-[#E2DCDC] p-[15px] py-3.5 pl-[50px] pr-10 text-base leading-5 text-Theme-Black placeholder:text-[#8C8484] outline-0 transition-all duration-500 focus:outline-0 hover:border-[#EDE9E9] focus:border-Theme-Green hover:bg-[#EDE9E9] focus:bg-white" placeholder="https://www.youtube.com/watch?v=..." required="">
+                      <svg class="absolute bottom-[15px] left-[15px] pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.2409 14.544L9.18276 16.6021C7.59144 18.1934 5.01138 18.1934 3.42006 16.6021C1.82873 15.0107 1.82873 12.4307 3.42006 10.8394L5.47817 8.78125" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"></path>
+                        <path d="M8.76953 5.49379L10.8276 3.43568C12.419 1.84436 14.999 1.84436 16.5903 3.43568C18.1817 5.02701 18.1817 7.60706 16.5903 9.19839L14.5322 11.2565" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"></path>
+                        <path d="M6.71094 13.3125L13.2969 6.72656" stroke="#000A06" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                      <button class="absolute z-[5] right-[15px] bottom-[15px] text-[#8C8484] transition-all duration-500 hover:text-Theme-Black cursor-pointer">
+                        <svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M18 18L18 15C18 13.1144 18 12.1716 17.4142 11.5858C16.8284 11 15.8856 11 14 11L9 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M11 8L8 10.9911L11 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M10 18H6C4.11438 18 3.17157 18 2.58579 17.4142C2 16.8284 2 15.8856 2 14V6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2H14C15.8856 2 16.8284 2 17.4142 2.58579C18 3.17157 18 4.11438 18 6V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                        </svg>
+                      </button>
+                    </div>
+                   
+                </div>
+                
+                <div class="tab-content hidden pt-10" id="Vimeo">
+                
+                    <h4 class="text-base leading-[22px] font-medium text-Theme-Black mb-2.5 text-center">Embed Vimeo Video</h4>
+                    <p class="text-sm leading-7 text-[#8C8484] text-center mb-5">
+                        Paste a public Vimeo video URL to embed it directly in your form. Respondents can watch the video without leaving the form.
+                    </p>
+
+                    <div class="w-full relative">
+                      <label for="url1" class="text-xs leading-3.5 text-Theme-Black">Vimeo Video Link</label>
+                      <input type="text" name="url1" id="url1" class="w-full bg-[#F8F6F6] rounded-10px border border-[#E2DCDC] p-[15px] py-3.5 pl-[50px] pr-10 text-base leading-5 text-Theme-Black placeholder:text-[#8C8484] outline-0 transition-all duration-500 focus:outline-0 hover:border-[#EDE9E9] focus:border-Theme-Green hover:bg-[#EDE9E9] focus:bg-white" placeholder="https://vimeo.com/..." required="">
+                      <svg class="absolute bottom-[15px] left-[15px] pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.2409 14.544L9.18276 16.6021C7.59144 18.1934 5.01138 18.1934 3.42006 16.6021C1.82873 15.0107 1.82873 12.4307 3.42006 10.8394L5.47817 8.78125" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"></path>
+                        <path d="M8.76953 5.49379L10.8276 3.43568C12.419 1.84436 14.999 1.84436 16.5903 3.43568C18.1817 5.02701 18.1817 7.60706 16.5903 9.19839L14.5322 11.2565" stroke="#000A06" stroke-width="1.5" stroke-linecap="round"></path>
+                        <path d="M6.71094 13.3125L13.2969 6.72656" stroke="#000A06" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                      <button class="absolute z-[5] right-[15px] bottom-[15px] text-[#8C8484] transition-all duration-500 hover:text-Theme-Black cursor-pointer">
+                        <svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M18 18L18 15C18 13.1144 18 12.1716 17.4142 11.5858C16.8284 11 15.8856 11 14 11L9 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M11 8L8 10.9911L11 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M10 18H6C4.11438 18 3.17157 18 2.58579 17.4142C2 16.8284 2 15.8856 2 14V6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2H14C15.8856 2 16.8284 2 17.4142 2.58579C18 3.17157 18 4.11438 18 6V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                        </svg>
+                      </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-end flex-col w-full py-2.5 px-[5px]">
+        <button class="py-2.5 w-full text-center rounded-10px bg-[#007D47] text-white text-sm font-medium leading-5 transition-all duration-500 hover:bg-theme-Green-hover">
+          Save
+        </button>
+      </div>
 
     </div>
 
