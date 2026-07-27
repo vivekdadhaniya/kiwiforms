@@ -1636,6 +1636,9 @@
   .max-w-\[500px\] {
     max-width: 500px;
   }
+  .max-w-\[510px\] {
+    max-width: 510px;
+  }
   .max-w-\[518px\] {
     max-width: 518px;
   }
@@ -1941,35 +1944,8 @@
   .animate-bounce {
     animation: var(--animate-bounce);
   }
-  .animate-bounce-sm {
-    animation: var(--animate-bounce-sm);
-  }
-  .animate-bounce-sm1 {
-    animation: var(--animate-bounce-sm1);
-  }
-  .animate-bounce-sm2 {
-    animation: var(--animate-bounce-sm2);
-  }
-  .animate-bounce-sm3 {
-    animation: var(--animate-bounce-sm3);
-  }
-  .animate-light-sm {
-    animation: var(--animate-light-sm);
-  }
-  .animate-light-sm1 {
-    animation: var(--animate-light-sm1);
-  }
-  .animate-light-sm2 {
-    animation: var(--animate-light-sm2);
-  }
-  .animate-light-sm3 {
-    animation: var(--animate-light-sm3);
-  }
   .animate-pulse {
     animation: var(--animate-pulse);
-  }
-  .animate-spin1 {
-    animation: var(--animate-spin1);
   }
   .cursor-crosshair {
     cursor: crosshair;
@@ -2127,9 +2103,6 @@
   .gap-\[1px\] {
     gap: 1px;
   }
-  .gap-\[2\.5\] {
-    gap: 2.5;
-  }
   .gap-\[5px\] {
     gap: 5px;
   }
@@ -2224,13 +2197,6 @@
       --tw-space-x-reverse: 0;
       margin-inline-start: calc(calc(var(--spacing) * 2) * var(--tw-space-x-reverse));
       margin-inline-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-x-reverse)));
-    }
-  }
-  .space-x-3 {
-    :where(& > :not(:last-child)) {
-      --tw-space-x-reverse: 0;
-      margin-inline-start: calc(calc(var(--spacing) * 3) * var(--tw-space-x-reverse));
-      margin-inline-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-x-reverse)));
     }
   }
   .gap-y-2 {
@@ -2677,6 +2643,9 @@
   .bg-\[\#0061FE\] {
     background-color: #0061FE;
   }
+  .bg-\[\#191D1C\] {
+    background-color: #191D1C;
+  }
   .bg-\[\#635BFF\] {
     background-color: #635BFF;
   }
@@ -2715,6 +2684,9 @@
   }
   .bg-\[\#DC3027\] {
     background-color: #DC3027;
+  }
+  .bg-\[\#DDF5EA\] {
+    background-color: #DDF5EA;
   }
   .bg-\[\#E2DCDC\] {
     background-color: #E2DCDC;
@@ -3316,6 +3288,9 @@
   .p-\[5px\] {
     padding: 5px;
   }
+  .p-\[6px\] {
+    padding: 6px;
+  }
   .p-\[10px\] {
     padding: 10px;
   }
@@ -3465,6 +3440,9 @@
   }
   .py-\[3px\] {
     padding-block: 3px;
+  }
+  .py-\[4px\] {
+    padding-block: 4px;
   }
   .py-\[5px\] {
     padding-block: 5px;
@@ -3994,10 +3972,6 @@
   .tracking-\[-1\.2px\] {
     --tw-tracking: -1.2px;
     letter-spacing: -1.2px;
-  }
-  .tracking-\[0\.08em\] {
-    --tw-tracking: 0.08em;
-    letter-spacing: 0.08em;
   }
   .tracking-\[0\.96px\] {
     --tw-tracking: 0.96px;

@@ -6126,7 +6126,7 @@
                                     Prevention Method
                                 </p>
 
-                                <div class="flex gap-2.5 items-center">
+                                <div class="flex flex-wrap gap-2.5 items-center">
                                     <label class="cursor-pointer">
                                         <input type="radio" class="sr-only peer" value="cookies"
                                             x-model="preventionMethod">
@@ -6152,6 +6152,185 @@
                                             Cookies And IP Address
                                         </span>
                                     </label>
+
+                                    <label class="cursor-pointer">
+                                        <input type="radio" class="sr-only peer" value="form_fields"
+                                            x-model="preventionMethod">
+
+                                        <span class="inline-flex items-center px-[15px] py-2.5 rounded-10px
+                        text-sm leading-[140%] font-medium border transition
+                        peer-checked:bg-Theme-Green peer-checked:text-white
+                        peer-checked:border-Theme-Green
+                        border-[#E2DCDC] text-Theme-Black">
+                                            Form Field Answers
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <div x-show="preventionMethod === 'form_fields'" x-transition class="mt-5 border-t border-[#E9E1E1] pt-5">
+                                    <div class="flex items-center gap-[5px] mb-[5px]">
+                                        <label class="text-[15px] leading-[18px] text-[#8C8484] block">
+                                        Fields to Check
+                                        </label>
+                                        <div
+                    x-data="{ open: false }"
+                    class="relative h-max w-[18px] aspect-square max-h-[18px] flex items-center justify-center"
+                  >
+                    <button
+                      @mouseenter="open = true"
+                      @mouseleave="open = false"
+                      @focus="open = true"
+                      @blur="open = false"
+                      class="text-[#8C8484] transition-all duration-300 hover:text-Theme-Black"
+                    >
+                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_15514_714)">
+<circle cx="7" cy="7" r="6" stroke="#8C8484" stroke-width="1.2"/>
+<path d="M7 6.35938V9.72447" stroke="#8C8484" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7 4.375L6.994 4.375" stroke="#8C8484" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_15514_714">
+<rect width="14" height="14" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+                    </button>
+                    <!-- Tooltip -->
+                    <div
+                      x-show="open"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 translate-y-1"
+                      x-transition:enter-end="opacity-100 translate-y-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 translate-y-0"
+                      x-transition:leave-end="opacity-0 translate-y-1"
+                      class="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-3 bg-[#191D1C] text-xs leading-[140%] text-center text-white px-2.5 py-2.5 rounded-10px shadow-strong w-max max-w-[300px] pointer-events-none"
+                    >
+                      Choose which form fields should be checked for duplicate answers. If the same answer already exists in that field in a previous response, Kiwiform will prevent the new submission.
+                      <!-- Arrow -->
+                      <div
+                        class="absolute left-1/2 -translate-x-1/2 top-full -translate-y-[4px] w-2 h-2 bg-[#191D1C] rotate-45"
+                      ></div>
+                    </div>
+                  </div>
+                                    </div>
+
+                                  <!-- Design 8 -->
+                                    <div class="custom-dropdown relative w-full max-w-[700px]" data-style="design8">
+
+  <!-- Dropdown Button -->
+  <div
+    class="dropdown-button flex items-center justify-between w-full min-h-[40px] rounded-[10px] border border-[#E2DCDC] bg-white px-3 py-[4px] cursor-pointer"
+  >
+
+    <!-- Selected Badges -->
+    <div class="selected-option flex flex-wrap items-center gap-2 flex-1">
+
+      <!-- Placeholder -->
+      <span class="placeholder text-sm text-[#8C8484]">
+        Select options...
+      </span>
+
+      <!-- JS will append badges here -->
+
+    </div>
+
+    <!-- Arrow -->
+    <svg class="dropdown-arrow w-5 h-5 text-[#8C8484] transition-all duration-200" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 7.5L10 12.5L5 7.5" stroke="#8C8484" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+  </div>
+
+  <!-- Dropdown Menu -->
+  <div
+    class="dropdown-menu hidden absolute left-0 top-full mt-2 w-full rounded-[10px] border border-[#E2DCDC] bg-white shadow-lg p-[6px] z-20"
+  >
+
+    <ul class="flex flex-col gap-1">
+
+      <li
+        class="dropdown-item flex items-center gap-3 rounded-lg px-3 py-2 cursor-pointer hover:bg-[#EBF8F2]"
+        data-value="Email Address"
+      >
+        <span
+          class="w-6 h-6 rounded-full bg-[#EBF8F2] text-[#007D47] text-xs font-semibold flex items-center justify-center"
+        >
+          1
+        </span>
+
+        <p class="text-sm text-[#000A06]">
+          Email Address
+        </p>
+      </li>
+
+      <li
+        class="dropdown-item flex items-center gap-3 rounded-lg px-3 py-2 cursor-pointer hover:bg-[#EBF8F2]"
+        data-value="School"
+      >
+        <span
+          class="w-6 h-6 rounded-full bg-[#EBF8F2] text-[#007D47] text-xs font-semibold flex items-center justify-center"
+        >
+          2
+        </span>
+
+        <p class="text-sm text-[#000A06]">
+          School
+        </p>
+      </li>
+
+      <li
+        class="dropdown-item flex items-center gap-3 rounded-lg px-3 py-2 cursor-pointer hover:bg-[#EBF8F2]"
+        data-value="Phone Number"
+      >
+        <span
+          class="w-6 h-6 rounded-full bg-[#EBF8F2] text-[#007D47] text-xs font-semibold flex items-center justify-center"
+        >
+          3
+        </span>
+
+        <p class="text-sm text-[#000A06]">
+          Phone Number
+        </p>
+      </li>
+
+      <li
+        class="dropdown-item flex items-center gap-3 rounded-lg px-3 py-2 cursor-pointer hover:bg-[#EBF8F2]"
+        data-value="Country"
+      >
+        <span
+          class="w-6 h-6 rounded-full bg-[#EBF8F2] text-[#007D47] text-xs font-semibold flex items-center justify-center"
+        >
+          4
+        </span>
+
+        <p class="text-sm text-[#000A06]">
+          Country
+        </p>
+      </li>
+
+      <li
+        class="dropdown-item flex items-center gap-3 rounded-lg px-3 py-2 cursor-pointer hover:bg-[#EBF8F2]"
+        data-value="Company"
+      >
+        <span
+          class="w-6 h-6 rounded-full bg-[#EBF8F2] text-[#007D47] text-xs font-semibold flex items-center justify-center"
+        >
+          5
+        </span>
+
+        <p class="text-sm text-[#000A06]">
+          Company
+        </p>
+      </li>
+
+    </ul>
+
+  </div>
+
+                                    </div>
                                 </div>
                             </div>
 

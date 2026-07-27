@@ -562,3 +562,108 @@ document.querySelectorAll('[data-style="design6"]').forEach((dropdown) => {
     })
   }
 })
+
+document.querySelectorAll('[data-style="design8"]').forEach((dropdown) => {
+  const button = dropdown.querySelector('.dropdown-button')
+  const menu = dropdown.querySelector('.dropdown-menu')
+  const arrow = dropdown.querySelector('.dropdown-arrow')
+  const selectedContainer = dropdown.querySelector('.selected-option')
+  const placeholder = dropdown.querySelector('.placeholder')
+  const items = dropdown.querySelectorAll('.dropdown-item')
+
+  let selected = []
+
+  // Toggle Dropdown
+  button.addEventListener('click', (e) => {
+    e.stopPropagation()
+    menu.classList.toggle('hidden')
+    arrow.classList.toggle('rotate-180')
+  })
+
+  // Close on Outside Click
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) {
+      menu.classList.add('hidden')
+      arrow.classList.remove('rotate-180')
+    }
+  })
+
+  // Select / Deselect
+  items.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation()
+
+      const value = item.dataset.value
+
+      if (selected.includes(value)) {
+        selected = selected.filter((v) => v !== value)
+        item.classList.remove('bg-[#EBF8F2]')
+      } else {
+        selected.push(value)
+        item.classList.add('bg-[#EBF8F2]')
+      }
+
+      render()
+    })
+  })
+
+  function render() {
+    // Remove existing badges
+    selectedContainer.querySelectorAll('.badge').forEach((badge) => badge.remove())
+
+    // Show/Hide placeholder
+    placeholder.style.display = selected.length ? 'none' : 'block'
+
+    // Create badges
+    selected.forEach((value, index) => {
+      const badge = document.createElement('div')
+
+      badge.className =
+        'badge flex items-center gap-2 bg-[#DDF5EA] rounded-full py-1 pl-[5px] pr-2.5'
+
+      badge.innerHTML = `
+                <span class="w-5 h-5 flex items-center justify-center rounded-full bg-[#007D47] text-white text-xs leading-3.5 font-semibold shrink-0">
+                    ${index + 1}
+                </span>
+
+                <span class="text-[#007D47] text-base leading-[22px] font-medium whitespace-nowrap">
+                    ${value}
+                </span>
+
+                <button
+                    type="button"
+                    class="remove-btn flex items-center justify-center"
+                >
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_15514_737)">
+<path d="M1 9L9 1" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9 9L1 1" stroke="#000A06" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_15514_737">
+<rect width="10" height="10" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+                </button>
+            `
+
+      // Remove Badge
+      badge.querySelector('.remove-btn').addEventListener('click', (e) => {
+        e.stopPropagation()
+
+        selected = selected.filter((v) => v !== value)
+
+        const item = [...items].find((item) => item.dataset.value === value)
+
+        if (item) {
+          item.classList.remove('bg-[#EBF8F2]')
+        }
+
+        render()
+      })
+
+      selectedContainer.appendChild(badge)
+    })
+  }
+})
