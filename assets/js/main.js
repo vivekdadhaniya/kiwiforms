@@ -1,4 +1,41 @@
 
+// Keep browser autocomplete/autofill text aligned with dynamic form value styling.
+(function () {
+    const fieldSelector = 'input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), textarea';
+
+    function applyFieldValueColor(scope = document) {
+        scope.querySelectorAll(fieldSelector).forEach(field => {
+            const fieldColor = getComputedStyle(field).color;
+            field.style.setProperty('--field-text-color', fieldColor);
+            field.style.webkitTextFillColor = fieldColor;
+            field.style.caretColor = fieldColor;
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        applyFieldValueColor();
+        setTimeout(applyFieldValueColor, 100);
+        setTimeout(applyFieldValueColor, 500);
+    });
+
+    window.addEventListener('pageshow', () => {
+        applyFieldValueColor();
+        setTimeout(applyFieldValueColor, 100);
+    });
+
+    document.addEventListener('input', event => {
+        if (event.target.matches(fieldSelector)) {
+            applyFieldValueColor(event.target.parentElement || document);
+        }
+    }, true);
+
+    document.addEventListener('change', event => {
+        if (event.target.matches(fieldSelector)) {
+            applyFieldValueColor(event.target.parentElement || document);
+        }
+    }, true);
+})();
+
 
 
 
