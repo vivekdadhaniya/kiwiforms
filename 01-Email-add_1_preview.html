@@ -434,7 +434,7 @@
                     />
                   </svg>
                 </button>
-                <button class="btn-kiwi-green w-full">Continue</button>
+                <button data-modal-target="Verify" class="btn-kiwi-green w-full">Continue</button>
                 <button
                   class="flex w-10 aspect-square items-center gap-2.5 bg-Theme-currentColor p-[11px] rounded-10px text-sm font-medium leading-140 text-white transition-all duration-500 hover:bg-gray-800 group"
                 >
@@ -731,6 +731,111 @@
         </div>
       </div>
     </div>
+
+    <!-- Verify modal  -->
+    <div
+      class="modalTrigger modal bg-[#F2EFEF] hidden rounded-[15px] flex flex-col shadow-[0_3px_10px_1px_rgba(0,0,0,0.02)] p-[5px] pb-0 w-full h-auto max-w-[450px]"
+      id="Verify"
+    >
+      <div class="flex w-full items-center justify-between pt-[7px] pb-[13px] pl-[15px] pr-[5px]">
+        <h2 class="text-2xl font-normal leading-[140%] text-Theme-Black font-Inter_tight">
+          Verify Your Email
+        </h2>
+        <button @click="openDesign = false" class="close-btn cursor-pointer">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 16L16 4"
+              stroke="#000A06"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+            <path
+              d="M16 16L4 4"
+              stroke="#000A06"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="w-full tab-group py-10 px-5 rounded-10px bg-white border border-[#E9E1E1]">
+        <h3 class="text-2xl leading-[29px] font-semibold text-Theme-Black text-center mb-2.5">
+          Email Verification
+        </h3>
+        <p class="text-[15px] leading-[30px] text-Theme-Black text-center mb-[30px]">
+          Enter the verification code sent to your email address to continue to the next step.
+        </p>
+        <div
+          id="verify-input"
+          class="flex items-center justify-center w-full gap-2.5 max-w-[230px] mx-auto"
+        >
+          <input
+            type="text"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            pattern="[0-9]*"
+            maxlength="1"
+            aria-label="Verification code digit 1"
+            placeholder="-"
+            class="otp-input w-full placeholder:text-[#9ACEB8] text-xl leading-7 h-auto text-center pb-[15px] text-Theme-Green border-b-2 border-[#DAEFE6] focus:outline-none focus:border-Theme-Black"
+          />
+          <input
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="1"
+            aria-label="Verification code digit 2"
+            placeholder="-"
+            class="otp-input w-full placeholder:text-[#9ACEB8] text-xl leading-7 h-auto text-center pb-[15px] text-Theme-Green border-b-2 border-[#DAEFE6] focus:outline-none focus:border-Theme-Black"
+          />
+          <input
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="1"
+            aria-label="Verification code digit 3"
+            placeholder="-"
+            class="otp-input w-full placeholder:text-[#9ACEB8] text-xl leading-7 h-auto text-center pb-[15px] text-Theme-Green border-b-2 border-[#DAEFE6] focus:outline-none focus:border-Theme-Black"
+          />
+          <input
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="1"
+            aria-label="Verification code digit 4"
+            placeholder="-"
+            class="otp-input w-full placeholder:text-[#9ACEB8] text-xl leading-7 h-auto text-center pb-[15px] text-Theme-Green border-b-2 border-[#DAEFE6] focus:outline-none focus:border-Theme-Black"
+          />
+          <input type="hidden" id="verification-code" name="verification_code" />
+        </div>
+        <p class="text-xs leading-6 text-Theme-Black text-center mt-[30px]">
+          Didn't receive the code? <br />
+          Check your spam folder or resend the code.
+        </p>
+      </div>
+
+      <div class="flex items-center justify-end gap-2.5 w-full py-2.5 px-[5px]">
+        <button
+          class="py-2.5 w-full text-center rounded-10px bg-Theme-Black text-white text-sm font-medium leading-5 transition-all duration-500 hover:bg-Theme-Black/80"
+        >
+          Resend Code
+        </button>
+        <button
+          class="py-2.5 w-full text-center rounded-10px bg-[#007D47] text-white text-sm font-medium leading-5 transition-all duration-500 hover:bg-theme-Green-hover"
+        >
+          Verify & Continue
+        </button>
+      </div>
+    </div>
     <!-- MAIN JS-->
     <!-- MAIN JS-->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -743,6 +848,50 @@
     <script src="assets/js/main.js"></script>
 
     <!-- resize js  -->
+    <script>
+      const otpInputs = document.querySelectorAll('#verify-input input[maxlength="1"]')
+      const verificationCode = document.getElementById('verification-code')
+
+      function updateVerificationCode() {
+        verificationCode.value = Array.from(otpInputs)
+          .map((input) => input.value)
+          .join('')
+      }
+
+      otpInputs.forEach((input, index) => {
+        input.addEventListener('input', (event) => {
+          event.target.value = event.target.value.replace(/\D/g, '').slice(0, 1)
+          updateVerificationCode()
+
+          if (event.target.value && otpInputs[index + 1]) {
+            otpInputs[index + 1].focus()
+          }
+        })
+
+        input.addEventListener('keydown', (event) => {
+          if (event.key === 'Backspace' && !input.value && otpInputs[index - 1]) {
+            otpInputs[index - 1].focus()
+          }
+        })
+
+        input.addEventListener('paste', (event) => {
+          event.preventDefault()
+
+          event.clipboardData
+            .getData('text')
+            .replace(/\D/g, '')
+            .slice(0, otpInputs.length)
+            .split('')
+            .forEach((digit, digitIndex) => {
+              otpInputs[digitIndex].value = digit
+            })
+
+          updateVerificationCode()
+          otpInputs[Math.min(otpInputs.length - 1, verificationCode.value.length - 1)]?.focus()
+        })
+      })
+    </script>
+
     <script>
       const resizer = document.getElementById('resizer-y')
       const div1 = document.getElementById('div1')

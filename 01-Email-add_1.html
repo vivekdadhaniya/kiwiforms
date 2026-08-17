@@ -1104,7 +1104,7 @@
 
                             </li>
 
-                            <li class="px-[15px] py-5">
+                            <li class="px-[15px] py-5 border-b border-[#E2DCDC]">
                                 <label x-data="{ checked: false }"
                                     class="flex items-center justify-between cursor-pointer">
                                     <span class="text-base leading-[140%] font-medium text-Theme-Black">Required
@@ -1137,6 +1137,43 @@
                                     </div>
                                 </label>
 
+                            </li>
+
+                            <li class="px-[15px] py-5">
+                                <div x-data="{ enabled: false, value: 'Verify Email Address' }" class="w-full">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-2 text-base leading-[140%] font-medium text-Theme-Black">
+                                            Verify Email Address
+                                            <div x-data="{ open: false }" class="relative h-max w-[18px] aspect-square max-h-[18px]">
+                                                <button type="button" @mouseenter="open = true" @mouseleave="open = false" @focus="open = true" @blur="open = false" class="text-[#8C8484] transition-all duration-300 hover:text-Theme-Black">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                        <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.2"></circle>
+                                                        <path d="M9 8.14062V12.6274" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        <path d="M9 5.5L8.992 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                    </svg>
+                                                </button>
+                                                <!-- Tooltip -->
+                                                <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-1" class="absolute z-50 bottom-full left-1/2 -translate-x-3/4 mb-3 bg-[#191D1C] text-xs leading-[140%] text-center text-white px-2.5 py-2.5 rounded-10px shadow-strong w-max max-w-[280px] pointer-events-none" style="display: none;">
+                                                   Send an OTP to the entered email address, respondents must enter the code to verify their email before continuing.
+                                                    <!-- Arrow -->
+                                                    <div class="absolute left-1/2 -translate-x-1/2 top-full -translate-y-[4px] w-2 h-2 bg-[#191D1C] rotate-45">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <label class="relative cursor-pointer">
+                                            <input type="checkbox" value="Original_UV" class="sr-only peer" x-model="enabled">
+                                            <div class="w-11 h-6 bg-[#EDE9E9] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-[20px] peer-checked:after:bg-white after:content-[''] after:absolute after:top-[2px] after:right-[22px] after:bg-white after:rounded-full after:h-[20px] after:w-[20px] after:transition-all peer-checked:bg-Theme-Green hover:peer-checked:bg-Theme-Green">
+                                                <svg :class="{'!text-white':enabled}" class="absolute top-2.5 left-2.5 z-20 text-[#E2DCDC]" width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="2" cy="2" r="2" fill="currentcolor"></circle>
+                                                </svg>
+                                                <svg :class="{'!text-[#E2DCDC]': enabled}" class="on block absolute top-[9px] right-2.5 z-20 text-white" width="2" height="6" viewBox="0 0 2 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="2" height="6" rx="1" fill="currentcolor"></rect>
+                                                </svg>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </li>
