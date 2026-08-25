@@ -5309,6 +5309,13 @@
       }
     }
   }
+  .hover\:text-Theme-bg {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-Theme-bg);
+      }
+    }
+  }
   .hover\:text-\[\#007D47\] {
     &:hover {
       @media (hover: hover) {
